@@ -1,0 +1,389 @@
+---
+import { HEADER_NAV } from '../../lib/navigation/navData';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class="vn-header"
+  role="banner"
+  data-state="top"
+  data-overlay="false"
+>
+  <div class="vn-header__inner">
+
+    <!-- Logo -->
+    <a href="/" class="vn-header__logo" aria-label="Военный навигатор — на главную">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none"
+           class="vn-logo-mark" aria-hidden="true">
+        <circle cx="20" cy="20" r="9"
+          stroke="var(--logo-bracket-color, #0F2547)"
+          stroke-width="0.7" stroke-dasharray="2.2 2.2"/>
+        <path d="M7 13 L7 7 L13 7"
+          stroke="var(--logo-bracket-color, #0F2547)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 7 L33 7 L33 13"
+          stroke="var(--logo-bracket-color, #0F2547)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 27 L7 33 L13 33"
+          stroke="var(--logo-bracket-color, #0F2547)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 33 L33 33 L33 27"
+          stroke="var(--logo-bracket-color, #0F2547)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="20" r="2.8" fill="#2563EB"/>
+      </svg>
+      <div class="vn-header__logo-text">
+        <span class="vn-header__brand">Военный навигатор</span>
+        <span class="vn-header__name">Михаил Хряпин</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="vn-header__nav" aria-label="Основная навигация">
+      {HEADER_NAV.map((item) => (
+        <a
+          href={item.href}
+          class="vn-header__nav-link"
+          aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}
+        >
+          {item.labelShort}
+          {item.badge === 'new' && (
+            <span class="vn-header__nav-badge">new</span>
+          )}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right controls -->
+    <div class="vn-header__controls">
+
+      <!-- CTA -->
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Записаться на разбор"
+        class="vn-btn-primary vn-header__cta"
+      >
+        <span class="vn-header__cta-full">Записаться на разбор</span>
+        <span class="vn-header__cta-short">На разбор</span>
+      </a>
+
+      <!-- Карта сайта / Закрыть -->
+      <button
+        type="button"
+        id="nav-toggle"
+        data-nav-toggle
+        class="vn-header__map-btn"
+        aria-expanded="false"
+        aria-controls="route-map-overlay"
+        aria-label="Открыть карту сайта"
+      >
+        <!-- icon: layout-grid -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="vn-map-icon" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <!-- icon: x (shown when overlay open) -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="vn-map-icon-close" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+        <span class="vn-map-divider" aria-hidden="true"></span>
+        <span class="vn-map-label">Карта сайта</span>
+        <span class="vn-map-label-close">Закрыть</span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<style is:global>
+  /* ── Header base ── */
+  #site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    transition:
+      background     350ms cubic-bezier(0.4, 0, 0.2, 1),
+      height         350ms cubic-bezier(0.4, 0, 0.2, 1),
+      top            350ms cubic-bezier(0.4, 0, 0.2, 1),
+      left           350ms cubic-bezier(0.4, 0, 0.2, 1),
+      right          350ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius  350ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow     350ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color   350ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* State: top of page */
+  #site-header[data-state="top"] {
+    background:    transparent;
+    height:        84px;
+    top:           0;
+    left:          0;
+    right:         0;
+    border-radius: 0;
+    box-shadow:    none;
+    border-color:  transparent;
+  }
+
+  /* State: floating dock */
+  #site-header[data-state="dock"] {
+    background:          rgba(255, 255, 255, 0.88);
+    backdrop-filter:     blur(18px) saturate(1.5);
+    -webkit-backdrop-filter: blur(18px) saturate(1.5);
+    height:        60px;
+    top:           12px;
+    left:          24px;
+    right:         24px;
+    border-radius: 16px;
+    border-color:  rgba(15, 37, 71, 0.10);
+    box-shadow:
+      0 2px 8px  rgba(15, 37, 71, 0.06),
+      0 8px 24px rgba(15, 37, 71, 0.04);
+  }
+
+  /* State: overlay open — header stays on top but transparent */
+  #site-header[data-overlay="true"] {
+    background:   transparent !important;
+    box-shadow:   none !important;
+    border-color: transparent !important;
+    z-index:      201;
+  }
+
+  /* ── Logo bracket color ── */
+  #site-header .vn-header__logo {
+    --logo-bracket-color: #0F2547;
+  }
+  #site-header[data-overlay="true"] .vn-header__logo {
+    --logo-bracket-color: rgba(241, 243, 245, 0.75);
+  }
+
+  /* ── Logo text ── */
+  #site-header .vn-header__brand {
+    color: var(--color-text-primary);
+    transition: color 250ms ease;
+  }
+  #site-header .vn-header__name {
+    color: var(--color-text-tertiary);
+    transition: color 250ms ease, opacity 300ms ease, height 300ms ease;
+  }
+  #site-header[data-overlay="true"] .vn-header__brand,
+  #site-header[data-overlay="true"] .vn-header__name {
+    color: rgba(241, 243, 245, 0.85);
+  }
+  /* Name collapses in dock */
+  #site-header[data-state="dock"] .vn-header__name {
+    opacity:  0;
+    height:   0;
+    overflow: hidden;
+  }
+
+  /* ── Nav links ── */
+  #site-header .vn-header__nav-link {
+    color: var(--color-text-secondary);
+    transition: color 200ms ease, background 200ms ease, padding 200ms ease;
+  }
+  #site-header[data-overlay="true"] .vn-header__nav-link {
+    color: rgba(241, 243, 245, 0.75);
+  }
+  /* Active pill in dock mode */
+  #site-header[data-state="dock"] .vn-header__nav-link[aria-current="page"] {
+    background:    rgba(15, 37, 71, 0.07);
+    border-radius: 8px;
+    padding:       4px 12px;
+  }
+
+  /* ── CTA text toggle ── */
+  #site-header .vn-header__cta-short { display: none; }
+  #site-header .vn-header__cta-full  { display: inline; }
+  #site-header[data-state="dock"] .vn-header__cta-full  { display: none; }
+  #site-header[data-state="dock"] .vn-header__cta-short { display: inline; }
+  /* CTA hidden when overlay open */
+  #site-header[data-overlay="true"] .vn-header__cta {
+    opacity:        0;
+    pointer-events: none;
+    transition:     opacity 200ms ease;
+  }
+
+  /* ── Map button states ── */
+  #site-header .vn-map-icon-close { display: none; }
+  #site-header .vn-map-label-close { display: none; }
+  #site-header[data-overlay="true"] .vn-map-icon       { display: none; }
+  #site-header[data-overlay="true"] .vn-map-icon-close { display: block; }
+  #site-header[data-overlay="true"] .vn-map-label      { display: none; }
+  #site-header[data-overlay="true"] .vn-map-label-close { display: inline; }
+  #site-header[data-overlay="true"] .vn-header__map-btn {
+    border-color: rgba(241, 243, 245, 0.2);
+    color:        rgba(241, 243, 245, 0.8);
+  }
+
+  /* ── Mobile: CTA always short ── */
+  @media (max-width: 1023px) {
+    #site-header .vn-header__cta-full  { display: none; }
+    #site-header .vn-header__cta-short { display: inline; }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    #site-header,
+    #site-header .vn-header__brand,
+    #site-header .vn-header__name,
+    #site-header .vn-header__cta {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<style>
+  .vn-header__inner {
+    display:        flex;
+    align-items:    center;
+    width:          100%;
+    max-width:      1280px;
+    margin-inline:  auto;
+    padding-inline: 24px;
+    gap:            24px;
+    height:         100%;
+  }
+
+  /* Logo */
+  .vn-header__logo {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    text-decoration: none;
+    flex-shrink:     0;
+  }
+  .vn-logo-mark {
+    flex-shrink: 0;
+    transition:  transform 300ms ease;
+  }
+  .vn-header__logo:hover .vn-logo-mark {
+    transform: scale(1.06);
+  }
+  .vn-header__logo-text {
+    display:        flex;
+    flex-direction: column;
+    gap:            3px;
+  }
+  .vn-header__brand {
+    font-size:      14px;
+    font-weight:    600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    line-height:    1;
+  }
+  .vn-header__name {
+    font-size:      9px;
+    font-weight:    400;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height:    1;
+  }
+
+  /* Nav */
+  .vn-header__nav {
+    display:         flex;
+    align-items:     center;
+    gap:             4px;
+    flex:            1;
+    justify-content: center;
+  }
+  .vn-header__nav-link {
+    display:         inline-flex;
+    align-items:     center;
+    gap:             6px;
+    padding:         8px 12px;
+    font-size:       14px;
+    font-weight:     500;
+    letter-spacing:  0.01em;
+    text-decoration: none;
+    border-radius:   var(--radius-sm);
+    white-space:     nowrap;
+  }
+  .vn-header__nav-link:hover {
+    color: var(--color-text-primary);
+  }
+  .vn-header__nav-badge {
+    font-size:      10px;
+    font-weight:    600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background:     rgba(37, 99, 235, 0.15);
+    color:          var(--color-accent-cta);
+    padding:        2px 6px;
+    border-radius:  var(--radius-full);
+  }
+
+  /* Controls */
+  .vn-header__controls {
+    display:     flex;
+    align-items: center;
+    gap:         10px;
+    flex-shrink: 0;
+  }
+  .vn-header__cta {
+    font-size: 14px;
+    padding:   10px 20px;
+    height:    40px;
+  }
+
+  /* Map button */
+  .vn-header__map-btn {
+    display:      inline-flex;
+    align-items:  center;
+    gap:          7px;
+    height:       36px;
+    padding:      0 14px;
+    background:   transparent;
+    border:       1px solid rgba(15, 37, 71, 0.12);
+    border-radius: var(--radius-md);
+    cursor:       pointer;
+    font-size:    13px;
+    font-weight:  500;
+    color:        var(--color-text-secondary);
+    font-family:  var(--font-family-base);
+    transition:   background 150ms ease, border-color 150ms ease, color 150ms ease;
+  }
+  .vn-header__map-btn:hover {
+    background:   rgba(15, 37, 71, 0.05);
+    border-color: rgba(15, 37, 71, 0.2);
+  }
+  .vn-map-divider {
+    width:      1px;
+    height:     12px;
+    background: rgba(15, 37, 71, 0.15);
+    flex-shrink: 0;
+  }
+
+  /* Mobile adaptations */
+  @media (max-width: 1023px) {
+    .vn-header__nav { display: none; }
+    .vn-header__cta {
+      padding: 8px 14px;
+      height:  36px;
+      font-size: 13px;
+    }
+  }
+  @media (max-width: 480px) {
+    .vn-header__inner    { padding-inline: 16px; gap: 12px; }
+    .vn-header__brand    { font-size: 12px; }
+    .vn-map-label        { display: none; }
+    .vn-map-divider      { display: none; }
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+// Скрывается на /contacts/ — там уже много CTA
+const currentPath = Astro.url.pathname;
+const isContactsPage = currentPath.includes('/contacts/');
+---
+
+{!isContactsPage && (
+  <div id="mobile-bottom-cta" class="vn-bottom-cta" role="complementary" aria-label="Записаться на разбор">
+    <a
+      href="/contacts/#request"
+      data-modal-open
+      data-modal-title="Записаться на разбор"
+      class="vn-bottom-cta__btn"
+    >
+      Записаться на разбор
+    </a>
+  </div>
+)}
+
+<style>
+  .vn-bottom-cta {
+    /* Только mobile */
+    display:         none;
+    position:        fixed;
+    bottom:          0;
+    left:            0;
+    right:           0;
+    z-index:         50;
+    padding:         12px 20px;
+    padding-bottom:  calc(12px + env(safe-area-inset-bottom));
+    background:      rgba(241, 243, 245, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top:      1px solid rgba(15, 37, 71, 0.10);
+  }
+
+  .vn-bottom-cta__btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           100%;
+    height:          48px;
+    background:      var(--color-accent-cta);
+    color:           #ffffff;
+    font-size:       15px;
+    font-weight:     500;
+    font-family:     var(--font-family-base);
+    border-radius:   var(--radius-md);
+    text-decoration: none;
+    transition:      background 150ms ease;
+  }
+
+  .vn-bottom-cta__btn:hover {
+    background: var(--color-accent-hover);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-bottom-cta {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-bottom-cta__btn {
+      transition: none;
+    }
+  }
+</style>

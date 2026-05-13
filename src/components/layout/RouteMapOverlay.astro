@@ -1,0 +1,804 @@
+---
+import { CONTACTS, OFFICES } from '../../lib/constants';
+
+const currentPath = Astro.url.pathname;
+
+// 6 route-cards — центральная зона
+const cards = [
+  {
+    label: 'OBJECT / 01',
+    icon:  'building-2',
+    title: 'Новостройки Краснодара',
+    body:  'Отбор ЖК под задачу, а не по витрине.',
+    href:  '/voennaya-ipoteka-krasnodar/',
+    badge: null,
+  },
+  {
+    label: 'OBJECT / 02',
+    icon:  'map-pinned',
+    title: 'Военная ипотека в Крыму',
+    body:  'Квартиры и новостройки под сценарий покупки.',
+    href:  '/voennaya-ipoteka-krym/',
+    badge: 'НОВОЕ',
+  },
+  {
+    label: 'REMOTE / 03',
+    icon:  'video',
+    title: 'Дистанционная покупка',
+    body:  'Как контролировать район, ЖК и документы удалённо.',
+    href:  '/distancionnaya-pokupka/',
+    badge: null,
+  },
+  {
+    label: 'ROUTE / 04',
+    icon:  'route',
+    title: 'Этапы покупки',
+    body:  'Маршрут от цели покупки до регистрации.',
+    href:  '/etapy-pokupki/',
+    badge: null,
+  },
+  {
+    label: 'CONTACT / 05',
+    icon:  'phone',
+    title: 'Контакты',
+    body:  'Офисы в Краснодаре и Бахчисарае.',
+    href:  '/contacts/',
+    badge: null,
+  },
+  {
+    label: 'START / 00',
+    icon:  'compass',
+    title: 'Главная',
+    body:  'Кто такой Михаил и как начинается работа.',
+    href:  '/',
+    badge: null,
+  },
+];
+
+// Иконки групп — sub-header
+const groups = [
+  { id: 'object',  label: '01 · ВЫБРАТЬ ОБЪЕКТ',  cards: cards.slice(0, 2) },
+  { id: 'route',   label: '02 · ПОНЯТЬ МАРШРУТ',   cards: cards.slice(2, 4) },
+  { id: 'contact', label: '03 · СВЯЗАТЬСЯ',         cards: cards.slice(4, 6) },
+];
+
+// Задержки анимации: 100, 160, 220, 280, 340, 400ms
+const cardDelays = [100, 160, 220, 280, 340, 400];
+---
+
+<div
+  id="route-map-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Карта сайта — навигация"
+  data-open="false"
+  inert
+>
+
+  <!-- Декоративные слои -->
+  <div class="vn-overlay-grid" aria-hidden="true"></div>
+  <div class="vn-overlay-radial" aria-hidden="true"></div>
+  <!-- Corner brackets -->
+  <svg class="vn-overlay-bracket vn-overlay-bracket--tl" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M48 0 H8 V48" stroke="rgba(241,243,245,0.08)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="vn-overlay-bracket vn-overlay-bracket--tr" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M0 0 H40 V48" stroke="rgba(241,243,245,0.08)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="vn-overlay-bracket vn-overlay-bracket--bl" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M48 48 H8 V0" stroke="rgba(241,243,245,0.08)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="vn-overlay-bracket vn-overlay-bracket--br" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M0 48 H40 V0" stroke="rgba(241,243,245,0.08)" stroke-width="1" fill="none"/>
+  </svg>
+  <!-- Watermark -->
+  <span class="vn-overlay-watermark" aria-hidden="true">МАРШРУТ</span>
+
+  <!-- ── Overlay Header (72px) ── -->
+  <div class="vn-overlay-header">
+    <!-- Logo (белая версия) -->
+    <a href="/" class="vn-overlay-logo" aria-label="На главную">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="9"
+          stroke="rgba(241,243,245,0.22)" stroke-width="0.7"
+          stroke-dasharray="2.2 2.2"/>
+        <path d="M7 13 L7 7 L13 7" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 7 L33 7 L33 13" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 27 L7 33 L13 33" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 33 L33 33 L33 27" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="20" r="2.8" fill="#2563EB"/>
+      </svg>
+      <span class="vn-overlay-logo-name">МИХАИЛ ХРЯПИН</span>
+    </a>
+
+    <span class="vn-overlay-header-label" aria-hidden="true">КАРТА МАРШРУТОВ</span>
+
+    <!-- Close button -->
+    <button
+      type="button"
+      data-nav-close
+      class="vn-overlay-close"
+      aria-label="Закрыть карту сайта"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+      </svg>
+      <span>Закрыть</span>
+    </button>
+  </div>
+
+  <!-- ── Main body: 3-zone layout ── -->
+  <div class="vn-overlay-body">
+
+    <!-- Левая зона (4 cols): Brand + CTA -->
+    <aside class="vn-overlay-brand">
+      <div class="vn-overlay-brand-desc">
+        Навигатор по новостройкам<br/>и военной ипотеке
+      </div>
+      <p class="vn-overlay-brand-body">
+        Помогает военнослужащим и их семьям выбрать квартиру под задачу и пройти маршрут покупки без хаоса.
+      </p>
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Разобрать мою ситуацию"
+        class="vn-overlay-brand-cta"
+      >
+        Разобрать мою ситуацию →
+      </a>
+      <p class="vn-overlay-brand-microtext">
+        30 минут. Сначала цель, потом варианты.
+      </p>
+    </aside>
+
+    <!-- Центральная зона (5 cols): Route Map -->
+    <section class="vn-overlay-routes" aria-label="Разделы сайта">
+      {groups.map((group, gi) => (
+        <div class="vn-route-group">
+          <p class="vn-route-group-header">
+            <span class="vn-route-group-line" aria-hidden="true"></span>
+            {group.label}
+          </p>
+          <div class="vn-route-cards">
+            {group.cards.map((card, ci) => {
+              const globalIdx = gi * 2 + ci;
+              const delay = cardDelays[globalIdx];
+              const isActive = currentPath.startsWith(card.href) && card.href !== '/';
+              const isActiveHome = card.href === '/' && currentPath === '/';
+              return (
+                <a
+                  href={card.href}
+                  class={`vn-route-card${isActive || isActiveHome ? ' vn-route-card--active' : ''}`}
+                  style={`transition-delay: ${delay}ms`}
+                  aria-current={(isActive || isActiveHome) ? 'page' : undefined}
+                >
+                  <span class="vn-route-card-label">
+                    {card.label}
+                    {card.badge && (
+                      <span class="vn-route-card-badge">{card.badge}</span>
+                    )}
+                    {(isActive || isActiveHome) && (
+                      <span class="vn-route-card-active-label">ТЕКУЩИЙ МАРШРУТ</span>
+                    )}
+                  </span>
+                  <span class="vn-route-card-icon" aria-hidden="true">
+                    {card.icon === 'building-2' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                        <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+                        <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+                        <path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+                      </svg>
+                    )}
+                    {card.icon === 'map-pinned' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0"/>
+                        <circle cx="12" cy="8" r="2"/>
+                        <path d="M8.835 14H5a1 1 0 0 0-.9.7l-2 6c-.1.1-.1.2-.1.3 0 .6.4 1 1 1h18c.6 0 1-.4 1-1 0-.1 0-.2-.1-.3l-2-6a1 1 0 0 0-.9-.7h-3.835"/>
+                      </svg>
+                    )}
+                    {card.icon === 'video' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m22 8-6 4 6 4V8Z"/>
+                        <rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+                      </svg>
+                    )}
+                    {card.icon === 'route' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="6" cy="19" r="3"/>
+                        <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/>
+                        <circle cx="18" cy="5" r="3"/>
+                      </svg>
+                    )}
+                    {card.icon === 'phone' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.82 19.79 19.79 0 0 1 1.61 1.24 2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.1 6.1l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 15.3"/>
+                      </svg>
+                    )}
+                    {card.icon === 'compass' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/>
+                      </svg>
+                    )}
+                  </span>
+                  <h3 class="vn-route-card-title">{card.title}</h3>
+                  <p class="vn-route-card-body">{card.body}</p>
+                  <span class="vn-route-card-arrow" aria-hidden="true">→</span>
+                </a>
+              );
+            })}
+          </div>
+          {/* Route-line между группами */}
+          {gi < groups.length - 1 && (
+            <div
+              class="vn-route-line"
+              style={`transition-delay: ${gi === 0 ? 200 : 300}ms`}
+              aria-hidden="true"
+            ></div>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <!-- Правая зона (3 cols): Contacts -->
+    <aside class="vn-overlay-contacts">
+      <p class="vn-overlay-contacts-header">СВЯЗАТЬСЯ</p>
+
+      <div class="vn-overlay-contact-list">
+        <a href={`tel:${CONTACTS.phone}`} class="vn-overlay-contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.82 19.79 19.79 0 0 1 1.61 1.24 2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.1 6.1l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 15.3"/>
+          </svg>
+          <span>{CONTACTS.phone}</span>
+        </a>
+        <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+        <a href={CONTACTS.max} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+          </svg>
+          <span>Max</span>
+        </a>
+        <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+            <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+          </svg>
+          <span>ВКонтакте</span>
+        </a>
+      </div>
+
+      <hr class="vn-overlay-divider" aria-hidden="true" />
+
+      <p class="vn-overlay-offices-header">ОФИСЫ</p>
+      {OFFICES.map((office) => (
+        <div class="vn-overlay-office">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vn-overlay-office-pin" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <p class="vn-overlay-office-city">{office.city}</p>
+            <p class="vn-overlay-office-addr">{office.address}</p>
+          </div>
+        </div>
+      ))}
+      <p class="vn-overlay-offices-note">Встречи по предварительной записи</p>
+    </aside>
+
+  </div><!-- /body -->
+
+  <!-- ── Overlay Footer Strip (56px) ── -->
+  <div class="vn-overlay-footer">
+    <a href="/" class="vn-overlay-footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Вернуться на главную
+    </a>
+    <div class="vn-overlay-footer-legal">
+      <a href="/politika/">Политика конфиденциальности</a>
+      <span aria-hidden="true">·</span>
+      <a href="/cookies/">Cookie</a>
+    </div>
+  </div>
+
+</div>
+
+<style is:global>
+  /* ── Overlay base ── */
+  #route-map-overlay {
+    position:       fixed;
+    inset:          0;
+    z-index:        200;
+    background:     #0F1419;
+    opacity:        0;
+    pointer-events: none;
+    transition:     opacity 200ms ease;
+    overflow-y:     auto;
+    display:        flex;
+    flex-direction: column;
+  }
+  #route-map-overlay[data-open="true"] {
+    opacity:        1;
+    pointer-events: auto;
+  }
+
+  /* ── Route cards animation ── */
+  .vn-route-card {
+    opacity:    0;
+    transform:  translateY(16px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out, background 150ms ease, border-color 150ms ease;
+  }
+  #route-map-overlay[data-open="true"] .vn-route-card {
+    opacity:   1;
+    transform: translateY(0);
+  }
+
+  /* ── Route lines animation ── */
+  .vn-route-line {
+    height:           1px;
+    background:       rgba(37, 99, 235, 0.2);
+    transform:        scaleX(0);
+    transform-origin: left;
+    transition:       transform 400ms ease-out;
+    margin-block:     20px;
+  }
+  #route-map-overlay[data-open="true"] .vn-route-line {
+    transform: scaleX(1);
+  }
+
+  /* ── Left/right zone entrance ── */
+  .vn-overlay-brand {
+    opacity:    0;
+    transform:  translateX(-16px);
+    transition: opacity 350ms ease-out 50ms, transform 350ms ease-out 50ms;
+  }
+  #route-map-overlay[data-open="true"] .vn-overlay-brand {
+    opacity:   1;
+    transform: translateX(0);
+  }
+  .vn-overlay-contacts {
+    opacity:    0;
+    transition: opacity 300ms ease 150ms;
+  }
+  #route-map-overlay[data-open="true"] .vn-overlay-contacts {
+    opacity: 1;
+  }
+
+  /* ── Footer strip entrance ── */
+  .vn-overlay-footer {
+    opacity:    0;
+    transition: opacity 250ms ease 320ms;
+  }
+  #route-map-overlay[data-open="true"] .vn-overlay-footer {
+    opacity: 1;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    #route-map-overlay,
+    .vn-route-card,
+    .vn-route-line,
+    .vn-overlay-brand,
+    .vn-overlay-contacts,
+    .vn-overlay-footer {
+      transition-duration: 0.01ms !important;
+      transition-delay:    0ms !important;
+    }
+  }
+</style>
+
+<style>
+  /* Decorative layers */
+  .vn-overlay-grid {
+    position:         absolute;
+    inset:            0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:  64px 64px;
+    pointer-events:   none;
+    z-index:          0;
+  }
+  .vn-overlay-radial {
+    position:         absolute;
+    inset:            0;
+    background:       radial-gradient(ellipse 1400px 1400px at top right, rgba(37,99,235,0.07), transparent);
+    pointer-events:   none;
+    z-index:          0;
+  }
+  .vn-overlay-bracket {
+    position: absolute;
+    z-index:  1;
+    pointer-events: none;
+  }
+  .vn-overlay-bracket--tl { top: 0; left: 0; }
+  .vn-overlay-bracket--tr { top: 0; right: 0; transform: scaleX(-1); }
+  .vn-overlay-bracket--bl { bottom: 0; left: 0; transform: scaleY(-1); }
+  .vn-overlay-bracket--br { bottom: 0; right: 0; transform: scale(-1); }
+  .vn-overlay-watermark {
+    position:      absolute;
+    bottom:        56px;
+    left:          50%;
+    transform:     translateX(-50%);
+    font-size:     280px;
+    font-weight:   600;
+    color:         rgba(255,255,255,0.015);
+    pointer-events: none;
+    user-select:   none;
+    z-index:       0;
+    white-space:   nowrap;
+  }
+
+  /* Overlay header */
+  .vn-overlay-header {
+    position:       relative;
+    z-index:        2;
+    display:        flex;
+    align-items:    center;
+    justify-content: space-between;
+    height:         72px;
+    padding-inline: 48px;
+    border-bottom:  1px solid rgba(241,243,245,0.08);
+    flex-shrink:    0;
+  }
+  .vn-overlay-logo {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    text-decoration: none;
+  }
+  .vn-overlay-logo-name {
+    font-size:      11px;
+    font-weight:    600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color:          rgba(241,243,245,0.6);
+  }
+  .vn-overlay-header-label {
+    position:       absolute;
+    left:           50%;
+    transform:      translateX(-50%);
+    font-size:      11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color:          rgba(241,243,245,0.3);
+  }
+  .vn-overlay-close {
+    display:      inline-flex;
+    align-items:  center;
+    gap:          8px;
+    padding:      8px 16px;
+    background:   transparent;
+    border:       1px solid rgba(241,243,245,0.15);
+    border-radius: var(--radius-md);
+    color:        rgba(241,243,245,0.6);
+    font-size:    14px;
+    font-family:  var(--font-family-base);
+    cursor:       pointer;
+    transition:   background 150ms ease, border-color 150ms ease;
+  }
+  .vn-overlay-close:hover {
+    background:   rgba(241,243,245,0.08);
+    border-color: rgba(241,243,245,0.25);
+  }
+
+  /* Main body: 3-zone grid */
+  .vn-overlay-body {
+    position:   relative;
+    z-index:    2;
+    display:    grid;
+    grid-template-columns: 4fr 5fr 3fr;
+    flex:       1;
+    min-height: 0;
+  }
+
+  /* Left zone: Brand */
+  .vn-overlay-brand {
+    padding:     48px 32px 48px 48px;
+    border-right: 1px solid rgba(241,243,245,0.06);
+    display:     flex;
+    flex-direction: column;
+  }
+  .vn-overlay-brand-desc {
+    font-size:   16px;
+    font-weight: 400;
+    color:       rgba(241,243,245,0.7);
+    max-width:   220px;
+    line-height: 1.5;
+    margin-top:  24px;
+  }
+  .vn-overlay-brand-body {
+    font-size:  14px;
+    color:      rgba(241,243,245,0.5);
+    max-width:  220px;
+    line-height: 1.6;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+  .vn-overlay-brand-cta {
+    display:        inline-flex;
+    align-items:    center;
+    padding:        12px 20px;
+    margin-top:     32px;
+    background:     var(--color-accent-cta);
+    color:          #ffffff;
+    font-size:      15px;
+    font-weight:    500;
+    border-radius:  var(--radius-md);
+    text-decoration: none;
+    transition:     background 150ms ease, transform 150ms ease;
+    align-self:     flex-start;
+  }
+  .vn-overlay-brand-cta:hover {
+    background: var(--color-accent-hover);
+    transform:  translateY(-1px);
+  }
+  .vn-overlay-brand-microtext {
+    font-size:  12px;
+    color:      rgba(241,243,245,0.35);
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  /* Centre zone: Routes */
+  .vn-overlay-routes {
+    padding:      48px;
+    border-right: 1px solid rgba(241,243,245,0.06);
+  }
+  .vn-route-group { margin-bottom: 0; }
+  .vn-route-group-header {
+    display:        flex;
+    align-items:    center;
+    gap:            10px;
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color:          var(--color-accent-cta);
+    margin:         0 0 16px;
+  }
+  .vn-route-group-line {
+    display:       inline-block;
+    width:         2px;
+    height:        24px;
+    background:    var(--color-accent-cta);
+    border-radius: 2px;
+    flex-shrink:   0;
+  }
+  .vn-route-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:     12px;
+  }
+
+  /* Route card */
+  .vn-route-card {
+    display:         flex;
+    flex-direction:  column;
+    padding:         20px;
+    background:      rgba(241,243,245,0.04);
+    border:          1px solid rgba(241,243,245,0.07);
+    border-radius:   var(--radius-lg);
+    text-decoration: none;
+    position:        relative;
+    overflow:        hidden;
+  }
+  .vn-route-card:hover {
+    background:   rgba(241,243,245,0.08);
+    border-color: rgba(241,243,245,0.15);
+  }
+  .vn-route-card--active {
+    border-color: rgba(37, 99, 235, 0.4);
+  }
+  .vn-route-card-label {
+    display:        flex;
+    align-items:    center;
+    gap:            8px;
+    font-size:      10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color:          rgba(241,243,245,0.35);
+    font-family:    var(--font-family-base);
+    margin-bottom:  10px;
+  }
+  .vn-route-card-badge {
+    background:     rgba(37,99,235,0.2);
+    color:          var(--color-accent-cta);
+    padding:        2px 6px;
+    border-radius:  4px;
+    font-size:      10px;
+    letter-spacing: 0.06em;
+  }
+  .vn-route-card-active-label {
+    color:      var(--color-accent-cta);
+    opacity:    0.7;
+    font-size:  9px;
+  }
+  .vn-route-card-icon {
+    color:         rgba(37,99,235,0.65);
+    margin-bottom: 8px;
+    display:       flex;
+  }
+  .vn-route-card-title {
+    font-size:   16px;
+    font-weight: 500;
+    color:       #F1F3F5;
+    margin:      0 0 6px;
+    line-height: 1.3;
+  }
+  .vn-route-card-body {
+    font-size:   13px;
+    color:       rgba(241,243,245,0.55);
+    margin:      0;
+    line-height: 1.5;
+    flex:        1;
+  }
+  .vn-route-card-arrow {
+    position:   absolute;
+    bottom:     16px;
+    right:      16px;
+    font-size:  14px;
+    color:      rgba(241,243,245,0.3);
+    opacity:    0;
+    transition: opacity 150ms ease;
+  }
+  .vn-route-card:hover .vn-route-card-arrow { opacity: 1; }
+
+  /* Right zone: Contacts */
+  .vn-overlay-contacts {
+    padding:        48px 48px 48px 32px;
+    display:        flex;
+    flex-direction: column;
+  }
+  .vn-overlay-contacts-header {
+    font-size:      11px;
+    font-weight:    500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color:          var(--color-accent-cta);
+    margin:         0 0 16px;
+  }
+  .vn-overlay-contact-list {
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+  }
+  .vn-overlay-contact-btn {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    padding:         10px 16px;
+    background:      rgba(241,243,245,0.04);
+    border:          1px solid rgba(241,243,245,0.08);
+    border-radius:   var(--radius-md);
+    color:           #F1F3F5;
+    font-size:       14px;
+    font-weight:     500;
+    text-decoration: none;
+    transition:      background 150ms ease;
+  }
+  .vn-overlay-contact-btn:hover {
+    background: rgba(241,243,245,0.08);
+  }
+  .vn-overlay-contact-btn:hover svg {
+    color: var(--color-accent-cta);
+  }
+  .vn-overlay-contact-btn svg {
+    flex-shrink: 0;
+    color: rgba(241,243,245,0.5);
+    transition: color 150ms ease;
+  }
+  .vn-overlay-divider {
+    border:       none;
+    border-top:   1px solid rgba(241,243,245,0.08);
+    margin-block: 24px;
+  }
+  .vn-overlay-offices-header {
+    font-size:      11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color:          rgba(241,243,245,0.45);
+    margin:         0 0 14px;
+  }
+  .vn-overlay-office {
+    display:        flex;
+    align-items:    flex-start;
+    gap:            8px;
+    margin-bottom:  14px;
+  }
+  .vn-overlay-office-pin {
+    color:      rgba(241,243,245,0.35);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .vn-overlay-office-city {
+    font-size:   13px;
+    font-weight: 500;
+    color:       #F1F3F5;
+    margin:      0 0 2px;
+  }
+  .vn-overlay-office-addr {
+    font-size:   12px;
+    color:       rgba(241,243,245,0.5);
+    margin:      0;
+    line-height: 1.4;
+  }
+  .vn-overlay-offices-note {
+    font-size:  11px;
+    color:      rgba(241,243,245,0.3);
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  /* Footer strip */
+  .vn-overlay-footer {
+    position:        relative;
+    z-index:         2;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    height:          56px;
+    padding-inline:  48px;
+    border-top:      1px solid rgba(241,243,245,0.06);
+    flex-shrink:     0;
+  }
+  .vn-overlay-footer-back {
+    display:         flex;
+    align-items:     center;
+    gap:             6px;
+    font-size:       13px;
+    color:           rgba(241,243,245,0.5);
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+  .vn-overlay-footer-back:hover { color: rgba(241,243,245,0.85); }
+  .vn-overlay-footer-legal {
+    display:    flex;
+    align-items: center;
+    gap:        12px;
+    font-size:  12px;
+    color:      rgba(241,243,245,0.4);
+  }
+  .vn-overlay-footer-legal a {
+    color:           rgba(241,243,245,0.4);
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+  .vn-overlay-footer-legal a:hover { color: rgba(241,243,245,0.75); }
+
+  /* Mobile overlay */
+  @media (max-width: 1023px) {
+    .vn-overlay-header { padding-inline: 20px; }
+    .vn-overlay-header-label { display: none; }
+    .vn-overlay-body {
+      grid-template-columns: 1fr;
+      grid-template-rows:    auto;
+    }
+    .vn-overlay-brand { display: none; }
+    .vn-overlay-contacts {
+      padding:      24px 20px;
+      border-right: none;
+      border-top:   1px solid rgba(241,243,245,0.06);
+      order:        2;
+    }
+    .vn-overlay-routes {
+      padding:      24px 20px;
+      order:        1;
+      border-right: none;
+    }
+    .vn-route-cards { grid-template-columns: 1fr; }
+    .vn-route-card  { min-height: 64px; }
+    .vn-overlay-footer { padding-inline: 20px; }
+    .vn-overlay-watermark { display: none; }
+  }
+</style>

@@ -1,0 +1,17 @@
+User-agent: Yandex
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: *
+Disallow: /thanks/
+Disallow: /404/
+Disallow: /video/
+Disallow: /bonus/
+Disallow: /prezentaciya/
+
+Sitemap: https://[DOMAIN]/sitemap-index.xml

@@ -1,0 +1,624 @@
+---
+import { NAV_ITEMS } from '../../lib/navigation/navData';
+import { OFFICES, CONTACTS, LEGAL, ROUTE_PATH } from '../../lib/constants';
+
+const currentPath = Astro.url.pathname;
+---
+
+<footer class="vn-footer" role="contentinfo">
+
+  <!-- ── Зона 1: Compact CTA Panel ── -->
+  <div class="vn-footer__cta">
+    <div class="vn-footer__cta-text">
+      <p class="vn-footer__cta-title">
+        Разберите цель покупки до выбора квартиры
+      </p>
+      <p class="vn-footer__cta-sub">
+        Михаил поможет понять маршрут: Краснодар, Крым, дистанционно или переезд позже.
+      </p>
+    </div>
+    <div class="vn-footer__cta-actions">
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Записаться на разбор"
+        class="vn-footer__cta-btn-primary"
+      >
+        Записаться на разбор
+      </a>
+      <a
+        href={CONTACTS.telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="vn-footer__cta-btn-ghost"
+      >
+        Написать в Telegram
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Зона 2: Trust Strip ── -->
+  <div class="vn-footer__trust" aria-label="Опыт работы">
+    <div class="vn-trust-item">
+      <span class="vn-trust-num">65</span>
+      <span class="vn-trust-desc">сделок по военной ипотеке</span>
+    </div>
+    <span class="vn-trust-dot" aria-hidden="true">·</span>
+    <div class="vn-trust-item">
+      <span class="vn-trust-num">с 2016</span>
+      <span class="vn-trust-desc">года в новостройках Краснодара</span>
+    </div>
+    <span class="vn-trust-dot" aria-hidden="true">·</span>
+    <div class="vn-trust-item">
+      <span class="vn-trust-num">180+</span>
+      <span class="vn-trust-desc">сделок в недвижимости</span>
+    </div>
+  </div>
+
+  <!-- ── Зона 3: Main Grid (4 колонки) ── -->
+  <div class="vn-footer__grid">
+
+    <!-- Колонка 1: Бренд -->
+    <div class="vn-footer__brand">
+      <a href="/" class="vn-footer__logo-link" aria-label="Военный навигатор — на главную">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="9"
+            stroke="rgba(241,243,245,0.22)" stroke-width="0.7"
+            stroke-dasharray="2.2 2.2"/>
+          <path d="M7 13 L7 7 L13 7" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M27 7 L33 7 L33 13" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 27 L7 33 L13 33" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M27 33 L33 33 L33 27" stroke="rgba(241,243,245,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="20" r="2.8" fill="#2563EB"/>
+        </svg>
+        <div class="vn-footer__brand-text">
+          <span class="vn-footer__brand-name">Военный навигатор</span>
+          <span class="vn-footer__brand-owner">Михаил Хряпин</span>
+        </div>
+      </a>
+      <p class="vn-footer__desc">
+        Помогает военнослужащим и их семьям выбрать квартиру под задачу и пройти маршрут покупки без хаоса.
+      </p>
+      <div class="vn-footer__social">
+        <a
+          href={CONTACTS.vk}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="ВКонтакте"
+          class="vn-footer__social-link"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+            <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+          </svg>
+        </a>
+        <a
+          href={CONTACTS.telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Telegram"
+          class="vn-footer__social-link"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Колонка 2: Навигация -->
+    <nav class="vn-footer__nav" aria-label="Разделы сайта">
+      <p class="vn-footer__col-header">Разделы</p>
+      <ul class="vn-footer__nav-list">
+        <li>
+          <a href="/" class="vn-footer__nav-link"
+             aria-current={currentPath === '/' ? 'page' : undefined}>
+            Главная
+          </a>
+        </li>
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="vn-footer__nav-link"
+              aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Колонка 3: Офисы -->
+    <section class="vn-footer__offices" aria-label="Офисы">
+      <p class="vn-footer__col-header">Офисы</p>
+      {OFFICES.map((office) => (
+        <div class="vn-office">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vn-office__pin" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <p class="vn-office__city">{office.city}</p>
+            <p class="vn-office__addr">{office.address}</p>
+            {office.detail && <p class="vn-office__detail">{office.detail}</p>}
+          </div>
+        </div>
+      ))}
+      <p class="vn-office__note">По предварительной записи</p>
+      <a href="/contacts/" class="vn-footer__map-link">Открыть карты →</a>
+    </section>
+
+    <!-- Колонка 4: Контакты -->
+    <section class="vn-footer__contacts" aria-label="Контакты">
+      <p class="vn-footer__col-header">Связаться</p>
+      <a href={`tel:${CONTACTS.phone}`} class="vn-footer__contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.82 19.79 19.79 0 0 1 1.61 1.24 2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.1 6.1l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 15.3"/>
+        </svg>
+        <span>{CONTACTS.phone}</span>
+      </a>
+      <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-footer__contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
+        </svg>
+        <span>Telegram</span>
+      </a>
+      <a href={CONTACTS.max} target="_blank" rel="noopener noreferrer" class="vn-footer__contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+        </svg>
+        <span>Max</span>
+      </a>
+      <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer" class="vn-footer__contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+          <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+        </svg>
+        <span>ВКонтакте</span>
+      </a>
+    </section>
+
+  </div><!-- /grid -->
+
+  <!-- ── Зона 4: Route Path Strip ── -->
+  <div class="vn-footer__route" aria-hidden="true">
+    {ROUTE_PATH.map((step, i) => (
+      <>
+        <a href={step.href} class="vn-route-step">
+          <span class="vn-route-num">{step.step}</span>
+          <span class="vn-route-label">{step.label}</span>
+        </a>
+        {i < ROUTE_PATH.length - 1 && (
+          <span class="vn-route-arrow">——→</span>
+        )}
+      </>
+    ))}
+  </div>
+
+  <!-- ── Зона 5: Legal Strip ── -->
+  <div class="vn-footer__legal">
+    <p class="vn-footer__legal-copy">
+      © {LEGAL.year} {LEGAL.name} · ИНН {LEGAL.inn} · ОГРН {LEGAL.ogrn}
+    </p>
+    <a
+      href="https://chirkovandrey.ru"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="vn-footer__dev-link"
+      aria-label="Разработка сайта — Андрей Чирков"
+    >
+      разработка сайта
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+      </svg>
+    </a>
+    <div class="vn-footer__legal-links">
+      <a href="/politika/">Политика конфиденциальности</a>
+      <span aria-hidden="true">·</span>
+      <a href="/cookies/">Cookie</a>
+    </div>
+  </div>
+
+</footer>
+
+<style>
+  .vn-footer {
+    background:  #0F1419;
+    color:       rgba(241, 243, 245, 0.7);
+    font-family: var(--font-family-base);
+  }
+
+  /* Ghost dividers */
+  .vn-footer__cta,
+  .vn-footer__trust,
+  .vn-footer__grid {
+    border-bottom: 1px solid rgba(241, 243, 245, 0.07);
+  }
+
+  /* ── Зона 1: CTA Panel ── */
+  .vn-footer__cta {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             32px;
+    padding:         28px 48px;
+  }
+  .vn-footer__cta-title {
+    font-size:   20px;
+    font-weight: 600;
+    color:       #F1F3F5;
+    max-width:   520px;
+    margin:      0 0 4px;
+    line-height: 1.3;
+  }
+  .vn-footer__cta-sub {
+    font-size:   13px;
+    color:       rgba(241, 243, 245, 0.6);
+    margin:      0;
+    max-width:   520px;
+  }
+  .vn-footer__cta-actions {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    flex-shrink: 0;
+  }
+  .vn-footer__cta-btn-primary {
+    display:         inline-flex;
+    align-items:     center;
+    height:          40px;
+    padding:         0 20px;
+    background:      var(--color-accent-cta);
+    color:           #ffffff;
+    font-size:       14px;
+    font-weight:     500;
+    border-radius:   var(--radius-md);
+    text-decoration: none;
+    white-space:     nowrap;
+    transition:      background 150ms ease;
+  }
+  .vn-footer__cta-btn-primary:hover { background: var(--color-accent-hover); }
+  .vn-footer__cta-btn-ghost {
+    display:         inline-flex;
+    align-items:     center;
+    height:          40px;
+    padding:         0 20px;
+    border:          1px solid rgba(241, 243, 245, 0.2);
+    color:           #F1F3F5;
+    font-size:       14px;
+    font-weight:     500;
+    border-radius:   var(--radius-md);
+    text-decoration: none;
+    white-space:     nowrap;
+    transition:      border-color 150ms ease, background 150ms ease;
+  }
+  .vn-footer__cta-btn-ghost:hover {
+    background:   rgba(241, 243, 245, 0.06);
+    border-color: rgba(241, 243, 245, 0.35);
+  }
+
+  /* ── Зона 2: Trust Strip ── */
+  .vn-footer__trust {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             40px;
+    padding:         14px 48px;
+  }
+  .vn-trust-item {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            2px;
+  }
+  .vn-trust-num {
+    font-size:   15px;
+    font-weight: 600;
+    color:       #F1F3F5;
+  }
+  .vn-trust-desc {
+    font-size:      11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color:          rgba(241, 243, 245, 0.45);
+  }
+  .vn-trust-dot {
+    font-size: 14px;
+    color:     rgba(241, 243, 245, 0.2);
+  }
+
+  /* ── Зона 3: Main Grid ── */
+  .vn-footer__grid {
+    display:               grid;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    gap:                   48px;
+    padding:               48px;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent, transparent 63px,
+        rgba(255,255,255,0.025) 63px, rgba(255,255,255,0.025) 64px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent, transparent 63px,
+        rgba(255,255,255,0.025) 63px, rgba(255,255,255,0.025) 64px
+      );
+  }
+
+  /* Brand col */
+  .vn-footer__brand { display: flex; flex-direction: column; gap: 0; }
+  .vn-footer__logo-link {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    text-decoration: none;
+    margin-bottom:   16px;
+  }
+  .vn-footer__brand-text { display: flex; flex-direction: column; gap: 3px; }
+  .vn-footer__brand-name {
+    font-size:      13px;
+    font-weight:    600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color:          #F1F3F5;
+  }
+  .vn-footer__brand-owner {
+    font-size:      11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color:          rgba(241, 243, 245, 0.4);
+  }
+  .vn-footer__desc {
+    font-size:   13px;
+    color:       rgba(241, 243, 245, 0.55);
+    line-height: 1.6;
+    max-width:   200px;
+    margin:      0 0 20px;
+  }
+  .vn-footer__social {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    margin-top:  auto;
+  }
+  .vn-footer__social-link {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           44px;
+    height:          44px;
+    color:           rgba(241, 243, 245, 0.45);
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+  .vn-footer__social-link:hover { color: #F1F3F5; }
+
+  /* Nav col */
+  .vn-footer__nav { display: flex; flex-direction: column; }
+  .vn-footer__nav-list {
+    list-style:     none;
+    margin:         0;
+    padding:        0;
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+  }
+  .vn-footer__nav-link {
+    font-size:       14px;
+    color:           rgba(241, 243, 245, 0.55);
+    text-decoration: none;
+    display:         inline-block;
+    transition:      color 150ms ease, transform 150ms ease;
+  }
+  .vn-footer__nav-link:hover {
+    color:     #F1F3F5;
+    transform: translateX(3px);
+  }
+  .vn-footer__nav-link[aria-current="page"] { color: #F1F3F5; }
+
+  /* Offices col */
+  .vn-footer__offices { display: flex; flex-direction: column; }
+  .vn-office {
+    display:       flex;
+    align-items:   flex-start;
+    gap:           8px;
+    margin-bottom: 12px;
+  }
+  .vn-office__pin {
+    color:       rgba(241, 243, 245, 0.4);
+    flex-shrink: 0;
+    margin-top:  2px;
+  }
+  .vn-office__city {
+    font-size:   13px;
+    font-weight: 500;
+    color:       #F1F3F5;
+    margin:      0 0 2px;
+  }
+  .vn-office__addr,
+  .vn-office__detail {
+    font-size:   12px;
+    color:       rgba(241, 243, 245, 0.55);
+    margin:      0;
+    line-height: 1.4;
+  }
+  .vn-office__note {
+    font-size:  11px;
+    color:      rgba(241, 243, 245, 0.3);
+    margin:     0 0 12px;
+  }
+  .vn-footer__map-link {
+    font-size:       12px;
+    color:           var(--color-accent-cta);
+    text-decoration: none;
+    transition:      text-decoration-color 150ms ease;
+  }
+  .vn-footer__map-link:hover { text-decoration: underline; }
+
+  /* Contacts col */
+  .vn-footer__contacts { display: flex; flex-direction: column; gap: 10px; }
+  .vn-footer__contact-row {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    font-size:       14px;
+    color:           rgba(241, 243, 245, 0.6);
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+  .vn-footer__contact-row svg { color: rgba(241, 243, 245, 0.4); flex-shrink: 0; }
+  .vn-footer__contact-row:hover { color: #F1F3F5; }
+
+  /* Col headers */
+  .vn-footer__col-header {
+    font-size:      10px;
+    font-weight:    500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color:          var(--color-accent-cta);
+    margin:         0 0 16px;
+    display:        flex;
+    align-items:    center;
+    gap:            8px;
+  }
+  .vn-footer__col-header::before {
+    content:       '';
+    display:       block;
+    width:         2px;
+    height:        18px;
+    background:    var(--color-accent-cta);
+    border-radius: 2px;
+    flex-shrink:   0;
+  }
+
+  /* ── Зона 4: Route Path ── */
+  .vn-footer__route {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    height:          56px;
+    padding-inline:  48px;
+    background:      rgba(241, 243, 245, 0.02);
+    border-bottom:   1px solid rgba(241, 243, 245, 0.07);
+    gap:             0;
+  }
+  .vn-route-step {
+    display:         flex;
+    align-items:     center;
+    gap:             4px;
+    text-decoration: none;
+    padding:         4px 0;
+  }
+  .vn-route-num {
+    font-size:      9px;
+    letter-spacing: 0.05em;
+    color:          rgba(37, 99, 235, 0.4);
+    font-family:    var(--font-family-base);
+  }
+  .vn-route-label {
+    font-size: 12px;
+    color:     rgba(241, 243, 245, 0.45);
+    transition: color 150ms ease;
+  }
+  .vn-route-step:hover .vn-route-num,
+  .vn-route-step:hover .vn-route-label {
+    color: rgba(241, 243, 245, 1);
+  }
+  .vn-route-step:hover .vn-route-num { color: var(--color-accent-cta); }
+  .vn-route-arrow {
+    font-size:   10px;
+    color:       rgba(241, 243, 245, 0.15);
+    padding:     0 16px;
+  }
+
+  /* ── Зона 5: Legal Strip ── */
+  .vn-footer__legal {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+    height:          48px;
+    padding-inline:  48px;
+  }
+  .vn-footer__legal-copy {
+    font-size: 11px;
+    color:     rgba(241, 243, 245, 0.35);
+    margin:    0;
+  }
+  .vn-footer__dev-link {
+    display:         flex;
+    align-items:     center;
+    gap:             4px;
+    font-size:       11px;
+    letter-spacing:  0.03em;
+    color:           rgba(241, 243, 245, 0.35);
+    text-decoration: none;
+    padding:         4px 14px;
+    border-left:     1px solid rgba(241, 243, 245, 0.07);
+    border-right:    1px solid rgba(241, 243, 245, 0.07);
+    transition:      color 200ms ease, border-color 200ms ease;
+  }
+  .vn-footer__dev-link:hover {
+    color:            rgba(241, 243, 245, 0.75);
+    border-color:     rgba(241, 243, 245, 0.14);
+    text-decoration:  underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(241, 243, 245, 0.25);
+  }
+  .vn-footer__legal-links {
+    display:    flex;
+    align-items: center;
+    gap:        12px;
+    font-size:  11px;
+    color:      rgba(241, 243, 245, 0.35);
+  }
+  .vn-footer__legal-links a {
+    color:           rgba(241, 243, 245, 0.35);
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+  .vn-footer__legal-links a:hover { color: rgba(241, 243, 245, 0.7); }
+
+  /* ── Mobile ── */
+  @media (max-width: 1023px) {
+    .vn-footer__cta     { gap: 20px; padding: 24px; }
+    .vn-footer__trust   { gap: 24px; padding: 14px 24px; }
+    .vn-footer__grid    { grid-template-columns: 1fr 1fr; gap: 32px; padding: 32px 24px; }
+    .vn-footer__route   { display: none; }
+    .vn-footer__legal   { padding-inline: 24px; }
+  }
+  @media (max-width: 767px) {
+    .vn-footer__grid { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+    .vn-footer__cta  { flex-direction: column; }
+    .vn-footer__cta-actions { flex-direction: column; width: 100%; }
+    .vn-footer__cta-btn-primary,
+    .vn-footer__cta-btn-ghost { justify-content: center; width: 100%; }
+    .vn-footer__trust { flex-wrap: wrap; gap: 16px; justify-content: flex-start; }
+    .vn-footer__legal {
+      flex-direction: column;
+      height:         auto;
+      padding:        16px 24px;
+      gap:            8px;
+      text-align:     center;
+    }
+    .vn-footer__dev-link {
+      border-left:   none;
+      border-right:  none;
+      border-top:    1px solid rgba(241, 243, 245, 0.07);
+      border-bottom: 1px solid rgba(241, 243, 245, 0.07);
+      padding:       8px 0;
+      width:         100%;
+      justify-content: center;
+    }
+  }
+  @media (max-width: 480px) {
+    .vn-footer__trust { gap: 12px; }
+    .vn-trust-dot     { display: none; }
+  }
+</style>

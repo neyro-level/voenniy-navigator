@@ -1,0 +1,375 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Backgrounds ─── */
+  --color-bg-primary:        #F1F3F5;
+  --color-bg-secondary:      #E9ECEF;
+  --color-bg-surface:        #FFFFFF;
+  --color-bg-surface-low:    #FAFBFC;
+  --color-bg-dark:           #0F1419;
+  --color-bg-dark-elev:      #1A2028;
+
+  /* ─── Text ─── */
+  --color-text-primary:      #0F1419;
+  --color-text-secondary:    #4A5568;
+  --color-text-tertiary:     #8B95A3;
+  --color-text-ondark:       #F1F3F5;
+  --color-text-ondark-mute:  rgba(241, 243, 245, 0.7);
+
+  /* ─── Accents ─── */
+  --color-accent-primary:    #0F2547;
+  --color-accent-cta:        #2563EB;
+  --color-accent-hover:      #1D4ED8;
+  --color-accent-soft:       rgba(15, 37, 71, 0.08);
+  --color-accent-cta-soft:   rgba(37, 99, 235, 0.08);
+
+  /* ─── Borders & Decoration ─── */
+  --color-border:            rgba(15, 37, 71, 0.12);
+  --color-border-ondark:     rgba(241, 243, 245, 0.12);
+  --color-deco-grid:         rgba(15, 37, 71, 0.04);
+  --color-deco-grid-dark:    rgba(255, 255, 255, 0.03);
+  --color-deco-marker:       rgba(15, 37, 71, 0.05);
+
+  /* ─── Status ─── */
+  --color-error:             #BA1A1A;
+  --color-error-container:   #FFDAD6;
+  --color-error-on:          #93000A;
+
+  /* ─── Typography: family ─── */
+  --font-family-base:        'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ─── Spacing (section-level) ─── */
+  --spacing-section:         120px;
+  --spacing-section-mobile:  64px;
+
+  /* ─── Border radii ─── */
+  --radius-sm:               6px;
+  --radius-md:               10px;
+  --radius-lg:               12px;
+  --radius-xl:               16px;
+  --radius-full:             999px;
+}
+
+/* ─── Typography scale ─── */
+/* Kept in :root, NOT in @theme — Tailwind v4 misparses clamp() commas */
+:root {
+  /* Headings: clamp(min, fluid, max) — auto-responsive, no media queries */
+  --fs-display: clamp(36px, 4.5vw, 52px);  /* Hero H1   · 36px→43px@960→52px@1150+ */
+  --fs-h1:      clamp(28px, 3.8vw, 50px);  /* Section title */
+  --fs-h2:      clamp(22px, 2.8vw, 36px);  /* Subsection heading */
+  --fs-h3:      clamp(18px, 1.8vw, 24px);  /* Card / item heading */
+  /* Body: fixed sizes */
+  --fs-lead:    17px;   /* Lead text, hero subtitle */
+  --fs-body:    15px;   /* Standard body */
+  --fs-body-sm: 13px;   /* Secondary text, trust values */
+  --fs-label:   12px;   /* Uppercase labels, eyebrows */
+  --fs-caption: 11px;   /* Fine print */
+}
+
+@media (max-width: 640px) {
+  :root { --fs-lead: 16px; }
+}
+
+/* ─── Base reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ─── Layout utilities ─── */
+.vn-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 48px;
+}
+
+@media (max-width: 768px) {
+  .vn-container {
+    padding-inline: 24px;
+  }
+}
+
+/* ─── 12-column grid ─── */
+/*
+  ОБЯЗАТЕЛЬНАЯ СТРУКТУРА КАЖДОЙ СЕКЦИИ:
+  <section>
+    <div class="vn-container">
+      <div class="vn-grid-12">
+        <div class="vn-col-6"> ... </div>   ← левый блок
+        <div class="vn-col-6"> ... </div>   ← правый блок
+      </div>
+    </div>
+  </section>
+
+  ПАТТЕРНЫ:
+  6+6  равные половины      → vn-col-6  + vn-col-6
+  7+5  текст + фото         → vn-col-7  + vn-col-5
+  5+7  фото + текст         → vn-col-5  + vn-col-7
+  8+4  широкий + aside      → vn-col-8  + vn-col-4
+  4+4+4 три карточки        → vn-col-4  × 3
+  3+3+3+3 четыре карточки   → vn-col-3  × 4
+  10 центр (отступы по 1)   → vn-col-1-empty + vn-col-10 + vn-col-1-empty
+*/
+.vn-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 32px;
+}
+
+/* Column span utilities — всегда использовать внутри .vn-grid-12 */
+.vn-col-1  { grid-column: span 1; }
+.vn-col-2  { grid-column: span 2; }
+.vn-col-3  { grid-column: span 3; }
+.vn-col-4  { grid-column: span 4; }
+.vn-col-5  { grid-column: span 5; }
+.vn-col-6  { grid-column: span 6; }
+.vn-col-7  { grid-column: span 7; }
+.vn-col-8  { grid-column: span 8; }
+.vn-col-9  { grid-column: span 9; }
+.vn-col-10 { grid-column: span 10; }
+.vn-col-11 { grid-column: span 11; }
+.vn-col-12 { grid-column: span 12; }
+
+/* На планшете и мобиле — всё в одну колонку */
+@media (max-width: 1023px) {
+  .vn-grid-12 > * {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ─── Section base ─── */
+.vn-section {
+  position: relative;
+  padding-block: var(--spacing-section);
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+.vn-section--secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.vn-section--dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-ondark);
+}
+
+@media (max-width: 768px) {
+  .vn-section {
+    padding-block: var(--spacing-section-mobile);
+  }
+}
+
+/* ─── Decorative grid ─── */
+.vn-deco-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-deco-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-deco-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vn-deco-grid--dark {
+  background-image:
+    linear-gradient(var(--color-deco-grid-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-deco-grid-dark) 1px, transparent 1px);
+}
+
+/* ─── Section marker ─── */
+.vn-section-marker {
+  position: absolute;
+  font-size: 220px;
+  font-weight: 600;
+  line-height: 0.85;
+  color: var(--color-deco-marker);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .vn-section-marker {
+    font-size: 120px;
+  }
+}
+
+/* ─── Buttons ─── */
+.vn-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background-color: var(--color-accent-cta);
+  color: #ffffff;
+  font-family: var(--font-family-base);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-accent-cta);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.22s ease,
+    color           0.22s ease,
+    border-color    0.22s ease,
+    box-shadow      0.22s ease,
+    transform       0.22s ease;
+}
+
+.vn-btn-primary:hover {
+  background-color: #ffffff;
+  color: var(--color-accent-cta);
+  border-color: var(--color-accent-cta);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-btn-primary {
+    transition: none;
+  }
+  .vn-btn-primary:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.vn-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.vn-btn-ghost:hover {
+  background-color: var(--color-bg-surface);
+  border-color: rgba(15, 37, 71, 0.25);
+}
+
+/* ─── Label mono (accent tag) ─── */
+.vn-label-mono {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.vn-label-mono::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 24px;
+  background-color: var(--color-accent-cta);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── Tag badge ─── */
+.vn-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-primary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+/* ─── Card ─── */
+.vn-card {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 1px 2px rgba(15, 20, 25, 0.04);
+  transition: box-shadow 0.15s ease;
+}
+
+.vn-card:hover {
+  box-shadow: 0 4px 12px rgba(15, 20, 25, 0.06);
+}
+
+@media (max-width: 768px) {
+  .vn-card {
+    padding: 24px;
+  }
+}
+
+/* ─── FAQ accordion ─── */
+.vn-faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-faq-item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  list-style: none;
+  gap: 16px;
+}
+
+.vn-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.vn-faq-answer {
+  padding-bottom: 20px;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+/* ─── Animations ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .vn-fade-in {
+    animation: vnFadeIn 0.4s ease forwards;
+  }
+  @keyframes vnFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}

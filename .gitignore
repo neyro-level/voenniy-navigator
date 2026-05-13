@@ -1,0 +1,42 @@
+# Build output
+dist/
+.output/
+
+# Dependencies
+node_modules/
+
+# Astro cache
+.astro/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+.vercel
+
+# Claude Code session cache
+.claude/
+.playwright-mcp/
+
+# Project docs (kept locally, not in GitHub)
+pages/
+_project-docs/
+SITE_ARCHITECTURE.md
+DESIGN_SYSTEM.md
+ASTRO_RULES.md
+BUILD_INSTRUCTIONS.md
+
+# Personal photos at root (not web assets)
+/chirkov-andrey.jpg
+/*.png
