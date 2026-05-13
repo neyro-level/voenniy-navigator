@@ -30,13 +30,6 @@
           Нужна новостройка, в которой реально удобно жить семье с детьми —
           инфраструктура, район, планировка.
         </p>
-        <span class="vn-home-sc__arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </span>
       </a>
 
       <a
@@ -54,13 +47,6 @@
           Квартиру покупают сейчас под накопление и ликвидность,
           а переезжать планируют через 2–3 года.
         </p>
-        <span class="vn-home-sc__arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </span>
       </a>
 
       <a
@@ -78,13 +64,6 @@
           Важно, чтобы квартира работала и приносила доход
           до момента переезда в Краснодар или Крым.
         </p>
-        <span class="vn-home-sc__arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </span>
       </a>
 
       <a
@@ -99,16 +78,9 @@
           <span class="vn-home-sc__tag">Удалённо</span>
         </div>
         <p class="vn-home-sc__body">
-          Нет возможности постоянно приезжать в Краснодар —
+          Нет возможности приехать и выбрать объект —
           нужно провести сделку полностью удалённо.
         </p>
-        <span class="vn-home-sc__arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </span>
       </a>
 
       <a
@@ -120,7 +92,7 @@
         <span class="vn-home-sc__num">05</span>
         <div class="vn-home-sc__meta">
           <h3 class="vn-home-sc__title">Сложный маршрут</h3>
-          <span class="vn-home-sc__tag vn-home-sc__tag--accent">Срочно</span>
+          <span class="vn-home-sc__tag">Срочно</span>
         </div>
         <p class="vn-home-sc__body">
           Сжатые сроки НИС, нестандартная ситуация,
@@ -176,7 +148,7 @@
 /* ── Row ── */
 .vn-home-sc__row {
   display: grid;
-  grid-template-columns: 48px 200px 1fr 40px;
+  grid-template-columns: 48px 200px 1fr;
   align-items: center;
   gap: 0 24px;
   padding: 26px 16px;
@@ -187,7 +159,8 @@
   color: inherit;
   transition:
     background-color 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    transform 200ms ease;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -195,6 +168,7 @@
 .vn-home-sc__row:hover {
   background-color: rgba(37, 99, 235, 0.04);
   border-bottom-color: transparent;
+  transform: translateX(4px);
 }
 
 /* Number */
@@ -244,15 +218,6 @@
   background: rgba(37, 99, 235, 0.1);
   color: var(--color-accent-cta);
 }
-.vn-home-sc__tag--accent {
-  background: rgba(220, 38, 38, 0.08);
-  color: rgba(220, 38, 38, 0.7);
-}
-.vn-home-sc__row:hover .vn-home-sc__tag--accent {
-  background: rgba(220, 38, 38, 0.12);
-  color: rgb(220, 38, 38);
-}
-
 /* Body text */
 .vn-home-sc__body {
   margin: 0;
@@ -262,19 +227,6 @@
   transition: color 200ms ease;
 }
 .vn-home-sc__row:hover .vn-home-sc__body { color: var(--color-text-primary); }
-
-/* Arrow */
-.vn-home-sc__arrow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  color: var(--color-text-tertiary);
-  transition: transform 200ms ease, color 200ms ease;
-}
-.vn-home-sc__row:hover .vn-home-sc__arrow {
-  transform: translateX(5px);
-  color: var(--color-accent-cta);
-}
 
 /* Note */
 .vn-home-sc__note {
@@ -287,7 +239,7 @@
 /* ── Tablet ── */
 @media (max-width: 1023px) {
   .vn-home-sc__row {
-    grid-template-columns: 40px 160px 1fr 32px;
+    grid-template-columns: 40px 160px 1fr;
     gap: 0 16px;
     padding: 22px 12px;
     margin-inline: -12px;
@@ -298,7 +250,7 @@
 @media (max-width: 767px) {
   .vn-home-sc__header { margin-bottom: 32px; }
   .vn-home-sc__row {
-    grid-template-columns: 32px 1fr 24px;
+    grid-template-columns: 32px 1fr;
     grid-template-rows: auto auto;
     gap: 4px 12px;
     padding: 20px 10px;
@@ -322,12 +274,6 @@
     grid-column: 2;
     grid-row: 2;
     font-size: var(--fs-body-sm);
-  }
-  .vn-home-sc__arrow {
-    grid-column: 3;
-    grid-row: 1;
-    align-self: start;
-    padding-top: 2px;
   }
 }
 
