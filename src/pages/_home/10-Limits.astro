@@ -1,22 +1,23 @@
 <!-- ══════════════════════════════════════════════
-     БЛОК 10 — ЧТО НЕ БЕРУ (LIGHT)
+     БЛОК 10 — ЧТО НЕ БЕРУ (Primary, editorial)
 ════════════════════════════════════════════════ -->
-<section id="section-limits" class="vn-section vn-section--secondary">
-  <div class="vn-deco-grid" aria-hidden="true"></div>
+<section id="section-limits" class="vn-section">
+  <div class="vn-container">
+    <div class="vn-grid-12">
 
-  <div class="vn-container vn-rel">
-    <span class="vn-label-mono">ВАЖНЫЕ ГРАНИЦЫ / 10</span>
-    <h2 class="vn-home-limits__h2">
-      Что я не беру в работу
-    </h2>
-    <p class="vn-home-limits__lead">
-      Это не отказ — это честность. Работаю там, где могу сделать правильно, а не «хоть как-то».
-    </p>
+      <!-- Заголовок — полная ширина -->
+      <div class="vn-home-limits__header" style="grid-column: 1 / 13">
+        <span class="vn-label-mono">ВАЖНЫЕ ГРАНИЦЫ / 10</span>
+        <h2 class="vn-home-limits__h2">
+          Что я не беру в работу
+        </h2>
+        <p class="vn-home-limits__lead">
+          Это не отказ — это честность. Работаю там, где могу сделать правильно, а не «хоть как-то».
+        </p>
+      </div>
 
-    <div class="vn-home-limits__cols">
-
-      <!-- Список ограничений -->
-      <div class="vn-home-limits__list">
+      <!-- Список ограничений — левая колонка -->
+      <div class="vn-home-limits__list" style="grid-column: 1 / 8">
 
         <div class="vn-home-limits__item">
           <div class="vn-home-limits__item-head">
@@ -52,15 +53,11 @@
 
       </div>
 
-      <!-- Манифест-цитата -->
-      <div class="vn-home-limits__quote-col">
-        <div class="vn-home-limits__quote-wrap">
-          <span class="vn-home-limits__big-q" aria-hidden="true">"</span>
-          <blockquote class="vn-home-limits__quote">
-            Если задача не моя — скажу об этом честно
-            и направлю туда, где помогут лучше.
-          </blockquote>
-        </div>
+      <!-- Цитата — правая колонка -->
+      <div class="vn-home-limits__quote-col" style="grid-column: 9 / 13">
+        <blockquote class="vn-home-limits__quote">
+          Если задача не моя — скажу об этом честно и направлю туда, где помогут лучше.
+        </blockquote>
       </div>
 
     </div>
@@ -68,7 +65,11 @@
 </section>
 
 <style>
-/* ─── Block 10: Limits (light) ─── */
+/* ─── Block 10: Limits (primary, editorial) ─── */
+
+.vn-home-limits__header {
+  margin-bottom: 8px;
+}
 
 .vn-home-limits__h2 {
   margin: 16px 0 12px;
@@ -87,24 +88,23 @@
   line-height: 1.6;
 }
 
-.vn-home-limits__cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
+/* ── List: editorial, no cards ── */
 .vn-home-limits__list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .vn-home-limits__item {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 22px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-home-limits__item:first-child {
+  padding-top: 0;
+}
+
+.vn-home-limits__item:last-child {
+  border-bottom: none;
 }
 
 .vn-home-limits__item-head {
@@ -137,41 +137,46 @@
   margin: 0;
 }
 
+/* ── Quote: minimal, accent line ── */
 .vn-home-limits__quote-col {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vn-home-limits__quote-wrap {
-  position: relative;
-  max-width: 380px;
-  text-align: center;
-}
-
-.vn-home-limits__big-q {
-  position: absolute;
-  top: -48px;
-  left: -12px;
-  font-size: 120px;
-  line-height: 1;
-  color: rgba(15,37,71,0.05);
-  font-family: Georgia, serif;
-  user-select: none;
-  pointer-events: none;
+  align-items: flex-start;
+  padding-top: 4px;
 }
 
 .vn-home-limits__quote {
+  margin: 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--color-accent-cta);
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.55;
   color: var(--color-text-secondary);
-  margin: 0;
-  padding: 0;
+  text-wrap: pretty;
 }
 
+/* ── Tablet / Mobile ── */
 @media (max-width: 1023px) {
-  .vn-home-limits__cols { grid-template-columns: 1fr; }
-  .vn-home-limits__quote-col { margin-top: 28px; }
+  .vn-home-limits__header { grid-column: 1 / -1 !important; }
+  .vn-home-limits__list   { grid-column: 1 / -1 !important; }
+  .vn-home-limits__quote-col {
+    grid-column: 1 / -1 !important;
+    margin-top: 40px;
+    padding-top: 0;
+  }
+  .vn-home-limits__quote {
+    font-size: 17px;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vn-home-limits__item {
+    padding: 20px 0;
+  }
+  .vn-home-limits__quote {
+    font-size: 16px;
+    padding-left: 16px;
+  }
 }
 </style>

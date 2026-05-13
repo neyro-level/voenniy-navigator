@@ -7,63 +7,60 @@ const { items } = Astro.props as { items: FAQItem[] };
 ---
 
 <!-- ══════════════════════════════════════════════
-     БЛОК 11 — FAQ
+     БЛОК 11 — FAQ (Air, details/summary, SEO-ready)
 ════════════════════════════════════════════════ -->
 <section id="section-faq" class="vn-home-faq" aria-labelledby="vn-home-faq-title">
   <div class="vn-container">
     <div class="vn-grid-12 vn-home-faq__grid">
 
-      <!-- ── Left: sticky info card ── -->
+      <!-- ── Left: sticky header, no card ── -->
       <div class="vn-home-faq__left" style="grid-column: 1 / 5">
-        <div class="vn-home-faq__left-card">
-          <p class="vn-home-faq__eyebrow">ЧАСТЫЕ ВОПРОСЫ / 11</p>
-          <h2 class="vn-home-faq__title" id="vn-home-faq-title">
-            Ответы на частые вопросы
-          </h2>
-          <p class="vn-home-faq__subtitle">
-            Вопросы о военной ипотеке, работе с НИС и процессе покупки новостройки.
-          </p>
-          <a
-            href="/contacts/#request"
-            data-modal-open
-            data-modal-title="Задать вопрос на разборе"
-            class="vn-home-faq__more-link"
-          >
-            Не нашли свой вопрос?<br>Задайте на разборе →
-          </a>
-        </div>
+        <span class="vn-label-mono">ЧАСТЫЕ ВОПРОСЫ / 11</span>
+        <h2 class="vn-home-faq__title" id="vn-home-faq-title">
+          Ответы на частые вопросы
+        </h2>
+        <p class="vn-home-faq__lead">
+          Вопросы о военной ипотеке, работе с НИС и процессе покупки новостройки.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Задать вопрос на разборе"
+          class="vn-home-faq__more-link"
+        >
+          Не нашли свой вопрос? Задайте на разборе&nbsp;→
+        </a>
       </div>
 
-      <!-- ── Right: accordion ── -->
+      <!-- ── Right: editorial accordion ── -->
       <div class="vn-home-faq__right" style="grid-column: 5 / 13">
-        <div class="vn-home-faq__accordion" id="vn-faq-accordion">
-          {items.map((item, i) => (
-            <div class:list={['vn-home-faq__item', { 'is-open': i === 0 }]}>
-              <button
-                class="vn-home-faq__question"
-                type="button"
-                aria-expanded={i === 0 ? 'true' : 'false'}
-                aria-controls={`vn-faq-answer-${i}`}
-                id={`vn-faq-question-${i}`}
+        {items.map((item, i) => (
+          <details class="vn-home-faq__item" open={i === 0}>
+            <summary class="vn-home-faq__question">
+              <span class="vn-home-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="vn-home-faq__question-text">{item.q}</span>
+              <svg
+                class="vn-home-faq__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
               >
-                <span class="vn-home-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <span class="vn-home-faq__question-text">{item.q}</span>
-                <span class="vn-home-faq__icon" aria-hidden="true">{i === 0 ? '−' : '+'}</span>
-              </button>
-              <div
-                class="vn-home-faq__answer"
-                id={`vn-faq-answer-${i}`}
-                role="region"
-                aria-labelledby={`vn-faq-question-${i}`}
-                hidden={i !== 0}
-              >
-                <div class="vn-home-faq__answer-inner">
-                  <p class="vn-home-faq__answer-text">{item.a}</p>
-                </div>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="vn-home-faq__answer-wrap">
+              <div class="vn-home-faq__answer-inner">
+                <p class="vn-home-faq__answer-text">{item.a}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </details>
+        ))}
       </div>
 
     </div>
@@ -71,7 +68,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 </section>
 
 <style>
-/* ─── Block 11: FAQ ─── */
+/* ─── Block 11: FAQ (Air) ─── */
 .vn-home-faq {
   padding: 96px 0;
   background: var(--color-bg-secondary);
@@ -83,58 +80,27 @@ const { items } = Astro.props as { items: FAQItem[] };
   align-items: start;
 }
 
-/* ── Left sticky card ── */
+/* ── Left sticky header ── */
 .vn-home-faq__left {
   position: sticky;
   top: 104px;
 }
 
-.vn-home-faq__left-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-}
-
-.vn-home-faq__eyebrow {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent-cta);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.vn-home-faq__eyebrow::before {
-  content: '';
-  width: 16px;
-  height: 2px;
-  background: var(--color-accent-cta);
-  flex-shrink: 0;
-}
-
 .vn-home-faq__title {
   margin: 16px 0 0;
-  font-size: clamp(24px, 2.4vw, 34px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: var(--fs-h2);
+  font-weight: 650;
+  line-height: 1.18;
   color: var(--color-text-primary);
   text-wrap: balance;
 }
 
-.vn-home-faq__subtitle {
+.vn-home-faq__lead {
   margin: 14px 0 0;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--fs-body);
   line-height: 1.65;
   color: var(--color-text-secondary);
+  max-width: 320px;
 }
 
 .vn-home-faq__more-link {
@@ -150,140 +116,168 @@ const { items } = Astro.props as { items: FAQItem[] };
 .vn-home-faq__more-link:hover { opacity: 0.7; }
 
 /* ── Right accordion ── */
-.vn-home-faq__accordion {
+.vn-home-faq__right {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
-/* ── Each FAQ item = separate card ── */
+/* Each item = border divider only */
 .vn-home-faq__item {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color 0.15s ease;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.vn-home-faq__item.is-open {
-  border-left: 3px solid var(--color-accent-cta);
+.vn-home-faq__item:first-child {
+  border-top: 1px solid var(--color-border);
 }
 
-/* ── Question button ── */
+/* Summary (question) */
 .vn-home-faq__question {
   width: 100%;
-  min-height: 68px;
-  padding: 18px 24px;
+  min-height: 48px;
+  padding: 24px 0;
   display: flex;
   align-items: center;
   gap: 16px;
-  border: none;
-  background: transparent;
+  list-style: none;
   cursor: pointer;
-  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vn-home-faq__question::-webkit-details-marker {
+  display: none;
 }
 
 .vn-home-faq__num {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(37, 99, 235, 0.08);
-  font-size: 11px;
-  font-weight: 700;
+  width: 28px;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--color-accent-cta);
-  font-family: var(--font-family-base);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
 }
 
 .vn-home-faq__question-text {
   flex: 1;
   color: var(--color-text-primary);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.42;
-  font-family: var(--font-family-base);
+  text-wrap: pretty;
 }
 
 .vn-home-faq__icon {
   flex-shrink: 0;
-  color: var(--color-accent-cta);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
-  width: 24px;
-  text-align: center;
-  font-family: var(--font-family-base);
+  color: var(--color-text-tertiary);
+  transition: transform 0.35s ease, color 0.15s ease;
 }
 
-/* ── Answer ── */
-.vn-home-faq__answer[hidden] {
-  display: none;
+/* Hover states */
+.vn-home-faq__question:hover .vn-home-faq__question-text {
+  color: var(--color-accent-primary);
 }
-.vn-home-faq__answer {
-  background: var(--color-bg-surface);
-  border-top: 1px solid var(--color-border);
+
+/* Open state */
+.vn-home-faq__item[open] .vn-home-faq__icon {
+  transform: rotate(180deg);
+  color: var(--color-accent-cta);
+}
+
+/* Answer animation (CSS grid trick) */
+.vn-home-faq__answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.vn-home-faq__item[open]:not(.is-closing) .vn-home-faq__answer-wrap {
+  grid-template-rows: 1fr;
 }
 
 .vn-home-faq__answer-inner {
-  padding: 20px 24px 24px 72px;
+  overflow: hidden;
 }
 
 .vn-home-faq__answer-text {
   margin: 0;
+  padding: 0 0 24px 44px;
   color: var(--color-text-secondary);
-  font-size: 14px;
-  line-height: 1.7;
-  font-family: var(--font-family-base);
+  font-size: 15px;
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 
 /* ── Tablet ── */
 @media (max-width: 1023px) {
-  .vn-home-faq__left  { grid-column: 1 / -1 !important; position: static; }
-  .vn-home-faq__right { grid-column: 1 / -1 !important; }
-  .vn-home-faq__grid  { gap: 24px; }
+  .vn-home-faq__left  {
+    grid-column: 1 / -1 !important;
+    position: static;
+    margin-bottom: 40px;
+  }
+  .vn-home-faq__right {
+    grid-column: 1 / -1 !important;
+  }
+  .vn-home-faq__lead {
+    max-width: 520px;
+  }
 }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
   .vn-home-faq { padding: 72px 0; }
-  .vn-home-faq__left-card { padding: 24px; }
-  .vn-home-faq__question { padding: 16px 18px; min-height: 58px; gap: 12px; }
-  .vn-home-faq__answer-inner { padding: 16px 18px 20px 62px; }
-  .vn-home-faq__question-text { font-size: 14px; }
+
+  .vn-home-faq__question {
+    padding: 18px 0;
+    gap: 12px;
+  }
+
+  .vn-home-faq__question-text {
+    font-size: 15px;
+  }
+
+  .vn-home-faq__answer-text {
+    padding: 0 0 20px 40px;
+    font-size: 14px;
+  }
+
+  .vn-home-faq__num {
+    font-size: 11px;
+    width: 24px;
+  }
+
+  .vn-home-faq__icon {
+    width: 14px;
+    height: 14px;
+  }
 }
 </style>
 
 <script>
   (function () {
-    const accordion = document.getElementById('vn-faq-accordion');
-    if (!accordion) return;
+    const items = document.querySelectorAll('.vn-home-faq__item');
 
-    const items = Array.from(accordion.querySelectorAll('.vn-home-faq__item'));
+    items.forEach((details) => {
+      const summary = details.querySelector('.vn-home-faq__question');
+      if (!summary) return;
 
-    function setItemState(item: Element, isOpen: boolean) {
-      const button = item.querySelector('.vn-home-faq__question') as HTMLButtonElement | null;
-      const answer = item.querySelector('.vn-home-faq__answer') as HTMLElement | null;
-      const icon   = item.querySelector('.vn-home-faq__icon');
-      if (!button || !answer || !icon) return;
+      summary.addEventListener('click', (e) => {
+        // Prevent native toggle so we can animate closing
+        e.preventDefault();
 
-      item.classList.toggle('is-open', isOpen);
-      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      answer.hidden = !isOpen;
-      icon.textContent = isOpen ? '−' : '+';
-    }
+        const isOpen = details.hasAttribute('open');
 
-    items.forEach((item) => {
-      const button = item.querySelector('.vn-home-faq__question') as HTMLButtonElement | null;
-      if (!button) return;
-
-      button.addEventListener('click', () => {
-        const isOpen = button.getAttribute('aria-expanded') === 'true';
-        items.forEach((other) => setItemState(other, false));
-        if (!isOpen) setItemState(item, true);
+        if (isOpen) {
+          // Animate close: force grid to 0fr, wait, then remove open
+          details.classList.add('is-closing');
+          setTimeout(() => {
+            details.removeAttribute('open');
+            details.classList.remove('is-closing');
+          }, 350);
+        } else {
+          // Open: browser adds [open], CSS transitions grid to 1fr
+          details.setAttribute('open', '');
+        }
       });
     });
   })();
