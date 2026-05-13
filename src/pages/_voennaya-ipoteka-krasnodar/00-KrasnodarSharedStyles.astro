@@ -72,17 +72,7 @@
   z-index: 0;
 }
 
-.vn-krd-hero__inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 32px;
-  align-items: center;
-  width: 100%;
-}
-
-.vn-krd-hero__left { min-width: 0; }
+.vn-krd-hero__left { grid-column: 1 / 8; min-width: 0; }
 
 .vn-krd-hero__eyebrow {
   display: flex;
@@ -253,13 +243,7 @@
 }
 
 /* ─── Block 02: No-vitrina ─── */
-.vn-krd-novitr__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.vn-krd-novitr__card { padding: 28px; }
+.vn-krd-novitr__card { grid-column: span 6; padding: 28px; }
 
 .vn-krd-novitr__title {
   font-size: var(--fs-h3);
@@ -276,17 +260,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  .vn-krd-novitr__grid { grid-template-columns: 1fr; }
-}
-
 /* ─── Block 03: Scenarios ─── */
-.vn-krd-sc__grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-}
-
 .vn-krd-sc__card {
   background-color: var(--color-bg-surface);
   border-radius: var(--radius-lg);
@@ -342,32 +316,7 @@
   background-color: var(--color-accent-cta);
 }
 
-@media (max-width: 1100px) {
-  .vn-krd-sc__grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-  .vn-krd-sc__grid { grid-template-columns: 1fr; }
-}
-
 /* ─── Block 04: Method ─── */
-.vn-krd-method__steps {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  position: relative;
-}
-
-.vn-krd-method__steps::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
-  height: 1px;
-  background: color-mix(in srgb, var(--color-accent-cta) 20%, transparent);
-  z-index: 0;
-}
-
 .vn-krd-method__step {
   background-color: var(--color-bg-surface);
   border-radius: var(--radius-lg);
@@ -406,13 +355,7 @@
 }
 
 /* 8 критериев */
-.vn-krd-method__criteria {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.vn-krd-method__criterion {
+.vn-krd-method__criterion { grid-column: span 3;
   background-color: var(--color-bg-surface);
   border-radius: var(--radius-md);
   padding: 14px 16px;
@@ -456,16 +399,6 @@
   text-wrap: balance;
 }
 
-@media (max-width: 1100px) {
-  .vn-krd-method__steps { grid-template-columns: repeat(3, 1fr); }
-  .vn-krd-method__steps::before { display: none; }
-  .vn-krd-method__criteria { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  .vn-krd-method__steps { grid-template-columns: 1fr; }
-  .vn-krd-method__criteria { grid-template-columns: 1fr; }
-}
-
 /* ─── Block 05: Local filter ─── */
 .vn-krd-local__subblock { margin-bottom: 80px; }
 .vn-krd-local__subblock:last-of-type { margin-bottom: 0; }
@@ -485,19 +418,9 @@
   flex-shrink: 0;
 }
 
-.vn-krd-local__grid4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.vn-krd-local__grid3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.vn-krd-local__card { padding: 28px; }
+.vn-krd-local__card { grid-column: span 3; padding: 28px; }
+.vn-krd-local__card2 { grid-column: span 4; padding: 28px; }
+.vn-krd-local__card-cat { grid-column: span 3; padding: 28px; }
 .vn-krd-local__card2 { padding: 28px; }
 .vn-krd-local__card-cat { padding: 28px; }
 
@@ -525,13 +448,7 @@
   margin: 0;
 }
 
-@media (max-width: 1100px) {
-  .vn-krd-local__grid4 { grid-template-columns: repeat(2, 1fr); }
-  .vn-krd-local__grid3 { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 640px) {
-  .vn-krd-local__grid4 { grid-template-columns: 1fr; }
-  .vn-krd-local__grid3 { grid-template-columns: 1fr; }
   .vn-krd-local__subblock { margin-bottom: 56px; }
 }
 
@@ -596,14 +513,8 @@
 }
 
 /* ─── Block 07: First step ─── */
-.vn-krd-fs__cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.vn-krd-fs__left { min-width: 0; }
+.vn-krd-fs__left { grid-column: 1 / 7; min-width: 0; }
+.vn-krd-fs__right { grid-column: 7 / 13; }
 
 .vn-krd-fs__list {
   list-style: none;
@@ -706,9 +617,6 @@
   max-width: 640px;
 }
 
-@media (max-width: 1023px) {
-  .vn-krd-fs__cols { grid-template-columns: 1fr; }
-}
 @media (max-width: 640px) {
   .vn-krd-fs__trust { flex-direction: column; align-items: flex-start; gap: 12px; }
   .vn-krd-fs__trust-divider { display: none; }
