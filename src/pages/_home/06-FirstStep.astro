@@ -1,0 +1,178 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 06 — ПЕРВЫЙ ШАГ
+════════════════════════════════════════════════ -->
+<section id="section-first-step" class="vn-section">
+  <span class="vn-section-marker vn-pos-bl" aria-hidden="true">06</span>
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono">ПЕРВЫЙ ШАГ / 06</span>
+    <h2 class="vn-home-h2" style="margin-top:16px; margin-bottom:40px;">
+      Разбор цели покупки — как это устроено
+    </h2>
+
+    <div class="vn-home-fs__cols">
+
+      <!-- Левая: как проходит -->
+      <div>
+        <h3 class="vn-home-fs__col-title">Как проходит</h3>
+        <ul class="vn-home-fs__list">
+          <li class="vn-home-fs__item">
+            <span class="vn-home-fs__check" aria-hidden="true">✓</span>
+            Бесплатная видеовстреча, 30 минут
+          </li>
+          <li class="vn-home-fs__item">
+            <span class="vn-home-fs__check" aria-hidden="true">✓</span>
+            Яндекс Телемост — никуда не нужно ехать
+          </li>
+          <li class="vn-home-fs__item">
+            <span class="vn-home-fs__check" aria-hidden="true">✓</span>
+            Разбираем вашу ситуацию, сценарий и задачу
+          </li>
+        </ul>
+
+        <blockquote class="vn-home-fs__quote">
+          Первый разбор — это не обязательство продолжать.
+          Это понимание, стоит ли идти дальше.
+        </blockquote>
+
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Записаться на разбор"
+          class="vn-btn-primary"
+          style="margin-top:32px;"
+        >
+          Записаться на разбор
+        </a>
+      </div>
+
+      <!-- Правая: что получите -->
+      <div class="vn-card vn-home-fs__results">
+        <h3 class="vn-home-fs__col-title" style="margin-bottom:20px;">После разбора вы получите</h3>
+        <ol class="vn-home-fs__results-list">
+          <li class="vn-home-fs__result-item">
+            <span class="vn-home-fs__num">01</span>
+            <span>Понимание своей реальной цели покупки</span>
+          </li>
+          <li class="vn-home-fs__result-item">
+            <span class="vn-home-fs__num">02</span>
+            <span>Понимание подходящего сценария</span>
+          </li>
+          <li class="vn-home-fs__result-item">
+            <span class="vn-home-fs__num">03</span>
+            <span>Понимание, что смотреть при выборе ЖК в Краснодаре</span>
+          </li>
+          <li class="vn-home-fs__result-item">
+            <span class="vn-home-fs__num">04</span>
+            <span>Понимание, как строится маршрут сделки</span>
+          </li>
+          <li class="vn-home-fs__result-item">
+            <span class="vn-home-fs__num">05</span>
+            <span>Честный ответ — стоит ли идти дальше в сопровождение</span>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 06: First step ─── */
+.vn-home-fs__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.vn-home-fs__col-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.vn-home-fs__list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vn-home-fs__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.vn-home-fs__check {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cta-soft);
+  color: var(--color-accent-cta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.vn-home-fs__quote {
+  margin: 28px 0 0;
+  padding: 22px 24px;
+  background-color: var(--color-bg-surface);
+  border-left: 3px solid var(--color-accent-cta);
+  border-radius: var(--radius-lg);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.vn-home-fs__results { padding: 28px; }
+
+.vn-home-fs__results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vn-home-fs__result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.vn-home-fs__num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .vn-home-fs__cols { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>

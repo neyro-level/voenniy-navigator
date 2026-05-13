@@ -1,0 +1,85 @@
+---
+import { CONTACTS } from '../../lib/constants';
+---
+
+<!-- ══════════════════════════════════════════════
+     БЛОК 01 — HERO
+════════════════════════════════════════════════ -->
+<section id="section-krd-hero" class="vn-krd-hero">
+  <div class="vn-krd-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-krd-hero__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-krd-hero__inner">
+
+      <!-- Левая колонка: 7 из 12 -->
+      <div class="vn-krd-hero__left vn-col-7">
+        <div class="vn-krd-hero__eyebrow">НОВОСТРОЙКИ КРАСНОДАРА / 01</div>
+
+        <h1 class="vn-krd-hero__h1">
+          Новостройки Краснодара по военной ипотеке:
+          <span class="vn-krd-hero__h1-accent"> сначала цель, потом выбор ЖК</span>
+        </h1>
+
+        <p class="vn-krd-hero__sub">
+          Помогаю военнослужащим и их семьям разобраться, какую новостройку
+          в Краснодаре смотреть под их задачу: для жизни, переезда позже,
+          сдачи до переезда или дистанционной покупки.
+        </p>
+
+        <div class="vn-krd-hero__cta-row">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Начать разбор цели покупки"
+            class="vn-btn-primary vn-krd-hero__btn"
+          >
+            Начать разбор
+          </a>
+          <a
+            href={CONTACTS.vk}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-btn-ghost vn-krd-hero__btn-ghost"
+            aria-label="Посмотреть разборы новостроек в VK"
+          >
+            Разборы в VK
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+
+        <!-- 3 дифференциатора -->
+        <div class="vn-krd-hero__diffs" role="list">
+          <div class="vn-krd-hero__diff" role="listitem">
+            <div class="vn-krd-hero__diff-line" aria-hidden="true"></div>
+            <span class="vn-krd-hero__diff-text">Только военная ипотека. Не «тоже работаем с НИС», а исключительно с 2016 года.</span>
+          </div>
+          <div class="vn-krd-hero__diff" role="listitem">
+            <div class="vn-krd-hero__diff-line" aria-hidden="true"></div>
+            <span class="vn-krd-hero__diff-text">Сначала цель, потом варианты. Неподходящие ЖК отсекаем до просмотра, не после.</span>
+          </div>
+          <div class="vn-krd-hero__diff" role="listitem">
+            <div class="vn-krd-hero__diff-line" aria-hidden="true"></div>
+            <span class="vn-krd-hero__diff-text">Дистанционно. Подбор и сделка без приезда в Краснодар.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Правая колонка: 5 из 12 -->
+      <div class="vn-krd-hero__right vn-col-5">
+        <div class="vn-krd-hero__visual">
+          <div class="vn-krd-hero__visual-frame">
+            <!-- Corner brackets -->
+            <span class="vn-krd-hero__bracket vn-krd-hero__bracket--tl" aria-hidden="true"></span>
+            <span class="vn-krd-hero__bracket vn-krd-hero__bracket--br" aria-hidden="true"></span>
+            <!-- Placeholder: фото новостроек Краснодара -->
+            <div class="vn-krd-hero__photo-placeholder">
+              <p class="vn-krd-hero__placeholder-text">Архитектурная схема критериев отбора<br><span>Дизайнер добавит изображение</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

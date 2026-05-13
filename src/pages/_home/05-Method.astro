@@ -1,0 +1,185 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 05 — МЕТОД
+════════════════════════════════════════════════ -->
+<section id="section-method" class="vn-section vn-section--secondary">
+  <span class="vn-section-marker vn-pos-tr" aria-hidden="true">05</span>
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono">МЕТОД / 05</span>
+    <h2 class="vn-home-h2" style="margin-top:16px;">
+      Метод навигации:
+      <span style="color:var(--color-accent-primary);">цель → сценарий → объект → сделка</span>
+    </h2>
+    <p class="vn-home-sub" style="max-width:560px; margin-top:12px; margin-bottom:48px;">
+      Последовательность, которая объясняет роль навигатора — не просто
+      «подобрать квартиру», а провести весь путь логично и без хаоса.
+    </p>
+
+    <!-- 4 шага -->
+    <div class="vn-home-method__steps">
+
+      <div class="vn-card vn-home-method__step">
+        <div class="vn-home-method__badge">01</div>
+        <div class="vn-accent-line" style="margin:8px 0;" aria-hidden="true"></div>
+        <h3 class="vn-home-method__step-title">Разбираем цель покупки</h3>
+        <p class="vn-home-method__step-body">
+          Жить, переехать позже, сдавать или зафиксировать актив. От ответа на этот вопрос
+          зависят все следующие решения. Без него подбор превращается в случайную выборку.
+        </p>
+      </div>
+
+      <div class="vn-card vn-home-method__step">
+        <div class="vn-home-method__badge">02</div>
+        <div class="vn-accent-line" style="margin:8px 0;" aria-hidden="true"></div>
+        <h3 class="vn-home-method__step-title">Определяем сценарий и ограничения</h3>
+        <p class="vn-home-method__step-body">
+          Бюджет, банк, документы, регион проживания, сроки. Какие риски нужно учесть.
+          Особенности именно вашей ситуации.
+        </p>
+      </div>
+
+      <div class="vn-card vn-home-method__step">
+        <div class="vn-home-method__badge">03</div>
+        <div class="vn-accent-line" style="margin:8px 0;" aria-hidden="true"></div>
+        <h3 class="vn-home-method__step-title">Отсекаем неподходящие варианты</h3>
+        <p class="vn-home-method__step-body">
+          Это главная экономия времени: районы, форматы и ЖК, которые не подходят под задачу,
+          исключаются до просмотра.
+        </p>
+      </div>
+
+      <div class="vn-card vn-home-method__step">
+        <div class="vn-home-method__badge">04</div>
+        <div class="vn-accent-line" style="margin:8px 0;" aria-hidden="true"></div>
+        <h3 class="vn-home-method__step-title">Сопровождаем до результата</h3>
+        <p class="vn-home-method__step-body">
+          Подбор объекта, банк, документы, координация сторон, регистрация.
+          Не «подобрали и ушли» — весь путь до конца.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Сравнение с рынком -->
+    <div style="margin-top:64px;">
+      <span class="vn-label-mono" style="margin-bottom:24px; display:inline-flex;">
+        ЧЕМ ОТЛИЧАЕТСЯ ОТ ТИПОВОГО ПОДБОРА
+      </span>
+      <div class="vn-home-method__compare">
+        <div class="vn-home-method__compare-col vn-home-method__compare-col--left">
+          <div class="vn-home-method__compare-head">Типовой подбор на рынке</div>
+          <div class="vn-home-method__compare-row">Подборка из витрины по цене</div>
+          <div class="vn-home-method__compare-row">«Посмотрите все варианты»</div>
+          <div class="vn-home-method__compare-row">Фокус на оформлении ипотеки</div>
+          <div class="vn-home-method__compare-row">«Подобрали — занимайтесь дальше»</div>
+        </div>
+        <div class="vn-home-method__compare-col vn-home-method__compare-col--right">
+          <div class="vn-home-method__compare-head">Навигатор</div>
+          <div class="vn-home-method__compare-row vn-home-method__compare-row--accent">Отбор под задачу клиента</div>
+          <div class="vn-home-method__compare-row vn-home-method__compare-row--accent">Отсечение неподходящих до просмотра</div>
+          <div class="vn-home-method__compare-row vn-home-method__compare-row--accent">Сначала выбор правильного объекта</div>
+          <div class="vn-home-method__compare-row vn-home-method__compare-row--accent">Сопровождение до регистрации права</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 05: Method ─── */
+.vn-home-method__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: relative;
+}
+
+.vn-home-method__steps::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: rgba(37,99,235,0.25);
+  z-index: 0;
+}
+
+.vn-home-method__step {
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.vn-home-method__badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vn-home-method__step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.vn-home-method__step-body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.vn-home-method__compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.vn-home-method__compare-col { display: flex; flex-direction: column; }
+.vn-home-method__compare-col--left { background-color: var(--color-bg-surface-low); }
+.vn-home-method__compare-col--right { background-color: var(--color-bg-surface); }
+
+.vn-home-method__compare-head {
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-home-method__compare-row {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-home-method__compare-row:last-child { border-bottom: none; }
+
+.vn-home-method__compare-row--accent {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  border-left: 3px solid var(--color-accent-cta);
+  padding-left: 17px;
+}
+
+@media (max-width: 768px) {
+  .vn-home-method__steps { grid-template-columns: 1fr; }
+  .vn-home-method__steps::before { display: none; }
+  .vn-home-method__compare { grid-template-columns: 1fr; }
+  .vn-home-method__compare-col--left { display: none; }
+}
+</style>

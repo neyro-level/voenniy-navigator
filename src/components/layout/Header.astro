@@ -95,6 +95,15 @@ const currentPath = Astro.url.pathname;
           <rect x="3" y="14" width="7" height="7" rx="1"/>
           <rect x="14" y="14" width="7" height="7" rx="1"/>
         </svg>
+        <!-- icon: menu (mobile) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="vn-map-icon-menu" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
         <!-- icon: x (shown when overlay open) -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="1.5"
@@ -262,9 +271,11 @@ const currentPath = Astro.url.pathname;
   }
 
   /* ── Map button states ── */
+  #site-header .vn-map-icon-menu { display: none; }
   #site-header .vn-map-icon-close { display: none; }
   #site-header .vn-map-label-close { display: none; }
   #site-header[data-overlay="true"] .vn-map-icon       { display: none; }
+  #site-header[data-overlay="true"] .vn-map-icon-menu  { display: none; }
   #site-header[data-overlay="true"] .vn-map-icon-close { display: block; }
   #site-header[data-overlay="true"] .vn-map-label      { display: none; }
   #site-header[data-overlay="true"] .vn-map-label-close { display: inline; }
@@ -273,10 +284,16 @@ const currentPath = Astro.url.pathname;
     color:        rgba(241, 243, 245, 0.8);
   }
 
-  /* ── Mobile: CTA always short ── */
+  /* ── Mobile: header is brand + menu only. CTA lives in MobileBottomCTA. ── */
   @media (max-width: 1023px) {
-    #site-header .vn-header__cta-full  { display: none; }
-    #site-header .vn-header__cta-short { display: inline; }
+    #site-header .vn-header__cta { display: none; }
+    #site-header .vn-header__name { display: none; }
+    #site-header .vn-map-icon { display: none; }
+    #site-header .vn-map-icon-menu { display: block; }
+    #site-header .vn-map-label,
+    #site-header .vn-map-label-close,
+    #site-header .vn-map-divider { display: none; }
+    #site-header[data-overlay="true"] .vn-map-label-close { display: none; }
   }
 
   /* ── Reduced motion ── */
@@ -429,10 +446,12 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 1023px) {
     .vn-header__nav    { display: none; }
     .vn-header__phone  { display: none; }
-    .vn-header__cta {
-      padding: 8px 14px;
-      height:  36px;
-      font-size: 13px;
+    .vn-header__controls { margin-left: auto; }
+    .vn-header__map-btn {
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
     }
   }
   @media (max-width: 768px) {
@@ -441,7 +460,5 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 480px) {
     .vn-header__inner { padding-inline: 16px; gap: 12px; }
     .vn-header__brand { font-size: 12px; }
-    .vn-map-label     { display: none; }
-    .vn-map-divider   { display: none; }
   }
 </style>

@@ -1,0 +1,62 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+const { items } = Astro.props as { items: FAQItem[] };
+---
+
+<!-- ══════════════════════════════════════════════
+     БЛОК 11 — FAQ
+════════════════════════════════════════════════ -->
+<section id="section-faq" class="vn-section vn-section--secondary">
+  <span class="vn-section-marker vn-pos-tr" aria-hidden="true">11</span>
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono">ЧАСТЫЕ ВОПРОСЫ / 11</span>
+    <h2 class="vn-home-h2" style="max-width:680px; margin-top:16px; margin-bottom:48px;">
+      Ответы на частые вопросы
+    </h2>
+
+    <div class="vn-home-faq__list">
+      {items.map((item) => (
+        <details class="vn-faq-item">
+          <summary class="vn-faq-question">
+            {item.q}
+            <svg class="vn-home-faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </summary>
+          <div class="vn-faq-answer">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <a
+      href="/contacts/#request"
+      data-modal-open
+      data-modal-title="Задать вопрос на разборе"
+      class="vn-home-textlink"
+      style="margin-top:32px; display:inline-block;"
+    >
+      Не нашли свой вопрос? Задайте на разборе →
+    </a>
+  </div>
+</section>
+
+<style>
+/* ─── Block 11: FAQ ─── */
+.vn-home-faq__list { max-width: 760px; }
+
+.vn-home-faq__chevron {
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  details[open] .vn-home-faq__chevron { transform: rotate(180deg); }
+}
+</style>

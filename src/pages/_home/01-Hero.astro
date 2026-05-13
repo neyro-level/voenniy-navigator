@@ -1,0 +1,295 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 01 — HERO
+════════════════════════════════════════════════ -->
+<section id="section-hero" class="vn-home-hero">
+  <div class="vn-home-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-home-hero__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-home-hero__inner">
+
+      <!-- Left: 6 колонок -->
+      <div class="vn-home-hero__left vn-col-6">
+        <div class="vn-home-hero__eyebrow">Военный навигатор</div>
+
+        <h1 class="vn-home-hero__h1">
+          Навигатор по новостройкам Краснодара
+          <span class="vn-home-hero__h1-accent"> для военнослужащих</span>
+        </h1>
+
+        <p class="vn-home-hero__sub">
+          Помогаю понять, что вам действительно стоит купить
+          и провожу путь по военной ипотеке от первого разбора до результата.
+        </p>
+
+        <div class="vn-home-hero__cta-row">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Записаться на разбор"
+            class="vn-btn-primary vn-home-hero__btn-primary"
+          >
+            Записаться на разбор
+          </a>
+        </div>
+
+        <!-- Stats 2×2 -->
+        <div class="vn-home-hero__stats" role="list">
+          <div class="vn-home-hero__stat" role="listitem">
+            <span class="vn-home-hero__stat-label">Опыт</span>
+            <span class="vn-home-hero__stat-value">С 2016 года в профессии эксперта по недвижимости</span>
+          </div>
+          <div class="vn-home-hero__stat" role="listitem">
+            <span class="vn-home-hero__stat-label">Маршрут</span>
+            <span class="vn-home-hero__stat-value">65 сделок по военной ипотеке</span>
+          </div>
+          <div class="vn-home-hero__stat" role="listitem">
+            <span class="vn-home-hero__stat-label">Практика</span>
+            <span class="vn-home-hero__stat-value">180+ сделок в недвижимости</span>
+          </div>
+          <div class="vn-home-hero__stat" role="listitem">
+            <span class="vn-home-hero__stat-label">Формат</span>
+            <span class="vn-home-hero__stat-value">Дистанционное сопровождение</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 6 колонок -->
+      <div class="vn-home-hero__right vn-col-6">
+        <div class="vn-home-hero__photo-outer">
+          <div class="vn-home-hero__portrait-frame">
+            <img
+              src="/images/mikhail-hero.png"
+              alt="Михаил Хряпин — навигатор по новостройкам Краснодара"
+              loading="eager"
+              decoding="async"
+              class="vn-home-hero__portrait"
+            />
+            <div class="vn-home-hero__name-card">
+              <p class="vn-home-hero__name-card-title">Михаил Хряпин</p>
+              <p class="vn-home-hero__name-card-sub">Навигатор по новостройкам Краснодара для&nbsp;военнослужащих</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 01: Hero ─── */
+.vn-home-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+  padding-top: 160px;
+  padding-bottom: 96px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.vn-home-hero__grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vn-home-hero__radial {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vn-home-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 32px;
+  align-items: start;
+  width: 100%;
+}
+
+.vn-home-hero__left { min-width: 0; }
+
+.vn-home-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+}
+.vn-home-hero__eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: var(--color-accent-cta);
+  flex-shrink: 0;
+}
+
+.vn-home-hero__h1 {
+  margin: 0 0 24px;
+  font-size: var(--fs-display);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+}
+
+.vn-home-hero__h1-accent { color: var(--color-accent-primary); }
+
+.vn-home-hero__sub {
+  margin: 0 0 36px;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  text-wrap: balance;
+}
+
+.vn-home-hero__cta-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.vn-home-hero__btn-primary {
+  height: 54px;
+  padding: 0 40px;
+  font-size: 16px;
+}
+
+/* Stats 2×2 */
+.vn-home-hero__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-home-hero__stat {
+  padding: 20px 20px 20px 0;
+}
+.vn-home-hero__stat:nth-child(even) {
+  padding-left: 20px;
+  padding-right: 0;
+  border-left: 1px solid var(--color-border);
+}
+.vn-home-hero__stat:nth-child(n+3) {
+  border-top: 1px solid var(--color-border);
+}
+.vn-home-hero__stat:nth-child(3),
+.vn-home-hero__stat:nth-child(4) {
+  padding-bottom: 0;
+}
+
+.vn-home-hero__stat-label {
+  display: block;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 6px;
+}
+
+.vn-home-hero__stat-value {
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Photo column */
+.vn-home-hero__left  { grid-column: 1 / 8; }
+
+.vn-home-hero__right {
+  grid-column: 8 / 13;
+  position: relative;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.vn-home-hero__photo-outer {
+  position: relative;
+  max-width: 420px;
+}
+
+.vn-home-hero__portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    14px 14px 0 rgba(15, 37, 71, 0.18),
+    0 24px 64px rgba(15, 20, 25, 0.14);
+}
+
+.vn-home-hero__portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Glassmorphism name card */
+.vn-home-hero__name-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 20, 25, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 20px;
+}
+
+.vn-home-hero__name-card-title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.vn-home-hero__name-card-sub {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  color: rgba(241, 243, 245, 0.75);
+}
+
+@media (max-width: 1023px) {
+  .vn-home-hero__left  { grid-column: 1 / -1; }
+  .vn-home-hero__right { grid-column: 1 / -1; padding-top: 0; }
+  .vn-home-hero__photo-outer { max-width: 400px; margin: 0 auto; }
+}
+
+@media (max-width: 640px) {
+  .vn-home-hero { padding-top: 100px; padding-bottom: 64px; }
+  .vn-home-hero__grid-bg { background-size: 48px 48px; }
+  .vn-home-hero__h1 { line-height: 1.1; letter-spacing: -0.02em; }
+  .vn-home-hero__cta-row { margin-bottom: 32px; }
+  .vn-home-hero__btn-primary { width: 100%; height: 52px; justify-content: center; }
+  .vn-home-hero__right { order: -1; }
+  .vn-home-hero__portrait-frame { aspect-ratio: 4 / 5; border-radius: 8px; box-shadow: 8px 8px 0 rgba(15,37,71,0.15), 0 16px 40px rgba(15,20,25,0.12); }
+  .vn-home-hero__name-card { padding: 12px 16px; }
+  .vn-home-hero__stat { padding: 16px 16px 16px 0; }
+  .vn-home-hero__stat:nth-child(even) { padding-left: 16px; }
+}
+</style>

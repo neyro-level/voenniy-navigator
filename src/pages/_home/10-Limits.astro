@@ -1,0 +1,159 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 10 — ЧТО НЕ БЕРУ (DARK)
+════════════════════════════════════════════════ -->
+<section id="section-limits" class="vn-section vn-section--dark">
+  <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
+  <span class="vn-section-marker vn-pos-bl" style="color:rgba(255,255,255,0.04);" aria-hidden="true">10</span>
+
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono" style="color:var(--color-text-ondark-mute);">ВАЖНЫЕ ГРАНИЦЫ / 10</span>
+    <h2 class="vn-home-h2" style="color:var(--color-text-ondark); margin-top:16px; margin-bottom:12px;">
+      Что я не беру в работу
+    </h2>
+    <p style="font-size:17px; color:var(--color-text-ondark-mute); max-width:480px; margin-bottom:48px; line-height:1.6;">
+      Это не отказ — это честность. Работаю там, где могу сделать правильно, а не «хоть как-то».
+    </p>
+
+    <div class="vn-home-limits__cols">
+
+      <!-- Список ограничений -->
+      <div class="vn-home-limits__list">
+
+        <div class="vn-home-limits__item">
+          <div class="vn-home-limits__item-head">
+            <span class="vn-home-limits__num">01</span>
+            <h3 class="vn-home-limits__title">Только участники НИС</h3>
+          </div>
+          <p class="vn-home-limits__body">Помогаю военнослужащим и членам их семей в рамках программы военной ипотеки. Гражданские покупки — не моя история.</p>
+        </div>
+
+        <div class="vn-home-limits__item">
+          <div class="vn-home-limits__item-head">
+            <span class="vn-home-limits__num">02</span>
+            <h3 class="vn-home-limits__title">Только новостройки (первичный рынок)</h3>
+          </div>
+          <p class="vn-home-limits__body">Вторичное жильё, загородные дома и участки — другая специализация со своими принципами работы. Не берусь.</p>
+        </div>
+
+        <div class="vn-home-limits__item">
+          <div class="vn-home-limits__item-head">
+            <span class="vn-home-limits__num">03</span>
+            <h3 class="vn-home-limits__title">Только Краснодар и Крым</h3>
+          </div>
+          <p class="vn-home-limits__body">Работаю там, где знаю рынок. Локальное знание — это не то, что можно имитировать по карте из другого города.</p>
+        </div>
+
+        <div class="vn-home-limits__item">
+          <div class="vn-home-limits__item-head">
+            <span class="vn-home-limits__num">04</span>
+            <h3 class="vn-home-limits__title">Гарантию одобрения банка — не даю</h3>
+          </div>
+          <p class="vn-home-limits__body">Решение принимает банк. Моя роль — правильный маршрут и подготовленные документы. Результат — по-честному.</p>
+        </div>
+
+      </div>
+
+      <!-- Манифест-цитата -->
+      <div class="vn-home-limits__quote-col">
+        <div class="vn-home-limits__quote-wrap">
+          <span class="vn-home-limits__big-q" aria-hidden="true">"</span>
+          <blockquote class="vn-home-limits__quote">
+            Если задача не моя — скажу об этом честно
+            и направлю туда, где помогут лучше.
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 10: Limits ─── */
+.vn-home-limits__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.vn-home-limits__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vn-home-limits__item {
+  background-color: var(--color-bg-dark-elev);
+  border: 1px solid var(--color-border-ondark);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+}
+
+.vn-home-limits__item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.vn-home-limits__num {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-cta);
+}
+
+.vn-home-limits__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-ondark);
+  margin: 0;
+}
+
+.vn-home-limits__body {
+  font-size: 13px;
+  color: var(--color-text-ondark-mute);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.vn-home-limits__quote-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vn-home-limits__quote-wrap {
+  position: relative;
+  max-width: 380px;
+  text-align: center;
+}
+
+.vn-home-limits__big-q {
+  position: absolute;
+  top: -48px;
+  left: -12px;
+  font-size: 120px;
+  line-height: 1;
+  color: rgba(241,243,245,0.06);
+  font-family: Georgia, serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+.vn-home-limits__quote {
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--color-text-ondark);
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .vn-home-limits__cols { grid-template-columns: 1fr; }
+  .vn-home-limits__quote-col { margin-top: 28px; }
+}
+</style>

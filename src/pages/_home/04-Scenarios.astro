@@ -1,0 +1,123 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 04 — СЦЕНАРИИ
+════════════════════════════════════════════════ -->
+<section id="section-scenarios" class="vn-section">
+  <span class="vn-section-marker vn-pos-bl" aria-hidden="true">04</span>
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono">ВАШ СЦЕНАРИЙ / 04</span>
+    <h2 class="vn-home-h2" style="max-width:680px; margin-top:16px;">
+      С какой задачей обычно приходят
+    </h2>
+    <p class="vn-home-sub" style="max-width:520px; margin-top:12px; margin-bottom:48px;">
+      Узнайте свою ситуацию. Разные сценарии требуют разных решений —
+      но первый шаг для каждого одинаковый.
+    </p>
+
+    <div class="vn-home-sc__grid">
+
+      <article class="vn-home-sc__card">
+        <span class="vn-tag">01</span>
+        <div class="vn-accent-line" aria-hidden="true"></div>
+        <h3 class="vn-home-sc__title">Для жизни</h3>
+        <p class="vn-home-sc__body">Нужна новостройка, в которой реально удобно жить семье с детьми.</p>
+      </article>
+
+      <article class="vn-home-sc__card vn-home-sc__card--low">
+        <span class="vn-tag">02</span>
+        <div class="vn-accent-line" aria-hidden="true"></div>
+        <h3 class="vn-home-sc__title">Переезд позже</h3>
+        <p class="vn-home-sc__body">Квартиру покупают сейчас, а переезжать будут через 2–3 года.</p>
+      </article>
+
+      <article class="vn-home-sc__card">
+        <span class="vn-tag">03</span>
+        <div class="vn-accent-line" aria-hidden="true"></div>
+        <h3 class="vn-home-sc__title">Под сдачу до переезда</h3>
+        <p class="vn-home-sc__body">Важно, чтобы квартира работала и приносила доход до момента переезда.</p>
+      </article>
+
+      <article class="vn-home-sc__card vn-home-sc__card--low">
+        <span class="vn-tag">04</span>
+        <div class="vn-accent-line" aria-hidden="true"></div>
+        <h3 class="vn-home-sc__title">Дистанционная покупка</h3>
+        <p class="vn-home-sc__body">Нет возможности постоянно приезжать в Краснодар и контролировать всё лично.</p>
+      </article>
+
+      <article class="vn-home-sc__card">
+        <span class="vn-tag">05</span>
+        <div class="vn-accent-line" aria-hidden="true"></div>
+        <h3 class="vn-home-sc__title">Сложный маршрут</h3>
+        <p class="vn-home-sc__body">Сжатые сроки НИС, нестандартная ситуация, документы, координация сторон.</p>
+      </article>
+
+    </div>
+
+    <p class="vn-home-sc__note">
+      Какой бы ни был ваш сценарий — работа начинается одинаково: с разбора цели покупки.
+    </p>
+    <div class="vn-home-sc__cta-row">
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Разобрать мою ситуацию"
+        class="vn-btn-primary"
+      >
+        Разобрать мою ситуацию
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 04: Scenarios ─── */
+.vn-home-sc__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.vn-home-sc__card {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.vn-home-sc__card--low { background-color: var(--color-bg-surface-low); }
+
+.vn-home-sc__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 8px 0 6px;
+  line-height: 1.3;
+}
+
+.vn-home-sc__body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.vn-home-sc__note {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: 36px;
+}
+
+.vn-home-sc__cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 1100px) {
+  .vn-home-sc__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .vn-home-sc__grid { grid-template-columns: 1fr; }
+}
+</style>

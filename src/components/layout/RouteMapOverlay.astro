@@ -778,11 +778,12 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
 
   /* Mobile overlay */
   @media (max-width: 1023px) {
-    .vn-overlay-header { padding-inline: 20px; }
+    .vn-overlay-header { display: none; }
     .vn-overlay-header-label { display: none; }
     .vn-overlay-body {
       grid-template-columns: 1fr;
       grid-template-rows:    auto;
+      padding-top:           60px;
     }
     .vn-overlay-brand { display: none; }
     .vn-overlay-contacts {

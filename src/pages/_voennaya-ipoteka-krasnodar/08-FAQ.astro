@@ -1,0 +1,44 @@
+---
+import { faqItems } from './pageData';
+---
+
+<!-- ══════════════════════════════════════════════
+     БЛОК 08 — FAQ
+════════════════════════════════════════════════ -->
+<section id="section-krd-faq" class="vn-section vn-section--secondary">
+  <span class="vn-section-marker vn-krd-pos-tr" aria-hidden="true">07</span>
+  <div class="vn-container vn-rel">
+    <span class="vn-label-mono">ВОПРОСЫ / 07</span>
+    <h2 class="vn-krd-h2" style="max-width:600px; margin-top:16px; margin-bottom:8px;">
+      Частые вопросы по выбору новостройки
+    </h2>
+    <p class="vn-krd-sub" style="max-width:600px; margin-bottom:40px;">
+      Ответы на самые частые рациональные вопросы. Если вашего вопроса нет — задайте его на разборе.
+    </p>
+
+    <div class="vn-krd-faq__list" style="max-width:800px;">
+      {faqItems.map((item) => (
+        <details class="vn-faq-item">
+          <summary class="vn-faq-question">
+            {item.q}
+            <svg class="vn-krd-faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="vn-faq-answer">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div style="margin-top:32px;">
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Задать вопрос на разборе"
+        class="vn-krd-textlink"
+      >
+        Не нашли свой вопрос? Задайте на разборе →
+      </a>
+    </div>
+  </div>
+</section>

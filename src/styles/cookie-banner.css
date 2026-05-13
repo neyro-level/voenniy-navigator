@@ -1,0 +1,114 @@
+.vn-cookie {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  width: min(calc(100% - 32px), 720px);
+  padding: 16px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-xl);
+}
+
+.vn-cookie__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.vn-cookie__text {
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.vn-cookie__link {
+  color: var(--color-accent-cta);
+  text-decoration: none;
+}
+
+.vn-cookie__link:hover {
+  text-decoration: underline;
+}
+
+.vn-cookie__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.vn-cookie__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  font-family: var(--font-family-base);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.vn-cookie__btn--accept {
+  background: var(--color-accent-cta);
+  color: #ffffff;
+  border: 1px solid var(--color-accent-cta);
+}
+
+.vn-cookie__btn--accept:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.vn-cookie__btn--reject {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.vn-cookie__btn--reject:hover {
+  background: var(--color-bg-secondary);
+  border-color: rgba(15, 37, 71, 0.2);
+}
+
+@media (max-width: 640px) {
+  .vn-cookie {
+    bottom: 80px;
+    padding: 14px 16px;
+  }
+
+  .vn-cookie__inner {
+    gap: 14px;
+  }
+
+  .vn-cookie__actions {
+    width: 100%;
+  }
+
+  .vn-cookie__btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-cookie__btn {
+    transition: none;
+  }
+
+  .vn-cookie__btn--accept:hover,
+  .vn-cookie__btn--reject:hover {
+    transform: none;
+  }
+}

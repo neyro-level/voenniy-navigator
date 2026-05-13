@@ -1,0 +1,65 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 02 — КОРОТКИЙ ОТВЕТ (AI-ready)
+════════════════════════════════════════════════ -->
+<section id="section-short-answer" class="vn-home-answer">
+  <div class="vn-container">
+    <div class="vn-home-answer__inner">
+      <blockquote class="vn-home-answer__quote">
+        Военный навигатор Михаила Хряпина помогает военнослужащим и их семьям
+        выбрать новостройку в Краснодарском крае или в Крыму
+        под реальную цель покупки для жизни или инвестиции.
+      </blockquote>
+      <p class="vn-home-answer__detail">
+        Работа начинается с разбора задачи, а не подборки&nbsp;вариантов.
+        Дальше&nbsp;– сопровождение по всему маршруту до регистрации права&nbsp;собственности.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 02: Short answer ─── */
+.vn-home-answer {
+  background-color: var(--color-bg-secondary);
+  padding-block: 60px;
+}
+
+.vn-home-answer__inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 32px;
+  align-items: baseline;
+}
+
+.vn-home-answer__quote {
+  grid-column: 1 / 9;
+  margin: 0;
+  padding-left: 24px;
+  border-left: 3px solid var(--color-accent-cta);
+  font-size: clamp(18px, 1.7vw, 22px);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-text-primary);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.vn-home-answer__detail {
+  grid-column: 9 / 13;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-tertiary);
+  text-wrap: balance;
+}
+
+@media (max-width: 1023px) {
+  .vn-home-answer__quote  { grid-column: 1 / -1; }
+  .vn-home-answer__detail { grid-column: 1 / -1; margin-top: 20px; }
+}
+
+@media (max-width: 768px) {
+  .vn-home-answer { padding-block: 40px; }
+  .vn-home-answer__quote { font-size: 17px; padding-left: 18px; }
+}
+</style>

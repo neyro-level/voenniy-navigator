@@ -48,6 +48,9 @@
   --radius-lg:               12px;
   --radius-xl:               16px;
   --radius-full:             999px;
+
+  /* ─── Shadows ─── */
+  --shadow-xl:               0 20px 60px rgba(15, 20, 25, 0.16);
 }
 
 /* ─── Typography scale ─── */
