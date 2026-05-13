@@ -1,0 +1,299 @@
+---
+import { CONTACTS } from '../../lib/constants';
+---
+
+<section id="section-krym-hero" class="vn-krym-hero">
+  <div class="vn-krym-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-krym-hero__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Left: 7 cols -->
+      <div class="vn-krym-hero__left">
+        <div class="vn-krym-hero__eyebrow">Военная ипотека / Крым / 01</div>
+
+        <h1 class="vn-krym-hero__h1">
+          Военная ипотека в Крыму:<br>
+          как выбрать квартиру или новостройку
+          <span class="vn-krym-hero__h1-accent">под вашу задачу</span>
+        </h1>
+
+        <p class="vn-krym-hero__sub">
+          Помогаю военнослужащим и их семьям разобраться,
+          какие квартиры и новостройки в Крыму стоит
+          смотреть: для жизни, переезда позже, сдачи
+          или дистанционной покупки.
+        </p>
+
+        <div class="vn-krym-hero__cta-row">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Начать разбор покупки в Крыму"
+            class="vn-btn-primary vn-krym-hero__btn"
+          >
+            Разобрать покупку в Крыму
+          </a>
+          <a
+            href={CONTACTS.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-btn-ghost vn-krym-hero__btn-ghost vn-krym-hide-mobile"
+            aria-label="Написать в Telegram"
+          >
+            Написать в Telegram
+          </a>
+        </div>
+
+        <div class="vn-krym-hero__trust" role="list">
+          <div class="vn-krym-hero__trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Офис в Крыму</span>
+          </div>
+          <div class="vn-krym-hero__trust-divider" aria-hidden="true"></div>
+          <div class="vn-krym-hero__trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>Разбор перед подбором</span>
+          </div>
+          <div class="vn-krym-hero__trust-divider" aria-hidden="true"></div>
+          <div class="vn-krym-hero__trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            <span>Дистанционный формат</span>
+          </div>
+          <div class="vn-krym-hero__trust-divider vn-krym-hide-mobile" aria-hidden="true"></div>
+          <div class="vn-krym-hero__trust-item vn-krym-hide-mobile" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Весь полуостров</span>
+          </div>
+        </div>
+
+        <!-- Mobile compact strip -->
+        <div class="vn-krym-hero__compact" aria-hidden="true">
+          <span>Симферополь</span>
+          <span class="vn-krym-hero__compact-dot"></span>
+          <span>Ялта</span>
+          <span class="vn-krym-hero__compact-dot"></span>
+          <span>Побережье</span>
+          <span class="vn-krym-hero__compact-dot"></span>
+          <span>Весь Крым</span>
+        </div>
+      </div>
+
+      <!-- Right: 5 cols — Crimea Map SVG -->
+      <div class="vn-krym-hero__right">
+        <div class="vn-krym-hero__visual">
+          <!-- Stylized Crimea peninsula SVG -->
+          <svg class="vn-krym-hero__svg" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Peninsula silhouette -->
+            <path d="M120 60 Q180 40 240 55 Q290 70 310 110 Q325 150 315 200 Q305 260 280 310 Q250 370 210 410 Q170 450 140 445 Q110 440 100 400 Q85 350 95 290 Q105 230 100 180 Q95 130 110 90 Q115 70 120 60Z"
+              fill="var(--color-accent-soft)"
+              stroke="var(--color-accent-primary)"
+              stroke-width="1.5"
+              opacity="0.8"
+            />
+
+            <!-- City markers -->
+            <!-- Simferopol -->
+            <circle cx="195" cy="180" r="6" fill="var(--color-accent-cta)" opacity="0.7"/>
+            <text x="195" y="165" text-anchor="middle" fill="var(--color-text-secondary)" font-size="10" font-weight="500" font-family="Inter, sans-serif">Симферополь</text>
+
+            <!-- Yalta -->
+            <circle cx="165" cy="280" r="6" fill="var(--color-accent-cta)" opacity="0.7"/>
+            <text x="165" y="300" text-anchor="middle" fill="var(--color-text-secondary)" font-size="10" font-weight="500" font-family="Inter, sans-serif">Ялта</text>
+
+            <!-- Evpatoria -->
+            <circle cx="130" cy="140" r="6" fill="var(--color-accent-cta)" opacity="0.7"/>
+            <text x="130" y="125" text-anchor="middle" fill="var(--color-text-secondary)" font-size="10" font-weight="500" font-family="Inter, sans-serif">Евпатория</text>
+
+            <!-- Feodosia -->
+            <circle cx="255" cy="240" r="6" fill="var(--color-accent-cta)" opacity="0.7"/>
+            <text x="255" y="260" text-anchor="middle" fill="var(--color-text-secondary)" font-size="10" font-weight="500" font-family="Inter, sans-serif">Феодосия</text>
+
+            <!-- Office marker -->
+            <circle cx="145" cy="380" r="7" fill="var(--color-accent-primary)"/>
+            <text x="145" y="405" text-anchor="middle" fill="var(--color-text-secondary)" font-size="10" font-weight="500" font-family="Inter, sans-serif">Офис в Крыму</text>
+
+            <!-- "You" badge outside peninsula -->
+            <rect x="260" y="50" width="50" height="20" rx="10" fill="var(--color-bg-surface)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="285" y="64" text-anchor="middle" fill="var(--color-text-secondary)" font-size="9" font-weight="600" font-family="Inter, sans-serif">ВЫ</text>
+
+            <!-- Dashed arrow from "You" to peninsula -->
+            <path d="M260 70 Q230 90 210 100" stroke="var(--color-accent-cta)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krym-hero {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-primary);
+    padding-top: 160px;
+    padding-bottom: 96px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .vn-krym-hero__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-krym-hero__radial {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, color-mix(in srgb, #fff 60%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-krym-hero__left {
+    grid-column: 1 / 8;
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .vn-krym-hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 28px;
+  }
+  .vn-krym-hero__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-krym-hero__h1 {
+    margin: 0 0 24px;
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-krym-hero__h1-accent { color: var(--color-accent-primary); }
+
+  .vn-krym-hero__sub {
+    margin: 0 0 36px;
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    max-width: 540px;
+    text-wrap: balance;
+  }
+
+  .vn-krym-hero__cta-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .vn-krym-hero__btn { height: 52px; padding: 0 32px; font-size: 16px; }
+  .vn-krym-hero__btn-ghost { height: 52px; }
+
+  .vn-krym-hero__trust {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+  }
+
+  .vn-krym-hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+  .vn-krym-hero__trust-item:first-child { padding-left: 0; }
+  .vn-krym-hero__trust-item svg { color: var(--color-accent-cta); flex-shrink: 0; }
+
+  .vn-krym-hero__trust-divider {
+    width: 1px;
+    height: 16px;
+    background-color: var(--color-border);
+  }
+
+  .vn-krym-hero__compact {
+    display: none;
+    margin-top: 24px;
+    gap: 12px;
+    align-items: center;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-secondary);
+    flex-wrap: wrap;
+  }
+  .vn-krym-hero__compact-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-accent-cta);
+  }
+
+  .vn-krym-hero__right {
+    grid-column: 8 / 13;
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vn-krym-hero__visual {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .vn-krym-hero__svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krym-hero__left { grid-column: 1 / -1; }
+    .vn-krym-hero__right { grid-column: 1 / -1; margin-top: 32px; max-width: 320px; }
+    .vn-krym-hero__btn-ghost { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .vn-krym-hero { padding-top: 100px; padding-bottom: 64px; }
+    .vn-krym-hero__grid-bg { background-size: 48px 48px; }
+    .vn-krym-hero__right { order: -1; max-width: 100%; }
+    .vn-krym-hero__visual { max-width: 240px; margin: 0 auto; }
+    .vn-krym-hero__btn { width: 100%; justify-content: center; }
+    .vn-krym-hero__trust { display: none; }
+    .vn-krym-hero__compact { display: flex; }
+  }
+</style>

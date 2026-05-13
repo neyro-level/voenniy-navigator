@@ -1,0 +1,118 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 03 — ПОЧЕМУ НЕЛЬЗЯ ВЫБИРАТЬ ТОЛЬКО ПО ЦЕНЕ
+════════════════════════════════════════════════ -->
+<section id="section-krym-problem" class="vn-section vn-section--secondary">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Header -->
+      <div class="vn-krym-problem__header">
+        <span class="vn-label-mono">Проблема выбора / 03</span>
+        <h2 class="vn-krym-h2" style="margin-top: 16px; max-width: 720px;">
+          Почему квартиру в Крыму по военной ипотеке нельзя выбирать только по цене
+        </h2>
+        <p class="vn-krym-sub" style="margin-top: 12px; max-width: 660px;">
+          В Крыму цена и красивая локация не отвечают на главный вопрос: подходит
+          ли объект под вашу задачу и маршрут военной ипотеки. Для семьи, сдачи,
+          переезда позже и дистанционной покупки критерии будут разными.
+        </p>
+      </div>
+
+      <!-- Card 1 -->
+      <article class="vn-krym-problem__card" style="grid-column: span 3;">
+        <span class="vn-krym-problem__tag">01</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-problem__title">Цена не показывает пригодность объекта</h3>
+        <p class="vn-krym-problem__body">Дешевле не значит лучше, если район неудобен для жизни, слаб для сдачи или сложен по логистике.</p>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="vn-krym-problem__card vn-krym-problem__card--stagger-1" style="grid-column: span 3;">
+        <span class="vn-krym-problem__tag">02</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-problem__title">Локация у моря не всегда решает задачу</h3>
+        <p class="vn-krym-problem__body">Для жизни важны школа, медицина, транспорт и повседневная инфраструктура, а не только вид из окна.</p>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="vn-krym-problem__card vn-krym-problem__card--stagger-2" style="grid-column: span 3;">
+        <span class="vn-krym-problem__tag">03</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-problem__title">Симферополь и побережье — разные сценарии</h3>
+        <p class="vn-krym-problem__body">Симферополь чаще логичен как городская база, побережье — как сценарий жизни, отдыха или аренды.</p>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="vn-krym-problem__card vn-krym-problem__card--stagger-3" style="grid-column: span 3;">
+        <span class="vn-krym-problem__tag">04</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-problem__title">Военная ипотека добавляет проверку маршрута</h3>
+        <p class="vn-krym-problem__body">Нужно смотреть не только объект, но и банк, документы, формат сделки и готовность сторон.</p>
+      </article>
+
+      <!-- CTA -->
+      <div class="vn-krym-problem__cta">
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Разобрать мою задачу"
+          class="vn-krym-textlink"
+        >
+          Разобрать мою задачу →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krym-problem__header { grid-column: 1 / -1; }
+
+  .vn-krym-problem__card {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-top: 0;
+  }
+
+  .vn-krym-problem__card--stagger-1 { margin-top: 32px; }
+  .vn-krym-problem__card--stagger-2 { margin-top: 16px; }
+  .vn-krym-problem__card--stagger-3 { margin-top: 48px; }
+
+  .vn-krym-problem__tag {
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-primary);
+    border-radius: 4px;
+  }
+
+  .vn-krym-problem__title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 8px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .vn-krym-problem__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .vn-krym-problem__cta {
+    grid-column: 1 / -1;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krym-problem__card { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+    .vn-krym-problem__card + .vn-krym-problem__card { margin-top: 16px !important; }
+  }
+</style>

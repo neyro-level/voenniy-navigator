@@ -1,0 +1,134 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 10 — ФИНАЛЬНЫЙ CTA (тёмная секция)
+════════════════════════════════════════════════ -->
+<section id="section-krym-final" class="vn-section vn-section--dark">
+  <div class="vn-krym-final__deco" aria-hidden="true"></div>
+  <div class="vn-krym-final__radial" aria-hidden="true"></div>
+
+  <div class="vn-container" style="position: relative; z-index: 2;">
+    <div class="vn-grid-12">
+      <!-- Left: text -->
+      <div class="vn-krym-final__left">
+        <span class="vn-label-mono">Действие / 10</span>
+        <h2 class="vn-krym-h2" style="margin-top: 16px; color: var(--color-text-ondark); max-width: 520px;">
+          Начните с разбора задачи, а не со списка объявлений
+        </h2>
+        <p class="vn-krym-sub" style="margin-top: 12px; color: var(--color-text-ondark-mute); max-width: 520px;">
+          Квартира в Крыму — это инвестиция в комфорт, будущее и уверенность.
+          Чтобы выбор был правильным, нужно понимать задачу, сценарий использования
+          и маршрут покупки. Я помогу разобраться, проверю документы и сопровожу
+          сделку на каждом этапе.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Записаться на разбор"
+          class="vn-btn-primary vn-krym-final__cta"
+        >
+          Записаться на разбор
+        </a>
+      </div>
+
+      <!-- Right: stats -->
+      <div class="vn-krym-final__right">
+        <div class="vn-krym-final__stat">
+          <span class="vn-krym-final__number">65+</span>
+          <span class="vn-krym-final__label">сделок и разборов с&nbsp;2016&nbsp;года</span>
+        </div>
+        <div class="vn-krym-final__stat">
+          <span class="vn-krym-final__number">10+</span>
+          <span class="vn-krym-final__label">застройщиков Крыма в проверенном списке</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="vn-krym-final__silhouette" viewBox="0 0 400 300" aria-hidden="true">
+    <path d="M120,280 Q90,240 100,200 Q110,150 140,120 Q170,80 220,60 Q280,40 320,70 Q350,100 340,150 Q330,200 300,240 Q260,280 200,290 Q150,295 120,280 Z" 
+          fill="none" stroke="var(--color-text-ondark)" stroke-width="1" opacity="0.03"/>
+  </svg>
+</section>
+
+<style>
+  .vn-krym-final__left {
+    grid-column: 1 / 7;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .vn-krym-final__right {
+    grid-column: 7 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .vn-krym-final__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vn-krym-final__number {
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400;
+    color: var(--color-text-ondark);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .vn-krym-final__label {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text-ondark-mute);
+    margin-top: 8px;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .vn-krym-final__cta {
+    margin-top: 32px;
+    display: inline-flex;
+  }
+
+  .vn-krym-final__deco {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid-dark) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid-dark) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.5;
+  }
+
+  .vn-krym-final__radial {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(37,99,235,0.06) 0%, transparent 60%);
+  }
+
+  .vn-krym-final__silhouette {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(50vw, 500px);
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krym-final__left,
+    .vn-krym-final__right { grid-column: 1 / -1; }
+    .vn-krym-final__right { margin-top: 48px; }
+    .vn-krym-final__silhouette { opacity: 0.5; width: 70vw; }
+  }
+</style>

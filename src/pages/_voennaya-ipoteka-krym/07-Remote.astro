@@ -1,0 +1,82 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 07 — УДАЛЁННАЯ ПОКУПКА
+════════════════════════════════════════════════ -->
+<section id="section-krym-remote" class="vn-section" style="background-color: var(--color-bg-surface);">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Left: text -->
+      <div class="vn-krym-remote__left">
+        <span class="vn-label-mono">Дистанционный формат / 07</span>
+        <h2 class="vn-krym-h2" style="margin-top: 16px; max-width: 560px;">
+          Дистанционная покупка квартиры в Крыму
+        </h2>
+        <p class="vn-krym-sub" style="margin-top: 12px; max-width: 520px;">
+          Военнослужащие часто не могут приехать в Крым лично для выбора
+          квартиры. В таком случае возможен дистанционный маршрут: отбор вариантов,
+          онлайн-знакомство, подготовка документов, видеопоказы, удалённое подписание
+          договоров и контроль до получения ключей. Каждый шаг требует проверки
+          документов, коммуникации с банком и юридического контроля.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Обсудить удалённый маршрут"
+          class="vn-krym-textlink"
+          style="margin-top: 24px;"
+        >
+          Обсудить удалённый маршрут →
+        </a>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="vn-krym-remote__right">
+        <div class="vn-krym-remote__card">
+          <p class="vn-krym-remote__card-text">
+            Работаю с покупкой в Крыму на расстоянии:
+            подбор, документы, банк, маршрут под ключ.
+          </p>
+          <a href="/distancionnaya-pokupka/" class="vn-btn-primary">
+            Узнать про удалённую покупку
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krym-remote__left {
+    grid-column: 1 / 8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vn-krym-remote__right {
+    grid-column: 8 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vn-krym-remote__card {
+    background-color: var(--color-bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--color-border);
+  }
+
+  .vn-krym-remote__card-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    margin: 0 0 20px;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krym-remote__left,
+    .vn-krym-remote__right { grid-column: 1 / -1; }
+    .vn-krym-remote__right { margin-top: 40px; }
+  }
+</style>

@@ -590,17 +590,17 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 9 | /voennaya-ipoteka-krasnodar/ | 2026-05-13 | ✅ | 9 блоков (_voennaya-ipoteka-krasnodar/01-09) по PAGE_NOVOSTROYKI.md |
 | 10 | Рефакторинг монолитов | 2026-05-13 | ✅ | Обе страницы разбиты на компоненты по _[slug]/ |
 | 11 | RequestModal + CookieBanner | 2026-05-13 | ✅ | React islands подключены, modal.css + cookie-banner.css |
-| 12 | /voennaya-ipoteka-krym/ | — | ⏳ | PAGE_VOENNAYA_IPOTEKA_KRYM.md |
-| 13 | /distancionnaya-pokupka/ | — | ⏳ | PAGE_DISTANCIONNAYA_POKUPKA.md |
+| 12 | /voennaya-ipoteka-krym/ | 2026-05-14 | ✅ | 10 блоков (_voennaya-ipoteka-krym/01-10) по PAGE_VOENNAYA_IPOTEKA_KRYM.md |
+| 13 | /distancionnaya-pokupka/ | 2026-05-13 | ✅ | 12 блоков по PAGE_DISTANCIONNAYA_POKUPKA.md |
 | 14 | /etapy-pokupki/ | — | ⏳ | PAGE_ETAPY_POKUPKI.md |
 | 15 | /contacts/ | — | ⏳ | PAGE_CONTACTS.md |
-| 16 | politika + cookies + 404 + thanks | — | ⏳ | — |
+| 16 | politika + cookies + 404 + thanks | 2026-05-13 | ✅ | Юридические и утилитарные страницы |
 | 17 | Воронка: /video/ + /bonus/ | — | ⏳ | QuizForm, bonus-content.ts |
 | 18 | /prezentaciya/ | — | ⏳ | Гибридный дизайн АМС |
 | 19 | Финальный QA | — | ⏳ | BUILD_PHASE_3_FINAL.md |
 | 20 | Продакшн деплой | — | ⏳ | vercel --prod |
 
-**Текущий фокус:** Доработка главной страницы (/) — по указанию владельца.
+**Текущий фокус:** Сборка `/etapy-pokupki/` (этап 14) — по PAGE_ETAPY_POKUPKI.md.
 
 ---
 

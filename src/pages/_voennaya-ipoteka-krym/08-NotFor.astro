@@ -1,0 +1,87 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 08 — КОМУ НЕ ПОДХОДИТ ПОДХОД
+════════════════════════════════════════════════ -->
+<section id="section-krym-notfor" class="vn-section vn-section--secondary">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Header -->
+      <div class="vn-krym-notfor__header">
+        <span class="vn-label-mono">Честно / 08</span>
+        <h2 class="vn-krym-h2" style="margin-top: 16px; max-width: 720px;">
+          Кому этот подход может не подойти
+        </h2>
+        <p class="vn-krym-sub" style="margin-top: 12px; max-width: 660px;">
+          Моя задача — помочь с выбором и сопровождением. Но не всякая ситуация
+          подходит под этот формат работы.
+        </p>
+      </div>
+
+      <!-- Card 1 -->
+      <article class="vn-krym-notfor__card" style="grid-column: span 4;">
+        <span class="vn-krym-notfor__tag">Не подходит</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-notfor__title">Кто хочет только быстрый сброс документов</h3>
+        <p class="vn-krym-notfor__body">Без разбора задачи и сценария не получится выбрать объект, который решает вашу цель.</p>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="vn-krym-notfor__card" style="grid-column: span 4;">
+        <span class="vn-krym-notfor__tag">Не подходит</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-notfor__title">Кто выбирает только по цене и красивому фото</h3>
+        <p class="vn-krym-notfor__body">Фото и цена не дают понимания локации, инфраструктуры, документов и маршрута сделки.</p>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="vn-krym-notfor__card" style="grid-column: span 4;">
+        <span class="vn-krym-notfor__tag">Не подходит</span>
+        <div class="vn-krym-accent-line" style="margin: 12px 0 10px;"></div>
+        <h3 class="vn-krym-notfor__title">Кто не готов к удалённому маршруту</h3>
+        <p class="vn-krym-notfor__body">Если вы не можете или не готовы работать на расстоянии, процесс может затянуться или потребовать личного присутствия.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krym-notfor__header { grid-column: 1 / -1; }
+
+  .vn-krym-notfor__card {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+  }
+
+  .vn-krym-notfor__tag {
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-primary);
+    border-radius: 4px;
+  }
+
+  .vn-krym-notfor__title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 8px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .vn-krym-notfor__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krym-notfor__card { grid-column: 1 / -1 !important; }
+    .vn-krym-notfor__card + .vn-krym-notfor__card { margin-top: 16px; }
+  }
+</style>
