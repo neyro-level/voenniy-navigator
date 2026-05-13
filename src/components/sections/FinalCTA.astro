@@ -1,0 +1,385 @@
+---
+import { CONTACTS } from '../../lib/constants';
+
+interface UsefulLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  accentText?: string;
+  subtitle: string;
+  ctaText: string;
+  ctaModalTitle?: string;
+  showStats?: boolean;
+  showUsefulLinks?: boolean;
+  usefulLinks?: UsefulLink[];
+}
+
+const {
+  eyebrow = 'ГОТОВЫ К ПЕРВОМУ ШАГУ?',
+  title,
+  accentText,
+  subtitle,
+  ctaText,
+  ctaModalTitle = ctaText,
+  showStats = true,
+  showUsefulLinks = false,
+  usefulLinks = [],
+} = Astro.props;
+---
+
+<section
+  id="section-cta-final"
+  class="vn-section vn-section--dark vn-final-cta"
+  aria-labelledby="vn-final-cta-title"
+>
+  <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
+  <div class="vn-final-cta__radial" aria-hidden="true"></div>
+
+  <div class="vn-container vn-rel">
+    <div class="vn-grid-12">
+      <!-- ── Left: headline + CTA ── -->
+      <div class="vn-final-cta__left" style="grid-column: 1 / 8">
+        <span class="vn-label-mono vn-final-cta__eyebrow">{eyebrow}</span>
+        <h2 class="vn-final-cta__title" id="vn-final-cta-title">
+          {title}
+          {accentText && <span class="vn-final-cta__accent">{accentText}</span>}
+        </h2>
+        <p class="vn-final-cta__subtitle">{subtitle}</p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title={ctaModalTitle}
+          class="vn-btn-primary vn-final-cta__cta"
+        >
+          {ctaText}
+        </a>
+        <p class="vn-final-cta__alt">
+          Или напишите напрямую:
+          <a
+            href={CONTACTS.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-final-cta__alt-link"
+          >Telegram</a>
+          <a
+            href={CONTACTS.max}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-final-cta__alt-link"
+          >Max</a>
+        </p>
+      </div>
+
+      <!-- ── Right: stats + useful pages ── -->
+      <div class="vn-final-cta__right" style="grid-column: 8 / 13">
+        {
+          showStats && (
+            <div class="vn-final-cta__stats" role="list">
+              <div class="vn-final-cta__stat" role="listitem">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span>30 минут</span>
+              </div>
+              <div class="vn-final-cta__stat" role="listitem">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span>В удобное время</span>
+              </div>
+              <div class="vn-final-cta__stat" role="listitem">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Бесплатно</span>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          showUsefulLinks && usefulLinks.length > 0 && (
+            <div class="vn-final-cta__pages">
+              <span class="vn-label-mono vn-final-cta__pages-label">
+                ПОЛЕЗНЫЕ СТРАНИЦЫ
+              </span>
+              <div class="vn-final-cta__pages-list">
+                {usefulLinks.map((link) => (
+                  <a href={link.href} class="vn-final-cta__page-link">
+                    <span>{link.label}</span>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── FinalCTA — универсальный финальный блок ─── */
+  .vn-final-cta {
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    padding-bottom: 96px;
+  }
+
+  .vn-final-cta__radial {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 900px 400px at 30% 0%,
+      var(--color-accent-cta-soft),
+      transparent
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Left column ── */
+  .vn-final-cta__left {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vn-final-cta__eyebrow {
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+  }
+
+  .vn-final-cta__title {
+    margin: 16px 0 0;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-ondark);
+    text-wrap: balance;
+  }
+
+  .vn-final-cta__accent {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-final-cta__subtitle {
+    margin: 16px 0 36px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-ondark);
+    opacity: 0.6;
+    max-width: 440px;
+  }
+
+  .vn-final-cta__cta {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+
+  .vn-final-cta__alt {
+    margin: 16px 0 0;
+    font-size: 13px;
+    color: var(--color-text-ondark);
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vn-final-cta__alt-link {
+    color: var(--color-text-ondark);
+    opacity: 0.7;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+    transition: color 150ms ease, opacity 150ms ease;
+  }
+  .vn-final-cta__alt-link:hover {
+    color: var(--color-accent-cta);
+    opacity: 1;
+  }
+
+  /* ── Right column ── */
+  .vn-final-cta__right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 48px;
+    border-left: 1px solid var(--color-border-ondark);
+  }
+
+  /* Stats */
+  .vn-final-cta__stats {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--color-border-ondark);
+    margin-bottom: 32px;
+  }
+
+  .vn-final-cta__stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-ondark);
+    opacity: 0.8;
+    border-bottom: 1px solid var(--color-border-ondark);
+  }
+  .vn-final-cta__stat:last-child {
+    border-bottom: none;
+  }
+  .vn-final-cta__stat svg {
+    color: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  /* Useful pages */
+  .vn-final-cta__pages-label {
+    color: var(--color-text-ondark);
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .vn-final-cta__pages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vn-final-cta__page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 14px;
+    background: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-ondark);
+    opacity: 0.75;
+    transition: border-color 150ms ease, background 150ms ease, opacity 150ms ease;
+  }
+  .vn-final-cta__page-link svg {
+    color: var(--color-text-ondark);
+    opacity: 0.3;
+    flex-shrink: 0;
+    transition: opacity 150ms ease;
+  }
+  .vn-final-cta__page-link:hover {
+    border-color: var(--color-accent-cta);
+    background: var(--color-accent-cta-soft);
+    opacity: 1;
+  }
+  .vn-final-cta__page-link:hover svg {
+    opacity: 0.6;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 1023px) {
+    .vn-final-cta__left {
+      grid-column: 1 / -1 !important;
+    }
+    .vn-final-cta__right {
+      grid-column: 1 / -1 !important;
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid var(--color-border-ondark);
+      padding-top: 40px;
+      margin-top: 8px;
+    }
+    .vn-final-cta__stats {
+      flex-direction: row;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .vn-final-cta__stat {
+      border-bottom: none;
+      padding: 0;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .vn-final-cta {
+      padding-top: 72px;
+      padding-bottom: 64px;
+    }
+    .vn-final-cta__stats {
+      flex-direction: column;
+      gap: 0;
+    }
+    .vn-final-cta__stat {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border-ondark);
+    }
+    .vn-final-cta__stat:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

@@ -6,10 +6,10 @@
   <div class="vn-home-hero__radial" aria-hidden="true"></div>
 
   <div class="vn-container">
-    <div class="vn-home-hero__inner">
+    <div class="vn-home-hero__inner vn-grid-12">
 
       <!-- Left: 6 колонок -->
-      <div class="vn-home-hero__left vn-col-6">
+      <div class="vn-home-hero__left">
         <div class="vn-home-hero__eyebrow">Военный навигатор</div>
 
         <h1 class="vn-home-hero__h1">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Stats 2×2 -->
-        <div class="vn-home-hero__stats" role="list">
+        <div class="vn-home-hero__stats vn-grid-12" role="list">
           <div class="vn-home-hero__stat" role="listitem">
             <span class="vn-home-hero__stat-label">Опыт</span>
             <span class="vn-home-hero__stat-value">С 2016 года в профессии эксперта по недвижимости</span>
@@ -55,7 +55,7 @@
       </div>
 
       <!-- Right: 6 колонок -->
-      <div class="vn-home-hero__right vn-col-6">
+      <div class="vn-home-hero__right">
         <div class="vn-home-hero__photo-outer">
           <div class="vn-home-hero__portrait-frame">
             <img
@@ -107,7 +107,7 @@
   left: -200px;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-bg-surface) 60%, transparent) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -115,9 +115,6 @@
 .vn-home-hero__inner {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 32px;
   align-items: start;
   width: 100%;
 }
@@ -150,6 +147,7 @@
   font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--color-text-primary);
+  text-wrap: balance;
 }
 
 .vn-home-hero__h1-accent { color: var(--color-accent-primary); }
@@ -176,22 +174,27 @@
 
 /* Stats 2×2 */
 .vn-home-hero__stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--color-border);
 }
 
 .vn-home-hero__stat {
-  padding: 20px 20px 20px 0;
+  padding: 20px 0;
 }
+
+.vn-home-hero__stat:nth-child(odd) {
+  grid-column: 1 / 7;
+}
+
 .vn-home-hero__stat:nth-child(even) {
+  grid-column: 7 / 13;
   padding-left: 20px;
-  padding-right: 0;
   border-left: 1px solid var(--color-border);
 }
+
 .vn-home-hero__stat:nth-child(n+3) {
   border-top: 1px solid var(--color-border);
 }
+
 .vn-home-hero__stat:nth-child(3),
 .vn-home-hero__stat:nth-child(4) {
   padding-bottom: 0;
@@ -236,8 +239,8 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow:
-    14px 14px 0 rgba(15, 37, 71, 0.18),
-    0 24px 64px rgba(15, 20, 25, 0.14);
+    14px 14px 0 color-mix(in srgb, var(--color-accent-primary) 18%, transparent),
+    0 24px 64px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
 }
 
 .vn-home-hero__portrait {
@@ -254,7 +257,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(15, 20, 25, 0.65);
+  background: color-mix(in srgb, var(--color-bg-dark) 65%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 16px 20px;
@@ -264,20 +267,28 @@
   margin: 0 0 4px;
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--color-bg-surface);
 }
 
 .vn-home-hero__name-card-sub {
   margin: 0;
   font-size: var(--fs-body-sm);
   line-height: 1.4;
-  color: rgba(241, 243, 245, 0.75);
+  color: var(--color-text-ondark-mute);
 }
 
 @media (max-width: 1023px) {
   .vn-home-hero__left  { grid-column: 1 / -1; }
   .vn-home-hero__right { grid-column: 1 / -1; padding-top: 0; }
   .vn-home-hero__photo-outer { max-width: 400px; margin: 0 auto; }
+
+  /* Keep stats 2×2 on tablet — override global .vn-grid-12 > * rule */
+  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(odd) {
+    grid-column: 1 / 7;
+  }
+  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(even) {
+    grid-column: 7 / 13;
+  }
 }
 
 @media (max-width: 640px) {
@@ -287,9 +298,23 @@
   .vn-home-hero__cta-row { margin-bottom: 32px; }
   .vn-home-hero__btn-primary { width: 100%; height: 52px; justify-content: center; }
   .vn-home-hero__right { order: -1; }
-  .vn-home-hero__portrait-frame { aspect-ratio: 4 / 5; border-radius: 8px; box-shadow: 8px 8px 0 rgba(15,37,71,0.15), 0 16px 40px rgba(15,20,25,0.12); }
+  .vn-home-hero__portrait-frame {
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+    box-shadow:
+      8px 8px 0 color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
+      0 16px 40px color-mix(in srgb, var(--color-bg-dark) 12%, transparent);
+  }
   .vn-home-hero__name-card { padding: 12px 16px; }
-  .vn-home-hero__stat { padding: 16px 16px 16px 0; }
+  .vn-home-hero__stat { padding: 16px 0; }
   .vn-home-hero__stat:nth-child(even) { padding-left: 16px; }
+
+  /* Keep stats 2×2 on mobile */
+  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(odd) {
+    grid-column: 1 / 7;
+  }
+  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(even) {
+    grid-column: 7 / 13;
+  }
 }
 </style>

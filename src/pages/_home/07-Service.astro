@@ -1,14 +1,14 @@
 <!-- ══════════════════════════════════════════════
      БЛОК 07 — СОПРОВОЖДЕНИЕ
 ════════════════════════════════════════════════ -->
-<section id="section-service" class="vn-section vn-home-svc">
+<section id="section-service" class="vn-section vn-home-svc" aria-labelledby="vn-home-svc-title">
   <div class="vn-container">
 
     <!-- ── Header: full-width ── -->
     <div class="vn-grid-12 vn-home-svc__header">
       <div class="vn-home-svc__head-left" style="grid-column: 1 / 8">
         <span class="vn-label-mono">СОПРОВОЖДЕНИЕ / 07</span>
-        <h2 class="vn-home-svc__h2">
+        <h2 class="vn-home-svc__h2" id="vn-home-svc-title">
           Полный маршрут сделки — под&nbsp;ключ
         </h2>
       </div>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- ── Items: 2-column grid ── -->
-    <div class="vn-home-svc__items">
+    <div class="vn-home-svc__items vn-grid-12">
 
       <div class="vn-home-svc__item" data-svc-row>
         <span class="vn-home-svc__rnum">01</span>
@@ -133,8 +133,6 @@
 
 /* ── Items grid ── */
 .vn-home-svc__items {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid var(--color-border);
 }
 
@@ -150,11 +148,10 @@
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Right-column items get left border */
-.vn-home-svc__item:nth-child(even) {
-  padding-left: 32px;
-  padding-right: 0;
-  border-left: 1px solid var(--color-border);
+@media (min-width: 1024px) {
+  .vn-home-svc__items.vn-grid-12 > .vn-home-svc__item:nth-child(odd) { grid-column: 1 / 7; }
+  .vn-home-svc__items.vn-grid-12 > .vn-home-svc__item:nth-child(even) { grid-column: 7 / 13; padding-left: 32px; padding-right: 0; border-left: 1px solid var(--color-border); }
+  .vn-home-svc__items.vn-grid-12 > .vn-home-svc__note { grid-column: 7 / 13; }
 }
 
 /* Stagger */
@@ -209,13 +206,11 @@
   .vn-home-svc__head-left  { grid-column: 1 / -1 !important; }
   .vn-home-svc__head-right { grid-column: 1 / -1 !important; padding-left: 0; border-left: none; border-top: 1px solid var(--color-border); padding-top: 16px; }
   .vn-home-svc__pricing    { padding-left: 0; border-left: none; }
+  .vn-home-svc__note       { padding-left: 0; border-left: none; }
 }
 
 /* ── Mobile ── */
-@media (max-width: 767px) {
-  .vn-home-svc__items { grid-template-columns: 1fr; }
-  .vn-home-svc__item:nth-child(even) { padding-left: 0; border-left: none; }
-  .vn-home-svc__note { padding-left: 0; border-left: none; }
+@media (max-width: 640px) {
   .vn-home-svc__header { margin-bottom: 32px; }
 }
 

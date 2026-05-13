@@ -1,7 +1,7 @@
 <!-- ══════════════════════════════════════════════
      БЛОК 09 - ОТЗЫВЫ (dark, bank style)
 ════════════════════════════════════════════════ -->
-<section id="section-reviews" class="vn-home-reviews">
+<section id="section-reviews" class="vn-section vn-section--dark vn-home-reviews" aria-labelledby="vn-home-reviews-title">
   <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
 
   <div class="vn-container vn-rel">
@@ -10,21 +10,21 @@
     <div class="vn-grid-12 vn-home-reviews__header">
       <div class="vn-home-reviews__head-left" style="grid-column: 1 / 8">
         <span class="vn-label-mono vn-home-reviews__eyebrow">ОТЗЫВЫ / 09</span>
-        <h2 class="vn-home-reviews__h2">
+        <h2 class="vn-home-reviews__h2" id="vn-home-reviews-title">
           Истории клиентов
         </h2>
       </div>
       <div class="vn-home-reviews__head-right" style="grid-column: 8 / 13">
         <p class="vn-home-reviews__note">
-          Реальные случаи из практики. Имена и детали - с&nbsp;разрешения клиентов.
+          Реальные случаи из практики. Имена и детали — с&nbsp;разрешения клиентов.
         </p>
       </div>
     </div>
 
     <!-- 3 featured stories -->
-    <div class="vn-home-reviews__featured">
+    <div class="vn-home-reviews__featured vn-grid-12">
 
-      <article class="vn-home-reviews__feat-card">
+      <article class="vn-home-reviews__feat-card" style="grid-column: 1 / 5">
         <div class="vn-home-reviews__feat-meta">
           <div class="vn-home-reviews__avatar" aria-hidden="true">ИМ</div>
           <div>
@@ -37,7 +37,7 @@
         </blockquote>
       </article>
 
-      <article class="vn-home-reviews__feat-card">
+      <article class="vn-home-reviews__feat-card" style="grid-column: 5 / 9">
         <div class="vn-home-reviews__feat-meta">
           <div class="vn-home-reviews__avatar" aria-hidden="true">НК</div>
           <div>
@@ -50,7 +50,7 @@
         </blockquote>
       </article>
 
-      <article class="vn-home-reviews__feat-card">
+      <article class="vn-home-reviews__feat-card" style="grid-column: 9 / 13">
         <div class="vn-home-reviews__feat-meta">
           <div class="vn-home-reviews__avatar" aria-hidden="true">Л</div>
           <div>
@@ -66,34 +66,34 @@
     </div>
 
     <!-- 6 mini cards -->
-    <div class="vn-home-reviews__mini-grid">
+    <div class="vn-home-reviews__mini-grid vn-grid-12">
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 1 / 5">
         <span class="vn-home-reviews__mini-author">Елизавета Хорошильцева</span>
         <p class="vn-home-reviews__mini-text">Банк отказал мне в ипотеке, опустила руки. Михаил в кратчайшие сроки одобрил меня, подобрал квартиру - и я сама не поняла, как уже сидела в банке и подписывала документы.</p>
       </article>
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 5 / 9">
         <span class="vn-home-reviews__mini-author">Даня</span>
         <p class="vn-home-reviews__mini-text">Квартиру оформили за пару недель, а вся процедура заняла всего несколько звонков. Михаил сделал все остальное. Даже не верилось, что это возможно.</p>
       </article>
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 9 / 13">
         <span class="vn-home-reviews__mini-author">Игорь Грицай</span>
         <p class="vn-home-reviews__mini-text">Весь процесс сделки с её помощью показался не сложнее похода в магазин. Она знает всё на 10 шагов наперёд.</p>
       </article>
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 1 / 5">
         <span class="vn-home-reviews__mini-author">Luba Ермакова</span>
         <p class="vn-home-reviews__mini-text">Огромное спасибо за приличную скидку, о которой получилось договориться с застройщиком. Даже не знала, что так можно.</p>
       </article>
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 5 / 9">
         <span class="vn-home-reviews__mini-author">Люба (Хабаровск)</span>
         <p class="vn-home-reviews__mini-text">Оформила военную ипотеку на покупку квартиры в Краснодаре, находясь в Хабаровске. Михаил был на связи в любое время, несмотря на разницу часовых поясов.</p>
       </article>
 
-      <article class="vn-home-reviews__mini-card">
+      <article class="vn-home-reviews__mini-card" style="grid-column: 9 / 13">
         <span class="vn-home-reviews__mini-author">Галина Боричева</span>
         <p class="vn-home-reviews__mini-text">Общались только по телефону на расстоянии 540 км. Когда я приехала на саму сделку и мы впервые увиделись - было ощущение, что мы давно знакомы.</p>
       </article>
@@ -107,10 +107,7 @@
 /* ─── Block 09: Reviews (dark, bank style) ─── */
 .vn-home-reviews {
   position: relative;
-  background: #0f1419;
-  color: #f1f3f5;
   padding: 96px 0 88px;
-  font-family: var(--font-family-base);
   overflow: hidden;
 }
 
@@ -132,7 +129,8 @@
 }
 
 .vn-home-reviews__eyebrow {
-  color: rgba(241,243,245,0.5);
+  color: var(--color-text-ondark);
+  opacity: 0.5;
 }
 
 .vn-home-reviews__h2 {
@@ -140,7 +138,7 @@
   font-size: var(--fs-h2);
   font-weight: 650;
   line-height: 1.18;
-  color: #f1f3f5;
+  color: var(--color-text-ondark);
   text-wrap: balance;
 }
 
@@ -154,9 +152,10 @@
   margin: 0;
   font-size: var(--fs-body-sm);
   line-height: 1.65;
-  color: rgba(241,243,245,0.4);
+  color: var(--color-text-ondark);
+  opacity: 0.4;
   padding-left: 24px;
-  border-left: 1px solid rgba(241,243,245,0.1);
+  border-left: 1px solid var(--color-border-ondark);
   text-wrap: pretty;
 }
 
@@ -164,15 +163,12 @@
 .vn-home-reviews__featured {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
   margin-bottom: 16px;
 }
 
 .vn-home-reviews__feat-card {
-  background: #1A2028;
-  border-radius: 12px;
+  background: var(--color-bg-dark-elev);
+  border-radius: var(--radius-lg);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -189,8 +185,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(37,99,235,0.15);
-  color: #f1f3f5;
+  background: var(--color-accent-cta-soft);
+  color: var(--color-text-ondark);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -204,7 +200,8 @@
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(241,243,245,0.9);
+  color: var(--color-text-ondark);
+  opacity: 0.9;
 }
 
 .vn-home-reviews__tag {
@@ -221,7 +218,8 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(241,243,245,0.7);
+  color: var(--color-text-ondark);
+  opacity: 0.7;
   font-style: italic;
   text-wrap: pretty;
 }
@@ -230,14 +228,11 @@
 .vn-home-reviews__mini-grid {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
 }
 
 .vn-home-reviews__mini-card {
-  background: rgba(26,32,40,0.5);
-  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-bg-dark-elev) 50%, transparent);
+  border-radius: var(--radius-md);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -246,7 +241,8 @@
 .vn-home-reviews__mini-author {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(241,243,245,0.85);
+  color: var(--color-text-ondark);
+  opacity: 0.85;
   margin-bottom: 10px;
 }
 
@@ -254,7 +250,8 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(241,243,245,0.55);
+  color: var(--color-text-ondark);
+  opacity: 0.55;
   font-style: italic;
   text-wrap: pretty;
 }
@@ -262,17 +259,27 @@
 /* ── Tablet ── */
 @media (max-width: 1023px) {
   .vn-home-reviews__head-left  { grid-column: 1 / -1 !important; }
-  .vn-home-reviews__head-right { grid-column: 1 / -1 !important; padding-left: 0; padding-top: 16px; border-top: 1px solid rgba(241,243,245,0.1); }
+  .vn-home-reviews__head-right { grid-column: 1 / -1 !important; padding-left: 0; padding-top: 16px; border-top: 1px solid var(--color-border-ondark); }
   .vn-home-reviews__note { padding-left: 0; border-left: none; }
-  .vn-home-reviews__featured { grid-template-columns: repeat(2, 1fr); }
-  .vn-home-reviews__mini-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(1) { grid-column: 1 / 7 !important; }
+  .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(2) { grid-column: 7 / 13 !important; }
+  .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(3) { grid-column: 1 / 7 !important; }
+
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(1) { grid-column: 1 / 7 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(2) { grid-column: 7 / 13 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(3) { grid-column: 1 / 7 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(4) { grid-column: 7 / 13 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(5) { grid-column: 1 / 7 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(6) { grid-column: 7 / 13 !important; }
 }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
   .vn-home-reviews { padding: 72px 0 64px; }
-  .vn-home-reviews__featured { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
-  .vn-home-reviews__mini-grid { grid-template-columns: 1fr; gap: 12px; }
+  .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(n) { grid-column: 1 / -1 !important; }
+  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(n) { grid-column: 1 / -1 !important; }
+  .vn-home-reviews__featured { margin-bottom: 12px; }
   .vn-home-reviews__feat-card { padding: 24px; }
   .vn-home-reviews__mini-card { padding: 20px; }
   .vn-home-reviews__h2 { font-size: clamp(22px, 6vw, 28px); }

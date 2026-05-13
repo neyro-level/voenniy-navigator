@@ -1,66 +1,13 @@
 ---
-import { CONTACTS } from '../../lib/constants';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
 ---
 
-<!-- ══════════════════════════════════════════════
-     БЛОК 09 — ФИНАЛЬНЫЙ CTA (ТЁМНАЯ СЕКЦИЯ)
-════════════════════════════════════════════════ -->
-<section id="section-krd-cta" class="vn-section vn-section--dark">
-  <div class="vn-krd-cta__grid-bg vn-deco-grid--dark" aria-hidden="true"></div>
-  <div class="vn-krd-cta__radial" aria-hidden="true"></div>
-  <span class="vn-section-marker vn-krd-pos-br" aria-hidden="true" style="color:rgba(255,255,255,0.04);">08</span>
-
-  <div class="vn-container vn-rel">
-    <div class="vn-krd-cta__inner">
-      <span class="vn-krd-cta__eyebrow">ГОТОВЫ К ПЕРВОМУ ШАГУ?</span>
-
-      <h2 class="vn-krd-cta__h2">
-        Сначала разберём вашу цель,
-        <span style="color:var(--color-accent-cta);">потом будем выбирать новостройку</span>
-      </h2>
-
-      <p class="vn-krd-cta__sub">
-        На 30-минутной видеовстрече разберём вашу ситуацию, сценарий покупки
-        и критерии выбора ЖК в Краснодаре. Это первый безопасный шаг — без обязательств.
-      </p>
-
-      <a
-        href="/contacts/#request"
-        data-modal-open
-        data-modal-title="Записаться на разбор цели покупки"
-        class="vn-btn-primary vn-krd-cta__btn"
-      >
-        Записаться на разбор цели покупки
-      </a>
-
-      <!-- Альтернативный путь -->
-      <div class="vn-krd-cta__alt">
-        <span class="vn-krd-cta__alt-text">Или напишите напрямую:</span>
-        <div class="vn-krd-cta__messengers">
-          <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-krd-cta__messenger-link" aria-label="Написать в Telegram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Telegram
-          </a>
-        </div>
-      </div>
-
-      <!-- Stats strip -->
-      <div class="vn-krd-cta__stats" role="list">
-        <div class="vn-krd-cta__stat" role="listitem">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>30 минут</span>
-        </div>
-        <div class="vn-krd-cta__stat-divider" aria-hidden="true"></div>
-        <div class="vn-krd-cta__stat" role="listitem">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span>В удобное время</span>
-        </div>
-        <div class="vn-krd-cta__stat-divider" aria-hidden="true"></div>
-        <div class="vn-krd-cta__stat" role="listitem">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Бесплатно</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<FinalCTA
+  title="Сначала разберём вашу цель,"
+  accentText="потом будем выбирать новостройку"
+  subtitle="На 30-минутной видеовстрече разберём вашу ситуацию, сценарий покупки и критерии выбора ЖК в Краснодаре. Это первый безопасный шаг — без обязательств."
+  ctaText="Записаться на разбор цели покупки"
+  ctaModalTitle="Записаться на разбор цели покупки"
+  showStats={true}
+  showUsefulLinks={false}
+/>

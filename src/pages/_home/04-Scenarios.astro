@@ -1,16 +1,18 @@
 <!-- ══════════════════════════════════════════════
      БЛОК 04 — СЦЕНАРИИ
 ════════════════════════════════════════════════ -->
-<section id="section-scenarios" class="vn-section vn-section--secondary vn-home-sc">
+<section id="section-scenarios" class="vn-section vn-section--secondary vn-home-sc" aria-labelledby="vn-home-sc-title">
   <div class="vn-container">
 
-    <div class="vn-home-sc__header">
-      <span class="vn-label-mono">ВАШ СЦЕНАРИЙ / 04</span>
-      <h2 class="vn-home-sc__heading">С какой задачей обычно приходят</h2>
-      <p class="vn-home-sc__sub">
-        Узнайте свою ситуацию. Разные сценарии требуют разных решений —
-        но первый шаг для каждого одинаковый.
-      </p>
+    <div class="vn-grid-12">
+      <div class="vn-home-sc__header" style="grid-column: 1 / -1">
+        <span class="vn-label-mono">ВАШ СЦЕНАРИЙ / 04</span>
+        <h2 class="vn-home-sc__heading" id="vn-home-sc-title">С какой задачей обычно приходят</h2>
+        <p class="vn-home-sc__sub">
+          Узнайте свою ситуацию. Разные сценарии требуют разных решений —
+          но первый шаг для каждого одинаковый.
+        </p>
+      </div>
     </div>
 
     <div class="vn-home-sc__list">
@@ -159,7 +161,7 @@
 }
 
 .vn-home-sc__row:hover {
-  background-color: rgba(37, 99, 235, 0.04);
+  background-color: var(--color-accent-cta-soft);
   border-bottom-color: transparent;
   transform: translateX(4px);
 }
@@ -203,12 +205,12 @@
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: rgba(15, 37, 71, 0.07);
+  background: var(--color-accent-soft);
   color: var(--color-text-tertiary);
   transition: background-color 200ms ease, color 200ms ease;
 }
 .vn-home-sc__row:hover .vn-home-sc__tag {
-  background: rgba(37, 99, 235, 0.1);
+  background: var(--color-accent-cta-soft);
   color: var(--color-accent-cta);
 }
 /* Body text */
@@ -240,7 +242,7 @@
 }
 
 /* ── Mobile ── */
-@media (max-width: 767px) {
+@media (max-width: 640px) {
   .vn-home-sc__header { margin-bottom: 32px; }
   .vn-home-sc__row {
     grid-template-columns: 32px 1fr;

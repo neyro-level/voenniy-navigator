@@ -274,6 +274,11 @@ export default function RequestModal({
       if (counterId) {
         window.ym?.(counterId, 'reachGoal', 'form_submit');
       }
+      if (method) {
+        setTimeout(() => {
+          window.location.href = `/thanks/?method=${method}`;
+        }, 1200);
+      }
     } catch (error) {
       setSubmitState('error');
       setSubmitError(error instanceof Error ? error.message : 'Не удалось отправить заявку.');
@@ -431,6 +436,7 @@ export default function RequestModal({
                   checked={consent}
                   required
                   aria-invalid={Boolean(errors.consent)}
+                  aria-describedby={errors.consent ? 'request-consent-error' : undefined}
                   onChange={(event) => {
                     setConsent(event.target.checked);
                     if (errors.consent) setErrors((current) => ({ ...current, consent: undefined }));
@@ -443,7 +449,11 @@ export default function RequestModal({
                   </a>
                 </span>
               </label>
-              {errors.consent && <p className="vn-modal__error">{errors.consent}</p>}
+              {errors.consent && (
+                <p className="vn-modal__error" id="request-consent-error">
+                  {errors.consent}
+                </p>
+              )}
 
               <div className="vn-modal__honeypot" aria-hidden="true">
                 <label htmlFor="request-company">Компания</label>

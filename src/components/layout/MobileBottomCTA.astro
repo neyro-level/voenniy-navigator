@@ -28,10 +28,10 @@ const isContactsPage = currentPath.includes('/contacts/');
     z-index:         50;
     padding:         12px 20px;
     padding-bottom:  calc(12px + env(safe-area-inset-bottom));
-    background:      rgba(241, 243, 245, 0.92);
+    background:      color-mix(in srgb, var(--color-bg-primary) 92%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-top:      1px solid rgba(15, 37, 71, 0.10);
+    border-top:      1px solid color-mix(in srgb, var(--color-accent-primary) 10%, transparent);
   }
 
   .vn-bottom-cta__btn {
@@ -41,7 +41,7 @@ const isContactsPage = currentPath.includes('/contacts/');
     width:           100%;
     height:          48px;
     background:      var(--color-accent-cta);
-    color:           #ffffff;
+    color:           var(--color-bg-surface);
     font-size:       15px;
     font-weight:     500;
     font-family:     var(--font-family-base);
