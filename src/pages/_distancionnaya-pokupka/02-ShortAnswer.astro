@@ -1,0 +1,47 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 02 — КОРОТКИЙ ОТВЕТ
+════════════════════════════════════════════════ -->
+<section id="section-dist-answer" class="vn-section" style="background-color: var(--color-bg-surface);">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-dist-answer__inner">
+        <span class="vn-label-mono">Кратко о странице</span>
+        <p class="vn-dist-answer__text">
+          Дистанционная покупка новостройки в Краснодаре по военной ипотеке
+          возможна, но её нельзя проходить вслепую. Главный риск не в расстоянии,
+          а в потере контроля над районом, ЖК, документами, банком, сроками
+          и коммуникацией со сторонами сделки. Поэтому сначала нужно разобрать
+          дистанционный сценарий — понять, что можно пройти удалённо, что нужно
+          проверить на месте и где может понадобиться личное участие. После этого
+          можно строить маршрут покупки без лишнего хаоса.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-dist-answer__inner {
+    grid-column: 3 / 11;
+    padding: 64px 0;
+  }
+
+  .vn-dist-answer__text {
+    margin: 16px 0 0;
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    padding-left: 24px;
+    border-left: 3px solid color-mix(in srgb, var(--color-accent-primary) 15%, transparent);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-dist-answer__inner { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    .vn-dist-answer__inner { padding: 48px 0; }
+    .vn-dist-answer__text { font-size: 16px; }
+  }
+</style>

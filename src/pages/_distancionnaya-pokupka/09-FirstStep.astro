@@ -1,0 +1,113 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 09 — ПЕРВЫЙ ШАГ
+════════════════════════════════════════════════ -->
+<section id="section-dist-step" class="vn-section vn-section--secondary">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Left: 4 cols -->
+      <div class="vn-dist-step__left">
+        <span class="vn-label-mono">Первый шаг / 09</span>
+        <h2 class="vn-dist-h2" style="margin-top: 16px;">
+          Разбор дистанционной покупки
+        </h2>
+        <p class="vn-dist-sub" style="margin-top: 16px;">
+          Перед удалённым подбором нужно понять, насколько ваш сценарий
+          реально можно пройти дистанционно. На разборе фиксируются
+          цель покупки, город, возможность приезда, документы и точки,
+          которые нужно проверить в Краснодаре.
+        </p>
+      </div>
+
+      <!-- Right: 8 cols — checklist card -->
+      <div class="vn-dist-step__right">
+        <div class="vn-dist-step__card">
+          <span class="vn-label-mono" style="color: var(--color-text-tertiary); margin-bottom: 24px; display: inline-block;">
+            Что разбираем на первой встрече
+          </span>
+
+          <ul class="vn-dist-step__list">
+            <li><span class="vn-dist-step__num">01</span>Где вы находитесь сейчас</li>
+            <li><span class="vn-dist-step__num">02</span>Можете ли приехать в Краснодар и когда</li>
+            <li><span class="vn-dist-step__num">03</span>Кто принимает решение по покупке</li>
+            <li><span class="vn-dist-step__num">04</span>Цель покупки: жить, переехать позже, сдавать</li>
+            <li><span class="vn-dist-step__num">05</span>Какие документы уже есть</li>
+            <li><span class="vn-dist-step__num">06</span>Какие районы и ЖК можно смотреть</li>
+            <li><span class="vn-dist-step__num">07</span>Где может понадобиться доверенность</li>
+            <li><span class="vn-dist-step__num">08</span>Какие этапы можно пройти удалённо</li>
+            <li><span class="vn-dist-step__num">09</span>Какие риски нужно проверить до подбора</li>
+          </ul>
+
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Записаться на разбор дистанционной покупки"
+            class="vn-btn-primary"
+            style="margin-top: 32px; width: 100%; justify-content: center; height: 52px; font-size: 16px;"
+          >
+            Записаться на разбор дистанционной покупки
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-dist-step__left {
+    grid-column: 1 / 5;
+    min-width: 0;
+  }
+
+  .vn-dist-step__right {
+    grid-column: 5 / 13;
+    min-width: 0;
+  }
+
+  .vn-dist-step__card {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    border: 1px solid var(--color-border);
+  }
+
+  .vn-dist-step__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .vn-dist-step__list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .vn-dist-step__list li:last-child { border-bottom: none; }
+
+  .vn-dist-step__num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-primary);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-dist-step__left { grid-column: 1 / -1; }
+    .vn-dist-step__right { grid-column: 1 / -1; margin-top: 32px; }
+    .vn-dist-step__card { padding: 28px; }
+  }
+</style>

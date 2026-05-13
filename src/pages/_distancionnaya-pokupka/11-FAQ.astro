@@ -1,0 +1,78 @@
+---
+import { faqItems } from './pageData';
+---
+
+<!-- ══════════════════════════════════════════════
+     БЛОК 11 — FAQ
+════════════════════════════════════════════════ -->
+<section id="section-dist-faq" class="vn-section">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Left: 4 cols -->
+      <div class="vn-dist-faq__left">
+        <span class="vn-label-mono">Вопросы / 11</span>
+        <h2 class="vn-dist-h2" style="margin-top: 16px;">
+          Частые вопросы о дистанционной покупке новостройки
+        </h2>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Задать вопрос на разборе"
+          class="vn-dist-textlink"
+          style="margin-top: 24px; display: inline-flex;"
+        >
+          Задайте вопрос на разборе →
+        </a>
+      </div>
+
+      <!-- Right: 8 cols -->
+      <div class="vn-dist-faq__right">
+        <div class="vn-dist-faq__list">
+          {faqItems.map((item) => (
+            <details class="vn-faq-item">
+              <summary class="vn-faq-question">
+                {item.q}
+                <svg class="vn-dist-faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="vn-faq-answer">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-dist-faq__left {
+    grid-column: 1 / 5;
+    min-width: 0;
+  }
+
+  .vn-dist-faq__right {
+    grid-column: 5 / 13;
+    min-width: 0;
+  }
+
+  .vn-dist-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .vn-dist-faq__chevron {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: transform 0.2s ease;
+  }
+  details[open] .vn-dist-faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-dist-faq__left { grid-column: 1 / -1; }
+    .vn-dist-faq__right { grid-column: 1 / -1; margin-top: 32px; }
+  }
+</style>

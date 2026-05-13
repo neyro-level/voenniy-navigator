@@ -1,0 +1,246 @@
+---
+const usefulLinks = [
+  { label: 'Как выбрать новостройку по военной ипотеке', href: '/voennaya-ipoteka-krasnodar/' },
+  { label: 'Этапы покупки по военной ипотеке', href: '/etapy-pokupki/' },
+  { label: 'Михаил Хряпин — военный навигатор', href: '/' },
+];
+---
+
+<!-- ══════════════════════════════════════════════
+     БЛОК 12 — ФИНАЛЬНЫЙ CTA
+════════════════════════════════════════════════ -->
+<section id="section-dist-cta" class="vn-section vn-section--dark vn-dist-cta">
+  <div class="vn-dist-deco-grid" aria-hidden="true"></div>
+  <div class="vn-dist-cta__radial" aria-hidden="true"></div>
+
+  <div class="vn-container" style="position: relative; z-index: 1;">
+    <div class="vn-grid-12">
+      <!-- Centered content -->
+      <div class="vn-dist-cta__center">
+        <span class="vn-label-mono" style="color: var(--color-text-ondark-mute);">Следующий шаг</span>
+        <h2 class="vn-dist-cta__h2">
+          Разберите <span style="color: var(--color-accent-cta);">дистанционный маршрут</span> до выбора ЖК и сделки
+        </h2>
+        <p class="vn-dist-cta__sub">
+          На разборе определим, что в вашей ситуации можно пройти удалённо,
+          что нужно проверить на месте, какие районы и ЖК смотреть, где может
+          понадобиться ваше участие и как выстроить маршрут покупки по
+          военной ипотеке.
+        </p>
+
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Разобрать дистанционную покупку"
+          class="vn-btn-primary vn-dist-cta__btn"
+        >
+          Разобрать дистанционную покупку
+        </a>
+
+        <!-- Stats -->
+        <div class="vn-dist-cta__stats" role="list">
+          <div class="vn-dist-cta__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>30 минут</span>
+          </div>
+          <div class="vn-dist-cta__stat-divider" aria-hidden="true"></div>
+          <div class="vn-dist-cta__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            <span>Яндекс Телемост</span>
+          </div>
+          <div class="vn-dist-cta__stat-divider" aria-hidden="true"></div>
+          <div class="vn-dist-cta__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Бесплатно</span>
+          </div>
+        </div>
+
+        <!-- Info card -->
+        <div class="vn-dist-cta__info">
+          <span class="vn-label-mono" style="color: var(--color-text-ondark-mute); margin-bottom: 20px; display: block;">Что будет после заявки</span>
+          <ul class="vn-dist-cta__info-list">
+            <li><span class="vn-dist-cta__info-num">01</span>Михаил свяжется с вами и уточнит ситуацию</li>
+            <li><span class="vn-dist-cta__info-num">02</span>Вы согласуете удобное время разбора</li>
+            <li><span class="vn-dist-cta__info-num">03</span>На встрече разберёте дистанционный маршрут, риски и шаги</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link cards -->
+    <div class="vn-grid-12" style="margin-top: 64px;">
+      {usefulLinks.map((link) => (
+        <a href={link.href} class="vn-dist-cta__link-card">
+          <span>{link.label}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-dist-cta {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vn-dist-cta__radial {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse at center top, color-mix(in srgb, var(--color-accent-cta) 6%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-dist-cta__center {
+    grid-column: 3 / 11;
+    text-align: center;
+  }
+
+  .vn-dist-cta__h2 {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-ondark);
+    margin: 20px 0 0;
+    text-wrap: balance;
+  }
+
+  .vn-dist-cta__sub {
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-ondark-mute);
+    margin: 20px auto 0;
+    max-width: 520px;
+    text-wrap: pretty;
+  }
+
+  .vn-dist-cta__btn {
+    margin-top: 36px;
+    font-size: 16px;
+    height: 56px;
+    padding: 0 40px;
+    display: inline-flex;
+  }
+
+  .vn-dist-cta__stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-dist-cta__stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    color: var(--color-text-ondark);
+  }
+  .vn-dist-cta__stat:first-child { padding-left: 0; }
+  .vn-dist-cta__stat:last-child { padding-right: 0; }
+  .vn-dist-cta__stat svg { color: var(--color-accent-cta); flex-shrink: 0; }
+
+  .vn-dist-cta__stat-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--color-border-ondark);
+  }
+
+  .vn-dist-cta__info {
+    margin: 40px auto 0;
+    max-width: 480px;
+    background-color: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    text-align: left;
+  }
+
+  .vn-dist-cta__info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vn-dist-cta__info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-dist-cta__info-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--color-accent-cta) 15%, transparent);
+    color: var(--color-accent-cta);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .vn-dist-cta__link-card {
+    grid-column: span 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 24px;
+    background-color: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-ondark);
+    transition: border-color 150ms ease, background-color 150ms ease;
+  }
+  .vn-dist-cta__link-card svg {
+    color: var(--color-text-ondark);
+    opacity: 0.3;
+    flex-shrink: 0;
+    transition: opacity 150ms ease;
+  }
+  .vn-dist-cta__link-card:hover {
+    border-color: var(--color-accent-cta);
+    background-color: color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-dark-elev));
+  }
+  .vn-dist-cta__link-card:hover svg { opacity: 0.6; }
+
+  @media (max-width: 1023px) {
+    .vn-dist-cta__center { grid-column: 1 / -1; }
+    .vn-dist-cta__link-card { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    .vn-dist-cta__stats {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .vn-dist-cta__stat-divider { display: none; }
+    .vn-dist-cta__stat { padding: 0; }
+    .vn-dist-cta__info { padding: 24px; }
+  }
+</style>

@@ -1,0 +1,76 @@
+<style is:global>
+/* ─── Shared utilities ─── */
+.vn-dist-h2 {
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.vn-dist-h2--ondark {
+  color: var(--color-text-ondark);
+}
+
+.vn-dist-sub {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.vn-dist-sub--ondark {
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-dist-textlink {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.vn-dist-textlink:hover { border-bottom-color: var(--color-text-primary); }
+
+.vn-dist-textlink--ondark {
+  color: var(--color-text-ondark);
+}
+.vn-dist-textlink--ondark:hover { border-bottom-color: var(--color-text-ondark); }
+
+/* ─── Decorative elements ─── */
+.vn-dist-accent-line {
+  width: 2px;
+  height: 24px;
+  background-color: var(--color-accent-cta);
+  border-radius: 2px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ─── Card base ─── */
+.vn-dist-card {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+/* ─── Dark section deco grid ─── */
+.vn-dist-deco-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--color-deco-grid-dark) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-deco-grid-dark) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Responsive helpers ─── */
+@media (max-width: 1023px) {
+  .vn-dist-hide-mobile { display: none !important; }
+}
+</style>

@@ -1,0 +1,181 @@
+<!-- ══════════════════════════════════════════════
+     БЛОК 05 — МАРШРУТ
+════════════════════════════════════════════════ -->
+<section id="section-dist-route" class="vn-section vn-section--secondary">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <!-- Header -->
+      <div class="vn-dist-route__header">
+        <span class="vn-label-mono">Маршрут / 05</span>
+        <h2 class="vn-dist-h2" style="margin-top: 16px; max-width: 640px;">
+          Как проходит дистанционная покупка новостройки <span style="color: var(--color-accent-primary);">по шагам</span>
+        </h2>
+        <p class="vn-dist-sub" style="margin-top: 12px; max-width: 640px;">
+          Дистанционный маршрут начинается не с выбора квартиры, а с проверки
+          того, можно ли в вашей ситуации пройти покупку удалённо. После этого
+          определяется сценарий, подбираются объекты, проверяются документы,
+          согласуется банк и фиксируется порядок участия клиента на каждом этапе.
+        </p>
+      </div>
+
+      <!-- Bars -->
+      <div class="vn-dist-route__bars">
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">01</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Разбор дистанционного сценария</h3>
+          </div>
+          <p class="vn-dist-route__desc">Где вы находитесь, можете ли приехать, кто участвует в решении</p>
+        </div>
+
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">02</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Цель покупки</h3>
+          </div>
+          <p class="vn-dist-route__desc">Для жизни, переезда позже, сдачи, семьи или другого сценария</p>
+        </div>
+
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">03</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Отбор районов и ЖК</h3>
+          </div>
+          <p class="vn-dist-route__desc">Выбираются не все варианты, а подходящие под задачу</p>
+        </div>
+
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">04</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Проверка на месте</h3>
+          </div>
+          <p class="vn-dist-route__desc">Видео, локальный взгляд, вопросы к ЖК, окружению, срокам</p>
+        </div>
+
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">05</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Банк, документы, согласования</h3>
+          </div>
+          <p class="vn-dist-route__desc">Проверка маршрута сделки и условий сторон</p>
+        </div>
+
+        <div class="vn-dist-route__bar">
+          <span class="vn-dist-route__num" aria-hidden="true">06</span>
+          <div class="vn-dist-route__bar-center">
+            <span class="vn-dist-route__dot" aria-hidden="true"></span>
+            <h3 class="vn-dist-route__title">Сделка и дальнейшие шаги</h3>
+          </div>
+          <p class="vn-dist-route__desc">Регистрация, приёмка, ремонт, сдача — по отдельной договорённости</p>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div class="vn-dist-route__note">
+        <p>Конкретный порядок зависит от банка, объекта, документов, доверенности и требований сторон.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-dist-route__header { grid-column: 1 / -1; }
+
+  .vn-dist-route__bars {
+    grid-column: 1 / -1;
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .vn-dist-route__bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 32px;
+    min-height: 72px;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 150ms ease;
+  }
+  .vn-dist-route__bar:last-child { border-bottom: none; }
+  .vn-dist-route__bar:hover { background-color: var(--color-bg-surface-low); }
+
+  .vn-dist-route__num {
+    width: 64px;
+    flex-shrink: 0;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent);
+    position: relative;
+    top: 2px;
+  }
+
+  .vn-dist-route__bar-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .vn-dist-route__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-dist-route__title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .vn-dist-route__desc {
+    flex: 0 0 35%;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .vn-dist-route__note {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .vn-dist-route__note p {
+    font-size: var(--fs-body-sm);
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text-tertiary);
+    max-width: 560px;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 768px) {
+    .vn-dist-route__bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 20px 24px;
+      min-height: auto;
+    }
+    .vn-dist-route__num { font-size: 32px; width: auto; }
+    .vn-dist-route__bar-center { width: 100%; }
+    .vn-dist-route__desc { flex: auto; width: 100%; }
+  }
+</style>
