@@ -1,56 +1,198 @@
 <!-- ══════════════════════════════════════════════
      БЛОК 03 — ГЛАВНАЯ ОШИБКА ВЫБОРА
 ════════════════════════════════════════════════ -->
-<section id="section-problem" class="vn-section vn-section--secondary">
-  <span class="vn-section-marker vn-pos-tr" aria-hidden="true">03</span>
-  <div class="vn-container vn-rel">
-    <span class="vn-label-mono">ОШИБКА ВЫБОРА / 03</span>
-    <h2 class="vn-home-h2" style="max-width:680px; margin-top:16px;">
-      Главная ошибка — начать с объекта, а не с цели
-    </h2>
-    <div class="vn-home-prob__theses">
-      <p class="vn-home-prob__thesis">
-        Один и тот же ЖК может быть хорошим для сдачи и слабым для жизни
-        семьи. Критерии выбора зависят от цели — и она должна быть определена первой.
-      </p>
-      <p class="vn-home-prob__thesis">
-        Реклама застройщика продаёт объект, а не вашу задачу. Рендеры и акции
-        не отвечают на вопрос: подходит ли этот вариант именно вам.
-      </p>
-      <p class="vn-home-prob__thesis vn-home-prob__thesis--key">
-        Поэтому работа начинается не с просмотра ЖК, а с разбора цели покупки.
-      </p>
+<section id="section-problem" class="vn-home-prob" aria-labelledby="vn-home-prob-title">
+  <div class="vn-home-prob__container">
+
+    <!-- Header: label + H2 left, lead right -->
+    <div class="vn-home-prob__header">
+      <div class="vn-home-prob__header-left">
+        <p class="vn-home-prob__eyebrow">Ошибка выбора / 03</p>
+        <h2 class="vn-home-prob__title" id="vn-home-prob-title">
+          Главная ошибка —<br>начать с объекта,<br>а не с цели
+        </h2>
+      </div>
+      <div class="vn-home-prob__header-right">
+        <p class="vn-home-prob__lead">
+          Ипотека задаёт условия сделки. Но район, ЖК и сценарий покупки
+          определяют, будет ли квартира действительно подходить вашей задаче.
+        </p>
+      </div>
     </div>
-    <a
-      href="/contacts/#request"
-      data-modal-open
-      data-modal-title="Разобрать мою задачу"
-      class="vn-home-textlink"
-    >
-      Разобрать мою задачу сначала →
-    </a>
+
+    <!-- 4 theses as horizontal columns -->
+    <div class="vn-home-prob__theses">
+
+      <div class="vn-home-prob__thesis">
+        <span class="vn-home-prob__tnum">01</span>
+        <h3 class="vn-home-prob__ttitle">Разные задачи требуют разных решений</h3>
+        <p class="vn-home-prob__tbody">
+          Один и тот же ЖК может быть хорошим для сдачи и слабым для жизни семьи.
+          Критерии выбора зависят от цели.
+        </p>
+      </div>
+
+      <div class="vn-home-prob__thesis">
+        <span class="vn-home-prob__tnum">02</span>
+        <h3 class="vn-home-prob__ttitle">Реклама ЖК не отвечает за вашу ситуацию</h3>
+        <p class="vn-home-prob__tbody">
+          Застройщик продаёт объект, а не вашу задачу. Рендеры и акции не отвечают:
+          подходит ли этот вариант именно вам.
+        </p>
+      </div>
+
+      <div class="vn-home-prob__thesis">
+        <span class="vn-home-prob__tnum">03</span>
+        <h3 class="vn-home-prob__ttitle">Цена не равна правильному выбору</h3>
+        <p class="vn-home-prob__tbody">
+          Дешевле не значит лучше, если есть риски по району, ликвидности
+          или будущему сценарию — переезд, сдача, продажа.
+        </p>
+      </div>
+
+      <div class="vn-home-prob__thesis">
+        <span class="vn-home-prob__tnum">04</span>
+        <h3 class="vn-home-prob__ttitle">Подборка без цели создаёт хаос</h3>
+        <p class="vn-home-prob__tbody">
+          Список квартир не помогает, если сначала не понять — зачем вы покупаете.
+          Работа начинается с разбора цели.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
 <style>
 /* ─── Block 03: Problem ─── */
+.vn-home-prob {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0 88px;
+  background: #0f1419;
+  color: #f1f3f5;
+  font-family: var(--font-family-base);
+}
+
+.vn-home-prob__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ── Header ── */
+.vn-home-prob__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 64px;
+  align-items: end;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(241,243,245,0.1);
+  margin-bottom: 0;
+}
+
+.vn-home-prob__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 20px;
+  color: rgba(241,243,245,0.5);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.vn-home-prob__eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--color-accent-cta);
+  flex-shrink: 0;
+}
+
+.vn-home-prob__title {
+  margin: 0;
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  font-weight: 600;
+  color: #f1f3f5;
+  text-wrap: balance;
+}
+
+.vn-home-prob__lead {
+  margin: 0;
+  color: rgba(241,243,245,0.55);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ── 4 theses ── */
 .vn-home-prob__theses {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-top: 28px;
-  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .vn-home-prob__thesis {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-  margin: 0;
+  padding: 36px 32px 36px 0;
+  border-right: 1px solid rgba(241,243,245,0.08);
+  padding-right: 32px;
+}
+.vn-home-prob__thesis:first-child {
+  padding-left: 0;
+}
+.vn-home-prob__thesis:last-child {
+  border-right: none;
+  padding-left: 32px;
+  padding-right: 0;
+}
+.vn-home-prob__thesis:not(:first-child):not(:last-child) {
+  padding-left: 32px;
 }
 
-.vn-home-prob__thesis--key {
+.vn-home-prob__tnum {
+  display: block;
+  font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-primary);
+  letter-spacing: 0.08em;
+  color: rgba(37,99,235,0.7);
+  margin-bottom: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.vn-home-prob__ttitle {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: rgba(241,243,245,0.92);
+}
+
+.vn-home-prob__tbody {
+  margin: 0;
+  color: rgba(241,243,245,0.5);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .vn-home-prob__header { grid-template-columns: 1fr; gap: 20px; }
+  .vn-home-prob__theses { grid-template-columns: repeat(2, 1fr); }
+  .vn-home-prob__thesis { border-right: none; border-bottom: 1px solid rgba(241,243,245,0.08); padding: 28px 0; }
+  .vn-home-prob__thesis:last-child { border-bottom: none; padding-left: 0; }
+  .vn-home-prob__thesis:not(:first-child):not(:last-child) { padding-left: 0; }
+  .vn-home-prob__container { padding: 0 32px; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .vn-home-prob { padding: 72px 0 64px; }
+  .vn-home-prob__container { padding: 0 24px; }
+  .vn-home-prob__theses { grid-template-columns: 1fr; }
+  .vn-home-prob__header { padding-bottom: 40px; }
 }
 </style>

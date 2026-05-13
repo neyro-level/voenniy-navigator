@@ -4,15 +4,19 @@
 <section id="section-short-answer" class="vn-home-answer">
   <div class="vn-container">
     <div class="vn-home-answer__inner">
-      <blockquote class="vn-home-answer__quote">
-        Военный навигатор Михаила Хряпина помогает военнослужащим и их семьям
-        выбрать новостройку в Краснодарском крае или в Крыму
-        под реальную цель покупки для жизни или инвестиции.
+
+      <blockquote class="vn-home-answer__quote" style="grid-column: 1 / 9">
+        Военный навигатор Михаила Хряпина помогает военнослужащим
+        и их семьям выбрать новостройку в Краснодарском крае или в Крыму
+        под реальную цель покупки — для жизни или инвестиции.
       </blockquote>
-      <p class="vn-home-answer__detail">
-        Работа начинается с разбора задачи, а не подборки&nbsp;вариантов.
-        Дальше&nbsp;– сопровождение по всему маршруту до регистрации права&nbsp;собственности.
+
+      <p class="vn-home-answer__detail" style="grid-column: 9 / 13">
+        Работа начинается с разбора задачи, а не подборки вариантов.
+        Дальше — сопровождение по всему маршруту до регистрации права
+        собственности.
       </p>
+
     </div>
   </div>
 </section>
@@ -20,46 +24,46 @@
 <style>
 /* ─── Block 02: Short answer ─── */
 .vn-home-answer {
-  background-color: var(--color-bg-secondary);
-  padding-block: 60px;
+  background: var(--color-bg-surface);
+  padding-block: 52px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .vn-home-answer__inner {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: 32px;
-  align-items: baseline;
+  align-items: center;
 }
 
 .vn-home-answer__quote {
-  grid-column: 1 / 9;
   margin: 0;
-  padding-left: 24px;
-  border-left: 3px solid var(--color-accent-cta);
-  font-size: clamp(18px, 1.7vw, 22px);
-  font-weight: 400;
-  line-height: 1.45;
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
-  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
 .vn-home-answer__detail {
-  grid-column: 9 / 13;
   margin: 0;
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-text-tertiary);
-  text-wrap: balance;
+  padding-left: 24px;
+  border-left: 1px solid var(--color-border);
+  text-wrap: pretty;
 }
 
 @media (max-width: 1023px) {
-  .vn-home-answer__quote  { grid-column: 1 / -1; }
-  .vn-home-answer__detail { grid-column: 1 / -1; margin-top: 20px; }
+  .vn-home-answer__quote  { grid-column: 1 / -1 !important; }
+  .vn-home-answer__detail { grid-column: 1 / -1 !important; padding-left: 0; border-left: none; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 4px; }
 }
 
-@media (max-width: 768px) {
-  .vn-home-answer { padding-block: 40px; }
-  .vn-home-answer__quote { font-size: 17px; padding-left: 18px; }
+@media (max-width: 640px) {
+  .vn-home-answer { padding-block: 36px; }
+  .vn-home-answer__quote { font-size: 18px; }
 }
 </style>

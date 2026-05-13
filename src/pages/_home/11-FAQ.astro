@@ -3,60 +3,288 @@ interface FAQItem {
   q: string;
   a: string;
 }
-
 const { items } = Astro.props as { items: FAQItem[] };
 ---
 
 <!-- ══════════════════════════════════════════════
      БЛОК 11 — FAQ
 ════════════════════════════════════════════════ -->
-<section id="section-faq" class="vn-section vn-section--secondary">
-  <span class="vn-section-marker vn-pos-tr" aria-hidden="true">11</span>
-  <div class="vn-container vn-rel">
-    <span class="vn-label-mono">ЧАСТЫЕ ВОПРОСЫ / 11</span>
-    <h2 class="vn-home-h2" style="max-width:680px; margin-top:16px; margin-bottom:48px;">
-      Ответы на частые вопросы
-    </h2>
+<section id="section-faq" class="vn-home-faq" aria-labelledby="vn-home-faq-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-home-faq__grid">
 
-    <div class="vn-home-faq__list">
-      {items.map((item) => (
-        <details class="vn-faq-item">
-          <summary class="vn-faq-question">
-            {item.q}
-            <svg class="vn-home-faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </summary>
-          <div class="vn-faq-answer">
-            <p>{item.a}</p>
-          </div>
-        </details>
-      ))}
+      <!-- ── Left: sticky info card ── -->
+      <div class="vn-home-faq__left" style="grid-column: 1 / 5">
+        <div class="vn-home-faq__left-card">
+          <p class="vn-home-faq__eyebrow">ЧАСТЫЕ ВОПРОСЫ / 11</p>
+          <h2 class="vn-home-faq__title" id="vn-home-faq-title">
+            Ответы на частые вопросы
+          </h2>
+          <p class="vn-home-faq__subtitle">
+            Вопросы о военной ипотеке, работе с НИС и процессе покупки новостройки.
+          </p>
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Задать вопрос на разборе"
+            class="vn-home-faq__more-link"
+          >
+            Не нашли свой вопрос?<br>Задайте на разборе →
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Right: accordion ── -->
+      <div class="vn-home-faq__right" style="grid-column: 5 / 13">
+        <div class="vn-home-faq__accordion" id="vn-faq-accordion">
+          {items.map((item, i) => (
+            <div class:list={['vn-home-faq__item', { 'is-open': i === 0 }]}>
+              <button
+                class="vn-home-faq__question"
+                type="button"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+                aria-controls={`vn-faq-answer-${i}`}
+                id={`vn-faq-question-${i}`}
+              >
+                <span class="vn-home-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <span class="vn-home-faq__question-text">{item.q}</span>
+                <span class="vn-home-faq__icon" aria-hidden="true">{i === 0 ? '−' : '+'}</span>
+              </button>
+              <div
+                class="vn-home-faq__answer"
+                id={`vn-faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`vn-faq-question-${i}`}
+                hidden={i !== 0}
+              >
+                <div class="vn-home-faq__answer-inner">
+                  <p class="vn-home-faq__answer-text">{item.a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
-
-    <a
-      href="/contacts/#request"
-      data-modal-open
-      data-modal-title="Задать вопрос на разборе"
-      class="vn-home-textlink"
-      style="margin-top:32px; display:inline-block;"
-    >
-      Не нашли свой вопрос? Задайте на разборе →
-    </a>
   </div>
 </section>
 
 <style>
 /* ─── Block 11: FAQ ─── */
-.vn-home-faq__list { max-width: 760px; }
-
-.vn-home-faq__chevron {
-  flex-shrink: 0;
-  color: var(--color-text-tertiary);
-  transition: transform 0.2s ease;
+.vn-home-faq {
+  padding: 96px 0;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  details[open] .vn-home-faq__chevron { transform: rotate(180deg); }
+.vn-home-faq__grid {
+  align-items: start;
+}
+
+/* ── Left sticky card ── */
+.vn-home-faq__left {
+  position: sticky;
+  top: 104px;
+}
+
+.vn-home-faq__left-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.vn-home-faq__eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-cta);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.vn-home-faq__eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 2px;
+  background: var(--color-accent-cta);
+  flex-shrink: 0;
+}
+
+.vn-home-faq__title {
+  margin: 16px 0 0;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-home-faq__subtitle {
+  margin: 14px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.vn-home-faq__more-link {
+  display: inline-flex;
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-accent-cta);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.vn-home-faq__more-link:hover { opacity: 0.7; }
+
+/* ── Right accordion ── */
+.vn-home-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Each FAQ item = separate card ── */
+.vn-home-faq__item {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.vn-home-faq__item.is-open {
+  border-left: 3px solid var(--color-accent-cta);
+}
+
+/* ── Question button ── */
+.vn-home-faq__question {
+  width: 100%;
+  min-height: 68px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.vn-home-faq__num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.08);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-cta);
+  font-family: var(--font-family-base);
+}
+
+.vn-home-faq__question-text {
+  flex: 1;
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.42;
+  font-family: var(--font-family-base);
+}
+
+.vn-home-faq__icon {
+  flex-shrink: 0;
+  color: var(--color-accent-cta);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  width: 24px;
+  text-align: center;
+  font-family: var(--font-family-base);
+}
+
+/* ── Answer ── */
+.vn-home-faq__answer[hidden] {
+  display: none;
+}
+.vn-home-faq__answer {
+  background: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-home-faq__answer-inner {
+  padding: 20px 24px 24px 72px;
+}
+
+.vn-home-faq__answer-text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  font-family: var(--font-family-base);
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .vn-home-faq__left  { grid-column: 1 / -1 !important; position: static; }
+  .vn-home-faq__right { grid-column: 1 / -1 !important; }
+  .vn-home-faq__grid  { gap: 24px; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .vn-home-faq { padding: 72px 0; }
+  .vn-home-faq__left-card { padding: 24px; }
+  .vn-home-faq__question { padding: 16px 18px; min-height: 58px; gap: 12px; }
+  .vn-home-faq__answer-inner { padding: 16px 18px 20px 62px; }
+  .vn-home-faq__question-text { font-size: 14px; }
 }
 </style>
+
+<script>
+  (function () {
+    const accordion = document.getElementById('vn-faq-accordion');
+    if (!accordion) return;
+
+    const items = Array.from(accordion.querySelectorAll('.vn-home-faq__item'));
+
+    function setItemState(item: Element, isOpen: boolean) {
+      const button = item.querySelector('.vn-home-faq__question') as HTMLButtonElement | null;
+      const answer = item.querySelector('.vn-home-faq__answer') as HTMLElement | null;
+      const icon   = item.querySelector('.vn-home-faq__icon');
+      if (!button || !answer || !icon) return;
+
+      item.classList.toggle('is-open', isOpen);
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      answer.hidden = !isOpen;
+      icon.textContent = isOpen ? '−' : '+';
+    }
+
+    items.forEach((item) => {
+      const button = item.querySelector('.vn-home-faq__question') as HTMLButtonElement | null;
+      if (!button) return;
+
+      button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        items.forEach((other) => setItemState(other, false));
+        if (!isOpen) setItemState(item, true);
+      });
+    });
+  })();
+</script>

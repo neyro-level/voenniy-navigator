@@ -146,7 +146,7 @@
 
 .vn-modal__method {
   display: grid;
-  gap: 22px;
+  gap: 8px;
   min-width: 0;
   margin: 0;
   padding: 0;
@@ -160,7 +160,7 @@
 }
 
 .vn-modal__method > .vn-modal__label {
-  margin-bottom: 22px;
+  margin-bottom: 4px;
 }
 
 .vn-modal__method-grid {

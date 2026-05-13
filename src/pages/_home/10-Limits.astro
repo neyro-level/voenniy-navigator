@@ -1,16 +1,15 @@
 <!-- ══════════════════════════════════════════════
-     БЛОК 10 — ЧТО НЕ БЕРУ (DARK)
+     БЛОК 10 — ЧТО НЕ БЕРУ (LIGHT)
 ════════════════════════════════════════════════ -->
-<section id="section-limits" class="vn-section vn-section--dark">
-  <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
-  <span class="vn-section-marker vn-pos-bl" style="color:rgba(255,255,255,0.04);" aria-hidden="true">10</span>
+<section id="section-limits" class="vn-section vn-section--secondary">
+  <div class="vn-deco-grid" aria-hidden="true"></div>
 
   <div class="vn-container vn-rel">
-    <span class="vn-label-mono" style="color:var(--color-text-ondark-mute);">ВАЖНЫЕ ГРАНИЦЫ / 10</span>
-    <h2 class="vn-home-h2" style="color:var(--color-text-ondark); margin-top:16px; margin-bottom:12px;">
+    <span class="vn-label-mono">ВАЖНЫЕ ГРАНИЦЫ / 10</span>
+    <h2 class="vn-home-limits__h2">
       Что я не беру в работу
     </h2>
-    <p style="font-size:17px; color:var(--color-text-ondark-mute); max-width:480px; margin-bottom:48px; line-height:1.6;">
+    <p class="vn-home-limits__lead">
       Это не отказ — это честность. Работаю там, где могу сделать правильно, а не «хоть как-то».
     </p>
 
@@ -69,7 +68,25 @@
 </section>
 
 <style>
-/* ─── Block 10: Limits ─── */
+/* ─── Block 10: Limits (light) ─── */
+
+.vn-home-limits__h2 {
+  margin: 16px 0 12px;
+  font-size: var(--fs-h2);
+  font-weight: 650;
+  line-height: 1.18;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-home-limits__lead {
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  max-width: 520px;
+  margin: 0 0 48px;
+  line-height: 1.6;
+}
+
 .vn-home-limits__cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -84,9 +101,9 @@
 }
 
 .vn-home-limits__item {
-  background-color: var(--color-bg-dark-elev);
-  border: 1px solid var(--color-border-ondark);
-  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
   padding: 22px;
 }
 
@@ -99,22 +116,23 @@
 
 .vn-home-limits__num {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-accent-cta);
+  font-variant-numeric: tabular-nums;
 }
 
 .vn-home-limits__title {
   font-size: 15px;
-  font-weight: 500;
-  color: var(--color-text-ondark);
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
 .vn-home-limits__body {
   font-size: 13px;
-  color: var(--color-text-ondark-mute);
+  color: var(--color-text-secondary);
   line-height: 1.5;
   margin: 0;
 }
@@ -137,7 +155,7 @@
   left: -12px;
   font-size: 120px;
   line-height: 1;
-  color: rgba(241,243,245,0.06);
+  color: rgba(15,37,71,0.05);
   font-family: Georgia, serif;
   user-select: none;
   pointer-events: none;
@@ -147,12 +165,12 @@
   font-style: italic;
   font-size: 20px;
   line-height: 1.55;
-  color: var(--color-text-ondark);
+  color: var(--color-text-secondary);
   margin: 0;
   padding: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .vn-home-limits__cols { grid-template-columns: 1fr; }
   .vn-home-limits__quote-col { margin-top: 28px; }
 }
