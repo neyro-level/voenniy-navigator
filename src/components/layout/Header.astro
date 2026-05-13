@@ -238,6 +238,10 @@ const currentPath = Astro.url.pathname;
   #site-header[data-overlay="true"] .vn-header__nav-link {
     color: rgba(241, 243, 245, 0.75);
   }
+  #site-header[data-overlay="true"] .vn-header__nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
   /* Active pill in dock mode */
   #site-header[data-state="dock"] .vn-header__nav-link[aria-current="page"] {
     background:    rgba(15, 37, 71, 0.07);
@@ -376,7 +380,8 @@ const currentPath = Astro.url.pathname;
     white-space:     nowrap;
   }
   .vn-header__nav-link:hover {
-    color: var(--color-text-primary);
+    color: var(--color-accent-primary);
+    background: rgba(15, 37, 71, 0.06);
   }
   .vn-header__nav-badge {
     font-size:      10px;
