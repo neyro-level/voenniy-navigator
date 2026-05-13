@@ -1,0 +1,35 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../lib/constants';
+import { serviceSchema, breadcrumbSchema } from '../lib/seo';
+
+const schema = [
+  serviceSchema({
+    name: 'Дистанционная покупка квартиры в Краснодаре по военной ипотеке',
+    description: 'Помогаю военнослужащим из других регионов купить новостройку в Краснодаре дистанционно по военной ипотеке.',
+    url: `${SITE.url}/distancionnaya-pokupka/`,
+  }),
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Дистанционная покупка', url: `${SITE.url}/distancionnaya-pokupka/` },
+  ]),
+];
+---
+<PageLayout
+  title="Дистанционная покупка квартиры в Краснодаре по военной ипотеке"
+  description="Покупка новостройки в Краснодаре удалённо по военной ипотеке. Полное сопровождение без поездки. Узнайте как это работает."
+  canonical={`${SITE.url}/distancionnaya-pokupka/`}
+  ogImage={`${SITE.url}/og/distancionnaya-pokupka.jpg`}
+  schema={schema}
+>
+  <!-- TODO: сборка блоков по PAGE_DISTANCIONNAYA_POKUPKA.md -->
+  <section class="vn-section">
+    <div class="vn-container">
+      <h1>Дистанционная покупка квартиры в Краснодаре по военной ипотеке</h1>
+      <p>Страница в разработке. Содержимое будет добавлено по PAGE_DISTANCIONNAYA_POKUPKA.md.</p>
+      <a href="/contacts/#request" data-modal-open data-modal-title="Обсудить дистанционную покупку" class="vn-btn-primary">
+        Записаться на разбор
+      </a>
+    </div>
+  </section>
+</PageLayout>

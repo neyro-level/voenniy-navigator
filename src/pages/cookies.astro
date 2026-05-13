@@ -1,0 +1,69 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../lib/constants';
+import { breadcrumbSchema } from '../lib/seo';
+---
+<PageLayout
+  title="Политика использования Cookie — Михаил Хряпин"
+  description="Информация об использовании файлов Cookie на сайте и способах управления ими."
+  canonical={`${SITE.url}/cookies/`}
+  schema={breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Политика Cookie', url: `${SITE.url}/cookies/` },
+  ])}
+>
+  <section class="vn-section">
+    <div class="vn-container" style="max-width: 800px;">
+      <h1>Политика использования Cookie</h1>
+
+      <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 28px; color: var(--color-text-secondary); line-height: 1.7;">
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            Что такое Cookie
+          </h2>
+          <p>Cookie — небольшие текстовые файлы, сохраняемые в браузере при посещении сайта. Используются для улучшения работы сайта и аналитики.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            Какие Cookie мы используем
+          </h2>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <th style="text-align: left; padding: 10px 0; font-weight: 600; color: var(--color-text-primary);">Тип</th>
+                <th style="text-align: left; padding: 10px 0; font-weight: 600; color: var(--color-text-primary);">Назначение</th>
+                <th style="text-align: left; padding: 10px 0; font-weight: 600; color: var(--color-text-primary);">Срок</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 12px 0;">Обязательные</td>
+                <td style="padding: 12px 0;">Сохранение настроек сайта (например, согласие на Cookie)</td>
+                <td style="padding: 12px 0;">1 год</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 12px 0;">Аналитические</td>
+                <td style="padding: 12px 0;">Яндекс Метрика — статистика посещений (только с вашего согласия)</td>
+                <td style="padding: 12px 0;">До 1 года</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            Как отказаться от Cookie
+          </h2>
+          <p>Вы можете отказаться от аналитических Cookie через баннер при первом визите или в настройках браузера. Отключение обязательных Cookie может нарушить работу сайта.</p>
+        </div>
+
+        <p style="font-size: 14px;">
+          Подробнее об обработке данных: <a href="/politika/" style="color: var(--color-accent-cta);">Политика конфиденциальности</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+</PageLayout>

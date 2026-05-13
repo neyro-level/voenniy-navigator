@@ -30,12 +30,12 @@ pnpm-debug.log*
 .playwright-mcp/
 
 # Project docs (kept locally, not in GitHub)
-pages/
-_project-docs/
-SITE_ARCHITECTURE.md
-DESIGN_SYSTEM.md
-ASTRO_RULES.md
-BUILD_INSTRUCTIONS.md
+/pages/
+/_project-docs/
+/SITE_ARCHITECTURE.md
+/DESIGN_SYSTEM.md
+/ASTRO_RULES.md
+/BUILD_INSTRUCTIONS.md
 
 # Personal photos at root (not web assets)
 /chirkov-andrey.jpg

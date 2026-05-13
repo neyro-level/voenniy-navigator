@@ -1,0 +1,35 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../lib/constants';
+---
+<PageLayout
+  title="Страница не найдена — Михаил Хряпин"
+  description="Такой страницы не существует. Воспользуйтесь навигацией."
+  canonical={`${SITE.url}/404/`}
+  noindex={true}
+>
+  <section class="vn-section" style="min-height: 70vh; display: flex; align-items: center;">
+    <div class="vn-container" style="text-align: center; max-width: 560px; margin-inline: auto;">
+
+      <span style="font-size: 120px; font-weight: 600; color: var(--color-deco-marker); line-height: 1; display: block; margin-bottom: 32px;" aria-hidden="true">404</span>
+
+      <h1 style="font-size: 32px; font-weight: 600; margin-bottom: 16px;">Страница не найдена</h1>
+      <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 40px;">
+        Такой страницы нет или она была перемещена.<br />
+        Воспользуйтесь навигацией или вернитесь на главную.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+        <a href="/" class="vn-btn-primary">На главную</a>
+        <a href="/contacts/" class="vn-btn-ghost">Контакты</a>
+      </div>
+
+      <nav aria-label="Полезные ссылки" style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+        <a href="/voennaya-ipoteka-krasnodar/" style="color: var(--color-accent-cta); font-size: 15px; text-decoration: none;">Новостройки Краснодара</a>
+        <a href="/distancionnaya-pokupka/" style="color: var(--color-accent-cta); font-size: 15px; text-decoration: none;">Дистанционная покупка</a>
+        <a href="/etapy-pokupki/" style="color: var(--color-accent-cta); font-size: 15px; text-decoration: none;">Этапы покупки</a>
+      </nav>
+
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,92 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE, LEGAL, CONTACTS } from '../lib/constants';
+import { breadcrumbSchema } from '../lib/seo';
+---
+<PageLayout
+  title="Политика конфиденциальности — Михаил Хряпин"
+  description="Политика обработки персональных данных в соответствии с ФЗ-152."
+  canonical={`${SITE.url}/politika/`}
+  schema={breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Политика конфиденциальности', url: `${SITE.url}/politika/` },
+  ])}
+>
+  <section class="vn-section">
+    <div class="vn-container" style="max-width: 800px;">
+      <h1>Политика конфиденциальности</h1>
+
+      <p style="color: var(--color-text-secondary); margin-top: 8px; font-size: 14px;">
+        Дата последнего обновления: <!-- TODO: дата -->
+      </p>
+
+      <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 32px; color: var(--color-text-secondary); line-height: 1.7;">
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            1. Общие положения
+          </h2>
+          <!-- TODO: юридический текст — уточнить у клиента / юриста -->
+          <p>Настоящая политика определяет порядок обработки персональных данных, собираемых через сайт {SITE.url}.</p>
+          <p>{LEGAL.name}, ИНН {LEGAL.inn} (далее — «Оператор») осуществляет обработку персональных данных в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            2. Какие данные мы собираем
+          </h2>
+          <p>При заполнении формы обратной связи на сайте собираются:</p>
+          <ul style="margin-top: 8px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px;">
+            <li>Имя</li>
+            <li>Номер телефона или Telegram-аккаунт</li>
+            <li>Текст обращения (опционально)</li>
+          </ul>
+          <p style="margin-top: 12px;">Технически собираются: IP-адрес, данные браузера, Cookies (для аналитики — только с вашего согласия).</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            3. Цели обработки данных
+          </h2>
+          <p>Персональные данные используются исключительно для:</p>
+          <ul style="margin-top: 8px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px;">
+            <li>Обработки обращений и ответа на запросы</li>
+            <li>Записи на консультацию</li>
+            <li>Улучшения качества обслуживания</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            4. Передача третьим лицам
+          </h2>
+          <p>Персональные данные не передаются третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством РФ.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            5. Срок хранения данных
+          </h2>
+          <p>Данные хранятся в течение срока, необходимого для достижения целей обработки, но не более 3 лет с момента получения.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            6. Ваши права
+          </h2>
+          <p>Вы вправе запросить доступ, исправление или удаление своих персональных данных. Для этого обратитесь по адресу: {CONTACTS.email}</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 12px;">
+            7. Контакты
+          </h2>
+          <p>По вопросам обработки персональных данных:<br />
+          {LEGAL.name}, ИНН {LEGAL.inn}<br />
+          Email: {CONTACTS.email}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</PageLayout>

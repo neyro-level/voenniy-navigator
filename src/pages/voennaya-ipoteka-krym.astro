@@ -1,0 +1,43 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../lib/constants';
+import { serviceSchema, breadcrumbSchema } from '../lib/seo';
+
+const schema = [
+  serviceSchema({
+    name: 'Военная ипотека Крым — подбор новостройки',
+    description: 'Помогаю военнослужащим купить новостройку в Крыму по военной ипотеке с сопровождением.',
+    url: `${SITE.url}/voennaya-ipoteka-krym/`,
+    areaServed: 'Крым',
+  }),
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Военная ипотека Крым', url: `${SITE.url}/voennaya-ipoteka-krym/` },
+  ]),
+];
+---
+<PageLayout
+  title="Военная ипотека Крым — купить квартиру в новостройке"
+  description="Подбор новостройки в Крыму по военной ипотеке. Офис в Бахчисарае. Дистанционное сопровождение из любого региона."
+  canonical={`${SITE.url}/voennaya-ipoteka-krym/`}
+  ogImage={`${SITE.url}/og/voennaya-ipoteka-krym.jpg`}
+  schema={schema}
+>
+  <!-- TODO: Wave 2 — сборка блоков по PAGE_VOENNAYA_IPOTEKA_KRYM.md -->
+  <section class="vn-section">
+    <div class="vn-container">
+      <h1>Военная ипотека в Крыму — подбор новостройки</h1>
+      <p style="color: var(--color-text-secondary); max-width: 600px; line-height: 1.6;">
+        Страница в разработке (Wave 2). Пока можете обратиться напрямую — помогу с выбором новостройки в Крыму.
+      </p>
+      <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="/contacts/#request" data-modal-open data-modal-title="Новостройка в Крыму" class="vn-btn-primary">
+          Записаться на разбор
+        </a>
+        <a href="/voennaya-ipoteka-krasnodar/" class="vn-btn-ghost">
+          Новостройки Краснодара
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

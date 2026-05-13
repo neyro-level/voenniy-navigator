@@ -1,0 +1,35 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../lib/constants';
+import { serviceSchema, breadcrumbSchema } from '../lib/seo';
+
+const schema = [
+  serviceSchema({
+    name: 'Этапы покупки новостройки по военной ипотеке в Краснодаре',
+    description: 'Подробное руководство по этапам сделки: от разбора цели до оформления собственности по военной ипотеке.',
+    url: `${SITE.url}/etapy-pokupki/`,
+  }),
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Этапы покупки', url: `${SITE.url}/etapy-pokupki/` },
+  ]),
+];
+---
+<PageLayout
+  title="Этапы покупки новостройки по военной ипотеке в Краснодаре"
+  description="Маршрут сделки по военной ипотеке: от разбора цели до ключей. Все этапы с объяснением что происходит и сколько занимает."
+  canonical={`${SITE.url}/etapy-pokupki/`}
+  ogImage={`${SITE.url}/og/etapy-pokupki.jpg`}
+  schema={schema}
+>
+  <!-- TODO: сборка блоков по PAGE_ETAPY_POKUPKI.md -->
+  <section class="vn-section">
+    <div class="vn-container">
+      <h1>Этапы покупки новостройки по военной ипотеке</h1>
+      <p>Страница в разработке. Содержимое будет добавлено по PAGE_ETAPY_POKUPKI.md.</p>
+      <a href="/contacts/#request" data-modal-open data-modal-title="Разобрать мой маршрут" class="vn-btn-primary">
+        Записаться на разбор
+      </a>
+    </div>
+  </section>
+</PageLayout>
