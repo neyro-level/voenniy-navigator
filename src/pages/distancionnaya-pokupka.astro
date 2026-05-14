@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import DistSharedStyles from './_distancionnaya-pokupka/00-DistSharedStyles.astro';
 import Hero from './_distancionnaya-pokupka/01-Hero.astro';
 import ShortAnswer from './_distancionnaya-pokupka/02-ShortAnswer.astro';
 import Fear from './_distancionnaya-pokupka/03-Fear.astro';
@@ -17,7 +16,6 @@ import { pageMeta, schemas } from './_distancionnaya-pokupka/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
-  <DistSharedStyles />
   <Hero />
   <ShortAnswer />
   <Fear />

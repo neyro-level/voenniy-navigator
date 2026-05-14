@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import KrymSharedStyles from './_voennaya-ipoteka-krym/00-KrymSharedStyles.astro';
 import Hero from './_voennaya-ipoteka-krym/01-Hero.astro';
 import ShortAnswer from './_voennaya-ipoteka-krym/02-ShortAnswer.astro';
 import Problem from './_voennaya-ipoteka-krym/03-Problem.astro';
@@ -15,7 +14,6 @@ import { pageMeta, schemas } from './_voennaya-ipoteka-krym/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
-  <KrymSharedStyles />
   <Hero />
   <ShortAnswer />
   <Problem />

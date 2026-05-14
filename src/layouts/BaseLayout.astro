@@ -14,7 +14,7 @@ const {
   title,
   description,
   canonical = new URL(Astro.url.pathname, Astro.site).href,
-  ogImage = new URL('/og/home.jpg', Astro.site).href,
+  ogImage = undefined,
   noindex = false,
   schema,
 } = Astro.props;
@@ -34,10 +34,14 @@ const {
   <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
+  {ogImage && (
+    <>
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta name="twitter:card" content="summary_large_image" />
+    </>
+  )}
 
   <!-- JSON-LD структурированные данные -->
   {schema && (
@@ -56,7 +60,6 @@ const {
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
   <!-- TODO: Яндекс Метрика — подключается через CookieBanner после Accept -->
 </head>

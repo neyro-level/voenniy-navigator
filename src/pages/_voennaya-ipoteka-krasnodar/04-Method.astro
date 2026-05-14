@@ -4,10 +4,10 @@
 <section id="section-krd-method" class="vn-section vn-section--secondary">
   <div class="vn-container vn-rel">
     <span class="vn-label-mono">МЕТОД ОТБОРА / 04</span>
-    <h2 class="vn-krd-h2" style="max-width:600px; margin-top:16px;">
+    <h2 class="vn-section-h2" style="max-width:600px; margin-top:16px;">
       Как я отбираю варианты
     </h2>
-    <p class="vn-krd-sub" style="max-width:560px; margin-top:12px; margin-bottom:48px;">
+    <p class="vn-section-sub" style="max-width:560px; margin-top:12px; margin-bottom:48px;">
       Подбор начинается не с поиска по витрине, а с фильтра. Вот пять этапов,
       через которые проходит ваш запрос.
     </p>
@@ -134,3 +134,87 @@
 
   </div>
 </section>
+
+<style>
+.vn-krd-method__step {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+.vn-krd-method__step--low { background-color: var(--color-bg-surface-low); }
+
+.vn-krd-method__badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-ondark);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vn-krd-method__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.vn-krd-method__body {
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* 8 критериев */
+.vn-krd-method__criterion { grid-column: span 3;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.vn-krd-method__crit-line {
+  width: 3px;
+  height: 100%;
+  min-height: 36px;
+  background-color: var(--color-accent-cta);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.vn-krd-method__crit-name {
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 3px;
+}
+
+.vn-krd-method__crit-what {
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Сильная фраза */
+.vn-krd-method__phrase {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 64px 0 0;
+  max-width: 720px;
+  text-wrap: balance;
+}
+</style>

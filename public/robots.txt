@@ -14,4 +14,4 @@ Disallow: /video/
 Disallow: /bonus/
 Disallow: /prezentaciya/
 
-Sitemap: https://[DOMAIN]/sitemap-index.xml
+Sitemap: https://voenniy-navigator.vercel.app/sitemap-index.xml

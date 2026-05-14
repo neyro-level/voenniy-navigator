@@ -4,10 +4,10 @@
 <section id="section-krd-local" class="vn-section">
   <div class="vn-container vn-rel">
     <span class="vn-label-mono">ЛОКАЛЬНЫЙ ВЗГЛЯД / 05</span>
-    <h2 class="vn-krd-h2" style="max-width:640px; margin-top:16px;">
+    <h2 class="vn-section-h2" style="max-width:640px; margin-top:16px;">
       Локальный фильтр Краснодара
     </h2>
-    <p class="vn-krd-sub" style="max-width:580px; margin-top:12px; margin-bottom:64px;">
+    <p class="vn-section-sub" style="max-width:580px; margin-top:12px; margin-bottom:64px;">
       Сайт ЖК показывает идеальную картинку. Реальность видна только на месте —
       и часто отличается от презентации. Вот что я проверяю и какие закономерности
       вижу системно при работе с новостройками Краснодара.
@@ -92,7 +92,7 @@
         <div class="vn-krd-local__subhead-line" aria-hidden="true"></div>
         <span class="vn-label-mono" style="color:var(--color-text-secondary);">КАТЕГОРИИ РАЙОНОВ</span>
       </div>
-      <p class="vn-krd-sub" style="margin-bottom:32px; margin-top:8px;">
+      <p class="vn-section-sub" style="margin-bottom:32px; margin-top:8px;">
         Мы не делим Краснодар на «лучшие» и «худшие» районы — у каждого своя задача.
         Деление по категориям под сценарии покупки.
       </p>
@@ -135,10 +135,64 @@
         href="/contacts/#request"
         data-modal-open
         data-modal-title="Подобрать районы под мою задачу"
-        class="vn-krd-textlink"
+        class="vn-textlink"
       >
         Подобрать районы под мою задачу →
       </a>
     </div>
   </div>
 </section>
+
+<style>
+.vn-krd-local__subblock { margin-bottom: 80px; }
+.vn-krd-local__subblock:last-of-type { margin-bottom: 0; }
+
+.vn-krd-local__subhead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.vn-krd-local__subhead-line {
+  width: 3px;
+  height: 32px;
+  background-color: var(--color-accent-cta);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.vn-krd-local__card { grid-column: span 3; padding: 28px; }
+.vn-krd-local__card2 { grid-column: span 4; padding: 28px; }
+.vn-krd-local__card-cat { grid-column: span 3; padding: 28px; }
+.vn-krd-local__card2 { padding: 28px; }
+.vn-krd-local__card-cat { padding: 28px; }
+
+.vn-krd-local__card-cat--warn {
+  border: 1px solid color-mix(in srgb, var(--color-accent-primary) 15%, transparent);
+}
+
+.vn-krd-local__icon {
+  color: var(--color-accent-primary);
+  flex-shrink: 0;
+}
+
+.vn-krd-local__card-title {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.vn-krd-local__card-body {
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .vn-krd-local__subblock { margin-bottom: 56px; }
+}
+</style>

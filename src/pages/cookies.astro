@@ -71,23 +71,23 @@ const tocItems = [
     <div class="vn-container">
       <div class="vn-grid-12 vn-cookies-types__grid">
         {/* Card 1 — Технические */}
-        <div class="vn-cookies-type" style="--cookie-border: #22C55E;">
-          <span class="vn-cookies-type__badge" style="background: rgba(34,197,94,0.12); color: #22C55E;">Обязательные</span>
+        <div class="vn-cookies-type vn-cookies-type--ok">
+          <span class="vn-cookies-type__badge vn-cookies-type__badge--ok">Обязательные</span>
           <h3 class="vn-cookies-type__title">Технические cookie</h3>
           <p class="vn-cookies-type__body">Обеспечивают работу сайта. Срок: до&nbsp;24&nbsp;часов.</p>
           <div class="vn-cookies-type__status">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #22C55E;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="vn-cookies-type__icon-ok"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <span>Всегда включены</span>
           </div>
         </div>
 
         {/* Card 2 — Функциональные */}
-        <div class="vn-cookies-type" style="--cookie-border: #22C55E;">
-          <span class="vn-cookies-type__badge" style="background: rgba(34,197,94,0.12); color: #22C55E;">Обязательные</span>
+        <div class="vn-cookies-type vn-cookies-type--ok">
+          <span class="vn-cookies-type__badge vn-cookies-type__badge--ok">Обязательные</span>
           <h3 class="vn-cookies-type__title">Функциональные cookie</h3>
           <p class="vn-cookies-type__body">Запоминают настройки пользователя. Срок: до&nbsp;12&nbsp;месяцев.</p>
           <div class="vn-cookies-type__status">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #22C55E;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="vn-cookies-type__icon-ok"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <span>Всегда включены</span>
           </div>
         </div>
@@ -611,6 +611,16 @@ const tocItems = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
     border-radius: 4px;
+  }
+  .vn-cookies-type--ok {
+    --cookie-border: #22C55E;
+  }
+  .vn-cookies-type__badge--ok {
+    background: rgba(34, 197, 94, 0.12);
+    color: #22C55E;
+  }
+  .vn-cookies-type__icon-ok {
+    color: #22C55E;
   }
   .vn-cookies-type__title {
     font-size: 17px;

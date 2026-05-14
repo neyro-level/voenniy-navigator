@@ -1,7 +1,7 @@
 export const SITE = {
   name:     'Михаил Хряпин — Военный навигатор',
   tagline:  'Помощь с выбором новостройки по военной ипотеке под задачу',
-  url:      'https://[DOMAIN]', // TODO: заменить после получения домена
+  url:      'https://voenniy-navigator.vercel.app', // TODO: заменить на продакшн-домен
 };
 
 export const OFFICES = [

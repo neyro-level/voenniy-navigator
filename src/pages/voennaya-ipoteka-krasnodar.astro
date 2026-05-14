@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import KrasnodarSharedStyles from './_voennaya-ipoteka-krasnodar/00-KrasnodarSharedStyles.astro';
 import Hero from './_voennaya-ipoteka-krasnodar/01-Hero.astro';
 import Problem from './_voennaya-ipoteka-krasnodar/02-Problem.astro';
 import Scenarios from './_voennaya-ipoteka-krasnodar/03-Scenarios.astro';
@@ -14,7 +13,6 @@ import { pageMeta, schemas } from './_voennaya-ipoteka-krasnodar/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
-  <KrasnodarSharedStyles />
   <Hero />
   <Problem />
   <Scenarios />

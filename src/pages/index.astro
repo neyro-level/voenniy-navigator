@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import HomeSharedStyles from './_home/00-HomeSharedStyles.astro';
 import Hero from './_home/01-Hero.astro';
 import ShortAnswer from './_home/02-ShortAnswer.astro';
 import Problem from './_home/03-Problem.astro';
@@ -77,7 +76,6 @@ const schemas = [
   ogImage={`${SITE.url}/og/home.jpg`}
   schema={schemas}
 >
-  <HomeSharedStyles />
   <Hero />
   <ShortAnswer />
   <Problem />

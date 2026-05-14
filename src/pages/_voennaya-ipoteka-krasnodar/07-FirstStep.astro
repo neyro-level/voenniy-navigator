@@ -4,7 +4,7 @@
 <section id="section-krd-first-step" class="vn-section">
   <div class="vn-container vn-rel">
     <span class="vn-label-mono">ПЕРВЫЙ ШАГ / 06</span>
-    <h2 class="vn-krd-h2" style="max-width:600px; margin-top:16px; margin-bottom:40px;">
+    <h2 class="vn-section-h2" style="max-width:600px; margin-top:16px; margin-bottom:40px;">
       Первый шаг — бесплатный разбор цели покупки
     </h2>
 
@@ -12,7 +12,7 @@
 
       <!-- Левая: что разбираем -->
       <div class="vn-krd-fs__left" style="grid-column: 1 / 7;">
-        <p class="vn-krd-sub" style="margin-bottom:28px;">
+        <p class="vn-section-sub" style="margin-bottom:28px;">
           Бесплатная видеовстреча 30 минут в Яндекс Телемост, на которой мы вместе
           разбираем вашу ситуацию и формируем понимание, какие новостройки стоит смотреть.
         </p>
@@ -109,3 +109,115 @@
     </p>
   </div>
 </section>
+
+<style>
+.vn-krd-fs__left { grid-column: 1 / 7; min-width: 0; }
+.vn-krd-fs__right { grid-column: 7 / 13; }
+
+.vn-krd-fs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: step;
+}
+
+.vn-krd-fs__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.vn-krd-fs__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-ondark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vn-krd-fs__item span:last-child {
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  padding-top: 3px;
+}
+
+.vn-krd-fs__right { padding: 32px; }
+
+.vn-krd-fs__card-title {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.vn-krd-fs__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vn-krd-fs__result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* Trust-полоса */
+.vn-krd-fs__trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-krd-fs__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+.vn-krd-fs__trust-item:first-child { padding-left: 0; }
+.vn-krd-fs__trust-item svg { color: var(--color-accent-cta); }
+
+.vn-krd-fs__trust-divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border);
+}
+
+.vn-krd-fs__note {
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+  margin: 20px 0 0;
+  max-width: 640px;
+}
+
+@media (max-width: 640px) {
+  .vn-krd-fs__trust { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .vn-krd-fs__trust-divider { display: none; }
+  .vn-krd-fs__trust-item { padding: 0; }
+}
+</style>
