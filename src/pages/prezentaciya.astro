@@ -1,0 +1,2067 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Военный навигатор — архитектура и стратегия роста"
+  description="Презентация сайта для Михаила Хряпина."
+  noindex={true}
+>
+  <script is:inline>
+    (function(){
+      var k='vn_prez_auth', p='2026';
+      if(localStorage.getItem(k)!==p){
+        var i=window.prompt('Введите пароль:');
+        if(i!==p){window.location.href='/';}
+        else{localStorage.setItem(k,p);}
+      }
+    })();
+  </script>
+
+  <nav class="vn-prez-dots" aria-label="Навигация по разделам">
+    <a href="#cover" class="vn-dot active" data-label="Обложка" aria-label="Обложка"></a>
+    <a href="#built" class="vn-dot" data-label="Что построено" aria-label="Что построено"></a>
+    <a href="#arch" class="vn-dot" data-label="Архитектура" aria-label="Архитектура"></a>
+    <a href="#seo" class="vn-dot" data-label="SEO-система" aria-label="SEO-система"></a>
+    <a href="#stack" class="vn-dot" data-label="Технология" aria-label="Технология"></a>
+    <a href="#next" class="vn-dot" data-label="После запуска" aria-label="После запуска"></a>
+    <a href="#robot" class="vn-dot" data-label="SEO-робот" aria-label="SEO-робот"></a>
+    <a href="#pages" class="vn-dot" data-label="SEO-страницы" aria-label="SEO-страницы"></a>
+    <a href="#direct" class="vn-dot" data-label="Яндекс Директ" aria-label="Яндекс Директ"></a>
+    <a href="#catalog" class="vn-dot" data-label="Каталог ЖК" aria-label="Каталог ЖК"></a>
+    <a href="#support" class="vn-dot" data-label="Поддержка" aria-label="Поддержка"></a>
+    <a href="#transfer" class="vn-dot" data-label="Размещение" aria-label="Размещение"></a>
+    <a href="#choice" class="vn-dot" data-label="Первый шаг" aria-label="Первый шаг"></a>
+  </nav>
+
+  <main class="vn-prez">
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 01 — Обложка
+    ═══════════════════════════════════════════════ -->
+    <section id="cover" class="vn-prez-section vn-prez-section--dark vn-prez-section--full">
+      <div class="vn-prez-marker" aria-hidden="true">01</div>
+      <div class="vn-container vn-prez-cover__inner">
+        <div class="vn-prez-cover__logo">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+          <span>ВОЕННЫЙ НАВИГАТОР</span>
+        </div>
+
+        <div class="vn-prez-cover__route" aria-hidden="true">
+          <div class="vn-prez-route__line"></div>
+          <div class="vn-prez-route__dots">
+            <div class="vn-prez-route__dot vn-prez-route__dot--filled"><span>Стратегия</span></div>
+            <div class="vn-prez-route__dot vn-prez-route__dot--filled"><span>Архитектура</span></div>
+            <div class="vn-prez-route__dot vn-prez-route__dot--filled"><span>Сайт</span></div>
+            <div class="vn-prez-route__dot"><span>SEO</span></div>
+            <div class="vn-prez-route__dot"><span>Рост</span></div>
+          </div>
+        </div>
+
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">ПРЕЗЕНТАЦИЯ ПРОЕКТА</span>
+        <h1 class="vn-prez-cover__title">
+          Военный навигатор:<br />
+          архитектура сайта<br />
+          и стратегия роста
+        </h1>
+        <p class="vn-prez-cover__sub">
+          Сайт собран как коммерческая система:<br />
+          страницы, SEO, доверие, маршруты клиента<br />
+          и точки роста после запуска.
+        </p>
+
+        <div class="ams-cover-author">
+          <img src="/images/chirkov-andrey.jpg" alt="Андрей Чирков" width="56" height="56" loading="eager" />
+          <div>
+            <p class="ams-cover-name">Андрей Чирков</p>
+            <p class="ams-cover-role">Архитектор маркетинговых систем</p>
+            <a href="https://chirkovandrey.ru" target="_blank" rel="noopener noreferrer" class="ams-cover-link">
+              <span class="ams-badge-mini">АМС</span>
+              chirkovandrey.ru ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 02 — Что построено
+    ═══════════════════════════════════════════════ -->
+    <section id="built" class="vn-prez-section vn-prez-section--light">
+      <div class="vn-container">
+        <span class="vn-label-mono">РЕЗУЛЬТАТ ПРОЕКТА</span>
+        <h2 class="vn-prez-h2">Что уже собрано</h2>
+        <p class="vn-prez-lead">
+          Это не набор страниц. Это сайт с понятной архитектурой:<br />
+          каждая страница отвечает за отдельный сценарий клиента<br />
+          и ведёт к разбору покупки.
+        </p>
+
+        <div class="vn-prez-cards--3">
+          <a href="/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">01</span>
+            <span class="vn-prez-card__title">Главная</span>
+            <span class="vn-prez-card__body">Объясняет позицию Михаила и первый шаг</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+          <a href="/voennaya-ipoteka-krasnodar/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">02</span>
+            <span class="vn-prez-card__title">Краснодар</span>
+            <span class="vn-prez-card__body">Закрывает объектный спрос по ЖК и военной ипотеке</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+          <a href="/voennaya-ipoteka-krym/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">03</span>
+            <span class="vn-prez-card__title">Крым</span>
+            <span class="vn-prez-card__body">Открывает новый региональный SEO-кластер</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+          <a href="/distancionnaya-pokupka/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">04</span>
+            <span class="vn-prez-card__title">Дистанционно</span>
+            <span class="vn-prez-card__body">Снимает тревогу иногороднего покупателя</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+          <a href="/etapy-pokupki/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">05</span>
+            <span class="vn-prez-card__title">Этапы покупки</span>
+            <span class="vn-prez-card__body">Объясняет маршрут сделки — прогревает</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+          <a href="/contacts/" target="_blank" class="vn-prez-card">
+            <span class="vn-prez-card__num">06</span>
+            <span class="vn-prez-card__title">Контакты</span>
+            <span class="vn-prez-card__body">Подтверждает реальность офисов, способы связи</span>
+            <span class="vn-prez-card__link">Открыть ↗</span>
+          </a>
+        </div>
+
+        <ul class="vn-prez-also">
+          <li>Воронка из видеороликов (/video/ → Квиз → /bonus/)</li>
+          <li>Попап-форма с интеграцией Telegram</li>
+          <li>Страница 404 с анимацией</li>
+          <li>Страница «Спасибо» с лид-магнитом</li>
+          <li>Юридические страницы (Политика, Cookie) по 152-ФЗ</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 03 — Архитектура
+    ═══════════════════════════════════════════════ -->
+    <section id="arch" class="vn-prez-section vn-prez-section--dark">
+      <div class="vn-container">
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">СТРАТЕГИЧЕСКАЯ ЛОГИКА</span>
+        <h2 class="vn-prez-h2 vn-prez-h2--ondark">
+          Почему у сайта<br />именно такая архитектура
+        </h2>
+        <p class="vn-prez-body vn-prez-body--ondark">
+          Клиент по военной ипотеке приходит не одним путём.<br />
+          Кто-то ищет новостройку в Краснодаре.<br />
+          Кто-то боится покупать дистанционно.<br />
+          Кто-то хочет понять этапы сделки.<br />
+          Кто-то интересуется Крымом.
+        </p>
+        <p class="vn-prez-body vn-prez-body--ondark" style="margin-top: 12px">
+          Сайт собран как несколько входов в одну систему.
+        </p>
+
+        <div class="vn-prez-flow" aria-hidden="true">
+          <div class="vn-prez-flow__col">
+            <div class="vn-prez-flow__item">Ищет новостройку</div>
+            <div class="vn-prez-flow__item">Боится купить удалённо</div>
+            <div class="vn-prez-flow__item">Не понимает порядок</div>
+            <div class="vn-prez-flow__item">Интересует Крым</div>
+          </div>
+          <div class="vn-prez-flow__arrows">
+            <div class="vn-prez-flow__arrow">→</div>
+            <div class="vn-prez-flow__arrow">→</div>
+            <div class="vn-prez-flow__arrow">→</div>
+            <div class="vn-prez-flow__arrow">→</div>
+          </div>
+          <div class="vn-prez-flow__targets">
+            <div class="vn-prez-flow__target">/voennaya-ipoteka-krasnodar/</div>
+            <div class="vn-prez-flow__target">/distancionnaya-pokupka/</div>
+            <div class="vn-prez-flow__target">/etapy-pokupki/</div>
+            <div class="vn-prez-flow__target">/voennaya-ipoteka-krym/</div>
+          </div>
+          <div class="vn-prez-flow__final">→ Записаться на разбор</div>
+        </div>
+
+        <blockquote class="vn-prez-accent">
+          Все страницы ведут к одному действию:<br />
+          разбор цели покупки с Михаилом.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 04 — SEO-система
+    ═══════════════════════════════════════════════ -->
+    <section id="seo" class="vn-prez-section vn-prez-section--gray">
+      <div class="vn-container">
+        <span class="vn-label-mono">SEO-СТРУКТУРА</span>
+        <h2 class="vn-prez-h2">
+          Сайт подготовлен<br />
+          не только для людей,<br />
+          но и для Яндекса
+        </h2>
+        <p class="vn-prez-lead">
+          На каждой ключевой странице заложены элементы,<br />
+          которые помогают поисковикам понять тему.<br />
+          Это не надстройка над сайтом — это основа,<br />
+          с которой он построен.
+        </p>
+
+        <div class="vn-prez-seo-grid">
+          <div class="vn-prez-seo-item">
+            <strong>Короткий ответ</strong>
+            <span>Помогает Яндексу и Алисе быстро понять суть страницы и процитировать её в ответах</span>
+          </div>
+          <div class="vn-prez-seo-item">
+            <strong>FAQ на каждой странице</strong>
+            <span>Закрывает вопросные запросы — люди приходят за ответами</span>
+          </div>
+          <div class="vn-prez-seo-item">
+            <strong>JSON-LD схемы</strong>
+            <span>Дают поисковикам структурированное «описание» страницы в машиночитаемом формате</span>
+          </div>
+          <div class="vn-prez-seo-item">
+            <strong>Внутренняя перелинковка</strong>
+            <span>Связывает страницы в единую систему — роботы понимают что важно</span>
+          </div>
+          <div class="vn-prez-seo-item">
+            <strong>Офисы и NAP-данные</strong>
+            <span>Подтверждают реальность бизнеса — усиливают локальное доверие Яндекса</span>
+          </div>
+          <div class="vn-prez-seo-item">
+            <strong>Блок «кому не подходит»</strong>
+            <span>Честность = доверие AI-ассистентов и Алисы</span>
+          </div>
+        </div>
+
+        <div class="vn-prez-note">
+          SEO-структура не гарантирует быстрый топ.<br />
+          Она создаёт правильную основу для роста в поиске —<br />
+          и это именно то, с чего начинается долгосрочный результат.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 05 — Технология
+    ═══════════════════════════════════════════════ -->
+    <section id="stack" class="vn-prez-section vn-prez-section--dark">
+      <div class="vn-container">
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">ТЕХНОЛОГИЧЕСКИЙ ФУНДАМЕНТ</span>
+        <h2 class="vn-prez-h2 vn-prez-h2--ondark">
+          Платформа без ограничений.<br />Не на годы — навсегда.
+        </h2>
+        <p class="vn-prez-body vn-prez-body--ondark" style="font-size: 18px; font-weight: 600; max-width: 600px;">
+          Когда на сайте будет 30–50 SEO-страниц,
+          охватывающих все запросы по военной ипотеке
+          в Краснодаре и Крыму — зачем куда-то переходить?
+          Это и есть актив. Он только растёт.
+        </p>
+
+        <div class="vn-prez-table">
+          <div class="vn-prez-table__row vn-prez-table__row--head">
+            <span>Преимущество</span>
+            <span>Что это значит для Михаила</span>
+          </div>
+          <div class="vn-prez-table__row">
+            <span>Быстрая загрузка</span>
+            <span>Сайт удобно открывать с телефона и легче продвигать</span>
+          </div>
+          <div class="vn-prez-table__row">
+            <span>Поисковики видят текст</span>
+            <span>Страницы сразу попадают в индекс — не нужно ждать пока JS отработает</span>
+          </div>
+          <div class="vn-prez-table__row">
+            <span>Масштабирование без предела</span>
+            <span>Добавить 15 новых SEO-страниц = добавить 15 файлов. Без смены платформы</span>
+          </div>
+          <div class="vn-prez-table__row">
+            <span>Гибкость дизайна</span>
+            <span>Сайт не ограничен шаблонами — можно сделать что угодно</span>
+          </div>
+          <div class="vn-prez-table__row">
+            <span>Надёжный деплой</span>
+            <span>Сайт на Vercel — быстрый CDN, автоматический SSL, 99.9% доступность</span>
+          </div>
+        </div>
+
+        <div class="vn-prez-compare">
+          <div class="vn-prez-compare__col vn-prez-compare__col--red">
+            <h4>ЯНДЕКС.ДИРЕКТ</h4>
+            <p class="vn-prez-compare__label">= Аренда</p>
+            <p>Вложил 100 000 ₽</p>
+            <p>Месяц прошёл →</p>
+            <p>Деньги потрачены.</p>
+            <p>Трафик остановился.</p>
+            <p>Ничего не осталось.</p>
+            <p style="margin-top: 12px">Пополнишь бюджет — снова получишь заявки. Не пополнишь — ничего нет.</p>
+          </div>
+          <div class="vn-prez-compare__col vn-prez-compare__col--blue">
+            <h4>SEO-САЙТ</h4>
+            <p class="vn-prez-compare__label">= Собственность</p>
+            <p>Вложил 100 000 ₽</p>
+            <p>Месяц прошёл →</p>
+            <p>Страницы остались.</p>
+            <p>Работают через год.</p>
+            <p>Работают через пять лет.</p>
+            <p style="margin-top: 12px">SEO-страница — это актив, а не расход.</p>
+          </div>
+        </div>
+
+        <p class="vn-prez-body vn-prez-body--ondark" style="text-align: center; margin-top: 32px;">
+          Сайт собран так, чтобы его можно было развивать бесконечно:<br />
+          добавлять страницы по Крыму, районам, ЖК, вопросам НИС<br />
+          и любым новым сценариям покупки.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 06 — После запуска
+    ═══════════════════════════════════════════════ -->
+    <section id="next" class="vn-prez-section vn-prez-section--gray">
+      <div class="vn-container">
+        <span class="vn-label-mono">ПЛАН ПОСЛЕ ЗАПУСКА</span>
+        <h2 class="vn-prez-h2">Сайт готов.<br />Что делать дальше?</h2>
+        <p class="vn-prez-lead">
+          Сайт после запуска — это фундамент, который нужно усиливать.<br />
+          Это нормально: ни один сильный сайт не стал таким за один день.
+        </p>
+
+        <div class="vn-prez-cards--2">
+          <div class="vn-prez-card vn-prez-card--dark">
+            <span class="vn-prez-card__num">01</span>
+            <span class="vn-prez-card__title">SEO-СОПРОВОЖДЕНИЕ</span>
+            <span class="vn-prez-card__body">Регулярная работа с сайтом после запуска. Чтобы он не стоял на месте.</span>
+          </div>
+          <div class="vn-prez-card vn-prez-card--dark">
+            <span class="vn-prez-card__num">02</span>
+            <span class="vn-prez-card__title">НОВЫЕ SEO-СТРАНИЦЫ</span>
+            <span class="vn-prez-card__body">Новые точки входа из Яндекса. Каждая страница — отдельный запрос.</span>
+          </div>
+          <div class="vn-prez-card vn-prez-card--dark">
+            <span class="vn-prez-card__num">03</span>
+            <span class="vn-prez-card__title">КАТАЛОГ ЖК</span>
+            <span class="vn-prez-card__body">Переход к объектной платформе: карточки ЖК, фильтры, SEO под названия.</span>
+          </div>
+          <div class="vn-prez-card vn-prez-card--dark">
+            <span class="vn-prez-card__num">04</span>
+            <span class="vn-prez-card__title">ПОДДЕРЖКА</span>
+            <span class="vn-prez-card__body">Технические правки, обновление контента, добавление блоков.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 07 — SEO-робот
+    ═══════════════════════════════════════════════ -->
+    <section id="robot" class="vn-prez-section vn-prez-section--dark">
+      <div class="vn-container">
+        <div class="vn-grid-12">
+          <div style="grid-column: 1 / 6">
+            <span class="vn-label-mono" style="color: var(--color-accent-cta)">ПРОДУКТ 01</span>
+            <h2 class="vn-prez-h2 vn-prez-h2--ondark" style="margin-top: 12px">SEO-робот<br />сопровождения</h2>
+            <span class="vn-prez-badge" style="background: rgba(158,7,7,0.15); color: #c72e2e; margin-top: 12px; display: inline-block;">Рекомендуемый первый шаг</span>
+            <div class="vn-prez-price" style="margin-top: 24px">
+              <p style="font-size: 24px; font-weight: 600; color: var(--color-text-ondark); margin: 0">16 000 ₽ <span style="font-size: 14px; font-weight: 400; color: var(--color-text-ondark-mute)">/ месяц</span></p>
+              <p style="font-size: 16px; color: var(--color-text-ondark); margin: 8px 0 0; font-weight: 500">40 000 ₽ <span style="font-size: 13px; font-weight: 400; color: var(--color-text-ondark-mute)">/ 3 месяца</span></p>
+              <span class="vn-prez-badge" style="background: rgba(37,99,235,0.15); color: #4f8fff; margin-top: 6px; display: inline-block;">экономия 8 000 ₽</span>
+            </div>
+            <a href="https://chirkovandrey.ru" target="_blank" rel="noopener noreferrer" class="vn-btn-primary" style="margin-top: 24px; display: inline-flex;">
+              Подключить SEO-робот →
+            </a>
+          </div>
+          <div style="grid-column: 6 / 13">
+            <div class="vn-prez-position" style="border-left: 3px solid rgba(241,243,245,0.2); padding-left: 20px; margin-bottom: 24px;">
+              <p style="margin: 0; font-size: 15px; line-height: 1.7; color: var(--color-text-ondark-mute);">
+                Это не «бот, который автоматически выводит сайт в топ».<br /><br />
+                Это регулярная система работ которая не даёт сайту остановиться после запуска.
+              </p>
+            </div>
+            <ul class="vn-prez-checklist">
+              <li>Следит за задачами после запуска</li>
+              <li>Находит темы для новых SEO-страниц</li>
+              <li>Формирует список улучшений по страницам</li>
+              <li>Напоминает об обновлении FAQ</li>
+              <li>Помогает готовить контент под Яндекс</li>
+              <li>Отслеживает что нужно усилить</li>
+              <li>Формирует ежемесячный план работ</li>
+              <li>Поддерживает сайт «живым» для поиска</li>
+            </ul>
+            <div class="vn-prez-accent" style="background: rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.2); margin-top: 20px;">
+              Рекомендованный старт: 3 месяца.<br />
+              Чтобы сайт начал регулярно усиливаться после публикации — и не стоял на месте.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 08 — SEO-страницы
+    ═══════════════════════════════════════════════ -->
+    <section id="pages" class="vn-prez-section vn-prez-section--light">
+      <div class="vn-container">
+        <span class="vn-label-mono">ПРОДУКТ 02</span>
+        <h2 class="vn-prez-h2" style="margin-top: 12px">Пакет из 5 SEO-страниц</h2>
+        <p style="font-size: 18px; font-weight: 600; color: var(--color-text-primary); margin: 8px 0 0">60 000 ₽ · ~3 недели</p>
+
+        <div class="vn-prez-info-box" style="margin-top: 32px">
+          <h4 style="margin: 0 0 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-accent-cta)">Что такое SEO-страница?</h4>
+          <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.65; color: var(--color-text-secondary);">
+            Это специализированная страница под один конкретный поисковый запрос. Например: «как получить сертификат НИС» или «банки с военной ипотекой в Краснодаре».
+          </p>
+          <p style="margin: 0; font-size: 14px; line-height: 1.65; color: var(--color-text-secondary);">
+            Человек вводит запрос в Яндекс. Попадает на страницу Михаила. Получает исчерпывающий ответ. Доверяет эксперту → обращается.
+          </p>
+          <p style="margin: 8px 0 0; font-size: 14px; font-weight: 500; color: var(--color-text-primary);">
+            Страница работает без рекламного бюджета. Без остановки. Без выходных. Годами.
+          </p>
+        </div>
+
+        <div class="vn-prez-page-list" style="margin-top: 32px">
+          <div class="vn-prez-page-item">
+            <span class="vn-prez-page-item__num">01</span>
+            <div>
+              <strong>/nis-voprosy/</strong>
+              <span>«что такое военная ипотека НИС» — Информационный вход для новичков</span>
+            </div>
+          </div>
+          <div class="vn-prez-page-item">
+            <span class="vn-prez-page-item__num">02</span>
+            <div>
+              <strong>/sertifikat-nis/</strong>
+              <span>«как получить сертификат НИС» — Самый частый вопрос → доверие</span>
+            </div>
+          </div>
+          <div class="vn-prez-page-item">
+            <span class="vn-prez-page-item__num">03</span>
+            <div>
+              <strong>/banki-voennaya-ipoteka-krasnodar/</strong>
+              <span>«банки с военной ипотекой Краснодар» — Высококонверсионный запрос</span>
+            </div>
+          </div>
+          <div class="vn-prez-page-item">
+            <span class="vn-prez-page-item__num">04</span>
+            <div>
+              <strong>/pervonachalnyy-vznos-nis/</strong>
+              <span>«первоначальный взнос военная ипотека» — Снимает частый страх клиентов</span>
+            </div>
+          </div>
+          <div class="vn-prez-page-item">
+            <span class="vn-prez-page-item__num">05</span>
+            <div>
+              <strong>/voennaya-ipoteka-semya/</strong>
+              <span>«военная ипотека для семьи военного» — Захват аудитории супруги и родственники</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://chirkovandrey.ru" target="_blank" rel="noopener noreferrer" class="vn-btn-primary" style="margin-top: 32px; display: inline-flex;">
+          Собрать первый SEO-кластер →
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 09 — Яндекс Директ
+    ═══════════════════════════════════════════════ -->
+    <section id="direct" class="vn-prez-section vn-prez-section--gray">
+      <div class="vn-container">
+        <span class="vn-label-mono">ПРОДУКТ 03</span>
+        <h2 class="vn-prez-h2" style="margin-top: 12px">
+          Яндекс Директ:<br />быстрый запуск заявок
+        </h2>
+
+        <div class="vn-prez-position" style="border-left: 3px solid var(--color-accent-cta); padding-left: 20px; margin: 24px 0;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: var(--color-text-secondary);">
+            SEO даёт накопительный эффект — усиливается со временем.<br />
+            Яндекс Директ нужен, чтобы быстрее проверить спрос,<br />
+            протестировать страницы и получить первые обращения сразу после публикации сайта.
+          </p>
+        </div>
+
+        <div class="vn-prez-context" style="background: var(--color-bg-primary); padding: 16px 20px; border-radius: var(--radius-md); margin-bottom: 24px;">
+          <p style="margin: 0; font-size: 14px; line-height: 1.65; color: var(--color-text-secondary);">
+            Часть клиентов уже прямо сейчас ищет: «военная ипотека Краснодар», «новостройки по военной ипотеке», «купить квартиру военнослужащему». Директ помогает выйти на этих людей быстрее, чем SEO. А данные по кликам и конверсиям — усилить SEO-страницы, офферы и формулировки.
+          </p>
+        </div>
+
+        <div class="vn-prez-table" style="margin-bottom: 24px;">
+          <div class="vn-prez-table__row vn-prez-table__row--head">
+            <span>Этап</span>
+            <span>Что делается</span>
+          </div>
+          <div class="vn-prez-table__row"><span>Анализ спроса</span><span>Собираются запросы по Краснодару, Крыму, новостройкам и военной ипотеке</span></div>
+          <div class="vn-prez-table__row"><span>Структура кампаний</span><span>Разделение по направлениям: Краснодар, Крым, Дистанционно, Этапы покупки</span></div>
+          <div class="vn-prez-table__row"><span>Объявления</span><span>Пишутся под конкретные запросы и посадочные страницы</span></div>
+          <div class="vn-prez-table__row"><span>Минус-слова</span><span>Убираются нерелевантные переходы и нецелевой трафик</span></div>
+          <div class="vn-prez-table__row"><span>Посадочные страницы</span><span>Трафик ведётся на нужные страницы, а не на всё подряд</span></div>
+          <div class="vn-prez-table__row"><span>Метрика и цели</span><span>Настройка целей: заявка, клики по телефону, мессенджеры</span></div>
+          <div class="vn-prez-table__row"><span>UTM-метки</span><span>Видно какие кампании и объявления дают обращения</span></div>
+          <div class="vn-prez-table__row"><span>Первичная оптимизация</span><span>Корректировка после первых данных</span></div>
+        </div>
+
+        <div class="vn-prez-price-cards">
+          <div class="vn-prez-price-card">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin: 0 0 8px;">НАСТРОЙКА</p>
+            <p style="font-size: 22px; font-weight: 600; color: var(--color-text-primary); margin: 0">40 000 ₽</p>
+            <p style="font-size: 13px; color: var(--color-text-secondary); margin: 8px 0 0;">единовременно</p>
+            <p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 0;">Полная настройка кампаний под направления Михаила</p>
+          </div>
+          <div class="vn-prez-price-card">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin: 0 0 8px;">ВЕДЕНИЕ</p>
+            <p style="font-size: 22px; font-weight: 600; color: var(--color-text-primary); margin: 0">25 000 ₽</p>
+            <p style="font-size: 13px; color: var(--color-text-secondary); margin: 8px 0 0;">в месяц</p>
+            <p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 0;">Мониторинг, корректировки, отчёт</p>
+          </div>
+          <div class="vn-prez-price-card">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin: 0 0 8px;">РЕКЛАМНЫЙ БЮДЖЕТ</p>
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin: 0">Оплачивается отдельно напрямую в Яндекс</p>
+            <p style="font-size: 13px; color: var(--color-text-secondary); margin: 8px 0 0;">Рекомендуем от 60 000 ₽/мес</p>
+          </div>
+        </div>
+
+        <div class="vn-prez-warn" style="margin-top: 24px;">
+          ⚠️ Рекламный бюджет оплачивается отдельно, напрямую в Яндекс. Стоимость настройки и ведения — это оплата работы специалиста, а не пополнение рекламного кабинета.
+        </div>
+
+        <div class="vn-prez-package" style="margin-top: 32px;">
+          <h4 style="margin: 0 0 16px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;">Пакет «Запуск трафика»</h4>
+          <div class="vn-prez-package__row"><span>Настройка Яндекс Директ</span><span>40 000 ₽</span></div>
+          <div class="vn-prez-package__row"><span>Ведение 1 месяц</span><span>25 000 ₽</span></div>
+          <div class="vn-prez-package__row"><span>SEO-робот на 3 месяца</span><span>40 000 ₽</span></div>
+          <div class="vn-prez-package__row vn-prez-package__row--total"><span>Итого: работа специалистов</span><span>105 000 ₽</span></div>
+          <p style="margin: 12px 0 0; font-size: 12px; color: var(--color-text-tertiary);">+ рекламный бюджет Яндекс — оплачивается отдельно</p>
+        </div>
+
+        <div class="vn-prez-honest" style="margin-top: 32px;">
+          <div class="vn-prez-honest__col vn-prez-honest__col--red">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: #c72e2e; margin: 0 0 12px;">МЫ НЕ ОБЕЩАЕМ</p>
+            <p>Гарантированный поток заявок</p>
+            <p>Стабильные продажи с первого дня</p>
+            <p>Окупаемость за месяц</p>
+            <p>Топ по рекламным запросам</p>
+          </div>
+          <div class="vn-prez-honest__col vn-prez-honest__col--blue">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-accent-cta); margin: 0 0 12px;">МЫ ПОМОГАЕМ</p>
+            <p>Быстрее проверить спрос</p>
+            <p>Получить первые данные</p>
+            <p>Понять, что работает</p>
+            <p>Настроить точечно под ЦА</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 10 — Каталог ЖК
+    ═══════════════════════════════════════════════ -->
+    <section id="catalog" class="vn-prez-section vn-prez-section--dark">
+      <div class="vn-container">
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">ПРОДУКТ 04</span>
+        <h2 class="vn-prez-h2 vn-prez-h2--ondark" style="margin-top: 12px">
+          Каталог новостроек Краснодара<br />как следующий уровень сайта
+        </h2>
+        <p style="font-size: 18px; font-weight: 600; color: var(--color-text-ondark); margin: 8px 0 0">от 100 000 ₽ · ~4 недели</p>
+        <p class="vn-prez-body vn-prez-body--ondark" style="margin-top: 16px;">
+          Когда Михаил готов показывать не только подход, но и конкретные объекты: ЖК, районы, цены, сроки. Каталог превращает экспертный сайт в объектную платформу.
+        </p>
+
+        <ul class="vn-prez-checklist">
+          <li>Страница каталога с фильтрами по сценарию</li>
+          <li>10 карточек ЖК (фото, цены, сроки, аналитика)</li>
+          <li>Отметка «подходит / требует проверки» по ВИ</li>
+          <li>SEO-страница под каждый ЖК — отдельный URL</li>
+          <li>Кнопка «Записаться на разбор этого ЖК» на каждой карточке</li>
+          <li>Обновляемый контент</li>
+        </ul>
+
+        <div class="vn-prez-wireframe" aria-hidden="true">
+          <div class="vn-prez-wireframe__header">
+            <span>КАТАЛОГ НОВОСТРОЕК КРАСНОДАРА ПО ВОЕННОЙ ИПОТЕКЕ</span>
+            <div class="vn-prez-wireframe__filters">
+              <span>Для жизни</span><span>Для сдачи</span><span>Переезд позже</span>
+            </div>
+          </div>
+          <div class="vn-prez-wireframe__grid">
+            <div class="vn-prez-wireframe__card">
+              <div class="vn-prez-wireframe__img"></div>
+              <p>ЖК 01</p>
+              <p>от X млн</p>
+              <span>Подробнее →</span>
+            </div>
+            <div class="vn-prez-wireframe__card">
+              <div class="vn-prez-wireframe__img"></div>
+              <p>ЖК 02</p>
+              <p>от X млн</p>
+              <span>Подробнее →</span>
+            </div>
+            <div class="vn-prez-wireframe__detail">
+              <p><strong>ЖК «Название»</strong></p>
+              <p>Прикубанский район</p>
+              <p>от 4.2 млн · сдача Q3 2026</p>
+              <div class="vn-prez-wireframe__checks">
+                <span>✓ Военная ипотека</span>
+                <span>✓ Аккредитован</span>
+                <span>✓ Подходит для семьи</span>
+              </div>
+              <span class="vn-prez-wireframe__btn">Записаться на разбор →</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="vn-prez-body vn-prez-body--ondark" style="margin-top: 24px;">
+          10 карточек ЖК = 10 дополнительных URL в поиске. Каждый ЖК ищут по названию → Михаил появляется рядом. Обновляемый контент — Яндекс ценит свежесть.
+        </p>
+        <p style="margin-top: 12px; font-size: 12px; color: var(--color-text-ondark-mute);">
+          Цена «от 100 000 ₽» — зависит от количества ЖК, объёма данных, фото и уровня детализации карточек.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 11 — Поддержка
+    ═══════════════════════════════════════════════ -->
+    <section id="support" class="vn-prez-section vn-prez-section--gray">
+      <div class="vn-container">
+        <span class="vn-label-mono">ПРОДУКТ 05</span>
+        <h2 class="vn-prez-h2" style="margin-top: 12px">Поддержка сайта после запуска</h2>
+        <p class="vn-prez-lead">
+          Сайт — живой инструмент. Контактные данные меняются, появляются новые вопросы клиентов, нужно добавить блок или обновить текст. Это нормальная часть работы с сайтом.
+        </p>
+
+        <div class="vn-prez-features">
+          <div class="vn-prez-feature">
+            <h4>Технические правки</h4>
+            <span>Форма, кнопки, блоки</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Обновление текстов</h4>
+            <span>Данные, контент</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Добавление блоков</h4>
+            <span>Новые секции на страницы</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Проверка мобильной версии</h4>
+            <span>Адаптация, тестирование</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Обновление контактов</h4>
+            <span>Телефоны, адреса, ссылки</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Новые страницы</h4>
+            <span>Расширение сайта</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Яндекс Вебмастер</h4>
+            <span>Помощь с индексацией</span>
+          </div>
+          <div class="vn-prez-feature">
+            <h4>Консультации</h4>
+            <span>По развитию сайта</span>
+          </div>
+        </div>
+
+        <div class="vn-prez-table" style="margin-top: 32px;">
+          <div class="vn-prez-table__row vn-prez-table__row--head">
+            <span>Формат</span>
+            <span>Для чего</span>
+          </div>
+          <div class="vn-prez-table__row"><span>Разовые правки</span><span>Точечно исправить или добавить что-то конкретное</span></div>
+          <div class="vn-prez-table__row"><span>Месячная поддержка</span><span>Если сайт развивается регулярно</span></div>
+          <div class="vn-prez-table__row"><span>SEO + поддержка</span><span>Одновременно обновлять сайт и усиливать поисковую систему</span></div>
+        </div>
+
+        <p style="margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--color-text-primary);">По объёму задач — обсудим после запуска.</p>
+        <p style="margin-top: 4px; font-size: 12px; color: var(--color-text-tertiary);">Фиксированные пакеты поддержки согласовываются отдельно</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 12 — Передача и размещение
+    ═══════════════════════════════════════════════ -->
+    <section id="transfer" class="vn-prez-section vn-prez-section--dark">
+      <div class="vn-container">
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">ПОСЛЕ СДАЧИ ПРОЕКТА</span>
+        <h2 class="vn-prez-h2 vn-prez-h2--ondark">
+          Сайт — ваш.<br />Выберите как его разместить.
+        </h2>
+        <p class="vn-prez-body vn-prez-body--ondark">
+          Сайт передаётся в полную интеллектуальную собственность.<br />
+          Домен регистрируется на имя клиента.<br />
+          Два варианта размещения — выбирайте под себя.
+        </p>
+
+        <div class="vn-prez-guarantees">
+          <div class="vn-prez-guarantee">
+            <p style="font-size: 20px; margin: 0 0 8px;">🔑</p>
+            <p style="font-size: 14px; font-weight: 600; color: var(--color-text-ondark); margin: 0 0 4px;">ВАША СОБСТВЕННОСТЬ</p>
+            <p style="font-size: 13px; color: var(--color-text-ondark-mute); margin: 0;">Весь код, тексты, дизайн и структура передаются полностью. Это ваш актив. Навсегда.</p>
+          </div>
+          <div class="vn-prez-guarantee">
+            <p style="font-size: 20px; margin: 0 0 8px;">🌐</p>
+            <p style="font-size: 14px; font-weight: 600; color: var(--color-text-ondark); margin: 0 0 4px;">ВАШ ДОМЕН</p>
+            <p style="font-size: 13px; color: var(--color-text-ondark-mute); margin: 0;">Домен регистрируется на ваше имя. Все доступы — у вас. Ничего не скрыто.</p>
+          </div>
+          <div class="vn-prez-guarantee">
+            <p style="font-size: 20px; margin: 0 0 8px;">⚙️</p>
+            <p style="font-size: 14px; font-weight: 600; color: var(--color-text-ondark); margin: 0 0 4px;">ОТКРЫТЫЙ СТЕК</p>
+            <p style="font-size: 13px; color: var(--color-text-ondark-mute); margin: 0;">Astro + GitHub. Любой разработчик может взять сайт на сопровождение. Нет привязки к одному подрядчику.</p>
+          </div>
+        </div>
+
+        <div class="vn-prez-options">
+          <div class="vn-prez-option">
+            <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin: 0 0 8px;">ВАРИАНТ А</p>
+            <h4 style="font-size: 18px; font-weight: 600; color: var(--color-text-ondark); margin: 0 0 12px;">Самостоятельное размещение</h4>
+            <p style="font-size: 14px; color: var(--color-text-ondark-mute); line-height: 1.6; margin: 0 0 16px;">Для тех, кто хочет полное владение и готов заниматься техникой самостоятельно или через своего специалиста.</p>
+            <p style="font-size: 14px; color: var(--color-text-ondark); margin: 0 0 4px;">Хостинг: Timeweb (российский)</p>
+            <p style="font-size: 14px; color: var(--color-text-ondark); margin: 0 0 16px;">Расходы: ~800 ₽/мес</p>
+            <div style="border-top: 1px solid var(--color-border-ondark); padding-top: 16px;">
+              <p style="font-size: 12px; font-weight: 600; color: var(--color-accent-cta); margin: 0 0 8px;">НАША РАБОТА ПРИ ПЕРЕДАЧЕ — БЕСПЛАТНО</p>
+              <ul class="vn-prez-checklist" style="margin-top: 8px;">
+                <li>Разворачиваем сайт на вашем хостинге</li>
+                <li>Подключаем домен и настраиваем DNS</li>
+                <li>Устанавливаем SSL-сертификат</li>
+                <li>Проверяем все страницы и формы</li>
+                <li>Передаём инструкцию: что где, что оплачивать</li>
+                <li>1 месяц базового присмотра после запуска</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vn-prez-option vn-prez-option--rec">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+              <div>
+                <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin: 0 0 8px;">ВАРИАНТ Б</p>
+                <h4 style="font-size: 18px; font-weight: 600; color: var(--color-text-ondark); margin: 0;">Управляемое размещение</h4>
+              </div>
+              <span class="vn-prez-badge" style="background: rgba(37,99,235,0.15); color: #4f8fff;">★ РЕКОМЕНДУЕТСЯ</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-text-ondark-mute); line-height: 1.6; margin: 0 0 16px;">Для тех, кто не хочет заниматься сервером и хочет чтобы сайт оставался под контролем автора проекта.</p>
+            <p style="font-size: 24px; font-weight: 600; color: var(--color-text-ondark); margin: 0">12 000 ₽ <span style="font-size: 14px; font-weight: 400; color: var(--color-text-ondark-mute)">/ 6 месяцев</span></p>
+            <p style="font-size: 13px; color: var(--color-text-ondark-mute); margin: 4px 0 16px;">≈ 2 000 ₽ в месяц · Только блоками по 6 месяцев</p>
+            <div style="border-top: 1px solid var(--color-border-ondark); padding-top: 16px;">
+              <p style="font-size: 12px; font-weight: 600; color: var(--color-accent-cta); margin: 0 0 8px;">ЧТО ВХОДИТ</p>
+              <ul class="vn-prez-checklist" style="margin-top: 8px;">
+                <li>Размещение сайта на российском VPS</li>
+                <li>SSL-сертификат (настройка + контроль продления)</li>
+                <li>Автоматический деплой через GitHub</li>
+                <li>Резервные копии (минимум 1 раз в неделю)</li>
+                <li>Базовый контроль доступности сайта</li>
+                <li>Мелкие технические правки (до 30 мин в мес)</li>
+                <li>Обновление контактов, телефонов, ссылок</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="vn-prez-body vn-prez-body--ondark" style="text-align: center; margin-top: 32px;">
+          При любом варианте — сайт остаётся вашим активом.<br />
+          Всегда можно сменить специалиста или перейти на другой хостинг.
+        </p>
+      </div>
+    </section>
+
+    <!-- Roadmap (подблок Раздела 12) -->
+    <section id="roadmap" class="vn-prez-section vn-prez-section--dark" style="border-top: 1px solid var(--color-border-ondark);">
+      <div class="vn-container">
+        <span class="vn-label-mono" style="color: var(--color-accent-cta)">ПЛАН НА 6 МЕСЯЦЕВ</span>
+        <h2 class="vn-prez-h2 vn-prez-h2--ondark">
+          Как сайт становится<br />каналом привлечения
+        </h2>
+
+        <div class="vn-prez-timeline">
+          <div class="vn-prez-timeline__item">
+            <span class="vn-prez-timeline__num">01</span>
+            <span class="vn-prez-timeline__status">СЕЙЧАС</span>
+            <p class="vn-prez-timeline__title">Закрепить запуск</p>
+            <ul>
+              <li>SEO-робот</li>
+              <li>Яндекс Вебмастер</li>
+              <li>Внешние профили</li>
+            </ul>
+          </div>
+          <div class="vn-prez-timeline__item">
+            <span class="vn-prez-timeline__num">02</span>
+            <span class="vn-prez-timeline__status">~2-3 МЕС</span>
+            <p class="vn-prez-timeline__title">Расширить охват</p>
+            <ul>
+              <li>5 SEO-страниц</li>
+              <li>(ипотека/НИС)</li>
+            </ul>
+          </div>
+          <div class="vn-prez-timeline__item">
+            <span class="vn-prez-timeline__num">03</span>
+            <span class="vn-prez-timeline__status">~3-4 МЕС</span>
+            <p class="vn-prez-timeline__title">Усилить экспертность</p>
+            <ul>
+              <li>Ещё 5 страниц</li>
+              <li>(Краснодар/Крым)</li>
+              <li>/o-mikhail/</li>
+            </ul>
+          </div>
+          <div class="vn-prez-timeline__item">
+            <span class="vn-prez-timeline__num">04</span>
+            <span class="vn-prez-timeline__status">~4-6 МЕС</span>
+            <p class="vn-prez-timeline__title">Объекты и регионы</p>
+            <ul>
+              <li>Каталог ЖК</li>
+              <li>Региональные кластеры</li>
+            </ul>
+          </div>
+          <div class="vn-prez-timeline__item">
+            <span class="vn-prez-timeline__num">05</span>
+            <span class="vn-prez-timeline__status">ДАЛЬШЕ</span>
+            <p class="vn-prez-timeline__title">Экспертный канал</p>
+            <ul>
+              <li>Блог</li>
+              <li>Кейсы</li>
+              <li>Видео-воронки</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+          <span class="vn-label-mono" style="color: #9E0707">МЫ ВСЕГДА НА СВЯЗИ</span>
+          <p class="vn-prez-body vn-prez-body--ondark" style="margin-top: 16px;">
+            Рассчитываем на продолжение сотрудничества.<br />
+            Готовы развивать сайт вместе с Михаилом:<br />
+            SEO-продвижение, новые страницы, SEO-статьи,<br />
+            каталог жилых комплексов, Яндекс Директ.
+          </p>
+          <blockquote class="vn-prez-accent" style="border-left-color: var(--color-accent-cta); margin-top: 28px;">
+            Сайт сдан. Фундамент построен.<br />
+            Дальше — только рост.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         РАЗДЕЛ 13 — Рекомендуемый первый шаг
+    ═══════════════════════════════════════════════ -->
+    <section id="choice" class="vn-prez-section vn-prez-section--light">
+      <div class="vn-container">
+        <span class="vn-label-mono">МОЯ РЕКОМЕНДАЦИЯ</span>
+        <h2 class="vn-prez-h2">Что подключить первым</h2>
+        <blockquote class="vn-prez-accent" style="margin-top: 20px; border-left-color: var(--color-accent-cta);">
+          Это не обязательное продолжение разработки.<br />
+          Это следующий слой роста — если цель не просто опубликовать сайт, а постепенно превратить его в канал привлечения.
+        </blockquote>
+
+        <div class="vn-prez-rec-card" style="margin-top: 32px;">
+          <h4 style="margin: 0 0 20px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-tertiary);">Рекомендованный пакет</h4>
+          <div class="vn-prez-rec-row">
+            <div>
+              <p style="font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0;">ШАГ 1. SEO-робот сопровождения на 3 месяца</p>
+              <p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 0;">Чтобы сайт не стоял после запуска и регулярно усиливался в Яндексе</p>
+            </div>
+            <span style="font-size: 18px; font-weight: 600; color: var(--color-accent-cta); white-space: nowrap;">40 000 ₽</span>
+          </div>
+          <div class="vn-prez-rec-row">
+            <div>
+              <p style="font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0;">ШАГ 2. Пакет из 5 SEO-страниц</p>
+              <p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 0;">Чтобы начать расширять охват по Яндексу и Алисе</p>
+            </div>
+            <span style="font-size: 18px; font-weight: 600; color: var(--color-accent-cta); white-space: nowrap;">60 000 ₽</span>
+          </div>
+          <div class="vn-prez-rec-row vn-prez-rec-row--total">
+            <span style="font-size: 16px; font-weight: 600;">ИТОГО первый этап роста</span>
+            <span style="font-size: 22px; font-weight: 600; color: var(--color-accent-cta);">100 000 ₽</span>
+          </div>
+        </div>
+
+        <div class="vn-prez-products-table" style="margin-top: 32px;">
+          <div class="vn-prez-products-table__row vn-prez-products-table__row--head">
+            <span>Продукт</span>
+            <span>Роль</span>
+            <span>Стоимость</span>
+          </div>
+          <div class="vn-prez-products-table__row"><span>SEO-робот / 3 месяца</span><span>Регулярное усиление сайта</span><span>40 000 ₽</span></div>
+          <div class="vn-prez-products-table__row"><span>5 SEO-страниц</span><span>Новые точки входа из Яндекса</span><span>60 000 ₽</span></div>
+          <div class="vn-prez-products-table__row"><span>Яндекс Директ (настройка)</span><span>Быстрый запуск платного трафика</span><span>40 000 ₽</span></div>
+          <div class="vn-prez-products-table__row"><span>Яндекс Директ (ведение)</span><span>Ежемесячная оптимизация</span><span>25 000 ₽/мес</span></div>
+          <div class="vn-prez-products-table__row"><span>Каталог ЖК</span><span>Следующий уровень объектной платформы</span><span>от 100 000 ₽</span></div>
+          <div class="vn-prez-products-table__row"><span>Поддержка</span><span>Правки, обновления, доработки</span><span>по объёму</span></div>
+        </div>
+        <p style="margin-top: 8px; font-size: 12px; color: var(--color-text-tertiary);">* Рекламный бюджет Яндекс Директ оплачивается отдельно напрямую в Яндекс</p>
+
+        <!-- О разработчике -->
+        <div class="ams-author" style="margin-top: 48px;">
+          <div class="vn-grid-12">
+            <div style="grid-column: 1 / 5">
+              <img src="/images/chirkov-andrey.jpg" alt="Андрей Чирков" width="280" height="320" loading="lazy" class="ams-author__photo" />
+            </div>
+            <div style="grid-column: 5 / 13">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span class="ams-badge">АМС</span>
+                <span style="font-size: 13px; color: #CFCFD4; text-transform: lowercase;">архитекторы маркетинговых систем</span>
+              </div>
+              <h3 style="margin: 0; font-size: 28px; font-weight: 600; color: var(--color-text-primary);">Андрей Чирков</h3>
+              <p style="margin: 4px 0 0; font-size: 15px; color: var(--color-text-secondary);">Архитектор маркетинговых систем</p>
+              <blockquote style="margin: 20px 0; padding-left: 20px; border-left: 3px solid #9E0707; font-style: italic; color: var(--color-text-secondary); font-size: 15px; line-height: 1.6;">
+                «Не запускаю рекламу в слабую упаковку.<br />
+                Сначала позиционирование и сайт — потом трафик.»
+              </blockquote>
+              <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px;">
+                <li style="font-size: 14px; color: var(--color-text-secondary);">• Системный маркетинг для B2B</li>
+                <li style="font-size: 14px; color: var(--color-text-secondary);">• 16+ лет в сфере с 2010 года</li>
+                <li style="font-size: 14px; color: var(--color-text-secondary);">• Кейсы: Бастион · Ракурс · Аякс</li>
+                <li style="font-size: 14px; color: var(--color-text-secondary);">• Недвижимость · Строительство · Инженерные ниши</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://chirkovandrey.ru" target="_blank" rel="noopener noreferrer" class="vn-btn-primary" style="margin-top: 32px; display: flex; width: 100%; height: 52px; font-size: 16px;">
+          Обсудить следующий этап →
+        </a>
+        <p style="margin-top: 12px; text-align: center; font-size: 13px; color: var(--color-text-tertiary);">
+          30-минутная диагностика. Без обязательств.<br />
+          chirkovandrey.ru · АМС | Архитекторы маркетинговых систем
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const dots = document.querySelectorAll('.vn-dot');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          dots.forEach(d => d.classList.remove('active'));
+          document.querySelector(`.vn-dot[href="#${e.target.id}"]`)
+            ?.classList.add('active');
+        }
+      }),
+      { threshold: 0.4 }
+    );
+    sections.forEach(s => observer.observe(s));
+  </script>
+</BaseLayout>
+
+<style>
+/* ═══════════════════════════════════════════════
+   PREZENTACIYA — GLOBAL STYLES
+   ═══════════════════════════════════════════════ */
+
+.vn-prez {
+  position: relative;
+}
+
+/* Dot navigation */
+.vn-prez-dots {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+.vn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 20, 25, 0.2);
+  border: 1.5px solid rgba(15, 20, 25, 0.3);
+  transition: all 200ms ease;
+  position: relative;
+}
+
+.vn-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.vn-dot:hover::before {
+  opacity: 1;
+}
+
+.vn-dot.active,
+.vn-dot:hover {
+  background: var(--color-accent-cta);
+  border-color: var(--color-accent-cta);
+  transform: scale(1.2);
+}
+
+/* Sections base */
+.vn-prez-section {
+  padding: 80px 48px;
+  position: relative;
+}
+
+.vn-prez-section--dark {
+  background: var(--color-bg-dark);
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-section--light {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.vn-prez-section--gray {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.vn-prez-section--full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.vn-prez-marker {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  font-size: 280px;
+  font-weight: 700;
+  color: var(--color-text-ondark);
+  opacity: 0.03;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Typography helpers */
+.vn-prez-h2 {
+  margin: 16px 0 0;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.vn-prez-h2--ondark {
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-lead {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.vn-prez-body {
+  margin: 16px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.vn-prez-body--ondark {
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-accent {
+  margin: 24px 0 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--color-accent-cta);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  background: rgba(37, 99, 235, 0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.vn-prez-section--dark .vn-prez-accent {
+  color: var(--color-text-ondark);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+/* Cover */
+.vn-prez-cover__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vn-prez-cover__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--color-text-ondark);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.vn-prez-cover__logo svg {
+  color: var(--color-accent-cta);
+}
+
+.vn-prez-cover__route {
+  margin-bottom: 32px;
+}
+
+.vn-prez-route__line {
+  height: 1px;
+  background: rgba(37, 99, 235, 0.3);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.vn-prez-route__dots {
+  display: flex;
+  justify-content: space-between;
+  max-width: 480px;
+  margin: -4px auto 0;
+}
+
+.vn-prez-route__dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.vn-prez-route__dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(37, 99, 235, 0.4);
+}
+
+.vn-prez-route__dot--filled::before {
+  background: var(--color-accent-cta);
+  border-color: var(--color-accent-cta);
+}
+
+.vn-prez-route__dot span {
+  font-size: 12px;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-cover__title {
+  margin: 16px 0 0;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  color: var(--color-text-ondark);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.vn-prez-cover__sub {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-ondark-mute);
+  text-wrap: pretty;
+}
+
+/* Author badge */
+.ams-cover-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 36px auto 0;
+  padding: 16px 20px;
+  background: rgba(158, 7, 7, 0.06);
+  border: 1px solid rgba(158, 7, 7, 0.2);
+  border-radius: 12px;
+  max-width: 380px;
+  text-align: left;
+}
+
+.ams-cover-author img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(158, 7, 7, 0.4);
+}
+
+.ams-cover-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #F1F3F5;
+  margin: 0;
+}
+
+.ams-cover-role {
+  font-size: 12px;
+  color: #CFCFD4;
+  margin: 2px 0 0;
+}
+
+.ams-cover-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(158, 7, 7, 0.8);
+  text-decoration: none;
+}
+
+.ams-badge-mini {
+  background: #9E0707;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 5px;
+}
+
+/* Cards */
+.vn-prez-cards--3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.vn-prez-cards--2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.vn-prez-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-bg-surface);
+  border-radius: 12px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--color-accent-cta);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 200ms ease, transform 150ms ease;
+}
+
+.vn-prez-card:hover {
+  box-shadow: 0 4px 16px rgba(15, 20, 25, 0.08);
+  transform: translateY(-1px);
+}
+
+.vn-prez-card--dark {
+  background: var(--color-bg-dark-elev);
+  border-left-color: var(--color-accent-cta);
+}
+
+.vn-prez-card__num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-cta);
+}
+
+.vn-prez-card__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-card__body {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.vn-prez-card__link {
+  font-size: 12px;
+  color: var(--color-accent-cta);
+  margin-top: 4px;
+}
+
+.vn-prez-also {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.vn-prez-also li {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* Flow diagram */
+.vn-prez-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-top: 32px;
+  max-width: 800px;
+}
+
+.vn-prez-flow__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vn-prez-flow__item {
+  padding: 10px 14px;
+  background: rgba(241, 243, 245, 0.05);
+  border: 1px solid rgba(241, 243, 245, 0.1);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-flow__arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vn-prez-flow__arrow {
+  padding: 10px 0;
+  text-align: center;
+  color: var(--color-accent-cta);
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.vn-prez-flow__targets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vn-prez-flow__target {
+  padding: 10px 14px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--color-text-ondark-mute);
+  font-family: monospace;
+}
+
+.vn-prez-flow__final {
+  padding: 12px 16px;
+  background: var(--color-accent-cta);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* SEO grid */
+.vn-prez-seo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.vn-prez-seo-item {
+  background: var(--color-bg-surface);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.vn-prez-seo-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+.vn-prez-seo-item span {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.vn-prez-note {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--color-bg-surface);
+  border-left: 3px solid var(--color-accent-cta);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Table */
+.vn-prez-table {
+  margin-top: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vn-prez-table__row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.vn-prez-table__row:last-child {
+  border-bottom: none;
+}
+
+.vn-prez-table__row--head {
+  background: var(--color-bg-surface);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-table__row span:first-child {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-table__row span:last-child {
+  color: var(--color-text-secondary);
+}
+
+.vn-prez-section--dark .vn-prez-table {
+  border-color: var(--color-border-ondark);
+}
+
+.vn-prez-section--dark .vn-prez-table__row {
+  border-color: var(--color-border-ondark);
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-section--dark .vn-prez-table__row--head {
+  background: var(--color-bg-dark-elev);
+}
+
+.vn-prez-section--dark .vn-prez-table__row span:first-child {
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-section--dark .vn-prez-table__row span:last-child {
+  color: var(--color-text-ondark-mute);
+}
+
+/* Compare */
+.vn-prez-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.vn-prez-compare__col {
+  padding: 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.vn-prez-compare__col h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.vn-prez-compare__col p {
+  margin: 0 0 4px;
+}
+
+.vn-prez-compare__col--red {
+  background: rgba(226, 75, 74, 0.04);
+  border: 1px solid rgba(226, 75, 74, 0.3);
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-compare__col--red h4 {
+  color: #e24b4a;
+}
+
+.vn-prez-compare__col--blue {
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-compare__col--blue h4 {
+  color: #4f8fff;
+}
+
+.vn-prez-compare__label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px !important;
+  opacity: 0.8;
+}
+
+/* Checklist */
+.vn-prez-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vn-prez-checklist li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.vn-prez-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-cta);
+  font-weight: 600;
+}
+
+.vn-prez-section--light .vn-prez-checklist li,
+.vn-prez-section--gray .vn-prez-checklist li {
+  color: var(--color-text-secondary);
+}
+
+.vn-prez-section--dark .vn-prez-checklist li {
+  color: var(--color-text-ondark-mute);
+}
+
+/* Price cards */
+.vn-prez-price-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.vn-prez-price-card {
+  background: var(--color-bg-surface);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Warn */
+.vn-prez-warn {
+  padding: 16px 20px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Package */
+.vn-prez-package {
+  background: var(--color-bg-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+}
+
+.vn-prez-package__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+.vn-prez-package__row--total {
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-package__row span:last-child {
+  font-weight: 600;
+  color: var(--color-accent-cta);
+}
+
+/* Honest block */
+.vn-prez-honest {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.vn-prez-honest__col {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.vn-prez-honest__col p {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+
+.vn-prez-honest__col--red {
+  background: rgba(226, 75, 74, 0.04);
+}
+
+.vn-prez-honest__col--blue {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+/* Wireframe */
+.vn-prez-wireframe {
+  margin-top: 24px;
+  background: var(--color-bg-dark-elev);
+  border: 1px solid var(--color-border-ondark);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.vn-prez-wireframe__header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.vn-prez-wireframe__header span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-wireframe__filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.vn-prez-wireframe__filters span {
+  padding: 4px 10px;
+  background: rgba(241, 243, 245, 0.08);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-wireframe__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.vn-prez-wireframe__card {
+  background: rgba(241, 243, 245, 0.04);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.vn-prez-wireframe__img {
+  aspect-ratio: 16 / 10;
+  background: rgba(241, 243, 245, 0.06);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.vn-prez-wireframe__card p {
+  margin: 0 0 2px;
+  font-size: 12px;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-wireframe__card span {
+  font-size: 11px;
+  color: var(--color-accent-cta);
+}
+
+.vn-prez-wireframe__detail {
+  background: rgba(241, 243, 245, 0.04);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vn-prez-wireframe__detail p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-wireframe__checks {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vn-prez-wireframe__checks span {
+  font-size: 11px;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-prez-wireframe__btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: var(--color-accent-cta);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Features grid */
+.vn-prez-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.vn-prez-feature {
+  background: var(--color-bg-surface);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.vn-prez-feature h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-feature span {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* Guarantees */
+.vn-prez-guarantees {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.vn-prez-guarantee {
+  background: rgba(241, 243, 245, 0.04);
+  border: 1px solid rgba(241, 243, 245, 0.08);
+  border-top: 3px solid rgba(241, 243, 245, 0.2);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+/* Options */
+.vn-prez-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.vn-prez-option {
+  background: rgba(241, 243, 245, 0.04);
+  border: 1px solid rgba(241, 243, 245, 0.08);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.vn-prez-option--rec {
+  background: rgba(37, 99, 235, 0.06);
+  border: 1.5px solid rgba(37, 99, 235, 0.25);
+  border-top: 3px solid var(--color-accent-cta);
+}
+
+/* Timeline */
+.vn-prez-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+  position: relative;
+}
+
+.vn-prez-timeline::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border-ondark);
+}
+
+.vn-prez-timeline__item {
+  position: relative;
+  padding-top: 32px;
+}
+
+.vn-prez-timeline__num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-cta);
+  opacity: 0.5;
+}
+
+.vn-prez-timeline__status {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-accent-cta);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.vn-prez-timeline__title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-ondark);
+}
+
+.vn-prez-timeline__item ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vn-prez-timeline__item li {
+  font-size: 12px;
+  color: var(--color-text-ondark-mute);
+  margin-bottom: 2px;
+}
+
+/* Rec card */
+.vn-prez-rec-card {
+  background: var(--color-bg-surface);
+  border: 2px solid var(--color-accent-cta);
+  border-radius: 16px;
+  padding: 36px;
+}
+
+.vn-prez-rec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-prez-rec-row--total {
+  background: rgba(37, 99, 235, 0.05);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-bottom: none;
+  margin-top: 8px;
+}
+
+/* Products table */
+.vn-prez-products-table {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vn-prez-products-table__row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.vn-prez-products-table__row:last-child {
+  border-bottom: none;
+}
+
+.vn-prez-products-table__row--head {
+  background: var(--color-bg-surface);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-prez-products-table__row span:last-child {
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: right;
+}
+
+/* Author block */
+.ams-author {
+  background: rgba(158, 7, 7, 0.06);
+  border: 1px solid rgba(158, 7, 7, 0.2);
+  border-radius: 16px;
+  padding: 36px;
+}
+
+.ams-author__photo {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 280 / 320;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(158, 7, 7, 0.3);
+}
+
+.ams-badge {
+  background: #9E0707;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+/* Badge helper */
+.vn-prez-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Position text */
+.vn-prez-position {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Info box */
+.vn-prez-info-box {
+  background: var(--color-bg-surface);
+  border-left: 3px solid var(--color-accent-cta);
+  padding: 28px;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Page list */
+.vn-prez-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vn-prez-page-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--color-bg-surface);
+  border-radius: 10px;
+}
+
+.vn-prez-page-item__num {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent-cta);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.vn-prez-page-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.vn-prez-page-item span {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* Context box */
+.vn-prez-context {
+  background: var(--color-bg-primary);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+  .vn-prez-dots { display: none; }
+  .vn-prez-section { padding: 64px 24px; }
+  .vn-prez-marker { font-size: 160px; left: 24px; }
+  .vn-prez-cards--3 { grid-template-columns: repeat(2, 1fr); }
+  .vn-prez-cards--2 { grid-template-columns: 1fr; }
+  .vn-prez-seo-grid { grid-template-columns: 1fr; }
+  .vn-prez-compare { grid-template-columns: 1fr; }
+  .vn-prez-price-cards { grid-template-columns: 1fr; }
+  .vn-prez-guarantees { grid-template-columns: 1fr; }
+  .vn-prez-options { grid-template-columns: 1fr; }
+  .vn-prez-timeline { grid-template-columns: repeat(2, 1fr); }
+  .vn-prez-features { grid-template-columns: repeat(2, 1fr); }
+  .vn-prez-flow { grid-template-columns: 1fr; }
+  .vn-prez-flow__arrows,
+  .vn-prez-flow__targets { display: none; }
+  .vn-prez-flow__final { margin-top: 12px; }
+  .ams-author .vn-grid-12 > * { grid-column: 1 / -1 !important; }
+  .ams-author__photo { max-width: 200px; margin: 0 auto 24px; display: block; }
+}
+
+@media (max-width: 640px) {
+  .vn-prez-cards--3 { grid-template-columns: 1fr; }
+  .vn-prez-timeline { grid-template-columns: 1fr; }
+  .vn-prez-features { grid-template-columns: 1fr; }
+  .vn-prez-wireframe__grid { grid-template-columns: 1fr; }
+  .vn-prez-honest { grid-template-columns: 1fr; }
+  .vn-prez-products-table__row { grid-template-columns: 1fr; gap: 4px; }
+  .vn-prez-products-table__row--head { display: none; }
+  .vn-prez-table__row { grid-template-columns: 1fr; gap: 4px; }
+  .vn-prez-table__row--head { display: none; }
+  .vn-prez-rec-row { flex-direction: column; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-dot,
+  .vn-prez-card {
+    transition: none;
+  }
+}
+</style>
