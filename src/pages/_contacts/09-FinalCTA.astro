@@ -1,0 +1,259 @@
+---
+import { CONTACTS, LEGAL } from '../../lib/constants';
+---
+
+<section id="section-contacts-cta" class="vn-contacts-final">
+  <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
+
+  <div class="vn-container vn-rel">
+    <div class="vn-grid-12">
+      <!-- Top zone: CTA -->
+      <div class="vn-contacts-final__cta-zone">
+        <span class="vn-label-mono vn-contacts-final__eyebrow">Готовы к разговору?</span>
+        <h2 class="vn-contacts-final__h2">
+          Запишитесь на разбор или выберите удобный способ связи
+        </h2>
+        <p class="vn-contacts-final__body">
+          Если вы только выбираете направление — начните с разбора цели покупки.
+          Если вопрос конкретный — напишите в мессенджер или позвоните.
+        </p>
+
+        <div class="vn-contacts-final__cta-row">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Записаться на разбор"
+            class="vn-btn-primary vn-contacts-final__btn"
+          >
+            Записаться на разбор
+          </a>
+          <a
+            href={CONTACTS.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-btn-ghost vn-contacts-final__btn-ghost"
+          >
+            Написать в Telegram
+          </a>
+          <a
+            href={`tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`}
+            class="vn-contacts-final__tel"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.38 1.88.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.93.32 1.86.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+
+        <div class="vn-contacts-final__stats" role="list">
+          <div class="vn-contacts-final__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>30 минут</span>
+          </div>
+          <div class="vn-contacts-final__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Яндекс Телемост</span>
+          </div>
+          <div class="vn-contacts-final__stat" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Бесплатно</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ghost divider -->
+    <div class="vn-contacts-final__divider"></div>
+
+    <!-- Legal block -->
+    <div class="vn-grid-12 vn-contacts-final__legal">
+      <div class="vn-contacts-final__legal-col">
+        <span class="vn-contacts-final__legal-label">Реквизиты</span>
+        <p>{LEGAL.name}</p>
+        <p>ИНН: {LEGAL.inn}</p>
+        <p>ОГРНИП: {LEGAL.ogrn}</p>
+      </div>
+
+      <div class="vn-contacts-final__legal-col">
+        <span class="vn-contacts-final__legal-label">Офисы</span>
+        <p>Краснодар, ул. Кубанская Набережная, 33</p>
+        <p>Бахчисарай (Крым), ул. Комарова, 13</p>
+      </div>
+
+      <div class="vn-contacts-final__legal-col">
+        <span class="vn-contacts-final__legal-label">Документы</span>
+        <a href="/politika/">Политика конфиденциальности →</a>
+        <a href="/cookies/">Согласие на обработку ПД →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-contacts-final {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-ondark);
+    padding: 96px 0;
+  }
+
+  .vn-contacts-final__cta-zone {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vn-contacts-final__eyebrow {
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+  }
+
+  .vn-contacts-final__h2 {
+    margin: 16px 0 0;
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.15;
+    font-weight: 600;
+    color: var(--color-text-ondark);
+    max-width: 560px;
+    text-wrap: balance;
+  }
+
+  .vn-contacts-final__body {
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-ondark-mute);
+    max-width: 480px;
+    text-wrap: pretty;
+  }
+
+  .vn-contacts-final__cta-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .vn-contacts-final__btn {
+    height: 48px;
+    padding: 0 28px;
+    font-size: 15px;
+  }
+
+  .vn-contacts-final__btn-ghost {
+    height: 48px;
+    padding: 0 24px;
+    font-size: 15px;
+    border-color: rgba(241, 243, 245, 0.2);
+    color: var(--color-text-ondark);
+  }
+  .vn-contacts-final__btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(241, 243, 245, 0.3);
+  }
+
+  .vn-contacts-final__tel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    height: 48px;
+    font-size: 15px;
+    color: var(--color-text-ondark-mute);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  .vn-contacts-final__tel:hover {
+    color: var(--color-text-ondark);
+  }
+
+  .vn-contacts-final__stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .vn-contacts-final__stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-text-ondark-mute);
+  }
+  .vn-contacts-final__stat svg {
+    color: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-contacts-final__divider {
+    height: 1px;
+    background: var(--color-border-ondark);
+    margin: 64px 0 48px;
+  }
+
+  .vn-contacts-final__legal {
+    row-gap: 32px;
+  }
+
+  .vn-contacts-final__legal-col {
+    grid-column: span 4;
+  }
+  .vn-contacts-final__legal-col p,
+  .vn-contacts-final__legal-col a {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: var(--color-text-ondark-mute);
+    line-height: 1.5;
+    text-decoration: none;
+    display: block;
+  }
+  .vn-contacts-final__legal-col a:hover {
+    color: var(--color-text-ondark);
+    text-decoration: underline;
+  }
+
+  .vn-contacts-final__legal-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-ondark-mute);
+    opacity: 0.6;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-contacts-final__legal-col {
+      grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-contacts-final {
+      padding: 72px 0 64px;
+    }
+    .vn-contacts-final__cta-row {
+      flex-direction: column;
+      width: 100%;
+    }
+    .vn-contacts-final__btn,
+    .vn-contacts-final__btn-ghost,
+    .vn-contacts-final__tel {
+      width: 100%;
+      justify-content: center;
+    }
+    .vn-contacts-final__legal-col {
+      grid-column: 1 / -1;
+    }
+    .vn-contacts-final__divider {
+      margin: 48px 0 32px;
+    }
+  }
+</style>

@@ -1,46 +1,25 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import { SITE, OFFICES } from '../lib/constants';
-import { localBusinessKrasnodar, localBusinessCrimea, breadcrumbSchema } from '../lib/seo';
-
-const schema = [
-  localBusinessKrasnodar,
-  localBusinessCrimea,
-  breadcrumbSchema([
-    { name: 'Главная', url: `${SITE.url}/` },
-    { name: 'Контакты', url: `${SITE.url}/contacts/` },
-  ]),
-];
+import Hero from './_contacts/01-Hero.astro';
+import ShortAnswer from './_contacts/02-ShortAnswer.astro';
+import Channels from './_contacts/03-Channels.astro';
+import OfficeKrd from './_contacts/04-OfficeKrd.astro';
+import OfficeCrimea from './_contacts/05-OfficeCrimea.astro';
+import Process from './_contacts/06-Process.astro';
+import Topics from './_contacts/07-Topics.astro';
+import FAQ from './_contacts/08-FAQ.astro';
+import FinalCTA from './_contacts/09-FinalCTA.astro';
+import { pageMeta, schemas } from './_contacts/pageData';
 ---
-<PageLayout
-  title="Контакты — Михаил Хряпин, военная ипотека Краснодар"
-  description="Контакты Михаила Хряпина: офисы в Краснодаре и Бахчисарае (Крым). Телефон, Telegram, адрес. Записаться на разбор цели покупки."
-  canonical={`${SITE.url}/contacts/`}
-  ogImage={`${SITE.url}/og/contacts.jpg`}
-  schema={schema}
->
-  <!-- TODO: сборка блоков по PAGE_CONTACTS.md -->
-  <section class="vn-section" id="request">
-    <div class="vn-container">
-      <h1>Контакты</h1>
 
-      <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px;">
-        <div class="vn-card">
-          <div class="vn-label-mono" style="margin-bottom: 16px;">Краснодар</div>
-          <p style="font-size: 15px; color: var(--color-text-secondary);">{OFFICES[0].address}</p>
-          <!-- TODO: [PRIMARY_PHONE], [TELEGRAM] -->
-        </div>
-        <div class="vn-card">
-          <div class="vn-label-mono" style="margin-bottom: 16px;">Крым</div>
-          <p style="font-size: 15px; color: var(--color-text-secondary);">{OFFICES[1].address}</p>
-        </div>
-      </div>
-
-      <div style="margin-top: 40px;">
-        <a href="/contacts/#request" data-modal-open data-modal-title="Записаться на разбор" class="vn-btn-primary">
-          Записаться на разбор
-        </a>
-      </div>
-    </div>
-  </section>
+<PageLayout {...pageMeta} schema={schemas}>
+  <Hero />
+  <ShortAnswer />
+  <Channels />
+  <OfficeKrd />
+  <OfficeCrimea />
+  <Process />
+  <Topics />
+  <FAQ />
+  <FinalCTA />
 </PageLayout>

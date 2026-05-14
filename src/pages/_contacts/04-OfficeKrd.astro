@@ -1,0 +1,197 @@
+---
+import { OFFICES } from '../../lib/constants';
+import PhotoPlaceholder from '../../components/ui/PhotoPlaceholder.astro';
+
+const office = OFFICES[0];
+---
+
+<section id="section-contacts-krd" class="vn-contacts-krd">
+  <div class="vn-contacts-krd__map-wrap">
+    <iframe
+      src={office.mapUrl}
+      width="100%"
+      height="480"
+      title="Офис Михаила Хряпина в Краснодаре"
+      loading="lazy"
+      style="border:none; display:block; width:100%; height:480px;"
+      allow="fullscreen"
+    />
+
+    <!-- Floating card LEFT -->
+    <div class="vn-contacts-krd__card">
+      <PhotoPlaceholder type="office" height="120px" filename="office-krd.jpg" alt="Офис в Краснодаре" />
+
+      <span class="vn-contacts-krd__badge">Главный офис</span>
+      <h2 class="vn-contacts-krd__h2">Офис в Краснодаре</h2>
+
+      <div class="vn-contacts-krd__row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Краснодар, {office.address}<br>{office.detail}</span>
+      </div>
+
+      <div class="vn-contacts-krd__row vn-contacts-krd__row--muted">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Встречи по предварительной договорённости</span>
+      </div>
+
+      <div class="vn-contacts-krd__divider"></div>
+
+      <div class="vn-contacts-krd__route-row">
+        <a href="https://yandex.ru/maps/-/CHQl5Z1n" target="_blank" rel="noopener noreferrer" class="vn-contacts-krd__route-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 21 18 21 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Маршрут в Яндекс Картах
+        </a>
+        <a href="https://2gis.ru/krasnodar" target="_blank" rel="noopener noreferrer" class="vn-contacts-krd__route-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Открыть в 2ГИС
+        </a>
+      </div>
+
+      <a
+        href="/contacts/#request"
+        data-modal-open
+        data-modal-title="Записаться на встречу в Краснодаре"
+        class="vn-btn-primary vn-contacts-krd__cta"
+      >
+        Записаться на встречу
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-contacts-krd {
+    background-color: var(--color-bg-primary);
+    position: relative;
+  }
+
+  .vn-contacts-krd__map-wrap {
+    position: relative;
+    width: 100%;
+    height: 480px;
+  }
+
+  .vn-contacts-krd__map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+  }
+
+  .vn-contacts-krd__card {
+    position: absolute;
+    left: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    max-width: calc(100% - 96px);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(15, 20, 25, 0.14);
+    z-index: 2;
+  }
+
+  .vn-contacts-krd__badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 12px;
+    background: var(--color-accent-primary);
+    color: var(--color-bg-surface);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+  }
+
+  .vn-contacts-krd__h2 {
+    margin: 12px 0 16px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+  }
+
+  .vn-contacts-krd__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--color-text-primary);
+    line-height: 1.5;
+  }
+  .vn-contacts-krd__row--muted {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .vn-contacts-krd__row svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-accent-cta);
+  }
+  .vn-contacts-krd__row--muted svg {
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-contacts-krd__divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 20px 0;
+  }
+
+  .vn-contacts-krd__route-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vn-contacts-krd__route-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    background: var(--color-bg-surface);
+    transition: border-color 150ms ease, background 150ms ease;
+  }
+  .vn-contacts-krd__route-btn:hover {
+    border-color: var(--color-accent-cta);
+    background: var(--color-accent-cta-soft);
+  }
+
+  .vn-contacts-krd__cta {
+    margin-top: 16px;
+    width: 100%;
+    height: 44px;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-contacts-krd__map-wrap {
+      height: auto;
+    }
+    .vn-contacts-krd__map-wrap iframe {
+      height: 280px;
+    }
+    .vn-contacts-krd__card {
+      position: static;
+      transform: none;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      box-shadow: none;
+    }
+  }
+</style>

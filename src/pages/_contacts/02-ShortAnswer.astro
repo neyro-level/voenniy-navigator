@@ -1,0 +1,51 @@
+---
+---
+
+<section id="section-contacts-answer" class="vn-contacts-answer">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-contacts-answer__inner">
+        <span class="vn-label-mono">О странице</span>
+        <p class="vn-contacts-answer__text">
+          Михаил Хряпин помогает военнослужащим и их семьям разобраться с покупкой
+          новостройки по военной ипотеке, выбрать подходящий объект и пройти маршрут
+          сделки. Связаться можно по телефону, через мессенджеры или через форму
+          записи на разбор. Основной офис — в Краснодаре на улице Кубанской Набережной, 33.
+          Также есть офис для встреч в Бахчисарае (Крым) на улице Комарова, 13.
+          Перед визитом лучше заранее согласовать время.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-contacts-answer {
+    background-color: var(--color-bg-surface);
+    padding: 56px 0;
+  }
+
+  .vn-contacts-answer__inner {
+    grid-column: 1 / -1;
+    max-width: 720px;
+  }
+
+  .vn-contacts-answer__text {
+    margin: 20px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    padding-left: 24px;
+    border-left: 3px solid color-mix(in srgb, var(--color-accent-primary) 15%, transparent);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 640px) {
+    .vn-contacts-answer {
+      padding: 48px 0;
+    }
+    .vn-contacts-answer__text {
+      padding-left: 16px;
+    }
+  }
+</style>
