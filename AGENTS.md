@@ -593,7 +593,7 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 12 | /voennaya-ipoteka-krym/ | 2026-05-14 | ✅ | 10 блоков (_voennaya-ipoteka-krym/01-10) по PAGE_VOENNAYA_IPOTEKA_KRYM.md |
 | 13 | /distancionnaya-pokupka/ | 2026-05-13 | ✅ | 12 блоков по PAGE_DISTANCIONNAYA_POKUPKA.md |
 | 14 | /etapy-pokupki/ | — | ⏳ | PAGE_ETAPY_POKUPKI.md |
-| 15 | /contacts/ | — | ⏳ | PAGE_CONTACTS.md |
+| 15 | /contacts/ | 2026-05-13 | ✅ | 9 блоков, MAP-OVERLAY, LocalBusiness×2, FAQPage, legal block |
 | 16 | politika + cookies + 404 + thanks | 2026-05-13 | ✅ | Юридические и утилитарные страницы |
 | 17 | Воронка: /video/ + /bonus/ | — | ⏳ | QuizForm, bonus-content.ts |
 | 18 | /prezentaciya/ | — | ⏳ | Гибридный дизайн АМС |
