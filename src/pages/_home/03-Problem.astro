@@ -5,57 +5,55 @@
   <div class="vn-container">
     <div class="vn-grid-12">
 
-      <!-- Header left -->
-      <div class="vn-home-prob__header-left" style="grid-column: 1 / 7">
-        <span class="vn-label-mono vn-home-prob__eyebrow">Ошибка выбора / 03</span>
+      <div class="vn-home-prob__intro" style="grid-column: 1 / 6">
+        <span class="vn-label-mono vn-home-prob__eyebrow">Ошибка выбора</span>
         <h2 class="vn-home-prob__title" id="vn-home-prob-title">
-          Главная ошибка — начать с объекта, а не с цели
+          Главная ошибка — выбирать новостройку без понятной задачи
         </h2>
-      </div>
-
-      <!-- Header right -->
-      <div class="vn-home-prob__header-right" style="grid-column: 7 / 13">
         <p class="vn-home-prob__lead">
-          Ипотека задаёт условия сделки. Но район, ЖК и сценарий покупки
-          определяют, будет ли квартира действительно подходить вашей задаче.
+          Военная ипотека показывает рамки покупки: сумму, банк, сроки и документы.
+          Но она не отвечает на главный вопрос — какая новостройка подходит именно вам.
         </p>
       </div>
 
-      <!-- 4 theses -->
-      <div class="vn-home-prob__thesis" style="grid-column: 1 / 4">
-        <span class="vn-home-prob__tnum">01</span>
-        <h3 class="vn-home-prob__ttitle">Разные задачи требуют разных решений</h3>
-        <p class="vn-home-prob__tbody">
-          Один и тот же ЖК может быть хорошим для сдачи и слабым для жизни семьи.
-          Критерии выбора зависят от цели.
-        </p>
-      </div>
+      <div class="vn-home-prob__cards vn-grid-12" style="grid-column: 6 / 13">
+        <article class="vn-home-prob__thesis" style="grid-column: 1 / 7">
+          <span class="vn-home-prob__tnum">01</span>
+          <h3 class="vn-home-prob__ttitle">
+            Квартира для жизни и квартира как вложение выбираются по-разному
+          </h3>
+          <p class="vn-home-prob__tbody">
+            Для жизни важны район, инфраструктура, транспорт и удобство семьи.
+            Для вложения — срок сдачи, спрос на аренду и будущая продажа.
+          </p>
+        </article>
 
-      <div class="vn-home-prob__thesis" style="grid-column: 4 / 7">
-        <span class="vn-home-prob__tnum">02</span>
-        <h3 class="vn-home-prob__ttitle">Реклама ЖК не отвечает за вашу ситуацию</h3>
-        <p class="vn-home-prob__tbody">
-          Застройщик продаёт объект, а не вашу задачу. Рендеры и акции не отвечают:
-          подходит ли этот вариант именно вам.
-        </p>
-      </div>
+        <article class="vn-home-prob__thesis" style="grid-column: 7 / 13">
+          <span class="vn-home-prob__tnum">02</span>
+          <h3 class="vn-home-prob__ttitle">Реклама показывает объект, но не вашу ситуацию</h3>
+          <p class="vn-home-prob__tbody">
+            Застройщик продаёт конкретный жилой комплекс. Но презентация и акция
+            не отвечают, подходит ли этот вариант под вашу задачу.
+          </p>
+        </article>
 
-      <div class="vn-home-prob__thesis" style="grid-column: 7 / 10">
-        <span class="vn-home-prob__tnum">03</span>
-        <h3 class="vn-home-prob__ttitle">Цена не равна правильному выбору</h3>
-        <p class="vn-home-prob__tbody">
-          Дешевле не значит лучше, если есть риски по району, ликвидности
-          или будущему сценарию — переезд, сдача, продажа.
-        </p>
-      </div>
+        <article class="vn-home-prob__thesis" style="grid-column: 1 / 7">
+          <span class="vn-home-prob__tnum">03</span>
+          <h3 class="vn-home-prob__ttitle">Низкая цена может скрывать слабое решение</h3>
+          <p class="vn-home-prob__tbody">
+            Дешевле не всегда лучше, если район неудобен, срок сдачи не подходит
+            или квартиру будет сложно сдавать и продавать.
+          </p>
+        </article>
 
-      <div class="vn-home-prob__thesis vn-home-prob__thesis--last" style="grid-column: 10 / 13">
-        <span class="vn-home-prob__tnum">04</span>
-        <h3 class="vn-home-prob__ttitle">Подборка без цели создаёт хаос</h3>
-        <p class="vn-home-prob__tbody">
-          Список квартир не помогает, если сначала не понять — зачем вы покупаете.
-          Работа начинается с разбора цели.
-        </p>
+        <article class="vn-home-prob__thesis" style="grid-column: 7 / 13">
+          <span class="vn-home-prob__tnum">04</span>
+          <h3 class="vn-home-prob__ttitle">Список вариантов не заменяет выбор</h3>
+          <p class="vn-home-prob__tbody">
+            Большая подборка квартир часто только запутывает. Сначала нужно понять
+            критерии, а уже потом смотреть конкретные новостройки.
+          </p>
+        </article>
       </div>
 
     </div>
@@ -68,12 +66,6 @@
   padding: 96px 0 88px;
 }
 
-/* ── Header ── */
-.vn-home-prob__header-left {
-  display: flex;
-  flex-direction: column;
-}
-
 .vn-home-prob__eyebrow {
   color: var(--color-text-ondark);
   opacity: 0.5;
@@ -81,37 +73,33 @@
 
 .vn-home-prob__title {
   margin: 16px 0 0;
-  font-size: var(--fs-h2);
-  line-height: 1.2;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.16;
   font-weight: 600;
   color: var(--color-text-ondark);
   text-wrap: balance;
 }
 
-.vn-home-prob__header-right {
-  display: flex;
-  align-items: flex-end;
-}
-
 .vn-home-prob__lead {
-  margin: 0;
+  margin: 22px 0 0;
   color: var(--color-text-ondark);
-  opacity: 0.55;
+  opacity: 0.62;
   font-size: var(--fs-body);
   line-height: 1.7;
-  max-width: 480px;
+  max-width: 470px;
+  text-wrap: pretty;
 }
 
-/* ── 4 theses ── */
+.vn-home-prob__cards {
+  gap: 14px;
+}
+
 .vn-home-prob__thesis {
-  padding: 36px 32px 36px 0;
-  border-right: 1px solid var(--color-border-ondark);
-}
-
-.vn-home-prob__thesis--last {
-  border-right: none;
-  padding-right: 0;
-  padding-left: 32px;
+  min-height: 100%;
+  padding: 24px;
+  border: 1px solid var(--color-border-ondark);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-bg-dark-elev) 72%, transparent);
 }
 
 .vn-home-prob__tnum {
@@ -127,7 +115,7 @@
 
 .vn-home-prob__ttitle {
   margin: 0 0 12px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
   font-weight: 600;
   color: var(--color-text-ondark);
@@ -144,27 +132,21 @@
 
 /* ── Tablet ── */
 @media (max-width: 1023px) {
-  .vn-home-prob__header-left  { grid-column: 1 / -1 !important; }
-  .vn-home-prob__header-right { grid-column: 1 / -1 !important; padding-top: 20px; }
+  .vn-home-prob__intro,
+  .vn-home-prob__cards {
+    grid-column: 1 / -1 !important;
+  }
+
+  .vn-home-prob__lead {
+    max-width: 620px;
+  }
+
+  .vn-home-prob__cards {
+    margin-top: 36px;
+  }
 
   .vn-home-prob__thesis {
-    grid-column: 1 / 7 !important;
-    border-right: 1px solid var(--color-border-ondark);
-    border-bottom: 1px solid var(--color-border-ondark);
-    padding: 28px 24px 28px 0;
-  }
-  .vn-home-prob__thesis:nth-child(odd of .vn-home-prob__thesis) {
-    grid-column: 1 / 7 !important;
-  }
-  .vn-home-prob__thesis:nth-child(even of .vn-home-prob__thesis) {
-    grid-column: 7 / 13 !important;
-    border-right: none;
-    padding-left: 24px;
-    padding-right: 0;
-  }
-  .vn-home-prob__thesis--last {
-    border-bottom: none;
-    padding-left: 24px;
+    padding: 24px;
   }
 }
 
@@ -172,15 +154,9 @@
 @media (max-width: 640px) {
   .vn-home-prob { padding: 72px 0 64px; }
 
-  .vn-home-prob__thesis {
+  .vn-home-prob__cards.vn-grid-12 > .vn-home-prob__thesis {
     grid-column: 1 / -1 !important;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border-ondark);
-    padding: 24px 0;
-  }
-  .vn-home-prob__thesis--last {
-    border-bottom: none;
-    padding-left: 0;
+    padding: 22px;
   }
 }
 </style>

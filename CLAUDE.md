@@ -139,6 +139,7 @@ pnpm                   — пакетный менеджер
 .vn-container { max-width: 1280px; margin-inline: auto; padding-inline: 48px; }
 .vn-grid-12   { display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; }
 @media (max-width: 1023px) { .vn-grid-12 > * { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .vn-grid-12 { column-gap: 8px; } }
 ```
 
 ```astro
@@ -194,6 +195,80 @@ pnpm                   — пакетный менеджер
 Кастомные размеры кнопок — только override padding/font-size, не цвета:
 ```css
 .vn-header__cta { font-size: 14px; padding: 10px 20px; }
+```
+
+---
+
+## 4d. СТАНДАРТ НОВОЙ СТРАНИЦЫ — ПРОВЕРЯТЬ КАЖДЫЙ РАЗ
+
+**Главная `/` — дизайн-эталон проекта.** Если `PAGE_*.md` предлагает другую композицию, сохранять смысл и тексты брифа, но визуально адаптировать страницу к уже собранной главной: банковская строгость, 12-колоночная сетка, холодные фоны, документные списки, тонкие разделители, номера, таблицы, muted-тексты, тёмные смысловые акценты.
+
+### Перед сборкой
+
+```
+✅  Прочитать SITE_ARCHITECTURE.md + DESIGN_SYSTEM.md + нужный PAGE_*.md
+✅  Свериться с _home/01-12 как эталоном композиции
+✅  Назвать source of truth и файлы, которые будут созданы/изменены
+✅  Не начинать следующий этап журнала без явного запроса
+```
+
+### Независимые блоки
+
+```
+✅  Каждый блок = src/pages/_[slug]/NN-Name.astro
+✅  У каждого блока свой <section>, <style>, mobile-адаптация и namespace
+✅  Namespace: vn-{page}-{block}__element
+✅  Route-файл = импорты, schema/pageData, порядок блоков
+✅  Блок можно удалить или переставить без поломки соседних
+✗  Нельзя: межблочные селекторы, зависимости от порядка секций, глобальные page-хак стили
+```
+
+### Типографика и кнопки
+
+```
+✅  Hero H1: var(--fs-display)
+✅  H2: var(--fs-h2)
+✅  H3: var(--fs-h3) или 15-18px для плотных банковских строк как на главной
+✅  Lead: var(--fs-lead)
+✅  Body: var(--fs-body)
+✅  Secondary text: var(--fs-body-sm)
+✅  Eyebrow: .vn-label-mono / var(--fs-label)
+✅  Заголовки: 600/650, line-height 1.1-1.2, text-wrap: balance
+✅  Текст: line-height 1.55-1.75, text-wrap: pretty
+✅  Primary CTA: .vn-btn-primary
+✅  Secondary CTA: .vn-btn-ghost или текстовая ссылка в стиле главной
+✗  Не вводить новые крупные размеры из брифа, если они конфликтуют с главной
+✗  Не переопределять цвета, hover, radius и border глобальных кнопок
+```
+
+### Композиция
+
+```
+✅  Использовать .vn-container + .vn-grid-12 + явные grid-column
+✅  Предпочитать rows, tables, split 5/7 или 7/5, document cards, чек-листы, numbered lists
+✅  Карточки — только когда нужны; не делать всю страницу карточечной
+✅  Тёмные секции — для проблемы, доказательств или финального CTA
+✅  Синий акцент — CTA, номера, тонкие линии, статусы
+✗  Не делать страницу похожей на другой сайт: без тёплых палитр, случайных градиентов, декоративных orbs
+```
+
+### SEO / Mobile / QA
+
+```
+□  Один H1
+□  Title 50-60, Description 140-160
+□  Canonical + OG image
+□  BreadcrumbList на каждой странице
+□  Service для смысловых страниц
+□  FAQPage, если есть FAQ
+□  Короткий ответ после Hero в HTML
+□  FAQ виден в DOM
+□  Mobile 375px: нет overflow, наложений, обрезанных кнопок
+□  Desktop 1280/1440: всё в 12-col grid
+□  Alt на img, aria-label на icon-only
+□  Анимации с prefers-reduced-motion
+□  Нет [PLACEHOLDER] в видимом тексте; если данных нет — TODO-комментарий
+□  pnpm build — 0 ошибок
 ```
 
 ---
@@ -457,7 +532,7 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 11 | RequestModal + CookieBanner | — | ⏳ | React islands, Telegram тест |
 | 12 | /voennaya-ipoteka-krym/ | — | ⏳ | PAGE_VOENNAYA_IPOTEKA_KRYM.md |
 | 13 | /distancionnaya-pokupka/ | — | ⏳ | PAGE_DISTANCIONNAYA_POKUPKA.md |
-| 14 | /etapy-pokupki/ | — | ⏳ | PAGE_ETAPY_POKUPKI.md |
+| 14 | /etapy-pokupki/ | 2026-05-14 | ✅ | 10 блоков (_etapy-pokupki/01-10) по PAGE_ETAPY_POKUPKI.md |
 | 15 | /contacts/ | — | ⏳ | PAGE_CONTACTS.md |
 | 16 | politika + cookies + 404 + thanks | — | ⏳ | — |
 | 17 | Воронка: /video/ + /bonus/ | — | ⏳ | QuizForm, bonus-content.ts |
@@ -465,7 +540,7 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 19 | Финальный QA | — | ⏳ | BUILD_PHASE_3_FINAL.md |
 | 20 | Продакшн деплой | — | ⏳ | vercel --prod |
 
-**Текущий фокус:** Рефакторинг монолитов (этап 10) → RequestModal (этап 11).
+**Текущий фокус:** Этап 14 завершён. Следующий ⏳-этап начинать только по явному запросу пользователя.
 
 ---
 

@@ -10,46 +10,48 @@
 
       <!-- Left: 6 колонок -->
       <div class="vn-home-hero__left">
-        <div class="vn-home-hero__eyebrow">Военный навигатор</div>
+        <div class="vn-home-hero__eyebrow">Военная ипотека · новостройки</div>
 
         <h1 class="vn-home-hero__h1">
-          Навигатор по новостройкам Краснодара
-          <span class="vn-home-hero__h1-accent"> для военнослужащих</span>
+          Помогу выбрать новостройку по военной ипотеке
+          <span class="vn-home-hero__h1-accent"> под вашу задачу</span>
         </h1>
 
         <p class="vn-home-hero__sub">
-          Помогаю понять, что вам действительно стоит купить
-          и провожу путь по военной ипотеке от первого разбора до результата.
+          Сначала разберём, для чего вы покупаете квартиру: для жизни или как вложение.
+          После этого определим, какие районы, жилые комплексы, сроки сдачи и формат сделки подходят
+          под вашу ситуацию.
         </p>
 
         <div class="vn-home-hero__cta-row">
           <a
             href="/contacts/#request"
             data-modal-open
-            data-modal-title="Записаться на разбор"
+            data-modal-title="Получить первичный разбор"
             class="vn-btn-primary vn-home-hero__btn-primary"
           >
-            Записаться на разбор
+            Получить первичный разбор
           </a>
         </div>
 
-        <!-- Stats 2×2 -->
-        <div class="vn-home-hero__stats vn-grid-12" role="list">
-          <div class="vn-home-hero__stat" role="listitem">
-            <span class="vn-home-hero__stat-label">Опыт</span>
-            <span class="vn-home-hero__stat-value">С 2016 года в профессии эксперта по недвижимости</span>
+        <p class="vn-home-hero__cta-note">Я уточню вашу задачу и подскажу, с чего начать.</p>
+
+        <div class="vn-home-hero__proof vn-grid-12" role="list" aria-label="Короткие доказательства">
+          <div class="vn-home-hero__proof-card" style="grid-column: 1 / 7" role="listitem">
+            <span class="vn-home-hero__proof-label">Опыт</span>
+            <span class="vn-home-hero__proof-value">В недвижимости с&nbsp;2016&nbsp;года</span>
           </div>
-          <div class="vn-home-hero__stat" role="listitem">
-            <span class="vn-home-hero__stat-label">Маршрут</span>
-            <span class="vn-home-hero__stat-value">65 сделок по военной ипотеке</span>
+          <div class="vn-home-hero__proof-card" style="grid-column: 7 / 13" role="listitem">
+            <span class="vn-home-hero__proof-label">Военная ипотека</span>
+            <span class="vn-home-hero__proof-value">65&nbsp;сделок по военной ипотеке</span>
           </div>
-          <div class="vn-home-hero__stat" role="listitem">
-            <span class="vn-home-hero__stat-label">Практика</span>
-            <span class="vn-home-hero__stat-value">180+ сделок в недвижимости</span>
+          <div class="vn-home-hero__proof-card" style="grid-column: 1 / 7" role="listitem">
+            <span class="vn-home-hero__proof-label">Практика</span>
+            <span class="vn-home-hero__proof-value">180&nbsp;проведённых сделок</span>
           </div>
-          <div class="vn-home-hero__stat" role="listitem">
-            <span class="vn-home-hero__stat-label">Формат</span>
-            <span class="vn-home-hero__stat-value">Дистанционное сопровождение</span>
+          <div class="vn-home-hero__proof-card" style="grid-column: 7 / 13" role="listitem">
+            <span class="vn-home-hero__proof-label">Формат</span>
+            <span class="vn-home-hero__proof-value">Можно начать дистанционно</span>
           </div>
         </div>
       </div>
@@ -60,14 +62,14 @@
           <div class="vn-home-hero__portrait-frame">
             <img
               src="/images/mikhail-hero.png"
-              alt="Михаил Хряпин — навигатор по новостройкам Краснодара"
+              alt="Михаил Хряпин — эксперт по выбору новостроек по военной ипотеке"
               loading="eager"
               decoding="async"
               class="vn-home-hero__portrait"
             />
             <div class="vn-home-hero__name-card">
               <p class="vn-home-hero__name-card-title">Михаил Хряпин</p>
-              <p class="vn-home-hero__name-card-sub">Навигатор по новостройкам Краснодара для&nbsp;военнослужащих</p>
+              <p class="vn-home-hero__name-card-sub">Помогаю военнослужащим выбрать новостройку по военной ипотеке</p>
             </div>
           </div>
         </div>
@@ -163,7 +165,7 @@
 .vn-home-hero__cta-row {
   display: flex;
   gap: 12px;
-  margin-bottom: 40px;
+  margin-bottom: 12px;
 }
 
 .vn-home-hero__btn-primary {
@@ -172,35 +174,28 @@
   font-size: 16px;
 }
 
-/* Stats 2×2 */
-.vn-home-hero__stats {
-  border-top: 1px solid var(--color-border);
+.vn-home-hero__cta-note {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--color-text-tertiary);
+  text-wrap: pretty;
 }
 
-.vn-home-hero__stat {
-  padding: 20px 0;
+.vn-home-hero__proof {
+  margin-top: 30px;
+  gap: 10px;
 }
 
-.vn-home-hero__stat:nth-child(odd) {
-  grid-column: 1 / 7;
+.vn-home-hero__proof-card {
+  min-width: 0;
+  padding: 18px 18px 17px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-surface) 58%, transparent);
 }
 
-.vn-home-hero__stat:nth-child(even) {
-  grid-column: 7 / 13;
-  padding-left: 20px;
-  border-left: 1px solid var(--color-border);
-}
-
-.vn-home-hero__stat:nth-child(n+3) {
-  border-top: 1px solid var(--color-border);
-}
-
-.vn-home-hero__stat:nth-child(3),
-.vn-home-hero__stat:nth-child(4) {
-  padding-bottom: 0;
-}
-
-.vn-home-hero__stat-label {
+.vn-home-hero__proof-label {
   display: block;
   font-size: var(--fs-label);
   font-weight: 500;
@@ -210,7 +205,8 @@
   margin-bottom: 6px;
 }
 
-.vn-home-hero__stat-value {
+.vn-home-hero__proof-value {
+  display: block;
   font-size: var(--fs-body-sm);
   line-height: 1.4;
   font-weight: 500;
@@ -281,13 +277,14 @@
   .vn-home-hero__left  { grid-column: 1 / -1; }
   .vn-home-hero__right { grid-column: 1 / -1; padding-top: 0; }
   .vn-home-hero__photo-outer { max-width: 400px; margin: 0 auto; }
+  .vn-home-hero__right { margin-top: 48px; }
 
-  /* Keep stats 2×2 on tablet — override global .vn-grid-12 > * rule */
-  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(odd) {
-    grid-column: 1 / 7;
+  .vn-home-hero__proof.vn-grid-12 > .vn-home-hero__proof-card:nth-child(odd) {
+    grid-column: 1 / 7 !important;
   }
-  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(even) {
-    grid-column: 7 / 13;
+
+  .vn-home-hero__proof.vn-grid-12 > .vn-home-hero__proof-card:nth-child(even) {
+    grid-column: 7 / 13 !important;
   }
 }
 
@@ -295,9 +292,11 @@
   .vn-home-hero { padding-top: 100px; padding-bottom: 64px; }
   .vn-home-hero__grid-bg { background-size: 48px 48px; }
   .vn-home-hero__h1 { line-height: 1.1; letter-spacing: -0.02em; }
-  .vn-home-hero__cta-row { margin-bottom: 32px; }
+  .vn-home-hero__cta-row { margin-bottom: 12px; }
   .vn-home-hero__btn-primary { width: 100%; height: 52px; justify-content: center; }
-  .vn-home-hero__right { order: -1; }
+  .vn-home-hero__proof { margin-top: 24px; gap: 8px; }
+  .vn-home-hero__proof-card { padding: 14px 12px; }
+  .vn-home-hero__right { margin-top: 40px; }
   .vn-home-hero__portrait-frame {
     aspect-ratio: 4 / 5;
     border-radius: 8px;
@@ -306,15 +305,5 @@
       0 16px 40px color-mix(in srgb, var(--color-bg-dark) 12%, transparent);
   }
   .vn-home-hero__name-card { padding: 12px 16px; }
-  .vn-home-hero__stat { padding: 16px 0; }
-  .vn-home-hero__stat:nth-child(even) { padding-left: 16px; }
-
-  /* Keep stats 2×2 on mobile */
-  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(odd) {
-    grid-column: 1 / 7;
-  }
-  .vn-home-hero__stats.vn-grid-12 > .vn-home-hero__stat:nth-child(even) {
-    grid-column: 7 / 13;
-  }
 }
 </style>

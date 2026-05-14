@@ -1,20 +1,27 @@
 <!-- ══════════════════════════════════════════════
-     БЛОК 02 — КОРОТКИЙ ОТВЕТ (AI-ready)
+     БЛОК 02 — ПОДХОД К ВЫБОРУ
 ════════════════════════════════════════════════ -->
-<section id="section-short-answer" class="vn-home-answer">
+<section id="section-short-answer" class="vn-home-answer" aria-labelledby="vn-home-answer-title">
   <div class="vn-container">
     <div class="vn-home-answer__inner vn-grid-12">
 
-      <blockquote class="vn-home-answer__quote" style="grid-column: 1 / 9">
-        Военный навигатор Михаила Хряпина помогает военнослужащим
-        и их семьям выбрать новостройку в Краснодарском крае или в Крыму
-        под реальную цель покупки — для жизни или инвестиции.
-      </blockquote>
+      <div class="vn-home-answer__label" style="grid-column: 1 / 4">
+        <span class="vn-label-mono">Коротко о подходе</span>
+      </div>
+
+      <div class="vn-home-answer__main" style="grid-column: 4 / 9">
+        <h2 id="vn-home-answer-title">Сначала разбираем задачу, потом смотрим новостройки</h2>
+        <p>
+          Не стоит начинать покупку с каталога на агрегаторах или случайного жилого комплекса.
+          Одна и та же новостройка может быть хорошим вариантом для жизни, но слабым вложением,
+          и наоборот.
+        </p>
+      </div>
 
       <p class="vn-home-answer__detail" style="grid-column: 9 / 13">
-        Работа начинается с разбора задачи, а не подборки вариантов.
-        Дальше — сопровождение по всему маршруту до регистрации права
-        собственности.
+        На первичном разборе я уточню цель покупки, бюджет, сроки, ограничения по военной ипотеке
+        и удобный формат сделки. После этого станет понятно, какие новостройки действительно стоит
+        рассматривать.
       </p>
 
     </div>
@@ -31,17 +38,33 @@
 }
 
 .vn-home-answer__inner {
-  align-items: center;
+  align-items: start;
 }
 
-.vn-home-answer__quote {
+.vn-home-answer__label {
+  padding-top: 4px;
+}
+
+.vn-home-answer__main {
+  max-width: 620px;
+}
+
+.vn-home-answer__main h2 {
   margin: 0;
-  font-size: clamp(20px, 1.9vw, 26px);
-  font-weight: 300;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  font-size: clamp(20px, 1.9vw, 28px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: 0;
   color: var(--color-text-primary);
   text-wrap: balance;
+}
+
+.vn-home-answer__main p {
+  margin: 18px 0 0;
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
 }
 
 .vn-home-answer__detail {
@@ -55,12 +78,28 @@
 }
 
 @media (max-width: 1023px) {
-  .vn-home-answer__quote  { grid-column: 1 / -1 !important; }
-  .vn-home-answer__detail { grid-column: 1 / -1 !important; padding-left: 0; border-left: none; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 4px; }
+  .vn-home-answer__label,
+  .vn-home-answer__main,
+  .vn-home-answer__detail {
+    grid-column: 1 / -1 !important;
+  }
+
+  .vn-home-answer__main {
+    margin-top: 22px;
+    max-width: none;
+  }
+
+  .vn-home-answer__detail {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+    margin-top: 24px;
+  }
 }
 
 @media (max-width: 640px) {
   .vn-home-answer { padding-block: 36px; }
-  .vn-home-answer__quote { font-size: 18px; }
+  .vn-home-answer__main h2 { font-size: 20px; }
 }
 </style>

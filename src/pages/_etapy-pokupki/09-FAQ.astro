@@ -1,0 +1,181 @@
+---
+import { faqItems } from './pageData';
+---
+
+<section id="section-etap-faq" class="vn-etap-faq" aria-labelledby="vn-etap-faq-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-etap-faq__grid">
+      <div class="vn-etap-faq__left" style="grid-column: 1 / 5">
+        <span class="vn-label-mono">ВОПРОСЫ / 08</span>
+        <h2 id="vn-etap-faq-title">
+          Частые вопросы по этапам покупки по военной ипотеке
+        </h2>
+        <p>
+          Ответы на вопросы, которые чаще всего возникают до начала сделки.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Задать вопрос на разборе"
+          class="vn-etap-faq__link"
+        >
+          Задайте вопрос на разборе →
+        </a>
+      </div>
+
+      <div class="vn-etap-faq__right" style="grid-column: 5 / 13">
+        {faqItems.map((item, index) => (
+          <details class="vn-etap-faq__item" open={index === 0}>
+            <summary class="vn-etap-faq__question">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{item.q}</strong>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="vn-etap-faq__answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-faq {
+    padding: 96px 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-etap-faq__grid {
+    align-items: start;
+  }
+
+  .vn-etap-faq__left {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-etap-faq__left h2 {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-faq__left p {
+    max-width: 320px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-etap-faq__link {
+    display: inline-flex;
+    margin-top: 28px;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .vn-etap-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-etap-faq__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-etap-faq__question {
+    display: grid;
+    grid-template-columns: 32px 1fr 18px;
+    gap: 16px;
+    align-items: center;
+    min-height: 72px;
+    padding: 22px 0;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .vn-etap-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn-etap-faq__question span {
+    font-size: var(--fs-caption);
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-faq__question strong {
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-faq__question svg {
+    color: var(--color-text-tertiary);
+    transition: transform 0.2s ease;
+  }
+
+  .vn-etap-faq__item[open] .vn-etap-faq__question svg {
+    transform: rotate(180deg);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-etap-faq__answer p {
+    max-width: 720px;
+    margin: 0;
+    padding: 0 0 24px 48px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-faq__left,
+    .vn-etap-faq__right {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-etap-faq__left {
+      position: static;
+      margin-bottom: 40px;
+    }
+
+    .vn-etap-faq__left p {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-faq {
+      padding: 72px 0;
+    }
+
+    .vn-etap-faq__question {
+      grid-template-columns: 26px 1fr 16px;
+      gap: 12px;
+      min-height: 64px;
+      padding: 18px 0;
+    }
+
+    .vn-etap-faq__question strong {
+      font-size: 15px;
+    }
+
+    .vn-etap-faq__answer p {
+      padding-left: 38px;
+      font-size: 14px;
+    }
+  }
+</style>

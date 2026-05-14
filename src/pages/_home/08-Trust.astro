@@ -3,7 +3,7 @@ import { CONTACTS } from '../../lib/constants';
 ---
 
 <!-- ══════════════════════════════════════════════
-     БЛОК 08 — ПОЧЕМУ МИХАИЛ
+     БЛОК 08 — ОПЫТ И ДОВЕРИЕ
 ════════════════════════════════════════════════ -->
 <section id="section-trust" class="vn-section vn-section--secondary vn-home-trust" aria-labelledby="vn-home-trust-title">
   <div class="vn-container">
@@ -13,7 +13,7 @@ import { CONTACTS } from '../../lib/constants';
       <div class="vn-home-trust__photo-wrap" style="grid-column: 1 / 5">
         <img
           src="/images/mikhail-desk.png"
-          alt="Михаил Хряпин — эксперт по военной ипотеке в Краснодаре"
+          alt="Михаил Хряпин — эксперт по новостройкам и военной ипотеке"
           width="480"
           height="580"
           loading="lazy"
@@ -24,14 +24,15 @@ import { CONTACTS } from '../../lib/constants';
       <!-- ── Right: content ── -->
       <div class="vn-home-trust__content" style="grid-column: 5 / 13">
 
-        <span class="vn-label-mono">ПОЧЕМУ МИХАИЛ / 08</span>
+        <span class="vn-label-mono">Опыт и доверие</span>
         <h2 class="vn-home-trust__h2" id="vn-home-trust-title">
-          65 сделок по НИС — и каждая доведена до регистрации
+          Я помогаю пройти весь маршрут: от выбора новостройки до регистрации сделки
         </h2>
         <p class="vn-home-trust__lead">
-          Михаил сопровождает покупку новостроек в Краснодаре, на побережье
-          и в Крыму. Знает, какие ЖК подходят под военную ипотеку,
-          где скрытые риски и как пройти маршрут без потерь.
+          С 2016 года я работаю с недвижимостью и сопровождаю сделки по военной
+          ипотеке. Моя задача - не просто показать варианты, а помочь выбрать
+          новостройку под вашу задачу, пройти банк, документы и регистрацию
+          без лишнего хаоса.
         </p>
 
         <!-- Stats -->
@@ -42,26 +43,26 @@ import { CONTACTS } from '../../lib/constants';
           </div>
           <div class="vn-home-trust__stat-divider" aria-hidden="true"></div>
           <div class="vn-home-trust__stat">
-            <span class="vn-home-trust__stat-num">180<span class="vn-home-trust__stat-plus">+</span></span>
-            <span class="vn-home-trust__stat-label">сделок в недвижимости</span>
+            <span class="vn-home-trust__stat-num">180</span>
+            <span class="vn-home-trust__stat-label">проведённых сделок с недвижимостью</span>
           </div>
           <div class="vn-home-trust__stat-divider" aria-hidden="true"></div>
           <div class="vn-home-trust__stat">
             <span class="vn-home-trust__stat-num">с&nbsp;2016</span>
-            <span class="vn-home-trust__stat-label">работает в Краснодаре</span>
+            <span class="vn-home-trust__stat-label">в недвижимости</span>
           </div>
         </div>
 
         <!-- Quote -->
         <blockquote class="vn-home-trust__quote">
-          Михаил Хряпин — эксперт по сопровождению покупки новостроек
-          для военнослужащих по программе НИС. Работает в Краснодаре,
-          на Черноморском побережье и в Крыму.
+          Для меня сопровождение - это не просто отправить подборку.
+          Важно заранее объяснить ограничения, отсеять неподходящие варианты
+          и довести сделку до понятного результата.
         </blockquote>
 
         <!-- Media links -->
         <div class="vn-home-trust__media">
-          <span class="vn-home-trust__media-label">Разборы и материалы:</span>
+          <span class="vn-home-trust__media-label">Где посмотреть подход в работе:</span>
           <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer"
              class="vn-home-trust__link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -85,6 +86,10 @@ import { CONTACTS } from '../../lib/constants';
 
 <style>
 /* ─── Block 08: Trust ─── */
+
+.vn-home-trust {
+  scroll-margin-top: 104px;
+}
 
 .vn-home-trust__grid {
   align-items: stretch;
@@ -163,17 +168,11 @@ import { CONTACTS } from '../../lib/constants';
 
 .vn-home-trust__stat-num {
   font-size: clamp(28px, 3vw, 40px);
-  font-weight: 700;
+  font-weight: 650;
   line-height: 1;
   color: var(--color-accent-primary);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
-}
-
-.vn-home-trust__stat-plus {
-  font-size: 0.65em;
-  vertical-align: super;
-  font-weight: 600;
 }
 
 .vn-home-trust__stat-label {
@@ -230,9 +229,36 @@ import { CONTACTS } from '../../lib/constants';
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  .vn-home-trust__photo { min-height: 280px; height: 280px; }
-  .vn-home-trust__stats { flex-wrap: wrap; gap: 20px; }
-  .vn-home-trust__stat  { flex: none; min-width: 120px; padding: 0; }
+  .vn-home-trust {
+    scroll-margin-top: 88px;
+  }
+
+  .vn-home-trust__photo {
+    min-height: 340px;
+    height: 340px;
+    object-position: center 18%;
+  }
+
+  .vn-home-trust__stats {
+    display: grid;
+    gap: 0;
+    margin-bottom: 24px;
+    padding: 12px 0;
+  }
+
+  .vn-home-trust__stat {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-home-trust__stat:nth-of-type(5) {
+    border-bottom: none;
+  }
+
   .vn-home-trust__stat-divider { display: none; }
 }
 </style>

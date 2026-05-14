@@ -5,9 +5,9 @@ import { NAV_ITEMS, GROUP_LABELS, type NavGroup } from '../../lib/navigation/nav
 const currentPath = Astro.url.pathname;
 
 const CARD_BODIES: Record<string, string> = {
-  '/voennaya-ipoteka-krasnodar/': 'Отбор ЖК под задачу, а не по витрине.',
+  '/voennaya-ipoteka-krasnodar/': 'Отбор новостроек под задачу, а не по витрине.',
   '/voennaya-ipoteka-krym/': 'Квартиры и новостройки под сценарий покупки.',
-  '/distancionnaya-pokupka/': 'Как контролировать район, ЖК и документы удалённо.',
+  '/distancionnaya-pokupka/': 'Как контролировать район, новостройку и документы удалённо.',
   '/etapy-pokupki/': 'Маршрут от цели покупки до регистрации.',
   '/contacts/': 'Офисы в Краснодаре и Бахчисарае.',
 };
@@ -127,13 +127,13 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
       <a
         href="/contacts/#request"
         data-modal-open
-        data-modal-title="Разобрать мою ситуацию"
+        data-modal-title="Получить первичный разбор"
         class="vn-overlay-brand-cta"
       >
-        Разобрать мою ситуацию →
+        Получить первичный разбор →
       </a>
       <p class="vn-overlay-brand-microtext">
-        30 минут. Сначала цель, потом варианты.
+        Сначала задача, потом подходящие варианты.
       </p>
     </aside>
 
@@ -158,15 +158,16 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
                   style={`transition-delay: ${delay}ms`}
                   aria-current={(isActive || isActiveHome) ? 'page' : undefined}
                 >
-                  <span class="vn-route-card-label">
-                    {card.label}
-                    {card.badge && (
-                      <span class="vn-route-card-badge">{card.badge}</span>
-                    )}
-                    {(isActive || isActiveHome) && (
-                      <span class="vn-route-card-active-label">ТЕКУЩИЙ МАРШРУТ</span>
-                    )}
-                  </span>
+                  {(card.badge || isActive || isActiveHome) && (
+                    <span class="vn-route-card-label">
+                      {card.badge && (
+                        <span class="vn-route-card-badge">{card.badge}</span>
+                      )}
+                      {(isActive || isActiveHome) && (
+                        <span class="vn-route-card-active-label">ТЕКУЩИЙ МАРШРУТ</span>
+                      )}
+                    </span>
+                  )}
                   <span class="vn-route-card-icon" aria-hidden="true">
                     {card.icon === 'building-2' && (
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -280,7 +281,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
 
   </div><!-- /body -->
 
-  <!-- ── Overlay Footer Strip (56px) ── -->
+  <!-- ── Overlay Footer Strip (desktop only) ── -->
   <div class="vn-overlay-footer">
     <a href="/" class="vn-overlay-footer-back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -288,11 +289,6 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
       </svg>
       Вернуться на главную
     </a>
-    <div class="vn-overlay-footer-legal">
-      <a href="/politika/">Политика конфиденциальности</a>
-      <span aria-hidden="true">·</span>
-      <a href="/cookies/">Cookie</a>
-    </div>
   </div>
 
 </div>
@@ -783,7 +779,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
     }
     .vn-route-cards { grid-template-columns: 1fr; }
     .vn-route-card  { min-height: 64px; }
-    .vn-overlay-footer { padding-inline: 20px; }
+    .vn-overlay-footer { display: none; }
     .vn-overlay-watermark { display: none; }
   }
 </style>

@@ -1,0 +1,279 @@
+---
+import { CONTACTS } from '../../lib/constants';
+---
+
+<section id="section-etap-cta" class="vn-section vn-section--dark vn-etap-cta" aria-labelledby="vn-etap-cta-title">
+  <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
+  <div class="vn-etap-cta__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-etap-cta__grid">
+      <div class="vn-etap-cta__left" style="grid-column: 1 / 7">
+        <span class="vn-label-mono vn-etap-cta__eyebrow">СЛЕДУЮЩИЙ ШАГ</span>
+        <h2 id="vn-etap-cta-title">
+          Понять ваш маршрут покупки <span>до выбора объекта</span> и документов
+        </h2>
+        <p>
+          На разборе определим, с чего лучше начинать в вашей ситуации:
+          задача, банк, объект, документы, дистанционный формат или
+          подготовка к сделке. После — понятнее, какие шаги делать дальше
+          и где могут быть риски.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Понять мой маршрут покупки"
+          class="vn-btn-primary vn-etap-cta__button"
+        >
+          Понять мой маршрут покупки
+        </a>
+        <div class="vn-etap-cta__stats" aria-label="Формат разбора">
+          <span>30 минут</span>
+          <span>Яндекс Телемост</span>
+          <span>Бесплатно</span>
+        </div>
+      </div>
+
+      <div class="vn-etap-cta__right" style="grid-column: 7 / 13">
+        <div class="vn-etap-cta__card">
+          <span class="vn-label-mono vn-etap-cta__card-label">ЧТО БУДЕТ ПОСЛЕ ЗАЯВКИ</span>
+          <ol>
+            <li><span>01</span>Михаил свяжется с вами и уточнит ситуацию</li>
+            <li><span>02</span>Вы согласуете удобное время разбора</li>
+            <li><span>03</span>На встрече разберёте цель, маршрут и ближайшие шаги</li>
+          </ol>
+          <p>
+            Или напишите напрямую:
+            <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a href={CONTACTS.max} target="_blank" rel="noopener noreferrer">Max</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="vn-etap-cta__links" style="grid-column: 1 / 13">
+        <span class="vn-label-mono vn-etap-cta__links-label">СВЯЗАННЫЕ СТРАНИЦЫ</span>
+        <div class="vn-grid-12">
+          <a href="/voennaya-ipoteka-krasnodar/" style="grid-column: 1 / 5">
+            <span>Как выбрать новостройку по военной ипотеке</span>
+            <strong>→</strong>
+          </a>
+          <a href="/distancionnaya-pokupka/" style="grid-column: 5 / 9">
+            <span>Как проходит дистанционная покупка</span>
+            <strong>→</strong>
+          </a>
+          <a href="/" style="grid-column: 9 / 13">
+            <span>Михаил Хряпин — военный навигатор</span>
+            <strong>→</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-cta {
+    position: relative;
+    padding: 120px 0 96px;
+    overflow: hidden;
+  }
+
+  .vn-etap-cta__radial {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 900px 420px at 25% 0%, var(--color-accent-cta-soft), transparent);
+    pointer-events: none;
+  }
+
+  .vn-etap-cta__grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  .vn-etap-cta__eyebrow,
+  .vn-etap-cta__card-label,
+  .vn-etap-cta__links-label {
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+  }
+
+  .vn-etap-cta__left h2 {
+    margin: 16px 0 16px;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-text-ondark);
+    text-wrap: balance;
+  }
+
+  .vn-etap-cta__left h2 span {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-etap-cta__left p {
+    max-width: 520px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-text-ondark-mute);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-cta__button {
+    margin-top: 36px;
+    min-height: 56px;
+    padding-inline: 40px;
+  }
+
+  .vn-etap-cta__stats {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 18px;
+    margin-top: 22px;
+    color: var(--color-text-ondark-mute);
+    font-size: var(--fs-body-sm);
+  }
+
+  .vn-etap-cta__right {
+    padding-left: 48px;
+    border-left: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-etap-cta__card {
+    padding: 36px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-etap-cta__card ol {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+  }
+
+  .vn-etap-cta__card li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border-ondark);
+    color: var(--color-text-ondark);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+  }
+
+  .vn-etap-cta__card li:first-child {
+    padding-top: 0;
+  }
+
+  .vn-etap-cta__card li span {
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-cta__card p {
+    margin: 20px 0 0;
+    color: var(--color-text-ondark-mute);
+    font-size: var(--fs-body-sm);
+  }
+
+  .vn-etap-cta__card a {
+    margin-left: 8px;
+    color: var(--color-text-ondark);
+    opacity: 0.8;
+    text-underline-offset: 3px;
+  }
+
+  .vn-etap-cta__links {
+    margin-top: 56px;
+  }
+
+  .vn-etap-cta__links-label {
+    display: inline-flex;
+    margin-bottom: 16px;
+  }
+
+  .vn-etap-cta__links a {
+    display: grid;
+    grid-template-columns: 1fr 16px;
+    gap: 14px;
+    align-items: center;
+    min-height: 72px;
+    padding: 20px 22px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border-ondark);
+    color: var(--color-text-ondark);
+    text-decoration: none;
+  }
+
+  .vn-etap-cta__links a span {
+    font-size: var(--fs-body-sm);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .vn-etap-cta__links a strong {
+    color: var(--color-text-ondark-mute);
+    transition: transform 0.15s ease;
+  }
+
+  .vn-etap-cta__links a:hover {
+    border-color: var(--color-accent-cta);
+  }
+
+  .vn-etap-cta__links a:hover strong {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-cta__left,
+    .vn-etap-cta__right,
+    .vn-etap-cta__links {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-etap-cta__right {
+      margin-top: 40px;
+      padding-left: 0;
+      padding-top: 40px;
+      border-left: none;
+      border-top: 1px solid var(--color-border-ondark);
+    }
+
+    .vn-etap-cta__links a {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-cta {
+      padding: 72px 0 64px;
+    }
+
+    .vn-etap-cta__button {
+      width: 100%;
+      justify-content: center;
+      padding-inline: 20px;
+    }
+
+    .vn-etap-cta__stats {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .vn-etap-cta__card {
+      padding: 28px 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-etap-cta__links a strong {
+      transition: none;
+    }
+  }
+</style>

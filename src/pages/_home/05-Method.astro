@@ -7,32 +7,36 @@
 
       <!-- ── Left: copy + steps ── -->
       <div class="vn-home-method__copy" style="grid-column: 1 / 6">
-        <span class="vn-label-mono">МЕТОД / 05</span>
+        <span class="vn-label-mono">Метод работы</span>
         <h2 class="vn-home-method__h2" id="vn-home-method-title">
-          Обычный подбор начинается с объекта.
-          <span class="vn-home-method__h2-accent">Здесь&nbsp;— с цели покупки.</span>
+          Как я перевожу вашу задачу в понятный маршрут покупки
         </h2>
+        <p class="vn-home-method__lead">
+          На первичном разборе мы не выбираем квартиру наугад. Сначала я уточняю
+          задачу, ограничения и условия сделки, а потом становится понятно, какие
+          новостройки действительно стоит смотреть.
+        </p>
 
         <div class="vn-home-method__steps">
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">01</span>
-            <strong class="vn-home-method__step-title">Цель</strong>
-            <span class="vn-home-method__step-body">Жить, сдавать или переехать позже</span>
+            <strong class="vn-home-method__step-title">Задача</strong>
+            <span class="vn-home-method__step-body">Для жизни или как вложение</span>
           </div>
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">02</span>
-            <strong class="vn-home-method__step-title">Сценарий</strong>
-            <span class="vn-home-method__step-body">Бюджет, банк, сроки, НИС</span>
+            <strong class="vn-home-method__step-title">Условия</strong>
+            <span class="vn-home-method__step-body">Бюджет, банк, НИС, сроки и документы</span>
           </div>
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">03</span>
-            <strong class="vn-home-method__step-title">Отбор</strong>
-            <span class="vn-home-method__step-body">Неподходящие ЖК — до просмотра</span>
+            <strong class="vn-home-method__step-title">Критерии</strong>
+            <span class="vn-home-method__step-body">Район, срок сдачи, планировка и формат сделки</span>
           </div>
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">04</span>
-            <strong class="vn-home-method__step-title">Сделка</strong>
-            <span class="vn-home-method__step-body">Банк, документы, регистрация</span>
+            <strong class="vn-home-method__step-title">Отбор</strong>
+            <span class="vn-home-method__step-body">Подходящие новостройки, а не случайная подборка</span>
           </div>
         </div>
       </div>
@@ -42,16 +46,18 @@
 
         <!-- Before: old way -->
         <div class="vn-home-method__path vn-home-method__path--old">
-          <span class="vn-home-method__path-label">Обычный подбор</span>
+          <span class="vn-home-method__path-label">Как часто начинают</span>
           <div class="vn-home-method__flow">
-            <span class="vn-home-method__pill">Объект</span>
+            <span class="vn-home-method__pill">Новостройка</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
             <span class="vn-home-method__pill">Банк</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
-            <span class="vn-home-method__pill vn-home-method__pill--q">Задача?</span>
+            <span class="vn-home-method__pill">Документы</span>
+            <span class="vn-home-method__sep" aria-hidden="true">→</span>
+            <span class="vn-home-method__pill vn-home-method__pill--q">Подходит ли?</span>
           </div>
           <p class="vn-home-method__path-note">
-            Начинают с объекта — и потом выясняют, подходит ли он
+            Сначала смотрят варианты, а потом пытаются понять, совпадает ли покупка с задачей.
           </p>
         </div>
 
@@ -60,18 +66,18 @@
 
         <!-- After: our way -->
         <div class="vn-home-method__path vn-home-method__path--new">
-          <span class="vn-home-method__path-label">Здесь</span>
+          <span class="vn-home-method__path-label">Как работаю я</span>
           <div class="vn-home-method__flow">
-            <span class="vn-home-method__pill vn-home-method__pill--start">Цель</span>
+            <span class="vn-home-method__pill vn-home-method__pill--start">Задача</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
-            <span class="vn-home-method__pill">Сценарий</span>
+            <span class="vn-home-method__pill">Условия</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
-            <span class="vn-home-method__pill">Объект</span>
+            <span class="vn-home-method__pill">Критерии</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
-            <span class="vn-home-method__pill">Банк</span>
+            <span class="vn-home-method__pill">Отбор</span>
           </div>
           <p class="vn-home-method__path-note">
-            Сначала понимают задачу — объект находят под неё
+            Сначала фиксируем задачу и ограничения, потом отбираем подходящие новостройки.
           </p>
         </div>
 
@@ -104,13 +110,18 @@
   text-wrap: balance;
 }
 
-.vn-home-method__h2-accent {
-  color: var(--color-accent-cta);
+.vn-home-method__lead {
+  margin: 18px 0 0;
+  max-width: 520px;
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
 }
 
 /* ── Steps ── */
 .vn-home-method__steps {
-  margin-top: 28px;
+  margin-top: 30px;
   border-top: 1px solid var(--color-border);
 }
 
@@ -167,11 +178,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
   padding-left: 32px;
   border-left: 1px solid var(--color-border);
 }
 
 .vn-home-method__path {
+  min-width: 0;
   padding: 32px 0;
 }
 
@@ -197,19 +210,22 @@
   color: var(--color-text-tertiary);
 }
 .vn-home-method__path--old .vn-home-method__path-label::before {
-  content: '✕';
-  font-size: 9px;
-  color: var(--color-error);
-  opacity: 0.55;
+  content: '';
+  width: 2px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
 }
 
 .vn-home-method__path--new .vn-home-method__path-label {
   color: var(--color-accent-cta);
 }
 .vn-home-method__path--new .vn-home-method__path-label::before {
-  content: '✓';
-  font-size: 11px;
-  color: var(--color-accent-cta);
+  content: '';
+  width: 2px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-cta);
 }
 
 /* Flow: pills + arrows */
@@ -217,6 +233,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  min-width: 0;
   gap: 8px;
   margin-bottom: 14px;
 }
@@ -229,6 +246,7 @@
 
 /* Pills */
 .vn-home-method__pill {
+  max-width: 100%;
   padding: 6px 13px;
   border-radius: 6px;
   font-size: 13px;
@@ -242,8 +260,8 @@
 }
 
 .vn-home-method__pill--q {
-  background: color-mix(in srgb, var(--color-error) 7%, transparent) !important;
-  color: color-mix(in srgb, var(--color-error) 65%, transparent) !important;
+  background: var(--color-accent-soft) !important;
+  color: var(--color-accent-primary) !important;
 }
 
 .vn-home-method__path--new .vn-home-method__pill {
@@ -295,6 +313,10 @@
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
+  .vn-home-method__flow {
+    gap: 7px 6px;
+  }
+
   .vn-home-method__step {
     grid-template-columns: 28px 1fr;
     grid-template-rows: auto auto;
@@ -306,6 +328,10 @@
   .vn-home-method__pill {
     padding: 5px 10px;
     font-size: 12px;
+  }
+
+  .vn-home-method__sep {
+    font-size: 11px;
   }
 }
 

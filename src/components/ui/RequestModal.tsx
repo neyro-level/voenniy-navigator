@@ -7,7 +7,6 @@ type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
 type OpenModalDetail = {
   title?: string;
-  subtitle?: string;
   source?: string;
 };
 
@@ -30,8 +29,8 @@ declare global {
   }
 }
 
-const DEFAULT_TITLE = 'Записаться на разбор';
-const DEFAULT_SUBTITLE = 'Оставьте контакты, свяжемся с вами в течение 10 минут и обсудим вашу задачу.';
+const DEFAULT_TITLE = 'Получить первичный разбор';
+const DEFAULT_SUBTITLE = 'Оставьте контакты. Я уточню вашу задачу и подскажу, с чего начать покупку новостройки по военной ипотеке.';
 
 const METHOD_OPTIONS: Array<{ value: ContactMethod; label: string; icon: typeof Phone }> = [
   { value: 'call', label: 'Звонок', icon: Phone },
@@ -152,7 +151,7 @@ export default function RequestModal({
       resetForm();
       openedAtRef.current = Date.now();
       setModalTitle(detail.title || title);
-      setModalSubtitle(detail.subtitle || subtitle);
+      setModalSubtitle(subtitle);
       setModalSource(detail.source || source || window.location.pathname);
       setIsOpen(true);
 

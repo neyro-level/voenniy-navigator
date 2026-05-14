@@ -1,0 +1,150 @@
+---
+const errors = [
+  ['01', 'Начать с ЖК, не разобрав задачу', 'Объект может нравиться, но не подходить под сценарий, банк или сроки.'],
+  ['02', 'Ориентироваться только на одобрение банка', 'Одобрение не означает, что выбранный объект будет хорошим решением под задачу.'],
+  ['03', 'Недооценить документы и сроки', 'Часть действий нельзя быстро «догнать» в конце сделки — нужна правильная последовательность.'],
+  ['04', 'Считать дистанционный формат автоматическим', 'Нужно заранее понять, что пройдёт удалённо, а где может понадобиться личное участие.'],
+  ['05', 'Не подумать о том, что будет после покупки', 'Приёмка, ремонт, сдача или переезд тоже влияют на выбор объекта и маршрут.'],
+];
+---
+
+<section id="section-etap-errors" class="vn-section vn-etap-errors" aria-labelledby="vn-etap-errors-title">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-etap-errors__head" style="grid-column: 1 / 8">
+        <span class="vn-label-mono">СЛАБЫЕ МЕСТА / 07</span>
+        <h2 id="vn-etap-errors-title">
+          Где чаще всего возникают ошибки при покупке по военной ипотеке
+        </h2>
+        <p>
+          Ошибки чаще возникают не в одном конкретном документе, а на стыках
+          этапов: когда цель не разобрана, объект выбран слишком рано, банковские
+          условия не сверены, документы готовятся в последний момент или дистанционный
+          формат не продуман заранее.
+        </p>
+      </div>
+
+      <div class="vn-etap-errors__list" style="grid-column: 1 / 13">
+        {errors.map(([num, title, body]) => (
+          <article class="vn-etap-errors__item">
+            <span class="vn-etap-errors__label">ОШИБКА {num}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <blockquote class="vn-etap-errors__quote" style="grid-column: 1 / 8">
+        Задача сопровождения — не «сделать магию», а провести маршрут
+        последовательно и заранее показать слабые места.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-errors__head {
+    margin-bottom: 48px;
+  }
+
+  .vn-etap-errors__head h2 {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-errors__head p {
+    max-width: 680px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-errors__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .vn-etap-errors__item {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 28px 36px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-etap-errors__label {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent-primary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-errors__item div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .vn-etap-errors__item h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-etap-errors__item p {
+    margin: 0;
+    max-width: 640px;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-errors__quote {
+    margin: 40px 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--color-accent-cta);
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-errors__head,
+    .vn-etap-errors__list,
+    .vn-etap-errors__quote {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-errors__item {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 24px;
+    }
+  }
+</style>

@@ -33,8 +33,8 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     number: '03',
-    label: 'Удалённо',
-    labelShort: 'Удалённо',
+    label: 'Удалённая покупка',
+    labelShort: 'Удалённая покупка',
     href: '/distancionnaya-pokupka/',
     description: 'Контроль района, ЖК, документов и сделки — без приезда.',
     group: 'route',

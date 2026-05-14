@@ -1,0 +1,335 @@
+---
+import { CONTACTS } from '../../lib/constants';
+
+const steps = [
+  'Цель покупки',
+  'Сценарий',
+  'Бюджет',
+  'Объект',
+  'Проверка',
+  'Документы',
+  'Регистрация',
+  'После покупки',
+];
+---
+
+<section id="section-etap-hero" class="vn-etap-hero" aria-labelledby="vn-etap-hero-title">
+  <div class="vn-etap-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-etap-hero__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-etap-hero__grid">
+      <div class="vn-etap-hero__left" style="grid-column: 1 / 8">
+        <span class="vn-label-mono">МАРШРУТ ПОКУПКИ / 01</span>
+        <h1 class="vn-etap-hero__h1" id="vn-etap-hero-title">
+          Этапы покупки новостройки
+          <span>по военной ипотеке</span>
+          в&nbsp;Краснодаре
+        </h1>
+        <p class="vn-etap-hero__lead">
+          Показываю, как обычно строится маршрут: от разбора цели покупки
+          и выбора новостройки до банка, документов, регистрации
+          и дальнейших шагов.
+        </p>
+
+        <div class="vn-etap-hero__actions">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Понять мой маршрут покупки"
+            class="vn-btn-primary vn-etap-hero__cta"
+          >
+            Понять мой маршрут покупки
+          </a>
+          <a
+            href={CONTACTS.vk}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-btn-ghost vn-etap-hero__ghost"
+          >
+            Посмотреть разборы в VK
+          </a>
+        </div>
+
+        <div class="vn-grid-12 vn-etap-hero__facts" role="list">
+          <div class="vn-etap-hero__fact" role="listitem">
+            <span>Старт</span>
+            <strong>Разбор цели перед подбором</strong>
+          </div>
+          <div class="vn-etap-hero__fact" role="listitem">
+            <span>Объект</span>
+            <strong>Новостройки Краснодара</strong>
+          </div>
+          <div class="vn-etap-hero__fact" role="listitem">
+            <span>Маршрут</span>
+            <strong>Сопровождение по этапам</strong>
+          </div>
+          <div class="vn-etap-hero__fact" role="listitem">
+            <span>Формат</span>
+            <strong>Дистанционный разбор</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="vn-etap-hero__right" style="grid-column: 8 / 13">
+        <div class="vn-etap-hero__map" aria-label="Карта маршрута покупки из восьми этапов">
+          <div class="vn-etap-hero__line" aria-hidden="true"></div>
+          {steps.map((step, index) => (
+            <div class:list={['vn-etap-hero__node', index < 3 && 'vn-etap-hero__node--active']}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{step}</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    padding: 160px 0 96px;
+    background: var(--color-bg-primary);
+  }
+
+  .vn-etap-hero__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+  }
+
+  .vn-etap-hero__radial {
+    position: absolute;
+    top: -220px;
+    left: -220px;
+    width: 820px;
+    height: 820px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-bg-surface) 62%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+
+  .vn-etap-hero__grid {
+    position: relative;
+    z-index: 1;
+    align-items: center;
+  }
+
+  .vn-etap-hero__h1 {
+    margin: 28px 0 0;
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-hero__h1 span {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-etap-hero__lead {
+    max-width: 560px;
+    margin: 24px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-hero__actions {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 12px;
+    margin-top: 36px;
+    align-items: center;
+  }
+
+  .vn-etap-hero__cta,
+  .vn-etap-hero__ghost {
+    min-height: 54px;
+  }
+
+  .vn-etap-hero__facts {
+    margin-top: 40px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-etap-hero__fact {
+    padding: 18px 0;
+  }
+
+  .vn-etap-hero__fact:nth-child(odd) {
+    grid-column: 1 / 7;
+  }
+
+  .vn-etap-hero__fact:nth-child(even) {
+    grid-column: 7 / 13;
+    padding-left: 20px;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .vn-etap-hero__fact:nth-child(n+3) {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-etap-hero__fact span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-etap-hero__fact strong {
+    display: block;
+    font-size: var(--fs-body-sm);
+    line-height: 1.45;
+    color: var(--color-text-primary);
+  }
+
+  .vn-etap-hero__map {
+    position: relative;
+    display: grid;
+    gap: 12px;
+    max-width: 420px;
+    margin-left: auto;
+    padding: 28px;
+    border-radius: var(--radius-xl);
+    background: color-mix(in srgb, var(--color-bg-surface) 82%, transparent);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-etap-hero__line {
+    position: absolute;
+    top: 44px;
+    bottom: 44px;
+    left: 46px;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .vn-etap-hero__node {
+    position: relative;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .vn-etap-hero__node span {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-hero__node strong {
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-etap-hero__node--active span {
+    background: var(--color-accent-primary);
+    border-color: var(--color-accent-primary);
+    color: var(--color-text-ondark);
+  }
+
+  .vn-etap-hero__node--active strong {
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-hero__left,
+    .vn-etap-hero__right {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-etap-hero__map {
+      max-width: none;
+      margin: 40px 0 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .vn-etap-hero__line {
+      display: none;
+    }
+
+    .vn-etap-hero__node {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      justify-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-hero {
+      min-height: auto;
+      padding: 100px 0 64px;
+    }
+
+    .vn-etap-hero__grid-bg {
+      background-size: 48px 48px;
+    }
+
+    .vn-etap-hero__actions {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-etap-hero__cta,
+    .vn-etap-hero__ghost {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .vn-etap-hero__ghost {
+      display: none;
+    }
+
+    .vn-etap-hero__facts.vn-grid-12 > .vn-etap-hero__fact:nth-child(odd) {
+      grid-column: 1 / 7;
+    }
+
+    .vn-etap-hero__facts.vn-grid-12 > .vn-etap-hero__fact:nth-child(even) {
+      grid-column: 7 / 13;
+    }
+
+    .vn-etap-hero__fact {
+      padding: 16px 0;
+    }
+
+    .vn-etap-hero__fact:nth-child(even) {
+      padding-left: 16px;
+    }
+
+    .vn-etap-hero__map {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 18px;
+      gap: 14px;
+    }
+  }
+</style>

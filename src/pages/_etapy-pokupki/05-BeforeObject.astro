@@ -1,0 +1,148 @@
+---
+const questions = [
+  ['Для чего покупается квартира?', 'Для жизни, переезда позже, сдачи или другого сценария'],
+  ['Когда планируется переезд?', 'Срок сдачи, район, ликвидность к моменту переезда'],
+  ['Будет ли квартира сдаваться до переезда?', 'Арендный спрос, планировка, ремонтопригодность'],
+  ['Насколько важен дистанционный формат?', 'Видео, доверенность, контроль, личное участие'],
+  ['Какие районы подходят семье?', 'Школы, садики, транспорт, инфраструктура'],
+  ['Какие есть ограничения по срокам и документам?', 'Реалистичность маршрута сделки'],
+];
+---
+
+<section id="section-etap-pretask" class="vn-section vn-section--secondary vn-etap-before" aria-labelledby="vn-etap-before-title">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-etap-before__left" style="grid-column: 1 / 6">
+        <span class="vn-label-mono">ДО ПОДБОРА ОБЪЕКТА / 05</span>
+        <h2 id="vn-etap-before-title">Что нужно понять до выбора новостройки</h2>
+        <p>
+          До подбора объекта важно ответить на вопросы, которые определяют весь
+          маршрут сделки. Без этого можно выбрать квартиру, которая формально
+          проходит по военной ипотеке, но не подходит под реальную задачу семьи.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Разобрать мою задачу"
+          class="vn-etap-before__link"
+        >
+          Разобрать мою задачу →
+        </a>
+      </div>
+
+      <div class="vn-etap-before__table" style="grid-column: 6 / 13">
+        {questions.map(([question, answer], index) => (
+          <div class="vn-etap-before__row">
+            <div class="vn-etap-before__q">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{question}</strong>
+            </div>
+            <p>{answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-before__left h2 {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-before__left p {
+    max-width: 420px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-before__link {
+    display: inline-flex;
+    margin-top: 28px;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .vn-etap-before__table {
+    position: relative;
+    z-index: 1;
+    padding: 8px 28px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-etap-before__row {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-etap-before__row:last-child {
+    border-bottom: none;
+  }
+
+  .vn-etap-before__q {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: baseline;
+  }
+
+  .vn-etap-before__q span {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    color: var(--color-accent-cta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-before__q strong {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-before__row p {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-before__left,
+    .vn-etap-before__table {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-etap-before__table {
+      margin-top: 36px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-before__table {
+      padding: 4px 20px;
+    }
+
+    .vn-etap-before__row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 20px 0;
+    }
+  }
+</style>

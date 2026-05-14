@@ -1,0 +1,250 @@
+---
+const routeSteps = [
+  {
+    num: '01',
+    title: 'Разбор цели покупки',
+    body: 'Понять, зачем покупается квартира: жить, переехать позже, сдавать до переезда, покупать дистанционно или сложный маршрут. От ответа зависит всё, что идёт дальше.',
+  },
+  {
+    num: '02',
+    title: 'Определение сценария',
+    body: 'Зафиксировать ситуацию: семья, сроки, удалённость, документы, ограничения. Какой маршрут реалистичен в вашем случае.',
+  },
+  {
+    num: '03',
+    title: 'Расчёт финансовой рамки',
+    body: 'Понять бюджет, условия банка, ограничения НИС и реальную рамку выбора. Не «сколько дадут», а «что реально подходит под задачу».',
+  },
+  {
+    num: '04',
+    title: 'Отбор новостроек',
+    body: 'Смотреть не всё подряд, а объекты, которые подходят под задачу, сценарий, банк и сроки.',
+  },
+  {
+    num: '05',
+    title: 'Проверка объекта и условий',
+    body: 'Проверить ЖК, документы объекта, сроки сдачи, совместимость с маршрутом по военной ипотеке.',
+  },
+  {
+    num: '06',
+    title: 'Подготовка сделки',
+    body: 'Согласовать банк, застройщика, документы клиента и документы объекта. Координация всех сторон.',
+  },
+  {
+    num: '07',
+    title: 'Регистрация и результат',
+    body: 'Довести сделку до зарегистрированных документов. Сделка закрыта, когда право зарегистрировано.',
+  },
+  {
+    num: '08',
+    title: 'После покупки',
+    body: 'Приёмка, ремонт, комплектация, сдача или подготовка к переезду через партнёров по договорённости.',
+  },
+];
+---
+
+<section id="section-etap-map" class="vn-section vn-etap-map" aria-labelledby="vn-etap-map-title">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-etap-map__head" style="grid-column: 1 / 8">
+        <span class="vn-label-mono">КАРТА МАРШРУТА / 04</span>
+        <h2 class="vn-etap-map__title" id="vn-etap-map-title">
+          Как обычно проходит покупка по военной ипотеке
+        </h2>
+        <p>
+          Маршрут покупки состоит из последовательных этапов: сначала задача
+          и сценарий, затем финансовая рамка, выбор объекта, проверка условий,
+          документы, сделка, регистрация и дальнейшие шаги после покупки.
+        </p>
+      </div>
+
+      <div class="vn-etap-map__timeline" style="grid-column: 1 / 13">
+        <div class="vn-etap-map__axis" aria-hidden="true"></div>
+        {routeSteps.map((step, index) => {
+          const odd = index % 2 === 0;
+          return (
+            <article
+              class:list={['vn-etap-map__step', odd ? 'vn-etap-map__step--right' : 'vn-etap-map__step--left']}
+            >
+              <span class="vn-etap-map__dot">{step.num}</span>
+              <div class="vn-etap-map__card">
+                <span class="vn-etap-map__card-num">{step.num}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <p class="vn-etap-map__note" style="grid-column: 4 / 10">
+        Это общая карта. Конкретный порядок зависит от банка, объекта,
+        документов, формата покупки и вашей ситуации.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-map__head {
+    margin-bottom: 56px;
+  }
+
+  .vn-etap-map__title {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-map__head p {
+    max-width: 640px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-map__timeline {
+    position: relative;
+    display: grid;
+    gap: 22px;
+  }
+
+  .vn-etap-map__axis {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .vn-etap-map__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 32px;
+    align-items: center;
+    min-height: 144px;
+  }
+
+  .vn-etap-map__step--right .vn-etap-map__card {
+    grid-column: 7 / 13;
+  }
+
+  .vn-etap-map__step--left .vn-etap-map__card {
+    grid-column: 1 / 7;
+  }
+
+  .vn-etap-map__dot {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    border-radius: var(--radius-full);
+    background: var(--color-accent-primary);
+    color: var(--color-text-ondark);
+    font-size: 12px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-map__card {
+    position: relative;
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-etap-map__step--left .vn-etap-map__card {
+    background: var(--color-bg-surface-low);
+  }
+
+  .vn-etap-map__card-num {
+    display: block;
+    margin-bottom: 14px;
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-etap-map__card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-map__card p {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-map__note {
+    margin: 48px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-map__head,
+    .vn-etap-map__timeline,
+    .vn-etap-map__note {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-etap-map__axis {
+      left: 20px;
+    }
+
+    .vn-etap-map__step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      column-gap: 18px;
+      min-height: auto;
+    }
+
+    .vn-etap-map__dot {
+      position: static;
+      grid-column: 1;
+      grid-row: 1;
+      transform: none;
+      align-self: start;
+    }
+
+    .vn-etap-map__step--right .vn-etap-map__card,
+    .vn-etap-map__step--left .vn-etap-map__card {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-map__card {
+      padding: 22px;
+    }
+  }
+</style>

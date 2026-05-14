@@ -1,3 +1,7 @@
+---
+import { CONTACTS } from '../../lib/constants';
+---
+
 <!-- ══════════════════════════════════════════════
      БЛОК 09 - ОТЗЫВЫ (dark, bank style)
 ════════════════════════════════════════════════ -->
@@ -9,14 +13,15 @@
     <!-- Header -->
     <div class="vn-grid-12 vn-home-reviews__header">
       <div class="vn-home-reviews__head-left" style="grid-column: 1 / 8">
-        <span class="vn-label-mono vn-home-reviews__eyebrow">ОТЗЫВЫ / 09</span>
+        <span class="vn-label-mono vn-home-reviews__eyebrow">Отзывы</span>
         <h2 class="vn-home-reviews__h2" id="vn-home-reviews-title">
-          Истории клиентов
+          Что клиенты отмечают в работе
         </h2>
       </div>
       <div class="vn-home-reviews__head-right" style="grid-column: 8 / 13">
         <p class="vn-home-reviews__note">
-          Реальные случаи из практики. Имена и детали — с&nbsp;разрешения клиентов.
+          В отзывах чаще всего повторяются четыре вещи: понятный маршрут,
+          связь на расстоянии, помощь с документами и защита интересов на сделке.
         </p>
       </div>
     </div>
@@ -29,11 +34,13 @@
           <div class="vn-home-reviews__avatar" aria-hidden="true">ИМ</div>
           <div>
             <span class="vn-home-reviews__author">Илья М.</span>
-            <span class="vn-home-reviews__tag">Дедлайн · меньше месяца</span>
+            <span class="vn-home-reviews__tag">Срочный маршрут</span>
           </div>
         </div>
         <blockquote class="vn-home-reviews__quote">
-          Оставалось меньше месяца до окончания свидетельства, и все говорили, что не успею купить. Только это агентство сказало - успеем. И действительно успели. За месяц я стал счастливым обладателем квартиры.
+          Оставалось меньше месяца до окончания свидетельства, и я думал, что
+          уже не успею купить квартиру. Михаил взял ситуацию в работу, быстро
+          собрал маршрут сделки и помог довести покупку до результата.
         </blockquote>
       </article>
 
@@ -42,11 +49,13 @@
           <div class="vn-home-reviews__avatar" aria-hidden="true">НК</div>
           <div>
             <span class="vn-home-reviews__author">Николай К.</span>
-            <span class="vn-home-reviews__tag">Защита в банке · скидка</span>
+            <span class="vn-home-reviews__tag">Банк и условия сделки</span>
           </div>
         </div>
         <blockquote class="vn-home-reviews__quote">
-          Михаил согласовал хорошую скидку, за что ему отдельное спасибо. По завершении сделки в банке пытались навязать дополнительные услуги и страховки - Михаил отстоял мои интересы и доказал банку, что по военной ипотеке жизнь, здоровье и медицинские услуги страхованию не подлежат.
+          Михаил помог согласовать скидку и сопровождал сделку до конца.
+          В банке возникли дополнительные условия, но он разобрался в ситуации
+          и помог защитить мои интересы.
         </blockquote>
       </article>
 
@@ -54,50 +63,39 @@
         <div class="vn-home-reviews__feat-meta">
           <div class="vn-home-reviews__avatar" aria-hidden="true">Л</div>
           <div>
-            <span class="vn-home-reviews__author">Любовь</span>
-            <span class="vn-home-reviews__tag">Скорость · 2 недели · 12.10.25</span>
+            <span class="vn-home-reviews__author">Люба, Хабаровск</span>
+            <span class="vn-home-reviews__tag">Дистанционная покупка</span>
           </div>
         </div>
         <blockquote class="vn-home-reviews__quote">
-          С военной ипотекой от подписания предварительного договора до приема-передачи квартиры мы уложились в 2 недели! В две! Мы не ожидали такой скорости. У меня был опыт сотрудничества с разными риэлторами, но Михаил выше всяких похвал. И немаловажно - цены на услуги очень демократичные.
+          Оформила военную ипотеку на покупку квартиры, находясь в другом
+          городе. Михаил был на связи, объяснял этапы и помог пройти сделку
+          на расстоянии.
         </blockquote>
       </article>
 
     </div>
 
-    <!-- 6 mini cards -->
-    <div class="vn-home-reviews__mini-grid vn-grid-12">
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 1 / 5">
-        <span class="vn-home-reviews__mini-author">Елизавета Хорошильцева</span>
-        <p class="vn-home-reviews__mini-text">Банк отказал мне в ипотеке, опустила руки. Михаил в кратчайшие сроки одобрил меня, подобрал квартиру - и я сама не поняла, как уже сидела в банке и подписывала документы.</p>
-      </article>
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 5 / 9">
-        <span class="vn-home-reviews__mini-author">Даня</span>
-        <p class="vn-home-reviews__mini-text">Квартиру оформили за пару недель, а вся процедура заняла всего несколько звонков. Михаил сделал все остальное. Даже не верилось, что это возможно.</p>
-      </article>
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 9 / 13">
-        <span class="vn-home-reviews__mini-author">Игорь Грицай</span>
-        <p class="vn-home-reviews__mini-text">Весь процесс сделки с её помощью показался не сложнее похода в магазин. Она знает всё на 10 шагов наперёд.</p>
-      </article>
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 1 / 5">
-        <span class="vn-home-reviews__mini-author">Luba Ермакова</span>
-        <p class="vn-home-reviews__mini-text">Огромное спасибо за приличную скидку, о которой получилось договориться с застройщиком. Даже не знала, что так можно.</p>
-      </article>
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 5 / 9">
-        <span class="vn-home-reviews__mini-author">Люба (Хабаровск)</span>
-        <p class="vn-home-reviews__mini-text">Оформила военную ипотеку на покупку квартиры в Краснодаре, находясь в Хабаровске. Михаил был на связи в любое время, несмотря на разницу часовых поясов.</p>
-      </article>
-
-      <article class="vn-home-reviews__mini-card" style="grid-column: 9 / 13">
-        <span class="vn-home-reviews__mini-author">Галина Боричева</span>
-        <p class="vn-home-reviews__mini-text">Общались только по телефону на расстоянии 540 км. Когда я приехала на саму сделку и мы впервые увиделись - было ощущение, что мы давно знакомы.</p>
-      </article>
-
+    <div class="vn-home-reviews__media">
+      <p class="vn-home-reviews__media-text">
+        Больше отзывов и разборов можно посмотреть в медиа Михаила.
+      </p>
+      <div class="vn-home-reviews__media-links">
+        <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer"
+           class="vn-home-reviews__media-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.59c-.6 0-.79-.48-1.87-1.57-1-.95-1.39-.95-1.63-.95-.33 0-.42.1-.42.56v1.43c0 .4-.13.64-1.18.64-1.74 0-3.67-1.05-5.03-3.02C4.7 10.01 4.17 8.1 4.17 7.7c0-.24.1-.46.56-.46h1.6c.42 0 .58.19.74.64.82 2.37 2.19 4.44 2.75 4.44.21 0 .31-.1.31-.63V9.59c-.07-1.14-.67-1.23-.67-1.64 0-.19.16-.4.42-.4h2.5c.35 0 .47.19.47.6v3.22c0 .35.16.47.26.47.21 0 .38-.12.76-.51 1.18-1.32 2.01-3.35 2.01-3.35.11-.24.31-.46.73-.46h1.6c.48 0 .59.25.48.6-.2.93-2.14 3.67-2.14 3.67-.17.28-.23.4 0 .71.17.24.72.74 1.09 1.18.67.78 1.19 1.44 1.33 1.89.14.44-.09.67-.53.67z"/>
+          </svg>
+          Разборы в VK
+        </a>
+        <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer"
+           class="vn-home-reviews__media-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.69 7.96c-.12.56-.46.7-.93.43l-2.57-1.9-1.24 1.19c-.14.14-.25.25-.51.25l.18-2.6 4.72-4.26c.2-.18-.04-.28-.32-.1L7.46 14.5l-2.52-.79c-.55-.17-.56-.55.12-.81l9.84-3.79c.46-.17.86.11.74.69z"/>
+          </svg>
+          Telegram-канал
+        </a>
+      </div>
     </div>
 
   </div>
@@ -109,6 +107,7 @@
   position: relative;
   padding: 96px 0 88px;
   overflow: hidden;
+  scroll-margin-top: 104px;
 }
 
 .vn-home-reviews .vn-deco-grid--dark {
@@ -163,15 +162,17 @@
 .vn-home-reviews__featured {
   position: relative;
   z-index: 1;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .vn-home-reviews__feat-card {
-  background: var(--color-bg-dark-elev);
+  background: color-mix(in srgb, var(--color-bg-dark-elev) 88%, transparent);
   border-radius: var(--radius-lg);
   padding: 28px;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  border: 1px solid var(--color-border-ondark);
 }
 
 .vn-home-reviews__feat-meta {
@@ -216,44 +217,59 @@
 
 .vn-home-reviews__quote {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.62;
   color: var(--color-text-ondark);
-  opacity: 0.7;
+  opacity: 0.72;
   font-style: italic;
   text-wrap: pretty;
 }
 
-/* ── Mini cards (6 items, 3×2) ── */
-.vn-home-reviews__mini-grid {
+/* ── Media strip ── */
+.vn-home-reviews__media {
   position: relative;
   z-index: 1;
-}
-
-.vn-home-reviews__mini-card {
-  background: color-mix(in srgb, var(--color-bg-dark-elev) 50%, transparent);
-  border-radius: var(--radius-md);
-  padding: 24px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border-ondark);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-bg-dark-elev) 46%, transparent);
 }
 
-.vn-home-reviews__mini-author {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text-ondark);
-  opacity: 0.85;
-  margin-bottom: 10px;
-}
-
-.vn-home-reviews__mini-text {
+.vn-home-reviews__media-text {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
   color: var(--color-text-ondark);
-  opacity: 0.55;
-  font-style: italic;
-  text-wrap: pretty;
+  opacity: 0.66;
+}
+
+.vn-home-reviews__media-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.vn-home-reviews__media-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--color-text-ondark);
+  opacity: 0.72;
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.vn-home-reviews__media-link:hover {
+  color: var(--color-accent-cta);
+  opacity: 1;
 }
 
 /* ── Tablet ── */
@@ -266,24 +282,35 @@
   .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(2) { grid-column: 7 / 13 !important; }
   .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(3) { grid-column: 1 / 7 !important; }
 
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(1) { grid-column: 1 / 7 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(2) { grid-column: 7 / 13 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(3) { grid-column: 1 / 7 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(4) { grid-column: 7 / 13 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(5) { grid-column: 1 / 7 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(6) { grid-column: 7 / 13 !important; }
+  .vn-home-reviews__media {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  .vn-home-reviews { padding: 72px 0 64px; }
+  .vn-home-reviews {
+    padding: 72px 0 64px;
+    scroll-margin-top: 88px;
+  }
   .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(n) { grid-column: 1 / -1 !important; }
-  .vn-home-reviews__mini-grid > .vn-home-reviews__mini-card:nth-child(n) { grid-column: 1 / -1 !important; }
-  .vn-home-reviews__featured { margin-bottom: 12px; }
+  .vn-home-reviews__featured { margin-bottom: 20px; }
   .vn-home-reviews__feat-card { padding: 24px; }
-  .vn-home-reviews__mini-card { padding: 20px; }
   .vn-home-reviews__h2 { font-size: clamp(22px, 6vw, 28px); }
   .vn-home-reviews__note { font-size: 13px; line-height: 1.55; }
-  .vn-home-reviews__quote { font-size: 13px; line-height: 1.6; }
+  .vn-home-reviews__quote { font-size: 14px; line-height: 1.6; }
+
+  .vn-home-reviews__media {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .vn-home-reviews__media-links {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 </style>

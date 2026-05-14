@@ -1,0 +1,96 @@
+<section id="section-etap-link" class="vn-etap-link" aria-labelledby="vn-etap-link-title">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <article class="vn-etap-link__card" style="grid-column: 2 / 12">
+        <div class="vn-etap-link__copy">
+          <span class="vn-label-mono">ЭТАП 04: ВЫБОР ОБЪЕКТА</span>
+          <h2 id="vn-etap-link-title">
+            После задачи — смотрим не все варианты, а подходящие новостройки
+          </h2>
+          <p>
+            Когда цель покупки определена, начинается отбор объектов. Важно смотреть
+            не только цену и планировку, а район, срок сдачи, застройщика,
+            инфраструктуру и совместимость с военной ипотекой.
+          </p>
+        </div>
+
+        <a href="/voennaya-ipoteka-krasnodar/" class="vn-etap-link__action">
+          Подробнее о выборе новостроек →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-etap-link {
+    padding: 80px 0;
+    background: var(--color-bg-primary);
+  }
+
+  .vn-etap-link__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 40px;
+    align-items: center;
+    padding: 36px 40px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-etap-link__copy h2 {
+    max-width: 720px;
+    margin: 14px 0 10px;
+    font-size: var(--fs-h3);
+    line-height: 1.25;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-etap-link__copy p {
+    max-width: 720px;
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-etap-link__action {
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .vn-etap-link__action:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-etap-link__card {
+      grid-column: 1 / -1 !important;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-etap-link {
+      padding: 56px 0;
+    }
+
+    .vn-etap-link__card {
+      padding: 28px 24px;
+    }
+
+    .vn-etap-link__action {
+      white-space: normal;
+    }
+  }
+</style>

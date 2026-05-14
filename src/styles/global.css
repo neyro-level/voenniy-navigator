@@ -156,6 +156,12 @@ body {
   }
 }
 
+@media (max-width: 640px) {
+  .vn-grid-12 {
+    column-gap: 8px;
+  }
+}
+
 /* ─── Section base ─── */
 .vn-section {
   position: relative;
