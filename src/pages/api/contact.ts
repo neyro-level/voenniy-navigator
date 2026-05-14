@@ -74,6 +74,8 @@ export const POST: APIRoute = async ({ request }) => {
   const honeypot = getString(body, 'honeypot') || getString(body, 'honey');
   const timestamp = getNumber(body, 'timestamp') ?? getNumber(body, 'openedAt');
   const phoneDigits = contact.replace(/\D/g, '');
+  const quizAnswers = body['quiz_answers'] as Record<string, string> | undefined;
+  const magnet = getString(body, 'magnet');
 
   if (honeypot) {
     return jsonResponse({ ok: true });
@@ -98,6 +100,18 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ error: 'Серверная отправка пока не настроена.' }, 500);
   }
 
+  const quizLines: string[] = [];
+  if (quizAnswers) {
+    quizLines.push('');
+    quizLines.push('<b>📋 Ответы на квиз:</b>');
+    if (quizAnswers.q1) quizLines.push(`   Статус НИС: ${escapeHtml(quizAnswers.q1)}`);
+    if (quizAnswers.q2) quizLines.push(`   Важнее: ${escapeHtml(quizAnswers.q2)}`);
+    if (quizAnswers.q3) quizLines.push(`   Регион: ${escapeHtml(quizAnswers.q3)}`);
+  }
+  if (magnet) {
+    quizLines.push(`🎁 Рекомендован материал: ${escapeHtml(magnet)}`);
+  }
+
   const text = [
     '<b>Новая заявка - Военный навигатор</b>',
     '',
@@ -106,6 +120,7 @@ export const POST: APIRoute = async ({ request }) => {
     method ? `<b>Способ связи:</b> ${escapeHtml(METHOD_LABELS[method] ?? method)}` : '',
     source ? `<b>Страница:</b> ${escapeHtml(source)}` : '',
     message ? `<b>Комментарий:</b> ${escapeHtml(message)}` : '',
+    ...quizLines,
     '',
     escapeHtml(new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })),
   ]

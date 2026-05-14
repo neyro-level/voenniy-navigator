@@ -1,0 +1,569 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuizForm from '../components/quiz/QuizForm';
+import { CONTACTS } from '../lib/constants';
+import '../components/quiz/quiz.css';
+
+const showTelegram = CONTACTS.telegram && !CONTACTS.telegram.includes('[TELEGRAM');
+---
+
+<BaseLayout
+  title="Бесплатные материалы по военной ипотеке — Михаил Хряпин"
+  description="Получите закрытый материал: разбор новостроек Краснодара или как правильно открыть военную ипотеку."
+  noindex={true}
+>
+  <div class="vn-video-page">
+    <!-- Mini Header -->
+    <header class="vn-video-header">
+      <div class="vn-container">
+        <div class="vn-video-header__inner">
+          <a href="/" class="vn-video-header__logo" aria-label="Военный навигатор — на главную">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+            <span>ВОЕННЫЙ НАВИГАТОР</span>
+          </a>
+          {showTelegram && (
+            <a
+              href={CONTACTS.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-video-header__tg"
+            >
+              Подписаться на канал →
+            </a>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- Зона 1: Hero -->
+    <section class="vn-video-hero">
+      <div class="vn-container">
+        <div class="vn-grid-12">
+          <div class="vn-video-hero__left" style="grid-column: 1 / 6">
+            <div class="vn-video-hero__photo-wrap">
+              <img
+                src="/images/mikhail-hero.jpg"
+                alt="Михаил Хряпин — навигатор по военной ипотеке"
+                width="380"
+                height="440"
+                loading="eager"
+                class="vn-video-hero__photo"
+              />
+            </div>
+            <p class="vn-video-hero__trust">
+              ★★★★★ 65&nbsp;сделок по военной&nbsp;ипотеке
+            </p>
+          </div>
+          <div class="vn-video-hero__right" style="grid-column: 6 / 13">
+            <span class="vn-label-mono" style="color: var(--color-accent-cta)">СПЕЦИАЛЬНО ДЛЯ ЗРИТЕЛЕЙ КАНАЛА</span>
+            <h1 class="vn-video-hero__title">
+              Привет. Я Михаил —<br />
+              навигатор по военной<br />
+              ипотеке в&nbsp;Краснодаре
+            </h1>
+            <p class="vn-video-hero__sub">
+              Раз вы смотрите мои видео — значит тема вам важна.
+              Я подготовил два закрытых материала, которые помогут
+              пройти маршрут правильно. Один из них — для&nbsp;вас.
+            </p>
+            <div class="vn-video-hero__sep" aria-hidden="true"></div>
+            <p class="vn-video-hero__hint">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
+              Пройдите 3 вопроса → получите нужный материал бесплатно
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Зона 2: Лид-магниты preview -->
+    <section class="vn-video-magnets">
+      <div class="vn-container">
+        <h2 class="vn-video-magnets__title">
+          Два закрытых материала — один из них подойдёт именно&nbsp;вам
+        </h2>
+        <div class="vn-video-magnets__grid">
+          <article class="vn-video-magnet">
+            <div class="vn-video-magnet__cover">
+              <div class="vn-video-magnet__lock">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                ЗАКРЫТЫЙ МАТЕРИАЛ
+              </div>
+            </div>
+            <div class="vn-video-magnet__body">
+              <p class="vn-video-magnet__label">ВИДЕО-РАЗБОР</p>
+              <h3 class="vn-video-magnet__h3">Как правильно получить военную ипотеку</h3>
+              <ul class="vn-video-magnet__list">
+                <li>С чего начать — кредитная история</li>
+                <li>Документы НИС: что и куда</li>
+                <li>Типичные ошибки при открытии</li>
+                <li>Михаил помогает бесплатно</li>
+              </ul>
+              <p class="vn-video-magnet__duration">~ [X] мин</p>
+            </div>
+          </article>
+
+          <article class="vn-video-magnet">
+            <div class="vn-video-magnet__cover">
+              <div class="vn-video-magnet__lock">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                ЗАКРЫТЫЙ МАТЕРИАЛ
+              </div>
+            </div>
+            <div class="vn-video-magnet__body">
+              <p class="vn-video-magnet__label">ВИДЕО-РАЗБОР</p>
+              <h3 class="vn-video-magnet__h3">Закрытый разбор новостроек Краснодара по военной ипотеке</h3>
+              <ul class="vn-video-magnet__list">
+                <li>Какие ЖК стоит смотреть в 2026</li>
+                <li>Районы: что выбрать под задачу</li>
+                <li>Реальные сделки: как это было</li>
+                <li>Что проверять до покупки</li>
+              </ul>
+              <p class="vn-video-magnet__duration">~ [X] мин</p>
+            </div>
+          </article>
+        </div>
+        <p class="vn-video-magnets__cta">
+          ↓ Пройдите 3 вопроса — и получите подходящий бесплатно
+        </p>
+      </div>
+    </section>
+
+    <!-- Зона 3: Quiz -->
+    <section class="vn-video-quiz" id="quiz">
+      <div class="vn-container">
+        <h2 class="vn-video-quiz__title">Три вопроса — и материал&nbsp;ваш</h2>
+        <p class="vn-video-quiz__sub">
+          Помогут понять, что именно вам нужно прямо&nbsp;сейчас
+        </p>
+        <QuizForm client:load />
+      </div>
+    </section>
+
+    <!-- Зона 4: Бесплатная помощь -->
+    <section class="vn-video-help">
+      <div class="vn-container">
+        <div class="vn-video-help__inner">
+          <span class="vn-label-mono" style="color: var(--color-accent-cta)">ВАЖНО</span>
+          <h2 class="vn-video-help__title">
+            Михаил помогает открыть<br />военную ипотеку бесплатно
+          </h2>
+          <p class="vn-video-help__body">
+            Многие не знают, что помощь в открытии ипотеки по НИС
+            не стоит денег. Михаил работает за вознаграждение
+            от застройщика — для вас это бесплатно.
+          </p>
+          <p class="vn-video-help__body">
+            Первый шаг — разбор вашей ситуации. 30 минут.
+            Сначала задача, потом объект.
+          </p>
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Разобрать ситуацию с ипотекой"
+            data-modal-source="/video/"
+            class="vn-btn-primary vn-video-help__cta"
+          >
+            Записаться на бесплатный разбор
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Зона 5: Mini Footer -->
+    <footer class="vn-video-footer">
+      <div class="vn-container">
+        <div class="vn-video-footer__inner">
+          <span>© 2026 Военный навигатор · Михаил Хряпин</span>
+          <a href="/politika/">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+/* ─── Video page ─── */
+.vn-video-page {
+  background: var(--color-bg-dark);
+  min-height: 100vh;
+}
+
+/* Mini Header */
+.vn-video-header {
+  background: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-border-ondark);
+  padding: 0;
+}
+
+.vn-video-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.vn-video-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text-ondark);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.vn-video-header__logo svg {
+  color: var(--color-accent-cta);
+}
+
+.vn-video-header__tg {
+  padding: 8px 16px;
+  border: 1px solid rgba(241, 243, 245, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-text-ondark);
+  font-size: 13px;
+  text-decoration: none;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.vn-video-header__tg:hover {
+  border-color: var(--color-accent-cta);
+  background: var(--color-accent-cta-soft);
+}
+
+/* Hero */
+.vn-video-hero {
+  padding: 64px 0 56px;
+}
+
+.vn-video-hero__left {
+  grid-column: 1 / 6;
+}
+
+.vn-video-hero__photo-wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 380px;
+}
+
+.vn-video-hero__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 380 / 440;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.vn-video-hero__trust {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--color-text-ondark-mute);
+  text-align: center;
+  max-width: 380px;
+}
+
+.vn-video-hero__right {
+  grid-column: 6 / 13;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vn-video-hero__title {
+  margin: 16px 0 0;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 600;
+  color: var(--color-text-ondark);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.vn-video-hero__sub {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-ondark-mute);
+  opacity: 0.7;
+  max-width: 520px;
+  text-wrap: pretty;
+}
+
+.vn-video-hero__sep {
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent-cta);
+  margin: 20px 0;
+}
+
+.vn-video-hero__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-ondark-mute);
+  margin: 0;
+}
+
+.vn-video-hero__hint svg {
+  color: var(--color-accent-cta);
+  flex-shrink: 0;
+}
+
+/* Magnets */
+.vn-video-magnets {
+  padding: 64px 0;
+  background: var(--color-bg-primary);
+}
+
+.vn-video-magnets__title {
+  margin: 0 0 36px;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.vn-video-magnets__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.vn-video-magnet {
+  background: var(--color-bg-surface);
+  border-radius: 16px;
+  overflow: hidden;
+  border-top: 3px solid var(--color-accent-cta);
+  box-shadow: 0 4px 20px rgba(15, 20, 25, 0.08);
+}
+
+.vn-video-magnet__cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+}
+
+.vn-video-magnet__lock {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(15, 20, 25, 0.7);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-ondark);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.vn-video-magnet__body {
+  padding: 24px;
+}
+
+.vn-video-magnet__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-cta);
+  margin-bottom: 8px;
+}
+
+.vn-video-magnet__h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.vn-video-magnet__list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vn-video-magnet__list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.vn-video-magnet__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-cta);
+  font-weight: 600;
+}
+
+.vn-video-magnet__duration {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+.vn-video-magnets__cta {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* Quiz section */
+.vn-video-quiz {
+  padding: 72px 0;
+  background: var(--color-bg-dark);
+}
+
+.vn-video-quiz__title {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 2.8vw, 32px);
+  font-weight: 600;
+  color: var(--color-text-ondark);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.vn-video-quiz__sub {
+  margin: 0 0 40px;
+  font-size: 15px;
+  color: var(--color-text-ondark-mute);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* Help section */
+.vn-video-help {
+  padding: 64px 0;
+  background: var(--color-bg-secondary);
+}
+
+.vn-video-help__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vn-video-help__title {
+  margin: 16px 0 0;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-video-help__body {
+  margin: 16px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.vn-video-help__cta {
+  margin-top: 28px;
+}
+
+/* Footer */
+.vn-video-footer {
+  background: var(--color-bg-dark);
+  border-top: 1px solid var(--color-border-ondark);
+}
+
+.vn-video-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  font-size: 12px;
+  color: rgba(241, 243, 245, 0.35);
+}
+
+.vn-video-footer__inner a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.vn-video-footer__inner a:hover {
+  color: var(--color-text-ondark);
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+  .vn-video-hero__left,
+  .vn-video-hero__right {
+    grid-column: 1 / -1 !important;
+  }
+  .vn-video-hero__photo-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .vn-video-hero__trust {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .vn-video-hero__right {
+    margin-top: 40px;
+  }
+  .vn-video-magnets__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .vn-video-hero {
+    padding: 40px 0 32px;
+  }
+  .vn-video-hero__title {
+    font-size: 28px;
+  }
+  .vn-video-magnets {
+    padding: 40px 0;
+  }
+  .vn-video-quiz {
+    padding: 48px 0;
+  }
+  .vn-video-help {
+    padding: 48px 0;
+  }
+  .vn-video-footer__inner {
+    flex-direction: column;
+    height: auto;
+    padding: 16px 0;
+    gap: 6px;
+    text-align: center;
+  }
+  .vn-video-header__tg {
+    display: none;
+  }
+}
+
+/* Spin animation for loader */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+:global(.spin) {
+  animation: spin 1s linear infinite;
+}
+</style>
