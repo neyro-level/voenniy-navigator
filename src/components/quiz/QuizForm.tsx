@@ -1,26 +1,28 @@
 import { useState, useCallback } from 'react';
 import { sendLead } from '@/lib/leads';
 import {
-  BadgeCheck,
-  Clock,
-  HelpCircle,
-  BookOpen,
   Building2,
-  Layers,
   MapPin,
-  Anchor,
   Compass,
   Check,
   Loader2,
+  Home,
+  KeyRound,
+  Landmark,
+  Route,
+  ShieldCheck,
+  Users,
+  WalletCards,
 } from 'lucide-react';
 
-type QuizStep = 'q1' | 'q2' | 'q3' | 'result' | 'form' | 'submitted';
-type MagnetType = 'ipoteka' | 'novostroyki' | 'both';
+type QuizStep = 'q1' | 'q2' | 'q3' | 'q4' | 'result' | 'form' | 'submitted';
+type MagnetType = 'novostroyki';
 
 interface QuizAnswers {
   q1: string | null;
   q2: string | null;
   q3: string | null;
+  q4: string | null;
 }
 
 interface QOption {
@@ -30,73 +32,123 @@ interface QOption {
   icon: React.ReactNode;
 }
 
+const STEP_META: Record<Exclude<QuizStep, 'result' | 'form' | 'submitted'>, { label: string; hint: string }> = {
+  q1: {
+    label: 'География',
+    hint: 'Это поможет понять, какие локации и ЖК показывать в разборе.',
+  },
+  q2: {
+    label: 'Задача',
+    hint: 'Так разбор будет ближе к вашей реальной цели покупки.',
+  },
+  q3: {
+    label: 'Этап',
+    hint: 'Михаил поймёт, нужен обзор рынка или проверка конкретных вариантов.',
+  },
+  q4: {
+    label: 'Приоритет',
+    hint: 'Финальный вопрос покажет, на чём сделать главный акцент.',
+  },
+};
+
 const Q1_OPTIONS: QOption[] = [
   {
-    value: 'Участник НИС, всё оформлено',
-    title: 'Участник НИС, всё оформлено',
-    sub: 'Могу начинать выбирать квартиру',
-    icon: <BadgeCheck size={20} strokeWidth={1.5} />,
+    value: 'Краснодар',
+    title: 'Краснодар',
+    sub: 'Смотрю новостройки в городе',
+    icon: <Building2 size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'Имею право, но ещё не начинал',
-    title: 'Имею право, но ещё не начинал',
-    sub: 'Знаю что военный, но документов нет',
-    icon: <Clock size={20} strokeWidth={1.5} />,
+    value: 'Краснодарский край',
+    title: 'Краснодарский край',
+    sub: 'Сравниваю город и ближайшие локации',
+    icon: <MapPin size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'Не уверен — нужно разобраться',
-    title: 'Не уверен — нужно разобраться',
-    sub: 'Слышал про программу, хочу понять',
-    icon: <HelpCircle size={20} strokeWidth={1.5} />,
+    value: 'Пока сравниваю варианты',
+    title: 'Пока сравниваю варианты',
+    sub: 'Хочу понять, куда смотреть первым делом',
+    icon: <Compass size={20} strokeWidth={1.5} />,
   },
 ];
 
 const Q2_OPTIONS: QOption[] = [
   {
-    value: 'ipoteka',
-    title: 'Разобраться с ипотекой',
-    sub: 'С чего начать, документы, история',
-    icon: <BookOpen size={20} strokeWidth={1.5} />,
+    value: 'Для жизни семьи',
+    title: 'Для жизни семьи',
+    sub: 'Важны район, школа, среда и планировка',
+    icon: <Users size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'novostroyki',
-    title: 'Выбрать квартиру в Краснодаре',
-    sub: 'Какие ЖК смотреть, районы, реальные',
-    icon: <Building2 size={20} strokeWidth={1.5} />,
+    value: 'Для переезда',
+    title: 'Для переезда',
+    sub: 'Нужно понять, где удобно стартовать',
+    icon: <Home size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'both',
-    title: 'Нужно и то, и другое',
-    sub: '',
-    icon: <Layers size={20} strokeWidth={1.5} />,
+    value: 'Для вложения или сдачи',
+    title: 'Для вложения или сдачи',
+    sub: 'Смотрю ликвидность и будущий спрос',
+    icon: <Landmark size={20} strokeWidth={1.5} />,
+  },
+  {
+    value: 'Пока не решил',
+    title: 'Пока не решил',
+    sub: 'Хочу сначала увидеть сильные варианты',
+    icon: <Route size={20} strokeWidth={1.5} />,
   },
 ];
 
 const Q3_OPTIONS: QOption[] = [
   {
-    value: 'Краснодар',
-    title: 'Краснодар',
-    sub: '',
+    value: 'Только изучаю рынок',
+    title: 'Только изучаю рынок',
+    sub: 'Пока собираю картину по ЖК и районам',
+    icon: <Compass size={20} strokeWidth={1.5} />,
+  },
+  {
+    value: 'Уже смотрю конкретные ЖК',
+    title: 'Уже смотрю конкретные ЖК',
+    sub: 'Нужно понять, что из этого реально стоит внимания',
+    icon: <Building2 size={20} strokeWidth={1.5} />,
+  },
+  {
+    value: 'Готовлюсь к сделке',
+    title: 'Готовлюсь к сделке',
+    sub: 'Хочу проверить риски до выбора объекта',
+    icon: <KeyRound size={20} strokeWidth={1.5} />,
+  },
+];
+
+const Q4_OPTIONS: QOption[] = [
+  {
+    value: 'Понять, какие ЖК смотреть',
+    title: 'Понять, какие ЖК смотреть',
+    sub: 'Нужен короткий список сильных направлений',
+    icon: <Building2 size={20} strokeWidth={1.5} />,
+  },
+  {
+    value: 'Не ошибиться с районом',
+    title: 'Не ошибиться с районом',
+    sub: 'Важно выбрать локацию под задачу',
     icon: <MapPin size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'Крым (Бахчисарай, побережье)',
-    title: 'Крым (Бахчисарай, побережье)',
-    sub: '',
-    icon: <Anchor size={20} strokeWidth={1.5} />,
+    value: 'Проверить объект перед покупкой',
+    title: 'Проверить объект перед покупкой',
+    sub: 'Хочу увидеть, где могут быть слабые места',
+    icon: <ShieldCheck size={20} strokeWidth={1.5} />,
   },
   {
-    value: 'Ещё не определился',
-    title: 'Ещё не определился',
-    sub: '',
-    icon: <Compass size={20} strokeWidth={1.5} />,
+    value: 'Понять бюджет и маршрут',
+    title: 'Понять бюджет и маршрут',
+    sub: 'Нужна последовательность действий',
+    icon: <WalletCards size={20} strokeWidth={1.5} />,
   },
 ];
 
 const MAGNET_LABELS: Record<string, string> = {
-  ipoteka: 'Как правильно получить военную ипотеку',
-  novostroyki: 'Закрытый разбор новостроек Краснодара',
-  both: 'Оба материала — ипотека + новостройки',
+  novostroyki: 'Закрытый 30-минутный разбор новостроек Краснодара',
 };
 
 const METHOD_LABELS: Record<string, string> = {
@@ -105,15 +157,9 @@ const METHOD_LABELS: Record<string, string> = {
   max: 'Max',
 };
 
-function getMagnet(q2: string | null): MagnetType {
-  if (q2 === 'novostroyki') return 'novostroyki';
-  if (q2 === 'both') return 'both';
-  return 'ipoteka';
-}
-
 export default function QuizForm() {
   const [step, setStep] = useState<QuizStep>('q1');
-  const [answers, setAnswers] = useState<QuizAnswers>({ q1: null, q2: null, q3: null });
+  const [answers, setAnswers] = useState<QuizAnswers>({ q1: null, q2: null, q3: null, q4: null });
   const [selected, setSelected] = useState<string | null>(null);
 
   const [name, setName] = useState('');
@@ -123,8 +169,9 @@ export default function QuizForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const magnet = getMagnet(answers.q2);
-  const currentStepNum = step === 'q1' ? 1 : step === 'q2' ? 2 : step === 'q3' ? 3 : 0;
+  const magnet: MagnetType = 'novostroyki';
+  const currentStepNum = step === 'q1' ? 1 : step === 'q2' ? 2 : step === 'q3' ? 3 : step === 'q4' ? 4 : 0;
+  const currentMeta = currentStepNum > 0 ? STEP_META[step as Exclude<QuizStep, 'result' | 'form' | 'submitted'>] : null;
 
   const handleSelect = useCallback((value: string) => {
     setSelected(value);
@@ -142,6 +189,10 @@ export default function QuizForm() {
       setSelected(null);
     } else if (step === 'q3') {
       setAnswers((a) => ({ ...a, q3: selected }));
+      setStep('q4');
+      setSelected(null);
+    } else if (step === 'q4') {
+      setAnswers((a) => ({ ...a, q4: selected }));
       setStep('result');
       setSelected(null);
     }
@@ -178,6 +229,7 @@ export default function QuizForm() {
             q1: answers.q1,
             q2: answers.q2,
             q3: answers.q3,
+            q4: answers.q4,
           },
           magnet,
         });
@@ -194,13 +246,14 @@ export default function QuizForm() {
 
   const renderOptions = (options: QOption[], grid?: boolean) => (
     <div className={grid ? 'vn-quiz__options vn-quiz__options--grid' : 'vn-quiz__options'}>
-      {options.map((opt) => (
+      {options.map((opt, index) => (
         <button
           key={opt.value}
           type="button"
           className={`vn-quiz__option ${selected === opt.value ? 'vn-quiz__option--selected' : ''}`}
           onClick={() => handleSelect(opt.value)}
         >
+          <span className="vn-quiz__option-index">{String(index + 1).padStart(2, '0')}</span>
           <span className="vn-quiz__option-icon">{opt.icon}</span>
           <span className="vn-quiz__option-text">
             <span className="vn-quiz__option-title">{opt.title}</span>
@@ -214,17 +267,31 @@ export default function QuizForm() {
   return (
     <div className="vn-quiz">
       {currentStepNum > 0 && (
-        <div className="vn-quiz__progress">
-          <span className={`vn-quiz__dot ${currentStepNum >= 1 ? 'vn-quiz__dot--active' : ''}`} />
-          <span className={`vn-quiz__dot ${currentStepNum >= 2 ? 'vn-quiz__dot--active' : ''}`} />
-          <span className={`vn-quiz__dot ${currentStepNum >= 3 ? 'vn-quiz__dot--active' : ''}`} />
-          <span>Вопрос {currentStepNum} из 3</span>
+        <div className="vn-quiz__head">
+          <div className="vn-quiz__head-row">
+            <span className="vn-quiz__kicker">Маршрут подбора</span>
+            <span className="vn-quiz__counter">0{currentStepNum} / 04</span>
+          </div>
+          <div className="vn-quiz__progress" aria-hidden="true">
+            <span style={{ width: `${(currentStepNum / 4) * 100}%` }} />
+          </div>
+          <div className="vn-quiz__steps" aria-label="Шаги квиза">
+            {['География', 'Задача', 'Этап', 'Приоритет'].map((label, index) => (
+              <span
+                key={label}
+                className={currentStepNum >= index + 1 ? 'vn-quiz__step vn-quiz__step--active' : 'vn-quiz__step'}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
       {step === 'q1' && (
         <>
-          <p className="vn-quiz__question">Ваш статус по программе военной ипотеки?</p>
+          <p className="vn-quiz__question">Где рассматриваете покупку?</p>
+          {currentMeta && <p className="vn-quiz__hint">{currentMeta.hint}</p>}
           {renderOptions(Q1_OPTIONS)}
           <button
             type="button"
@@ -238,7 +305,8 @@ export default function QuizForm() {
 
       {step === 'q2' && (
         <>
-          <p className="vn-quiz__question">Что для вас важнее прямо сейчас?</p>
+          <p className="vn-quiz__question">Для какой задачи квартира?</p>
+          {currentMeta && <p className="vn-quiz__hint">{currentMeta.hint}</p>}
           {renderOptions(Q2_OPTIONS, true)}
           <button
             type="button"
@@ -252,7 +320,8 @@ export default function QuizForm() {
 
       {step === 'q3' && (
         <>
-          <p className="vn-quiz__question">Где планируете покупать?</p>
+          <p className="vn-quiz__question">На каком вы этапе?</p>
+          {currentMeta && <p className="vn-quiz__hint">{currentMeta.hint}</p>}
           {renderOptions(Q3_OPTIONS)}
           <button
             type="button"
@@ -264,18 +333,33 @@ export default function QuizForm() {
         </>
       )}
 
+      {step === 'q4' && (
+        <>
+          <p className="vn-quiz__question">Что важнее понять сейчас?</p>
+          {currentMeta && <p className="vn-quiz__hint">{currentMeta.hint}</p>}
+          {renderOptions(Q4_OPTIONS, true)}
+          <button
+            type="button"
+            className={`vn-quiz__next ${selected ? 'vn-quiz__next--visible' : ''}`}
+            onClick={handleNext}
+          >
+            Подобрать разбор →
+          </button>
+        </>
+      )}
+
       {step === 'result' && (
         <div className="vn-quiz__result">
           <div className="vn-quiz__result-check">
             <Check size={24} strokeWidth={2.5} />
           </div>
-          <p className="vn-quiz__result-label">Мы подобрали вам материал</p>
+          <p className="vn-quiz__result-label">Разбор подобран</p>
           <p className="vn-quiz__result-context">
-            Для тех, кто {answers.q2 === 'ipoteka' ? 'разбирается с ипотекой' : answers.q2 === 'novostroyki' ? 'выбирает квартиру' : 'нужно и то, и другое'}
+            Для вашей задачи: {answers.q2?.toLowerCase() || 'покупка по военной ипотеке'}
           </p>
           <p className="vn-quiz__result-title">{MAGNET_LABELS[magnet]}</p>
           <button type="button" className="vn-quiz__open-form" onClick={() => setStep('form')}>
-            Получить бесплатно →
+            Получить видео бесплатно →
           </button>
         </div>
       )}
@@ -290,7 +374,7 @@ export default function QuizForm() {
               loading="lazy"
             />
             <span className="vn-quiz__form-header-text">
-              Михаил пришлёт материал<br />сразу после отправки
+              Михаил пришлёт закрытый разбор<br />сразу после отправки
             </span>
           </div>
 
@@ -355,7 +439,7 @@ export default function QuizForm() {
                 <Loader2 size={18} className="spin" /> Отправка...
               </span>
             ) : (
-              'Получить материал бесплатно'
+              'Получить видеоразбор бесплатно'
             )}
           </button>
 

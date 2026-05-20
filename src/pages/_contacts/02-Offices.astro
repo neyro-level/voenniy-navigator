@@ -1,0 +1,205 @@
+---
+import { OFFICES } from '../../lib/constants';
+
+const krasnodar = OFFICES[0];
+const crimea = OFFICES[1];
+---
+
+<section id="section-contacts-offices" class="vn-contacts-offices">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-contacts-offices__head" style="grid-column: 1 / 8">
+        <h2 class="vn-contacts-offices__title">Офисы для встреч</h2>
+        <p class="vn-contacts-offices__lead">
+          Если удобнее обсудить покупку лично, выберите офис и заранее согласуйте время встречи.
+        </p>
+      </div>
+
+      <article class="vn-contacts-office" style="grid-column: 1 / 7">
+        <div class="vn-contacts-office__body">
+          <div class="vn-contacts-office__meta">
+            <span>01</span>
+            <span>Краснодар</span>
+          </div>
+          <h3>ул. Кубанская Набережная, 33</h3>
+          <p>{krasnodar.detail}</p>
+          <div class="vn-contacts-office__bottom">
+            <span>Встречи по предварительной записи</span>
+            <a href="https://yandex.ru/maps/-/CHQl5Z1n" target="_blank" rel="noopener noreferrer">Построить маршрут →</a>
+          </div>
+        </div>
+        <iframe
+          src={krasnodar.mapUrl}
+          title="Офис в Краснодаре"
+          loading="lazy"
+          allow="fullscreen"
+          class="vn-contacts-office__map"
+        />
+      </article>
+
+      <article class="vn-contacts-office" style="grid-column: 7 / 13">
+        <div class="vn-contacts-office__body">
+          <div class="vn-contacts-office__meta">
+            <span>02</span>
+            <span>Крым</span>
+          </div>
+          <h3>Бахчисарай, ул. Комарова, 13</h3>
+          <p>Офис для встреч и разборов по предварительной записи.</p>
+          <div class="vn-contacts-office__bottom">
+            <span>Встречи по предварительной записи</span>
+            <a href="https://yandex.ru/maps/-/CHQl5ZMo" target="_blank" rel="noopener noreferrer">Построить маршрут →</a>
+          </div>
+        </div>
+        <iframe
+          src={crimea.mapUrl}
+          title="Офис в Бахчисарае"
+          loading="lazy"
+          allow="fullscreen"
+          class="vn-contacts-office__map"
+        />
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-contacts-offices {
+    background: var(--color-bg-secondary);
+    padding: 96px 0;
+  }
+
+  .vn-contacts-offices__head {
+    margin-bottom: 32px;
+  }
+
+  .vn-contacts-offices__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .vn-contacts-offices__lead {
+    margin: 12px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .vn-contacts-office {
+    overflow: hidden;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 36px rgba(15, 20, 25, 0.08);
+  }
+
+  .vn-contacts-office::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-contacts-office__body {
+    padding: 28px;
+  }
+
+  .vn-contacts-office__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .vn-contacts-office__meta span:first-child {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-contacts-office h3 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .vn-contacts-office p {
+    min-height: 46px;
+    margin: 10px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+  }
+
+  .vn-contacts-office__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-contacts-office__bottom span {
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-body-sm);
+    line-height: 1.4;
+  }
+
+  .vn-contacts-office a {
+    flex: 0 0 auto;
+    color: var(--color-accent-cta);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .vn-contacts-office a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .vn-contacts-office__map {
+    display: block;
+    width: 100%;
+    height: 320px;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-contacts-offices__head,
+    .vn-contacts-office {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-contacts-offices {
+      padding: 64px 0;
+    }
+
+    .vn-contacts-office__body {
+      padding: 24px;
+    }
+
+    .vn-contacts-office__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .vn-contacts-office__map {
+      height: 260px;
+    }
+  }
+</style>

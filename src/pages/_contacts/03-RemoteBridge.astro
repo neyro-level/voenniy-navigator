@@ -1,0 +1,171 @@
+---
+---
+
+<section id="section-contacts-remote-bridge" class="vn-contacts-remote">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-contacts-remote__grid">
+      <div class="vn-contacts-remote__left" style="grid-column: 1 / 6">
+        <span class="vn-label-mono vn-contacts-remote__label">Формат связи</span>
+        <h2>Не обязательно приезжать в офис</h2>
+        <p>
+          Первый разбор можно провести онлайн. Этого достаточно, чтобы понять задачу,
+          ограничения и следующий шаг.
+        </p>
+        <a href="#section-contacts-video" class="vn-contacts-remote__link">Перейти к онлайн-встрече ↓</a>
+      </div>
+
+      <div class="vn-contacts-remote__right" style="grid-column: 7 / 13">
+        <article class="vn-contacts-remote__row">
+          <span>01</span>
+          <div>
+            <h3>Если вы в другом городе</h3>
+            <p>Не нужно откладывать покупку до отпуска или приезда.</p>
+          </div>
+        </article>
+
+        <article class="vn-contacts-remote__row">
+          <span>02</span>
+          <div>
+            <h3>Если объект ещё не выбран</h3>
+            <p>Можно начать с района, бюджета и сценария покупки.</p>
+          </div>
+        </article>
+
+        <article class="vn-contacts-remote__row">
+          <span>03</span>
+          <div>
+            <h3>Если есть сомнения по военной ипотеке</h3>
+            <p>Разберём, что проверить до выбора новостройки.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-contacts-remote {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-bg-primary);
+    padding: 96px 0;
+  }
+
+  .vn-contacts-remote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+  }
+
+  .vn-contacts-remote__grid {
+    position: relative;
+    z-index: 1;
+    align-items: start;
+  }
+
+  .vn-contacts-remote__label {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-contacts-remote h2 {
+    margin: 18px 0 0;
+    color: var(--color-text-primary);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 600;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .vn-contacts-remote__left p {
+    margin: 20px 0 0;
+    max-width: 480px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .vn-contacts-remote__link {
+    display: inline-flex;
+    margin-top: 28px;
+    color: var(--color-accent-cta);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .vn-contacts-remote__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .vn-contacts-remote__right {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 14px 42px rgba(15, 20, 25, 0.08);
+  }
+
+  .vn-contacts-remote__row {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 22px;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-contacts-remote__row:last-child {
+    border-bottom: 0;
+  }
+
+  .vn-contacts-remote__row > span {
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
+  .vn-contacts-remote__row h3 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .vn-contacts-remote__row p {
+    margin: 8px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-contacts-remote__left,
+    .vn-contacts-remote__right {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-contacts-remote__right {
+      margin-top: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-contacts-remote {
+      padding: 64px 0;
+    }
+
+    .vn-contacts-remote__row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 24px;
+    }
+  }
+</style>
