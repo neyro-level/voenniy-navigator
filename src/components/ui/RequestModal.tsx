@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { Check, Loader2, MessageCircle, Phone, Send, X } from 'lucide-react';
+import { sendLead } from '@/lib/leads';
 import '../../styles/modal.css';
 
 type ContactMethod = 'call' | 'telegram' | 'max';
@@ -246,27 +247,15 @@ export default function RequestModal({
     const openedAt = openedAtRef.current;
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.trim(),
-          phone: normalizedPhone,
-          method,
-          source: modalSource,
-          honey: honeypot,
-          openedAt,
-          contact: normalizedPhone,
-          honeypot,
-          timestamp: openedAt,
-        }),
+      await sendLead({
+        form: 'request_modal',
+        name: name.trim(),
+        phone: normalizedPhone,
+        method,
+        source: modalSource,
+        honeypot,
+        openedAt,
       });
-
-      const result = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        throw new Error(result?.error || 'Не удалось отправить заявку.');
-      }
 
       setSubmitState('success');
       const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;

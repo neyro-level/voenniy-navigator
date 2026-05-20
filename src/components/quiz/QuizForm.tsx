@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { sendLead } from '@/lib/leads';
 import {
   BadgeCheck,
   Clock,
@@ -167,30 +168,19 @@ export default function QuizForm() {
       setLoading(true);
 
       try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name.trim(),
-            contact: contact.trim(),
-            method,
-            source: '/video/',
-            quiz_answers: {
-              q1: answers.q1,
-              q2: answers.q2,
-              q3: answers.q3,
-            },
-            magnet,
-          }),
+        await sendLead({
+          form: 'video_quiz',
+          name: name.trim(),
+          contact: contact.trim(),
+          method,
+          source: '/video/',
+          quizAnswers: {
+            q1: answers.q1,
+            q2: answers.q2,
+            q3: answers.q3,
+          },
+          magnet,
         });
-
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok) {
-          setError(data.error || 'Не удалось отправить. Попробуйте ещё раз.');
-          setLoading(false);
-          return;
-        }
 
         setStep('submitted');
         window.location.href = `/bonus/?v=${magnet}`;
@@ -294,7 +284,7 @@ export default function QuizForm() {
         <form className="vn-quiz__form" onSubmit={handleSubmit}>
           <div className="vn-quiz__form-header">
             <img
-              src="/images/mikhail-form.jpg"
+              src="/images/mikhail-hero.png"
               alt="Михаил Хряпин"
               className="vn-quiz__form-avatar"
               loading="lazy"

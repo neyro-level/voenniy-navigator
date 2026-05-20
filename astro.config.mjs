@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://voenniy-navigator.vercel.app', // TODO: заменить на реальный домен
+  site: 'http://voenniy-navigator.5.42.100.161.nip.io',
   trailingSlash: 'always',
   integrations: [
     react(),
