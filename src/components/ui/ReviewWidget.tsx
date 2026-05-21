@@ -36,13 +36,18 @@ function getBlockTitle(section: HTMLElement, index: number) {
 }
 
 function collectBlocks() {
-  return Array.from(document.querySelectorAll<HTMLElement>('section')).map((section, index) => ({
-    id: section.dataset.reviewId || `section-${index + 1}`,
-    title: getBlockTitle(section, index),
-    path: section.dataset.reviewPath,
-    index: index + 1,
-    element: section,
-  }));
+  return Array.from(document.querySelectorAll<HTMLElement>('section'))
+    .filter((section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.width > 100 && rect.height > 40 && !section.closest('dialog:not([open])');
+    })
+    .map((section, index) => ({
+      id: section.dataset.reviewId || `section-${index + 1}`,
+      title: getBlockTitle(section, index),
+      path: section.dataset.reviewPath,
+      index: index + 1,
+      element: section,
+    }));
 }
 
 export default function ReviewWidget() {
@@ -94,6 +99,10 @@ export default function ReviewWidget() {
     };
 
     document.addEventListener('click', onClick, true);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsSelecting(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
 
     return () => {
       document.documentElement.classList.remove('vn-review-mode');
@@ -102,6 +111,7 @@ export default function ReviewWidget() {
         delete block.element.dataset.reviewComputedTitle;
       });
       document.removeEventListener('click', onClick, true);
+      document.removeEventListener('keydown', onKeyDown);
     };
   }, [blocks, enabled, isSelecting]);
 
