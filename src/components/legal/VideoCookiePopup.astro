@@ -148,14 +148,19 @@
   }
 
   .vn-video-cookie {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
     width: min(980px, calc(100vw - 32px));
     max-height: min(820px, calc(100vh - 32px));
+    margin: 0;
     padding: 0;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-bg-surface);
     color: var(--color-text-primary);
     box-shadow: var(--shadow-xl);
+    overflow: hidden;
   }
 
   .vn-video-cookie::backdrop {
@@ -330,7 +335,8 @@
   @media (max-width: 640px) {
     .vn-video-cookie {
       width: calc(100vw - 16px);
-      max-height: calc(100vh - 16px);
+      max-height: calc(100dvh - 16px);
+      border-radius: var(--radius-md);
     }
 
     .vn-video-cookie__header {
@@ -369,5 +375,13 @@
     .vn-video-cookie__reject {
       width: 100%;
     }
+  }
+</style>
+
+<style is:global>
+  .vn-video-cookie-open .vn-landing-cookie,
+  .vn-video-cookie-open #landing-bottom-cta,
+  .vn-video-cookie-open .vn-review-widget {
+    display: none !important;
   }
 </style>
