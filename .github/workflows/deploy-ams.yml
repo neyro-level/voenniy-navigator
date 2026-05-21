@@ -14,6 +14,8 @@ env:
   SITE_SLUG: voenniy-navigator
   PUBLIC_LEADS_API_URL: /api/leads
   PUBLIC_PROJECT_ID: voenniy-navigator
+  PUBLIC_REVIEW_API_URL: https://review.ams-cloud.ru
+  PUBLIC_REVIEW_PROJECT_ID: voenniy-navigator
 
 jobs:
   deploy:
@@ -41,6 +43,7 @@ jobs:
       - name: Build
         env:
           PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}
+          PUBLIC_REVIEW_SITE_KEY: ${{ secrets.PUBLIC_REVIEW_SITE_KEY }}
         run: pnpm build
 
       - name: Configure SSH

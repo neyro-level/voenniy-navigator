@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ReviewWidget from '../components/ui/ReviewWidget';
 
 interface Props {
   title: string;
@@ -65,5 +66,6 @@ const {
 </head>
 <body>
   <slot />
+  <ReviewWidget client:load />
 </body>
 </html>
