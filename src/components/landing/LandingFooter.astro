@@ -1,0 +1,176 @@
+<footer class="vn-landing-footer">
+  <div class="vn-container">
+    <div class="vn-landing-footer__top">
+      <div class="vn-landing-footer__brand">
+        <a href="/" class="vn-landing-footer__logo" aria-label="Военный навигатор — на главную">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="vn-landing-footer__mark" aria-hidden="true">
+            <circle
+              cx="20"
+              cy="20"
+              r="9"
+              stroke="color-mix(in srgb, var(--color-text-ondark) 78%, transparent)"
+              stroke-width="0.7"
+              stroke-dasharray="2.2 2.2"
+            />
+            <path d="M7 13 L7 7 L13 7" stroke="color-mix(in srgb, var(--color-text-ondark) 78%, transparent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M27 7 L33 7 L33 13" stroke="color-mix(in srgb, var(--color-text-ondark) 78%, transparent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M7 27 L7 33 L13 33" stroke="color-mix(in srgb, var(--color-text-ondark) 78%, transparent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M27 33 L33 33 L33 27" stroke="color-mix(in srgb, var(--color-text-ondark) 78%, transparent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="20" cy="20" r="2.8" fill="var(--color-accent-cta)" />
+          </svg>
+          <span class="vn-landing-footer__logo-text">
+            <span>Военный навигатор</span>
+            <span>Михаил Хряпин</span>
+          </span>
+        </a>
+        <p>Михаил Хряпин · подбор квартир по военной ипотеке в Краснодаре</p>
+      </div>
+
+      <div class="vn-landing-footer__note">
+        <span>Краснодар</span>
+        <p>Помогаем военнослужащим сравнить новостройки, проверить условия по ипотеке и выбрать понятный маршрут покупки.</p>
+      </div>
+    </div>
+
+    <div class="vn-landing-footer__bottom">
+      <span>© 2026 Военный навигатор · Михаил Хряпин</span>
+      <nav class="vn-landing-footer__links" aria-label="Юридические документы">
+        <button type="button" data-video-policy-open>Политика конфиденциальности</button>
+        <button type="button" data-video-cookie-open>Правила обработки cookie</button>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .vn-landing-footer {
+    background: var(--color-bg-dark);
+    border-top: 1px solid var(--color-border-ondark);
+    color: var(--color-text-ondark);
+  }
+
+  .vn-landing-footer__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 48px;
+    padding: 42px 0 34px;
+    border-bottom: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-landing-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-ondark);
+    text-decoration: none;
+  }
+
+  .vn-landing-footer__mark {
+    flex: 0 0 40px;
+  }
+
+  .vn-landing-footer__logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .vn-landing-footer__logo-text span:first-child {
+    color: var(--color-text-ondark);
+    font-size: 20px;
+    font-weight: 650;
+    line-height: 1.1;
+  }
+
+  .vn-landing-footer__logo-text span:last-child {
+    color: var(--color-text-ondark-mute);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .vn-landing-footer__brand p,
+  .vn-landing-footer__note p {
+    max-width: 520px;
+    margin: 10px 0 0;
+    color: var(--color-text-ondark-mute);
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .vn-landing-footer__note {
+    padding-left: 24px;
+    border-left: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-landing-footer__note span {
+    display: block;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .vn-landing-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 66px;
+    color: color-mix(in srgb, var(--color-text-ondark) 46%, transparent);
+    font-size: 12px;
+  }
+
+  .vn-landing-footer__links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .vn-landing-footer__links button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    transition: color 150ms ease;
+    cursor: pointer;
+  }
+
+  .vn-landing-footer__links button:hover {
+    color: var(--color-text-ondark);
+  }
+
+  @media (max-width: 760px) {
+    .vn-landing-footer__top {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 34px 0 28px;
+    }
+
+    .vn-landing-footer__note {
+      padding-left: 0;
+      padding-top: 22px;
+      border-left: none;
+      border-top: 1px solid var(--color-border-ondark);
+    }
+
+    .vn-landing-footer__bottom {
+      display: grid;
+      gap: 14px;
+      padding: 18px 0 102px;
+      text-align: left;
+    }
+
+    .vn-landing-footer__links {
+      justify-content: flex-start;
+      gap: 12px 18px;
+    }
+  }
+</style>

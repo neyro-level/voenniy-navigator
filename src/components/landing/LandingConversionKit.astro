@@ -1,0 +1,54 @@
+---
+import VideoPrivacyPopup from '../legal/VideoPrivacyPopup.astro';
+import VideoCookiePopup from '../legal/VideoCookiePopup.astro';
+import RequestModal from '../ui/RequestModal';
+import LandingFooter from './LandingFooter.astro';
+import LandingBottomCTA from './LandingBottomCTA.astro';
+import LandingCookieBanner from './LandingCookieBanner';
+
+interface Props {
+  requestTitle?: string;
+  requestSubtitle?: string;
+  requestSource?: string;
+}
+
+const {
+  requestTitle = 'Получить подборку',
+  requestSubtitle = 'Оставьте имя и телефон. Эксперт уточнит задачу и подготовит понятный следующий шаг.',
+  requestSource = Astro.url.pathname,
+} = Astro.props;
+---
+
+<LandingFooter />
+<LandingBottomCTA />
+<VideoPrivacyPopup />
+<VideoCookiePopup />
+<RequestModal
+  client:load
+  title={requestTitle}
+  subtitle={requestSubtitle}
+  source={requestSource}
+/>
+<LandingCookieBanner client:load />
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    const trigger = target.closest('[data-modal-open]');
+    if (!(trigger instanceof HTMLElement)) return;
+
+    event.preventDefault();
+
+    window.dispatchEvent(
+      new CustomEvent('open-modal', {
+        detail: {
+          title: trigger.dataset.modalTitle,
+          subtitle: trigger.dataset.modalSubtitle,
+          source: trigger.dataset.modalSource || window.location.pathname,
+        },
+      }),
+    );
+  });
+</script>

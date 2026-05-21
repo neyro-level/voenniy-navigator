@@ -172,6 +172,7 @@ const operatorPhone = CONTACTS.phone;
 
     openers.forEach((button) => button.addEventListener('click', openDialog));
     closers.forEach((button) => button.addEventListener('click', closeDialog));
+    window.addEventListener('landing-policy-open', openDialog);
 
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) closeDialog();

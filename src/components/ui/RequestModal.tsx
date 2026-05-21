@@ -8,6 +8,7 @@ type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
 type OpenModalDetail = {
   title?: string;
+  subtitle?: string;
   source?: string;
 };
 
@@ -152,7 +153,7 @@ export default function RequestModal({
       resetForm();
       openedAtRef.current = Date.now();
       setModalTitle(detail.title || title);
-      setModalSubtitle(subtitle);
+      setModalSubtitle(detail.subtitle || subtitle);
       setModalSource(detail.source || source || window.location.pathname);
       setIsOpen(true);
 

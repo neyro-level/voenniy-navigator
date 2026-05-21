@@ -12,7 +12,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/thanks/') &&
         !page.includes('/404/') &&
-        !page.includes('/video/') &&
+        !page.includes('/podbor/') &&
         !page.includes('/bonus/') &&
         !page.includes('/prezentaciya/'),
     }),
