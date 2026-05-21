@@ -1,7 +1,7 @@
 export const SITE = {
   name:     'Михаил Хряпин — Военный навигатор',
   tagline:  'Помощь с выбором новостройки по военной ипотеке под задачу',
-  url:      'http://voenniy-navigator.preview.ams-cloud.ru',
+  url:      'https://voen-navigator.ru',
 };
 
 export const OFFICES = [
