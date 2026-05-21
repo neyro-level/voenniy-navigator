@@ -391,6 +391,15 @@ export default function ReviewWidget() {
             flex-direction: column;
             align-items: stretch;
           }
+
+          .vn-review-mode .vn-review-target {
+            outline-color: rgba(37, 99, 235, 0.65);
+          }
+
+          .vn-review-mode .vn-review-target::after {
+            display: none;
+            content: none;
+          }
         }
       `}</style>
 
