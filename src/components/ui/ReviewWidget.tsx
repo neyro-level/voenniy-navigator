@@ -336,7 +336,7 @@ export default function ReviewWidget() {
         }
 
         .vn-review-widget__status {
-          margin: 0;
+          margin: 14px 0 0;
           color: #4a5568;
           font-size: 12px;
           line-height: 1.45;
@@ -461,7 +461,7 @@ export default function ReviewWidget() {
             />
           </label>
           <p className="vn-review-widget__status">
-            Нажмите «Отправить правку», и ваш комментарий уйдёт в рабочий чат к разработчику.
+            Ваш комментарий уйдёт в рабочий чат к разработчику сайта.
           </p>
         </div>
 
