@@ -56,7 +56,6 @@ export default function ReviewWidget() {
   const [isSelecting, setIsSelecting] = useState(false);
   const [blocks, setBlocks] = useState<ReviewBlock[]>([]);
   const [selectedBlock, setSelectedBlock] = useState<ReviewBlock | null>(null);
-  const [author, setAuthor] = useState('');
   const [comment, setComment] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
 
@@ -139,7 +138,6 @@ export default function ReviewWidget() {
             path: selectedBlock.path,
             index: selectedBlock.index,
           },
-          author: author.trim() || undefined,
           comment: comment.trim(),
           meta: {
             viewport: `${window.innerWidth}x${window.innerHeight}`,
@@ -410,7 +408,7 @@ export default function ReviewWidget() {
         <div className="vn-review-widget__head">
           <div>
             <span className="vn-review-widget__label">Review mode</span>
-            <h2 className="vn-review-widget__title">Комментарии по странице</h2>
+            <h2 className="vn-review-widget__title">Напишите свой комментарий</h2>
           </div>
           <button
             className="vn-review-widget__close"
@@ -451,16 +449,6 @@ export default function ReviewWidget() {
           </div>
 
           <label className="vn-review-widget__field">
-            <span>Ваше имя</span>
-            <input
-              className="vn-review-widget__input"
-              value={author}
-              onChange={(event) => setAuthor(event.target.value)}
-              placeholder="Например, Михаил"
-            />
-          </label>
-
-          <label className="vn-review-widget__field">
             <span>Комментарий</span>
             <textarea
               className="vn-review-widget__textarea"
@@ -472,6 +460,9 @@ export default function ReviewWidget() {
               placeholder="Напишите, какой текст заменить или что поправить в блоке"
             />
           </label>
+          <p className="vn-review-widget__status">
+            Нажмите «Отправить правку», и ваш комментарий уйдёт в рабочий чат к разработчику.
+          </p>
         </div>
 
         <div className="vn-review-widget__footer">
@@ -486,11 +477,6 @@ export default function ReviewWidget() {
               {submitState === 'sending' ? 'Отправляем...' : 'Отправить правку'}
             </button>
 
-            {submitState === 'idle' && (
-              <p className="vn-review-widget__status">
-                Комментарий уйдёт в рабочий чат АМС.
-              </p>
-            )}
             {submitState === 'sent' && (
               <p className="vn-review-widget__status vn-review-widget__status--sent">
                 Правка отправлена.
