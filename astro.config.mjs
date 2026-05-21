@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'http://voenniy-navigator.5.42.100.161.nip.io',
+  site: 'http://voenniy-navigator.preview.ams-cloud.ru',
   trailingSlash: 'always',
   integrations: [
     react(),

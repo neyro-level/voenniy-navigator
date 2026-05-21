@@ -69,4 +69,4 @@ jobs:
 
       - name: Verify
         run: |
-          curl -fsS "http://voenniy-navigator.5.42.100.161.nip.io/" >/dev/null
+          curl -fsS "http://voenniy-navigator.preview.ams-cloud.ru/" >/dev/null
