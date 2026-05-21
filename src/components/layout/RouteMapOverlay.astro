@@ -758,12 +758,37 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
 
   /* Mobile overlay */
   @media (max-width: 1023px) {
-    .vn-overlay-header { display: none; }
+    .vn-overlay-header {
+      display: flex;
+      height: 60px;
+      padding-inline: 16px;
+    }
+    .vn-overlay-logo svg {
+      width: 30px;
+      height: 30px;
+    }
+    .vn-overlay-logo-name {
+      font-size: 10px;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .vn-overlay-close {
+      width: 44px;
+      height: 44px;
+      justify-content: center;
+      padding: 0;
+      border-radius: var(--radius-md);
+    }
+    .vn-overlay-close span {
+      display: none;
+    }
     .vn-overlay-header-label { display: none; }
     .vn-overlay-body {
       grid-template-columns: 1fr;
       grid-template-rows:    auto;
-      padding-top:           60px;
+      padding-top:           0;
     }
     .vn-overlay-brand { display: none; }
     .vn-overlay-contacts {

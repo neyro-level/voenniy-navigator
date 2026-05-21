@@ -57,6 +57,7 @@ class NavigationState {
   open() {
     this.isOpen = true;
     document.body.style.overflow = 'hidden';
+    document.documentElement.classList.add('vn-route-map-open');
 
     this.overlay.removeAttribute('inert');
     this.overlay.setAttribute('data-open', 'true');
@@ -78,6 +79,7 @@ class NavigationState {
   close() {
     this.isOpen = false;
     document.body.style.overflow = '';
+    document.documentElement.classList.remove('vn-route-map-open');
 
     this.overlay.setAttribute('inert', '');
     this.overlay.setAttribute('data-open', 'false');

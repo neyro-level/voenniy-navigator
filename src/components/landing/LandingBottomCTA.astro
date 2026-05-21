@@ -191,7 +191,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`;
 
   if (landingBottomCta) {
     const mobileQuery = window.matchMedia('(max-width: 1023px)');
-    const threshold = 500;
+    const threshold = 1000;
 
     const updateLandingBottomCta = () => {
       const shouldShow = mobileQuery.matches && window.scrollY >= threshold;

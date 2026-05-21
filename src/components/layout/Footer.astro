@@ -3,9 +3,10 @@ import { NAV_ITEMS } from '../../lib/navigation/navData';
 import { CONTACTS, LEGAL } from '../../lib/constants';
 
 const currentPath = Astro.url.pathname;
+const hasMobileDock = !currentPath.includes('/contacts/');
 ---
 
-<footer class="vn-footer" role="contentinfo">
+<footer class={`vn-footer${hasMobileDock ? ' vn-footer--with-mobile-dock' : ''}`} role="contentinfo">
 
   <!-- ── Logo Bar ── -->
   <div class="vn-footer__bar">
@@ -93,9 +94,10 @@ const currentPath = Astro.url.pathname;
       target="_blank"
       rel="noopener noreferrer"
       class="vn-footer__dev-link"
-      aria-label="Разработка сайта — Андрей Чирков"
+      aria-label="Сайт разработан в АМС-Маркетинг"
     >
-      разработка сайта
+      <span class="vn-footer__dev-accent" aria-hidden="true"></span>
+      <span class="vn-footer__dev-text">Сайт разработан в АМС-Маркетинг</span>
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="1.5"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -127,6 +129,7 @@ const currentPath = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 12px;
+    min-height: 44px;
     text-decoration: none;
   }
   .vn-footer__logo-ring {
@@ -260,25 +263,43 @@ const currentPath = Astro.url.pathname;
   .vn-footer__dev-link {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    min-height: 28px;
+    padding: 5px 10px 5px 9px;
+    border: 1px solid color-mix(in srgb, var(--color-text-ondark) 12%, transparent);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-text-ondark) 3%, transparent);
     font-size: 11px;
     color: var(--color-text-ondark);
-    opacity: 0.28;
+    opacity: 0.46;
     text-decoration: none;
-    transition: opacity 200ms ease;
+    transition:
+      opacity 200ms ease,
+      border-color 200ms ease,
+      background 200ms ease;
   }
   .vn-footer__dev-link:hover {
-    opacity: 0.6;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--color-border-ondark);
+    opacity: 0.9;
+    border-color: color-mix(in srgb, rgb(158 7 7) 42%, transparent);
+    background: color-mix(in srgb, rgb(158 7 7) 7%, transparent);
+  }
+  .vn-footer__dev-accent {
+    width: 3px;
+    height: 16px;
+    border-radius: 2px;
+    background: rgb(158 7 7);
+    flex-shrink: 0;
+  }
+  .vn-footer__dev-text {
+    white-space: nowrap;
   }
 
   /* ── Tablet ── */
   @media (max-width: 1023px) {
     .vn-footer__bar         { padding-inline: 32px; }
     .vn-footer__links-block { padding-inline: 32px; }
-    .vn-footer__legal       { padding-inline: 32px; padding-bottom: 84px; height: auto; padding-top: 14px; }
+    .vn-footer__legal       { padding-inline: 32px; padding-bottom: 24px; height: auto; padding-top: 14px; }
+    .vn-footer--with-mobile-dock .vn-footer__legal { padding-bottom: 84px; }
   }
 
   /* ── Mobile ── */
@@ -294,12 +315,14 @@ const currentPath = Astro.url.pathname;
       border-bottom: 1px solid var(--color-border-ondark);
     }
     .vn-footer__doc-link {
-      display: block;
+      display: flex;
+      align-items: center;
+      min-height: 48px;
       font-size: 14px;
       color: var(--color-text-ondark);
       opacity: 0.4;
       text-decoration: none;
-      padding: 14px 24px;
+      padding: 12px 24px;
       border-bottom: 1px solid var(--color-border-ondark);
       transition: opacity 150ms ease;
     }
@@ -313,10 +336,25 @@ const currentPath = Astro.url.pathname;
     .vn-footer__legal {
       flex-direction: column;
       height: auto;
-      padding: 16px 24px 84px;
-      gap: 6px;
+      padding: 18px 24px 28px;
+      gap: 12px;
       align-items: center;
       text-align: center;
+    }
+    .vn-footer--with-mobile-dock .vn-footer__legal {
+      padding-bottom: 96px;
+    }
+    .vn-footer__legal-copy {
+      max-width: 28ch;
+      line-height: 1.45;
+    }
+    .vn-footer__dev-link {
+      min-height: 40px;
+      max-width: 100%;
+    }
+    .vn-footer__dev-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 </style>

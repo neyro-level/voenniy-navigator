@@ -206,10 +206,11 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`;
     let idleTimer = 0;
     const minDelta = 6;
     const idleDelay = 520;
+    const threshold = 1000;
     const mobileQuery = window.matchMedia('(max-width: 1023px)');
 
     const showDock = () => {
-      mobileDock.dataset.visible = 'true';
+      mobileDock.dataset.visible = window.scrollY >= threshold ? 'true' : 'false';
     };
 
     const hideDock = () => {
@@ -227,8 +228,14 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`;
 
       window.clearTimeout(idleTimer);
 
+      if (currentScrollY < threshold) {
+        hideDock();
+        lastScrollY = currentScrollY;
+        return;
+      }
+
       if (Math.abs(delta) > minDelta) {
-        if (delta > 0 && currentScrollY > 80) {
+        if (delta > 0) {
           hideDock();
         } else {
           showDock();

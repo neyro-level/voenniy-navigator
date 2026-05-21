@@ -58,11 +58,14 @@ const currentPath = Astro.url.pathname;
 
     <!-- Right controls -->
     <div class="vn-header__controls">
+      {false && (
 
       <!-- Phone (desktop only, hides in dock) -->
       <a href="tel:+79384074457" class="vn-header__phone" aria-label="Позвонить Михаилу Хряпину">
         +7 (938) 407 44 57
       </a>
+
+      )}
 
       <!-- CTA -->
       <a
@@ -176,7 +179,9 @@ const currentPath = Astro.url.pathname;
     background:   transparent !important;
     box-shadow:   none !important;
     border-color: transparent !important;
-    z-index:      201;
+    opacity:      0;
+    visibility:   hidden;
+    pointer-events: none;
   }
 
   /* ── Logo bracket color ── */
@@ -242,6 +247,18 @@ const currentPath = Astro.url.pathname;
     color: var(--color-bg-surface);
     background: color-mix(in srgb, var(--color-bg-surface) 8%, transparent);
   }
+  #site-header[data-overlay="true"] .vn-header__nav {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .vn-route-map-open .vn-review-widget,
+  .vn-route-map-open .vn-cookie-banner,
+  .vn-route-map-open .vn-landing-cookie-banner,
+  .vn-route-map-open #mobile-bottom-cta,
+  .vn-route-map-open #landing-bottom-cta {
+    display: none !important;
+  }
   /* Active pill in dock mode */
   #site-header[data-state="dock"] .vn-header__nav-link[aria-current="page"] {
     background:    color-mix(in srgb, var(--color-accent-primary) 7%, transparent);
@@ -251,6 +268,7 @@ const currentPath = Astro.url.pathname;
 
   /* ── Phone ── */
   #site-header .vn-header__phone {
+    display: none;
     color: var(--color-text-secondary);
     transition: color 200ms ease, opacity 200ms ease;
   }
