@@ -32,10 +32,12 @@ export const CONTACTS = {
 };
 
 export const LEGAL = {
-  name:  'ИП Мазур Алёна Викторовна',
-  inn:   '910406895307',
-  ogrn:  '322237500111941',
-  year:  new Date().getFullYear(),
+  name:     'ИП Мазур Алёна Викторовна',
+  fullName: 'Индивидуальный предприниматель Мазур Алёна Викторовна',
+  director: 'Мазур Алёна Викторовна',
+  inn:      '910406895307',
+  ogrn:     '322237500111941',
+  year:     new Date().getFullYear(),
 };
 
 export const ROUTE_PATH = [

@@ -2,6 +2,8 @@
 import { HEADER_NAV } from '../../lib/navigation/navData';
 
 const currentPath = Astro.url.pathname;
+const onDarkTopPaths = new Set(['/', '/404', '/cookies/', '/politika/', '/soglasie/']);
+const headerContrast = onDarkTopPaths.has(currentPath) ? 'dark' : 'light';
 ---
 
 <header
@@ -10,6 +12,7 @@ const currentPath = Astro.url.pathname;
   role="banner"
   data-state="top"
   data-overlay="false"
+  data-contrast={headerContrast}
 >
   <div class="vn-header__inner">
 
@@ -191,6 +194,9 @@ const currentPath = Astro.url.pathname;
   #site-header[data-overlay="true"] .vn-header__logo {
     --logo-bracket-color: color-mix(in srgb, var(--color-text-ondark) 75%, transparent);
   }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__logo {
+    --logo-bracket-color: color-mix(in srgb, var(--color-text-ondark) 75%, transparent);
+  }
 
   /* ── Inner container: padding matches .vn-container in default, 24px in dock ── */
   #site-header[data-state="dock"] .vn-header__inner {
@@ -227,6 +233,12 @@ const currentPath = Astro.url.pathname;
   #site-header[data-overlay="true"] .vn-header__name {
     color: color-mix(in srgb, var(--color-text-ondark) 85%, transparent);
   }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__brand {
+    color: var(--color-text-ondark);
+  }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__name {
+    color: color-mix(in srgb, var(--color-text-ondark) 68%, transparent);
+  }
   /* Name collapses in dock — margin-top also to 0 to remove leftover gap */
   #site-header[data-state="dock"] .vn-header__name {
     opacity:    0;
@@ -243,6 +255,13 @@ const currentPath = Astro.url.pathname;
   #site-header[data-overlay="true"] .vn-header__nav-link {
     color: color-mix(in srgb, var(--color-text-ondark) 75%, transparent);
   }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__nav-link {
+    color: color-mix(in srgb, var(--color-text-ondark) 76%, transparent);
+  }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__nav-link:hover {
+    color: var(--color-text-ondark);
+    background: color-mix(in srgb, var(--color-text-ondark) 8%, transparent);
+  }
   #site-header[data-overlay="true"] .vn-header__nav-link:hover {
     color: var(--color-bg-surface);
     background: color-mix(in srgb, var(--color-bg-surface) 8%, transparent);
@@ -253,8 +272,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .vn-route-map-open .vn-review-widget,
-  .vn-route-map-open .vn-cookie-banner,
-  .vn-route-map-open .vn-landing-cookie-banner,
+  .vn-route-map-open .vn-cookie,
   .vn-route-map-open #mobile-bottom-cta,
   .vn-route-map-open #landing-bottom-cta {
     display: none !important;
@@ -304,6 +322,15 @@ const currentPath = Astro.url.pathname;
   #site-header[data-overlay="true"] .vn-header__map-btn {
     border-color: color-mix(in srgb, var(--color-text-ondark) 20%, transparent);
     color:        color-mix(in srgb, var(--color-text-ondark) 80%, transparent);
+  }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__map-btn {
+    border-color: color-mix(in srgb, var(--color-text-ondark) 22%, transparent);
+    color:        color-mix(in srgb, var(--color-text-ondark) 76%, transparent);
+  }
+  #site-header[data-state="top"][data-contrast="dark"] .vn-header__map-btn:hover {
+    background: color-mix(in srgb, var(--color-text-ondark) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-text-ondark) 34%, transparent);
+    color: var(--color-text-ondark);
   }
 
   /* ── Mobile: header is brand + menu only. CTA lives in MobileBottomCTA. ── */

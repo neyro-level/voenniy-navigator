@@ -6,20 +6,18 @@ import '../../styles/modal.css';
 type ContactMethod = 'call' | 'telegram' | 'max';
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
-type OpenModalDetail = {
+type OpenLeadGenModalDetail = {
   title?: string;
   subtitle?: string;
   source?: string;
   thankYouUrl?: string;
 };
 
-type RequestModalProps = {
+type LeadGenRequestModalProps = {
   title?: string;
   subtitle?: string;
   source?: string;
-  eyebrow?: string;
   thankYouUrl?: string;
-  formName?: string;
 };
 
 type FormErrors = {
@@ -37,6 +35,7 @@ declare global {
 
 const DEFAULT_TITLE = 'Напишите ваше имя и телефон';
 const DEFAULT_SUBTITLE = 'Уточню ваш запрос и задачу, а затем подготовлю подборку квартир.';
+const DEFAULT_THANK_YOU_URL = '/podbor/thanks/';
 
 const METHOD_OPTIONS: Array<{ value: ContactMethod; label: string; icon: typeof Phone }> = [
   { value: 'call', label: 'Звонок', icon: Phone },
@@ -105,14 +104,12 @@ function validateForm(name: string, phone: string, method: ContactMethod | '', c
   return errors;
 }
 
-export default function RequestModal({
+export default function LeadGenRequestModal({
   title = DEFAULT_TITLE,
   subtitle = DEFAULT_SUBTITLE,
-  source = '',
-  eyebrow = 'Получить варианты',
-  thankYouUrl = '/thanks/',
-  formName = 'request_modal',
-}: RequestModalProps) {
+  source = '/podbor/',
+  thankYouUrl = DEFAULT_THANK_YOU_URL,
+}: LeadGenRequestModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState(title);
   const [modalSubtitle, setModalSubtitle] = useState(subtitle);
@@ -152,7 +149,7 @@ export default function RequestModal({
 
   useEffect(() => {
     const openModal = (event: Event) => {
-      const detail = (event as CustomEvent<OpenModalDetail>).detail || {};
+      const detail = (event as CustomEvent<OpenLeadGenModalDetail>).detail || {};
 
       lastActiveElementRef.current = document.activeElement instanceof HTMLElement
         ? document.activeElement
@@ -168,14 +165,14 @@ export default function RequestModal({
 
       const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
       if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'form_open');
+        window.ym?.(counterId, 'reachGoal', 'leadgen_form_open');
       }
     };
 
-    window.addEventListener('open-modal', openModal);
+    window.addEventListener('open-leadgen-modal', openModal);
 
     return () => {
-      window.removeEventListener('open-modal', openModal);
+      window.removeEventListener('open-leadgen-modal', openModal);
     };
   }, [source, subtitle, thankYouUrl, title]);
 
@@ -258,7 +255,7 @@ export default function RequestModal({
 
     try {
       await sendLead({
-        form: formName,
+        form: 'leadgen_modal',
         name: name.trim(),
         phone: normalizedPhone,
         method,
@@ -270,7 +267,7 @@ export default function RequestModal({
       setSubmitState('success');
       const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
       if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'form_submit');
+        window.ym?.(counterId, 'reachGoal', 'leadgen_form_submit');
       }
       setTimeout(() => {
         const targetUrl = new URL(modalThankYouUrl, window.location.origin);
@@ -316,7 +313,7 @@ export default function RequestModal({
               Заявка отправлена
             </h2>
             <p className="vn-modal__subtitle" id="vn-modal-subtitle">
-              Свяжемся с вами в удобном формате и подскажем следующий шаг по маршруту покупки.
+              Перенаправляю на страницу с дальнейшими шагами.
             </p>
             <button className="vn-btn-primary vn-modal__submit" type="button" onClick={closeModal}>
               Хорошо
@@ -326,7 +323,7 @@ export default function RequestModal({
           <>
             <div className="vn-modal__header">
               <div className="vn-modal__header-copy">
-                <p className="vn-modal__eyebrow">{eyebrow}</p>
+                <p className="vn-modal__eyebrow">Получить варианты</p>
                 <h2 className="vn-modal__title" id="vn-modal-title">
                   {modalTitle}
                 </h2>
@@ -338,19 +335,19 @@ export default function RequestModal({
 
             <form className="vn-modal__form" onSubmit={handleSubmit} noValidate>
               <div className="vn-modal__field">
-                <label className="vn-modal__label" htmlFor="request-name">
+                <label className="vn-modal__label" htmlFor="leadgen-name">
                   Имя
                 </label>
                 <input
                   className="vn-modal__input"
-                  id="request-name"
+                  id="leadgen-name"
                   name="name"
                   ref={nameInputRef}
                   value={name}
                   autoComplete="name"
                   required
                   aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? 'request-name-error' : undefined}
+                  aria-describedby={errors.name ? 'leadgen-name-error' : undefined}
                   onChange={(event) => {
                     setName(event.target.value);
                     if (errors.name) setErrors((current) => ({ ...current, name: undefined }));
@@ -358,31 +355,31 @@ export default function RequestModal({
                   placeholder="Как к вам обращаться"
                 />
                 {errors.name && (
-                  <p className="vn-modal__error" id="request-name-error">
+                  <p className="vn-modal__error" id="leadgen-name-error">
                     {errors.name}
                   </p>
                 )}
               </div>
 
               <div className="vn-modal__field">
-                <label className="vn-modal__label" htmlFor="request-phone">
+                <label className="vn-modal__label" htmlFor="leadgen-phone">
                   Телефон
                 </label>
                 <input
                   className="vn-modal__input"
-                  id="request-phone"
+                  id="leadgen-phone"
                   name="phone"
                   value={phone}
                   autoComplete="tel"
                   inputMode="tel"
                   required
                   aria-invalid={Boolean(errors.phone)}
-                  aria-describedby={errors.phone ? 'request-phone-error' : undefined}
+                  aria-describedby={errors.phone ? 'leadgen-phone-error' : undefined}
                   onChange={(event) => handlePhoneChange(event.target.value)}
                   placeholder="+7 (999) 999-99-99"
                 />
                 {errors.phone && (
-                  <p className="vn-modal__error" id="request-phone-error">
+                  <p className="vn-modal__error" id="leadgen-phone-error">
                     {errors.phone}
                   </p>
                 )}
@@ -391,7 +388,7 @@ export default function RequestModal({
               <fieldset
                 className="vn-modal__method"
                 aria-invalid={Boolean(errors.method)}
-                aria-describedby={errors.method ? 'request-method-error' : undefined}
+                aria-describedby={errors.method ? 'leadgen-method-error' : undefined}
               >
                 <legend className="vn-modal__label">Укажите способ связи</legend>
                 <div className="vn-modal__method-grid">
@@ -421,7 +418,7 @@ export default function RequestModal({
                   })}
                 </div>
                 {errors.method && (
-                  <p className="vn-modal__error" id="request-method-error">
+                  <p className="vn-modal__error" id="leadgen-method-error">
                     {errors.method}
                   </p>
                 )}
@@ -434,7 +431,7 @@ export default function RequestModal({
                   checked={consent}
                   required
                   aria-invalid={Boolean(errors.consent)}
-                  aria-describedby={errors.consent ? 'request-consent-error' : undefined}
+                  aria-describedby={errors.consent ? 'leadgen-consent-error' : undefined}
                   onChange={(event) => {
                     setConsent(event.target.checked);
                     if (errors.consent) setErrors((current) => ({ ...current, consent: undefined }));
@@ -452,15 +449,15 @@ export default function RequestModal({
                 </span>
               </label>
               {errors.consent && (
-                <p className="vn-modal__error" id="request-consent-error">
+                <p className="vn-modal__error" id="leadgen-consent-error">
                   {errors.consent}
                 </p>
               )}
 
               <div className="vn-modal__honeypot" aria-hidden="true">
-                <label htmlFor="request-company">Компания</label>
+                <label htmlFor="leadgen-company">Компания</label>
                 <input
-                  id="request-company"
+                  id="leadgen-company"
                   name="company"
                   value={honeypot}
                   tabIndex={-1}

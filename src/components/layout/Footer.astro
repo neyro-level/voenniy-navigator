@@ -1,6 +1,7 @@
 ---
 import { NAV_ITEMS } from '../../lib/navigation/navData';
 import { CONTACTS, LEGAL } from '../../lib/constants';
+import { FOOTER_LEGAL_LINKS } from '../technical/technicalManifest';
 
 const currentPath = Astro.url.pathname;
 const hasMobileDock = !currentPath.includes('/contacts/');
@@ -71,17 +72,23 @@ const hasMobileDock = !currentPath.includes('/contacts/');
       ))}
     </nav>
 
-    <div class="vn-footer__links-row vn-footer__links-row--docs" aria-label="Документы">
-      <a href="/politika/" class="vn-footer__link vn-footer__link--muted">Политика конфиденциальности</a>
-      <span class="vn-footer__link-dot" aria-hidden="true">·</span>
-      <a href="/cookies/" class="vn-footer__link vn-footer__link--muted">Использование Cookie</a>
+    <div class="vn-footer__links-row vn-footer__links-row--docs" aria-label="Правовой раздел">
+      <span class="vn-footer__docs-title">Правовой раздел</span>
+      {FOOTER_LEGAL_LINKS.map((link) => (
+        <>
+          <span class="vn-footer__link-dot" aria-hidden="true">·</span>
+          <a href={link.href} class="vn-footer__link vn-footer__link--muted">{link.label}</a>
+        </>
+      ))}
     </div>
   </div>
 
   <!-- ── Docs (mobile only) ── -->
-  <div class="vn-footer__docs-mobile" aria-label="Документы">
-    <a href="/politika/" class="vn-footer__doc-link">Политика конфиденциальности</a>
-    <a href="/cookies/" class="vn-footer__doc-link">Использование Cookie</a>
+  <div class="vn-footer__docs-mobile" aria-label="Правовой раздел">
+    <span class="vn-footer__docs-mobile-title">Правовой раздел</span>
+    {FOOTER_LEGAL_LINKS.map((link) => (
+      <a href={link.href} class="vn-footer__doc-link">{link.label}</a>
+    ))}
   </div>
 
   <!-- ── Legal Strip ── -->
@@ -90,7 +97,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
       © {LEGAL.year} {LEGAL.name} · ИНН&nbsp;{LEGAL.inn}
     </p>
     <a
-      href="https://chirkovandrey.ru"
+      href="https://ams24.ru"
       target="_blank"
       rel="noopener noreferrer"
       class="vn-footer__dev-link"
@@ -240,9 +247,21 @@ const hasMobileDock = !currentPath.includes('/contacts/');
   .vn-footer__links-row--docs {
     margin-top: 0;
   }
+  .vn-footer__docs-title {
+    color: var(--color-text-ondark);
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    opacity: 0.42;
+    text-transform: uppercase;
+  }
 
   /* ── Docs mobile (hidden on desktop) ── */
   .vn-footer__docs-mobile {
+    display: none;
+  }
+  .vn-footer__docs-mobile-title {
     display: none;
   }
 
@@ -313,6 +332,16 @@ const hasMobileDock = !currentPath.includes('/contacts/');
       flex-direction: column;
       gap: 0;
       border-bottom: 1px solid var(--color-border-ondark);
+    }
+    .vn-footer__docs-mobile-title {
+      display: block;
+      padding: 18px 24px 6px;
+      color: var(--color-text-ondark);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      opacity: 0.42;
+      text-transform: uppercase;
     }
     .vn-footer__doc-link {
       display: flex;

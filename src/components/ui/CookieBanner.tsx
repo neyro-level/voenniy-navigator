@@ -54,19 +54,26 @@ export default function CookieBanner() {
   return (
     <div className="vn-cookie" role="dialog" aria-label="Использование файлов cookie">
       <div className="vn-cookie__inner">
-        <p className="vn-cookie__text">
-          Сайт использует cookie для анализа посещаемости.{' '}
-          <a href="/politika/" className="vn-cookie__link">
-            Политика конфиденциальности
-          </a>
-          .
-        </p>
+        <div className="vn-cookie__mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="vn-cookie__copy">
+          <p className="vn-cookie__title">Cookie</p>
+          <p className="vn-cookie__text">
+            Мы используем cookie, чтобы сайт работал корректно и становился удобнее.{' '}
+            <a href="/cookies/" className="vn-cookie__link">
+              Подробнее
+            </a>
+          </p>
+        </div>
         <div className="vn-cookie__actions">
           <button className="vn-cookie__btn vn-cookie__btn--accept" type="button" onClick={handleAccept}>
             Принять
           </button>
           <button className="vn-cookie__btn vn-cookie__btn--reject" type="button" onClick={handleReject}>
-            Отказаться
+            Только необходимые
           </button>
         </div>
       </div>

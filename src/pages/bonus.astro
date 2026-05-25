@@ -206,7 +206,11 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
       <div class="vn-container">
         <div class="vn-bonus-footer__inner">
           <span>© 2026 Военный навигатор · Михаил Хряпин</span>
-          <a href="/politika/">Политика конфиденциальности</a>
+          <nav class="vn-bonus-footer__legal" aria-label="Правовой раздел">
+            <a href="/soglasie/">Согласие на обработку</a>
+            <a href="/politika/">Политика обработки данных</a>
+            <a href="/cookies/">Использование Cookie</a>
+          </nav>
         </div>
       </div>
     </footer>
@@ -556,6 +560,13 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   color: var(--color-text-ondark);
 }
 
+.vn-bonus-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 /* Mobile */
 @media (max-width: 1023px) {
   .vn-bonus-teaser .vn-grid-12 > * {
@@ -586,6 +597,10 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
     padding: 16px 0;
     gap: 6px;
     text-align: center;
+  }
+  .vn-bonus-footer__legal {
+    justify-content: center;
+    gap: 8px 12px;
   }
 }
 

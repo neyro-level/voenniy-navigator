@@ -1,3 +1,7 @@
+---
+import { FOOTER_LEGAL_LINKS } from '../technical/technicalManifest';
+---
+
 <footer class="vn-landing-footer">
   <div class="vn-container">
     <div class="vn-landing-footer__top">
@@ -35,8 +39,9 @@
     <div class="vn-landing-footer__bottom">
       <span>© 2026 Военный навигатор · Михаил Хряпин</span>
       <nav class="vn-landing-footer__links" aria-label="Юридические документы">
-        <button type="button" data-video-policy-open>Политика конфиденциальности</button>
-        <button type="button" data-video-cookie-open>Правила обработки cookie</button>
+        {FOOTER_LEGAL_LINKS.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
       </nav>
     </div>
   </div>
@@ -132,21 +137,18 @@
     justify-content: flex-end;
   }
 
-  .vn-landing-footer__links button {
+  .vn-landing-footer__links a {
     display: inline-flex;
     align-items: center;
     min-height: 40px;
     padding: 8px 0;
-    border: none;
-    background: transparent;
     color: inherit;
     font: inherit;
     text-decoration: none;
     transition: color 150ms ease;
-    cursor: pointer;
   }
 
-  .vn-landing-footer__links button:hover {
+  .vn-landing-footer__links a:hover {
     color: var(--color-text-ondark);
   }
 
@@ -176,7 +178,7 @@
       gap: 2px 18px;
     }
 
-    .vn-landing-footer__links button {
+    .vn-landing-footer__links a {
       min-height: 44px;
       text-align: left;
     }

@@ -1,33 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import LandingConversionKit from '../components/landing/LandingConversionKit.astro';
-import MiniHeader from './_podbor/01-MiniHeader.astro';
-import Hero from './_podbor/02-Hero.astro';
-import Benefits from './_podbor/03-Benefits.astro';
-import Trust from './_podbor/04-Trust.astro';
+import LeadGenLanding from '../components/leadgen/LeadGenLanding.astro';
 ---
 
-<BaseLayout
-  title="Квартиры по военной ипотеке в Краснодаре"
-  description="Подберём квартиру в Краснодаре под военную ипотеку: проверим банк, ЖК, сумму, доплату и маршрут сделки. Бонусом пришлём видеоразбор."
-  noindex={true}
->
-  <div class="vn-podbor-page">
-    <MiniHeader />
-    <Hero />
-    <Benefits />
-    <Trust />
-    <LandingConversionKit
-      requestTitle="Получить 5 вариантов квартир"
-      requestSubtitle="Оставьте имя и телефон. Эксперт уточнит вашу сумму, банк и задачу покупки, а затем подготовит подборку под военную ипотеку."
-      requestSource="/podbor/"
-    />
-  </div>
-</BaseLayout>
-
-<style>
-  .vn-podbor-page {
-    background: var(--color-bg-dark);
-    min-height: 100vh;
-  }
-</style>
+<LeadGenLanding />

@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadGenMiniHeader from './LeadGenMiniHeader.astro';
+import Hero from './sections/02-Hero.astro';
+import Benefits from './sections/03-Benefits.astro';
+import Trust from './sections/04-Trust.astro';
+import LeadGen from './LeadGen.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  requestTitle?: string;
+  requestSubtitle?: string;
+  requestSource?: string;
+  thankYouUrl?: string;
+}
+
+const {
+  title = 'Квартиры по военной ипотеке в Краснодаре',
+  description = 'Подберём квартиру в Краснодаре под военную ипотеку: проверим банк, ЖК, сумму, доплату и маршрут сделки. Бонусом пришлём видеоразбор.',
+  requestTitle = 'Напишите ваше имя и телефон',
+  requestSubtitle = 'Уточню ваш запрос и задачу, а затем подготовлю подборку квартир.',
+  requestSource = '/podbor/',
+  thankYouUrl = '/podbor/thanks/',
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <div class="vn-leadgen-page">
+    <LeadGenMiniHeader />
+    <Hero />
+    <Benefits />
+    <Trust />
+    <LeadGen
+      requestTitle={requestTitle}
+      requestSubtitle={requestSubtitle}
+      requestSource={requestSource}
+      thankYouUrl={thankYouUrl}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .vn-leadgen-page {
+    background: var(--color-bg-dark);
+    min-height: 100vh;
+  }
+</style>

@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SITE } from '../../../lib/constants';
+
+const url = Astro.url;
+const method = url.searchParams.get('method') ?? 'default';
+
+const methodLabels: Record<string, string> = {
+  call: 'позвонит вам',
+  telegram: 'напишет в Telegram',
+  max: 'напишет в Max',
+  default: 'свяжется с вами',
+};
+
+const contactLabel = methodLabels[method] ?? methodLabels.default;
+---
+
+<BaseLayout
+  title={`Заявка принята - ${SITE.name}`}
+  description="Ваша заявка отправлена. Мы свяжемся с вами в ближайшее рабочее время."
+  canonical={`${SITE.url}/thanks/`}
+  noindex={true}
+>
+  <main class="vn-thanks">
+    <section class="vn-thanks__hero">
+      <div class="vn-container vn-thanks__inner">
+        <div class="vn-thanks__mark" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        <p class="vn-thanks__eyebrow">Заявка принята</p>
+        <h1 class="vn-thanks__title">Спасибо, мы получили ваши контакты</h1>
+        <p class="vn-thanks__lead">
+          Специалист {contactLabel}. Если вопрос срочный, вернитесь на главную и воспользуйтесь прямыми контактами.
+        </p>
+
+        <div class="vn-thanks__status" aria-label="Что будет дальше">
+          <div class="vn-thanks__status-item">
+            <span>01</span>
+            <p>Проверим заявку и источник обращения.</p>
+          </div>
+          <div class="vn-thanks__status-item">
+            <span>02</span>
+            <p>Уточним задачу и контекст запроса.</p>
+          </div>
+          <div class="vn-thanks__status-item">
+            <span>03</span>
+            <p>Подскажем следующий реалистичный шаг.</p>
+          </div>
+        </div>
+
+        <div class="vn-thanks__actions">
+          <a class="vn-btn-primary" href="/">Вернуться на главную</a>
+          <a class="vn-thanks__link" href="/politika/">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .vn-thanks {
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-bg-secondary) 72%, transparent), transparent 42%),
+      var(--color-bg-primary);
+  }
+
+  .vn-thanks__hero {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    padding-block: 96px;
+  }
+
+  .vn-thanks__inner {
+    max-width: 880px;
+    text-align: center;
+  }
+
+  .vn-thanks__mark {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-text-ondark);
+    background: var(--color-accent-primary);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .vn-thanks__eyebrow {
+    margin: 0 0 14px;
+    font-size: var(--fs-label);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-accent-primary);
+  }
+
+  .vn-thanks__title {
+    margin: 0 auto;
+    max-width: 780px;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.04;
+    color: var(--color-text-primary);
+  }
+
+  .vn-thanks__lead {
+    margin: 24px auto 0;
+    max-width: 640px;
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-thanks__status {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+    text-align: left;
+  }
+
+  .vn-thanks__status-item {
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-thanks__status-item span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: var(--fs-label);
+    font-weight: 700;
+    color: var(--color-accent-primary);
+  }
+
+  .vn-thanks__status-item p {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-thanks__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 44px;
+  }
+
+  .vn-thanks__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .vn-thanks__link:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 767px) {
+    .vn-thanks__hero {
+      padding-block: 72px;
+    }
+
+    .vn-thanks__inner {
+      text-align: left;
+    }
+
+    .vn-thanks__mark {
+      margin-inline: 0;
+    }
+
+    .vn-thanks__title {
+      font-size: 36px;
+    }
+
+    .vn-thanks__status {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-thanks__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+</style>

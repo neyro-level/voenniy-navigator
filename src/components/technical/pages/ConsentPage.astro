@@ -1,0 +1,529 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { SITE, CONTACTS, LEGAL, OFFICES } from '../../../lib/constants';
+import { breadcrumbSchema } from '../../../lib/seo';
+
+const effectiveDate = '24 мая 2026 г.';
+const office = OFFICES[0];
+const operatorName = LEGAL.fullName && LEGAL.fullName !== '[LEGAL_FULL_NAME]' ? LEGAL.fullName : LEGAL.name;
+const operatorAddress = `${office.city}, ${office.address}`;
+const primaryEmail = CONTACTS.email.includes('@') ? CONTACTS.email : 'уточняется в контактах Оператора';
+
+const tocItems = [
+  { num: '01', label: 'Состав персональных данных', href: '#section-1' },
+  { num: '02', label: 'Цели обработки', href: '#section-2' },
+  { num: '03', label: 'Действия с данными', href: '#section-3' },
+  { num: '04', label: 'Передача третьим лицам', href: '#section-4' },
+  { num: '05', label: 'Рекламные коммуникации', href: '#section-5' },
+  { num: '06', label: 'Срок действия согласия', href: '#section-6' },
+  { num: '07', label: 'Отзыв согласия', href: '#section-7' },
+  { num: '08', label: 'Права субъекта', href: '#section-8' },
+  { num: '09', label: 'Подтверждение', href: '#section-9' },
+];
+
+const schema = breadcrumbSchema([
+  { name: 'Главная', url: `${SITE.url}/` },
+  { name: 'Согласие на обработку персональных данных', url: `${SITE.url}/soglasie/` },
+]);
+---
+
+<PageLayout
+  title={`Согласие на обработку персональных данных - ${SITE.name}`}
+  description="Согласие пользователя на обработку персональных данных."
+  canonical={`${SITE.url}/soglasie/`}
+  schema={schema}
+>
+  <section class="vn-section vn-section--dark vn-consent-cover">
+    <div class="vn-container">
+      <div class="vn-grid-12">
+        <div class="vn-consent-cover__left">
+          <span class="vn-label-mono vn-consent-cover__label">Юридический документ</span>
+          <h1 class="vn-consent-cover__title">Согласие на обработку персональных данных</h1>
+          <p class="vn-consent-cover__lead">
+            Документ фиксирует условия, на которых пользователь добровольно предоставляет Оператору согласие на обработку персональных данных.
+          </p>
+        </div>
+        <div class="vn-consent-cover__right">
+          <span class="vn-consent-cover__badge">Версия 1.0</span>
+          <p class="vn-consent-cover__meta">Дата: {effectiveDate}</p>
+          <p class="vn-consent-cover__meta">Оператор: {operatorName}</p>
+          <a href="/politika/" class="vn-consent-cover__link">Политика обработки персональных данных</a>
+        </div>
+      </div>
+      <div class="vn-consent-cover__divider"></div>
+      <div class="vn-consent-cover__strip">
+        ИНН {LEGAL.inn} · ОГРН/ОГРНИП {LEGAL.ogrn} · ФЗ-152 «О персональных данных»
+      </div>
+    </div>
+  </section>
+
+  <section class="vn-section vn-section--secondary vn-consent-toc">
+    <div class="vn-container">
+      <h2 class="vn-consent-toc__title">Содержание документа</h2>
+      <div class="vn-consent-toc__grid">
+        {tocItems.map((item) => (
+          <a href={item.href} class="vn-consent-toc__link">
+            <span class="vn-consent-toc__dot" aria-hidden="true"></span>
+            <span>{item.num} · {item.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="vn-section vn-consent-intro">
+    <div class="vn-container">
+      <article class="vn-consent-intro__card">
+        <p>
+          Действуя свободно, своей волей и в своем интересе, а также подтверждая свою дееспособность, я, далее — Субъект персональных данных, предоставляя свои данные через сайт Оператора, мессенджеры, электронную почту или иными способами, даю конкретное, информированное и сознательное согласие {operatorName} (ОГРН/ОГРНИП {LEGAL.ogrn}, ИНН {LEGAL.inn}, адрес: {operatorAddress}, email: {primaryEmail}), далее — Оператор, на обработку моих персональных данных на следующих условиях.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="vn-section vn-consent-sections">
+    <div class="vn-container vn-consent-sections__inner">
+      <article class="vn-consent-card" id="section-1">
+        <span class="vn-consent-card__num">01</span>
+        <h2>Состав персональных данных</h2>
+        <p>Согласие распространяется на следующие категории персональных данных.</p>
+        <h3>1.1. Основные данные</h3>
+        <ul>
+          <li>фамилия, имя, отчество;</li>
+          <li>номера контактных телефонов;</li>
+          <li>адрес электронной почты;</li>
+          <li>логины в мессенджерах;</li>
+          <li>наименование организации, должность для представителей юридических лиц.</li>
+        </ul>
+        <h3>1.2. Дополнительные данные при предоставлении</h3>
+        <ul>
+          <li>паспортные данные при заключении договоров;</li>
+          <li>ИНН, ОГРН/ОГРНИП для индивидуальных предпринимателей;</li>
+          <li>банковские реквизиты для осуществления расчетов;</li>
+          <li>адрес регистрации и фактического местонахождения;</li>
+          <li>информация о специфике бизнеса и деятельности.</li>
+        </ul>
+        <h3>1.3. Технические данные при использовании сайта</h3>
+        <ul>
+          <li>IP-адрес и геолокация;</li>
+          <li>данные об устройстве и браузере;</li>
+          <li>cookie-файлы и пиксели отслеживания;</li>
+          <li>история действий на сайте.</li>
+        </ul>
+      </article>
+
+      <article class="vn-consent-card" id="section-2">
+        <span class="vn-consent-card__num">02</span>
+        <h2>Цели обработки персональных данных</h2>
+        <h3>2.1. Оказание услуг</h3>
+        <ul>
+          <li>обработка обращений и заявок;</li>
+          <li>заключение и исполнение договоров на оказание услуг;</li>
+          <li>предоставление доступа к программно-аппаратным комплексам, если это предусмотрено проектом;</li>
+          <li>техническая настройка и консультационная поддержка.</li>
+        </ul>
+        <h3>2.2. Взаимодействие с клиентами</h3>
+        <ul>
+          <li>связь по вопросам оказания услуг;</li>
+          <li>предоставление технической поддержки;</li>
+          <li>направление уведомлений о статусе услуг;</li>
+          <li>обработка претензий и обращений.</li>
+        </ul>
+        <h3>2.3. Маркетинговые коммуникации</h3>
+        <p>В соответствии со статьей 18 Федерального закона № 38-ФЗ «О рекламе» данные могут использоваться для:</p>
+        <ul>
+          <li>информирования о новых услугах и специальных предложениях;</li>
+          <li>проведения маркетинговых исследований;</li>
+          <li>направления рекламных сообщений через SMS, email, мессенджеры, телефонные звонки.</li>
+        </ul>
+        <h3>2.4. Соблюдение законодательства</h3>
+        <ul>
+          <li>ведение учета в соответствии с требованиями налогового и бухгалтерского законодательства;</li>
+          <li>предоставление информации государственным органам по официальным запросам.</li>
+        </ul>
+      </article>
+
+      <article class="vn-consent-card" id="section-3">
+        <span class="vn-consent-card__num">03</span>
+        <h2>Действия с персональными данными</h2>
+        <p>Оператор вправе осуществлять следующие действия с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение, обновление, изменение, извлечение, использование, передача, предоставление, доступ, обезличивание, блокирование, удаление и уничтожение.</p>
+        <p>Обработка может осуществляться как автоматизированными способами с использованием средств вычислительной техники, так и неавтоматизированными способами на бумажных носителях.</p>
+      </article>
+
+      <article class="vn-consent-card" id="section-4">
+        <span class="vn-consent-card__num">04</span>
+        <h2>Передача персональных данных третьим лицам</h2>
+        <h3>4.1. Провайдеры IT-услуг</h3>
+        <ul>
+          <li>CRM-системы для ведения клиентской базы;</li>
+          <li>хостинг-провайдеры для размещения сайта;</li>
+          <li>сервисы веб-аналитики для анализа поведения пользователей;</li>
+          <li>почтовые сервисы и платформы мессенджеров.</li>
+        </ul>
+        <h3>4.2. Технологические партнеры</h3>
+        <p>Провайдеры специализированных программно-аппаратных комплексов для маркетинговой аналитики могут получать данные в объеме, необходимом для регистрации и предоставления доступа к услугам, если такие сервисы используются в проекте.</p>
+        <h3>4.3. Государственные органы</h3>
+        <p>Персональные данные могут передаваться по официальным запросам в рамках полномочий, установленных законодательством Российской Федерации.</p>
+        <p>Все третьи лица обязуются соблюдать конфиденциальность и обеспечивать безопасность персональных данных в соответствии с требованиями законодательства РФ.</p>
+      </article>
+
+      <article class="vn-consent-card" id="section-5">
+        <span class="vn-consent-card__num">05</span>
+        <h2>Согласие на рекламные коммуникации</h2>
+        <p>Настоящим я даю отдельное согласие на получение от Оператора рекламных и информационных сообщений в соответствии со статьей 18 Федерального закона «О рекламе» посредством:</p>
+        <ul>
+          <li>SMS-сообщений на указанный номер телефона;</li>
+          <li>сообщений в мессенджерах;</li>
+          <li>электронных писем на указанный адрес;</li>
+          <li>телефонных звонков на указанный номер;</li>
+          <li>push-уведомлений через сайт.</li>
+        </ul>
+        <p>Данное согласие может быть отозвано отдельно от основного согласия на обработку персональных данных.</p>
+      </article>
+
+      <article class="vn-consent-card" id="section-6">
+        <span class="vn-consent-card__num">06</span>
+        <h2>Срок действия согласия</h2>
+        <p><strong>6.1.</strong> Согласие действует с момента его предоставления до одного из следующих событий:</p>
+        <ul>
+          <li>достижение целей обработки, указанных в разделе 2;</li>
+          <li>отзыв согласия в порядке, установленном разделом 7;</li>
+          <li>истечение 3 лет с момента последнего взаимодействия с Оператором.</li>
+        </ul>
+        <p><strong>6.2.</strong> По истечении указанного срока персональные данные подлежат уничтожению в течение 30 календарных дней, за исключением случаев, когда их хранение предписано законодательством.</p>
+      </article>
+
+      <article class="vn-consent-card" id="section-7">
+        <span class="vn-consent-card__num">07</span>
+        <h2>Порядок отзыва согласия</h2>
+        <p><strong>7.1.</strong> Согласие может быть отозвано в любой момент путем направления письменного уведомления одним из следующих способов:</p>
+        <ul>
+          <li>email: {primaryEmail} с пометкой «Отзыв согласия на обработку ПД»;</li>
+          <li>почтовый адрес: {operatorAddress}.</li>
+        </ul>
+        <p><strong>7.2.</strong> Уведомление об отзыве должно содержать:</p>
+        <ul>
+          <li>фамилию, имя, отчество;</li>
+          <li>контактные данные;</li>
+          <li>дату предоставления согласия, если известна;</li>
+          <li>подпись для письменных обращений.</li>
+        </ul>
+        <p><strong>7.3.</strong> Оператор прекращает обработку персональных данных в течение 30 дней с момента получения отзыва, за исключением случаев, когда обработка необходима для исполнения договорных обязательств или соблюдения требований законодательства.</p>
+      </article>
+
+      <article class="vn-consent-card" id="section-8">
+        <span class="vn-consent-card__num">08</span>
+        <h2>Права субъекта персональных данных</h2>
+        <p>Я проинформирован о следующих правах:</p>
+        <ul>
+          <li>получать информацию об обработке персональных данных;</li>
+          <li>требовать уточнения, блокирования или удаления неточных данных;</li>
+          <li>возражать против обработки в маркетинговых целях;</li>
+          <li>обжаловать действия Оператора в Роскомнадзоре или суде.</li>
+        </ul>
+        <div class="vn-consent-highlight">
+          <h3>Контакты Роскомнадзора</h3>
+          <p>Центральный аппарат: 109097, г. Москва, Китайгородский проезд, д. 7, стр. 2.</p>
+          <p>Региональное управление Роскомнадзора: Управление Роскомнадзора по Южному федеральному округу.</p>
+        </div>
+      </article>
+
+      <article class="vn-consent-card" id="section-9">
+        <span class="vn-consent-card__num">09</span>
+        <h2>Подтверждение</h2>
+        <p>Настоящим подтверждаю, что:</p>
+        <ul>
+          <li>предоставляю персональные данные добровольно;</li>
+          <li>понимаю цели и способы обработки данных;</li>
+          <li>осознаю последствия предоставления согласия;</li>
+          <li>ознакомлен с <a href="/politika/">Политикой обработки персональных данных</a> Оператора;</li>
+          <li>предоставленные данные являются достоверными и актуальными.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .vn-consent-cover {
+    padding-top: 176px;
+    padding-bottom: 72px;
+  }
+
+  .vn-consent-cover__left {
+    grid-column: 1 / 8;
+  }
+
+  .vn-consent-cover__right {
+    grid-column: 9 / 13;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-text-ondark) 4%, transparent);
+  }
+
+  .vn-consent-cover__label,
+  .vn-consent-cover__link {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-consent-cover__title {
+    max-width: 920px;
+    margin: 18px 0 0;
+    color: var(--color-text-ondark);
+    font-size: var(--fs-h1);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .vn-consent-cover__lead {
+    max-width: 700px;
+    margin: 24px 0 0;
+    color: var(--color-text-ondark-mute);
+    font-size: var(--fs-lead);
+    line-height: 1.65;
+  }
+
+  .vn-consent-cover__badge {
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-accent-cta) 16%, transparent);
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .vn-consent-cover__meta {
+    margin: 0;
+    color: var(--color-text-ondark-mute);
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+  }
+
+  .vn-consent-cover__link {
+    font-size: var(--fs-body-sm);
+    text-decoration: none;
+  }
+
+  .vn-consent-cover__divider {
+    height: 1px;
+    margin-top: 56px;
+    background: var(--color-border-ondark);
+  }
+
+  .vn-consent-cover__strip {
+    padding-top: 18px;
+    color: color-mix(in srgb, var(--color-text-ondark) 42%, transparent);
+    font-size: var(--fs-caption);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .vn-consent-toc {
+    padding-block: 56px;
+  }
+
+  .vn-consent-toc__title {
+    margin: 0 0 24px;
+    font-size: var(--fs-h3);
+    line-height: 1.2;
+  }
+
+  .vn-consent-toc__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .vn-consent-toc__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    text-decoration: none;
+  }
+
+  .vn-consent-toc__link:hover {
+    color: var(--color-text-primary);
+    border-color: color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
+  }
+
+  .vn-consent-toc__dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-consent-intro {
+    padding-block: 56px 0;
+  }
+
+  .vn-consent-intro__card {
+    max-width: 960px;
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-consent-intro__card p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.8;
+  }
+
+  .vn-consent-sections {
+    padding-block: 72px 112px;
+  }
+
+  .vn-consent-sections__inner {
+    display: grid;
+    gap: 24px;
+  }
+
+  .vn-consent-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-consent-card__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 28px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-primary);
+    font-size: var(--fs-caption);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .vn-consent-card h2 {
+    max-width: 760px;
+    margin: 0 0 22px;
+    font-size: var(--fs-h3);
+    line-height: 1.25;
+  }
+
+  .vn-consent-card h3 {
+    margin: 26px 0 12px;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .vn-consent-card p {
+    margin: 0 0 16px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.75;
+  }
+
+  .vn-consent-card a {
+    color: var(--color-accent-cta);
+    text-decoration: none;
+  }
+
+  .vn-consent-card ul {
+    display: grid;
+    gap: 10px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vn-consent-card li {
+    position: relative;
+    padding-left: 22px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.65;
+  }
+
+  .vn-consent-card li::before {
+    content: "";
+    position: absolute;
+    top: 0.7em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-consent-highlight {
+    margin-top: 24px;
+    padding: 22px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-consent-highlight h3 {
+    margin-top: 0;
+  }
+
+  .vn-consent-highlight p:last-child,
+  .vn-consent-card p:last-child,
+  .vn-consent-card ul:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-consent-cover {
+      padding-top: 164px;
+      padding-bottom: 64px;
+    }
+
+    .vn-consent-cover__left,
+    .vn-consent-cover__right {
+      grid-column: 1 / -1;
+    }
+
+    .vn-consent-cover__right {
+      margin-top: 32px;
+    }
+
+    .vn-consent-toc__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-consent-cover {
+      padding-top: 156px;
+    }
+
+    .vn-consent-toc__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-consent-intro__card,
+    .vn-consent-card {
+      padding: 24px;
+    }
+  }
+</style>

@@ -1,29 +1,32 @@
 ---
-import RequestModal from '../ui/RequestModal';
 import CookieBanner from '../ui/CookieBanner';
-import LandingFooter from './LandingFooter.astro';
-import LandingBottomCTA from './LandingBottomCTA.astro';
+import LeadGenFooter from './LeadGenFooter.astro';
+import LeadGenBottomCTA from './LeadGenBottomCTA.astro';
+import LeadGenRequestModal from './LeadGenRequestModal';
 
 interface Props {
   requestTitle?: string;
   requestSubtitle?: string;
   requestSource?: string;
+  thankYouUrl?: string;
 }
 
 const {
   requestTitle = 'Напишите ваше имя и телефон',
   requestSubtitle = 'Уточню ваш запрос и задачу, а затем подготовлю подборку квартир.',
   requestSource = Astro.url.pathname,
+  thankYouUrl = '/podbor/thanks/',
 } = Astro.props;
 ---
 
-<LandingFooter />
-<LandingBottomCTA />
-<RequestModal
+<LeadGenFooter />
+<LeadGenBottomCTA />
+<LeadGenRequestModal
   client:load
   title={requestTitle}
   subtitle={requestSubtitle}
   source={requestSource}
+  thankYouUrl={thankYouUrl}
 />
 <CookieBanner client:load />
 
@@ -38,11 +41,12 @@ const {
     event.preventDefault();
 
     window.dispatchEvent(
-      new CustomEvent('open-modal', {
+      new CustomEvent('open-leadgen-modal', {
         detail: {
           title: trigger.dataset.modalTitle,
           subtitle: trigger.dataset.modalSubtitle,
           source: trigger.dataset.modalSource || window.location.pathname,
+          thankYouUrl: trigger.dataset.modalThankYouUrl,
         },
       }),
     );

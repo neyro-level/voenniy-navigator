@@ -152,7 +152,7 @@ export default function QuizForm() {
       <label className="vn-quiz__consent">
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
         <span>
-          Согласен с обработкой данных. <a href="/politika/" target="_blank" rel="noopener noreferrer">Политика</a>
+          Принимаю <a href="/soglasie/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> и <a href="/politika/" target="_blank" rel="noopener noreferrer">политику конфиденциальности</a>
         </span>
       </label>
 

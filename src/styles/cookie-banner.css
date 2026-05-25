@@ -1,27 +1,87 @@
 .vn-cookie {
   position: fixed;
+  right: 24px;
   bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 1100;
-  width: min(calc(100% - 32px), 720px);
-  padding: 16px 20px;
-  border: 1px solid var(--color-border);
+  width: min(calc(100% - 48px), 960px);
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 86%, var(--color-accent-primary));
   border-radius: var(--radius-lg);
-  background: var(--color-bg-surface);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-bg-surface) 96%, var(--color-accent-cta)) 0%, var(--color-bg-surface) 58%),
+    var(--color-bg-surface);
   box-shadow: var(--shadow-xl);
+}
+
+.vn-route-map-open .vn-cookie {
+  display: none !important;
 }
 
 .vn-cookie__inner {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.vn-cookie__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--color-accent-cta) 28%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent-cta) 10%, transparent);
+}
+
+.vn-cookie__mark::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent-cta);
+  box-shadow: inset -5px -5px 0 color-mix(in srgb, var(--color-text-ondark) 18%, transparent);
+}
+
+.vn-cookie__mark span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-bg-surface);
+}
+
+.vn-cookie__mark span:nth-child(1) {
+  top: 16px;
+  left: 18px;
+}
+
+.vn-cookie__mark span:nth-child(2) {
+  top: 24px;
+  left: 25px;
+}
+
+.vn-cookie__mark span:nth-child(3) {
+  top: 29px;
+  left: 17px;
+}
+
+.vn-cookie__copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.vn-cookie__title {
+  margin: 0 0 4px;
+  color: var(--color-text-primary);
+  font-size: var(--fs-body-sm);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .vn-cookie__text {
-  flex: 1;
-  min-width: 200px;
+  max-width: 580px;
   margin: 0;
   font-size: var(--fs-body-sm);
   line-height: 1.5;
@@ -39,6 +99,7 @@
 
 .vn-cookie__actions {
   display: flex;
+  align-items: center;
   gap: 10px;
   flex-shrink: 0;
 }
@@ -46,18 +107,21 @@
 .vn-cookie__btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 48px;
   min-width: 48px;
-  padding: 9px 20px;
+  padding: 9px 18px;
   font-family: var(--font-family-base);
   font-size: var(--fs-body-sm);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   border-radius: var(--radius-md);
   cursor: pointer;
+  white-space: nowrap;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease,
+    color 0.15s ease,
     transform 0.15s ease;
 }
 
@@ -84,23 +148,63 @@
   border-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
 }
 
+@media (max-width: 1023px) {
+  .vn-cookie {
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 12px));
+    width: min(calc(100% - 32px), 720px);
+  }
+
+  body:has(.vn-bottom-cta[data-visible="true"]) .vn-cookie,
+  body:has(.vn-landing-bottom-cta[data-visible="true"]) .vn-cookie {
+    bottom: max(88px, calc(env(safe-area-inset-bottom) + 84px));
+  }
+}
+
 @media (max-width: 640px) {
   .vn-cookie {
-    bottom: 80px;
-    padding: 14px 16px;
+    right: 12px;
+    width: calc(100% - 24px);
+    padding: 12px;
   }
 
   .vn-cookie__inner {
-    gap: 14px;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .vn-cookie__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vn-cookie__copy {
+    flex: 1 1 calc(100% - 52px);
+  }
+
+  .vn-cookie__text {
+    max-width: none;
   }
 
   .vn-cookie__actions {
     width: 100%;
+    gap: 8px;
   }
 
   .vn-cookie__btn {
     flex: 1;
-    justify-content: center;
+    min-height: 44px;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .vn-cookie__actions {
+    flex-direction: column;
+  }
+
+  .vn-cookie__btn {
+    width: 100%;
   }
 }
 

@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../lib/constants';
+
+const method = Astro.url.searchParams.get('method') ?? 'default';
+
+const methodLabels: Record<string, string> = {
+  call: 'позвоню вам',
+  telegram: 'напишу в Telegram',
+  max: 'напишу в Max',
+  default: 'свяжусь с вами',
+};
+
+const contactLabel = methodLabels[method] ?? methodLabels.default;
+---
+
+<BaseLayout
+  title={`Заявка принята - ${SITE.name}`}
+  description="Ваша заявка отправлена. Михаил уточнит запрос и подготовит варианты квартир."
+  canonical={`${SITE.url}/podbor/thanks/`}
+  noindex={true}
+>
+  <main class="vn-leadgen-thanks">
+    <section class="vn-leadgen-thanks__hero">
+      <div class="vn-container vn-leadgen-thanks__inner">
+        <div class="vn-leadgen-thanks__mark" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        <p class="vn-leadgen-thanks__eyebrow">Заявка принята</p>
+        <h1 class="vn-leadgen-thanks__title">Спасибо, я получил ваши контакты</h1>
+        <p class="vn-leadgen-thanks__lead">
+          Я {contactLabel}, уточню ваш запрос и задачу, а затем подготовлю подборку квартир под военную ипотеку.
+        </p>
+
+        <div class="vn-leadgen-thanks__status" aria-label="Что будет дальше">
+          <div class="vn-leadgen-thanks__status-item">
+            <span>01</span>
+            <p>Уточню сумму, банк, район и задачу покупки.</p>
+          </div>
+          <div class="vn-leadgen-thanks__status-item">
+            <span>02</span>
+            <p>Отберу подходящие варианты и актуальные условия.</p>
+          </div>
+          <div class="vn-leadgen-thanks__status-item">
+            <span>03</span>
+            <p>Подскажу следующий шаг по ипотеке и сопровождению.</p>
+          </div>
+        </div>
+
+        <div class="vn-leadgen-thanks__actions">
+          <a class="vn-btn-primary" href="/podbor/">Вернуться к подбору</a>
+          <a class="vn-leadgen-thanks__link" href="/politika/">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .vn-leadgen-thanks {
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-bg-secondary) 72%, transparent), transparent 42%),
+      var(--color-bg-primary);
+  }
+
+  .vn-leadgen-thanks__hero {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    padding-block: 96px;
+  }
+
+  .vn-leadgen-thanks__inner {
+    max-width: 880px;
+    text-align: center;
+  }
+
+  .vn-leadgen-thanks__mark {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-text-ondark);
+    background: var(--color-accent-primary);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .vn-leadgen-thanks__eyebrow {
+    margin: 0 0 14px;
+    color: var(--color-accent-primary);
+    font-size: var(--fs-label);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .vn-leadgen-thanks__title {
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--color-text-primary);
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  .vn-leadgen-thanks__lead {
+    max-width: 640px;
+    margin: 24px auto 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .vn-leadgen-thanks__status {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+    text-align: left;
+  }
+
+  .vn-leadgen-thanks__status-item {
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-leadgen-thanks__status-item span {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-accent-primary);
+    font-size: var(--fs-label);
+    font-weight: 700;
+  }
+
+  .vn-leadgen-thanks__status-item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+  }
+
+  .vn-leadgen-thanks__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 44px;
+  }
+
+  .vn-leadgen-thanks__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .vn-leadgen-thanks__link:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 767px) {
+    .vn-leadgen-thanks__hero {
+      padding-block: 72px;
+    }
+
+    .vn-leadgen-thanks__inner {
+      text-align: left;
+    }
+
+    .vn-leadgen-thanks__mark {
+      margin-inline: 0;
+    }
+
+    .vn-leadgen-thanks__title {
+      font-size: 36px;
+    }
+
+    .vn-leadgen-thanks__status {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-leadgen-thanks__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+</style>
