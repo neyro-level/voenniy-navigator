@@ -167,7 +167,8 @@ import { CONTACTS } from '../../lib/constants';
 }
 
 .vn-home-trust__stat-num {
-  font-size: clamp(28px, 3vw, 40px);
+  /* type-exception: metric/stat-number */
+  font-size: var(--fs-stat);
   font-weight: 650;
   line-height: 1;
   color: var(--color-accent-primary);
@@ -176,7 +177,7 @@ import { CONTACTS } from '../../lib/constants';
 }
 
 .vn-home-trust__stat-label {
-  font-size: 12px;
+  font-size: var(--fs-label);
   line-height: 1.45;
   color: var(--color-text-tertiary);
 }
@@ -201,7 +202,7 @@ import { CONTACTS } from '../../lib/constants';
 }
 
 .vn-home-trust__media-label {
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: var(--color-text-tertiary);
 }
 

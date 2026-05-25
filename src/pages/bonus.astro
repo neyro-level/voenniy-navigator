@@ -242,7 +242,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   align-items: center;
   gap: 8px;
   color: var(--color-text-ondark);
-  font-size: 12px;
+  font-size: var(--fs-label);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -253,7 +253,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 }
 
 .vn-bonus-header__back {
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   color: rgba(241, 243, 245, 0.45);
   text-decoration: none;
   transition: color 150ms ease;
@@ -298,7 +298,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-confirm__title {
   margin: 12px 0 0;
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: var(--fs-h2);
   font-weight: 600;
   color: var(--color-text-ondark);
   line-height: 1.15;
@@ -307,7 +307,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-confirm__sub {
   margin: 12px 0 0;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.6;
   color: var(--color-text-ondark-mute);
   opacity: 0.7;
@@ -329,7 +329,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 14px;
+  font-size: var(--fs-body-sm);
   color: var(--color-text-ondark-mute);
   line-height: 1.45;
 }
@@ -348,7 +348,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-video__label {
   text-align: center;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -393,11 +393,11 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-video__placeholder p {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--fs-body);
 }
 
 .vn-bonus-video__placeholder code {
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: var(--color-text-tertiary);
   background: rgba(241, 243, 245, 0.05);
   padding: 4px 8px;
@@ -406,7 +406,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-video__duration {
   text-align: center;
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: rgba(241, 243, 245, 0.35);
   margin-top: 12px;
 }
@@ -445,14 +445,14 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   background: rgba(15, 20, 25, 0.85);
   border-radius: var(--radius-md);
   color: var(--color-text-ondark);
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   font-weight: 500;
   white-space: nowrap;
 }
 
 .vn-bonus-teaser__title {
   margin: 16px 0 0;
-  font-size: clamp(20px, 2.2vw, 26px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.2;
@@ -461,7 +461,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-teaser__sub {
   margin: 12px 0 0;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.65;
   color: var(--color-text-secondary);
   text-wrap: pretty;
@@ -473,7 +473,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-teaser__micro {
   margin: 8px 0 0;
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: var(--color-text-tertiary);
 }
 
@@ -496,7 +496,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-next__title {
   margin: 0;
-  font-size: clamp(22px, 2.6vw, 28px);
+  font-size: var(--fs-h3);
   font-weight: 600;
   color: var(--color-text-primary);
   text-wrap: balance;
@@ -504,7 +504,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
 
 .vn-bonus-next__body {
   margin: 16px 0 0;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.65;
   color: var(--color-text-secondary);
   text-wrap: pretty;
@@ -527,7 +527,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: var(--color-text-tertiary);
 }
 
@@ -546,7 +546,7 @@ const showTelegram = TELEGRAM_CHANNEL !== '[TELEGRAM_CHANNEL]' && TELEGRAM_CHANN
   align-items: center;
   justify-content: space-between;
   height: 56px;
-  font-size: 12px;
+  font-size: var(--fs-label);
   color: rgba(241, 243, 245, 0.35);
 }
 

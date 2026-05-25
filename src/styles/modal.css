@@ -121,7 +121,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   font: inherit;
-  font-size: 16px;
+  font-size: var(--fs-body);
   line-height: 1.35;
   color: var(--color-text-primary);
   background: var(--color-bg-surface);
@@ -282,7 +282,7 @@
   justify-content: center;
   min-height: 54px;
   padding-block: 16px;
-  font-size: 16px;
+  font-size: var(--fs-body);
   font-weight: 650;
 }
 

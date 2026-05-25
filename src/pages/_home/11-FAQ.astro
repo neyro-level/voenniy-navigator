@@ -106,7 +106,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 .vn-home-faq__more-link {
   display: inline-flex;
   margin-top: 28px;
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   font-weight: 500;
   line-height: 1.5;
   color: var(--color-accent-cta);
@@ -151,7 +151,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 .vn-home-faq__num {
   flex-shrink: 0;
   width: 28px;
-  font-size: 12px;
+  font-size: var(--fs-label);
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--color-text-tertiary);
@@ -161,7 +161,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 .vn-home-faq__question-text {
   flex: 1;
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: var(--fs-h3);
   font-weight: 500;
   line-height: 1.42;
   text-wrap: pretty;
@@ -203,7 +203,7 @@ const { items } = Astro.props as { items: FAQItem[] };
   margin: 0;
   padding: 0 0 24px 44px;
   color: var(--color-text-secondary);
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.65;
   text-wrap: pretty;
 }
@@ -233,16 +233,16 @@ const { items } = Astro.props as { items: FAQItem[] };
   }
 
   .vn-home-faq__question-text {
-    font-size: 15px;
+    font-size: var(--fs-body);
   }
 
   .vn-home-faq__answer-text {
     padding: 0 0 20px 40px;
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
   }
 
   .vn-home-faq__num {
-    font-size: 11px;
+    font-size: var(--fs-caption);
     width: 24px;
   }
 

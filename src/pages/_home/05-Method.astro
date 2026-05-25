@@ -9,19 +9,19 @@
       <div class="vn-home-method__copy" style="grid-column: 1 / 6">
         <span class="vn-label-mono">Метод работы</span>
         <h2 class="vn-home-method__h2" id="vn-home-method-title">
-          Как я перевожу вашу задачу в понятный маршрут покупки
+          Как я помогаю определить цель покупки и собрать понятный маршрут
         </h2>
         <p class="vn-home-method__lead">
-          На первичном разборе мы не выбираем квартиру наугад. Сначала я уточняю
-          задачу, ограничения и условия сделки, а потом становится понятно, какие
-          новостройки действительно стоит смотреть.
+          На первичном разборе сначала определяем цель покупки, условия сделки
+          и желаемый сценарий. Это основа подбора: после неё становится понятно,
+          какие новостройки действительно стоит смотреть.
         </p>
 
         <div class="vn-home-method__steps">
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">01</span>
-            <strong class="vn-home-method__step-title">Задача</strong>
-            <span class="vn-home-method__step-body">Для жизни или как вложение</span>
+            <strong class="vn-home-method__step-title">Цель</strong>
+            <span class="vn-home-method__step-body">Для жизни, вложения или смешанного сценария</span>
           </div>
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">02</span>
@@ -36,7 +36,7 @@
           <div class="vn-home-method__step">
             <span class="vn-home-method__step-num">04</span>
             <strong class="vn-home-method__step-title">Отбор</strong>
-            <span class="vn-home-method__step-body">Подходящие новостройки, а не случайная подборка</span>
+            <span class="vn-home-method__step-body">Подходящие новостройки под выбранную цель</span>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <span class="vn-home-method__pill vn-home-method__pill--q">Подходит ли?</span>
           </div>
           <p class="vn-home-method__path-note">
-            Сначала смотрят варианты, а потом пытаются понять, совпадает ли покупка с задачей.
+            Сначала смотрят варианты, а потом сверяют покупку с реальной целью.
           </p>
         </div>
 
@@ -68,7 +68,7 @@
         <div class="vn-home-method__path vn-home-method__path--new">
           <span class="vn-home-method__path-label">Как работаю я</span>
           <div class="vn-home-method__flow">
-            <span class="vn-home-method__pill vn-home-method__pill--start">Задача</span>
+            <span class="vn-home-method__pill vn-home-method__pill--start">Цель</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
             <span class="vn-home-method__pill">Условия</span>
             <span class="vn-home-method__sep" aria-hidden="true">→</span>
@@ -77,7 +77,7 @@
             <span class="vn-home-method__pill">Отбор</span>
           </div>
           <p class="vn-home-method__path-note">
-            Сначала фиксируем задачу и ограничения, потом отбираем подходящие новостройки.
+            Сначала определяем цель, потом подбираем подходящие варианты.
           </p>
         </div>
 
@@ -153,7 +153,7 @@
 }
 
 .vn-home-method__step-num {
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--color-accent-cta);
@@ -162,7 +162,7 @@
 }
 
 .vn-home-method__step-title {
-  font-size: 15px;
+  font-size: var(--fs-body);
   font-weight: 600;
   color: var(--color-text-primary);
 }
@@ -199,7 +199,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -239,7 +239,7 @@
 }
 
 .vn-home-method__sep {
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   color: var(--color-text-tertiary);
   line-height: 1;
 }
@@ -249,7 +249,7 @@
   max-width: 100%;
   padding: 6px 13px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -278,7 +278,7 @@
 /* Note text */
 .vn-home-method__path-note {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--fs-label);
   line-height: 1.55;
 }
 .vn-home-method__path--old .vn-home-method__path-note {
@@ -327,11 +327,11 @@
   .vn-home-method__step-body { grid-column: 2; grid-row: 2; }
   .vn-home-method__pill {
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: var(--fs-label);
   }
 
   .vn-home-method__sep {
-    font-size: 11px;
+    font-size: var(--fs-caption);
   }
 }
 

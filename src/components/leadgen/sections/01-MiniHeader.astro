@@ -91,7 +91,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
 
   .vn-podbor-header__brand {
     color: var(--color-text-ondark);
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     font-weight: 650;
     line-height: 1.05;
     white-space: nowrap;
@@ -99,7 +99,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
 
   .vn-podbor-header__descriptor {
     color: var(--color-text-ondark-mute);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     font-weight: 500;
     line-height: 1.1;
     white-space: nowrap;
@@ -122,7 +122,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
   }
 
   .vn-podbor-header__phone-number {
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     font-weight: 650;
     line-height: 1.1;
     white-space: nowrap;
@@ -130,7 +130,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
 
   .vn-podbor-header__phone-note {
     color: var(--color-text-ondark-mute);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     font-weight: 500;
     line-height: 1.1;
     white-space: nowrap;
@@ -146,7 +146,7 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
     border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-text-ondark) 6%, transparent);
     color: var(--color-text-ondark);
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     font-weight: 650;
     line-height: 1;
     text-decoration: none;
@@ -174,13 +174,13 @@ const phoneHref = `tel:${CONTACTS.phone.replace(/\D/g, '')}`;
     .vn-podbor-header__cta {
       min-height: 38px;
       padding-inline: 14px;
-      font-size: 12px;
+      font-size: var(--fs-label);
     }
   }
 
   @media (max-width: 420px) {
     .vn-podbor-header__brand {
-      font-size: 13px;
+      font-size: var(--fs-body-sm);
     }
 
     .vn-podbor-header__mark {

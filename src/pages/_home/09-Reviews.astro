@@ -191,7 +191,7 @@ import { CONTACTS } from '../../lib/constants';
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   font-weight: 600;
   letter-spacing: 0.02em;
   flex-shrink: 0;
@@ -199,7 +199,7 @@ import { CONTACTS } from '../../lib/constants';
 
 .vn-home-reviews__author {
   display: block;
-  font-size: 14px;
+  font-size: var(--fs-body-sm);
   font-weight: 600;
   color: var(--color-text-ondark);
   opacity: 0.9;
@@ -207,7 +207,7 @@ import { CONTACTS } from '../../lib/constants';
 
 .vn-home-reviews__tag {
   display: block;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -217,7 +217,7 @@ import { CONTACTS } from '../../lib/constants';
 
 .vn-home-reviews__quote {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--fs-body);
   line-height: 1.62;
   color: var(--color-text-ondark);
   opacity: 0.72;
@@ -297,9 +297,9 @@ import { CONTACTS } from '../../lib/constants';
   .vn-home-reviews__featured > .vn-home-reviews__feat-card:nth-child(n) { grid-column: 1 / -1 !important; }
   .vn-home-reviews__featured { margin-bottom: 20px; }
   .vn-home-reviews__feat-card { padding: 24px; }
-  .vn-home-reviews__h2 { font-size: clamp(22px, 6vw, 28px); }
-  .vn-home-reviews__note { font-size: 13px; line-height: 1.55; }
-  .vn-home-reviews__quote { font-size: 14px; line-height: 1.6; }
+  .vn-home-reviews__h2 { font-size: var(--fs-h2); }
+  .vn-home-reviews__note { font-size: var(--fs-body-sm); line-height: 1.55; }
+  .vn-home-reviews__quote { font-size: var(--fs-body-sm); line-height: 1.6; }
 
   .vn-home-reviews__media {
     padding: 20px;

@@ -136,7 +136,7 @@ import { CONTACTS } from '../../lib/constants';
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     color: var(--color-text-ondark-mute);
     margin-bottom: 24px;
   }
@@ -163,7 +163,7 @@ import { CONTACTS } from '../../lib/constants';
 
   .vn-contacts-hero__h1 {
     margin: 0;
-    font-size: clamp(36px, 4vw, 52px);
+    font-size: var(--fs-h1);
     line-height: 1.1;
     font-weight: 600;
     letter-spacing: 0;
@@ -191,7 +191,7 @@ import { CONTACTS } from '../../lib/constants';
   .vn-contacts-hero__btn {
     height: 48px;
     padding: 0 28px;
-    font-size: 15px;
+    font-size: var(--fs-body);
   }
   .vn-contacts-hero__messenger,
   .vn-contacts-hero__phone {
@@ -205,7 +205,7 @@ import { CONTACTS } from '../../lib/constants';
     background: color-mix(in srgb, var(--color-bg-dark-elev) 82%, transparent);
     color: var(--color-text-ondark);
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     font-weight: 500;
     transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
   }
@@ -229,7 +229,7 @@ import { CONTACTS } from '../../lib/constants';
     flex-wrap: wrap;
     gap: 0;
     margin-top: 28px;
-    font-size: 11px;
+    font-size: var(--fs-caption);
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -279,7 +279,7 @@ import { CONTACTS } from '../../lib/constants';
     gap: 16px;
     padding: 18px 20px;
     color: var(--color-text-ondark-mute);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -421,7 +421,7 @@ import { CONTACTS } from '../../lib/constants';
       padding-bottom: 64px;
     }
     .vn-contacts-hero__h1 {
-      font-size: 36px;
+      font-size: var(--fs-h1);
     }
     .vn-contacts-hero__cta-row {
       width: 100%;

@@ -26,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'Крым',
     labelShort: 'Крым',
     href: '/voennaya-ipoteka-krym/',
-    description: 'Квартиры и новостройки в Крыму под сценарий покупки.',
+    description: 'Квартиры и новостройки в Крыму под вашу цель покупки.',
     group: 'object',
     icon: 'map-pinned',
     badge: 'new',

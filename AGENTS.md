@@ -228,7 +228,7 @@ vn-{page}-{block}--modifier  — модификатор состояния
 | `.vn-section--dark` | bg-dark |
 | `.vn-deco-grid` | Декоративная сетка светлая |
 | `.vn-deco-grid--dark` | Декоративная сетка тёмная |
-| `.vn-section-marker` | Номер 220px, position absolute |
+| `.vn-section-marker` | Устаревший класс: не использовать в новых и пересобираемых блоках |
 | `.vn-faq-item/question/answer` | FAQ компоненты |
 | `.vn-container` | max-width 1280px, padding 48px |
 | `.vn-grid-12` | 12-col grid, gap 32px |
@@ -282,6 +282,42 @@ vn-{page}-{block}--modifier  — модификатор состояния
 | Eyebrow / label | `var(--fs-label)` + `.vn-label-mono` |
 | Caption / номер | `var(--fs-caption)` |
 
+### Типографический контракт и исключения
+
+Типографика проекта делится на два режима:
+- **Смысловой текст:** заголовки, подзаголовки, карточки, списки, FAQ, CTA, юридический текст. Всегда использовать токены `--fs-*` или глобальные классы `.vn-type-*`.
+- **Декоративный текст:** большие цифры, обложки каталогов, 404, фоновая типографика, логотипные/визуальные маркеры. Можно использовать локальный размер, если он не является обычным читаемым текстом страницы.
+
+Глобальные классы из `global.css`:
+- `.vn-type-display` — Hero H1 главной или промо-лендинга.
+- `.vn-type-h1` — H1 внутренней страницы.
+- `.vn-type-h2` — заголовок секции.
+- `.vn-type-h3` — заголовок карточки, FAQ-вопрос, строка-акцент.
+- `.vn-type-lead` — лид/подзаголовок.
+- `.vn-type-body` — основной текст.
+- `.vn-type-small` — вторичный текст.
+- `.vn-type-label` / `.vn-type-caption` — labels, captions, мелкие подписи.
+
+Если нужен локальный `font-size`, обязательно определить тип исключения:
+```css
+/* type-exception: decorative/catalog-cover-number */
+font-size: var(--fs-deco-lg);
+```
+
+Допустимые исключения:
+- декоративные цифры, если они не заменяют обычный заголовок;
+- крупный номер/метрика через `var(--fs-stat)`;
+- декоративная фоновая типографика через `var(--fs-deco-md)` или `var(--fs-deco-lg)`;
+- иконки/эмодзи-маркеры через `var(--fs-icon)`;
+- обложка PDF/каталога через `var(--fs-deco-lg)`;
+- компактный UI в навигации, бейджах, виджетах через `var(--fs-ui)`, `var(--fs-label)` или `var(--fs-caption)`.
+
+Недопустимые исключения:
+- H1/H2/H3 больше проектной шкалы без отдельного решения;
+- `font-size: 18px+` в обычном тексте карточки;
+- новые размеры `42px`, `48px`, `56px`, `64px` для смысловых заголовков;
+- механическая замена декоративных размеров без проверки роли элемента.
+
 ```
 ✅  Вес заголовков: 600/650, не 700
 ✅  line-height заголовков: 1.1–1.2
@@ -312,6 +348,7 @@ vn-{page}-{block}--modifier  — модификатор состояния
 ✅  Декоративная сетка — только там, где она уже уместна по дизайн-системе: Hero / тёмный финал / особый акцент
 ✅  Акцентный синий — для CTA, номеров, тонких линий, статусов; не заливать им большие площади без причины
 ✗  Не делать маркетинговые hero-карточки, тёплые палитры, большие декоративные иллюстрации, случайные gradients/orbs
+✗  Не использовать большие фоновые номера секций вроде 01/02/03 и класс `.vn-section-marker` в новых и пересобираемых блоках
 ```
 
 ### SEO и структурные данные
@@ -345,6 +382,7 @@ vn-{page}-{block}--modifier  — модификатор состояния
 □  Страница собрана компонентно: route-файл тонкий, блоки независимые
 □  Визуально продолжает главную, а не отдельный дизайн
 □  Все размеры шрифтов взяты из проектных токенов или повторяют плотные паттерны главной
+□  Локальные `font-size` выше 18px проверены: это либо токен, либо подписанное `type-exception`
 □  Глобальные кнопки не переопределены по цветам/hover/radius
 □  SEO: H1, title, description, canonical, BreadcrumbList, FAQPage/Service где нужно
 □  Mobile 375px: нет overflow, текст читается, кнопки помещаются
@@ -404,17 +442,26 @@ vn-{page}-{block}--modifier  — модификатор состояния
 
 ```css
 /* Заголовки: clamp(min, fluid, max) — авторесайз без media queries */
---fs-display: clamp(36px, 4.5vw, 52px);
---fs-h1:      clamp(28px, 3.8vw, 50px);
---fs-h2:      clamp(22px, 2.8vw, 36px);
---fs-h3:      clamp(18px, 1.8vw, 24px);
+--fs-display: clamp(36px, 4vw, 52px);
+--fs-h1:      clamp(34px, 3.4vw, 46px);
+--fs-h2:      clamp(28px, 2.8vw, 38px);
+--fs-h3:      clamp(18px, 1.7vw, 22px);
 
 /* Текст: фиксированные */
---fs-lead:    17px;   /* 16px на ≤640px */
+--fs-lead:    16px;
 --fs-body:    15px;
---fs-body-sm: 13px;
+--fs-body-sm: 14px;
 --fs-label:   12px;
 --fs-caption: 11px;
+
+/* Semantic aliases and exception tokens */
+--fs-button:     var(--fs-body);
+--fs-card-title: var(--fs-h3);
+--fs-ui:         var(--fs-body-sm);
+--fs-stat:       clamp(28px, 3vw, 40px);
+--fs-icon:       20px;
+--fs-deco-md:    clamp(56px, 7vw, 80px);
+--fs-deco-lg:    clamp(72px, 10vw, 148px);
 ```
 
 **Запрет висячих строк:**
@@ -554,7 +601,6 @@ import Hero from './_[slug]/01-Hero.astro';
 <!-- Тёмная секция -->
 <section class="vn-section vn-section--dark" id="…">
   <div class="vn-deco-grid vn-deco-grid--dark" aria-hidden="true"></div>
-  <span class="vn-section-marker" aria-hidden="true">07</span>
   <div class="vn-container"><div class="vn-grid-12">…</div></div>
 </section>
 
@@ -706,7 +752,7 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 6 | API endpoint | 2026-05-13 | ✅ | /api/contact.ts → Telegram + защита |
 | 7 | Деплой Preview | 2026-05-13 | ✅ | Vercel Preview активен |
 | 8 | Главная / | 2026-05-13 | ✅ | 12 блоков (_home/01-12) по PAGE_HOME.md |
-| 9 | /voennaya-ipoteka-krasnodar/ | 2026-05-13 | ✅ | 9 блоков (_voennaya-ipoteka-krasnodar/01-09) по PAGE_NOVOSTROYKI.md |
+| 9 | /voennaya-ipoteka-krasnodar/ | 2026-05-25 | ⏳ | Главный бриф обновлён: собирать коммерческую страницу по pages/PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md (оффер: подборка 12 проверенных ЖК). Старый PAGE_NOVOSTROYKI.md не использовать как источник правды для этой страницы |
 | 10 | Рефакторинг монолитов | 2026-05-13 | ✅ | Обе страницы разбиты на компоненты по _[slug]/ |
 | 11 | RequestModal + CookieBanner | 2026-05-13 | ✅ | React islands подключены, modal.css + cookie-banner.css |
 | 12 | /voennaya-ipoteka-krym/ | 2026-05-14 | ✅ | 10 блоков (_voennaya-ipoteka-krym/01-10) по PAGE_VOENNAYA_IPOTEKA_KRYM.md |
@@ -719,7 +765,7 @@ Sitemap: https://[DOMAIN]/sitemap-index.xml
 | 19 | Финальный QA | — | ⏳ | BUILD_PHASE_3_FINAL.md |
 | 20 | Продакшн деплой | — | ⏳ | vercel --prod |
 
-**Текущий фокус:** Этап 14 завершён. Следующий ⏳-этап начинать только по явному запросу пользователя.
+**Текущий фокус:** пересборка `/voennaya-ipoteka-krasnodar/` по новому главному брифу `pages/PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md`.
 
 ---
 

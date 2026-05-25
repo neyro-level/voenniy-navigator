@@ -191,7 +191,7 @@ export default function ReviewWidget() {
           padding: 0 16px;
           background: #2563eb;
           color: #fff;
-          font-size: 13px;
+          font-size: var(--fs-body-sm);
           font-weight: 700;
           box-shadow: 0 18px 50px rgba(15, 20, 25, 0.24);
           cursor: pointer;
@@ -215,7 +215,7 @@ export default function ReviewWidget() {
           display: block;
           margin-bottom: 5px;
           color: #2563eb;
-          font-size: 11px;
+          font-size: var(--fs-caption);
           font-weight: 700;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -223,7 +223,7 @@ export default function ReviewWidget() {
 
         .vn-review-widget__title {
           margin: 0;
-          font-size: 16px;
+          font-size: var(--fs-body);
           font-weight: 650;
           line-height: 1.25;
         }
@@ -246,14 +246,14 @@ export default function ReviewWidget() {
           border-radius: 10px;
           background: rgba(37, 99, 235, 0.08);
           color: #253244;
-          font-size: 13px;
+          font-size: var(--fs-body-sm);
           line-height: 1.45;
         }
 
         .vn-review-widget__empty {
           margin: 0 0 12px;
           color: #4a5568;
-          font-size: 13px;
+          font-size: var(--fs-body-sm);
           line-height: 1.5;
         }
 
@@ -265,7 +265,7 @@ export default function ReviewWidget() {
 
         .vn-review-widget__field span {
           color: #4a5568;
-          font-size: 12px;
+          font-size: var(--fs-label);
           font-weight: 600;
         }
 
@@ -277,7 +277,7 @@ export default function ReviewWidget() {
           background: #fff;
           color: #0f1419;
           font: inherit;
-          font-size: 14px;
+          font-size: var(--fs-body-sm);
           outline: none;
         }
 
@@ -308,7 +308,7 @@ export default function ReviewWidget() {
           border: 1px solid transparent;
           border-radius: 10px;
           padding: 0 14px;
-          font-size: 13px;
+          font-size: var(--fs-body-sm);
           font-weight: 650;
           cursor: pointer;
           transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
@@ -338,7 +338,7 @@ export default function ReviewWidget() {
         .vn-review-widget__status {
           margin: 14px 0 0;
           color: #4a5568;
-          font-size: 12px;
+          font-size: var(--fs-label);
           line-height: 1.45;
         }
 
@@ -368,7 +368,7 @@ export default function ReviewWidget() {
           padding: 8px 12px;
           background: #2563eb;
           color: #fff;
-          font-size: 12px;
+          font-size: var(--fs-label);
           font-weight: 650;
           box-shadow: 0 10px 30px rgba(15, 20, 25, 0.18);
           pointer-events: none;

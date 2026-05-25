@@ -156,14 +156,14 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     gap: 3px;
   }
   .vn-footer__brand-name {
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-text-ondark);
   }
   .vn-footer__brand-owner {
-    font-size: 11px;
+    font-size: var(--fs-caption);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-text-ondark);
@@ -177,7 +177,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     color: var(--color-text-ondark);
     opacity: 0.5;
     text-decoration: none;
@@ -217,7 +217,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     gap: 0;
   }
   .vn-footer__link {
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     color: var(--color-text-ondark);
     opacity: 0.55;
     text-decoration: none;
@@ -231,14 +231,14 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     opacity: 0.85;
   }
   .vn-footer__link--muted {
-    font-size: 12px;
+    font-size: var(--fs-label);
     opacity: 0.3;
   }
   .vn-footer__link--muted:hover {
     opacity: 0.65;
   }
   .vn-footer__link-dot {
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     color: var(--color-text-ondark);
     opacity: 0.18;
     padding: 0 10px;
@@ -249,7 +249,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
   }
   .vn-footer__docs-title {
     color: var(--color-text-ondark);
-    font-size: 12px;
+    font-size: var(--fs-label);
     font-weight: 650;
     letter-spacing: 0.08em;
     line-height: 1.2;
@@ -274,7 +274,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     padding-inline: max(48px, calc((100% - 1280px) / 2 + 48px));
   }
   .vn-footer__legal-copy {
-    font-size: 11px;
+    font-size: var(--fs-caption);
     color: var(--color-text-ondark);
     opacity: 0.28;
     margin: 0;
@@ -288,7 +288,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
     border: 1px solid color-mix(in srgb, var(--color-text-ondark) 12%, transparent);
     border-radius: var(--radius-sm);
     background: color-mix(in srgb, var(--color-text-ondark) 3%, transparent);
-    font-size: 11px;
+    font-size: var(--fs-caption);
     color: var(--color-text-ondark);
     opacity: 0.46;
     text-decoration: none;
@@ -337,7 +337,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
       display: block;
       padding: 18px 24px 6px;
       color: var(--color-text-ondark);
-      font-size: 11px;
+      font-size: var(--fs-caption);
       font-weight: 650;
       letter-spacing: 0.08em;
       opacity: 0.42;
@@ -347,7 +347,7 @@ const hasMobileDock = !currentPath.includes('/contacts/');
       display: flex;
       align-items: center;
       min-height: 48px;
-      font-size: 14px;
+      font-size: var(--fs-body-sm);
       color: var(--color-text-ondark);
       opacity: 0.4;
       text-decoration: none;

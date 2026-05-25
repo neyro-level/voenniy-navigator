@@ -1,0 +1,329 @@
+---
+---
+
+<section id="section-krd-answer" class="vn-krd-answer">
+  <div class="vn-container">
+    <div class="vn-grid-12">
+      <div class="vn-krd-answer__intro">
+        <p class="vn-label-mono">Каталог с разбором</p>
+        <h2>Что входит в подборку 12 ЖК с видеоразбором</h2>
+        <p>
+          Это не общий список новостроек, а рабочий каталог: какие комплексы смотреть под вашу
+          цель, какие районы учитывать и какие квартиры внутри ЖК выбирать внимательнее.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить 12 ЖК с видеоразбором"
+          class="vn-btn-primary vn-krd-answer__cta"
+        >
+          Получить 12 ЖК с видеоразбором
+        </a>
+      </div>
+
+      <div class="vn-krd-answer__document" aria-label="Содержание подборки 12 ЖК">
+        <div class="vn-krd-answer__doc-head">
+          <span>Содержание подбора</span>
+          <strong>12 ЖК + видео / Краснодар</strong>
+        </div>
+
+        <div class="vn-krd-answer__rows">
+          <article class="vn-krd-answer__row">
+            <span class="vn-krd-answer__num">01</span>
+            <div>
+              <h3>Проверенные ЖК Краснодара</h3>
+              <p>Комплексы, которые стоит рассматривать по военной ипотеке с учетом банков, застройщика, района и срока сдачи.</p>
+            </div>
+            <span class="vn-krd-answer__badge">каталог</span>
+          </article>
+
+          <article class="vn-krd-answer__row">
+            <span class="vn-krd-answer__num">02</span>
+            <div>
+              <h3>Видеоразбор по целям</h3>
+              <p>Жизнь с семьей, аренда и инвестиции: какие ЖК подходят под разные цели покупки и почему.</p>
+            </div>
+            <span class="vn-krd-answer__badge">видео</span>
+          </article>
+
+          <article class="vn-krd-answer__row">
+            <span class="vn-krd-answer__num">03</span>
+            <div>
+              <h3>Проверка конкретных квартир</h3>
+              <p>Планировка, этаж, корпус, вид, размер кухни, коридоры и скидки: что может усилить или ослабить покупку.</p>
+            </div>
+            <span class="vn-krd-answer__badge">проверка</span>
+          </article>
+
+          <article class="vn-krd-answer__row">
+            <span class="vn-krd-answer__num">04</span>
+            <div>
+              <h3>Лучший следующий шаг</h3>
+              <p>Какие ЖК смотреть первыми, какие предложения запросить у застройщика и с чего начать оформление.</p>
+            </div>
+            <span class="vn-krd-answer__badge">маршрут</span>
+          </article>
+        </div>
+
+        <div class="vn-krd-answer__doc-foot">
+          После заявки: уточняем цель покупки, отправляем подборку и объясняем, какие варианты смотреть первыми.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krd-answer {
+    position: relative;
+    overflow: hidden;
+    padding: 112px 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-krd-answer__intro {
+    grid-column: 1 / 5;
+    align-self: start;
+  }
+
+  .vn-krd-answer__intro h2 {
+    margin: 24px 0 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  .vn-krd-answer__intro p:not(.vn-label-mono) {
+    margin: 20px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+
+  .vn-krd-answer__cta {
+    margin-top: 30px;
+    min-height: 52px;
+    padding: 14px 24px;
+  }
+
+  .vn-krd-answer__document {
+    grid-column: 6 / 13;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  }
+
+  .vn-krd-answer__doc-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-surface-low);
+  }
+
+  .vn-krd-answer__doc-head span,
+  .vn-krd-answer__doc-head strong {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .vn-krd-answer__doc-head span {
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-krd-answer__doc-head strong {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-krd-answer__rows {
+    display: grid;
+  }
+
+  .vn-krd-answer__row {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) auto;
+    gap: 22px;
+    align-items: start;
+    padding: 28px;
+    border-bottom: 1px solid var(--color-border);
+    animation: vn-krd-answer-row-in 0.58s ease both;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-krd-answer__row:nth-child(1) {
+    animation-delay: 0.06s;
+  }
+
+  .vn-krd-answer__row:nth-child(2) {
+    animation-delay: 0.14s;
+  }
+
+  .vn-krd-answer__row:nth-child(3) {
+    animation-delay: 0.22s;
+  }
+
+  .vn-krd-answer__row:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes vn-krd-answer-row-in {
+    from {
+      transform: translateY(10px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .vn-krd-answer__row:hover {
+      background: var(--color-bg-surface-low);
+      transform: translateX(4px);
+    }
+
+    .vn-krd-answer__row:hover .vn-krd-answer__num {
+      color: var(--color-accent-primary);
+    }
+
+    .vn-krd-answer__row:hover .vn-krd-answer__badge {
+      border-color: color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
+      color: var(--color-accent-cta);
+      background: var(--color-accent-cta-soft);
+    }
+  }
+
+  .vn-krd-answer__num {
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .vn-krd-answer__row h3 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .vn-krd-answer__row p {
+    max-width: 470px;
+    margin: 8px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+  }
+
+  .vn-krd-answer__badge {
+    align-self: start;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-bg-surface-low);
+    padding: 7px 10px;
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .vn-krd-answer__doc-foot {
+    padding: 22px 28px 24px;
+    background: color-mix(in srgb, var(--color-accent-primary) 5%, transparent);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krd-answer {
+      padding: 80px 0;
+    }
+
+    .vn-krd-answer__intro,
+    .vn-krd-answer__document {
+      grid-column: 1 / -1;
+    }
+
+    .vn-krd-answer__intro {
+      max-width: 620px;
+    }
+
+    .vn-krd-answer__document {
+      margin-top: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-krd-answer {
+      padding: 64px 0;
+    }
+
+    .vn-krd-answer__cta {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .vn-krd-answer__document {
+      margin-top: 32px;
+      border-radius: var(--radius-md);
+    }
+
+    .vn-krd-answer__doc-head {
+      display: grid;
+      gap: 8px;
+      padding: 20px;
+    }
+
+    .vn-krd-answer__row {
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 14px;
+      padding: 22px 20px;
+    }
+
+    .vn-krd-answer__badge {
+      display: none;
+    }
+
+    .vn-krd-answer__row h3 {
+      font-size: var(--fs-h3);
+    }
+
+    .vn-krd-answer__doc-foot {
+      padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-krd-answer__row {
+      transform: none;
+      animation: none;
+      transition: none;
+    }
+
+    .vn-krd-answer__badge {
+      transition: none;
+    }
+  }
+</style>
