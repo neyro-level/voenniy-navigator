@@ -39,8 +39,10 @@ function main() {
   const mainText = mainMatch ? mainMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
   checks.push(score('First 200 words (main + text)', 20, mainText.length >= 200));
 
-  // 2. Schema.org (15 pts) — Organization + FAQPage + WebSite
-  const hasOrg = html.includes('"@type":"Organization"') || html.includes('"@type": "Organization"');
+  // 2. Schema.org (15 pts) — Organization (or RealEstateAgent/ProfessionalService) + FAQPage + WebSite
+  const hasOrg = html.includes('"@type":"Organization"') || html.includes('"@type": "Organization"') ||
+                 html.includes('"@type":"RealEstateAgent"') || html.includes('"@type": "RealEstateAgent"') ||
+                 html.includes('"@type":"ProfessionalService"') || html.includes('"@type": "ProfessionalService"');
   const hasFAQ = html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"');
   const hasWebSite = html.includes('"@type":"WebSite"') || html.includes('"@type": "WebSite"');
   checks.push(score('Schema.org (Org + FAQ + WebSite)', 15, hasOrg && hasFAQ && hasWebSite));

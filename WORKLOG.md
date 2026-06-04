@@ -32,6 +32,18 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Deployed:** commit `9736e0e` pushed to `main`, GitHub Actions → AMS Server.
 
+### 2026-06-04
+- **GEO Optimization:** реализована Generative Engine Optimization для AI-поисковиков.
+  - Добавлен `src/pages/llms.txt.ts` — авто-генерируемый Markdown для AI-краулеров.
+  - Обновлён `public/robots.txt` — разрешены 6 AI-ботов (ChatGPT, Perplexity, Claude, GPTBot, OAI-SearchBot, Google-Extended).
+  - Расширен `src/lib/seo.ts` — `WebSite` schema + расширенная `Organization` (`logo`, `sameAs`, `founder`).
+  - Добавлен `<link rel="alternate" type="text/plain" href="/llms.txt">` в `BaseLayout.astro`.
+  - Добавлен `scripts/geo-check.mjs` — пост-билд аудит GEO (скор 90/100, порог 80).
+- **Infra:** портированы Astro Starter improvements — `utils.ts`, `validation.ts`, `OptimizedImage.astro`, `ScriptLoader.astro`, `CookieToggle.tsx`, `useEmailQueryParam.ts`, `leads.ts`, `og.ts`, расширенные constants, font fallback в BaseLayout, fallback modal в PageLayout.
+- **Build:** `pnpm build` passes with 0 errors, 0 warnings; 13 pages.
+- **Deployed:** commit `f956fc8` pushed to `main`, GitHub Actions → AMS Server.
+- **Updated:** `PASSPORT_PROJECTS.md` — добавлены секции «Инфраструктурные улучшения» и «GEO Optimization».
+
 ### 2026-06-01
 - Done: removed local AI/Astro build instruction duplicates: `ASTRO_RULES_CORE.md`, `CLAUDE.md`, `BUILD_INSTRUCTIONS.md`, `BUILD_PHASE_1_FOUNDATION.md`, `BUILD_PHASE_2_PAGES.md`, `BUILD_PHASE_3_FINAL.md`.
 - Done: updated `PASSPORT_PROJECTS.md`; Astro build methodology now points to the global Codex/AI-SYSTEM rules instead of local project files.

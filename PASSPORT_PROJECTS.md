@@ -75,7 +75,33 @@ pnpm preview
 3. не менять `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` без прямой команды;
 4. секреты не выводить в чат и не переносить в markdown.
 
-## 8. Журналирование
+## 8. Инфраструктурные улучшения (Astro Starter migration)
+
+В проект портированы улучшения из стартового шаблона АМС:
+
+- **`src/lib/utils.ts`** — вспомогательные функции (`cn`, `formatPhone`, `slugify` и др.).
+- **`src/lib/validation.ts`** — централизованная валидация форм.
+- **`src/components/OptimizedImage.astro`** — оптимизированные изображения с lazy-loading.
+- **`src/components/ScriptLoader.astro`** — динамическая подгрузка скриптов.
+- **`src/components/CookieToggle.tsx`** — переключатель cookie-настроек.
+- **`src/hooks/useEmailQueryParam.ts`** — хук для работы с email из query-параметров.
+- **`src/lib/leads.ts`** — централизованный AMS Leads API (единый для всех форм).
+- **`src/lib/og.ts`** — генерация OpenGraph meta-тегов.
+- **BaseLayout** — inline font fallback с `size-adjust` / `ascent-override` (Inter).
+- **PageLayout** — fallback-модальное окно с UTM/мета-параметрами.
+- **Constants** — расширены: `COOKIE_NAME`, `LEGAL_URLS`, `TEMPLATE_POLICY`.
+
+## 9. GEO Optimization (Generative Engine Optimization)
+
+Сайт оптимизирован для AI-поисковиков (ChatGPT, Perplexity, Claude, Gemini):
+
+- **`/llms.txt`** — авто-генерируемый Markdown-эндпоинт (`src/pages/llms.txt.ts`) со структурированным описанием сайта, услуг, FAQ, контактов и legal.
+- **`robots.txt`** — разрешены 6 AI-краулеров (`ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `GPTBot`, `OAI-SearchBot`, `Google-Extended`).
+- **Schema.org** — `WebSite` schema (`@id` + `publisher` + `alternateName`) + расширенная `Organization` (`logo`, `sameAs`, `founder`).
+- **BaseLayout** — `<link rel="alternate" type="text/plain" href="/llms.txt">` для автоматического обнаружения.
+- **`scripts/geo-check.mjs`** — пост-билд аудит, текущий скор 90/100 (порог 80).
+
+## 10. Журналирование
 
 После содержательной правки обновлять:
 
