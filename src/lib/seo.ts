@@ -14,6 +14,22 @@ export const organizationSchema = {
   sameAs: [CONTACTS.vk, CONTACTS.telegram],
 };
 
+export const webSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: `${SITE.url}/`,
+  description: SITE.tagline,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE.url}/?search={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
 export const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',

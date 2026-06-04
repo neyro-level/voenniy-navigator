@@ -28,6 +28,9 @@
 - **Verified:** `voen-navigator.ru` (production) returns 200 OK.
 - **Verified:** `pnpm dev` runs locally on `localhost:4321`.
 - Updated `WORKLOG.md` deploy target to AMS Server.
+- **Build:** `pnpm build` passes with 0 errors, 0 warnings.
+- **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
+- **Deployed:** commit `9736e0e` pushed to `main`, GitHub Actions → AMS Server.
 
 ### 2026-06-01
 - Done: removed local AI/Astro build instruction duplicates: `ASTRO_RULES_CORE.md`, `CLAUDE.md`, `BUILD_INSTRUCTIONS.md`, `BUILD_PHASE_1_FOUNDATION.md`, `BUILD_PHASE_2_PAGES.md`, `BUILD_PHASE_3_FINAL.md`.
