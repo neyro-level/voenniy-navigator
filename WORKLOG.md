@@ -1,12 +1,16 @@
 # WORKLOG - Voenniy Navigator
 
 ## Current Status
-- Project studied for continuation: Astro + Tailwind CSS v4 + TypeScript strict + React islands, Vercel deploy target.
+- Project: Astro + Tailwind CSS v4 + TypeScript strict + React islands.
+- **Deploy: GitHub → AMS Server (Timeweb Cloud, `5.42.100.161`) → `voen-navigator.ru`.**
+- Vercel project removed completely. Preview domains blocked (301 → production).
+- Local `.vercel/` folder removed.
+- Project migrated to `PASSPORT_PROJECTS.md` + `WORKLOG.md`; local `AGENTS.md` was removed.
 - Build is green as of 2026-05-22: `pnpm build` completed with 0 errors and 0 warnings.
 - Important mismatch to remember: project notes describe all major pages as complete, but several route files currently render only `01-Hero.astro` plus `pageData.ts`.
 
 ## Next Steps
-- Before editing any page, read `SITE_ARCHITECTURE.md`, `DESIGN_SYSTEM.md`, `ASTRO_RULES_CORE.md`, and the relevant `pages/PAGE_*.md`.
+- Before editing any page, read `SITE_ARCHITECTURE.md`, `DESIGN_SYSTEM.md`, the relevant `pages/PAGE_*.md`, and use the global Codex/AI-SYSTEM Astro rules as the technical source of truth.
 - For form/API work, reconcile current `src/lib/leads.ts` AMS Leads API flow with older docs that still mention `/api/contact` and Telegram-only handling.
 - For page-building work, continue component-by-component in `src/pages/_[slug]/`, keeping route files thin.
 
@@ -15,6 +19,25 @@
 - Confirm whether the next focus is unfinished funnel pages (`/video/`, `/bonus/`, `/prezentaciya/`) or completing the partially componentized SEO pages.
 
 ## Journal
+
+### 2026-06-04
+- **Infra cleanup:** Removed Vercel project `voenniy-navigator` completely (deployments deleted).
+- **Infra cleanup:** Deleted local `.vercel/` folder from repo.
+- **Infra cleanup:** Removed stale `voenniy-navigator.5.42.100.161.nip.io` nginx config from server.
+- **Infra cleanup:** Added nginx redirect block: `voenniy-navigator.preview.ams-cloud.ru` and `voenniy-navigator.preview.ams-chirkov.ru` → 301 to `https://voen-navigator.ru/`.
+- **Verified:** `voen-navigator.ru` (production) returns 200 OK.
+- **Verified:** `pnpm dev` runs locally on `localhost:4321`.
+- Updated `WORKLOG.md` deploy target to AMS Server.
+
+### 2026-06-01
+- Done: removed local AI/Astro build instruction duplicates: `ASTRO_RULES_CORE.md`, `CLAUDE.md`, `BUILD_INSTRUCTIONS.md`, `BUILD_PHASE_1_FOUNDATION.md`, `BUILD_PHASE_2_PAGES.md`, `BUILD_PHASE_3_FINAL.md`.
+- Done: updated `PASSPORT_PROJECTS.md`; Astro build methodology now points to the global Codex/AI-SYSTEM rules instead of local project files.
+
+### 2026-06-01
+- Done: created `PASSPORT_PROJECTS.md` with local project context, sources of truth, form/API caution and journaling rules.
+- Done: removed local `AGENTS.md` according to the global Codex rule that only `C:\Users\User\.codex\AGENTS.md` keeps that name.
+- Next: before the next code edit, update active references in README/docs if they still point to the old local file name.
+
 ### 2026-05-25
 - Done: started rebuild of `/voennaya-ipoteka-krasnodar/` from the new commercial brief `pages/PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md`.
 - Done: rebuilt the hero around the clean SEO H1 "Квартиры в Краснодаре по военной ипотеке" and the lead offer "подборка 12 проверенных ЖК".

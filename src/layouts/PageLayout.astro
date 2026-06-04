@@ -6,6 +6,7 @@ import Footer from '../components/layout/Footer.astro';
 import MobileBottomCTA from '../components/layout/MobileBottomCTA.astro';
 import RequestModal from '../components/ui/RequestModal';
 import CookieBanner from '../components/ui/CookieBanner';
+import '../styles/modal.css';
 
 interface Props {
   title: string;
@@ -43,14 +44,180 @@ const props = Astro.props;
 
     event.preventDefault();
 
-    window.dispatchEvent(
-      new CustomEvent('open-modal', {
-        detail: {
-          title: trigger.dataset.modalTitle,
-          subtitle: trigger.dataset.modalSubtitle,
-          source: trigger.dataset.modalSource || window.location.pathname,
-        },
-      }),
-    );
+    const detail = {
+      title: trigger.dataset.modalTitle,
+      subtitle: trigger.dataset.modalSubtitle,
+      source: trigger.dataset.modalSource || window.location.pathname,
+    };
+
+    window.__vnPendingModalOpen = detail;
+    window.dispatchEvent(new CustomEvent('open-modal', { detail }));
+
+    window.setTimeout(() => {
+      if (document.querySelector('.vn-modal__overlay')) return;
+      openFallbackModal(detail);
+    }, 180);
   });
+
+  function openFallbackModal(detail: { title?: string; subtitle?: string; source?: string }) {
+    const overlay = document.createElement('div');
+    overlay.className = 'vn-modal__overlay';
+    overlay.setAttribute('role', 'presentation');
+    overlay.tabIndex = -1;
+
+    const panel = document.createElement('div');
+    panel.className = 'vn-modal__panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-labelledby', 'vn-modal-title');
+    panel.setAttribute('aria-describedby', 'vn-modal-subtitle');
+
+    panel.innerHTML = `
+      <button class="vn-modal__close" type="button" aria-label="Закрыть форму">×</button>
+      <div class="vn-modal__header">
+        <div class="vn-modal__header-copy">
+          <p class="vn-modal__eyebrow">Заявка</p>
+          <h2 class="vn-modal__title" id="vn-modal-title"></h2>
+          <p class="vn-modal__subtitle" id="vn-modal-subtitle"></p>
+        </div>
+      </div>
+      <form class="vn-modal__form" novalidate>
+        <div class="vn-modal__field">
+          <label class="vn-modal__label" for="fallback-request-name">Имя</label>
+          <input class="vn-modal__input" id="fallback-request-name" name="name" autocomplete="name" required placeholder="Как к вам обращаться">
+        </div>
+        <div class="vn-modal__field">
+          <label class="vn-modal__label" for="fallback-request-phone">Телефон</label>
+          <input class="vn-modal__input" id="fallback-request-phone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="+7 (999) 999-99-99">
+        </div>
+        <fieldset class="vn-modal__method">
+          <legend class="vn-modal__label">Куда удобнее ответить</legend>
+          <div class="vn-modal__method-grid">
+            <label class="vn-modal__method-option"><input class="vn-modal__method-input" type="radio" name="method" value="call" required><span class="vn-modal__method-label">Звонок</span></label>
+            <label class="vn-modal__method-option"><input class="vn-modal__method-input" type="radio" name="method" value="telegram" required><span class="vn-modal__method-label">Telegram</span></label>
+            <label class="vn-modal__method-option"><input class="vn-modal__method-input" type="radio" name="method" value="max" required><span class="vn-modal__method-label">Max</span></label>
+          </div>
+        </fieldset>
+        <label class="vn-modal__consent">
+          <input class="vn-modal__checkbox" type="checkbox" name="consent" required>
+          <span>Принимаю <a href="/soglasie/" target="_blank" rel="noreferrer">согласие на обработку персональных данных</a> и <a href="/politika/" target="_blank" rel="noreferrer">политику конфиденциальности</a></span>
+        </label>
+        <p class="vn-modal__submit-error" role="alert" hidden></p>
+        <button class="vn-btn-primary vn-modal__submit" type="submit">Отправить заявку</button>
+        <p class="vn-modal__submit-note">Без спама. Только чтобы связаться по вашей задаче.</p>
+      </form>
+    `;
+
+    const titleEl = panel.querySelector('#vn-modal-title');
+    const subtitleEl = panel.querySelector('#vn-modal-subtitle');
+
+    if (titleEl) titleEl.textContent = detail.title || 'Получить консультацию';
+    if (subtitleEl) subtitleEl.textContent =
+      detail.subtitle ||
+      'Оставьте контакты. Специалист уточнит задачу и подскажет следующий шаг.';
+
+    const close = () => {
+      document.body.style.overflow = '';
+      overlay.remove();
+    };
+
+    overlay.addEventListener('mousedown', (event) => {
+      if (event.target === overlay) close();
+    });
+    panel.querySelector('.vn-modal__close')?.addEventListener('click', close);
+    document.addEventListener('keydown', function onEscape(event) {
+      if (event.key !== 'Escape') return;
+      document.removeEventListener('keydown', onEscape);
+      close();
+    });
+
+    panel.querySelector('form')?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const error = form.querySelector('.vn-modal__submit-error');
+      const submit = form.querySelector('.vn-modal__submit');
+      const data = new FormData(form);
+      const method = String(data.get('method') || '');
+
+      if (!form.reportValidity()) return;
+      if (submit instanceof HTMLButtonElement) {
+        submit.disabled = true;
+        submit.textContent = 'Отправляем';
+      }
+      if (error instanceof HTMLElement) {
+        error.hidden = true;
+        error.textContent = '';
+      }
+
+      try {
+        const leadsApiUrl = import.meta.env.PUBLIC_LEADS_API_URL;
+        const projectId = import.meta.env.PUBLIC_PROJECT_ID;
+        const siteKey = import.meta.env.PUBLIC_LEADS_SITE_KEY;
+
+        if (!leadsApiUrl || !projectId || !siteKey) {
+          throw new Error('Отправка заявок пока не настроена.');
+        }
+
+        const response = await fetch(leadsApiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-AMS-Site-Key': siteKey,
+          },
+          body: JSON.stringify({
+            project: projectId,
+            form: 'contact_modal',
+            name: String(data.get('name') || '').trim(),
+            phone: String(data.get('phone') || '').trim(),
+            email: '',
+            message: '',
+            contact: String(data.get('phone') || '').trim(),
+            method,
+            source: detail.source || window.location.pathname,
+            utm: getUtmPayload(),
+            meta: {
+              page_title: document.title,
+              referrer: document.referrer,
+              user_agent: navigator.userAgent,
+              contact_method: method,
+            },
+            timestamp: Date.now() - 4000,
+            openedAt: Date.now() - 4000,
+            honeypot: '',
+          }),
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok) throw new Error(result?.error || 'Не удалось отправить заявку.');
+        window.location.href = `/thanks/?method=${method || 'call'}`;
+      } catch (err) {
+        if (error instanceof HTMLElement) {
+          error.hidden = false;
+          error.textContent = err instanceof Error ? err.message : 'Не удалось отправить заявку.';
+        }
+        if (submit instanceof HTMLButtonElement) {
+          submit.disabled = false;
+          submit.textContent = 'Отправить заявку';
+        }
+      }
+    });
+
+    overlay.append(panel);
+    document.body.append(overlay);
+    document.body.style.overflow = 'hidden';
+    panel.querySelector('input')?.focus();
+  }
+
+  function getUtmPayload() {
+    const params = new URLSearchParams(window.location.search);
+
+    return {
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_content: params.get('utm_content') || '',
+      utm_term: params.get('utm_term') || '',
+    };
+  }
 </script>

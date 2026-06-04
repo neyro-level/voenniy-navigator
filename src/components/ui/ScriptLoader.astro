@@ -1,0 +1,43 @@
+---
+/**
+ * ScriptLoader — load external scripts with strategy and cookie-consent gating.
+ */
+interface Props {
+  id: string;
+  src: string;
+  strategy?: 'afterInteractive' | 'lazyOnload';
+  consentCategory?: 'analytics' | 'marketing' | 'functional';
+}
+
+const { id, src, strategy = 'afterInteractive', consentCategory = 'functional' } = Astro.props;
+---
+
+<script is:inline
+  define:vars={{ id, src, strategy, consentCategory }}
+  data-script-id={id}
+  data-script-src={src}
+  data-script-strategy={strategy}
+  data-script-consent={consentCategory}
+>
+  (function () {
+    const consent = localStorage.getItem('vn_cookie_consent');
+    const accepted = consent === 'accepted';
+    const category = document.currentScript?.dataset.scriptConsent;
+
+    // Analytics and marketing require explicit consent
+    if ((category === 'analytics' || category === 'marketing') && !accepted) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+
+    if (strategy === 'lazyOnload') {
+      script.defer = true;
+      window.addEventListener('load', () => document.head.appendChild(script));
+    } else {
+      document.head.appendChild(script);
+    }
+  })();
+</script>

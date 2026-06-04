@@ -115,6 +115,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
 }
 
 /* ─── Typography utilities ─── */
@@ -172,6 +174,46 @@ body {
 .vn-type-caption {
   font-size: var(--fs-caption);
   line-height: var(--lh-ui);
+}
+
+.vn-type-long {
+  font-size: var(--fs-body);
+  line-height: var(--lh-long);
+}
+
+.vn-type-button {
+  font-size: var(--fs-button);
+  line-height: var(--lh-ui);
+  font-weight: 500;
+}
+
+.vn-type-stat {
+  font-size: var(--fs-stat);
+  line-height: var(--lh-heading);
+  font-weight: 600;
+}
+
+.vn-type-card-title {
+  font-size: var(--fs-card-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+}
+
+.vn-type-body-sm {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+}
+
+.vn-type-ui {
+  font-size: var(--fs-ui);
+  line-height: var(--lh-ui);
+  font-weight: 500;
+}
+
+.vn-img-fallback {
+  background-color: var(--color-bg-secondary);
+  min-height: 200px;
+  object-fit: contain;
 }
 
 /* ─── Custom scrollbar ─── */

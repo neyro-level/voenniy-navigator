@@ -40,6 +40,20 @@ export const LEGAL = {
   year:     new Date().getFullYear(),
 };
 
+export const COOKIE_NAME = 'vn_cookie_consent';
+
+export const LEGAL_URLS = {
+  privacy:   '/politika/',
+  cookies:   '/cookies/',
+  agreement: '/soglasie/',
+};
+
+export const TEMPLATE_POLICY = {
+  allowEmailInHeader: false,
+  allowPhoneInHeader: false,
+  lockMobileBottomLabels: true,
+};
+
 export const ROUTE_PATH = [
   { step: '01', label: 'Цель',      href: '/voennaya-ipoteka-krasnodar/' },
   { step: '02', label: 'Объект',    href: '/voennaya-ipoteka-krasnodar/' },

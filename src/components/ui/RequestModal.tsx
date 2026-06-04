@@ -32,6 +32,7 @@ type FormErrors = {
 declare global {
   interface Window {
     ym?: (...args: unknown[]) => void;
+    __vnPendingModalOpen?: OpenModalDetail;
   }
 }
 
@@ -80,6 +81,18 @@ function formatPhone(value: string) {
   if (part4) result += `-${part4}`;
 
   return result;
+}
+
+function getUtmPayload() {
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_content: params.get('utm_content') || '',
+    utm_term: params.get('utm_term') || '',
+  };
 }
 
 function validateForm(name: string, phone: string, method: ContactMethod | '', consent: boolean) {
@@ -174,6 +187,11 @@ export default function RequestModal({
 
     window.addEventListener('open-modal', openModal);
 
+    if (window.__vnPendingModalOpen) {
+      window.dispatchEvent(new CustomEvent('open-modal', { detail: window.__vnPendingModalOpen }));
+      window.__vnPendingModalOpen = undefined;
+    }
+
     return () => {
       window.removeEventListener('open-modal', openModal);
     };
@@ -265,6 +283,7 @@ export default function RequestModal({
         source: modalSource,
         honeypot,
         openedAt,
+        utm: getUtmPayload(),
       });
 
       setSubmitState('success');

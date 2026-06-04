@@ -19,6 +19,11 @@ export const TECHNICAL_ROUTES = {
     href: '/thanks/',
     component: 'ThanksPage.astro',
   },
+  notFound: {
+    label: 'Страница 404',
+    href: '/404/',
+    component: 'NotFoundPage.astro',
+  },
 } as const;
 
 export const FOOTER_LEGAL_LINKS = [
@@ -32,5 +37,5 @@ export const TECHNICAL_PAGE_FILES = [
   'src/pages/politika.astro',
   'src/pages/cookies.astro',
   'src/pages/thanks.astro',
+  'src/pages/404.astro',
 ] as const;
-

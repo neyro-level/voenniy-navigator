@@ -2,7 +2,8 @@
 
 Персональный сайт эксперта по военной ипотеке в Краснодаре.
 
-**Стек:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands + Vercel
+**Стек:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands  
+**Деплой:** AMS Server (Timeweb) → `voen-navigator.ru`
 
 ---
 

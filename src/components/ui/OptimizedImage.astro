@@ -1,0 +1,54 @@
+---
+/**
+ * OptimizedImage — unified image wrapper.
+ * Uses Astro <Image> for local assets, fallback <img> for external URLs.
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+} = Astro.props;
+
+const isExternal = src.startsWith('http://') || src.startsWith('https://');
+---
+
+{isExternal ? (
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+    onerror="this.style.display='none'"
+  />
+) : (
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+  />
+)}
