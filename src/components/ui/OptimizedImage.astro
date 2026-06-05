@@ -2,6 +2,8 @@
 /**
  * OptimizedImage — unified image wrapper.
  * Uses Astro <Image> for local assets, fallback <img> for external URLs.
+ * Supports LQIP (Low Quality Image Placeholder) blur background,
+ * responsive srcset widths, and automatic WebP conversion.
  */
 import { Image } from 'astro:assets';
 
@@ -13,6 +15,9 @@ interface Props {
   class?: string;
   loading?: 'eager' | 'lazy';
   fetchpriority?: 'high' | 'low' | 'auto';
+  placeholder?: string; // base64 blur or tiny image URL
+  widths?: number[];
+  sizes?: string;
 }
 
 const {
@@ -23,9 +28,21 @@ const {
   class: className = '',
   loading = 'lazy',
   fetchpriority = 'auto',
+  placeholder,
+  widths = [640, 750, 828, 1080, 1200, 1920],
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px',
 } = Astro.props;
 
 const isExternal = src.startsWith('http://') || src.startsWith('https://');
+
+// LQIP style: if placeholder provided, set as background-image with blur
+const lqipStyle = placeholder
+  ? `background-image:url(${placeholder});background-size:cover;background-position:center;filter:blur(12px);transition:filter 0.3s ease;`
+  : '';
+
+const onloadHandler = placeholder
+  ? `this.style.removeProperty('background-image');this.style.removeProperty('background-size');this.style.removeProperty('background-position');this.style.removeProperty('filter');this.style.removeProperty('transition');`
+  : undefined;
 ---
 
 {isExternal ? (
@@ -38,6 +55,8 @@ const isExternal = src.startsWith('http://') || src.startsWith('https://');
     loading={loading}
     fetchpriority={fetchpriority}
     decoding="async"
+    style={lqipStyle || undefined}
+    onload={onloadHandler}
     onerror="this.style.display='none'"
   />
 ) : (
@@ -50,5 +69,9 @@ const isExternal = src.startsWith('http://') || src.startsWith('https://');
     loading={loading}
     fetchpriority={fetchpriority}
     decoding="async"
+    widths={widths}
+    sizes={sizes}
+    style={lqipStyle || undefined}
+    onload={onloadHandler}
   />
 )}

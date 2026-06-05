@@ -7,7 +7,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 ---
 
 <!-- ══════════════════════════════════════════════
-     БЛОК 11 — FAQ (Air, details/summary, SEO-ready)
+     БЛОК 11 — FAQ (Air, details/summary, Schema.org FAQPage)
 ════════════════════════════════════════════════ -->
 <section id="section-faq" class="vn-home-faq" aria-labelledby="vn-home-faq-title">
   <div class="vn-container">
@@ -32,13 +32,24 @@ const { items } = Astro.props as { items: FAQItem[] };
         </a>
       </div>
 
-      <!-- ── Right: editorial accordion ── -->
-      <div class="vn-home-faq__right" style="grid-column: 5 / 13">
+      <!-- ── Right: editorial accordion with Schema.org FAQPage microdata ── -->
+      <div
+        class="vn-home-faq__right"
+        style="grid-column: 5 / 13"
+        itemscope
+        itemtype="https://schema.org/FAQPage"
+      >
         {items.map((item, i) => (
-          <details class="vn-home-faq__item" open={i === 0}>
+          <details
+            class="vn-home-faq__item"
+            open={i === 0}
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
             <summary class="vn-home-faq__question">
               <span class="vn-home-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <span class="vn-home-faq__question-text">{item.q}</span>
+              <span class="vn-home-faq__question-text" itemprop="name">{item.q}</span>
               <svg
                 class="vn-home-faq__icon"
                 width="16"
@@ -55,8 +66,8 @@ const { items } = Astro.props as { items: FAQItem[] };
               </svg>
             </summary>
             <div class="vn-home-faq__answer-wrap">
-              <div class="vn-home-faq__answer-inner">
-                <p class="vn-home-faq__answer-text">{item.a}</p>
+              <div class="vn-home-faq__answer-inner" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p class="vn-home-faq__answer-text" itemprop="text">{item.a}</p>
               </div>
             </div>
           </details>
@@ -188,7 +199,7 @@ const { items } = Astro.props as { items: FAQItem[] };
 .vn-home-faq__answer-wrap {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
+  transition: grid-template-rows 0.4s cubic-bezier(0.17, 0.84, 0.44, 1);
 }
 
 .vn-home-faq__item[open]:not(.is-closing) .vn-home-faq__answer-wrap {
@@ -255,28 +266,58 @@ const { items } = Astro.props as { items: FAQItem[] };
 
 <script>
   (function () {
-    const items = document.querySelectorAll('.vn-home-faq__item');
+    const container = document.querySelector('.vn-home-faq__right');
+    if (!container) return;
+
+    const items = container.querySelectorAll<HTMLDetailsElement>('.vn-home-faq__item');
+    const DURATION = 400;
 
     items.forEach((details) => {
-      const summary = details.querySelector('.vn-home-faq__question');
-      if (!summary) return;
+      const summary = details.querySelector<HTMLElement>('.vn-home-faq__question');
+      const content = details.querySelector<HTMLElement>('.vn-home-faq__answer-wrap');
+      if (!summary || !content) return;
 
       summary.addEventListener('click', (e) => {
-        // Prevent native toggle so we can animate closing
         e.preventDefault();
-
         const isOpen = details.hasAttribute('open');
 
+        // Close siblings (accordion behavior)
+        items.forEach((sibling) => {
+          if (sibling !== details && sibling.hasAttribute('open')) {
+            const siblingContent = sibling.querySelector<HTMLElement>('.vn-home-faq__answer-wrap');
+            if (siblingContent) {
+              sibling.classList.add('is-closing');
+              siblingContent.style.gridTemplateRows = '0fr';
+              window.setTimeout(() => {
+                sibling.removeAttribute('open');
+                sibling.classList.remove('is-closing');
+                siblingContent.style.gridTemplateRows = '';
+              }, DURATION);
+            }
+          }
+        });
+
         if (isOpen) {
-          // Animate close: force grid to 0fr, wait, then remove open
+          // Animate close
           details.classList.add('is-closing');
-          setTimeout(() => {
+          content.style.gridTemplateRows = '0fr';
+          window.setTimeout(() => {
             details.removeAttribute('open');
             details.classList.remove('is-closing');
-          }, 350);
+            content.style.gridTemplateRows = '';
+          }, DURATION);
         } else {
-          // Open: browser adds [open], CSS transitions grid to 1fr
+          // Animate open
           details.setAttribute('open', '');
+          // Force reflow
+          content.getBoundingClientRect();
+          content.style.gridTemplateRows = '1fr';
+          // Clean up inline style after transition
+          window.setTimeout(() => {
+            if (details.hasAttribute('open') && !details.classList.contains('is-closing')) {
+              content.style.gridTemplateRows = '';
+            }
+          }, DURATION);
         }
       });
     });

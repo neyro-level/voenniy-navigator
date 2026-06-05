@@ -35,15 +35,15 @@ import { CONTACTS } from '../../lib/constants';
           без лишнего хаоса.
         </p>
 
-        <!-- Stats -->
+        <!-- Stats with CountUp animation -->
         <div class="vn-home-trust__stats">
           <div class="vn-home-trust__stat">
-            <span class="vn-home-trust__stat-num">65</span>
+            <span class="vn-home-trust__stat-num" data-count-up data-count-value="65">0</span>
             <span class="vn-home-trust__stat-label">сделок по военной ипотеке</span>
           </div>
           <div class="vn-home-trust__stat-divider" aria-hidden="true"></div>
           <div class="vn-home-trust__stat">
-            <span class="vn-home-trust__stat-num">180</span>
+            <span class="vn-home-trust__stat-num" data-count-up data-count-value="180">0</span>
             <span class="vn-home-trust__stat-label">проведённых сделок с недвижимостью</span>
           </div>
           <div class="vn-home-trust__stat-divider" aria-hidden="true"></div>
@@ -263,3 +263,44 @@ import { CONTACTS } from '../../lib/constants';
   .vn-home-trust__stat-divider { display: none; }
 }
 </style>
+
+<script is:inline>
+  (function () {
+    const easeOutCubic = (x) => 1 - Math.pow(1 - x, 3);
+
+    function animateValue(element, target, duration) {
+      const startTimestamp = performance.now();
+      const formatNumber = (num) => num.toString();
+
+      const step = (timestamp) => {
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentValue = Math.floor(easedProgress * target);
+        element.textContent = formatNumber(currentValue);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          element.textContent = formatNumber(target);
+        }
+      };
+
+      requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) {
+          const targetValue = parseInt(target.getAttribute('data-count-value') || '0', 10);
+          if (!isNaN(targetValue) && targetValue > 0) {
+            animateValue(target, targetValue, 2000);
+          }
+          observer.unobserve(target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count-up]').forEach((el) => {
+      observer.observe(el);
+    });
+  })();
+</script>

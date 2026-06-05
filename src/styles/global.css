@@ -119,6 +119,24 @@ body {
   line-height: var(--lh-body);
 }
 
+/* ─── Focus-visible pattern (WCAG 2.0) ─── */
+/* Show focus ring only on keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-accent-cta);
+  outline-offset: 3px;
+}
+
+/* Remove default focus ring for mouse/touch users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure interactive elements have minimum 44px touch target */
+button, a, [role="button"], summary {
+  min-height: 44px;
+  min-width: 44px;
+}
+
 /* ─── Typography utilities ─── */
 .vn-type-display {
   font-size: var(--fs-display);
