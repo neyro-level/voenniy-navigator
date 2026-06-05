@@ -1,0 +1,23 @@
+---
+import FinalCTA from "../../components/sections/FinalCTA.astro";
+
+const usefulLinks = [
+  {
+    label: "Условия военной ипотеки в 2026 году",
+    href: "/usloviya-voennoy-ipoteki/",
+  },
+  { label: "Семейная военная ипотека", href: "/semeynaya-voennaya-ipoteka/" },
+];
+---
+
+<FinalCTA
+  eyebrow="ТОЧНЫЙ РАСЧЁТ"
+  title="Получите точный расчёт под"
+  accentText="вашу ситуацию"
+  subtitle="Оставьте контакты. Мы разберём ваши вводные, проверим подходящий сценарий покупки, пересчитаем всё вручную и подскажем, какой объект реально доступен и что делать дальше."
+  ctaText="Отправить на разбор"
+  ctaModalTitle="Получить точный расчёт под вашу ситуацию"
+  showStats={true}
+  showUsefulLinks={true}
+  usefulLinks={usefulLinks}
+/>

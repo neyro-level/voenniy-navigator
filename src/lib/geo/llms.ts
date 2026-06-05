@@ -83,8 +83,9 @@ export function generateLlmsTxt(): string {
   lines.push('');
   lines.push(`- Главная: ${GEO_SITE.url}${GEO_LINKS.home}`);
   lines.push(`- Военная ипотека в Краснодаре: ${GEO_SITE.url}${GEO_LINKS.krasnodar}`);
-  lines.push(`- Этапы покупки: ${GEO_SITE.url}${GEO_LINKS.etapy}`);
-  lines.push(`- Дистанционная покупка: ${GEO_SITE.url}${GEO_LINKS.distancionnaya}`);
+  lines.push(`- Военная ипотека в Крыму: ${GEO_SITE.url}${GEO_LINKS.krym}`);
+  lines.push(`- Условия военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.usloviya}`);
+  lines.push(`- Семейная военная ипотека: ${GEO_SITE.url}${GEO_LINKS.semeynaya}`);
   lines.push(`- Контакты: ${GEO_SITE.url}${GEO_LINKS.contacts}`);
   lines.push(`- Политика конфиденциальности: ${GEO_SITE.url}${GEO_LINKS.privacy}`);
   lines.push(`- Согласие на обработку данных: ${GEO_SITE.url}${GEO_LINKS.agreement}`);

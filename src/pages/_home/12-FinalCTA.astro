@@ -1,17 +1,23 @@
 ---
-import FinalCTA from '../../components/sections/FinalCTA.astro';
+import FinalCTA from "../../components/sections/FinalCTA.astro";
 
 const usefulLinks = [
-  { label: 'Новостройки Краснодара по военной ипотеке', href: '/voennaya-ipoteka-krasnodar/' },
-  { label: 'Дистанционная покупка новостройки', href: '/distancionnaya-pokupka/' },
-  { label: 'Этапы покупки по военной ипотеке', href: '/etapy-pokupki/' },
+  {
+    label: "Условия военной ипотеки в 2026 году",
+    href: "/usloviya-voennoy-ipoteki/",
+  },
+  {
+    label: "Калькулятор военной ипотеки",
+    href: "/kalkulyator-voennoy-ipoteki/",
+  },
 ];
 ---
 
 <FinalCTA
-  title="Начнём с разбора"
-  accentText="вашей ситуации"
-  subtitle="Сначала уточним, зачем вы покупаете квартиру, какие ограничения уже есть и какой следующий шаг будет самым разумным."
+  eyebrow="ПЕРВИЧНЫЙ РАЗБОР"
+  title="Начните с разбора задачи,"
+  accentText="а не с каталога квартир"
+  subtitle="Я уточню, для чего вы покупаете квартиру, какие есть ограничения по бюджету или срокам, и подскажу самый разумный следующий шаг. Это ни к чему вас не обязывает."
   ctaText="Получить первичный разбор"
   ctaModalTitle="Получить первичный разбор"
   showStats={true}

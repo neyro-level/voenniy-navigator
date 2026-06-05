@@ -1,0 +1,140 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Военный навигатор — на главную" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - generic [ref=e12]
+      - navigation "Основная навигация" [ref=e151]:
+        - link "Краснодар" [ref=e152] [cursor=pointer]:
+          - /url: /voennaya-ipoteka-krasnodar/
+        - link "Крым new" [ref=e153] [cursor=pointer]:
+          - /url: /voennaya-ipoteka-krym/
+        - link "Удалённая покупка" [ref=e155] [cursor=pointer]:
+          - /url: /distancionnaya-pokupka/
+        - link "Этапы" [ref=e156] [cursor=pointer]:
+          - /url: /etapy-pokupki/
+        - link "Контакты" [ref=e157] [cursor=pointer]:
+          - /url: /contacts/
+      - generic [ref=e14]:
+        - link "Получить первичный разбор" [ref=e158] [cursor=pointer]:
+          - /url: /contacts/#request
+        - button "Открыть карту сайта" [ref=e15] [cursor=pointer]
+  - dialog "Карта сайта — навигация":
+    - img
+    - img
+    - img
+    - img
+    - generic: МАРШРУТ
+    - generic:
+      - link "На главную":
+        - /url: /
+        - img
+        - generic: МИХАИЛ ХРЯПИН
+      - generic: КАРТА МАРШРУТОВ
+      - button "Закрыть карту сайта":
+        - img
+        - generic: Закрыть
+    - generic:
+      - complementary:
+        - generic
+        - paragraph: Помогает военнослужащим и их семьям выбрать квартиру под задачу и пройти маршрут покупки без хаоса.
+        - link "Получить первичный разбор →":
+          - /url: /contacts/#request
+        - paragraph: Сначала задача, потом подходящие варианты.
+      - region "Разделы сайта":
+        - generic
+        - generic
+        - generic
+      - complementary:
+        - paragraph: СВЯЗАТЬСЯ
+        - generic
+        - separator
+        - paragraph: ОФИСЫ
+        - generic
+        - generic
+        - paragraph: Встречи по предварительной записи
+    - generic:
+      - link "Вернуться на главную":
+        - /url: /
+        - img
+        - text: Вернуться на главную
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic: "01"
+      - generic [ref=e20]:
+        - generic [ref=e21]
+        - generic [ref=e39]
+  - contentinfo [ref=e89]:
+    - generic [ref=e90]:
+      - link "Военный навигатор — на главную" [ref=e91] [cursor=pointer]:
+        - /url: /
+        - img [ref=e92]
+        - generic [ref=e99]
+      - generic [ref=e102]:
+        - link "+7 (938) 407 44 57" [ref=e103] [cursor=pointer]:
+          - /url: tel:+7 (938) 407 44 57
+        - link "Telegram" [ref=e107] [cursor=pointer]:
+          - /url: https://t.me/Mikhail_khryapin?text=Михаил%2C%20здравствуйте%2C%20я%20с%20вашего%20сайта.%20Нужно%20обсудить%20мою%20ситуацию
+        - link "VK" [ref=e112] [cursor=pointer]:
+          - /url: "[VK_GROUP]"
+    - generic [ref=e119]:
+      - navigation "Разделы сайта" [ref=e120]:
+        - link "Главная" [ref=e121] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e122]: ·
+        - link "Краснодар" [ref=e123] [cursor=pointer]:
+          - /url: /voennaya-ipoteka-krasnodar/
+        - generic [ref=e124]: ·
+        - link "Крым" [ref=e125] [cursor=pointer]:
+          - /url: /voennaya-ipoteka-krym/
+        - generic [ref=e126]: ·
+        - link "Удалённая покупка" [ref=e127] [cursor=pointer]:
+          - /url: /distancionnaya-pokupka/
+        - generic [ref=e128]: ·
+        - link "Этапы покупки" [ref=e129] [cursor=pointer]:
+          - /url: /etapy-pokupki/
+        - generic [ref=e130]: ·
+        - link "Калькулятор" [ref=e131] [cursor=pointer]:
+          - /url: /kalkulyator-voennoy-ipoteki/
+        - generic [ref=e132]: ·
+        - link "Контакты" [ref=e133] [cursor=pointer]:
+          - /url: /contacts/
+      - generic "Правовой раздел" [ref=e134]:
+        - generic [ref=e135]: Правовой раздел
+        - generic [ref=e136]: ·
+        - link "Согласие на обработку" [ref=e137] [cursor=pointer]:
+          - /url: /soglasie/
+        - generic [ref=e138]: ·
+        - link "Политика обработки данных" [ref=e139] [cursor=pointer]:
+          - /url: /politika/
+        - generic [ref=e140]: ·
+        - link "Использование Cookie" [ref=e141] [cursor=pointer]:
+          - /url: /cookies/
+    - generic [ref=e142]:
+      - paragraph [ref=e143]: © 2026 ИП Мазур Алёна Викторовна · ИНН 910406895307
+      - link "Сайт разработан в АМС-Маркетинг" [ref=e144] [cursor=pointer]:
+        - /url: https://ams24.ru
+        - generic [ref=e146]: Сайт разработан в АМС-Маркетинг
+        - img [ref=e147]
+  - dialog "Использование файлов cookie" [ref=e168]:
+    - generic [ref=e169]:
+      - generic [ref=e174]:
+        - paragraph [ref=e175]: Cookie
+        - paragraph [ref=e176]
+      - generic [ref=e178]:
+        - button "Принять" [ref=e179] [cursor=pointer]
+        - button "Только необходимые" [ref=e180] [cursor=pointer]
+  - generic [ref=e183]:
+    - button "Menu" [ref=e184]:
+      - img [ref=e186]
+      - generic: Menu
+    - button "Inspect" [ref=e190]:
+      - img [ref=e192]
+      - generic: Inspect
+    - button "Audit" [ref=e194]:
+      - img [ref=e196]
+      - generic: Audit
+    - button "Settings" [ref=e199]:
+      - img [ref=e201]
+      - generic: Settings

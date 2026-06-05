@@ -57,7 +57,7 @@ export const TEMPLATE_POLICY = {
 export const ROUTE_PATH = [
   { step: '01', label: 'Цель',      href: '/voennaya-ipoteka-krasnodar/' },
   { step: '02', label: 'Объект',    href: '/voennaya-ipoteka-krasnodar/' },
-  { step: '03', label: 'Маршрут',   href: '/etapy-pokupki/' },
-  { step: '04', label: 'Сделка',    href: '/etapy-pokupki/' },
+  { step: '03', label: 'Условия',   href: '/usloviya-voennoy-ipoteki/' },
+  { step: '04', label: 'Сделка',    href: '/voennaya-ipoteka-krasnodar/' },
   { step: '05', label: 'Результат', href: '/contacts/' },
 ];

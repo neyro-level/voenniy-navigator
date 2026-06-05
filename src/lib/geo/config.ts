@@ -116,8 +116,9 @@ export const GEO_FAQ = [
 export const GEO_LINKS = {
   home: '/',
   krasnodar: '/voennaya-ipoteka-krasnodar/',
-  etapy: '/etapy-pokupki/',
-  distancionnaya: '/distancionnaya-pokupka/',
+  krym: '/voennaya-ipoteka-krym/',
+  usloviya: '/usloviya-voennoy-ipoteki/',
+  semeynaya: '/semeynaya-voennaya-ipoteka/',
   contacts: '/contacts/',
   privacy: '/politika/',
   agreement: '/soglasie/',

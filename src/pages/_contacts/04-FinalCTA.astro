@@ -1,15 +1,18 @@
 ---
-import { CONTACTS } from '../../lib/constants';
+import { CONTACTS } from "../../lib/constants";
 ---
 
 <section id="section-contacts-video" class="vn-contacts-video">
   <div class="vn-container">
     <div class="vn-grid-12 vn-contacts-video__grid">
       <div class="vn-contacts-video__content" style="grid-column: 1 / 6">
-        <span class="vn-label-mono vn-contacts-video__label">Онлайн-встреча</span>
+        <span class="vn-label-mono vn-contacts-video__label"
+          >Онлайн-встреча</span
+        >
         <h2>Можно провести встречу онлайн</h2>
         <p>
-          За 40 минут разберём задачу, ограничения по военной ипотеке и следующий шаг без поездки в офис.
+          За 40 минут разберём задачу, ограничения по военной ипотеке и
+          следующий шаг без поездки в офис.
         </p>
 
         <div class="vn-contacts-video__benefits">
@@ -36,27 +39,47 @@ import { CONTACTS } from '../../lib/constants';
           >
             Записаться на видеовстречу
           </a>
-          <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-contacts-video__link">Telegram</a>
           <a
-            href={CONTACTS.max.startsWith('[') ? '#' : CONTACTS.max}
-            target={CONTACTS.max.startsWith('[') ? undefined : '_blank'}
-            rel={CONTACTS.max.startsWith('[') ? undefined : 'noopener noreferrer'}
-            aria-disabled={CONTACTS.max.startsWith('[') ? 'true' : undefined}
-            class:list={['vn-contacts-video__link', { 'vn-contacts-video__link--disabled': CONTACTS.max.startsWith('[') }]}
+            href={CONTACTS.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-contacts-video__link">Telegram</a
+          >
+          <a
+            href={CONTACTS.max.startsWith("[") ? "#" : CONTACTS.max}
+            target={CONTACTS.max.startsWith("[") ? undefined : "_blank"}
+            rel={CONTACTS.max.startsWith("[")
+              ? undefined
+              : "noopener noreferrer"}
+            aria-disabled={CONTACTS.max.startsWith("[") ? "true" : undefined}
+            class:list={[
+              "vn-contacts-video__link",
+              {
+                "vn-contacts-video__link--disabled":
+                  CONTACTS.max.startsWith("["),
+              },
+            ]}
           >
             Max
           </a>
         </div>
       </div>
 
-      <div class="vn-contacts-video__visual" style="grid-column: 7 / 13" aria-label="Визуализация видеовстречи" role="img">
+      <div
+        class="vn-contacts-video__visual"
+        style="grid-column: 7 / 13"
+        aria-label="Визуализация видеовстречи"
+        role="img"
+      >
         <div class="vn-contacts-video__window">
           <div class="vn-contacts-video__bar">
             <span></span><span></span><span></span>
             <strong>video-meeting</strong>
           </div>
           <div class="vn-contacts-video__call">
-            <div class="vn-contacts-video__participant vn-contacts-video__participant--main">
+            <div
+              class="vn-contacts-video__participant vn-contacts-video__participant--main"
+            >
               <span></span>
               <p>Разбор задачи</p>
             </div>
@@ -90,18 +113,30 @@ import { CONTACTS } from '../../lib/constants';
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(circle at 22% 12%, color-mix(in srgb, var(--color-accent-cta) 14%, transparent) 0%, transparent 34%),
+      radial-gradient(
+        circle at 22% 12%,
+        color-mix(in srgb, var(--color-accent-cta) 14%, transparent) 0%,
+        transparent 34%
+      ),
       var(--color-bg-dark);
     padding: 104px 0;
   }
 
   .vn-contacts-video::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(to right, var(--color-deco-grid-dark) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-deco-grid-dark) 1px, transparent 1px);
+      linear-gradient(
+        to right,
+        var(--color-deco-grid-dark) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        var(--color-deco-grid-dark) 1px,
+        transparent 1px
+      );
     background-size: 64px 64px;
     pointer-events: none;
   }
@@ -183,7 +218,10 @@ import { CONTACTS } from '../../lib/constants';
     text-decoration: none;
     font-size: var(--fs-body-sm);
     font-weight: 500;
-    transition: background-color 150ms ease, border-color 150ms ease;
+    white-space: nowrap; /* Запрещает разрыв текста внутри ссылки */
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
   }
 
   .vn-contacts-video__link:hover {
@@ -242,8 +280,11 @@ import { CONTACTS } from '../../lib/constants';
     min-height: 154px;
     border: 1px solid rgba(241, 243, 245, 0.12);
     border-radius: var(--radius-lg);
-    background:
-      linear-gradient(135deg, rgba(241, 243, 245, 0.11), rgba(241, 243, 245, 0.03));
+    background: linear-gradient(
+      135deg,
+      rgba(241, 243, 245, 0.11),
+      rgba(241, 243, 245, 0.03)
+    );
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -259,7 +300,11 @@ import { CONTACTS } from '../../lib/constants';
     height: 54px;
     margin-bottom: auto;
     border-radius: 50%;
-    background: color-mix(in srgb, var(--color-accent-cta) 32%, rgba(241, 243, 245, 0.18));
+    background: color-mix(
+      in srgb,
+      var(--color-accent-cta) 32%,
+      rgba(241, 243, 245, 0.18)
+    );
     border: 1px solid rgba(241, 243, 245, 0.14);
   }
 
@@ -303,7 +348,7 @@ import { CONTACTS } from '../../lib/constants';
   }
 
   .vn-contacts-video__agenda li::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 7px;

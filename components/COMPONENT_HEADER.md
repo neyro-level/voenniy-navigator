@@ -127,12 +127,12 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     number: '03',
-    label: 'Удалённо',
-    labelShort: 'Удалённо',
-    href: '/distancionnaya-pokupka/',
-    description: 'Контроль района, ЖК, документов и сделки — без приезда.',
+    label: 'Калькулятор',
+    labelShort: 'Калькулятор',
+    href: '/kalkulyator-voennoy-ipoteki/',
+    description: 'Ориентир по сумме, накоплениям и бюджету покупки.',
     group: 'route',
-    icon: 'video',
+    icon: 'calculator',
   },
   {
     number: '04',
@@ -161,19 +161,15 @@ export const GROUP_LABELS: Record<NavGroup, string> = {
 };
 
 // HEADER_NAV (состояние 1, 84px): все 5 пунктов
-// «Удалённо» виден в полном хедере, скрывается в dock
-export const HEADER_NAV = NAV_ITEMS; // все 5
+export const HEADER_NAV = NAV_ITEMS;
 
-// DOCK_NAV (состояние 2, 60px floating): 4 пункта без «Удалённо»
-export const DOCK_NAV = NAV_ITEMS.filter(
-  item => !item.href.includes('distancionnaya-pokupka')
-);
+// DOCK_NAV (состояние 2, 60px floating): все 5 пунктов
+export const DOCK_NAV = NAV_ITEMS;
 ```
 
 > **Финальная навигация:**
-> - Состояние 1 (84px): `Краснодар · Крым · Удалённо · Этапы покупки · Контакты`
-> - Состояние 2 dock (60px): `Краснодар · Крым · Этапы · Контакты`
-> - «Удалённо» скрывается в dock — остаётся в оверлее группа «Понять маршрут»
+> - Состояние 1 (84px): `Краснодар · Крым · Этапы покупки · Калькулятор · Контакты`
+> - Состояние 2 dock (60px): `Краснодар · Крым · Этапы · Калькулятор · Контакты`
 
 ---
 
@@ -186,7 +182,7 @@ export const DOCK_NAV = NAV_ITEMS.filter(
 **Position:** fixed, top: 0, z-index: 100
 
 ```
-[ЛОГО]  Военный навигатор     Краснодар  Крым  Удалённо  Этапы покупки  Контакты
+[ЛОГО]  Военный навигатор     Краснодар  Крым  Этапы покупки  Калькулятор  Контакты
         Михаил Хряпин                          [Записаться на разбор]  [Карта сайта ▦]
 ```
 
@@ -275,7 +271,7 @@ box-shadow: 0 2px 8px rgba(15, 37, 71, 0.06),
 ### Навигационные ссылки (desktop, 4 пункта из HEADER_NAV)
 
 ```
-Новостройки   Дистанционно   Этапы   Контакты
+Краснодар   Крым   Этапы   Калькулятор   Контакты
 ```
 - Inter Medium 14px, letter-spacing 0.01em, color.text.secondary
 - Gap между пунктами: 36px
@@ -597,8 +593,8 @@ BRAND ZONE      ROUTE MAP CENTER       CONTACT ZONE
 02  Военная ипотека в Крыму        →
     Квартиры и новостройки в Крыму
 
-03  Дистанционная покупка          →
-    Контроль района и сделки удалённо
+03  Калькулятор военной ипотеки    →
+    Ориентир по сумме, накоплениям и бюджету
 
 04  Этапы покупки                  →
     Маршрут от цели до регистрации
@@ -880,7 +876,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### navData.ts
 - [ ] Все 5 пунктов типизированы (NavItem)
-- [ ] HEADER_NAV = 4 пункта (без Крыма в главной строке)
+- [ ] HEADER_NAV = 5 пунктов (все NAV_ITEMS)
 - [ ] Крым в overlay группе 'object'
 
 ### Route Map Overlay

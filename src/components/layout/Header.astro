@@ -2,7 +2,7 @@
 import { HEADER_NAV } from '../../lib/navigation/navData';
 
 const currentPath = Astro.url.pathname;
-const onDarkTopPaths = new Set(['/', '/404', '/cookies/', '/politika/', '/soglasie/']);
+const onDarkTopPaths = new Set(['/404', '/cookies/', '/politika/', '/soglasie/']);
 const headerContrast = onDarkTopPaths.has(currentPath) ? 'dark' : 'light';
 ---
 

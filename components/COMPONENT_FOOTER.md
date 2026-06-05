@@ -131,7 +131,7 @@ export const ROUTE_PATH = [
 ```
 РАЗБЕРИТЕ ЦЕЛЬ ПОКУПКИ ДО ВЫБОРА КВАРТИРЫ
 Михаил поможет понять маршрут: Краснодар, Крым,
-дистанционно или переезд позже.
+калькулятор или переезд позже.
 ```
 - H2 аналог: Semi Bold 20px, color.text.ondark, max-width 520px
 - Body: Regular 13px, color.text.ondark-mute opacity 0.7, margin-top 4px
@@ -239,8 +239,8 @@ export const ROUTE_PATH = [
 Главная               /
 Краснодар             /voennaya-ipoteka-krasnodar/
 Крым                  /voennaya-ipoteka-krym/
-Удалённо              /distancionnaya-pokupka/
 Этапы покупки         /etapy-pokupki/
+Калькулятор           /kalkulyator-voennoy-ipoteki/
 Контакты              /contacts/
 ```
 - Regular 14px, color.text.ondark-mute
@@ -430,7 +430,7 @@ import { OFFICES, CONTACTS, LEGAL, ROUTE_PATH } from '../../lib/constants';
       </p>
       <p class="vn-footer__cta-sub">
         Михаил поможет понять маршрут: Краснодар, Крым,
-        дистанционно или переезд позже.
+        калькулятор или переезд позже.
       </p>
     </div>
     <div class="vn-footer__cta-actions">

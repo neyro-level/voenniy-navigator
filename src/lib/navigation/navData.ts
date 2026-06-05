@@ -33,24 +33,33 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     number: '03',
-    label: 'Удалённая покупка',
-    labelShort: 'Удалённая покупка',
-    href: '/distancionnaya-pokupka/',
-    description: 'Контроль района, ЖК, документов и сделки — без приезда.',
+    label: 'Калькулятор',
+    labelShort: 'Калькулятор',
+    href: '/kalkulyator-voennoy-ipoteki/',
+    description: 'Рассчитать ориентир по сумме, накоплениям и сценарию покупки.',
     group: 'route',
-    icon: 'video',
+    icon: 'calculator',
   },
   {
     number: '04',
-    label: 'Этапы покупки',
-    labelShort: 'Этапы',
-    href: '/etapy-pokupki/',
-    description: 'Маршрут от цели покупки до регистрации.',
+    label: 'Условия',
+    labelShort: 'Условия',
+    href: '/usloviya-voennoy-ipoteki/',
+    description: 'Кто может получить, ставки, сроки, документы и ограничения.',
     group: 'route',
-    icon: 'route',
+    icon: 'file-text',
   },
   {
     number: '05',
+    label: 'Семейная',
+    labelShort: 'Семейная',
+    href: '/semeynaya-voennaya-ipoteka/',
+    description: 'Как совместить военную и семейную ипотеку: условия и расчёт.',
+    group: 'route',
+    icon: 'users',
+  },
+  {
+    number: '06',
     label: 'Контакты',
     labelShort: 'Контакты',
     href: '/contacts/',
@@ -66,10 +75,10 @@ export const GROUP_LABELS: Record<NavGroup, string> = {
   contact: '03 · Связаться',
 };
 
-// Header default (84px) — все 5 пунктов
-export const HEADER_NAV = NAV_ITEMS;
-
-// Dock (60px, при скролле) — 4 пункта без «Удалённо»
-export const DOCK_NAV = NAV_ITEMS.filter(
-  (item) => !item.href.includes('distancionnaya-pokupka'),
+// Header default (84px) — без «Семейная» (ведём через footer / linking)
+export const HEADER_NAV = NAV_ITEMS.filter(
+  (item) => item.href !== '/semeynaya-voennaya-ipoteka/',
 );
+
+// Dock (60px, при скролле) — как header
+export const DOCK_NAV = HEADER_NAV;

@@ -1,0 +1,235 @@
+---
+// Компонент: 05-FAQ.astro
+// Задача: снять возражения, добрать SEO-хвост, подвести к заявке.
+---
+
+<section id="section-calc-faq" class="vn-calc-faq">
+  <div class="vn-container">
+    <p class="vn-label-mono">Военная ипотека / вопросы / 05</p>
+
+    <h2 class="vn-calc-faq__title">
+      Частые вопросы по расчету
+      <span class="vn-calc-faq__title-accent">военной ипотеки</span>
+    </h2>
+
+    <div class="vn-calc-faq__list">
+      <details class="vn-calc-faq__item">
+        <summary>
+          Насколько точен онлайн-калькулятор военной ипотеки?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            Онлайн-калькулятор показывает ориентир по формуле аннуитета на
+            основе лимита НИС. Но реальный одобренный лимит банк рассчитывает
+            индивидуально — с учётом возраста, стажа, семейного положения и
+            объекта. Калькулятор нужен, чтобы понять диапазон. Для точной
+            цифры — нужен разбор.
+          </p>
+        </div>
+      </details>
+
+      <details class="vn-calc-faq__item">
+        <summary>
+          Можно ли купить новостройку по военной ипотеке?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            Да, новостройки — один из основных форматов. Но важна аккредитация
+            застройщика и конкретного объекта в банке. Не каждая новостройка
+            подходит под программу. Перед выбором объекта стоит проверить
+            аккредитацию — иначе банк может отказать.
+          </p>
+        </div>
+      </details>
+
+      <details class="vn-calc-faq__item">
+        <summary>
+          Можно ли добавить свои деньги как доплату?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            Можно. Собственные средства или маткапитал увеличивают доступный
+            бюджет и расширяют выбор квартир. Это частый сценарий, когда
+            лимита НИС не хватает на нужный объект. Размер доплаты влияет на
+            одобрение — чем выше первоначальный взнос, тем проще проходит
+            сделка.
+          </p>
+        </div>
+      </details>
+
+      <details class="vn-calc-faq__item">
+        <summary>
+          Какие банки обычно работают с военной ипотекой?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            ПСБ, Сбер, ВТБ, ДОМ.РФ, Банк Россия. Но выбор банка — не про
+            рейтинг, а про аккредитацию вашего объекта и готовность банка
+            работать по вашей схеме. Один банк может одобрить объект, а другой
+            — нет. Подбирать банк стоит под конкретную квартиру, а не
+            наоборот.
+          </p>
+        </div>
+      </details>
+
+      <details class="vn-calc-faq__item">
+        <summary>
+          Чем отличается семейная + военная ипотека от обычного расчета?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            Комбинация увеличивает бюджет с 2,3 млн ₽ до 6 млн ₽ и снижает
+            ставку с ~18% до от 6%. Но схема сложнее: нужно соответствовать
+            условиям семейной программы, собрать дополнительные документы и
+            согласовать комбинированное финансирование. Не всем подходит —
+            стоит разбирать индивидуально.
+          </p>
+        </div>
+      </details>
+
+      <details class="vn-calc-faq__item">
+        <summary>
+          Почему итог по объекту и банку может отличаться от
+          онлайн-расчета?
+          <span class="vn-calc-faq__marker" aria-hidden="true"></span>
+        </summary>
+        <div class="vn-calc-faq__answer">
+          <p>
+            Онлайн-расчёт не знает вашего стажа, семейного положения,
+            кредитной истории и не проверяет аккредитацию объекта. Банк
+            смотрит на конкретного человека и конкретную квартиру. Разница в
+            300–500 тыс ₽ — норма. Чтобы не ошибиться с объектом, лучше
+            получить предварительное одобрение перед выбором.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-faq {
+    background: var(--color-bg-secondary);
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .vn-calc-faq__title {
+    margin: 16px 0 48px;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+    max-width: 640px;
+  }
+
+  .vn-calc-faq__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-faq__list {
+    max-width: 800px;
+  }
+
+  .vn-calc-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-calc-faq__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-calc-faq__item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .vn-calc-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn-calc-faq__marker {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .vn-calc-faq__marker::before,
+  .vn-calc-faq__marker::after {
+    content: "";
+    position: absolute;
+    background: var(--color-accent-cta);
+    transition: transform 0.2s ease;
+  }
+
+  .vn-calc-faq__marker::before {
+    top: 7px;
+    left: 0;
+    width: 16px;
+    height: 2px;
+  }
+
+  .vn-calc-faq__marker::after {
+    top: 0;
+    left: 7px;
+    width: 2px;
+    height: 16px;
+  }
+
+  .vn-calc-faq__item[open] .vn-calc-faq__marker::after {
+    transform: scaleY(0);
+  }
+
+  .vn-calc-faq__answer {
+    padding-bottom: 24px;
+  }
+
+  .vn-calc-faq__answer p {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-faq {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-faq__title {
+      margin-bottom: 32px;
+    }
+
+    .vn-calc-faq__item summary {
+      padding: 18px 0;
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-calc-faq__answer {
+      padding-bottom: 18px;
+    }
+
+    .vn-calc-faq__answer p {
+      font-size: var(--fs-body-sm);
+    }
+  }
+</style>

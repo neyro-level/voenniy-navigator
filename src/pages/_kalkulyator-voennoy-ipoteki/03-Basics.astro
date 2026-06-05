@@ -1,0 +1,228 @@
+---
+// Компонент: 03-Basics.astro
+// Задача: закрыть кластеры сумма, условия, процент, банки.
+---
+
+<section id="section-calc-basics" class="vn-calc-basics">
+  <div class="vn-container">
+    <p class="vn-label-mono">Военная ипотека / ориентиры / 03</p>
+
+    <h2 class="vn-calc-basics__title">
+      Базовые ориентиры по военной ипотеке:
+      <span class="vn-calc-basics__title-accent">сумма, ставка и банки</span>
+    </h2>
+
+    <div class="vn-grid-12 vn-calc-basics__grid">
+      <article class="vn-calc-basics__card vn-col-6">
+        <span class="vn-label-mono">Лимит</span>
+        <h3 class="vn-calc-basics__card-title">Сколько можно рассчитывать</h3>
+        <p class="vn-calc-basics__lead">
+          Базовый лимит зависит от программы и стажа.
+        </p>
+        <ul class="vn-calc-basics__list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Стандартная — до 2,3 млн ₽
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Семейная + военная — до 6 млн ₽
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Точная сумма после проверки банка
+          </li>
+        </ul>
+      </article>
+
+      <article class="vn-calc-basics__card vn-col-6">
+        <span class="vn-label-mono">Условия</span>
+        <h3 class="vn-calc-basics__card-title">Ставка и срок</h3>
+        <p class="vn-calc-basics__lead">
+          Ориентиры по проценту на текущий период.
+        </p>
+        <ul class="vn-calc-basics__list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Стандартная программа — ~18%
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Семейная + военная — от 6%
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Срок — до 25–30 лет
+          </li>
+        </ul>
+      </article>
+
+      <article class="vn-calc-basics__card vn-col-6">
+        <span class="vn-label-mono">Бюджет</span>
+        <h3 class="vn-calc-basics__card-title">Накопления и собственные средства</h3>
+        <p class="vn-calc-basics__lead">
+          Как увеличить доступную сумму покупки.
+        </p>
+        <ul class="vn-calc-basics__list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Взнос НИС 2026 — 411 184 ₽
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Маткапитал или доплата расширяет выбор
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Чем выше взнос — тем проще одобрение
+          </li>
+        </ul>
+      </article>
+
+      <article class="vn-calc-basics__card vn-col-6">
+        <span class="vn-label-mono">Банки</span>
+        <h3 class="vn-calc-basics__card-title">Кто работает с военной ипотекой</h3>
+        <p class="vn-calc-basics__lead">
+          Не каждый банк берёт каждый объект.
+        </p>
+        <ul class="vn-calc-basics__list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            ПСБ, Сбер, ВТБ, ДОМ.РФ, Банк Россия
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Нужна аккредитация объекта
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Схему согласовывают индивидуально
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-basics {
+    background: var(--color-bg-secondary);
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .vn-calc-basics__title {
+    margin: 16px 0 48px;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+    max-width: 720px;
+  }
+
+  .vn-calc-basics__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-basics__grid {
+    row-gap: 24px;
+  }
+
+  .vn-calc-basics__card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vn-calc-basics__card .vn-label-mono {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--color-accent-cta);
+  }
+
+  .vn-calc-basics__card-title {
+    margin: 0 0 8px;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-basics__lead {
+    margin: 0 0 16px;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-calc-basics__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+  }
+
+  .vn-calc-basics__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-calc-basics__list li svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-accent-cta);
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-basics {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-basics__title {
+      margin-bottom: 32px;
+    }
+
+    .vn-calc-basics__card {
+      padding: 20px;
+    }
+  }
+</style>

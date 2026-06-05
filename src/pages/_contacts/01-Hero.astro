@@ -1,5 +1,5 @@
 ---
-import { CONTACTS } from '../../lib/constants';
+import { CONTACTS } from "../../lib/constants";
 ---
 
 <section id="section-contacts-hero" class="vn-contacts-hero">
@@ -14,7 +14,9 @@ import { CONTACTS } from '../../lib/constants';
 
         <div class="vn-contacts-hero__eyebrow">Контакты</div>
 
-        <h1 class="vn-contacts-hero__h1">Военный навигатор по новостройкам и военной ипотеке</h1>
+        <h1 class="vn-contacts-hero__h1">
+          Военный навигатор по новостройкам и военной ипотеке
+        </h1>
 
         <p class="vn-contacts-hero__sub">
           Оставьте заявку на разбор или напишите в мессенджер.
@@ -38,16 +40,24 @@ import { CONTACTS } from '../../lib/constants';
             Telegram
           </a>
           <a
-            href={CONTACTS.max.startsWith('[') ? '#' : CONTACTS.max}
-            target={CONTACTS.max.startsWith('[') ? undefined : '_blank'}
-            rel={CONTACTS.max.startsWith('[') ? undefined : 'noopener noreferrer'}
-            aria-disabled={CONTACTS.max.startsWith('[') ? 'true' : undefined}
-            class:list={['vn-contacts-hero__messenger', { 'vn-contacts-hero__messenger--disabled': CONTACTS.max.startsWith('[') }]}
+            href={CONTACTS.max.startsWith("[") ? "#" : CONTACTS.max}
+            target={CONTACTS.max.startsWith("[") ? undefined : "_blank"}
+            rel={CONTACTS.max.startsWith("[")
+              ? undefined
+              : "noopener noreferrer"}
+            aria-disabled={CONTACTS.max.startsWith("[") ? "true" : undefined}
+            class:list={[
+              "vn-contacts-hero__messenger",
+              {
+                "vn-contacts-hero__messenger--disabled":
+                  CONTACTS.max.startsWith("["),
+              },
+            ]}
           >
             Max
           </a>
           <a
-            href={`tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`}
+            href={`tel:${CONTACTS.phone.replace(/[^\d+]/g, "")}`}
             class="vn-contacts-hero__phone"
           >
             Позвонить
@@ -56,12 +66,18 @@ import { CONTACTS } from '../../lib/constants';
 
         <div class="vn-contacts-hero__trust" role="list">
           <span role="listitem">Краснодар</span>
-          <span class="vn-contacts-hero__trust-divider" aria-hidden="true"></span>
+          <span class="vn-contacts-hero__trust-divider" aria-hidden="true"
+          ></span>
           <span role="listitem">Крым</span>
         </div>
       </div>
 
-      <div class="vn-contacts-hero__visual" style="grid-column: 7 / 13" aria-label="Фото офиса будет добавлено позже" role="img">
+      <div
+        class="vn-contacts-hero__visual"
+        style="grid-column: 7 / 13"
+        aria-label="Фото офиса будет добавлено позже"
+        role="img"
+      >
         <div class="vn-contacts-hero__photo-placeholder">
           <div class="vn-contacts-hero__photo-top">
             <span>office-meeting.jpg</span>
@@ -70,7 +86,10 @@ import { CONTACTS } from '../../lib/constants';
           <div class="vn-contacts-hero__office-scene" aria-hidden="true">
             <div class="vn-contacts-hero__wall">
               <div class="vn-contacts-hero__screen">
-                <div class="vn-contacts-hero__plan vn-contacts-hero__plan--large"></div>
+                <div
+                  class="vn-contacts-hero__plan vn-contacts-hero__plan--large"
+                >
+                </div>
                 <div class="vn-contacts-hero__plan"></div>
                 <div class="vn-contacts-hero__plan"></div>
               </div>
@@ -84,8 +103,14 @@ import { CONTACTS } from '../../lib/constants';
                 <span></span>
               </div>
             </div>
-            <div class="vn-contacts-hero__person vn-contacts-hero__person--left"></div>
-            <div class="vn-contacts-hero__person vn-contacts-hero__person--right"></div>
+            <div
+              class="vn-contacts-hero__person vn-contacts-hero__person--left"
+            >
+            </div>
+            <div
+              class="vn-contacts-hero__person vn-contacts-hero__person--right"
+            >
+            </div>
           </div>
         </div>
       </div>
@@ -98,19 +123,31 @@ import { CONTACTS } from '../../lib/constants';
     position: relative;
     overflow: hidden;
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--color-bg-dark-elev) 52%, transparent), transparent 38%),
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--color-bg-dark-elev) 52%, transparent),
+        transparent 38%
+      ),
       var(--color-bg-dark);
     padding-top: 160px;
     padding-bottom: 96px;
   }
 
   .vn-contacts-hero::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(to right, var(--color-deco-grid-dark) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-deco-grid-dark) 1px, transparent 1px);
+      linear-gradient(
+        to right,
+        var(--color-deco-grid-dark) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        var(--color-deco-grid-dark) 1px,
+        transparent 1px
+      );
     background-size: 64px 64px;
     pointer-events: none;
   }
@@ -207,13 +244,25 @@ import { CONTACTS } from '../../lib/constants';
     text-decoration: none;
     font-size: var(--fs-body-sm);
     font-weight: 500;
-    transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+    white-space: nowrap; /* Запрещает разрыв текста внутри кнопки */
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease,
+      color 150ms ease;
   }
 
   .vn-contacts-hero__messenger:hover,
   .vn-contacts-hero__phone:hover {
-    border-color: color-mix(in srgb, var(--color-accent-cta) 36%, var(--color-border));
-    background: color-mix(in srgb, var(--color-accent-cta) 14%, var(--color-bg-dark-elev));
+    border-color: color-mix(
+      in srgb,
+      var(--color-accent-cta) 36%,
+      var(--color-border)
+    );
+    background: color-mix(
+      in srgb,
+      var(--color-accent-cta) 14%,
+      var(--color-bg-dark-elev)
+    );
     color: var(--color-text-ondark);
   }
 
@@ -256,18 +305,31 @@ import { CONTACTS } from '../../lib/constants';
     border: 1px solid var(--color-border-ondark);
     border-radius: var(--radius-xl);
     background:
-      linear-gradient(180deg, rgba(241, 243, 245, 0.08), rgba(241, 243, 245, 0.02)),
+      linear-gradient(
+        180deg,
+        rgba(241, 243, 245, 0.08),
+        rgba(241, 243, 245, 0.02)
+      ),
       var(--color-bg-dark-elev);
     box-shadow: var(--shadow-xl);
   }
 
   .vn-contacts-hero__photo-placeholder::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 68% 22%, color-mix(in srgb, var(--color-accent-cta) 22%, transparent) 0%, transparent 28%),
-      linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 48%, transparent 49%);
+      radial-gradient(
+        circle at 68% 22%,
+        color-mix(in srgb, var(--color-accent-cta) 22%, transparent) 0%,
+        transparent 28%
+      ),
+      linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 48%,
+        transparent 49%
+      );
     pointer-events: none;
   }
 
@@ -337,7 +399,11 @@ import { CONTACTS } from '../../lib/constants';
     bottom: 18%;
     height: 96px;
     border-radius: 50%;
-    background: linear-gradient(180deg, rgba(241, 243, 245, 0.18), rgba(241, 243, 245, 0.06));
+    background: linear-gradient(
+      180deg,
+      rgba(241, 243, 245, 0.18),
+      rgba(241, 243, 245, 0.06)
+    );
     transform: perspective(420px) rotateX(58deg);
     border: 1px solid rgba(241, 243, 245, 0.12);
   }
@@ -359,7 +425,9 @@ import { CONTACTS } from '../../lib/constants';
     height: 3px;
     margin: 16px auto 0;
     background: var(--color-accent-cta);
-    box-shadow: 0 10px 0 rgba(241, 243, 245, 0.24), 0 20px 0 rgba(241, 243, 245, 0.14);
+    box-shadow:
+      0 10px 0 rgba(241, 243, 245, 0.24),
+      0 20px 0 rgba(241, 243, 245, 0.14);
   }
 
   .vn-contacts-hero__papers {
@@ -389,12 +457,16 @@ import { CONTACTS } from '../../lib/constants';
     width: 72px;
     height: 112px;
     border-radius: 40px 40px 14px 14px;
-    background: linear-gradient(180deg, rgba(241, 243, 245, 0.28), rgba(241, 243, 245, 0.09));
+    background: linear-gradient(
+      180deg,
+      rgba(241, 243, 245, 0.28),
+      rgba(241, 243, 245, 0.09)
+    );
     border: 1px solid rgba(241, 243, 245, 0.12);
   }
 
   .vn-contacts-hero__person::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     top: -28px;
@@ -412,7 +484,11 @@ import { CONTACTS } from '../../lib/constants';
 
   .vn-contacts-hero__person--right {
     right: 15%;
-    background: linear-gradient(180deg, rgba(37, 99, 235, 0.32), rgba(241, 243, 245, 0.08));
+    background: linear-gradient(
+      180deg,
+      rgba(37, 99, 235, 0.32),
+      rgba(241, 243, 245, 0.08)
+    );
   }
 
   @media (max-width: 640px) {

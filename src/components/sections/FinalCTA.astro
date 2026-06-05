@@ -1,5 +1,5 @@
 ---
-import { CONTACTS } from '../../lib/constants';
+import { CONTACTS } from "../../lib/constants";
 
 interface UsefulLink {
   label: string;
@@ -19,7 +19,7 @@ interface Props {
 }
 
 const {
-  eyebrow = 'ГОТОВЫ К ПЕРВОМУ ШАГУ?',
+  eyebrow = "ГОТОВЫ К ПЕРВОМУ ШАГУ?",
   title,
   accentText,
   subtitle,
@@ -58,19 +58,22 @@ const {
           {ctaText}
         </a>
         <p class="vn-final-cta__alt">
-          Или напишите напрямую:
-          <a
-            href={CONTACTS.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="vn-final-cta__alt-link"
-          >Telegram</a>
-          <a
-            href={CONTACTS.max}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="vn-final-cta__alt-link"
-          >Max</a>
+          <span>Или напишите напрямую:</span>
+          <span class="vn-final-cta__alt-links">
+            <a
+              href={CONTACTS.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-final-cta__alt-link">Telegram</a
+            >
+            <span class="vn-final-cta__alt-sep">/</span>
+            <a
+              href={CONTACTS.max}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-final-cta__alt-link">Max</a
+            >
+          </span>
         </p>
       </div>
 
@@ -183,7 +186,7 @@ const {
     inset: 0;
     background: radial-gradient(
       ellipse 900px 400px at 30% 0%,
-      var(--color-accent-cta-soft),
+      color-mix(in srgb, var(--color-accent-cta) 8%, transparent),
       transparent
     );
     pointer-events: none;
@@ -200,13 +203,14 @@ const {
   }
 
   .vn-final-cta__eyebrow {
-    color: var(--color-text-ondark);
-    opacity: 0.5;
+    color: var(--color-accent-cta);
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 
   .vn-final-cta__title {
     margin: 16px 0 0;
-    font-size: var(--fs-h1);
+    font-size: clamp(32px, 4vw, 48px);
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -219,41 +223,51 @@ const {
   }
 
   .vn-final-cta__subtitle {
-    margin: 16px 0 36px;
-    font-size: var(--fs-body);
-    line-height: 1.65;
-    color: var(--color-text-ondark);
-    opacity: 0.6;
-    max-width: 440px;
+    margin: 20px 0 36px;
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    color: var(--color-text-ondark-secondary);
+    max-width: 480px;
+    text-wrap: pretty;
   }
 
   .vn-final-cta__cta {
     font-size: var(--fs-body);
-    padding: 14px 28px;
+    padding: 16px 32px;
   }
 
   .vn-final-cta__alt {
-    margin: 16px 0 0;
+    margin: 20px 0 0;
     font-size: var(--fs-body-sm);
-    color: var(--color-text-ondark);
-    opacity: 0.4;
+    color: var(--color-text-ondark-secondary);
     display: flex;
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
   }
 
+  .vn-final-cta__alt-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* Гарантирует, что ссылки всегда остаются в одну строку */
+  }
+
+  .vn-final-cta__alt-sep {
+    color: var(--color-text-ondark-secondary);
+    opacity: 0.5;
+  }
+
   .vn-final-cta__alt-link {
     color: var(--color-text-ondark);
-    opacity: 0.7;
     text-decoration: underline;
     text-underline-offset: 3px;
     font-weight: 500;
-    transition: color 150ms ease, opacity 150ms ease;
+    white-space: nowrap; /* Запрещает разрыв слова внутри ссылки */
+    transition: color 150ms ease;
   }
   .vn-final-cta__alt-link:hover {
     color: var(--color-accent-cta);
-    opacity: 1;
   }
 
   /* ── Right column ── */
@@ -284,7 +298,6 @@ const {
     font-size: var(--fs-body-sm);
     font-weight: 500;
     color: var(--color-text-ondark);
-    opacity: 0.8;
     border-bottom: 1px solid var(--color-border-ondark);
   }
   .vn-final-cta__stat:last-child {
@@ -297,24 +310,25 @@ const {
 
   /* Useful pages */
   .vn-final-cta__pages-label {
-    color: var(--color-text-ondark);
-    opacity: 0.4;
+    color: var(--color-text-ondark-secondary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .vn-final-cta__pages-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
   }
 
   .vn-final-cta__page-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    padding: 12px 14px;
+    gap: 12px;
+    padding: 14px 16px;
     background: var(--color-bg-dark-elev);
     border: 1px solid var(--color-border-ondark);
     border-radius: var(--radius-md);
@@ -322,22 +336,31 @@ const {
     font-size: var(--fs-body-sm);
     font-weight: 500;
     color: var(--color-text-ondark);
-    opacity: 0.75;
-    transition: border-color 150ms ease, background 150ms ease, opacity 150ms ease;
+    transition:
+      border-color 150ms ease,
+      background 150ms ease,
+      transform 150ms ease;
   }
   .vn-final-cta__page-link svg {
     color: var(--color-text-ondark);
-    opacity: 0.3;
+    opacity: 0.4;
     flex-shrink: 0;
-    transition: opacity 150ms ease;
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease;
   }
   .vn-final-cta__page-link:hover {
     border-color: var(--color-accent-cta);
-    background: var(--color-accent-cta-soft);
-    opacity: 1;
+    background: color-mix(
+      in srgb,
+      var(--color-accent-cta) 5%,
+      var(--color-bg-dark-elev)
+    );
+    transform: translateX(4px);
   }
   .vn-final-cta__page-link:hover svg {
-    opacity: 0.6;
+    opacity: 1;
+    transform: translateX(4px);
   }
 
   /* ── Tablet ── */
@@ -364,22 +387,51 @@ const {
     }
   }
 
-  /* ── Mobile ── */
+  /* ── Mobile Compact ── */
   @media (max-width: 640px) {
     .vn-final-cta {
       padding-top: 72px;
       padding-bottom: 64px;
     }
+
+    .vn-final-cta__title {
+      font-size: 28px;
+    }
+
+    .vn-final-cta__subtitle {
+      font-size: var(--fs-body);
+      margin-bottom: 28px;
+    }
+
+    .vn-final-cta__cta {
+      width: 100%;
+      text-align: center;
+      padding: 16px 24px;
+    }
+
     .vn-final-cta__stats {
       flex-direction: column;
       gap: 0;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
     }
     .vn-final-cta__stat {
       padding: 10px 0;
       border-bottom: 1px solid var(--color-border-ondark);
+      font-size: 13px;
     }
     .vn-final-cta__stat:last-child {
       border-bottom: none;
+    }
+
+    .vn-final-cta__pages-label {
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+
+    .vn-final-cta__page-link {
+      padding: 12px 14px;
+      font-size: 13px;
     }
   }
 </style>

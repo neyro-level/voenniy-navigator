@@ -1,0 +1,23 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "./_usloviya-voennoy-ipoteki/01-Hero.astro";
+import Conditions from "./_usloviya-voennoy-ipoteki/02-Conditions.astro";
+import Eligibility from "./_usloviya-voennoy-ipoteki/03-Eligibility.astro";
+import Amount from "./_usloviya-voennoy-ipoteki/04-Amount.astro";
+import Scenarios from "./_usloviya-voennoy-ipoteki/05-Scenarios.astro";
+import Banks from "./_usloviya-voennoy-ipoteki/06-Banks.astro";
+import Process from "./_usloviya-voennoy-ipoteki/07-Process.astro";
+import FAQ from "./_usloviya-voennoy-ipoteki/08-FAQ.astro";
+import { pageMeta, schemas } from "./_usloviya-voennoy-ipoteki/pageData";
+---
+
+<PageLayout {...pageMeta} schema={schemas}>
+  <Hero />
+  <Conditions />
+  <Eligibility />
+  <Amount />
+  <Scenarios />
+  <Banks />
+  <Process />
+  <FAQ />
+</PageLayout>
