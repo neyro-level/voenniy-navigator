@@ -1,36 +1,61 @@
-# WORKLOG - Voenniy Navigator
+# WORKLOG — Военный навигатор
 
-## Current Status
-- Project: Astro + Tailwind CSS v4 + TypeScript strict + React islands.
-- **Deploy: GitHub → AMS Server (Timeweb Cloud, `5.42.100.161`) → `voen-navigator.ru`.**
-- Vercel project removed completely. Preview domains blocked (301 → production).
-- Local `.vercel/` folder removed.
-- Project migrated to `PASSPORT_PROJECTS.md` + `WORKLOG.md`; local `AGENTS.md` was removed.
-- Build is green as of 2026-05-22: `pnpm build` completed with 0 errors and 0 warnings.
-- Important mismatch to remember: project notes describe all major pages as complete, but several route files currently render only `01-Hero.astro` plus `pageData.ts`.
+## Текущий статус
 
-## Next Steps
-- Before editing any page, read `SITE_ARCHITECTURE.md`, `DESIGN_SYSTEM.md`, the relevant `pages/PAGE_*.md`, and use the global Codex/AI-SYSTEM Astro rules as the technical source of truth.
-- For form/API work, reconcile current `src/lib/leads.ts` AMS Leads API flow with older docs that still mention `/api/contact` and Telegram-only handling.
-- For page-building work, continue component-by-component in `src/pages/_[slug]/`, keeping route files thin.
-
-## Open Questions
-- Confirm whether `/api/contact` is intentionally replaced by AMS Leads API or should be restored for this Vercel project.
-- Confirm whether the next focus is unfinished funnel pages (`/video/`, `/bonus/`, `/prezentaciya/`) or completing the partially componentized SEO pages.
-
-## Journal
-
-### 2026-06-04
-- **Infra cleanup:** Removed Vercel project `voenniy-navigator` completely (deployments deleted).
-- **Infra cleanup:** Deleted local `.vercel/` folder from repo.
-- **Infra cleanup:** Removed stale `voenniy-navigator.5.42.100.161.nip.io` nginx config from server.
-- **Infra cleanup:** Added nginx redirect block: `voenniy-navigator.preview.ams-cloud.ru` and `voenniy-navigator.preview.ams-chirkov.ru` → 301 to `https://voen-navigator.ru/`.
-- **Verified:** `voen-navigator.ru` (production) returns 200 OK.
-- **Verified:** `pnpm dev` runs locally on `localhost:4321`.
-- Updated `WORKLOG.md` deploy target to AMS Server.
+- **Stack:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands.
 - **Build:** `pnpm build` passes with 0 errors, 0 warnings.
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Deployed:** commit `9736e0e` pushed to `main`, GitHub Actions → AMS Server.
+
+### 2026-06-05 — Бриф страницы калькулятора
+- **Created:** `pages/PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md` — утвержденный бриф новой страницы `/kalkulyator-voennoy-ipoteki/`.
+- **Decision:** страница зафиксирована как универсальная расчетная SEO-страница без жесткой привязки к Краснодару или Крыму в H1 и первом экране.
+- **Structure:** утверждена короткая структура из 6 блоков: hero + калькулятор, explainer, базовые ориентиры, сценарии покупки, FAQ, финальный CTA.
+- **Scaffold:** создана рабочая папка `src/pages/_kalkulyator-voennoy-ipoteki/` под будущую сборку секций.
+- **Checks:** сборка не запускалась, так как правки только в markdown-документах и организационной структуре.
+
+### 2026-06-05 — Wordstat / Семантика
+- **Research:** собрана Wordstat-семантика через `mcp__yandex_searchapi` по кластерам:
+  - новостройки Краснодар;
+  - военная ипотека Краснодар;
+  - Краснодарский край;
+  - Крым;
+  - калькулятор военной ипотеки;
+  - брендовый слой `Военный навигатор`.
+- **Created:** `SEMANTICS.md` — большой обзор по кластерам, интентам, динамике спроса и рекомендациям по архитектуре сайта.
+- **Updated:** `PASSPORT_PROJECTS.md` — добавлен `SEMANTICS.md` в список источников правды и обязательного чтения для SEO/контентных задач.
+- **Key finding:** буквальный спрос на `купить новостройку по военной ипотеке` слабый, а основной реальный спрос идёт через формулировки `военная ипотека краснодар`, `квартиры по военной ипотеке`, `ипотека краснодар новостройки`, `новостройки крыма`, `калькулятор военной ипотеки`.
+- **Key finding:** по Крыму спрос распадается на отдельные городские кластеры, прежде всего Севастополь и Симферополь.
+- **Checks:** изменений в коде сайта нет; сборка не запускалась, так как правки только в markdown-документах.
+
+### 2026-06-04 — Sprint 2+3: Local fonts + Image pipeline + Motion system + Analytics
+- **Local fonts:** заменён Google Fonts CDN на локальный `InterVariable.woff2` в `public/fonts/`.
+  - `BaseLayout.astro`: preload + `@font-face` с `font-display: swap`.
+  - Fallback metrics: `ascent-override: 91.59%`, `descent-override: 22.81%`, `size-adjust: 105.77%` (Arial fallback).
+- **Image pipeline:** `OptimizedImage.astro` обновлён — поддержка `astro:assets` Image для импортов, fallback `<img>` для external/public путей.
+  - Добавлен `style` prop, LQIP placeholder, `onerror` handler.
+  - Заменены raw `<img>` на `<OptimizedImage>` в 5 ключевых файлах:
+    - `01-Hero.astro` (hero portrait)
+    - `08-Trust.astro` (trust photo)
+    - `03-Scenarios.astro` (krasnodar cards)
+    - `02-Hero.astro` (leadgen hero)
+    - `04-Trust.astro` (leadgen expert)
+- **Motion system:** добавлен `RevealOnScroll.astro` + CSS `data-reveal` утилиты + inline JS в `BaseLayout.astro`.
+  - Modes: `fade-up`, `fade-in`, `stagger` (с задержками и threshold).
+  - `prefers-reduced-motion: reduce` — отключает анимации.
+  - Обёрнуты секции: `02-ShortAnswer`, `03-Problem`, `04-Scenarios`, `05-Method`.
+- **Hover shifts:** scenario rows (`04-Scenarios.astro`) — `translateX(4px)` на hover обёрнут в `@media (hover: hover) and (pointer: fine)`.
+- **Accessibility:** добавлены `aria-label` для footer-ссылок (Telegram, VK).
+- **Analytics layer:** unified `src/lib/analytics.ts` — type-safe обёртка над `ym`.
+  - Event map: `modal_open`, `lead_submit`, `faq_open`, `page_scroll_50`, `page_scroll_90`, `phone_click`, `messenger_click`, `cta_click`, `nav_map_open`, `nav_map_close`.
+  - Заменены прямые `window.ym` вызовы в `RequestModal.tsx` и `LeadGenRequestModal.tsx` на `track()`.
+  - Scroll depth tracking (50% / 90%) — inline JS в `BaseLayout.astro`.
+  - FAQ open tracking — inline JS в `11-FAQ.astro`.
+  - Global click tracking для `data-track` атрибутов — phone, messenger clicks в Footer.
+  - `meta[name="ym-counter-id"]` в `BaseLayout.astro` для доступа inline скриптов к counter ID.
+- **CI/CD:** обновлён `.github/workflows/deploy-ams.yml` — pnpm `10.33.2` → `11.5.1`, `CI=true pnpm install --frozen-lockfile`.
+- **Build:** `pnpm build` passes with 0 errors, 0 warnings; 15 pages.
+- **Next:** WCAG checklist (skip links, heading hierarchy audit), astro-compress (после решения pnpm store conflict).
 
 ### 2026-06-04
 - **GEO Optimization:** реализована Generative Engine Optimization для AI-поисковиков.

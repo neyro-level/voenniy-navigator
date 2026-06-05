@@ -1,6 +1,10 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+---
 <!-- ══════════════════════════════════════════════
      БЛОК 04 — СЦЕНАРИИ
 ════════════════════════════════════════════════ -->
+<RevealOnScroll mode="fade-up">
 <section id="section-scenarios" class="vn-section vn-section--secondary vn-home-sc" aria-labelledby="vn-home-sc-title">
   <div class="vn-container">
 
@@ -126,6 +130,7 @@
 
   </div>
 </section>
+</RevealOnScroll>
 
 <style>
 /* ─── Block 04: Scenarios ─── */
@@ -175,10 +180,12 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.vn-home-sc__row:hover {
-  background-color: var(--color-accent-cta-soft);
-  border-bottom-color: transparent;
-  transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+  .vn-home-sc__row:hover {
+    background-color: var(--color-accent-cta-soft);
+    border-bottom-color: transparent;
+    transform: translateX(4px);
+  }
 }
 
 /* Number */

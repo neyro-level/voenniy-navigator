@@ -281,6 +281,12 @@ const { items } = Astro.props as { items: FAQItem[] };
         e.preventDefault();
         const isOpen = details.hasAttribute('open');
 
+        // Track FAQ open
+        if (!isOpen && window.ym) {
+          const cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+          if (cid) window.ym(cid, 'reachGoal', 'faq_open');
+        }
+
         // Close siblings (accordion behavior)
         items.forEach((sibling) => {
           if (sibling !== details && sibling.hasAttribute('open')) {

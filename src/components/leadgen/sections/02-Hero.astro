@@ -1,3 +1,6 @@
+---
+import OptimizedImage from '../../../components/ui/OptimizedImage.astro';
+---
 <section
   class="vn-video-hero"
   data-review-id="podbor-hero"
@@ -71,11 +74,11 @@
 
       <aside class="vn-video-hero__result" style="grid-column: 8 / 13" aria-label="Что вы получите после заявки">
         <div class="vn-video-hero__result-media">
-          <img
+          <OptimizedImage
             src="/images/krasnodar-newbuild-hero.png"
             alt="Современный жилой комплекс в Краснодаре"
-            width="1600"
-            height="900"
+            width={1600}
+            height={900}
             loading="eager"
             class="vn-video-hero__image"
           />

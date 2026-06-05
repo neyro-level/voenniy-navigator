@@ -22,11 +22,14 @@ const {
   noindex = false,
   schema,
 } = Astro.props;
+
+const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
 ---
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {ymCounterId && <meta name="ym-counter-id" content={ymCounterId} />}
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
@@ -56,29 +59,33 @@ const {
   <script is:inline type="application/ld+json" set:html={
     JSON.stringify(
       schema
-        ? (Array.isArray(schema) ? [webSiteSchema, ...schema] : [webSiteSchema, schema])
-        : [webSiteSchema]
+        ? (Array.isArray(schema) ? [webSiteSchema(), ...schema] : [webSiteSchema(), schema])
+        : [webSiteSchema()]
     )
   } />
   <!-- Дополнительные JSON-LD из страниц -->
   <slot name="head" />
 
-  <!-- Шрифт Inter — critical fallback inline, then preload для LCP -->
+  <!-- Локальный шрифт Inter Variable + fallback metrics (woodme/lidenskap pattern) -->
+  <link rel="preload" as="font" href="/fonts/InterVariable.woff2" type="font/woff2" crossorigin />
   <style is:inline>
     @font-face {
-      font-family: 'Inter-fallback';
+      font-family: 'Inter';
+      src: url('/fonts/InterVariable.woff2') format('woff2');
+      font-weight: 100 900;
+      font-display: swap;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Inter Fallback';
       src: local('Arial');
       font-display: swap;
-      ascent-override: 90%;
-      descent-override: 22%;
+      ascent-override: 91.59%;
+      descent-override: 22.81%;
       line-gap-override: 0%;
-      size-adjust: 107%;
+      size-adjust: 105.77%;
     }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" fetchpriority="high" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
 
   <!-- llms.txt для AI-crawler'ов (GEO) -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
@@ -90,6 +97,99 @@ const {
 </head>
 <body>
   <slot />
-  <ReviewWidget client:load />
+  {import.meta.env.PUBLIC_REVIEW_ENABLED === 'true' && <ReviewWidget client:load />}
+
+  <!-- Global click tracking for data-track attributes -->
+  <script is:inline>
+    (function () {
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest('[data-track]');
+        if (!el) return;
+        var event = el.getAttribute('data-track');
+        var params = {};
+        try {
+          var raw = el.getAttribute('data-track-params');
+          if (raw) params = JSON.parse(raw);
+        } catch (_) {}
+        if (window.ym) {
+          var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+          if (cid) window.ym(cid, 'reachGoal', event, params);
+        }
+      });
+    })();
+  </script>
+
+  <!-- Scroll depth tracking -->
+  <script is:inline>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var depths = {};
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0) {
+            var depth = Math.round((scrollTop / docHeight) * 100);
+            if (depth >= 50 && !depths[50]) {
+              depths[50] = true;
+              if (window.ym) {
+                var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+                if (cid) window.ym(cid, 'reachGoal', 'page_scroll_50');
+              }
+            }
+            if (depth >= 90 && !depths[90]) {
+              depths[90] = true;
+              if (window.ym) {
+                var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+                if (cid) window.ym(cid, 'reachGoal', 'page_scroll_90');
+              }
+            }
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+
+  <!-- Reveal on scroll — IntersectionObserver для data-reveal элементов -->
+  <script is:inline>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const mode = el.dataset.reveal;
+            const delay = parseInt(el.dataset.revealDelay || '0', 10);
+            const stagger = parseInt(el.dataset.revealStagger || '80', 10);
+
+            if (mode === 'stagger') {
+              el.querySelectorAll('[data-reveal-child]').forEach((child, i) => {
+                child.style.transitionDelay = (delay + i * stagger) + 'ms';
+              });
+            } else {
+              el.style.transitionDelay = delay + 'ms';
+            }
+
+            el.classList.add('is-revealed');
+
+            if (el.dataset.revealOnce === 'true') {
+              observer.unobserve(el);
+            }
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px',
+      });
+
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 ---
+import OptimizedImage from '../../components/ui/OptimizedImage.astro';
+
 const examples = [
   {
     number: '01',
@@ -44,10 +46,13 @@ const examples = [
       {examples.map((item) => (
         <article class="vn-krd-scenarios__card">
           <div class="vn-krd-scenarios__media">
-            <img
+            <OptimizedImage
               src="/images/krasnodar-newbuild-hero.png"
               alt={`Пример жилого комплекса в Краснодаре: ${item.label}`}
               loading="lazy"
+              width={640}
+              height={360}
+              class="vn-krd-scenarios__media-img"
               style={`object-position: ${item.position}`}
             />
             <span>{item.number}</span>
@@ -178,7 +183,8 @@ const examples = [
     pointer-events: none;
   }
 
-  .vn-krd-scenarios__media img {
+  .vn-krd-scenarios__media img,
+  .vn-krd-scenarios__media-img {
     width: 100%;
     height: 100%;
     object-fit: cover;

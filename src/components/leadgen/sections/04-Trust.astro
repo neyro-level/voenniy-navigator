@@ -1,3 +1,6 @@
+---
+import OptimizedImage from '../../../components/ui/OptimizedImage.astro';
+---
 <section
   class="vn-podbor-expert"
   data-review-id="podbor-expert"
@@ -8,11 +11,11 @@
     <div class="vn-grid-12 vn-podbor-expert__layout">
       <div class="vn-podbor-expert__visual" style="grid-column: 1 / 6">
         <div class="vn-podbor-expert__media">
-          <img
+          <OptimizedImage
             src="/images/mikhail-desk.png"
             alt="Михаил Хряпин, эксперт по военной ипотеке в Краснодаре"
-            width="1170"
-            height="1438"
+            width={1170}
+            height={1438}
             loading="lazy"
             class="vn-podbor-expert__photo"
           />

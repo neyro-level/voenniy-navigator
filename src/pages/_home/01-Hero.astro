@@ -1,3 +1,6 @@
+---
+import OptimizedImage from '../../components/ui/OptimizedImage.astro';
+---
 <!-- ══════════════════════════════════════════════
      БЛОК 01 — HERO
 ════════════════════════════════════════════════ -->
@@ -60,11 +63,10 @@
       <div class="vn-home-hero__right">
         <div class="vn-home-hero__photo-outer">
           <div class="vn-home-hero__portrait-frame">
-            <img
+            <OptimizedImage
               src="/images/mikhail-hero.png"
               alt="Михаил Хряпин — эксперт по выбору новостроек по военной ипотеке"
               loading="eager"
-              decoding="async"
               class="vn-home-hero__portrait"
             />
             <div class="vn-home-hero__name-card">

@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "geo-check": "node scripts/geo-check.mjs"
   },
   "dependencies": {
     "astro": "^5.7.0",

@@ -36,7 +36,7 @@
   --color-error-on:          #93000A;
 
   /* ─── Typography: family ─── */
-  --font-family-base:        'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-base:        'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
 
   /* ─── Spacing (section-level) ─── */
   --spacing-section:         120px;
@@ -595,6 +595,48 @@ p, li, blockquote { text-wrap: pretty; }
 /* ─── Hide on mobile utility ─── */
 @media (max-width: 1023px) {
   .vn-hide-mobile { display: none !important; }
+}
+
+/* ─── Reveal on scroll ─── */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal="fade-up"] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal="fade-up"].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-reveal="fade-in"] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  [data-reveal="fade-in"].is-revealed {
+    opacity: 1;
+  }
+
+  [data-reveal="stagger"] > [data-reveal-child] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal="stagger"].is-revealed > [data-reveal-child] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal] > [data-reveal-child] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ─── Animations ─── */

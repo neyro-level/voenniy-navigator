@@ -16,6 +16,7 @@ import { SITE } from '../lib/constants';
 import {
   organizationSchema,
   personSchema,
+  webSiteSchema,
   breadcrumbSchema,
   faqSchema,
   serviceSchema,
@@ -49,14 +50,9 @@ const faqItems = [
 ];
 
 const schemas = [
-  organizationSchema,
-  personSchema,
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE.name,
-    url: `${SITE.url}/`,
-  },
+  organizationSchema(),
+  personSchema(),
+  webSiteSchema(),
   serviceSchema({
     name: 'Помощь с выбором новостройки по военной ипотеке',
     description:

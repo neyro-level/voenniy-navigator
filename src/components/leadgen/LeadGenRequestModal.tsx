@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { track } from '../../lib/analytics';
 import { Check, Loader2, MessageCircle, Phone, Send, X } from 'lucide-react';
 import { sendLead } from '@/lib/leads';
 import '../../styles/modal.css';
@@ -163,10 +164,7 @@ export default function LeadGenRequestModal({
       setModalThankYouUrl(detail.thankYouUrl || thankYouUrl);
       setIsOpen(true);
 
-      const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
-      if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'leadgen_form_open');
-      }
+      track('modal_open', { params: { source: detail.source || source || window.location.pathname, type: 'leadgen' } });
     };
 
     window.addEventListener('open-leadgen-modal', openModal);
@@ -265,10 +263,7 @@ export default function LeadGenRequestModal({
       });
 
       setSubmitState('success');
-      const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
-      if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'leadgen_form_submit');
-      }
+      track('lead_submit', { params: { source: modalSource, type: 'leadgen' } });
       setTimeout(() => {
         const targetUrl = new URL(modalThankYouUrl, window.location.origin);
         targetUrl.searchParams.set('method', method || 'call');

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { track } from '../../lib/analytics';
 import { Check, Loader2, MessageCircle, Phone, Send, X } from 'lucide-react';
 import { sendLead } from '@/lib/leads';
 import '../../styles/modal.css';
@@ -179,10 +180,7 @@ export default function RequestModal({
       setModalThankYouUrl(detail.thankYouUrl || thankYouUrl);
       setIsOpen(true);
 
-      const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
-      if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'form_open');
-      }
+      track('modal_open', { params: { source: detail.source || source || window.location.pathname } });
     };
 
     window.addEventListener('open-modal', openModal);
@@ -287,10 +285,7 @@ export default function RequestModal({
       });
 
       setSubmitState('success');
-      const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
-      if (counterId) {
-        window.ym?.(counterId, 'reachGoal', 'form_submit');
-      }
+      track('lead_submit', { params: { source: modalSource } });
       setTimeout(() => {
         const targetUrl = new URL(modalThankYouUrl, window.location.origin);
         targetUrl.searchParams.set('method', method || 'call');

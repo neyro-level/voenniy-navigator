@@ -1,0 +1,43 @@
+---
+/**
+ * RevealOnScroll — универсальный wrapper для анимации появления
+ * при скролле в viewport. Использует IntersectionObserver.
+ *
+ * Modes:
+ * - "fade-up"   : opacity 0→1 + translateY(24px→0)
+ * - "fade-in"   : opacity 0→1
+ * - "stagger"   : применяет stagger-delay к дочерним элементам с data-reveal-child
+ */
+interface Props {
+  class?: string;
+  mode?: 'fade-up' | 'fade-in' | 'stagger';
+  delay?: number;      // ms, базовая задержка
+  stagger?: number;    // ms, шаг между дочерними элементами
+  threshold?: number;  // 0–1
+  rootMargin?: string;
+  once?: boolean;      // true = анимировать только 1 раз
+}
+
+const {
+  class: className = '',
+  mode = 'fade-up',
+  delay = 0,
+  stagger = 80,
+  threshold = 0.12,
+  rootMargin = '0px 0px -40px 0px',
+  once = true,
+} = Astro.props;
+
+const dataAttrs = {
+  'data-reveal': mode,
+  'data-reveal-delay': String(delay),
+  'data-reveal-stagger': String(stagger),
+  'data-reveal-threshold': String(threshold),
+  'data-reveal-root-margin': rootMargin,
+  'data-reveal-once': String(once),
+};
+---
+
+<div class={className} {...dataAttrs}>
+  <slot />
+</div>

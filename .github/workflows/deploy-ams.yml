@@ -29,7 +29,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.33.2
+          version: 11.5.1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -38,13 +38,16 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: CI=true pnpm install --frozen-lockfile
 
       - name: Build
         env:
           PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}
           PUBLIC_REVIEW_SITE_KEY: ${{ secrets.PUBLIC_REVIEW_SITE_KEY }}
         run: pnpm build
+
+      - name: GEO check
+        run: pnpm geo-check
 
       - name: Configure SSH
         run: |
