@@ -18,6 +18,13 @@
 - **Checks:** повторный поиск по `dist` подтвердил, что placeholder-ссылок и битых внутренних route-href больше нет.
 - **Note:** в рабочем дереве остаются сторонние пользовательские изменения `.qwen/settings.json` и `.qwen/settings.json.orig`; они не относятся к сайту и не должны попадать в релиз этого проекта без отдельного решения.
 
+### 2026-06-06 — Временное включение review-виджета на основном домене
+
+- **Decision:** временно включён клиентский review-виджет на production-домене `voen-navigator.ru`, чтобы клиент мог оставлять точечные замечания по блокам прямо на сайте.
+- **Updated:** `.github/workflows/deploy-ams.yml` — в production build добавлен `PUBLIC_REVIEW_ENABLED='true'`.
+- **Updated:** `.env.example` — флаг review-режима синхронизирован с текущим временным production-режимом проекта.
+- **Note:** сам `ReviewWidget` уже был встроен в `BaseLayout` и поддерживал production-hostname; задача свелась к включению флага сборки, без дополнительной вёрстки.
+
 ### 2026-06-05 — Бриф страницы условий военной ипотеки
 
 - **Created:** `pages/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md` — утвержденный структурный бриф страницы `/usloviya-voennoy-ipoteki/`.

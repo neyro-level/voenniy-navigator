@@ -14,6 +14,7 @@ env:
   SITE_SLUG: voenniy-navigator
   PUBLIC_LEADS_API_URL: /api/leads
   PUBLIC_PROJECT_ID: voenniy-navigator
+  PUBLIC_REVIEW_ENABLED: 'true'
   PUBLIC_REVIEW_API_URL: https://review.ams-cloud.ru
   PUBLIC_REVIEW_PROJECT_ID: voenniy-navigator
 
