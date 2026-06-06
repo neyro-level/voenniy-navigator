@@ -1,4 +1,5 @@
 import { SITE } from '../../lib/constants';
+import { OG_IMAGES } from '../../lib/og';
 import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from '../../lib/seo';
 
 export const pageMeta = {
@@ -6,7 +7,7 @@ export const pageMeta = {
   description:
     'Получите подборку 12 проверенных ЖК Краснодара по военной ипотеке: районы, застройщики, ликвидность, условия банков и цель покупки.',
   canonical: `${SITE.url}/voennaya-ipoteka-krasnodar/`,
-  ogImage: `${SITE.url}/og/voennaya-ipoteka-krasnodar.jpg`,
+  ogImage: OG_IMAGES.voennayaIpoteka,
 };
 
 export const faqItems = [
@@ -37,7 +38,7 @@ export const faqItems = [
 ];
 
 export const schemas = [
-  organizationSchema,
+  organizationSchema(),
   serviceSchema({
     name: 'Подбор квартир и ЖК Краснодара по военной ипотеке',
     description:

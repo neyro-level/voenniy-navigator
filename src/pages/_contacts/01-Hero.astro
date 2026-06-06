@@ -1,5 +1,9 @@
 ---
 import { CONTACTS } from "../../lib/constants";
+import { getConfiguredValue } from "../../lib/utils";
+
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const maxHref = getConfiguredValue(CONTACTS.max);
 ---
 
 <section id="section-contacts-hero" class="vn-contacts-hero">
@@ -31,31 +35,26 @@ import { CONTACTS } from "../../lib/constants";
           >
             Оставить заявку
           </a>
-          <a
-            href={CONTACTS.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="vn-contacts-hero__messenger"
-          >
-            Telegram
-          </a>
-          <a
-            href={CONTACTS.max.startsWith("[") ? "#" : CONTACTS.max}
-            target={CONTACTS.max.startsWith("[") ? undefined : "_blank"}
-            rel={CONTACTS.max.startsWith("[")
-              ? undefined
-              : "noopener noreferrer"}
-            aria-disabled={CONTACTS.max.startsWith("[") ? "true" : undefined}
-            class:list={[
-              "vn-contacts-hero__messenger",
-              {
-                "vn-contacts-hero__messenger--disabled":
-                  CONTACTS.max.startsWith("["),
-              },
-            ]}
-          >
-            Max
-          </a>
+          {telegramHref && (
+            <a
+              href={telegramHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-contacts-hero__messenger"
+            >
+              Telegram
+            </a>
+          )}
+          {maxHref && (
+            <a
+              href={maxHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-contacts-hero__messenger"
+            >
+              Max
+            </a>
+          )}
           <a
             href={`tel:${CONTACTS.phone.replace(/[^\d+]/g, "")}`}
             class="vn-contacts-hero__phone"
@@ -265,12 +264,6 @@ import { CONTACTS } from "../../lib/constants";
     );
     color: var(--color-text-ondark);
   }
-
-  .vn-contacts-hero__messenger--disabled {
-    color: var(--color-text-ondark-mute);
-    pointer-events: none;
-  }
-
   .vn-contacts-hero__trust {
     display: flex;
     align-items: center;

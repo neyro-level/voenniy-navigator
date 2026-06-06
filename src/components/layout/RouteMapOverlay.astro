@@ -1,8 +1,12 @@
 ---
 import { CONTACTS, OFFICES } from '../../lib/constants';
 import { NAV_ITEMS, GROUP_LABELS, type NavGroup } from '../../lib/navigation/navData';
+import { getConfiguredValue } from '../../lib/utils';
 
 const currentPath = Astro.url.pathname;
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const maxHref = getConfiguredValue(CONTACTS.max);
+const vkHref = getConfiguredValue(CONTACTS.vk);
 
 const CARD_BODIES: Record<string, string> = {
   '/voennaya-ipoteka-krasnodar/': 'Отбор новостроек под задачу, а не по витрине.',
@@ -265,26 +269,32 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
           </svg>
           <span>{CONTACTS.phone}</span>
         </a>
-        <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
-          </svg>
-          <span>Telegram</span>
-        </a>
-        <a href={CONTACTS.max} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
-          </svg>
-          <span>Max</span>
-        </a>
-        <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-            <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
-            <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
-          </svg>
-          <span>ВКонтакте</span>
-        </a>
+        {telegramHref && (
+          <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
+            </svg>
+            <span>Telegram</span>
+          </a>
+        )}
+        {maxHref && (
+          <a href={maxHref} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+            </svg>
+            <span>Max</span>
+          </a>
+        )}
+        {vkHref && (
+          <a href={vkHref} target="_blank" rel="noopener noreferrer" class="vn-overlay-contact-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+              <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+            </svg>
+            <span>ВКонтакте</span>
+          </a>
+        )}
       </div>
 
       <hr class="vn-overlay-divider" aria-hidden="true" />

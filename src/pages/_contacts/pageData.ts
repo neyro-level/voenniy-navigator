@@ -1,13 +1,18 @@
 import { SITE, CONTACTS } from '../../lib/constants';
+import { OG_IMAGES } from '../../lib/og';
 import { breadcrumbSchema, faqSchema, organizationSchema } from '../../lib/seo';
+import { getConfiguredValue } from '../../lib/utils';
 
 export const pageMeta = {
   title: 'Контакты Михаила Хряпина — Краснодар и Бахчисарай (Крым)',
   description:
     'Контакты Михаила Хряпина: офисы в Краснодаре и Бахчисарае (Крым), телефон, Telegram, запись на разбор покупки новостройки по военной ипотеке.',
   canonical: `${SITE.url}/contacts/`,
-  ogImage: `${SITE.url}/og/contacts.jpg`,
+  ogImage: OG_IMAGES.contacts,
 };
+const sameAs = [CONTACTS.vk, CONTACTS.telegram]
+  .map((value) => getConfiguredValue(value))
+  .filter((value): value is string => Boolean(value));
 
 export const faqItems = [
   {
@@ -37,7 +42,7 @@ export const faqItems = [
 ];
 
 export const schemas = [
-  organizationSchema,
+  organizationSchema(),
   {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -53,7 +58,7 @@ export const schemas = [
       addressRegion: 'Краснодарский край',
       addressCountry: 'RU',
     },
-    sameAs: [CONTACTS.vk, CONTACTS.telegram],
+    sameAs,
   },
   {
     '@context': 'https://schema.org',

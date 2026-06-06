@@ -2,9 +2,12 @@
 import { NAV_ITEMS } from '../../lib/navigation/navData';
 import { CONTACTS, LEGAL } from '../../lib/constants';
 import { FOOTER_LEGAL_LINKS } from '../technical/technicalManifest';
+import { getConfiguredValue } from '../../lib/utils';
 
 const currentPath = Astro.url.pathname;
 const hasMobileDock = !currentPath.includes('/contacts/');
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const vkHref = getConfiguredValue(CONTACTS.vk);
 ---
 
 <footer class={`vn-footer${hasMobileDock ? ' vn-footer--with-mobile-dock' : ''}`} role="contentinfo">
@@ -36,22 +39,30 @@ const hasMobileDock = !currentPath.includes('/contacts/');
         </svg>
         {CONTACTS.phone}
       </a>
-      <span class="vn-footer__bar-sep" aria-hidden="true"></span>
-      <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="Telegram" data-track="messenger_click" data-track-params='{"type":"telegram"}'>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
-        </svg>
-        Telegram
-      </a>
-      <span class="vn-footer__bar-sep" aria-hidden="true"></span>
-      <a href={CONTACTS.vk} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="VK" data-track="messenger_click" data-track-params='{"type":"vk"}'>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-          <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
-          <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
-        </svg>
-        ВКонтакте
-      </a>
+      {telegramHref && (
+        <>
+          <span class="vn-footer__bar-sep" aria-hidden="true"></span>
+          <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="Telegram" data-track="messenger_click" data-track-params='{"type":"telegram"}'>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
+            </svg>
+            Telegram
+          </a>
+        </>
+      )}
+      {vkHref && (
+        <>
+          <span class="vn-footer__bar-sep" aria-hidden="true"></span>
+          <a href={vkHref} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="VK" data-track="messenger_click" data-track-params='{"type":"vk"}'>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+              <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+            </svg>
+            ВКонтакте
+          </a>
+        </>
+      )}
     </div>
   </div>
 

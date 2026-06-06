@@ -7,6 +7,17 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Deployed:** commit `9736e0e` pushed to `main`, GitHub Actions → AMS Server.
 
+### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
+
+- **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
+- **Checked:** локальная сборка и технические проверки пройдены заново: `pnpm build` → 0 errors / 0 warnings / 0 hints, `pnpm geo-check` → `100/100`.
+- **Fixed:** убраны runtime-утечки placeholder-данных в публичный HTML. Ссылки `Max` / `ВКонтакте`, если не настроены, больше не попадают в footer, overlay, trust/reviews и финальные CTA.
+- **Fixed:** исправлен schema-layer на новых страницах. В нескольких `pageData.ts` вместо ссылки на функцию `organizationSchema` теперь вызывается `organizationSchema()`, поэтому JSON-LD больше не сериализуется с `null`-элементами.
+- **Fixed:** OG-изображения переведены с несуществующих путей `/og/*.jpg` на реальные публичные ассеты в `public/images/`, чтобы production не раздавал битые social preview URLs.
+- **Fixed:** в `src/lib/geo/schema.ts` `sameAs` теперь очищается от placeholder-значений перед генерацией Schema.org.
+- **Checks:** повторный поиск по `dist` подтвердил, что placeholder-ссылок и битых внутренних route-href больше нет.
+- **Note:** в рабочем дереве остаются сторонние пользовательские изменения `.qwen/settings.json` и `.qwen/settings.json.orig`; они не относятся к сайту и не должны попадать в релиз этого проекта без отдельного решения.
+
 ### 2026-06-05 — Бриф страницы условий военной ипотеки
 
 - **Created:** `pages/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md` — утвержденный структурный бриф страницы `/usloviya-voennoy-ipoteki/`.

@@ -7,13 +7,12 @@ import {
   GEO_SITE,
   GEO_CONTACTS,
   GEO_OFFICES,
-  GEO_LEGAL,
-  GEO_SERVICES,
   GEO_FAQ,
   GEO_LINKS,
   GEO_PERSON,
   GEO_AI_POLICY,
 } from './config';
+import { getConfiguredValue } from '../utils';
 
 /** Base context для всех schema объектов */
 const ctx = { '@context': 'https://schema.org' } as const;
@@ -21,6 +20,10 @@ const ctx = { '@context': 'https://schema.org' } as const;
 /** Organization / LocalBusiness для основного офиса */
 export function organizationSchema() {
   const primary = GEO_OFFICES.find((o) => o.primary) ?? GEO_OFFICES[0];
+  const sameAs = [GEO_CONTACTS.vk, GEO_CONTACTS.telegram]
+    .map((value) => getConfiguredValue(value))
+    .filter((value): value is string => Boolean(value));
+
   return {
     ...ctx,
     '@type': 'Organization',
@@ -35,7 +38,7 @@ export function organizationSchema() {
       addressLocality: primary?.city,
       addressCountry: GEO_SITE.country,
     },
-    sameAs: [GEO_CONTACTS.vk, GEO_CONTACTS.telegram].filter(Boolean),
+    sameAs,
   };
 }
 

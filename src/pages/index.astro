@@ -13,10 +13,10 @@ import Limits from './_home/10-Limits.astro';
 import FAQ from './_home/11-FAQ.astro';
 import FinalCTA from './_home/12-FinalCTA.astro';
 import { SITE } from '../lib/constants';
+import { OG_IMAGES } from '../lib/og';
 import {
   organizationSchema,
   personSchema,
-  webSiteSchema,
   breadcrumbSchema,
   faqSchema,
   serviceSchema,
@@ -52,7 +52,6 @@ const faqItems = [
 const schemas = [
   organizationSchema(),
   personSchema(),
-  webSiteSchema(),
   serviceSchema({
     name: 'Помощь с выбором новостройки по военной ипотеке',
     description:
@@ -69,7 +68,7 @@ const schemas = [
   title="Военная ипотека: выбор новостройки под вашу задачу"
   description="Помогаю военнослужащим выбрать новостройку по военной ипотеке под задачу: для жизни или вложения. Первый шаг — первичный разбор без обязательств."
   canonical={`${SITE.url}/`}
-  ogImage={`${SITE.url}/og/home.jpg`}
+  ogImage={OG_IMAGES.home}
   schema={schemas}
 >
   <Hero />

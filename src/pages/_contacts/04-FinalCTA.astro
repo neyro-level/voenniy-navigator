@@ -1,5 +1,9 @@
 ---
 import { CONTACTS } from "../../lib/constants";
+import { getConfiguredValue } from "../../lib/utils";
+
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const maxHref = getConfiguredValue(CONTACTS.max);
 ---
 
 <section id="section-contacts-video" class="vn-contacts-video">
@@ -39,29 +43,24 @@ import { CONTACTS } from "../../lib/constants";
           >
             Записаться на видеовстречу
           </a>
-          <a
-            href={CONTACTS.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="vn-contacts-video__link">Telegram</a
-          >
-          <a
-            href={CONTACTS.max.startsWith("[") ? "#" : CONTACTS.max}
-            target={CONTACTS.max.startsWith("[") ? undefined : "_blank"}
-            rel={CONTACTS.max.startsWith("[")
-              ? undefined
-              : "noopener noreferrer"}
-            aria-disabled={CONTACTS.max.startsWith("[") ? "true" : undefined}
-            class:list={[
-              "vn-contacts-video__link",
-              {
-                "vn-contacts-video__link--disabled":
-                  CONTACTS.max.startsWith("["),
-              },
-            ]}
-          >
-            Max
-          </a>
+          {telegramHref && (
+            <a
+              href={telegramHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-contacts-video__link">Telegram</a
+            >
+          )}
+          {maxHref && (
+            <a
+              href={maxHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-contacts-video__link"
+            >
+              Max
+            </a>
+          )}
         </div>
       </div>
 
@@ -228,13 +227,6 @@ import { CONTACTS } from "../../lib/constants";
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(241, 243, 245, 0.28);
   }
-
-  .vn-contacts-video__link--disabled {
-    color: var(--color-text-ondark-mute);
-    pointer-events: none;
-    opacity: 0.55;
-  }
-
   .vn-contacts-video__visual {
     position: relative;
   }

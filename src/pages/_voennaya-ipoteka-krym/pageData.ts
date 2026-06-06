@@ -1,4 +1,5 @@
 import { SITE } from '../../lib/constants';
+import { OG_IMAGES } from '../../lib/og';
 import { breadcrumbSchema, faqSchema, organizationSchema, serviceSchema } from '../../lib/seo';
 
 export const pageMeta = {
@@ -6,7 +7,7 @@ export const pageMeta = {
   description:
     'Помощь с выбором новостройки или квартиры в Крыму по военной ипотеке: Симферополь, Ялта, побережье, разбор сценария покупки и дистанционный маршрут.',
   canonical: `${SITE.url}/voennaya-ipoteka-krym/`,
-  ogImage: `${SITE.url}/og/voennaya-ipoteka-krym.jpg`,
+  ogImage: OG_IMAGES.krym,
 };
 
 export const faqItems = [
@@ -45,7 +46,7 @@ export const faqItems = [
 ];
 
 export const schemas = [
-  organizationSchema,
+  organizationSchema(),
   serviceSchema({
     name: 'Помощь с покупкой квартиры в Крыму по военной ипотеке',
     description:

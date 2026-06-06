@@ -27,6 +27,23 @@ export function getURL(path: string = ''): string {
 }
 
 /**
+ * Detect placeholder-like values such as `[VK_GROUP]` or `[MAX_LINK]`.
+ */
+export function isPlaceholderValue(value?: string | null): boolean {
+  if (!value) return true;
+  return /^\[[A-Z0-9_]+\]$/i.test(value.trim());
+}
+
+/**
+ * Keep only configured public contact values.
+ */
+export function getConfiguredValue(value?: string | null): string | undefined {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  return isPlaceholderValue(trimmed) ? undefined : trimmed;
+}
+
+/**
  * Typed POST wrapper for internal API calls.
  */
 export async function postData<T = unknown>({

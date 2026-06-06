@@ -5,11 +5,13 @@ function absoluteOg(path: string) {
 }
 
 export const OG_IMAGES = {
-  default: absoluteOg('/og/home.jpg'),
-  home: absoluteOg('/og/home.jpg'),
-  voennayaIpoteka: absoluteOg('/og/voennaya-ipoteka-krasnodar.jpg'),
-  usloviya: absoluteOg('/og/usloviya.jpg'),
-  semeynaya: absoluteOg('/og/semeynaya.jpg'),
-  contacts: absoluteOg('/og/contacts.jpg'),
-  thanks: absoluteOg('/og/thanks.jpg'),
+  default: absoluteOg('/images/mikhail-hero.png'),
+  home: absoluteOg('/images/mikhail-hero.png'),
+  voennayaIpoteka: absoluteOg('/images/krasnodar-newbuild-hero.png'),
+  usloviya: absoluteOg('/images/mikhail-desk.png'),
+  semeynaya: absoluteOg('/images/mikhail-hero.png'),
+  contacts: absoluteOg('/images/mikhail-desk.png'),
+  thanks: absoluteOg('/images/mikhail-hero.png'),
+  kalkulyator: absoluteOg('/images/mikhail-desk.png'),
+  krym: absoluteOg('/images/mikhail-hero.png'),
 } as const;

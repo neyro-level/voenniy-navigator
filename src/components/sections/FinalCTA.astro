@@ -1,5 +1,6 @@
 ---
 import { CONTACTS } from "../../lib/constants";
+import { getConfiguredValue } from "../../lib/utils";
 
 interface UsefulLink {
   label: string;
@@ -29,6 +30,8 @@ const {
   showUsefulLinks = false,
   usefulLinks = [],
 } = Astro.props;
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const maxHref = getConfiguredValue(CONTACTS.max);
 ---
 
 <section
@@ -60,19 +63,23 @@ const {
         <p class="vn-final-cta__alt">
           <span>Или напишите напрямую:</span>
           <span class="vn-final-cta__alt-links">
-            <a
-              href={CONTACTS.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="vn-final-cta__alt-link">Telegram</a
-            >
-            <span class="vn-final-cta__alt-sep">/</span>
-            <a
-              href={CONTACTS.max}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="vn-final-cta__alt-link">Max</a
-            >
+            {telegramHref && (
+              <a
+                href={telegramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="vn-final-cta__alt-link">Telegram</a
+              >
+            )}
+            {telegramHref && maxHref && <span class="vn-final-cta__alt-sep">/</span>}
+            {maxHref && (
+              <a
+                href={maxHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="vn-final-cta__alt-link">Max</a
+              >
+            )}
           </span>
         </p>
       </div>
