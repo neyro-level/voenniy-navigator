@@ -23,6 +23,7 @@
 - **Decision:** временно включён клиентский review-виджет на production-домене `voen-navigator.ru`, чтобы клиент мог оставлять точечные замечания по блокам прямо на сайте.
 - **Updated:** `.github/workflows/deploy-ams.yml` — в production build добавлен `PUBLIC_REVIEW_ENABLED='true'`.
 - **Updated:** `.env.example` — флаг review-режима синхронизирован с текущим временным production-режимом проекта.
+- **Fixed:** устранён production-блокер GitHub Actions для `pnpm 11`: разрешённые build scripts (`esbuild`, `sharp`) перенесены из устаревшего поля `package.json` в новый проектный конфиг `pnpm-workspace.yaml` через `allowBuilds`, чтобы `pnpm install --frozen-lockfile` снова проходил в CI.
 - **Note:** сам `ReviewWidget` уже был встроен в `BaseLayout` и поддерживал production-hostname; задача свелась к включению флага сборки, без дополнительной вёрстки.
 
 ### 2026-06-05 — Бриф страницы условий военной ипотеки
