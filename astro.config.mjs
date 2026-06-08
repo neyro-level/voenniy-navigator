@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://voen-navigator.ru',
   trailingSlash: 'always',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   integrations: [
     react(),
     sitemap({

@@ -7,6 +7,16 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Deployed:** commit `9736e0e` pushed to `main`, GitHub Actions → AMS Server.
 
+### 2026-06-08 — Публикация крупной переработки страниц + старт Development Research
+
+- **Published:** в `origin/main` отправлен коммит `feat: expand service pages and refresh homepage structure` с крупной пользовательской переработкой главной страницы и service SEO-страниц.
+- **Included:** опубликованы новые и перестроенные секции для `/`, `/semeynaya-voennaya-ipoteka/`, `/voennaya-ipoteka-krasnodar/`, `/voennaya-ipoteka-krym/`, а также связанные route-обновления и проектные `.kilo/plans/*`.
+- **Excluded:** `.qwen/settings.json` и `.qwen/settings.json.orig` оставлены локально и не попали в git-публикацию.
+- **Removed:** локальные служебные копии `ams-astro-build/` и `ams-copywriting/` удалены перед публикацией, чтобы не засорять репозиторий проекта.
+- **Baseline:** перед улучшениями зафиксировано текущее техническое состояние — `pnpm build` и `pnpm geo-check` проходят, сборка генерирует 16 страниц, крупнейший клиентский chunk `dist/_astro/client.*.js` ≈ 136.5 kB, review widget chunk ≈ 12.4 kB.
+- **Updated:** в `astro.config.mjs` включён встроенный Astro Prefetch с осторожной стратегией `prefetchAll: true` + `defaultStrategy: 'hover'` как первый безопасный UX/performance-этап без новых зависимостей.
+- **Checks:** повторные `pnpm build` и `pnpm geo-check` после включения prefetch пройдены успешно (`0 errors / 0 warnings / 0 hints`, GEO `100/100`). Browser QA для desktop/mobile остаётся обязательным следующим шагом.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
