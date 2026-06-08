@@ -1,76 +1,62 @@
 ---
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
-const reviewSteps = [
+const formulaSteps = [
   {
-    title: 'Задача покупки',
-    text: 'Для жизни, переезда позже, вложения или дистанционного сценария',
+    number: '01',
+    title: 'Анализ задачи и бюджета',
+    text: 'Выясняем реальную цель покупки и формируем точный коридор возможностей, а не оперируем абстрактными цифрами.'
   },
   {
-    title: 'Ограничения программы',
-    text: 'НИС, банк, бюджет, сроки и важные условия по сделке',
+    number: '02',
+    title: 'Фильтр ограничений',
+    text: 'Проверяем требования банка, сроки и ликвидность, отсеивая неподходящие варианты ещё на этапе анализа.'
   },
   {
-    title: 'Критерии выбора',
-    text: 'Район, срок сдачи, формат квартиры, ликвидность и сценарий использования',
-  },
-  {
-    title: 'Следующий шаг',
-    text: 'Считать, подбирать, идти в региональный маршрут или готовить сделку',
-  },
-];
-
-const reviewResults = [
-  'Станет яснее, какая задача реально решается покупкой',
-  'Будут видны ограничения по программе и сделке',
-  'Появятся критерии для короткого списка объектов',
-  'Понятно, какой маршрут логичен именно сейчас',
+    number: '03',
+    title: 'Готовый маршрут',
+    text: 'Вы получаете короткий список новостроек, которые реально одобрят, и чёткий план следующих действий.',
+    isResult: true
+  }
 ];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-review" class="vn-section vn-home-review" aria-labelledby="vn-home-review-title">
+  <section id="section-review" class="vn-home-review" aria-labelledby="vn-home-review-title">
     <div class="vn-container">
-      <div class="vn-grid-12 vn-home-review__layout">
-        <div class="vn-home-review__intro" style="grid-column: 1 / 6">
-          <span class="vn-label-mono">Первичный разбор</span>
-          <h2 class="vn-home-review__title" id="vn-home-review-title">
-            Что происходит на разборе ситуации
-          </h2>
-          <p class="vn-home-review__lead">
-            Это первый продукт сервиса. На нём Михаил уточняет задачу, ограничения и критерии,
-            чтобы отбор новостроек строился на вашей ситуации, а не на случайной витрине объектов.
-          </p>
-          <a
-            href="/contacts/#request"
-            data-modal-open
-            data-modal-title="Получить разбор ситуации"
-            class="vn-btn-primary vn-home-review__cta"
-          >
-            Получить разбор ситуации
-          </a>
-        </div>
+      <div class="vn-home-review__header">
+        <span class="vn-label-mono">Первичный разбор</span>
+        <h2 class="vn-home-review__title" id="vn-home-review-title">
+          Как мы формируем ваш персональный маршрут покупки
+        </h2>
+        <p class="vn-home-review__lead">
+          Это не просто консультация, а аналитический процесс. Мы проверяем всё на бумаге, 
+          чтобы вы не теряли время на объекты, которые не пройдут одобрение банка.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить разбор ситуации"
+          class="vn-btn-primary vn-home-review__cta"
+        >
+          Получить разбор ситуации
+        </a>
+      </div>
 
-        <div class="vn-home-review__steps-card" style="grid-column: 6 / 13">
-          <div class="vn-home-review__steps-grid">
-            {reviewSteps.map((step, index) => (
-              <article class="vn-home-review__step">
-                <span class="vn-home-review__step-num">{String(index + 1).padStart(2, '0')}</span>
-                <h3 class="vn-home-review__step-title">{step.title}</h3>
-                <p class="vn-home-review__step-text">{step.text}</p>
-              </article>
-            ))}
-          </div>
-
-          <div class="vn-home-review__result-panel">
-            <span class="vn-home-review__result-label">После разбора</span>
-            <ul class="vn-home-review__result-list">
-              {reviewResults.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+      <div class="vn-home-review__formula">
+        {formulaSteps.map((step, index) => (
+          <>
+            <article class={`vn-home-review__step ${step.isResult ? 'vn-home-review__step--result' : ''}`}>
+              <span class="vn-home-review__step-num">{step.number}</span>
+              <h3 class="vn-home-review__step-title">{step.title}</h3>
+              <p class="vn-home-review__step-text">{step.text}</p>
+            </article>
+            
+            {index < formulaSteps.length - 1 && (
+              <div class="vn-home-review__connector" aria-hidden="true"></div>
+            )}
+          </>
+        ))}
       </div>
     </div>
   </section>
@@ -78,25 +64,26 @@ const reviewResults = [
 
 <style>
   .vn-home-review {
+    padding-block: 96px;
     background: var(--color-bg-surface);
   }
 
-  .vn-home-review__layout {
-    align-items: start;
+  .vn-home-review__header {
+    max-width: 640px;
+    margin-bottom: 56px;
   }
 
   .vn-home-review__title {
     margin: 16px 0 14px;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.16;
+    line-height: 1.2;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-home-review__lead {
     margin: 0;
-    max-width: 520px;
     font-size: var(--fs-body);
     line-height: 1.65;
     color: var(--color-text-secondary);
@@ -107,116 +94,153 @@ const reviewResults = [
     margin-top: 28px;
   }
 
-  .vn-home-review__steps-card {
-    display: grid;
-    gap: 18px;
-  }
-
-  .vn-home-review__steps-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+  .vn-home-review__formula {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
   }
 
   .vn-home-review__step {
-    display: grid;
-    gap: 8px;
-    min-height: 100%;
-    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-surface-lowest);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-primary);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .vn-home-review__step:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
+  }
+
+  .vn-home-review__step--result {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent-cta) 4%, var(--color-bg-primary));
+  }
+
+  .vn-home-review__step--result:hover {
+    background: color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-primary));
   }
 
   .vn-home-review__step-num {
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
     color: var(--color-accent-cta);
-    font-variant-numeric: tabular-nums;
     opacity: 0.8;
+    font-variant-numeric: tabular-nums;
   }
 
   .vn-home-review__step-title {
     margin: 0;
-    font-size: var(--fs-body);
+    font-size: var(--fs-h3);
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.3;
     color: var(--color-text-primary);
   }
 
   .vn-home-review__step-text {
     margin: 0;
     font-size: var(--fs-body-sm);
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--color-text-secondary);
-    text-wrap: pretty;
   }
 
-  .vn-home-review__result-panel {
-    padding: 28px;
-    border-radius: 18px;
-    background: var(--color-bg-dark);
-    border: 1px solid var(--color-border-ondark);
-  }
-
-  .vn-home-review__result-label {
-    display: inline-flex;
-    margin-bottom: 16px;
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-ondark-mute);
-  }
-
-  .vn-home-review__result-list {
-    display: grid;
-    gap: 12px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .vn-home-review__result-list li {
+  .vn-home-review__connector {
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    padding-left: 18px;
-    font-size: var(--fs-body-sm);
-    line-height: 1.55;
-    color: var(--color-text-ondark);
   }
 
-  .vn-home-review__result-list li::before {
+  .vn-home-review__connector::before {
     content: '';
-    position: absolute;
-    top: 0.7em;
-    left: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-accent-cta);
-    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-border), color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border)), var(--color-border));
   }
 
+  /* Мобильная адаптация: вертикальный таймлайн */
   @media (max-width: 1023px) {
-    .vn-home-review__intro,
-    .vn-home-review__steps-card {
-      grid-column: 1 / -1 !important;
+    .vn-home-review {
+      padding-block: 72px;
     }
 
-    .vn-home-review__steps-card {
-      margin-top: 32px;
+    .vn-home-review__formula {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .vn-home-review__connector {
+      flex: 0 0 32px;
+      width: 100%;
+      justify-content: flex-start;
+      padding-left: 23px; /* Выравнивание по центру номера */
+    }
+
+    .vn-home-review__connector::before {
+      width: 1px;
+      height: 100%;
+      background: var(--color-border);
+    }
+
+    .vn-home-review__step {
+      padding: 24px 24px 24px 72px;
+      border-radius: 0;
+      border: none;
+      border-left: 1px solid var(--color-border);
+      background: transparent;
+      box-shadow: none;
+      transform: none !important;
+    }
+
+    .vn-home-review__step--result {
+      border-left-color: var(--color-accent-cta);
+      background: transparent;
+    }
+
+    .vn-home-review__step-num {
+      position: absolute;
+      left: -12px; /* Центрируем на линии */
+      top: 24px;
+      font-size: 1.5rem;
+      background: var(--color-bg-surface);
+      padding: 0 8px;
     }
   }
 
   @media (max-width: 640px) {
-    .vn-home-review__steps-grid {
-      grid-template-columns: 1fr;
+    .vn-home-review {
+      padding-block: 56px;
     }
 
-    .vn-home-review__step,
-    .vn-home-review__result-panel {
-      padding: 20px;
+    .vn-home-review__header {
+      margin-bottom: 40px;
+    }
+
+    .vn-home-review__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
+    }
+
+    .vn-home-review__step {
+      padding: 20px 20px 20px 64px;
+    }
+
+    .vn-home-review__connector {
+      padding-left: 19px;
+      flex: 0 0 24px;
+    }
+
+    .vn-home-review__step-num {
+      top: 20px;
+      font-size: 1.25rem;
+      left: -10px;
     }
   }
 </style>

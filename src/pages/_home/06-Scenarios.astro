@@ -3,120 +3,106 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
 const scenarios = [
   {
-    tag: 'Цель покупки',
-    title: 'Для жизни',
-    text: 'Важны район, планировка, инфраструктура и удобство на каждый день для семьи.',
+    title: 'Переезд в другой регион',
+    text: 'Вы покупаете квартиру сейчас, а переезжаете позже. Мы подбираем объект с хорошей отдачей от аренды и сопровождаем сделку полностью удалённо.'
   },
   {
-    tag: 'Ситуация',
-    title: 'Переезд позже',
-    text: 'Квартиру покупаете сейчас, а использовать планируете позже. Нужно понять, что делать с объектом до переезда.',
+    title: 'Покупка для семьи',
+    text: 'Главный фокус — безопасность, район и инфраструктура. Мы отсеиваем проблемных застройщиков и проверяем документы до того, как вы внесёте задаток.'
   },
   {
-    tag: 'Цель покупки',
-    title: 'Как вложение',
-    text: 'Нужно оценить ликвидность, срок, район и сценарий использования, а не только цену входа.',
+    title: 'Инвестиция и сохранение средств',
+    text: 'Оцениваем не только цену входа, но и реальный потенциал роста цены, ликвидность и сроки сдачи, чтобы ваши средства работали эффективно.'
   },
   {
-    tag: 'Формат сделки',
-    title: 'Дистанционная покупка',
-    text: 'Важно заранее понять, какие этапы можно пройти удалённо и где потребуется личное участие.',
-  },
+    title: 'Дистанционная сделка',
+    text: 'Проводим все этапы согласования онлайн, организуем показ доверенным лицом и готовим документы, чтобы вам не пришлось летать на встречи.'
+  }
 ];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-scenarios" class="vn-section vn-home-scenarios" aria-labelledby="vn-home-scenarios-title">
+  <section id="section-scenarios" class="vn-home-scenarios" aria-labelledby="vn-home-scenarios-title">
     <div class="vn-container">
-      <div class="vn-grid-12 vn-home-scenarios__header">
-        <div style="grid-column: 1 / 8">
-          <span class="vn-label-mono">Scenarios</span>
-          <h2 class="vn-home-scenarios__title" id="vn-home-scenarios-title">
-            Для какой ситуации нужен сервис
-          </h2>
-        </div>
-        <div style="grid-column: 8 / 13">
-          <p class="vn-home-scenarios__lead">
-            Не нужно заранее знать объект или район. Достаточно понимать, какую задачу вы решаете покупкой
-            и что уже ограничивает выбор по сделке.
-          </p>
-        </div>
+      <div class="vn-home-scenarios__header">
+        <span class="vn-label-mono">Живые сценарии</span>
+        <h2 class="vn-home-scenarios__title" id="vn-home-scenarios-title">
+          Мы уже помогали в таких ситуациях
+        </h2>
+        <p class="vn-home-scenarios__lead">
+          Не важно, на каком этапе вы сейчас. Мы не требуем от вас быть экспертом в ипотеке. 
+          Достаточно описать свою задачу — мы подстроим маршрут под вашу реальную ситуацию.
+        </p>
       </div>
 
-      <div class="vn-home-scenarios__grid vn-grid-12">
-        {scenarios.map((scenario, index) => (
-          <article class="vn-home-scenarios__card" style={`grid-column: ${index % 2 === 0 ? '1 / 7' : '7 / 13'}`}>
-            <span class="vn-home-scenarios__tag">{scenario.tag}</span>
+      <div class="vn-home-scenarios__grid">
+        {scenarios.map((scenario) => (
+          <article class="vn-home-scenarios__card">
             <h3 class="vn-home-scenarios__card-title">{scenario.title}</h3>
             <p class="vn-home-scenarios__text">{scenario.text}</p>
           </article>
         ))}
-      </div>
-
-      <div class="vn-home-scenarios__footer">
-        <p>
-          Если вы не уверены, как назвать свою ситуацию, это нормально. На разборе сервис сначала раскладывает задачу,
-          а потом определяет самый логичный маршрут покупки.
-        </p>
       </div>
     </div>
   </section>
 </RevealOnScroll>
 
 <style>
+  .vn-home-scenarios {
+    padding-block: 96px;
+    background: var(--color-bg-primary);
+  }
+
   .vn-home-scenarios__header {
-    align-items: end;
-    margin-bottom: 40px;
+    max-width: 720px;
+    margin-bottom: 56px;
   }
 
   .vn-home-scenarios__title {
-    margin: 16px 0 0;
+    margin: 16px 0 14px;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.16;
+    line-height: 1.2;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-home-scenarios__lead {
     margin: 0;
-    padding-left: 24px;
-    border-left: 1px solid var(--color-border);
-    font-size: var(--fs-body-sm);
+    font-size: var(--fs-body);
     line-height: 1.65;
     color: var(--color-text-secondary);
+    text-wrap: pretty;
   }
 
   .vn-home-scenarios__grid {
-    gap: 16px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   .vn-home-scenarios__card {
-    min-height: 100%;
-    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 32px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     background: var(--color-bg-surface);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .vn-home-scenarios__tag {
-    display: inline-flex;
-    margin-bottom: 12px;
-    padding: 4px 9px;
-    border-radius: 999px;
-    background: var(--color-accent-soft);
-    color: var(--color-text-tertiary);
-    font-size: var(--fs-caption);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  .vn-home-scenarios__card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border));
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
   }
 
   .vn-home-scenarios__card-title {
-    margin: 0 0 10px;
+    margin: 0;
     font-size: var(--fs-h3);
-    line-height: 1.32;
     font-weight: 600;
+    line-height: 1.3;
     color: var(--color-text-primary);
   }
 
@@ -125,44 +111,35 @@ const scenarios = [
     font-size: var(--fs-body-sm);
     line-height: 1.6;
     color: var(--color-text-secondary);
-    text-wrap: pretty;
   }
 
-  .vn-home-scenarios__footer {
-    margin-top: 24px;
-    padding: 20px 0 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .vn-home-scenarios__footer p {
-    margin: 0;
-    max-width: 780px;
-    font-size: var(--fs-body-sm);
-    line-height: 1.65;
-    color: var(--color-text-tertiary);
-  }
-
+  /* Мобильная адаптация */
   @media (max-width: 1023px) {
-    .vn-home-scenarios__header > div {
-      grid-column: 1 / -1 !important;
+    .vn-home-scenarios {
+      padding-block: 72px;
     }
 
-    .vn-home-scenarios__lead {
-      margin-top: 16px;
-      padding-left: 0;
-      border-left: none;
-      border-top: 1px solid var(--color-border);
-      padding-top: 16px;
+    .vn-home-scenarios__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
 
-    .vn-home-scenarios__grid > .vn-home-scenarios__card:nth-child(n) {
-      grid-column: 1 / -1 !important;
+    .vn-home-scenarios__card {
+      padding: 24px;
     }
   }
 
   @media (max-width: 640px) {
-    .vn-home-scenarios__card {
-      padding: 20px;
+    .vn-home-scenarios {
+      padding-block: 56px;
+    }
+
+    .vn-home-scenarios__header {
+      margin-bottom: 40px;
+    }
+
+    .vn-home-scenarios__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
     }
   }
 </style>

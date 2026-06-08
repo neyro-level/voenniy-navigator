@@ -1,395 +1,453 @@
 ---
-import { NAV_ITEMS } from '../../lib/navigation/navData';
 import { CONTACTS, LEGAL } from '../../lib/constants';
 import { FOOTER_LEGAL_LINKS } from '../technical/technicalManifest';
 import { getConfiguredValue } from '../../lib/utils';
-import { Icon } from 'astro-icon/components';
 
 const currentPath = Astro.url.pathname;
 const hasMobileDock = !currentPath.includes('/contacts/');
 const telegramHref = getConfiguredValue(CONTACTS.telegram);
 const vkHref = getConfiguredValue(CONTACTS.vk);
+
+const mainLinks = [
+  { label: 'Главная', href: '/' },
+  { label: 'О сервисе', href: '/o-servise/' },
+  { label: 'Краснодар', href: '/voennaya-ipoteka-krasnodar/' },
+  { label: 'Крым', href: '/voennaya-ipoteka-krym/' },
+];
+
+const usefulLinks = [
+  { label: 'Калькулятор', href: '/kalkulyator-voennoy-ipoteki/' },
+  { label: 'Условия', href: '/usloviya-voennoy-ipoteki/' },
+  { label: 'Семейная ипотека', href: '/semeynaya-voennaya-ipoteka/' },
+  { label: 'Контакты', href: '/contacts/' },
+];
 ---
 
 <footer class={`vn-footer${hasMobileDock ? ' vn-footer--with-mobile-dock' : ''}`} role="contentinfo">
+  <div class="vn-container">
+    <div class="vn-footer__top">
+      <div class="vn-footer__brand-col">
+        <a href="/" class="vn-footer__logo-link" aria-label="Военный навигатор — на главную">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="9" class="vn-footer__logo-ring" stroke-width="0.7" stroke-dasharray="2.2 2.2" />
+            <path d="M7 13 L7 7 L13 7" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M27 7 L33 7 L33 13" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M7 27 L7 33 L13 33" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M27 33 L33 33 L33 27" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="20" cy="20" r="2.8" class="vn-footer__logo-dot" />
+          </svg>
 
-  <!-- ── Logo Bar ── -->
-  <div class="vn-footer__bar">
-    <a href="/" class="vn-footer__logo-link" aria-label="Военный навигатор — на главную">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <circle cx="20" cy="20" r="9"
-          class="vn-footer__logo-ring"
-          stroke-width="0.7"
-          stroke-dasharray="2.2 2.2"/>
-        <path d="M7 13 L7 7 L13 7" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M27 7 L33 7 L33 13" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M7 27 L7 33 L13 33" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M27 33 L33 33 L33 27" class="vn-footer__logo-mark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="20" cy="20" r="2.8" class="vn-footer__logo-dot"/>
-      </svg>
-      <div class="vn-footer__brand-text">
-        <span class="vn-footer__brand-name">Военный навигатор</span>
-        <span class="vn-footer__brand-owner">Михаил Хряпин</span>
+          <div class="vn-footer__brand-text">
+            <span class="vn-footer__brand-name">Военный навигатор</span>
+            <span class="vn-footer__brand-owner">Михаил Хряпин</span>
+          </div>
+        </a>
+
+        <p class="vn-footer__brand-description">
+          Сервис выбора новостройки и сопровождения покупки по военной ипотеке.
+        </p>
       </div>
-    </a>
 
-    <div class="vn-footer__bar-contacts">
-      <a href={`tel:${CONTACTS.phone}`} class="vn-footer__bar-link" data-track="phone_click">
-        <Icon name="phone" width="14" height="14" aria-hidden="true" />
-        {CONTACTS.phone}
+      <div class="vn-footer__contacts-col">
+        <span class="vn-footer__label">Контакты</span>
+        <a href={`tel:${CONTACTS.phone}`} class="vn-footer__phone" data-track="phone_click">
+          {CONTACTS.phone}
+        </a>
+        <div class="vn-footer__socials">
+          {telegramHref && (
+            <a
+              href={telegramHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-footer__social-link"
+              aria-label="Telegram"
+              data-track="messenger_click"
+              data-track-params='{"type":"telegram"}'
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m22 2-7 20-4-9-9-4 20-7z" />
+                <path d="M22 2 11 13" />
+              </svg>
+              <span>Telegram</span>
+            </a>
+          )}
+
+          {vkHref && (
+            <a
+              href={vkHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vn-footer__social-link"
+              aria-label="ВКонтакте"
+              data-track="messenger_click"
+              data-track-params='{"type":"vk"}'
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+                <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+              </svg>
+              <span>ВКонтакте</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="vn-footer__middle">
+      <div class="vn-footer__menu-col">
+        <h2 class="vn-footer__menu-title">Разделы</h2>
+        <nav class="vn-footer__menu-list" aria-label="Основные разделы сайта">
+          {mainLinks.map((link) => (
+            <a
+              href={link.href}
+              class="vn-footer__menu-link"
+              aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="vn-footer__menu-col">
+        <h2 class="vn-footer__menu-title">Полезно</h2>
+        <nav class="vn-footer__menu-list" aria-label="Полезные страницы сайта">
+          {usefulLinks.map((link) => (
+            <a
+              href={link.href}
+              class="vn-footer__menu-link"
+              aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="vn-footer__menu-col">
+        <h2 class="vn-footer__menu-title">Документы</h2>
+        <nav class="vn-footer__menu-list" aria-label="Правовые документы сайта">
+          {FOOTER_LEGAL_LINKS.map((link) => (
+            <a href={link.href} class="vn-footer__menu-link vn-footer__menu-link--muted">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <div class="vn-footer__bottom">
+      <p class="vn-footer__legal-copy">© {LEGAL.year} {LEGAL.name} · ИНН&nbsp;{LEGAL.inn}</p>
+
+      <a
+        href="https://ams24.ru"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="vn-footer__dev-link"
+        aria-label="Сайт разработан в АМС-Маркетинг"
+      >
+        <span class="vn-footer__dev-accent" aria-hidden="true"></span>
+        <span class="vn-footer__dev-text">Разработано в АМС-Маркетинг</span>
       </a>
-      {telegramHref && (
-        <>
-          <span class="vn-footer__bar-sep" aria-hidden="true"></span>
-          <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="Telegram" data-track="messenger_click" data-track-params='{"type":"telegram"}'>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>
-            </svg>
-            Telegram
-          </a>
-        </>
-      )}
-      {vkHref && (
-        <>
-          <span class="vn-footer__bar-sep" aria-hidden="true"></span>
-          <a href={vkHref} target="_blank" rel="noopener noreferrer" class="vn-footer__bar-link" aria-label="VK" data-track="messenger_click" data-track-params='{"type":"vk"}'>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
-              <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
-            </svg>
-            ВКонтакте
-          </a>
-        </>
-      )}
     </div>
   </div>
-
-  <!-- ── Nav + Docs Links (desktop only) ── -->
-  <div class="vn-footer__links-block">
-    <nav class="vn-footer__links-row" aria-label="Разделы сайта">
-      <a href="/" class="vn-footer__link"
-         aria-current={currentPath === '/' ? 'page' : undefined}>Главная</a>
-      {NAV_ITEMS.map((item) => (
-        <>
-          <span class="vn-footer__link-dot" aria-hidden="true">·</span>
-          <a
-            href={item.href}
-            class="vn-footer__link"
-            aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}
-          >{item.label}</a>
-        </>
-      ))}
-    </nav>
-
-    <div class="vn-footer__links-row vn-footer__links-row--docs" aria-label="Правовой раздел">
-      <span class="vn-footer__docs-title">Правовой раздел</span>
-      {FOOTER_LEGAL_LINKS.map((link) => (
-        <>
-          <span class="vn-footer__link-dot" aria-hidden="true">·</span>
-          <a href={link.href} class="vn-footer__link vn-footer__link--muted">{link.label}</a>
-        </>
-      ))}
-    </div>
-  </div>
-
-  <!-- ── Docs (mobile only) ── -->
-  <div class="vn-footer__docs-mobile" aria-label="Правовой раздел">
-    <span class="vn-footer__docs-mobile-title">Правовой раздел</span>
-    {FOOTER_LEGAL_LINKS.map((link) => (
-      <a href={link.href} class="vn-footer__doc-link">{link.label}</a>
-    ))}
-  </div>
-
-  <!-- ── Legal Strip ── -->
-  <div class="vn-footer__legal">
-    <p class="vn-footer__legal-copy">
-      © {LEGAL.year} {LEGAL.name} · ИНН&nbsp;{LEGAL.inn}
-    </p>
-    <a
-      href="https://ams24.ru"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="vn-footer__dev-link"
-      aria-label="Сайт разработан в АМС-Маркетинг"
-    >
-      <span class="vn-footer__dev-accent" aria-hidden="true"></span>
-      <span class="vn-footer__dev-text">Сайт разработан в АМС-Маркетинг</span>
-      <Icon name="external-link" width="11" height="11" aria-hidden="true" />
-    </a>
-  </div>
-
 </footer>
 
 <style>
   .vn-footer {
     background: var(--color-bg-dark);
     color: var(--color-text-ondark);
-    font-family: var(--font-family-base);
+    padding-block: 48px 24px;
   }
 
-  /* ── Logo Bar ── */
-  .vn-footer__bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding-block: 24px;
-    padding-inline: max(48px, calc((100% - 1280px) / 2 + 48px));
+  .vn-footer__top {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: start;
+    padding-bottom: 32px;
     border-bottom: 1px solid var(--color-border-ondark);
   }
+
   .vn-footer__logo-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
-    min-height: 44px;
     text-decoration: none;
   }
+
   .vn-footer__logo-ring {
     stroke: var(--color-text-ondark);
     opacity: 0.22;
   }
+
   .vn-footer__logo-mark {
     stroke: var(--color-text-ondark);
     opacity: 0.75;
   }
+
   .vn-footer__logo-dot {
     fill: var(--color-accent-cta);
   }
+
   .vn-footer__brand-text {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
   }
+
   .vn-footer__brand-name {
-    font-size: var(--fs-body-sm);
+    font-size: var(--fs-body);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-text-ondark);
   }
+
   .vn-footer__brand-owner {
     font-size: var(--fs-caption);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-text-ondark);
-    opacity: 0.4;
-  }
-  .vn-footer__bar-contacts {
-    display: flex;
-    align-items: center;
-  }
-  .vn-footer__bar-link {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-ondark);
-    opacity: 0.5;
-    text-decoration: none;
-    padding: 6px 16px;
-    transition: opacity 150ms ease;
-    white-space: nowrap;
-  }
-  .vn-footer__bar-link svg {
-    color: var(--color-text-ondark);
-    opacity: 0.5;
-    flex-shrink: 0;
-  }
-  .vn-footer__bar-link:hover {
-    opacity: 0.9;
-  }
-  .vn-footer__bar-sep {
-    display: block;
-    width: 1px;
-    height: 16px;
-    background: var(--color-border-ondark);
-    flex-shrink: 0;
+    opacity: 0.42;
   }
 
-  /* ── Nav + Docs Links block ── */
-  .vn-footer__links-block {
+  .vn-footer__brand-description {
+    margin: 16px 0 0;
+    max-width: 38ch;
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-text-ondark);
+    opacity: 0.62;
+  }
+
+  .vn-footer__contacts-col {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vn-footer__label {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-ondark);
+    opacity: 0.42;
+  }
+
+  .vn-footer__phone {
+    display: inline-block;
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-ondark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .vn-footer__phone:hover {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-footer__socials {
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    padding-block: 28px;
-    padding-inline: max(48px, calc((100% - 1280px) / 2 + 48px));
+    margin-top: 18px;
+  }
+
+  .vn-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-text-ondark) 8%, transparent);
+    color: var(--color-text-ondark);
+    text-decoration: none;
+    opacity: 0.72;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .vn-footer__social-link:hover {
+    opacity: 1;
+    color: var(--color-bg-dark);
+    background: var(--color-accent-cta);
+    transform: translateY(-2px);
+  }
+
+  .vn-footer__social-link span {
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+  }
+
+  .vn-footer__middle {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    padding-block: 32px;
     border-bottom: 1px solid var(--color-border-ondark);
   }
-  .vn-footer__links-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0;
-  }
-  .vn-footer__link {
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-ondark);
-    opacity: 0.55;
-    text-decoration: none;
-    transition: opacity 150ms ease;
-    white-space: nowrap;
-  }
-  .vn-footer__link:hover {
-    opacity: 0.9;
-  }
-  .vn-footer__link[aria-current="page"] {
-    opacity: 0.85;
-  }
-  .vn-footer__link--muted {
+
+  .vn-footer__menu-title {
+    margin: 0 0 14px;
     font-size: var(--fs-label);
-    opacity: 0.3;
-  }
-  .vn-footer__link--muted:hover {
-    opacity: 0.65;
-  }
-  .vn-footer__link-dot {
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-ondark);
-    opacity: 0.18;
-    padding: 0 10px;
-    flex-shrink: 0;
-  }
-  .vn-footer__links-row--docs {
-    margin-top: 0;
-  }
-  .vn-footer__docs-title {
-    color: var(--color-text-ondark);
-    font-size: var(--fs-label);
-    font-weight: 650;
+    font-weight: 600;
     letter-spacing: 0.08em;
-    line-height: 1.2;
-    opacity: 0.42;
     text-transform: uppercase;
+    color: var(--color-text-ondark);
+    opacity: 0.42;
   }
 
-  /* ── Docs mobile (hidden on desktop) ── */
-  .vn-footer__docs-mobile {
-    display: none;
-  }
-  .vn-footer__docs-mobile-title {
-    display: none;
+  .vn-footer__menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  /* ── Legal Strip ── */
-  .vn-footer__legal {
+  .vn-footer__menu-link {
+    width: fit-content;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-ondark);
+    text-decoration: none;
+    opacity: 0.68;
+    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .vn-footer__menu-link:hover {
+    opacity: 1;
+    color: var(--color-accent-cta);
+    transform: translateX(3px);
+  }
+
+  .vn-footer__menu-link[aria-current='page'] {
+    opacity: 1;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-footer__menu-link--muted {
+    opacity: 0.5;
+  }
+
+  .vn-footer__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 48px;
-    padding-inline: max(48px, calc((100% - 1280px) / 2 + 48px));
+    gap: 24px;
+    padding-top: 18px;
   }
+
   .vn-footer__legal-copy {
-    font-size: var(--fs-caption);
-    color: var(--color-text-ondark);
-    opacity: 0.28;
     margin: 0;
+    font-size: var(--fs-caption);
+    line-height: 1.5;
+    color: var(--color-text-ondark);
+    opacity: 0.3;
   }
+
   .vn-footer__dev-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    min-height: 28px;
-    padding: 5px 10px 5px 9px;
-    border: 1px solid color-mix(in srgb, var(--color-text-ondark) 12%, transparent);
+    min-height: 38px;
+    padding: 8px 14px;
     border-radius: var(--radius-sm);
+    border: 1px solid color-mix(in srgb, var(--color-text-ondark) 12%, transparent);
     background: color-mix(in srgb, var(--color-text-ondark) 3%, transparent);
-    font-size: var(--fs-caption);
-    color: var(--color-text-ondark);
-    opacity: 0.46;
     text-decoration: none;
-    transition:
-      opacity 200ms ease,
-      border-color 200ms ease,
-      background 200ms ease;
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
   }
+
   .vn-footer__dev-link:hover {
-    opacity: 0.9;
+    opacity: 0.92;
     border-color: color-mix(in srgb, rgb(158 7 7) 42%, transparent);
     background: color-mix(in srgb, rgb(158 7 7) 7%, transparent);
   }
+
   .vn-footer__dev-accent {
     width: 3px;
-    height: 16px;
+    height: 14px;
     border-radius: 2px;
     background: rgb(158 7 7);
     flex-shrink: 0;
   }
+
   .vn-footer__dev-text {
+    font-size: var(--fs-caption);
     white-space: nowrap;
   }
 
-  /* ── Tablet ── */
   @media (max-width: 1023px) {
-    .vn-footer__bar         { padding-inline: 32px; }
-    .vn-footer__links-block { padding-inline: 32px; }
-    .vn-footer__legal       { padding-inline: 32px; padding-bottom: 24px; height: auto; padding-top: 14px; }
-    .vn-footer--with-mobile-dock .vn-footer__legal { padding-bottom: 84px; }
+    .vn-footer__top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .vn-footer__middle {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .vn-footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
-  /* ── Mobile ── */
-  @media (max-width: 767px) {
-    .vn-footer__bar          { padding: 20px 24px; }
-    .vn-footer__bar-contacts { display: none; }
-    .vn-footer__links-block  { display: none; }
+  @media (max-width: 640px) {
+    .vn-footer {
+      padding-block: 36px 20px;
+    }
 
-    .vn-footer__docs-mobile {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-bottom: 1px solid var(--color-border-ondark);
+    .vn-footer__brand-col,
+    .vn-footer__contacts-col,
+    .vn-footer__menu-col {
+      text-align: center;
     }
-    .vn-footer__docs-mobile-title {
-      display: block;
-      padding: 18px 24px 6px;
-      color: var(--color-text-ondark);
-      font-size: var(--fs-caption);
-      font-weight: 650;
-      letter-spacing: 0.08em;
-      opacity: 0.42;
-      text-transform: uppercase;
-    }
-    .vn-footer__doc-link {
-      display: flex;
+
+    .vn-footer__logo-link,
+    .vn-footer__socials,
+    .vn-footer__menu-list {
+      justify-content: center;
       align-items: center;
-      min-height: 48px;
-      font-size: var(--fs-body-sm);
-      color: var(--color-text-ondark);
-      opacity: 0.4;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-bottom: 1px solid var(--color-border-ondark);
-      transition: opacity 150ms ease;
-    }
-    .vn-footer__doc-link:last-child {
-      border-bottom: none;
-    }
-    .vn-footer__doc-link:hover {
-      opacity: 0.75;
     }
 
-    .vn-footer__legal {
-      flex-direction: column;
-      height: auto;
-      padding: 18px 24px 28px;
-      gap: 12px;
+    .vn-footer__brand-description,
+    .vn-footer__phone {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vn-footer__contacts-col {
+      align-items: center;
+    }
+
+    .vn-footer__middle {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding-block: 28px;
+    }
+
+    .vn-footer__bottom {
       align-items: center;
       text-align: center;
     }
-    .vn-footer--with-mobile-dock .vn-footer__legal {
-      padding-bottom: 96px;
-    }
-    .vn-footer__legal-copy {
-      max-width: 28ch;
-      line-height: 1.45;
-    }
-    .vn-footer__dev-link {
-      min-height: 40px;
-      max-width: 100%;
-    }
-    .vn-footer__dev-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+    .vn-footer--with-mobile-dock {
+      padding-bottom: 88px;
     }
   }
 </style>

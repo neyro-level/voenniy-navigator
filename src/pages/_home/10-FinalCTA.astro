@@ -1,26 +1,286 @@
 ---
-import FinalCTA from '../../components/sections/FinalCTA.astro';
+import { CONTACTS } from "../../lib/constants";
+import { getConfiguredValue } from "../../lib/utils";
+import { Icon } from 'astro-icon/components';
 
-const usefulLinks = [
-  {
-    label: 'О Военном навигаторе',
-    href: '/o-servise/',
-  },
-  {
-    label: 'Калькулятор военной ипотеки',
-    href: '/kalkulyator-voennoy-ipoteki/',
-  },
+const telegramHref = getConfiguredValue(CONTACTS.telegram);
+const maxHref = getConfiguredValue(CONTACTS.max);
+
+const guarantees = [
+  { icon: 'shield-check', text: 'Без комиссий для покупателя' },
+  { icon: 'globe', text: 'Можно полностью дистанционно' },
+  { icon: 'clock', text: 'Занимает всего 20 минут' }
 ];
 ---
 
-<FinalCTA
-  eyebrow="ПЕРВЫЙ ШАГ СЕРВИСА"
-  title="Начните с разбора ситуации,"
-  accentText="потом переходите к подбору"
-  subtitle="На первом шаге Михаил уточнит задачу покупки, ограничения по программе и подскажет, какой маршрут логичен именно сейчас. Без случайной витрины и лишнего шума."
-  ctaText="Получить разбор ситуации"
-  ctaModalTitle="Получить разбор ситуации"
-  showStats={true}
-  showUsefulLinks={true}
-  usefulLinks={usefulLinks}
-/>
+<section id="section-cta-final" class="vn-final-cta-light" aria-labelledby="vn-final-cta-title">
+  <div class="vn-container">
+    <div class="vn-final-cta-light__layout">
+      
+      <!-- Левая часть: Оффер и действие -->
+      <div class="vn-final-cta-light__content">
+        <span class="vn-label-mono vn-final-cta-light__eyebrow">ПЕРВЫЙ ШАГ К КВАРТИРЕ</span>
+        <h2 class="vn-final-cta-light__title" id="vn-final-cta-title">
+          Начните с разбора ситуации, <br>
+          <span class="vn-final-cta-light__accent">а не со случайной витрины</span>
+        </h2>
+        <p class="vn-final-cta-light__subtitle">
+          За 20 минут мы выясним вашу цель, проверим лимиты банка и составим короткий список новостроек, которые реально одобрят. Без обязательств и скрытых платежей.
+        </p>
+        
+        <div class="vn-final-cta-light__actions">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Получить разбор ситуации"
+            class="vn-btn-primary vn-final-cta-light__cta"
+          >
+            Получить разбор ситуации
+          </a>
+          
+          {(telegramHref || maxHref) && (
+            <p class="vn-final-cta-light__alt">
+              <span>Или напишите напрямую:</span>
+              <span class="vn-final-cta-light__alt-links">
+                {telegramHref && (
+                  <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-final-cta-light__alt-link">Telegram</a>
+                )}
+                {telegramHref && maxHref && <span class="vn-final-cta-light__alt-sep">/</span>}
+                {maxHref && (
+                  <a href={maxHref} target="_blank" rel="noopener noreferrer" class="vn-final-cta-light__alt-link">Max</a>
+                )}
+              </span>
+            </p>
+          )}
+        </div>
+      </div>
+
+      <!-- Правая часть: Гарантии -->
+      <div class="vn-final-cta-light__guarantees">
+        {guarantees.map((item) => (
+          <div class="vn-final-cta-light__guarantee-item">
+            <div class="vn-final-cta-light__guarantee-icon">
+              <Icon name={item.icon} width="20" height="20" aria-hidden="true" />
+            </div>
+            <span class="vn-final-cta-light__guarantee-text">{item.text}</span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-final-cta-light {
+    padding-block: 96px;
+    background: var(--color-bg-surface);
+  }
+
+  .vn-final-cta-light__layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .vn-final-cta-light__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .vn-final-cta-light__title {
+    margin: 16px 0 20px;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-final-cta-light__accent {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-final-cta-light__subtitle {
+    margin: 0 0 36px;
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 520px;
+    text-wrap: pretty;
+  }
+
+  .vn-final-cta-light__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .vn-final-cta-light__cta {
+    font-size: var(--fs-body);
+    padding: 18px 36px;
+    min-width: 280px;
+    text-align: center;
+  }
+
+  .vn-final-cta-light__alt {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.4;
+    color: var(--color-text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vn-final-cta-light__alt-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+
+  .vn-final-cta-light__alt-sep {
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+  }
+
+  .vn-final-cta-light__alt-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .vn-final-cta-light__alt-link:hover {
+    color: var(--color-accent-cta);
+  }
+
+  /* Гарантии */
+  .vn-final-cta-light__guarantees {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 32px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .vn-final-cta-light__guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-final-cta-light__guarantee-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .vn-final-cta-light__guarantee-item:first-child {
+    padding-top: 0;
+  }
+
+  .vn-final-cta-light__guarantee-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-accent-cta) 8%, transparent);
+    color: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-final-cta-light__guarantee-text {
+    font-size: var(--fs-body);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  /* Мобильная адаптация */
+  @media (max-width: 1023px) {
+    .vn-final-cta-light {
+      padding-block: 72px;
+    }
+
+    .vn-final-cta-light__layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .vn-final-cta-light__guarantees {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 24px;
+      background: transparent;
+      border: none;
+    }
+
+    .vn-final-cta-light__guarantee-item {
+      flex: 1 1 calc(50% - 8px);
+      border-bottom: none;
+      padding: 16px;
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+    }
+    
+    .vn-final-cta-light__guarantee-item:first-child,
+    .vn-final-cta-light__guarantee-item:last-child {
+      padding: 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-final-cta-light {
+      padding-block: 56px;
+    }
+
+    .vn-final-cta-light__title {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .vn-final-cta-light__subtitle {
+      font-size: var(--fs-body);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .vn-final-cta-light__cta {
+      width: 100%;
+      min-width: auto;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vn-final-cta-light__guarantees {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .vn-final-cta-light__guarantee-item {
+      flex: 1 1 100%;
+      padding: 16px;
+    }
+  }
+</style>

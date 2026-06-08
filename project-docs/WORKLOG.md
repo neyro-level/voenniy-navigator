@@ -7,6 +7,16 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-09 — Стратегическая пересборка главной страницы и footer
+
+- **Reworked:** главная `/` перестроена по новой коммерческой логике без смысловых повторов: оффер → процесс → маршруты → контраст риска и решения → живые сценарии → эксперт → FAQ → финальный CTA.
+- **Updated:** блоки `04-FirstReview`, `05-SelectionLogic`, `06-Scenarios`, `07-MikhailTrust`, `09-FAQ`, `10-FinalCTA` переписаны с новым copywriting-слоем и премиальной визуальной иерархией.
+- **Removed:** устаревший блок `08-Proof.astro` удалён из рендера и из файловой структуры как лишний и дублирующий trust-смыслы.
+- **Improved mobile UX:** проведён проход по мобильной адаптации ключевых блоков главной, уточнены ритм отступов, tap-targets, вертикальные таймлайны и финальный CTA.
+- **Expanded icons:** в `src/icons/` добавлены локальные SVG-иконки `shield-check`, `globe`, `clock` для использования в компонентах без зависимости от внешнего набора.
+- **Rebuilt:** `src/components/layout/Footer.astro` полностью пересобран в спокойный премиальный footer без дублирующей заявки: бренд, контакты, 3 навигационные колонки и legal strip.
+- **Checks:** `pnpm build` проходит успешно после всех изменений; локальный dev-сервер перезапущен и отображает актуальную версию страницы.
+
 ### 2026-06-08 — Усилен копирайтинг Hero-блока главной страницы
 
 - **Updated:** `src/pages/_home/01-Hero.astro` по правилам `ams-copywriting` (Tight mode, 3U).
