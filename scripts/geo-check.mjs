@@ -61,9 +61,9 @@ function main() {
 
   // 6. Meta tags (10 pts) — title, description, og:image, canonical
   const hasTitle = html.includes('<title>');
-  const hasDesc = html.includes('name="description"');
-  const hasOgImage = html.includes('property="og:image"');
-  const hasCanonical = html.includes('rel="canonical"');
+  const hasDesc = /name=(?:"description"|'description'|description)(?:\s|>)/i.test(html);
+  const hasOgImage = /property=(?:"og:image"|'og:image'|og:image)(?:\s|>)/i.test(html);
+  const hasCanonical = /rel=(?:"canonical"|'canonical'|canonical)(?:\s|>)/i.test(html);
   checks.push(score('Meta tags (title + desc + og:image + canonical)', 10, hasTitle && hasDesc && hasOgImage && hasCanonical));
 
   // 7. robots.txt AI crawlers (10 pts) — 3+ AI-ботов разрешены

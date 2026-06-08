@@ -28,6 +28,14 @@
 - **Browser QA:** preview на `127.0.0.1:4321` проверен по ключевым маршрутам `/`, `/kalkulyator-voennoy-ipoteki/`, `/usloviya-voennoy-ipoteki/`, `/voennaya-ipoteka-krasnodar/`, `/contacts/` — console/page errors не обнаружены, cookie banner после accept скрывается и не возвращается при навигации.
 - **Note:** в локальном preview отсутствовал `PUBLIC_YM_COUNTER_ID`, поэтому реальный network-вызов `mc.yandex.ru` не проверялся; валидация ограничилась загрузкой самого Partytown (`/~partytown/...`) и проверкой отсутствия JS-ошибок. Финальную network-проверку Метрики нужно повторить в окружении, где задан public counter id.
 
+### 2026-06-08 — Проверка astro-min и безопасный откат
+
+- **Tested:** `astro-min@1.3.1` был установлен и подключён как последний integration в `astro.config.mjs` согласно документации пакета.
+- **Found:** даже после ослабления опций (`minify_js: false`, попытки сохранить spec-compliant attrs) preview давал runtime-регрессии Astro islands: hydration errors в `RequestModal` и `CookieBanner` на ключевых маршрутах.
+- **Decision:** интеграция `astro-min` откатана полностью как небезопасная для текущего проекта на данном этапе; пакет удалён, конфиг возвращён к рабочему состоянию.
+- **Improved:** `scripts/geo-check.mjs` сделан устойчивее к minified HTML — meta-check теперь понимает и quoted, и unquoted атрибуты. Это улучшение оставлено, потому что оно полезно независимо от выбора minifier.
+- **Checks:** после отката повторные `pnpm build` и `pnpm geo-check` проходят успешно (`100/100`), preview на `/`, `/usloviya-voennoy-ipoteki/`, `/contacts/` снова без console errors.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
