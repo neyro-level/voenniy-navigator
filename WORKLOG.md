@@ -60,6 +60,11 @@
 - **Updated:** на `<Icon />` переведены повторяющиеся CTA-иконки в `src/components/layout/MobileBottomCTA.astro` и `src/components/landing/LandingBottomCTA.astro`.
 - **Checks:** `pnpm build` и `pnpm geo-check` проходят (`100/100`), preview на `/`, `/contacts/`, `/bonus/` без console/page errors.
 
+### 2026-06-08 — Миграция thanks-иконок на astro-icon
+
+- **Updated:** повторяющаяся check-иконка на success/thanks-экранах переведена на `<Icon />` в `src/components/technical/pages/ThanksPage.astro` и `src/components/leadgen/LeadGenThanksPage.astro`.
+- **Checks:** `pnpm build` и `pnpm geo-check` проходят (`100/100`), preview на `/thanks/` и `/podbor/thanks/` без console/page errors.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
