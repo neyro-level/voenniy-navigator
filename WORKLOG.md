@@ -44,6 +44,22 @@
 - **Kept as-is:** уникальные декоративные SVG (logo mark, overlay brackets, Telegram/VK-иконки и другие нестандартные формы) оставлены inline, чтобы не смешивать системную миграцию с дизайнерскими активами.
 - **Checks:** `pnpm build` и `pnpm geo-check` проходят (`100/100`), preview на `/`, `/usloviya-voennoy-ipoteki/`, `/contacts/` без console/page errors.
 
+### 2026-06-08 — Infra audit AMS Server по compression
+
+- **Read:** проектный deploy workflow и AMS server docs (`04_SERVER_CORE.md`, `07_MCP_SETUP_WORKLOG.md`) перед инфраструктурной проверкой.
+- **Verified:** production сайта обслуживается Nginx `1.18.0 (Ubuntu)` на AMS Server; активный релиз проекта: `/var/www/client-sites/voenniy-navigator/current -> .../releases/20260608091559-fe413cc`.
+- **Verified:** глобально на сервере включён `gzip on;`, а production HTML уже отдаётся с `Content-Encoding: gzip`.
+- **Found:** для JS/CSS компрессия сейчас фактически не включена. В `nginx.conf` строка `gzip_types ... application/javascript text/css ...` закомментирована, поэтому статика (`/_astro/*.js`, CSS) отдается без `Content-Encoding`.
+- **Found:** Nginx собран с `--with-http_gzip_static_module`, но `gzip_static`/`brotli_static` в конфиге не включены. Brotli-модуль в сборке не обнаружен.
+- **Found:** deploy-пользователь по SSH может читать конфиг и выполнять inspect, но не имеет достаточного sudo-доступа для правки Nginx-конфига в текущем режиме; поэтому server-side изменение compression нельзя безопасно завершить из репозитория без отдельного infra-доступа/root-сценария.
+- **Decision:** этап `PlayForm/Compress` для этого проекта пока отложен как инфраструктурно заблокированный. Добавлять build-time compression в репозиторий сейчас бессмысленно, пока на сервере не будет включён `gzip_static on;` или аналогичный способ раздачи precompressed assets.
+
+### 2026-06-08 — Продолжение миграции CTA-иконок на astro-icon
+
+- **Added:** в `src/icons/*` добавлены `file-sheet.svg` и `house-search.svg` для нижних CTA-доков проекта.
+- **Updated:** на `<Icon />` переведены повторяющиеся CTA-иконки в `src/components/layout/MobileBottomCTA.astro` и `src/components/landing/LandingBottomCTA.astro`.
+- **Checks:** `pnpm build` и `pnpm geo-check` проходят (`100/100`), preview на `/`, `/contacts/`, `/bonus/` без console/page errors.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
