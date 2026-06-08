@@ -7,6 +7,14 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-08 — Усилен копирайтинг Hero-блока главной страницы
+
+- **Updated:** `src/pages/_home/01-Hero.astro` по правилам `ams-copywriting` (Tight mode, 3U).
+- **Refined:** eyebrow, lead-текст, примечание и сигналы сделаны конкретнее и острее, без воды.
+- **Refined:** шаги в карточке «Как работает сервис» сокращены до сути (разбираем задачу, фиксируем критерии, отбираем список, определяем шаг).
+- **Checked:** H1 и CTA строго соответствуют утверждённому brief (`PAGE_HOME.md`).
+- **Next:** готов к разбору и усилению следующего блока главной страницы.
+
 ### 2026-06-08 — Собрана страница `/o-servise/` и включена в навигацию
 
 - **Created:** новая entity/trust страница `src/pages/o-servise.astro` и блоки `src/pages/_o-servise/*` по `project-docs/briefs/PAGE_O_SERVISE.md`.

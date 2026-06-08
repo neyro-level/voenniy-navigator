@@ -1,12 +1,5 @@
 ---
-import OptimizedImage from '../../components/ui/OptimizedImage.astro';
-
-const serviceSteps = [
-  'Разбираем задачу покупки и ограничения по программе',
-  'Фиксируем критерии: бюджет, район, срок, сценарий',
-  'Отбираем короткий список подходящих новостроек',
-  'Показываем следующий шаг: расчёт, подбор или маршрут сделки',
-];
+// Визуальный элемент: минималистичный UI-мокет интерфейса сервиса
 ---
 
 <section id="section-hero" class="vn-home-hero">
@@ -16,7 +9,7 @@ const serviceSteps = [
   <div class="vn-container">
     <div class="vn-grid-12 vn-home-hero__layout">
       <div class="vn-home-hero__content" style="grid-column: 1 / 8">
-        <span class="vn-home-hero__eyebrow">Военный навигатор · сервис по военной ипотеке</span>
+        <span class="vn-home-hero__eyebrow">Военный навигатор · сервис выбора новостройки по военной ипотеке</span>
 
         <h1 class="vn-home-hero__title">
           Сервис выбора новостройки
@@ -24,9 +17,7 @@ const serviceSteps = [
         </h1>
 
         <p class="vn-home-hero__lead">
-          Не начинаем с витрины объектов. Сначала разбираем вашу ситуацию: цель покупки,
-          бюджет, сроки и ограничения по программе. Потом показываем, какие новостройки
-          действительно стоит рассматривать.
+          Помогаем найти и безопасно оформить новостройку. Проверяем ограничения банка, ликвидность объекта и реальные сроки сдачи до того, как вы потратите время на просмотр случайных объявлений.
         </p>
 
         <div class="vn-home-hero__actions">
@@ -43,48 +34,69 @@ const serviceSteps = [
           </a>
         </div>
 
-        <p class="vn-home-hero__note">
-          Первый шаг — разбор ситуации до выбора объекта и без случайной подборки.
-        </p>
-
-        <div class="vn-home-hero__signals" role="list" aria-label="Короткие сигналы сервиса">
+        <div class="vn-home-hero__signals" role="list" aria-label="Преимущества подхода">
           <div class="vn-home-hero__signal" role="listitem">
-            <span class="vn-home-hero__signal-label">Формат</span>
-            <span class="vn-home-hero__signal-value">Краснодар, Крым, дистанционно</span>
+            <svg class="vn-home-hero__signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="vn-home-hero__signal-content">
+              <span class="vn-home-hero__signal-label">Точный подбор</span>
+              <span class="vn-home-hero__signal-value">Показываем только те объекты, которые реально одобрит банк под ваш сертификат.</span>
+            </div>
           </div>
           <div class="vn-home-hero__signal" role="listitem">
-            <span class="vn-home-hero__signal-label">Первый шаг</span>
-            <span class="vn-home-hero__signal-value">Понять, что подходит и с чего начать</span>
+            <svg class="vn-home-hero__signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="vn-home-hero__signal-content">
+              <span class="vn-home-hero__signal-label">Прозрачный маршрут</span>
+              <span class="vn-home-hero__signal-value">От первичного разбора ситуации до сделки, без скрытых условий и навязанных услуг.</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="vn-home-hero__aside" style="grid-column: 8 / 13">
-        <div class="vn-home-hero__service-card">
-          <span class="vn-home-hero__card-label">Как работает сервис</span>
-          <ol class="vn-home-hero__steps">
-            {serviceSteps.map((step, index) => (
-              <li class="vn-home-hero__step">
-                <span class="vn-home-hero__step-num">{String(index + 1).padStart(2, '0')}</span>
-                <span class="vn-home-hero__step-text">{step}</span>
-              </li>
-            ))}
-          </ol>
+        <div class="vn-home-hero__visual-card">
+          <!-- Премиальный UI-мокет с многослойностью и анимацией -->
+          <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="vn-home-hero__ui-mockup" aria-hidden="true">
+            <!-- Фоновое свечение -->
+            <circle cx="250" cy="200" r="180" fill="url(#glow-gradient)" opacity="0.15" class="animate-pulse-glow" />
+            
+            <!-- Задняя карточка (для глубины) -->
+            <rect x="30" y="50" width="360" height="300" rx="20" fill="var(--color-bg-dark)" stroke="var(--color-border-ondark)" stroke-width="1" opacity="0.5" class="animate-float-slow" />
+            
+            <!-- Основная карточка -->
+            <rect x="70" y="30" width="400" height="340" rx="24" fill="var(--color-bg-dark-elev)" stroke="var(--color-border-ondark)" stroke-width="1" class="animate-float" style="filter: drop-shadow(0 32px 64px rgba(0,0,0,0.4));" />
+            
+            <!-- Заголовок мокета -->
+            <rect x="100" y="60" width="160" height="16" rx="8" fill="var(--color-text-ondark)" opacity="0.8" />
+            <rect x="100" y="88" width="220" height="10" rx="5" fill="var(--color-text-ondark-mute)" opacity="0.3" />
+            
+            <!-- Разделитель -->
+            <line x1="100" y1="120" x2="440" y2="120" stroke="var(--color-border-ondark)" stroke-width="1" />
+            
+            <!-- Секция "Бюджет" -->
+            <rect x="100" y="140" width="100" height="12" rx="6" fill="var(--color-text-ondark)" opacity="0.7" />
+            <rect x="100" y="168" width="340" height="10" rx="5" fill="var(--color-border-ondark)" />
+            <rect x="100" y="168" width="240" height="10" rx="5" fill="var(--color-accent-cta)" opacity="0.8" class="animate-progress" />
+            <circle cx="340" cy="173" r="12" fill="var(--color-accent-cta)" class="animate-pulse-dot" />
+            
+            <!-- Секция "Статус" -->
+            <rect x="100" y="210" width="140" height="12" rx="6" fill="var(--color-text-ondark)" opacity="0.7" />
+            <rect x="100" y="238" width="160" height="40" rx="12" fill="color-mix(in srgb, var(--color-accent-cta) 12%, transparent)" stroke="var(--color-accent-cta)" stroke-width="1.5" opacity="0.8" />
+            <circle cx="120" cy="258" r="8" fill="var(--color-accent-cta)" />
+            <path d="M116 258 L119 261 L124 255" stroke="var(--color-bg-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="140" y="254" width="100" height="10" rx="5" fill="var(--color-accent-cta)" opacity="0.9" />
 
-          <div class="vn-home-hero__expert-card">
-            <div class="vn-home-hero__expert-photo">
-              <OptimizedImage
-                src="/images/mikhail-hero.png"
-                alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
-                loading="eager"
-                class="vn-home-hero__expert-image"
-              />
-            </div>
-            <div class="vn-home-hero__expert-meta">
-              <p class="vn-home-hero__expert-name">Михаил Хряпин</p>
-              <p class="vn-home-hero__expert-role">Главный навигатор сервиса и ведущий первичный разбор</p>
-            </div>
-          </div>
+            <!-- Плавающий бейдж -->
+            <rect x="310" y="250" width="140" height="48" rx="14" fill="var(--color-bg-dark)" stroke="var(--color-border-ondark)" stroke-width="1" class="animate-float-reverse" style="filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));" />
+            <rect x="328" y="266" width="80" height="10" rx="5" fill="var(--color-text-ondark-mute)" opacity="0.6" />
+            <rect x="328" y="282" width="60" height="8" rx="4" fill="var(--color-accent-cta)" opacity="0.8" />
+
+            <defs>
+              <radialGradient id="glow-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 200) rotate(90) scale(180)">
+                <stop stop-color="var(--color-accent-cta)" />
+                <stop offset="1" stop-color="var(--color-accent-cta)" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
         </div>
       </div>
     </div>
@@ -220,131 +232,126 @@ const serviceSteps = [
   }
 
   .vn-home-hero__signals {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 30px;
-    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    max-width: 560px;
   }
 
   .vn-home-hero__signal {
-    display: grid;
-    gap: 6px;
-    padding: 18px 18px 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 20px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
   }
 
+  .vn-home-hero__signal-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent-cta);
+    margin-top: 2px;
+  }
+
+  .vn-home-hero__signal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .vn-home-hero__signal-label {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
   }
 
   .vn-home-hero__signal-value {
     font-size: var(--fs-body-sm);
-    line-height: 1.45;
-    font-weight: 500;
-    color: var(--color-text-primary);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
   }
 
   .vn-home-hero__aside {
     min-width: 0;
-  }
-
-  .vn-home-hero__service-card {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-height: 100%;
-    padding: 28px;
-    border: 1px solid var(--color-border-ondark);
-    border-radius: 18px;
-    background: var(--color-bg-dark);
-    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 18%, transparent);
-  }
-
-  .vn-home-hero__card-label {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-ondark-mute);
-  }
-
-  .vn-home-hero__steps {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 0;
-  }
-
-  .vn-home-hero__step {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 12px;
-    align-items: start;
-    padding: 14px 0;
-    border-top: 1px solid var(--color-border-ondark);
-  }
-
-  .vn-home-hero__step-num {
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--color-accent-cta);
-    font-variant-numeric: tabular-nums;
-    opacity: 0.8;
-  }
-
-  .vn-home-hero__step-text {
-    font-size: var(--fs-body-sm);
-    line-height: 1.55;
-    color: var(--color-text-ondark);
-  }
-
-  .vn-home-hero__expert-card {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 16px;
-    padding-top: 20px;
-    border-top: 1px solid var(--color-border-ondark);
     align-items: center;
+    justify-content: center;
   }
 
-  .vn-home-hero__expert-photo {
-    width: 96px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 12px;
-    background: var(--color-bg-dark-elev);
+  .vn-home-hero__visual-card {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 500 / 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
   }
 
-  .vn-home-hero__expert-image {
+  .vn-home-hero__ui-mockup {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
+    max-width: 500px;
   }
 
-  .vn-home-hero__expert-name {
-    margin: 0 0 6px;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-text-ondark);
+  /* Премиальные анимации */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) translateX(-10px); }
+    50% { transform: translateY(-8px) translateX(-10px); }
   }
 
-  .vn-home-hero__expert-role {
-    margin: 0;
-    font-size: var(--fs-body-sm);
-    line-height: 1.5;
-    color: var(--color-text-ondark-mute);
+  @keyframes float-reverse {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(8px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.05); }
+  }
+
+  @keyframes progress-load {
+    0% { width: 0; }
+    100% { width: 240px; }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { r: 12; opacity: 1; }
+    50% { r: 14; opacity: 0.8; }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: float-reverse 7s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .animate-progress {
+    animation: progress-load 2s ease-out forwards;
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
   }
 
   @media (max-width: 1023px) {
@@ -359,7 +366,12 @@ const serviceSteps = [
     }
 
     .vn-home-hero__aside {
-      margin-top: 36px;
+      margin-top: 48px;
+      order: -1; /* Визуал сверху на планшете/мобильном для лучшего восприятия */
+    }
+    
+    .vn-home-hero__visual-card {
+      max-width: 480px;
     }
   }
 
@@ -387,21 +399,17 @@ const serviceSteps = [
       width: 100%;
     }
 
-    .vn-home-hero__signals {
-      grid-template-columns: 1fr;
+    .vn-home-hero__signal {
+      padding: 14px 16px;
     }
-
-    .vn-home-hero__service-card {
-      padding: 22px;
+    
+    .vn-home-hero__visual-card {
+      max-width: 340px;
+      margin-bottom: 12px;
     }
-
-    .vn-home-hero__expert-card {
-      grid-template-columns: 80px 1fr;
-    }
-
-    .vn-home-hero__expert-photo {
-      width: 80px;
-      height: 104px;
+    
+    .vn-home-hero__aside {
+      margin-top: 32px;
     }
   }
 </style>

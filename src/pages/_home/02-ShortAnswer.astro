@@ -1,57 +1,47 @@
 ---
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
-const answerCards = [
+const steps = [
   {
-    label: 'Что это',
-    title: 'Сервисный маршрут, а не каталог',
-    description:
-      'Военный навигатор помогает не просто смотреть объекты, а понять, какой сценарий покупки подходит именно вам.',
+    number: '01',
+    title: 'Разбор ситуации',
+    description: 'Выясняем цель покупки, бюджет, сроки и реальные ограничения по вашей программе военной ипотеки.'
   },
   {
-    label: 'Чем отличается',
-    title: 'Сначала ситуация, потом объекты',
-    description:
-      'Сервис начинается с разбора задачи, ограничений и критериев, а не с длинной витрины новостроек.',
+    number: '02',
+    title: 'Фильтр объектов',
+    description: 'Отсеиваем неподходящие варианты на бумаге. Вы получаете только те новостройки, которые реально одобрит банк под ваш сертификат.'
   },
   {
-    label: 'Что получает клиент',
-    title: 'Понятный следующий шаг',
-    description:
-      'После первого обращения становится яснее, что делать дальше: считать, подбирать или уже готовить маршрут сделки.',
-  },
+    number: '03',
+    title: 'Сопровождение сделки',
+    description: 'Помогаем с документами, банком и застройщиком, чтобы вы не ходили по кругу и не теряли время на бюрократию.'
+  }
 ];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-short-answer" class="vn-home-answer" aria-labelledby="vn-home-answer-title">
+  <section id="section-steps" class="vn-home-steps" aria-labelledby="vn-home-steps-title">
     <div class="vn-container">
-      <div class="vn-grid-12 vn-home-answer__header">
-        <div style="grid-column: 1 / 4">
-          <span class="vn-label-mono">Что такое Военный навигатор</span>
-        </div>
-        <div style="grid-column: 4 / 9">
-          <h2 class="vn-home-answer__title" id="vn-home-answer-title">
-            Сервис, который помогает выбрать новостройку под задачу, а не по витрине
-          </h2>
-        </div>
-        <div style="grid-column: 9 / 13">
-          <p class="vn-home-answer__lead">
-            Военнослужащему не обязательно заранее знать район, объект или формат сделки.
-            Достаточно описать ситуацию — сервис поможет разложить её по шагам.
-          </p>
+      <div class="vn-home-steps__header">
+        <span class="vn-label-mono">Как это работает</span>
+        <h2 class="vn-home-steps__title" id="vn-home-steps-title">
+          Маршрут покупки: 3 шага от разбора ситуации до сделки
+        </h2>
+        <div class="vn-home-steps__trust-note">
+          <svg class="vn-home-steps__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Первичный разбор и подбор новостройки — без комиссий для вас</span>
         </div>
       </div>
 
-      <div class="vn-home-answer__cards vn-grid-12">
-        {answerCards.map((card, index) => (
-          <article
-            class="vn-home-answer__card"
-            style={`grid-column: ${index === 0 ? '1 / 5' : index === 1 ? '5 / 9' : '9 / 13'}`}
-          >
-            <span class="vn-home-answer__card-label">{card.label}</span>
-            <h3 class="vn-home-answer__card-title">{card.title}</h3>
-            <p class="vn-home-answer__card-text">{card.description}</p>
+      <div class="vn-home-steps__grid">
+        {steps.map((step) => (
+          <article class="vn-home-steps__card">
+            <div class="vn-home-steps__card-header">
+              <span class="vn-home-steps__number">{step.number}</span>
+            </div>
+            <h3 class="vn-home-steps__card-title">{step.title}</h3>
+            <p class="vn-home-steps__card-text">{step.description}</p>
           </article>
         ))}
       </div>
@@ -60,111 +50,172 @@ const answerCards = [
 </RevealOnScroll>
 
 <style>
-  .vn-home-answer {
-    padding-block: 72px;
-    background: var(--color-bg-surface);
+  .vn-home-steps {
+    padding-block: 96px;
+    background: var(--color-bg-surface); /* Чистый светлый фон для премиального контраста */
   }
 
-  .vn-home-answer__header {
-    align-items: start;
-    margin-bottom: 32px;
+  .vn-home-steps__header {
+    max-width: 640px;
+    margin-bottom: 56px;
   }
 
-  .vn-home-answer__title {
-    margin: 0;
+  .vn-home-steps__title {
+    margin: 16px 0 0;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.16;
+    line-height: 1.2;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
-  .vn-home-answer__lead {
-    margin: 0;
-    padding-left: 24px;
-    border-left: 1px solid var(--color-border);
+  .vn-home-steps__trust-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: color-mix(in srgb, var(--color-accent-cta) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 15%, transparent);
+    border-radius: var(--radius-md);
     font-size: var(--fs-body-sm);
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    text-wrap: pretty;
-  }
-
-  .vn-home-answer__cards {
-    gap: 16px 24px;
-  }
-
-  .vn-home-answer__card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 100%;
-    padding: 24px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-surface-lowest);
-  }
-
-  .vn-home-answer__card-label {
-    font-size: var(--fs-label);
     font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-  }
-
-  .vn-home-answer__card-title {
-    margin: 0;
-    font-size: var(--fs-h3);
-    line-height: 1.3;
-    font-weight: 600;
     color: var(--color-text-primary);
   }
 
-  .vn-home-answer__card-text {
-    margin: 0;
-    font-size: var(--fs-body-sm);
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-    text-wrap: pretty;
+  .vn-home-steps__trust-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-accent-cta);
+    flex-shrink: 0;
   }
 
+  .vn-home-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .vn-home-steps__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-surface);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .vn-home-steps__card:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border));
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 8%, transparent);
+  }
+
+  .vn-home-steps__card-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .vn-home-steps__number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent-cta);
+    opacity: 0.8;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-home-steps__card-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-steps__card-text {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  /* Мобильная адаптация: вертикальный таймлайн */
   @media (max-width: 1023px) {
-    .vn-home-answer__header > div {
-      grid-column: 1 / -1 !important;
+    .vn-home-steps {
+      padding-block: 72px;
     }
 
-    .vn-home-answer__lead {
-      margin-top: 16px;
-      padding-left: 0;
-      border-left: none;
-      border-top: 1px solid var(--color-border);
-      padding-top: 16px;
+    .vn-home-steps__grid {
+      grid-template-columns: 1fr;
+      gap: 0; /* Убираем gap для бесшовной вертикальной линии */
     }
 
-    .vn-home-answer__cards > .vn-home-answer__card:nth-child(odd) {
-      grid-column: 1 / 7 !important;
+    .vn-home-steps__card {
+      padding: 24px 24px 24px 72px; /* Отступ слева под номер и линию */
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      transform: none !important; /* Отключаем hover-подъём на мобильных для чистоты */
     }
 
-    .vn-home-answer__cards > .vn-home-answer__card:nth-child(even) {
-      grid-column: 7 / 13 !important;
+    .vn-home-steps__card:last-child {
+      border-bottom: none;
     }
 
-    .vn-home-answer__cards > .vn-home-answer__card:nth-child(3) {
-      grid-column: 1 / 7 !important;
+    .vn-home-steps__card::before {
+      content: '';
+      position: absolute;
+      left: 23px; /* Центрируем относительно номера */
+      top: 40px;
+      bottom: -1px;
+      width: 1px;
+      background: var(--color-border);
+      z-index: 0;
+    }
+
+    .vn-home-steps__card:last-child::before {
+      display: none;
+    }
+
+    .vn-home-steps__number {
+      position: absolute;
+      left: 0;
+      top: 24px;
+      font-size: 1.5rem;
     }
   }
 
   @media (max-width: 640px) {
-    .vn-home-answer {
+    .vn-home-steps {
       padding-block: 56px;
     }
 
-    .vn-home-answer__cards > .vn-home-answer__card:nth-child(n) {
-      grid-column: 1 / -1 !important;
+    .vn-home-steps__header {
+      margin-bottom: 40px;
     }
 
-    .vn-home-answer__card {
-      padding: 20px;
+    .vn-home-steps__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
+    }
+
+    .vn-home-steps__card {
+      padding: 20px 20px 20px 64px;
+    }
+
+    .vn-home-steps__card::before {
+      left: 19px;
+      top: 36px;
+    }
+
+    .vn-home-steps__number {
+      top: 20px;
+      font-size: 1.25rem;
     }
   }
 </style>
