@@ -1,0 +1,117 @@
+---
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 04 — БАНКИ ДЛЯ СОВМЕЩЕНИЯ
+════════════════════════════════════════════════ -->
+<section id="section-sem-banks" class="vn-sem-banks">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-sem-banks__grid">
+      
+      <div class="vn-sem-banks__content" style="grid-column: 1 / 7">
+        <span class="vn-label-mono">ПАРТНЁРЫ ПРОГРАММЫ</span>
+        <h2 class="vn-sem-banks__title">
+          Какие банки работают с совмещением
+        </h2>
+        <p class="vn-sem-banks__lead">
+          Не все банки одинаково гибко подходят к совмещению военной и семейной ипотеки. 
+          Мы помогаем выбрать ту программу, которая даст максимальное одобрение под вашу ситуацию.
+        </p>
+      </div>
+
+      <div class="vn-sem-banks__list" style="grid-column: 7 / 13">
+        <div class="vn-sem-banks__item">
+          <h3>ПСБ</h3>
+          <p>Один из ключевых операторов военной ипотеки. Гибкие условия для совмещения с семейной программой.</p>
+        </div>
+        <div class="vn-sem-banks__item">
+          <h3>Сбербанк</h3>
+          <p>Широкая сеть отделений и понятный процесс одобрения совмещенных программ для семей с детьми.</p>
+        </div>
+        <div class="vn-sem-banks__item">
+          <h3>ВТБ</h3>
+          <p>Активно работает с военнослужащими, предлагает конкурентные условия при использовании маткапитала.</p>
+        </div>
+        <div class="vn-sem-banks__item">
+          <h3>Банк ДОМ.РФ</h3>
+          <p>Специализированный институт развития в жилищной сфере, часто предлагает индивидуальные решения.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-sem-banks {
+    padding: 96px 0;
+    background: var(--color-bg-surface);
+  }
+
+  .vn-sem-banks__grid {
+    align-items: start;
+  }
+
+  .vn-sem-banks__content {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-sem-banks__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 650;
+    line-height: 1.18;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-banks__lead {
+    margin: 16px 0 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 480px;
+  }
+
+  .vn-sem-banks__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-sem-banks__item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-sem-banks__item h3 {
+    margin: 0 0 8px;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-sem-banks__item p {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-sem-banks__content {
+      grid-column: 1 / -1 !important;
+      position: static;
+      margin-bottom: 40px;
+    }
+    .vn-sem-banks__list {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-sem-banks { padding: 72px 0; }
+    .vn-sem-banks__item { padding: 20px 0; }
+  }
+</style>

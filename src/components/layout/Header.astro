@@ -61,15 +61,6 @@ const headerContrast = onDarkTopPaths.has(currentPath) ? 'dark' : 'light';
 
     <!-- Right controls -->
     <div class="vn-header__controls">
-      {false && (
-
-      <!-- Phone (desktop only, hides in dock) -->
-      <a href="tel:+79384074457" class="vn-header__phone" aria-label="Позвонить Михаилу Хряпину">
-        +7 (938) 407 44 57
-      </a>
-
-      )}
-
       <!-- CTA -->
       <a
         href="/contacts/#request"
@@ -282,20 +273,6 @@ const headerContrast = onDarkTopPaths.has(currentPath) ? 'dark' : 'light';
     background:    color-mix(in srgb, var(--color-accent-primary) 7%, transparent);
     border-radius: 8px;
     padding:       4px 12px;
-  }
-
-  /* ── Phone ── */
-  #site-header .vn-header__phone {
-    display: none;
-    color: var(--color-text-secondary);
-    transition: color 200ms ease, opacity 200ms ease;
-  }
-  #site-header[data-overlay="true"] .vn-header__phone {
-    color: color-mix(in srgb, var(--color-text-ondark) 75%, transparent);
-  }
-  /* Phone hides in dock (60px — too narrow) */
-  #site-header[data-state="dock"] .vn-header__phone {
-    display: none;
   }
 
   /* ── CTA text toggle ── */

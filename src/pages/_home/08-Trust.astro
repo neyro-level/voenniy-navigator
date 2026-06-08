@@ -31,13 +31,12 @@ const telegramHref = getConfiguredValue(CONTACTS.telegram);
 
         <span class="vn-label-mono">Опыт и доверие</span>
         <h2 class="vn-home-trust__h2" id="vn-home-trust-title">
-          Я помогаю пройти весь маршрут: от выбора новостройки до регистрации сделки
+          Мы помогаем пройти весь маршрут: от выбора новостройки до регистрации сделки
         </h2>
         <p class="vn-home-trust__lead">
-          С 2016 года я работаю с недвижимостью и сопровождаю сделки по военной
-          ипотеке. Моя задача - не просто показать варианты, а помочь выбрать
-          новостройку под вашу задачу, пройти банк, документы и регистрацию
-          без лишнего хаоса.
+          С 2016 года мы сопровождаем сделки по военной ипотеке.
+          Не просто показываем варианты — помогаем выбрать правильно,
+          объясняем риски и отсекаем плохие решения.
         </p>
 
         <!-- Stats with CountUp animation -->
@@ -58,12 +57,32 @@ const telegramHref = getConfiguredValue(CONTACTS.telegram);
           </div>
         </div>
 
+        <!-- Transparency note -->
+        <div class="vn-home-trust__transparency">
+          Модель интересов простая: в новостройках платит застройщик,
+          но подбор строится на задаче клиента. Если объект не подходит
+          под район, ликвидность или семейный сценарий — мы его не рекомендуем,
+          даже если застройщик платит больше.
+        </div>
+
         <!-- Quote -->
         <blockquote class="vn-home-trust__quote">
-          Для меня сопровождение - это не просто отправить подборку.
-          Важно заранее объяснить ограничения, отсеять неподходящие варианты
-          и довести сделку до понятного результата.
+          Важно заранее объяснить ограничения,
+          отсечь неподходящие варианты и довести сделку до результата.
         </blockquote>
+
+        <!-- CTA -->
+        <div class="vn-home-trust__cta-row">
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Получить первичный разбор"
+            class="vn-btn-primary vn-home-trust__cta"
+          >
+            Получить первичный разбор
+          </a>
+          <span class="vn-home-trust__cta-note">Мы уточним вашу задачу и подскажем, с чего начать.</span>
+        </div>
 
         <!-- Media links -->
         <div class="vn-home-trust__media">
@@ -191,6 +210,18 @@ const telegramHref = getConfiguredValue(CONTACTS.telegram);
   color: var(--color-text-tertiary);
 }
 
+/* ── Transparency ── */
+.vn-home-trust__transparency {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--color-accent-cta);
+  border-radius: 0 8px 8px 0;
+  background: var(--color-accent-cta-soft);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
 /* ── Quote ── */
 .vn-home-trust__quote {
   margin: 0 0 28px;
@@ -200,6 +231,23 @@ const telegramHref = getConfiguredValue(CONTACTS.telegram);
   line-height: 1.65;
   color: var(--color-text-secondary);
   font-style: normal;
+}
+
+/* ── CTA ── */
+.vn-home-trust__cta-row {
+  margin-bottom: 28px;
+}
+
+.vn-home-trust__cta {
+  display: inline-flex;
+}
+
+.vn-home-trust__cta-note {
+  display: block;
+  margin-top: 10px;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--color-text-tertiary);
 }
 
 /* ── Media links ── */

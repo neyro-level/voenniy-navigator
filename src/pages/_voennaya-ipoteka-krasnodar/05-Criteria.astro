@@ -1,0 +1,213 @@
+---
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 05 — КРИТЕРИИ ОТБОРА
+════════════════════════════════════════════════ -->
+<section id="section-criteria" class="vn-section vn-home-criteria" aria-labelledby="vn-home-criteria-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-home-criteria__grid">
+
+      <!-- Левая колонка: заголовок -->
+      <div class="vn-home-criteria__left" style="grid-column: 1 / 6">
+        <span class="vn-label-mono">ЛОГИКА ПОДБОРА</span>
+        <h2 class="vn-home-criteria__title" id="vn-home-criteria-title">
+          Как отбираем жилые комплексы для военной ипотеки
+        </h2>
+        <p class="vn-home-criteria__lead">
+          В новостройках подбор обычно оплачивает застройщик. Но рекомендация 
+          строится не на комиссии, а на задаче клиента. Если объект не подходит 
+          под район, ликвидность или семейный сценарий — мы его не рекомендуем, 
+          даже если застройщик платит больше.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить подборку 12 ЖК"
+          class="vn-btn-primary vn-home-criteria__cta"
+        >
+          Получить подборку 12 объектов
+        </a>
+      </div>
+
+      <!-- Правая колонка: список критериев -->
+      <div class="vn-home-criteria__right" style="grid-column: 6 / 13">
+        <div class="vn-home-criteria__list">
+          
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">01</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Аккредитация по банкам</h3>
+              <p class="vn-home-criteria__desc">Жилой комплекс проходит по военной ипотеке через нужный вам банк.</p>
+            </div>
+          </div>
+
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">02</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Район под цель покупки</h3>
+              <p class="vn-home-criteria__desc">Для жизни — инфраструктура, для вложения — спрос на аренду.</p>
+            </div>
+          </div>
+
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">03</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Ликвидность квартиры</h3>
+              <p class="vn-home-criteria__desc">Квартиру можно будет сдать или продать, если ситуация изменится.</p>
+            </div>
+          </div>
+
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">04</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Срок сдачи и готовность</h3>
+              <p class="vn-home-criteria__desc">Реальные сроки, а не маркетинговые обещания застройщика.</p>
+            </div>
+          </div>
+
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">05</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Условия застройщика</h3>
+              <p class="vn-home-criteria__desc">Акции, скидки и нюансы, которые не видны в открытой рекламе.</p>
+            </div>
+          </div>
+
+          <div class="vn-home-criteria__item">
+            <span class="vn-home-criteria__num">06</span>
+            <div class="vn-home-criteria__content">
+              <h3 class="vn-home-criteria__name">Планировки и корпус</h3>
+              <p class="vn-home-criteria__desc">Конкретная квартира внутри жилого комплекса, а не «от и до».</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 05: Criteria ─── */
+.vn-home-criteria {
+  padding: 96px 0;
+  background: var(--color-bg-surface);
+}
+
+.vn-home-criteria__grid {
+  align-items: start;
+}
+
+/* ── Левая колонка ── */
+.vn-home-criteria__left {
+  position: sticky;
+  top: 104px;
+}
+
+.vn-home-criteria__title {
+  margin: 16px 0 0;
+  font-size: var(--fs-h2);
+  font-weight: 650;
+  line-height: 1.18;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-home-criteria__lead {
+  margin: 16px 0 32px;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  max-width: 420px;
+}
+
+.vn-home-criteria__cta {
+  display: inline-flex;
+}
+
+/* ── Правая колонка: список ── */
+.vn-home-criteria__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-home-criteria__item {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vn-home-criteria__num {
+  flex-shrink: 0;
+  width: 28px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-cta);
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+
+.vn-home-criteria__content {
+  flex: 1;
+}
+
+.vn-home-criteria__name {
+  margin: 0 0 6px;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.vn-home-criteria__desc {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .vn-home-criteria__left {
+    grid-column: 1 / -1 !important;
+    position: static;
+    margin-bottom: 40px;
+  }
+  .vn-home-criteria__right {
+    grid-column: 1 / -1 !important;
+  }
+  .vn-home-criteria__lead {
+    max-width: 100%;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .vn-home-criteria { padding: 72px 0; }
+
+  .vn-home-criteria__item {
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .vn-home-criteria__num {
+    width: 24px;
+    font-size: var(--fs-caption);
+  }
+
+  .vn-home-criteria__name {
+    font-size: var(--fs-body-sm);
+  }
+
+  .vn-home-criteria__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>

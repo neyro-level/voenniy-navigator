@@ -1,0 +1,162 @@
+---
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 04 — ГОРОДА КРЫМА
+════════════════════════════════════════════════ -->
+<section id="section-cities" class="vn-section vn-home-cities" aria-labelledby="vn-home-cities-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-home-cities__grid">
+
+      <!-- Левая колонка: заголовок -->
+      <div class="vn-home-cities__left" style="grid-column: 1 / 6">
+        <span class="vn-label-mono">ЛОКАЛЬНАЯ ЭКСПЕРТИЗА</span>
+        <h2 class="vn-home-cities__title" id="vn-home-cities-title">
+          Какие города рассматривать
+        </h2>
+        <p class="vn-home-cities__lead">
+          Один и тот же объект может быть удачным для сдачи, но слабым для жизни семьи. 
+          Поэтому сначала нужно понять сценарий, а потом смотреть конкретные локации.
+        </p>
+      </div>
+
+      <!-- Правая колонка: 2 карточки городов -->
+      <div class="vn-home-cities__right" style="grid-column: 6 / 13">
+        
+        <div class="vn-home-cities__card">
+          <h3 class="vn-home-cities__card-title">Симферополь: городская база с инфраструктурой</h3>
+          <ul class="vn-home-cities__list">
+            <li>Инфраструктура, транспорт, работа, магазины</li>
+            <li>Стабильный круглогодичный арендный спрос</li>
+            <li>Документы и банк — в знакомой городской среде</li>
+            <li>Удобнее для постоянного проживания семьи</li>
+          </ul>
+        </div>
+
+        <div class="vn-home-cities__card">
+          <h3 class="vn-home-cities__card-title">Побережье: сезонный сценарий</h3>
+          <ul class="vn-home-cities__list">
+            <li>Сезонность и высокий летний арендный поток</li>
+            <li>Расстояние до моря и реальная доступность</li>
+            <li>Логистика и жизнь в несезон</li>
+            <li>Ликвидность и потенциал перепродажи</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── Block 04: Cities ─── */
+.vn-home-cities {
+  padding: 96px 0;
+  background: var(--color-bg-surface);
+}
+
+.vn-home-cities__grid {
+  align-items: start;
+}
+
+/* ── Левая колонка ── */
+.vn-home-cities__left {
+  position: sticky;
+  top: 104px;
+}
+
+.vn-home-cities__title {
+  margin: 16px 0 0;
+  font-size: var(--fs-h2);
+  font-weight: 650;
+  line-height: 1.18;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-home-cities__lead {
+  margin: 16px 0 0;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  max-width: 420px;
+}
+
+/* ── Правая колонка: карточки ── */
+.vn-home-cities__right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vn-home-cities__card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.vn-home-cities__card-title {
+  margin: 0 0 20px;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.vn-home-cities__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vn-home-cities__list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.vn-home-cities__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-cta);
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .vn-home-cities__left {
+    grid-column: 1 / -1 !important;
+    position: static;
+    margin-bottom: 40px;
+  }
+  .vn-home-cities__right {
+    grid-column: 1 / -1 !important;
+  }
+  .vn-home-cities__lead {
+    max-width: 100%;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .vn-home-cities { padding: 72px 0; }
+  
+  .vn-home-cities__title {
+    font-size: var(--fs-h3);
+  }
+  
+  .vn-home-cities__card {
+    padding: 24px;
+  }
+}
+</style>

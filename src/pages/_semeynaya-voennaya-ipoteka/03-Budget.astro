@@ -1,0 +1,145 @@
+---
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 03 — БЮДЖЕТ ПРИ СОВМЕЩЕНИИ
+════════════════════════════════════════════════ -->
+<section id="section-sem-budget" class="vn-sem-budget">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-sem-budget__grid">
+      
+      <div class="vn-sem-budget__content" style="grid-column: 1 / 7">
+        <span class="vn-label-mono">ЦИФРЫ И ЛИМИТЫ</span>
+        <h2 class="vn-sem-budget__title">
+          Сколько можно получить при совмещении
+        </h2>
+        <p class="vn-sem-budget__lead">
+          Совмещение программ позволяет не только снизить ставку, но и 
+          увеличить доступный бюджет покупки за счет расширения лимитов семейной ипотеки.
+        </p>
+        <a href="/kalkulyator-voennoy-ipoteki/" class="vn-btn-primary vn-sem-budget__cta">
+          Рассчитать свой бюджет в калькуляторе →
+        </a>
+      </div>
+
+      <div class="vn-sem-budget__cards" style="grid-column: 7 / 13">
+        <div class="vn-sem-budget__card vn-sem-budget__card--standard">
+          <h3>Только военная ипотека</h3>
+          <ul>
+            <li><strong>Лимит:</strong> ~2,1–2,3 млн ₽</li>
+            <li><strong>Ставка:</strong> рыночная (или субсидированная застройщиком)</li>
+            <li><strong>Платеж:</strong> покрывается НИС</li>
+          </ul>
+        </div>
+
+        <div class="vn-sem-budget__card vn-sem-budget__card--family">
+          <h3>Военная + Семейная</h3>
+          <ul>
+            <li><strong>Лимит:</strong> до 6 млн ₽ (для регионов)</li>
+            <li><strong>Ставка:</strong> до 6% годовых</li>
+            <li><strong>Платеж:</strong> НИС + доплата (если сумма превышает лимит НИС)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-sem-budget {
+    padding: 96px 0;
+    background: var(--color-bg-primary);
+  }
+
+  .vn-sem-budget__grid {
+    align-items: start;
+  }
+
+  .vn-sem-budget__content {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-sem-budget__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 650;
+    line-height: 1.18;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-budget__lead {
+    margin: 16px 0 32px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 480px;
+  }
+
+  .vn-sem-budget__cta {
+    display: inline-flex;
+  }
+
+  .vn-sem-budget__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .vn-sem-budget__card {
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-sem-budget__card--family {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
+    background: color-mix(in srgb, var(--color-accent-cta-soft) 20%, transparent);
+  }
+
+  .vn-sem-budget__card h3 {
+    margin: 0 0 20px;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-sem-budget__card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .vn-sem-budget__card li {
+    font-size: var(--fs-body);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .vn-sem-budget__card li strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-sem-budget__content {
+      grid-column: 1 / -1 !important;
+      position: static;
+      margin-bottom: 40px;
+    }
+    .vn-sem-budget__cards {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-sem-budget { padding: 72px 0; }
+    .vn-sem-budget__card { padding: 24px; }
+    .vn-sem-budget__cta { width: 100%; justify-content: center; }
+  }
+</style>

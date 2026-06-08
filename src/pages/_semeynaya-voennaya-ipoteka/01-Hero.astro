@@ -34,10 +34,10 @@
           </a>
         </div>
 
-        <dl class="vn-sem-hero__proof" aria-label="Преимущества совмещения">
+        <dl class="vn-sem-hero__proof" aria-label="Ориентировочные условия совмещения">
           <div class="vn-sem-hero__proof-item">
             <dt>Ставка</dt>
-            <dd>от 6% при совмещении</dd>
+            <dd>от 6% (ориентир)</dd>
           </div>
           <div class="vn-sem-hero__proof-item">
             <dt>Лимит</dt>
@@ -52,6 +52,10 @@
             <dd>до 30 лет</dd>
           </div>
         </dl>
+        <p class="vn-sem-hero__disclaimer">
+          Ориентир. Точные условия зависят от выбранного банка и вашей ситуации. 
+          <a href="/kalkulyator-voennoy-ipoteki/" class="vn-sem-hero__disclaimer-link">Рассчитать в калькуляторе →</a>
+        </p>
       </div>
     </div>
   </div>
@@ -198,6 +202,26 @@
     font-size: var(--fs-body);
     font-weight: 600;
     color: var(--color-text-primary);
+  }
+
+  .vn-sem-hero__disclaimer {
+    margin: 16px 0 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-tertiary);
+    max-width: 520px;
+  }
+
+  .vn-sem-hero__disclaimer-link {
+    color: var(--color-accent-cta);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .vn-sem-hero__disclaimer-link:hover {
+    border-bottom-color: var(--color-accent-cta);
   }
 
   @media (max-width: 1023px) {

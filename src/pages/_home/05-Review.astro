@@ -1,0 +1,359 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 05 — ПЕРВИЧНЫЙ РАЗБОР (объединённый)
+════════════════════════════════════════════════ -->
+<RevealOnScroll mode="fade-up">
+<section id="section-review" class="vn-section vn-home-review" aria-labelledby="vn-home-review-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-home-review__grid">
+
+      <!-- Левая колонка: шаги -->
+      <div class="vn-home-review__left" style="grid-column: 1 / 6">
+        <span class="vn-label-mono">ПЕРВИЧНЫЙ РАЗБОР</span>
+        <h2 class="vn-home-review__h2" id="vn-home-review-title">
+          Что происходит на первичном разборе
+        </h2>
+        <p class="vn-home-review__lead">
+          Мы не выбираем квартиру наугад. Сначала уточняем задачу и ограничения, 
+          потом отбираем подходящие объекты.
+        </p>
+
+        <div class="vn-home-review__steps">
+          <div class="vn-home-review__step" data-step>
+            <span class="vn-home-review__step-num">01</span>
+            <strong class="vn-home-review__step-title">Задача</strong>
+            <span class="vn-home-review__step-body">Для жизни или как вложение</span>
+          </div>
+          <div class="vn-home-review__step" data-step>
+            <span class="vn-home-review__step-num">02</span>
+            <strong class="vn-home-review__step-title">Условия</strong>
+            <span class="vn-home-review__step-body">Бюджет, банк, НИС, сроки</span>
+          </div>
+          <div class="vn-home-review__step" data-step>
+            <span class="vn-home-review__step-num">03</span>
+            <strong class="vn-home-review__step-title">Критерии</strong>
+            <span class="vn-home-review__step-body">Район, срок сдачи, планировка</span>
+          </div>
+          <div class="vn-home-review__step" data-step>
+            <span class="vn-home-review__step-num">04</span>
+            <strong class="vn-home-review__step-title">Отбор</strong>
+            <span class="vn-home-review__step-body">Подходящие новостройки, а не случайная подборка</span>
+          </div>
+        </div>
+
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить первичный разбор"
+          class="vn-btn-primary vn-home-review__cta"
+        >
+          Получить первичный разбор
+        </a>
+      </div>
+
+      <!-- Правая колонка: результаты (dark card) -->
+      <div class="vn-home-review__right" style="grid-column: 7 / 13">
+        <div class="vn-home-review__card">
+          <div class="vn-home-review__glow" aria-hidden="true"></div>
+
+          <p class="vn-home-review__card-eyebrow">После разбора</p>
+
+          <ol class="vn-home-review__results">
+            <li class="vn-home-review__result" data-result>
+              <span class="vn-home-review__rnum">01</span>
+              <span>
+                <strong>Поймёте цель покупки</strong>
+                <small>Для жизни, как вложение или смешанный сценарий.</small>
+              </span>
+            </li>
+            <li class="vn-home-review__result" data-result>
+              <span class="vn-home-review__rnum">02</span>
+              <span>
+                <strong>Увидите реальный бюджет и ограничения</strong>
+                <small>Банк, НИС, сроки и документы.</small>
+              </span>
+            </li>
+            <li class="vn-home-review__result" data-result>
+              <span class="vn-home-review__rnum">03</span>
+              <span>
+                <strong>Получите критерии выбора</strong>
+                <small>Какие районы и объекты стоит смотреть.</small>
+              </span>
+            </li>
+            <li class="vn-home-review__result" data-result>
+              <span class="vn-home-review__rnum">04</span>
+              <span>
+                <strong>Увидите следующий шаг</strong>
+                <small>Что делать дальше: смотреть варианты или готовить маршрут сделки.</small>
+              </span>
+            </li>
+          </ol>
+
+          <div class="vn-home-review__card-footer" data-result>
+            <span class="vn-home-review__meta">Без обязательств</span>
+            <span class="vn-home-review__meta">Можно дистанционно</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</RevealOnScroll>
+
+<style>
+/* ─── Block 05: Review (объединённый) ─── */
+
+.vn-home-review {
+  background: var(--color-bg-surface);
+}
+
+.vn-home-review__grid {
+  align-items: stretch;
+}
+
+/* ── Левая колонка ── */
+.vn-home-review__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 16px;
+}
+
+.vn-home-review__h2 {
+  margin: 16px 0 16px;
+  font-size: var(--fs-h2);
+  font-weight: 650;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.vn-home-review__lead {
+  margin: 0 0 28px;
+  max-width: 520px;
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* Шаги */
+.vn-home-review__steps {
+  margin-bottom: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.vn-home-review__step {
+  display: grid;
+  grid-template-columns: 28px 110px 1fr;
+  gap: 0 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.vn-home-review--visible .vn-home-review__step:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+.vn-home-review--visible .vn-home-review__step:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 90ms; }
+.vn-home-review--visible .vn-home-review__step:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+.vn-home-review--visible .vn-home-review__step:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 270ms; }
+
+.vn-home-review__step-num {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-cta);
+  opacity: 0.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.vn-home-review__step-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-home-review__step-body {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.vn-home-review__cta { align-self: flex-start; }
+
+/* ── Правая колонка: dark card ── */
+.vn-home-review__right {
+  display: flex;
+  align-items: stretch;
+}
+
+.vn-home-review__card {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 36px 32px;
+  background: var(--color-accent-primary);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.vn-home-review__glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-cta) 22%, transparent), transparent 65%);
+  pointer-events: none;
+}
+
+.vn-home-review__card-eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-home-review__results {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vn-home-review__result {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border-ondark);
+  font-size: var(--fs-body);
+  color: var(--color-text-ondark);
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.vn-home-review--visible .vn-home-review__results .vn-home-review__result:nth-child(1) { opacity: 1; transform: none; transition-delay: 80ms; }
+.vn-home-review--visible .vn-home-review__results .vn-home-review__result:nth-child(2) { opacity: 1; transform: none; transition-delay: 200ms; }
+.vn-home-review--visible .vn-home-review__results .vn-home-review__result:nth-child(3) { opacity: 1; transform: none; transition-delay: 320ms; }
+.vn-home-review--visible .vn-home-review__results .vn-home-review__result:nth-child(4) { opacity: 1; transform: none; transition-delay: 440ms; }
+
+.vn-home-review__result:last-child { border-bottom: none; }
+
+.vn-home-review__rnum {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-cta);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.vn-home-review__result strong {
+  display: block;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--color-text-ondark);
+}
+
+.vn-home-review__result small {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-body-sm);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-text-ondark-mute);
+}
+
+.vn-home-review__card-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(241, 243, 245, 0.09);
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.vn-home-review--visible .vn-home-review__card-footer { opacity: 1; transform: none; transition-delay: 560ms; }
+
+.vn-home-review__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--color-text-ondark-mute);
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .vn-home-review__left  { grid-column: 1 / -1 !important; padding-right: 0; }
+  .vn-home-review__right {
+    grid-column: 1 / -1 !important;
+    margin-top: 48px;
+  }
+  .vn-home-review__card  { min-height: auto; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .vn-home-review__right { margin-top: 40px; }
+  .vn-home-review__card { padding: 28px 24px 24px; }
+  
+  .vn-home-review__step {
+    grid-template-columns: 28px 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+  }
+  .vn-home-review__step-num { grid-row: 1 / 3; align-self: start; }
+  .vn-home-review__step-title { grid-column: 2; grid-row: 1; }
+  .vn-home-review__step-body { grid-column: 2; grid-row: 2; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .vn-home-review__glow { display: none; }
+  .vn-home-review__step,
+  .vn-home-review__result,
+  .vn-home-review__card-footer { opacity: 1; transform: none; transition: none; }
+}
+</style>
+
+<script>
+  const review = document.getElementById('section-review');
+  if (review) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          review.classList.add('vn-home-review--visible');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(review);
+  }
+</script>

@@ -1,13 +1,40 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+import Comparison from './_voennaya-ipoteka-krasnodar/09-Comparison.astro';
+import Conditions from './_voennaya-ipoteka-krasnodar/07-Conditions.astro';
+import Criteria from './_voennaya-ipoteka-krasnodar/05-Criteria.astro';
+import Districts from './_voennaya-ipoteka-krasnodar/06-Districts.astro';
 import Hero from './_voennaya-ipoteka-krasnodar/01-Hero.astro';
+import Process from './_voennaya-ipoteka-krasnodar/08-Process.astro';
 import ShortAnswer from './_voennaya-ipoteka-krasnodar/02-ShortAnswer.astro';
 import Scenarios from './_voennaya-ipoteka-krasnodar/03-Scenarios.astro';
-import { pageMeta, schemas } from './_voennaya-ipoteka-krasnodar/pageData';
+import FAQ from './_voennaya-ipoteka-krasnodar/10-FAQ.astro';
+import { pageMeta, schemas, faqItems } from './_voennaya-ipoteka-krasnodar/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
   <Hero />
   <ShortAnswer />
   <Scenarios />
+  <Criteria />
+  <Districts />
+  <Conditions />
+  <Process />
+  <Comparison />
+  <FAQ items={faqItems} />
+  <FinalCTA
+    eyebrow="ПОДБОРКА ЖК КРАСНОДАРА"
+    title="Получите подборку 12 проверенных ЖК"
+    accentText="с видеоразбором"
+    subtitle="Уточним вашу цель покупки, условия по военной ипотеке и покажем, какие комплексы стоит рассмотреть в первую очередь."
+    ctaText="Получить 12 ЖК с видеоразбором"
+    ctaModalTitle="Получить подборку 12 ЖК"
+    showStats={true}
+    showUsefulLinks={true}
+    usefulLinks={[
+      { label: 'Условия военной ипотеки', href: '/usloviya-voennoy-ipoteki/' },
+      { label: 'Калькулятор военной ипотеки', href: '/kalkulyator-voennoy-ipoteki/' }
+    ]}
+  />
 </PageLayout>

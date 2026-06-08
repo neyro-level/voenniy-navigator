@@ -12,32 +12,31 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
       <div class="vn-home-prob__intro" style="grid-column: 1 / 6">
         <span class="vn-label-mono vn-home-prob__eyebrow">Ошибка выбора</span>
         <h2 class="vn-home-prob__title" id="vn-home-prob-title">
-          Главная ошибка — выбирать новостройку без понятной задачи
+          Рынок продаёт доступ к ипотеке. Но не объясняет, как выбрать правильно
         </h2>
         <p class="vn-home-prob__lead">
-          Военная ипотека показывает рамки покупки: сумму, банк, сроки и документы.
-          Но она не отвечает на главный вопрос — какая новостройка подходит именно вам.
+          Банки дают условия, маркетплейсы показывают объекты,
+          застройщики рекламируют жилые комплексы. Но никто не объясняет,
+          почему рекомендуют именно этот объект и чьи интересы обслуживает подбор.
         </p>
       </div>
 
       <div class="vn-home-prob__cards vn-grid-12" style="grid-column: 6 / 13">
         <article class="vn-home-prob__thesis" style="grid-column: 1 / 7">
           <span class="vn-home-prob__tnum">01</span>
-          <h3 class="vn-home-prob__ttitle">
-            Квартира для жизни и квартира как вложение выбираются по-разному
-          </h3>
+          <h3 class="vn-home-prob__ttitle">Военная ипотека даёт бюджет, но не говорит, что покупать</h3>
           <p class="vn-home-prob__tbody">
-            Для жизни важны район, инфраструктура, транспорт и удобство семьи.
-            Для вложения — срок сдачи, спрос на аренду и будущая продажа.
+            Сумма НИС и одобрение банка — это рамки. Но они не отвечают,
+            какой район, срок сдачи и формат квартиры подходят именно вам.
           </p>
         </article>
 
         <article class="vn-home-prob__thesis" style="grid-column: 7 / 13">
           <span class="vn-home-prob__tnum">02</span>
-          <h3 class="vn-home-prob__ttitle">Реклама показывает объект, но не вашу ситуацию</h3>
+          <h3 class="vn-home-prob__ttitle">Реклама застройщика показывает объект, а не вашу ситуацию</h3>
           <p class="vn-home-prob__tbody">
-            Застройщик продаёт конкретный жилой комплекс. Но презентация и акция
-            не отвечают, подходит ли этот вариант под вашу задачу.
+            Презентация жилого комплекса продаёт конкретный объект. Но не объясняет,
+            подходит ли он под вашу задачу, сроки и ограничения.
           </p>
         </article>
 
@@ -45,19 +44,25 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
           <span class="vn-home-prob__tnum">03</span>
           <h3 class="vn-home-prob__ttitle">Низкая цена может скрывать слабое решение</h3>
           <p class="vn-home-prob__tbody">
-            Дешевле не всегда лучше, если район неудобен, срок сдачи не подходит
-            или квартиру будет сложно сдавать и продавать.
+            Дешевле не всегда лучше: неудобный район, неподходящий срок сдачи
+            или квартиру, которую будет сложно сдать или продать.
           </p>
         </article>
 
         <article class="vn-home-prob__thesis" style="grid-column: 7 / 13">
           <span class="vn-home-prob__tnum">04</span>
-          <h3 class="vn-home-prob__ttitle">Список вариантов не заменяет выбор</h3>
+          <h3 class="vn-home-prob__ttitle">Большая подборка не заменяет выбор</h3>
           <p class="vn-home-prob__tbody">
-            Большая подборка квартир часто только запутывает. Сначала нужно понять
-            критерии, а уже потом смотреть конкретные новостройки.
+            Длинный список вариантов часто запутывает. Сначала нужны критерии,
+            потом — конкретные новостройки.
           </p>
         </article>
+
+        <div style="grid-column: 1 / -1; margin-top: 24px;">
+          <a href="/contacts/#request" data-modal-open data-modal-title="Понять, что подходит мне" class="vn-btn-ghost vn-home-prob__btn-ghost">
+            Понять, что подходит мне →
+          </a>
+        </div>
       </div>
 
     </div>
@@ -163,5 +168,24 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
     grid-column: 1 / -1 !important;
     padding: 22px;
   }
+}
+
+.vn-home-prob__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid var(--color-border-ondark);
+  border-radius: var(--radius-md);
+  color: var(--color-text-ondark);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.vn-home-prob__btn-ghost:hover {
+  background: color-mix(in srgb, var(--color-text-ondark) 8%, transparent);
+  border-color: var(--color-text-ondark);
 }
 </style>

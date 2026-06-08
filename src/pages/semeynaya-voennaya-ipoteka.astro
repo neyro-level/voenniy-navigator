@@ -1,9 +1,32 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
 import Hero from './_semeynaya-voennaya-ipoteka/01-Hero.astro';
+import Mechanism from './_semeynaya-voennaya-ipoteka/02-Mechanism.astro';
+import Budget from './_semeynaya-voennaya-ipoteka/03-Budget.astro';
+import Banks from './_semeynaya-voennaya-ipoteka/04-Banks.astro';
+import FAQ from './_semeynaya-voennaya-ipoteka/05-FAQ.astro';
 import { pageMeta, schemas } from './_semeynaya-voennaya-ipoteka/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
   <Hero />
+  <Mechanism />
+  <Budget />
+  <Banks />
+  <FAQ />
+  <FinalCTA
+    eyebrow="СЕМЕЙНАЯ ВОЕННАЯ ИПОТЕКА"
+    title="Проверьте, подходите ли вы под совмещение"
+    accentText="программ"
+    subtitle="Уточним вашу ситуацию, количество детей и сроки службы, чтобы рассчитать реальный бюджет и подобрать банк."
+    ctaText="Проверить условия совмещения"
+    ctaModalTitle="Проверить условия совмещения"
+    showStats={true}
+    showUsefulLinks={true}
+    usefulLinks={[
+      { label: 'Калькулятор военной ипотеки', href: '/kalkulyator-voennoy-ipoteki/' },
+      { label: 'Условия военной ипотеки', href: '/usloviya-voennoy-ipoteki/' }
+    ]}
+  />
 </PageLayout>

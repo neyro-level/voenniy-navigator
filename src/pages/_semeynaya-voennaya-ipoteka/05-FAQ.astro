@@ -1,0 +1,321 @@
+---
+const faqItems = [
+  {
+    q: 'Можно ли совмещать военную и семейную ипотеку?',
+    a: 'Да, это законная и распространенная практика. Военная ипотека покрывает базовый платеж, а семейная позволяет увеличить сумму кредита и зафиксировать ставку до 6%.'
+  },
+  {
+    q: 'Нужен ли маткапитал для совмещения?',
+    a: 'Не обязательно. Совмещение возможно и без маткапитала, если вы подходите под условия семейной ипотеки (наличие детей определенного возраста). Маткапитал лишь дополнительно увеличивает бюджет.'
+  },
+  {
+    q: 'Что будет с ипотекой при увольнении с военной службы?',
+    a: 'Это критически важный момент. При увольнении обязательства по кредиту переходят к вам. Мы заранее просчитываем этот сценарий, чтобы платеж был комфортным даже без поддержки государства.'
+  },
+  {
+    q: 'Можно ли купить квартиру на двоих супругов-военнослужащих?',
+    a: 'Да, если оба являются участниками НИС, это значительно увеличивает бюджет покупки и упрощает процесс одобрения, так как доход семьи учитывается суммарно.'
+  },
+  {
+    q: 'Какие документы нужны для оформления?',
+    a: 'Стандартный пакет: паспорт, свидетельство о праве на ипотеку, документы о браке и рождении детей, а также справки о доходах (если требуется банком для подтверждения доплаты).'
+  }
+];
+---
+<!-- ══════════════════════════════════════════════
+     БЛОК 05 — FAQ
+════════════════════════════════════════════════ -->
+<section id="section-sem-faq" class="vn-sem-faq">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-sem-faq__grid">
+      
+      <div class="vn-sem-faq__left" style="grid-column: 1 / 5">
+        <span class="vn-label-mono">ЧАСТЫЕ ВОПРОСЫ</span>
+        <h2 class="vn-sem-faq__title">Ответы о совмещении программ</h2>
+        <p class="vn-sem-faq__lead">
+          Ключевые моменты, которые важно понять перед подачей заявки в банк.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Задать вопрос о семейной ипотеке"
+          class="vn-sem-faq__more-link"
+        >
+          Не нашли ответ? Задайте вопрос на разборе&nbsp;→
+        </a>
+      </div>
+
+      <div
+        class="vn-sem-faq__right"
+        style="grid-column: 5 / 13"
+        itemscope
+        itemtype="https://schema.org/FAQPage"
+      >
+        {faqItems.map((item, i) => (
+          <details
+            class="vn-sem-faq__item"
+            open={i === 0}
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="vn-sem-faq__question">
+              <span class="vn-sem-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="vn-sem-faq__question-text" itemprop="name">{item.q}</span>
+              <svg
+                class="vn-sem-faq__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="vn-sem-faq__answer-wrap">
+              <div class="vn-sem-faq__answer-inner" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p class="vn-sem-faq__answer-text" itemprop="text">{item.a}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-sem-faq {
+    padding: 96px 0;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  .vn-sem-faq__grid {
+    align-items: start;
+  }
+
+  .vn-sem-faq__left {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-sem-faq__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 650;
+    line-height: 1.18;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-faq__lead {
+    margin: 14px 0 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 320px;
+  }
+
+  .vn-sem-faq__more-link {
+    display: inline-flex;
+    margin-top: 28px;
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-accent-cta);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  .vn-sem-faq__more-link:hover { opacity: 0.7; }
+
+  .vn-sem-faq__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vn-sem-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-sem-faq__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-sem-faq__question {
+    width: 100%;
+    min-height: 48px;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vn-sem-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn-sem-faq__num {
+    flex-shrink: 0;
+    width: 28px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-sem-faq__question-text {
+    flex: 1;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    font-weight: 500;
+    line-height: 1.42;
+    text-wrap: pretty;
+  }
+
+  .vn-sem-faq__icon {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: transform 0.35s ease, color 0.15s ease;
+  }
+
+  .vn-sem-faq__question:hover .vn-sem-faq__question-text {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-sem-faq__item[open] .vn-sem-faq__icon {
+    transform: rotate(180deg);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-sem-faq__answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.17, 0.84, 0.44, 1);
+  }
+
+  .vn-sem-faq__item[open]:not(.is-closing) .vn-sem-faq__answer-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .vn-sem-faq__answer-inner {
+    overflow: hidden;
+  }
+
+  .vn-sem-faq__answer-text {
+    margin: 0;
+    padding: 0 0 24px 44px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-sem-faq__left {
+      grid-column: 1 / -1 !important;
+      position: static;
+      margin-bottom: 40px;
+    }
+    .vn-sem-faq__right {
+      grid-column: 1 / -1 !important;
+    }
+    .vn-sem-faq__lead {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-sem-faq { padding: 72px 0; }
+
+    .vn-sem-faq__question {
+      padding: 18px 0;
+      gap: 12px;
+    }
+
+    .vn-sem-faq__question-text {
+      font-size: var(--fs-body);
+    }
+
+    .vn-sem-faq__answer-text {
+      padding: 0 0 20px 40px;
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-sem-faq__num {
+      font-size: var(--fs-caption);
+      width: 24px;
+    }
+
+    .vn-sem-faq__icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const container = document.querySelector('.vn-sem-faq__right');
+    if (!container) return;
+
+    const items = container.querySelectorAll<HTMLDetailsElement>('.vn-sem-faq__item');
+    const DURATION = 400;
+
+    items.forEach((details) => {
+      const summary = details.querySelector<HTMLElement>('.vn-sem-faq__question');
+      const content = details.querySelector<HTMLElement>('.vn-sem-faq__answer-wrap');
+      if (!summary || !content) return;
+
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = details.hasAttribute('open');
+
+        items.forEach((sibling) => {
+          if (sibling !== details && sibling.hasAttribute('open')) {
+            const siblingContent = sibling.querySelector<HTMLElement>('.vn-sem-faq__answer-wrap');
+            if (siblingContent) {
+              sibling.classList.add('is-closing');
+              siblingContent.style.gridTemplateRows = '0fr';
+              window.setTimeout(() => {
+                sibling.removeAttribute('open');
+                sibling.classList.remove('is-closing');
+                siblingContent.style.gridTemplateRows = '';
+              }, DURATION);
+            }
+          }
+        });
+
+        if (isOpen) {
+          details.classList.add('is-closing');
+          content.style.gridTemplateRows = '0fr';
+          window.setTimeout(() => {
+            details.removeAttribute('open');
+            details.classList.remove('is-closing');
+            content.style.gridTemplateRows = '';
+          }, DURATION);
+        } else {
+          details.setAttribute('open', '');
+          content.getBoundingClientRect();
+          content.style.gridTemplateRows = '1fr';
+          window.setTimeout(() => {
+            if (details.hasAttribute('open') && !details.classList.contains('is-closing')) {
+              content.style.gridTemplateRows = '';
+            }
+          }, DURATION);
+        }
+      });
+    });
+  })();
+</script>

@@ -13,12 +13,62 @@ import OptimizedImage from '../../../components/ui/OptimizedImage.astro';
       <div class="vn-video-hero__content" style="grid-column: 1 / 8">
         <span class="vn-label-mono vn-video-hero__label">Военная ипотека в Краснодаре</span>
         <h1 class="vn-video-hero__title">
-          <span class="vn-video-hero__desktop-text">Подберем 5 вариантов квартир в Краснодаре под вашу военную ипотеку</span>
-          <span class="vn-video-hero__mobile-text">Подберем 5 вариантов квартир в Краснодаре под вашу военную ипотеку</span>
+          <span class="vn-video-hero__desktop-text">Подборка вариантов квартир в Краснодаре под вашу военную ипотеку</span>
+          <span class="vn-video-hero__mobile-text" aria-hidden="true">Подборка вариантов квартир в Краснодаре под вашу военную ипотеку</span>
         </h1>
         <p class="vn-video-hero__lead">
-          <span class="vn-video-hero__desktop-text">Не нужно самому просматривать десятки ЖК и тысячи объявлений. Эксперт отберёт варианты под ваш бюджет, банк, район и задачу покупки.</span>
-          <span class="vn-video-hero__mobile-text">Покажем варианты под вашу сумму, банк и район. Подскажем, где сейчас акции и скидки.</span>
+          <span class="vn-video-hero__desktop-text">Не нужно самому просматривать десятки ЖК и тысячи объявлений. Мы отберём варианты под ваш бюджет, банк, район и задачу покупки.</span>
+          <span class="vn-video-hero__mobile-text" aria-hidden="true">Покажем варианты под вашу сумму, банк и район. Подскажем, где сейчас акции и скидки.</span>
+        </p>
+
+        <div class="vn-video-hero__service-note" aria-label="Условия услуги">
+          <span>Обычно оплачивает застройщик</span>
+          <span>
+            <span class="vn-video-hero__desktop-text">Подскажем, где сейчас акции и скидки</span>
+            <span class="vn-video-hero__mobile-text" aria-hidden="true">Акции и скидки по ЖК</span>
+          </span>
+        </div>
+
+        <div class="vn-video-hero__proof" aria-label="Что проверим перед подбором">
+          <div class="vn-video-hero__proof-row">
+            <span aria-hidden="true"></span>
+            <p>
+              <span class="vn-video-hero__desktop-text">Подборка подходящих вариантов под вашу сумму и задачу</span>
+              <span class="vn-video-hero__mobile-text" aria-hidden="true">Подборка вариантов под вашу сумму и ипотеку</span>
+            </p>
+          </div>
+          <div class="vn-video-hero__proof-row">
+            <span aria-hidden="true"></span>
+            <p>
+              <span class="vn-video-hero__desktop-text">Выбор банка и расчет стоимости покупки</span>
+              <span class="vn-video-hero__mobile-text" aria-hidden="true">Выбор банка и расчет полной стоимости</span>
+            </p>
+          </div>
+          <div class="vn-video-hero__proof-row">
+            <span aria-hidden="true"></span>
+            <p>
+              <span class="vn-video-hero__desktop-text">Выбор районов, определение сроков, анализ ликвидности</span>
+              <span class="vn-video-hero__mobile-text" aria-hidden="true">Районы, сроки сдачи и ликвидность объектов</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="vn-video-hero__actions">
+          <a
+            href="/contacts/#request"
+            class="vn-btn-primary vn-video-hero__cta"
+            data-modal-open
+            data-modal-title="Получить подборку вариантов"
+            data-modal-subtitle="Уточним ваш запрос и задачу, а затем подготовим подборку квартир."
+            data-modal-source="/podbor/hero"
+          >
+            <span class="vn-video-hero__desktop-text">Получить подборку вариантов</span>
+            <span class="vn-video-hero__mobile-text" aria-hidden="true">Получить подборку</span>
+          </a>
+        </div>
+        <p class="vn-video-hero__micro">
+          <span class="vn-video-hero__desktop-text">Свяжемся в ближайшее время, чтобы уточнить задачу.</span>
+          <span class="vn-video-hero__mobile-text" aria-hidden="true">Свяжемся в ближайшее время.</span>
         </p>
 
         <div class="vn-video-hero__service-note" aria-label="Условия услуги">
@@ -82,7 +132,7 @@ import OptimizedImage from '../../../components/ui/OptimizedImage.astro';
             loading="eager"
             class="vn-video-hero__image"
           />
-          <span class="vn-video-hero__image-badge">ТОП-20 ЖК Краснодара</span>
+          <span class="vn-video-hero__image-badge">Подборка проверенных ЖК</span>
         </div>
 
         <div class="vn-video-hero__result-body">
