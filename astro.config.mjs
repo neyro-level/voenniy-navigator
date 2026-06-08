@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
@@ -12,6 +13,7 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
   integrations: [
+    icon(),
     partytown({
       config: {
         forward: ['ym'],

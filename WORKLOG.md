@@ -36,6 +36,14 @@
 - **Improved:** `scripts/geo-check.mjs` сделан устойчивее к minified HTML — meta-check теперь понимает и quoted, и unquoted атрибуты. Это улучшение оставлено, потому что оно полезно независимо от выбора minifier.
 - **Checks:** после отката повторные `pnpm build` и `pnpm geo-check` проходят успешно (`100/100`), preview на `/`, `/usloviya-voennoy-ipoteki/`, `/contacts/` снова без console errors.
 
+### 2026-06-08 — Частичная миграция shared SVG на astro-icon
+
+- **Added:** установлена интеграция `astro-icon@1.1.5` и подключена в `astro.config.mjs`.
+- **Created:** локальный набор `src/icons/*` для повторяющихся системных иконок проекта (`layout-grid`, `menu`, `x`, `phone`, `clock-3`, `calendar-days`, `check`, `chevron-*`, `external-link`, `building-2`, `map-pinned`, `file-text`, `users`, `route`, `calculator`, `compass`, `map-pin`).
+- **Updated:** безопасно мигрированы на `<Icon />` только shared/layout зоны без изменения текстов и структуры: `Header.astro`, `Footer.astro`, `RouteMapOverlay.astro`, `FinalCTA.astro`.
+- **Kept as-is:** уникальные декоративные SVG (logo mark, overlay brackets, Telegram/VK-иконки и другие нестандартные формы) оставлены inline, чтобы не смешивать системную миграцию с дизайнерскими активами.
+- **Checks:** `pnpm build` и `pnpm geo-check` проходят (`100/100`), preview на `/`, `/usloviya-voennoy-ipoteki/`, `/contacts/` без console/page errors.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.
