@@ -1,3 +1,5 @@
+import { COOKIE_NAME } from './constants';
+
 /**
  * Unified analytics layer for AMS projects.
  * Currently wraps Yandex Metrica (ym) reachGoal calls.
@@ -41,20 +43,26 @@ interface TrackOptions {
   requireConsent?: boolean;
 }
 
+function hasAnalyticsConsent(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  try {
+    return window.localStorage.getItem(COOKIE_NAME) === 'accepted';
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Send a tracked event to all configured analytics backends.
  * Falls back silently if no backend is available.
  */
 export function track(event: AnalyticsEvent, options: TrackOptions = {}): void {
-  const { params, requireConsent = false } = options;
+  const { params } = options;
 
   if (typeof window === 'undefined') return;
 
-  // Respect cookie consent if required
-  if (requireConsent) {
-    const consent = document.cookie.match(/(?:^|; )cookie_consent=([^;]+)/);
-    if (!consent || consent[1] !== 'accepted') return;
-  }
+  if (!hasAnalyticsConsent()) return;
 
   // Yandex Metrica
   if (COUNTER_ID && window.ym) {

@@ -93,7 +93,7 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- TODO: Яндекс Метрика — подключается через CookieBanner после Accept -->
+  <!-- Яндекс Метрика — подключается через CookieBanner после Accept, Partytown исполняет script в worker -->
 </head>
 <body>
   <slot />
@@ -102,6 +102,14 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
   <!-- Global click tracking for data-track attributes -->
   <script is:inline>
     (function () {
+      function hasAnalyticsConsent() {
+        try {
+          return window.localStorage.getItem('vn_cookie_consent') === 'accepted';
+        } catch (_) {
+          return false;
+        }
+      }
+
       document.addEventListener('click', function (e) {
         var el = e.target.closest('[data-track]');
         if (!el) return;
@@ -111,7 +119,7 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
           var raw = el.getAttribute('data-track-params');
           if (raw) params = JSON.parse(raw);
         } catch (_) {}
-        if (window.ym) {
+        if (hasAnalyticsConsent() && window.ym) {
           var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
           if (cid) window.ym(cid, 'reachGoal', event, params);
         }
@@ -123,6 +131,13 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
   <script is:inline>
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function hasAnalyticsConsent() {
+        try {
+          return window.localStorage.getItem('vn_cookie_consent') === 'accepted';
+        } catch (_) {
+          return false;
+        }
+      }
       var depths = {};
       var ticking = false;
       function onScroll() {
@@ -135,14 +150,14 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
             var depth = Math.round((scrollTop / docHeight) * 100);
             if (depth >= 50 && !depths[50]) {
               depths[50] = true;
-              if (window.ym) {
+              if (hasAnalyticsConsent() && window.ym) {
                 var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
                 if (cid) window.ym(cid, 'reachGoal', 'page_scroll_50');
               }
             }
             if (depth >= 90 && !depths[90]) {
               depths[90] = true;
-              if (window.ym) {
+              if (hasAnalyticsConsent() && window.ym) {
                 var cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
                 if (cid) window.ym(cid, 'reachGoal', 'page_scroll_90');
               }

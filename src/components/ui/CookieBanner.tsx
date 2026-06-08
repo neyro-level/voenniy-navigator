@@ -1,18 +1,33 @@
 import { useEffect, useState } from 'react';
+import { COOKIE_NAME } from '../../lib/constants';
 import '../../styles/cookie-banner.css';
-
-const CONSENT_KEY = 'vn_cookie_consent';
 
 declare global {
   interface Window {
     ym?: (...args: unknown[]) => void;
+    __vnMetrikaInitialized?: boolean;
+  }
+}
+
+function dispatchConsentEvent(consent: 'accepted' | 'rejected') {
+  window.dispatchEvent(new CustomEvent('vn-consent-changed', { detail: { consent } }));
+}
+
+function hasAcceptedConsent() {
+  try {
+    return window.localStorage.getItem(COOKIE_NAME) === 'accepted';
+  } catch {
+    return false;
   }
 }
 
 function initYandexMetrika(counterId: string) {
-  if (window.ym) return;
+  if (!counterId || !hasAcceptedConsent()) return;
+  if (window.__vnMetrikaInitialized || document.querySelector('script[data-vn-metrika="true"]')) return;
 
   const script = document.createElement('script');
+  script.type = 'text/partytown';
+  script.dataset.vnMetrika = 'true';
   script.innerHTML = `
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();
@@ -21,32 +36,51 @@ function initYandexMetrika(counterId: string) {
     (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
     ym(${counterId},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
   `;
+
+  window.__vnMetrikaInitialized = true;
   document.head.appendChild(script);
+  window.dispatchEvent(new CustomEvent('ptupdate'));
 }
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem(CONSENT_KEY);
+    const consent = localStorage.getItem(COOKIE_NAME);
     if (!consent) {
       setVisible(true);
     } else if (consent === 'accepted') {
       const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
       if (counterId) initYandexMetrika(counterId);
     }
+
+    const handleConsentChanged = (event: Event) => {
+      const detail = (event as CustomEvent<{ consent?: string }>).detail;
+      if (detail?.consent === 'accepted') {
+        const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
+        if (counterId) initYandexMetrika(counterId);
+      }
+    };
+
+    window.addEventListener('vn-consent-changed', handleConsentChanged);
+
+    return () => {
+      window.removeEventListener('vn-consent-changed', handleConsentChanged);
+    };
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem(CONSENT_KEY, 'accepted');
+    localStorage.setItem(COOKIE_NAME, 'accepted');
     setVisible(false);
+    dispatchConsentEvent('accepted');
     const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
     if (counterId) initYandexMetrika(counterId);
   };
 
   const handleReject = () => {
-    localStorage.setItem(CONSENT_KEY, 'rejected');
+    localStorage.setItem(COOKIE_NAME, 'rejected');
     setVisible(false);
+    dispatchConsentEvent('rejected');
   };
 
   if (!visible) return null;

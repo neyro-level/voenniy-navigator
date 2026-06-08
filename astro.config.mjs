@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
@@ -11,6 +12,11 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
   integrations: [
+    partytown({
+      config: {
+        forward: ['ym'],
+      },
+    }),
     react(),
     sitemap({
       filter: (page) =>

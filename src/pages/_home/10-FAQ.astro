@@ -266,6 +266,14 @@ const { items } = Astro.props as { items: FAQItem[] };
 
 <script>
   (function () {
+    function hasAnalyticsConsent() {
+      try {
+        return window.localStorage.getItem('vn_cookie_consent') === 'accepted';
+      } catch (_) {
+        return false;
+      }
+    }
+
     const container = document.querySelector('.vn-home-faq__right');
     if (!container) return;
 
@@ -282,7 +290,7 @@ const { items } = Astro.props as { items: FAQItem[] };
         const isOpen = details.hasAttribute('open');
 
         // Track FAQ open
-        if (!isOpen && window.ym) {
+        if (!isOpen && hasAnalyticsConsent() && window.ym) {
           const cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
           if (cid) window.ym(cid, 'reachGoal', 'faq_open');
         }

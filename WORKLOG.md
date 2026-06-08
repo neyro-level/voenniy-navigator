@@ -17,6 +17,17 @@
 - **Updated:** в `astro.config.mjs` включён встроенный Astro Prefetch с осторожной стратегией `prefetchAll: true` + `defaultStrategy: 'hover'` как первый безопасный UX/performance-этап без новых зависимостей.
 - **Checks:** повторные `pnpm build` и `pnpm geo-check` после включения prefetch пройдены успешно (`0 errors / 0 warnings / 0 hints`, GEO `100/100`). Browser QA для desktop/mobile остаётся обязательным следующим шагом.
 
+### 2026-06-08 — Partytown для Яндекс.Метрики
+
+- **Added:** установлена официальная интеграция `@astrojs/partytown@2.1.7` и подключена в `astro.config.mjs`.
+- **Updated:** Partytown настроен с `forward: ['ym']`, чтобы текущие вызовы `window.ym(...)` в layout-скриптах и `analytics.ts` могли безопасно уходить в web worker.
+- **Changed:** `CookieBanner.tsx` теперь создаёт `type="text/partytown"` script динамически только после согласия пользователя на cookie, помечает инициализацию Яндекс.Метрики и отправляет `ptupdate` для повторного сканирования динамически добавленного script.
+- **Changed:** analytics gate ужесточён — события больше не ориентируются на наличие `window.ym`, а проверяют локальное consent-состояние `vn_cookie_consent`, чтобы Partytown-forward не создавал ложноположительное ощущение «метрика уже разрешена».
+- **Changed:** inline tracking в `BaseLayout.astro` и FAQ-аккордеоне на главной также переведён на явную проверку consent перед `reachGoal`.
+- **Checks:** `pnpm build` и `pnpm geo-check` повторно пройдены успешно (`0 errors / 0 warnings / 0 hints`, GEO `100/100`).
+- **Browser QA:** preview на `127.0.0.1:4321` проверен по ключевым маршрутам `/`, `/kalkulyator-voennoy-ipoteki/`, `/usloviya-voennoy-ipoteki/`, `/voennaya-ipoteka-krasnodar/`, `/contacts/` — console/page errors не обнаружены, cookie banner после accept скрывается и не возвращается при навигации.
+- **Note:** в локальном preview отсутствовал `PUBLIC_YM_COUNTER_ID`, поэтому реальный network-вызов `mc.yandex.ru` не проверялся; валидация ограничилась загрузкой самого Partytown (`/~partytown/...`) и проверкой отсутствия JS-ошибок. Финальную network-проверку Метрики нужно повторить в окружении, где задан public counter id.
+
 ### 2026-06-06 — Предрелизная проверка новых страниц и production hardening
 
 - **Checked:** `git remote -v` подтверждён — репозиторий проекта: `https://github.com/neyro-level/voenniy-navigator.git`.

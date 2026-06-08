@@ -11,18 +11,19 @@
     "geo-check": "node scripts/geo-check.mjs"
   },
   "dependencies": {
-    "astro": "^5.7.0",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/partytown": "^2.1.7",
     "@astrojs/react": "^3.6.3",
     "@astrojs/sitemap": "^3.2.1",
     "@tailwindcss/vite": "^4.1.4",
-    "tailwindcss": "^4.1.4",
+    "astro": "^5.7.0",
     "astro-font": "^1.1.0",
-    "lucide-react": "^0.487.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.6.0",
+    "lucide-react": "^0.487.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",
