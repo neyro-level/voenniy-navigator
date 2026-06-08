@@ -1,0 +1,274 @@
+---
+import OptimizedImage from '../../components/ui/OptimizedImage.astro';
+
+const identitySignals = [
+  'Сервисный маршрут по военной ипотеке',
+  'Михаил Хряпин ведёт первичный разбор',
+  'Краснодар, Крым, дистанционный формат',
+];
+---
+
+<section id="section-o-service-hero" class="vn-about-hero">
+  <div class="vn-about-hero__grid" aria-hidden="true"></div>
+  <div class="vn-about-hero__radial" aria-hidden="true"></div>
+
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-about-hero__layout">
+      <div class="vn-about-hero__content" style="grid-column: 1 / 8">
+        <span class="vn-about-hero__eyebrow">О Военном навигаторе</span>
+        <h1 class="vn-about-hero__title">
+          Военный навигатор — сервис по военной ипотеке
+          <span class="vn-about-hero__title-accent">с Михаилом Хряпиным</span>
+        </h1>
+        <p class="vn-about-hero__lead">
+          Эта страница объясняет, что такое Военный навигатор, как устроен сервисный маршрут
+          по покупке новостройки и почему первичный разбор идёт раньше подбора объекта.
+        </p>
+
+        <div class="vn-about-hero__actions">
+          <a href="/contacts/#request" data-modal-open data-modal-title="Получить первичный разбор" class="vn-btn-primary vn-about-hero__cta">
+            Получить первичный разбор
+          </a>
+          <a href="/" class="vn-about-hero__secondary">На главную</a>
+        </div>
+
+        <div class="vn-about-hero__signals" role="list" aria-label="Ключевые сигналы страницы">
+          {identitySignals.map((signal) => (
+            <span class="vn-about-hero__signal" role="listitem">{signal}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="vn-about-hero__aside" style="grid-column: 8 / 13">
+        <div class="vn-about-hero__photo-card">
+          <div class="vn-about-hero__photo-wrap">
+            <OptimizedImage
+              src="/images/mikhail-desk.png"
+              alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
+              width={640}
+              height={780}
+              loading="eager"
+              class="vn-about-hero__photo"
+            />
+          </div>
+          <div class="vn-about-hero__caption">
+            <p class="vn-about-hero__name">Михаил Хряпин</p>
+            <p class="vn-about-hero__role">Экспертное лицо и главный навигатор сервиса</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-about-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    padding-top: 152px;
+    padding-bottom: 88px;
+    background: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+  }
+
+  .vn-about-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-about-hero__radial {
+    position: absolute;
+    top: -240px;
+    right: -180px;
+    width: 880px;
+    height: 880px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-primary) 12%, transparent) 0%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-about-hero__layout {
+    position: relative;
+    z-index: 1;
+    align-items: center;
+  }
+
+  .vn-about-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-about-hero__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-about-hero__title {
+    margin: 28px 0 0;
+    max-width: 760px;
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-about-hero__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-about-hero__lead {
+    margin: 24px 0 0;
+    max-width: 620px;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-about-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .vn-about-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-bg-surface) 72%, transparent);
+    color: var(--color-text-primary);
+    font-size: var(--fs-body);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .vn-about-hero__secondary:hover {
+    background: var(--color-accent-cta-soft);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
+    color: var(--color-accent-cta);
+  }
+
+  .vn-about-hero__signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .vn-about-hero__signal {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-bg-surface) 58%, transparent);
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .vn-about-hero__photo-card {
+    display: grid;
+    gap: 18px;
+  }
+
+  .vn-about-hero__photo-wrap {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
+  }
+
+  .vn-about-hero__photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .vn-about-hero__caption {
+    padding: 18px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-bg-surface);
+  }
+
+  .vn-about-hero__name {
+    margin: 0 0 6px;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-about-hero__role {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-about-hero {
+      min-height: auto;
+      padding-top: 120px;
+    }
+
+    .vn-about-hero__content,
+    .vn-about-hero__aside {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-about-hero__aside {
+      margin-top: 34px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-about-hero {
+      padding-top: 96px;
+      padding-bottom: 64px;
+    }
+
+    .vn-about-hero__grid {
+      background-size: 48px 48px;
+    }
+
+    .vn-about-hero__title {
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .vn-about-hero__actions {
+      flex-direction: column;
+    }
+
+    .vn-about-hero__cta,
+    .vn-about-hero__secondary {
+      width: 100%;
+    }
+  }
+</style>

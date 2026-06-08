@@ -1,4 +1,4 @@
-export type NavGroup = 'object' | 'route' | 'contact';
+export type NavGroup = 'object' | 'trust' | 'route' | 'contact';
 
 export interface NavItem {
   number: string;
@@ -33,6 +33,15 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     number: '03',
+    label: 'О сервисе',
+    labelShort: 'О сервисе',
+    href: '/o-servise/',
+    description: 'Что такое Военный навигатор, как устроен сервис и кто ведёт первичный разбор.',
+    group: 'trust',
+    icon: 'compass',
+  },
+  {
+    number: '04',
     label: 'Калькулятор',
     labelShort: 'Калькулятор',
     href: '/kalkulyator-voennoy-ipoteki/',
@@ -41,7 +50,7 @@ export const NAV_ITEMS: NavItem[] = [
     icon: 'calculator',
   },
   {
-    number: '04',
+    number: '05',
     label: 'Условия',
     labelShort: 'Условия',
     href: '/usloviya-voennoy-ipoteki/',
@@ -50,7 +59,7 @@ export const NAV_ITEMS: NavItem[] = [
     icon: 'file-text',
   },
   {
-    number: '05',
+    number: '06',
     label: 'Семейная',
     labelShort: 'Семейная',
     href: '/semeynaya-voennaya-ipoteka/',
@@ -59,7 +68,7 @@ export const NAV_ITEMS: NavItem[] = [
     icon: 'users',
   },
   {
-    number: '06',
+    number: '07',
     label: 'Контакты',
     labelShort: 'Контакты',
     href: '/contacts/',
@@ -71,8 +80,9 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const GROUP_LABELS: Record<NavGroup, string> = {
   object:  '01 · Выбрать объект',
-  route:   '02 · Понять маршрут',
-  contact: '03 · Связаться',
+  trust:   '02 · Понять сервис',
+  route:   '03 · Понять маршрут',
+  contact: '04 · Связаться',
 };
 
 // Header default (84px) — без «Семейная» (ведём через footer / linking)

@@ -1,0 +1,26 @@
+---
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const usefulLinks = [
+  {
+    label: 'Главная страница',
+    href: '/',
+  },
+  {
+    label: 'Контакты и офисы',
+    href: '/contacts/',
+  },
+];
+---
+
+<FinalCTA
+  eyebrow="ПЕРВЫЙ ШАГ СЕРВИСА"
+  title="Начните с первичного разбора,"
+  accentText="потом переходите к маршруту покупки"
+  subtitle="Военный навигатор помогает сначала понять задачу, ограничения и критерии, а уже потом переходить к подбору новостройки и следующему шагу по сделке."
+  ctaText="Получить первичный разбор"
+  ctaModalTitle="Получить первичный разбор"
+  showStats={true}
+  showUsefulLinks={true}
+  usefulLinks={usefulLinks}
+/>

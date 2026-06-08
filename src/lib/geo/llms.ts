@@ -24,9 +24,9 @@ export function generateLlmsTxt(): string {
   lines.push('## About');
   lines.push('');
   lines.push(
-    `${GEO_SITE.tagline}. Помогаю военнослужащим и их семьям выбрать новостройку в Краснодаре и Крыму, ` +
-      `получить подборку проверенных ЖК и пройти весь маршрут покупки по военной ипотеке — ` +
-      `от первого разговора до получения ключей.`
+    `${GEO_SITE.tagline}. Сервис помогает военнослужащим и их семьям выбрать новостройку в Краснодаре и Крыму, ` +
+      `понять ограничения по программе и пройти маршрут покупки по военной ипотеке — ` +
+      `от первого разбора ситуации до следующего шага по сделке.`
   );
   lines.push('');
 
@@ -82,6 +82,7 @@ export function generateLlmsTxt(): string {
   lines.push('## Links');
   lines.push('');
   lines.push(`- Главная: ${GEO_SITE.url}${GEO_LINKS.home}`);
+  lines.push(`- О Военном навигаторе: ${GEO_SITE.url}${GEO_LINKS.oServise}`);
   lines.push(`- Военная ипотека в Краснодаре: ${GEO_SITE.url}${GEO_LINKS.krasnodar}`);
   lines.push(`- Военная ипотека в Крыму: ${GEO_SITE.url}${GEO_LINKS.krym}`);
   lines.push(`- Условия военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.usloviya}`);

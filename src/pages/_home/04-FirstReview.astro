@@ -1,0 +1,222 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const reviewSteps = [
+  {
+    title: 'Задача покупки',
+    text: 'Для жизни, переезда позже, вложения или дистанционного сценария',
+  },
+  {
+    title: 'Ограничения программы',
+    text: 'НИС, банк, бюджет, сроки и важные условия по сделке',
+  },
+  {
+    title: 'Критерии выбора',
+    text: 'Район, срок сдачи, формат квартиры, ликвидность и сценарий использования',
+  },
+  {
+    title: 'Следующий шаг',
+    text: 'Считать, подбирать, идти в региональный маршрут или готовить сделку',
+  },
+];
+
+const reviewResults = [
+  'Станет яснее, какая задача реально решается покупкой',
+  'Будут видны ограничения по программе и сделке',
+  'Появятся критерии для короткого списка объектов',
+  'Понятно, какой маршрут логичен именно сейчас',
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-review" class="vn-section vn-home-review" aria-labelledby="vn-home-review-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-home-review__layout">
+        <div class="vn-home-review__intro" style="grid-column: 1 / 6">
+          <span class="vn-label-mono">Первичный разбор</span>
+          <h2 class="vn-home-review__title" id="vn-home-review-title">
+            Что происходит на разборе ситуации
+          </h2>
+          <p class="vn-home-review__lead">
+            Это первый продукт сервиса. На нём Михаил уточняет задачу, ограничения и критерии,
+            чтобы отбор новостроек строился на вашей ситуации, а не на случайной витрине объектов.
+          </p>
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Получить разбор ситуации"
+            class="vn-btn-primary vn-home-review__cta"
+          >
+            Получить разбор ситуации
+          </a>
+        </div>
+
+        <div class="vn-home-review__steps-card" style="grid-column: 6 / 13">
+          <div class="vn-home-review__steps-grid">
+            {reviewSteps.map((step, index) => (
+              <article class="vn-home-review__step">
+                <span class="vn-home-review__step-num">{String(index + 1).padStart(2, '0')}</span>
+                <h3 class="vn-home-review__step-title">{step.title}</h3>
+                <p class="vn-home-review__step-text">{step.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="vn-home-review__result-panel">
+            <span class="vn-home-review__result-label">После разбора</span>
+            <ul class="vn-home-review__result-list">
+              {reviewResults.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-home-review {
+    background: var(--color-bg-surface);
+  }
+
+  .vn-home-review__layout {
+    align-items: start;
+  }
+
+  .vn-home-review__title {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-review__lead {
+    margin: 0;
+    max-width: 520px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-review__cta {
+    margin-top: 28px;
+  }
+
+  .vn-home-review__steps-card {
+    display: grid;
+    gap: 18px;
+  }
+
+  .vn-home-review__steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .vn-home-review__step {
+    display: grid;
+    gap: 8px;
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface-lowest);
+  }
+
+  .vn-home-review__step-num {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+  }
+
+  .vn-home-review__step-title {
+    margin: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-review__step-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-review__result-panel {
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-home-review__result-label {
+    display: inline-flex;
+    margin-bottom: 16px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-ondark-mute);
+  }
+
+  .vn-home-review__result-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vn-home-review__result-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-home-review__result-list li::before {
+    content: '';
+    position: absolute;
+    top: 0.7em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent-cta);
+    transform: translateY(-50%);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-review__intro,
+    .vn-home-review__steps-card {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-review__steps-card {
+      margin-top: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-review__steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-home-review__step,
+    .vn-home-review__result-panel {
+      padding: 20px;
+    }
+  }
+</style>

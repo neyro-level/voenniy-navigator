@@ -1,0 +1,111 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const reviewItems = [
+  'Задача покупки и жизненная ситуация',
+  'Статус НИС и важные параметры программы',
+  'Банк, ограничения, бюджет и сроки',
+  'Регион покупки и формат сделки',
+  'Критерии выбора объекта и следующий шаг',
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-primary-review" class="vn-section vn-section--secondary vn-about-review" aria-labelledby="vn-about-review-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-about-review__layout">
+        <div style="grid-column: 1 / 6">
+          <span class="vn-label-mono">Primary review process</span>
+          <h2 class="vn-about-review__title" id="vn-about-review-title">
+            Что уточняется на первичном разборе
+          </h2>
+          <p class="vn-about-review__lead">
+            Разбор нужен, чтобы сервис не строил подбор на догадках. До выбора объекта
+            важно увидеть задачу, ограничения и границы маршрута покупки.
+          </p>
+        </div>
+
+        <div style="grid-column: 7 / 13">
+          <div class="vn-about-review__panel">
+            <ol class="vn-about-review__list">
+              {reviewItems.map((item, index) => (
+                <li>
+                  <span class="vn-about-review__num">{String(index + 1).padStart(2, '0')}</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-about-review__title {
+    margin: 16px 0 14px;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+  }
+
+  .vn-about-review__lead {
+    margin: 0;
+    max-width: 520px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-about-review__panel {
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-about-review__list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vn-about-review__list li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border-ondark);
+    color: var(--color-text-ondark);
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+  }
+
+  .vn-about-review__num {
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-about-review__layout > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-about-review__panel {
+      margin-top: 28px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-about-review__panel {
+      padding: 22px;
+    }
+  }
+</style>

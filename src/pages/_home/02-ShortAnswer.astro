@@ -1,113 +1,170 @@
 ---
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const answerCards = [
+  {
+    label: 'Что это',
+    title: 'Сервисный маршрут, а не каталог',
+    description:
+      'Военный навигатор помогает не просто смотреть объекты, а понять, какой сценарий покупки подходит именно вам.',
+  },
+  {
+    label: 'Чем отличается',
+    title: 'Сначала ситуация, потом объекты',
+    description:
+      'Сервис начинается с разбора задачи, ограничений и критериев, а не с длинной витрины новостроек.',
+  },
+  {
+    label: 'Что получает клиент',
+    title: 'Понятный следующий шаг',
+    description:
+      'После первого обращения становится яснее, что делать дальше: считать, подбирать или уже готовить маршрут сделки.',
+  },
+];
 ---
-<!-- ══════════════════════════════════════════════
-     БЛОК 02 — ПОДХОД К ВЫБОРУ
-════════════════════════════════════════════════ -->
+
 <RevealOnScroll mode="fade-up">
-<section id="section-short-answer" class="vn-home-answer" aria-labelledby="vn-home-answer-title">
-  <div class="vn-container">
-    <div class="vn-home-answer__inner vn-grid-12">
-
-      <div class="vn-home-answer__label" style="grid-column: 1 / 4">
-        <span class="vn-label-mono">Коротко о подходе</span>
+  <section id="section-short-answer" class="vn-home-answer" aria-labelledby="vn-home-answer-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-home-answer__header">
+        <div style="grid-column: 1 / 4">
+          <span class="vn-label-mono">Что такое Военный навигатор</span>
+        </div>
+        <div style="grid-column: 4 / 9">
+          <h2 class="vn-home-answer__title" id="vn-home-answer-title">
+            Сервис, который помогает выбрать новостройку под задачу, а не по витрине
+          </h2>
+        </div>
+        <div style="grid-column: 9 / 13">
+          <p class="vn-home-answer__lead">
+            Военнослужащему не обязательно заранее знать район, объект или формат сделки.
+            Достаточно описать ситуацию — сервис поможет разложить её по шагам.
+          </p>
+        </div>
       </div>
 
-      <div class="vn-home-answer__main" style="grid-column: 4 / 9">
-        <h2 id="vn-home-answer-title">Военный навигатор помогает выбрать новостройку осознанно</h2>
-        <p>
-          Мы не каталог новостроек и не агентство. Мы помогаем военнослужащим разобраться,
-          какая покупка по военной ипотеке подходит под их задачу: бюджет, сроки, цель и формат сделки.
-          Разбор начинается с ситуации, а не с просмотра объектов.
-        </p>
-        <a href="/contacts/#request" data-modal-open data-modal-title="Разобрать мою ситуацию" class="vn-textlink vn-home-answer__link">
-          Разобрать мою ситуацию →
-        </a>
+      <div class="vn-home-answer__cards vn-grid-12">
+        {answerCards.map((card, index) => (
+          <article
+            class="vn-home-answer__card"
+            style={`grid-column: ${index === 0 ? '1 / 5' : index === 1 ? '5 / 9' : '9 / 13'}`}
+          >
+            <span class="vn-home-answer__card-label">{card.label}</span>
+            <h3 class="vn-home-answer__card-title">{card.title}</h3>
+            <p class="vn-home-answer__card-text">{card.description}</p>
+          </article>
+        ))}
       </div>
-
-      <p class="vn-home-answer__detail" style="grid-column: 9 / 13">
-        На первичном разборе мы уточним цель покупки, бюджет, сроки, ограничения по военной ипотеке
-        и удобный формат сделки. После этого станет понятно, какие новостройки действительно стоит
-        рассматривать.
-      </p>
-
     </div>
-  </div>
-</section>
+  </section>
 </RevealOnScroll>
 
 <style>
-/* ─── Block 02: Short answer ─── */
-.vn-home-answer {
-  background: var(--color-bg-surface);
-  padding-block: 52px;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.vn-home-answer__inner {
-  align-items: start;
-}
-
-.vn-home-answer__label {
-  padding-top: 4px;
-}
-
-.vn-home-answer__main {
-  max-width: 620px;
-}
-
-.vn-home-answer__main h2 {
-  margin: 0;
-  font-size: var(--fs-h2);
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: 0;
-  color: var(--color-text-primary);
-  text-wrap: balance;
-}
-
-.vn-home-answer__main p {
-  margin: 18px 0 0;
-  font-size: var(--fs-body);
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  text-wrap: pretty;
-}
-
-.vn-home-answer__detail {
-  margin: 0;
-  font-size: var(--fs-body-sm);
-  line-height: 1.75;
-  color: var(--color-text-tertiary);
-  padding-left: 24px;
-  border-left: 1px solid var(--color-border);
-  text-wrap: pretty;
-}
-
-@media (max-width: 1023px) {
-  .vn-home-answer__label,
-  .vn-home-answer__main,
-  .vn-home-answer__detail {
-    grid-column: 1 / -1 !important;
+  .vn-home-answer {
+    padding-block: 72px;
+    background: var(--color-bg-surface);
   }
 
-  .vn-home-answer__main {
-    margin-top: 22px;
-    max-width: none;
+  .vn-home-answer__header {
+    align-items: start;
+    margin-bottom: 32px;
   }
 
-  .vn-home-answer__detail {
-    padding-left: 0;
-    border-left: none;
-    border-top: 1px solid var(--color-border);
-    padding-top: 20px;
-    margin-top: 24px;
+  .vn-home-answer__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+    text-wrap: balance;
   }
-}
 
-@media (max-width: 640px) {
-  .vn-home-answer { padding-block: 36px; }
-  .vn-home-answer__main h2 { font-size: var(--fs-h3); }
-}
+  .vn-home-answer__lead {
+    margin: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--color-border);
+    font-size: var(--fs-body-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-answer__cards {
+    gap: 16px 24px;
+  }
+
+  .vn-home-answer__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface-lowest);
+  }
+
+  .vn-home-answer__card-label {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-home-answer__card-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-answer__card-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-answer__header > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-answer__lead {
+      margin-top: 16px;
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+    }
+
+    .vn-home-answer__cards > .vn-home-answer__card:nth-child(odd) {
+      grid-column: 1 / 7 !important;
+    }
+
+    .vn-home-answer__cards > .vn-home-answer__card:nth-child(even) {
+      grid-column: 7 / 13 !important;
+    }
+
+    .vn-home-answer__cards > .vn-home-answer__card:nth-child(3) {
+      grid-column: 1 / 7 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-answer {
+      padding-block: 56px;
+    }
+
+    .vn-home-answer__cards > .vn-home-answer__card:nth-child(n) {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-answer__card {
+      padding: 20px;
+    }
+  }
 </style>

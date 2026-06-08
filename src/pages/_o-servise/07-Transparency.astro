@@ -1,0 +1,72 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-transparency" class="vn-section vn-section--dark vn-about-transparency" aria-labelledby="vn-about-transparency-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-about-transparency__layout">
+        <div style="grid-column: 1 / 6">
+          <span class="vn-label-mono vn-about-transparency__eyebrow">Transparency</span>
+          <h2 class="vn-about-transparency__title" id="vn-about-transparency-title">
+            Как устроена прозрачность в новостройках
+          </h2>
+        </div>
+
+        <div style="grid-column: 7 / 13" class="vn-about-transparency__content">
+          <p>
+            В новостройках сопровождение обычно оплачивает застройщик. Но для клиента важнее другое:
+            подбор внутри сервиса должен оставаться привязанным к задаче покупки, а не к тому, какой объект удобнее показать первым.
+          </p>
+          <p>
+            Поэтому Военный навигатор сначала разбирает цель, ограничения и критерии. Если объект не подходит
+            по району, сроку, сценарию использования или логике сделки, он не должен оставаться в коротком списке только потому, что его легко продать.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-about-transparency {
+    padding: 88px 0;
+  }
+
+  .vn-about-transparency__eyebrow {
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+  }
+
+  .vn-about-transparency__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-ondark);
+    text-wrap: balance;
+  }
+
+  .vn-about-transparency__content {
+    display: grid;
+    gap: 18px;
+  }
+
+  .vn-about-transparency__content p {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.68;
+    color: var(--color-text-ondark-mute);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-about-transparency__layout > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-about-transparency__content {
+      margin-top: 24px;
+    }
+  }
+</style>

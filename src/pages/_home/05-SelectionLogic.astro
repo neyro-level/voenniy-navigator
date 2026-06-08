@@ -1,0 +1,175 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const factors = [
+  {
+    title: 'Задача покупки',
+    text: 'Для жизни, переезда позже, вложения или смешанного сценария — это разные критерии выбора.',
+  },
+  {
+    title: 'Банк и программа',
+    text: 'Военная ипотека задаёт рамки по сумме, срокам, документам и формату сделки ещё до подбора.',
+  },
+  {
+    title: 'Район и срок',
+    text: 'Сервис оценивает не только цену входа, но и локацию, срок сдачи и то, как объект вписывается в задачу.',
+  },
+  {
+    title: 'Ликвидность и отсев',
+    text: 'Неподходящие варианты не попадают в короткий список только ради количества или красивой витрины.',
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-selection-logic" class="vn-section vn-section--dark vn-home-logic" aria-labelledby="vn-home-logic-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-home-logic__header">
+        <div style="grid-column: 1 / 6">
+          <span class="vn-label-mono vn-home-logic__eyebrow">Selection Logic</span>
+          <h2 class="vn-home-logic__title" id="vn-home-logic-title">
+            Как сервис отбирает объекты под задачу, а не по витрине
+          </h2>
+        </div>
+        <div style="grid-column: 7 / 13">
+          <p class="vn-home-logic__lead">
+            Военный навигатор не строит подбор от случайного каталога. Сначала определяются критерии,
+            потом отсеиваются варианты, которые не подходят по программе, срокам, району или сценарию использования.
+          </p>
+        </div>
+      </div>
+
+      <div class="vn-home-logic__grid vn-grid-12">
+        {factors.map((factor, index) => (
+          <article class="vn-home-logic__card" style={`grid-column: ${index % 2 === 0 ? '1 / 7' : '7 / 13'}`}>
+            <span class="vn-home-logic__num">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="vn-home-logic__card-title">{factor.title}</h3>
+            <p class="vn-home-logic__text">{factor.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="vn-home-logic__footer">
+        <p>
+          Подбор начинается не с того, что продаётся, а с того, что подходит под вашу ситуацию и ограничения по сделке.
+        </p>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-home-logic {
+    padding: 96px 0 88px;
+  }
+
+  .vn-home-logic__header {
+    align-items: end;
+    margin-bottom: 40px;
+  }
+
+  .vn-home-logic__eyebrow {
+    color: var(--color-text-ondark);
+    opacity: 0.5;
+  }
+
+  .vn-home-logic__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-ondark);
+    text-wrap: balance;
+  }
+
+  .vn-home-logic__lead {
+    margin: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--color-border-ondark);
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-text-ondark-mute);
+  }
+
+  .vn-home-logic__grid {
+    gap: 16px 24px;
+  }
+
+  .vn-home-logic__card {
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-bg-dark-elev) 78%, transparent);
+  }
+
+  .vn-home-logic__num {
+    display: inline-flex;
+    margin-bottom: 12px;
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    opacity: 0.8;
+  }
+
+  .vn-home-logic__card-title {
+    margin: 0 0 10px;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.32;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-home-logic__text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-ondark-mute);
+    text-wrap: pretty;
+  }
+
+  .vn-home-logic__footer {
+    margin-top: 24px;
+    padding: 22px 24px;
+    border: 1px solid var(--color-border-ondark);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-bg-dark-elev) 46%, transparent);
+  }
+
+  .vn-home-logic__footer p {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-ondark);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-logic__header > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-logic__lead {
+      margin-top: 16px;
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid var(--color-border-ondark);
+      padding-top: 16px;
+    }
+
+    .vn-home-logic__grid > .vn-home-logic__card:nth-child(n) {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-logic {
+      padding: 72px 0 64px;
+    }
+
+    .vn-home-logic__card,
+    .vn-home-logic__footer {
+      padding: 20px;
+    }
+  }
+</style>

@@ -1,311 +1,407 @@
 ---
 import OptimizedImage from '../../components/ui/OptimizedImage.astro';
+
+const serviceSteps = [
+  'Разбираем задачу покупки и ограничения по программе',
+  'Фиксируем критерии: бюджет, район, срок, сценарий',
+  'Отбираем короткий список подходящих новостроек',
+  'Показываем следующий шаг: расчёт, подбор или маршрут сделки',
+];
 ---
-<!-- ══════════════════════════════════════════════
-     БЛОК 01 — HERO
-════════════════════════════════════════════════ -->
+
 <section id="section-hero" class="vn-home-hero">
-  <div class="vn-home-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-home-hero__grid" aria-hidden="true"></div>
   <div class="vn-home-hero__radial" aria-hidden="true"></div>
 
   <div class="vn-container">
-    <div class="vn-home-hero__inner vn-grid-12">
+    <div class="vn-grid-12 vn-home-hero__layout">
+      <div class="vn-home-hero__content" style="grid-column: 1 / 8">
+        <span class="vn-home-hero__eyebrow">Военный навигатор · сервис по военной ипотеке</span>
 
-      <!-- Left: 6 колонок -->
-      <div class="vn-home-hero__left">
-        <div class="vn-home-hero__eyebrow">Военная ипотека · новостройки</div>
-
-        <h1 class="vn-home-hero__h1">
-          Военный навигатор помогает выбрать новостройку
-          <span class="vn-home-hero__h1-accent"> по военной ипотеке</span>
+        <h1 class="vn-home-hero__title">
+          Сервис выбора новостройки
+          <span class="vn-home-hero__title-accent">по военной ипотеке под вашу задачу</span>
         </h1>
 
-        <p class="vn-home-hero__sub">
-          Не просто доступ к объектам, а отсев плохих решений.
-          Мы разберём задачу и подберём объект, который подходит под бюджет,
-          сроки и цель покупки.
+        <p class="vn-home-hero__lead">
+          Не начинаем с витрины объектов. Сначала разбираем вашу ситуацию: цель покупки,
+          бюджет, сроки и ограничения по программе. Потом показываем, какие новостройки
+          действительно стоит рассматривать.
         </p>
 
-        <div class="vn-home-hero__cta-row">
+        <div class="vn-home-hero__actions">
           <a
             href="/contacts/#request"
             data-modal-open
-            data-modal-title="Получить первичный разбор"
-            class="vn-btn-primary vn-home-hero__btn-primary"
+            data-modal-title="Получить разбор ситуации"
+            class="vn-btn-primary vn-home-hero__cta"
           >
-            Получить первичный разбор
+            Получить разбор ситуации
+          </a>
+          <a href="/kalkulyator-voennoy-ipoteki/" class="vn-home-hero__secondary">
+            Рассчитать ипотеку
           </a>
         </div>
 
-        <p class="vn-home-hero__cta-note">Мы уточним вашу задачу и подскажем, с чего начать.</p>
+        <p class="vn-home-hero__note">
+          Первый шаг — разбор ситуации до выбора объекта и без случайной подборки.
+        </p>
 
-        <div class="vn-home-hero__proof vn-grid-12" role="list" aria-label="Короткие доказательства">
-          <div class="vn-home-hero__proof-card" style="grid-column: 1 / 7" role="listitem">
-            <span class="vn-home-hero__proof-label">Ниша</span>
-            <span class="vn-home-hero__proof-value">Только военная ипотека и новостройки</span>
+        <div class="vn-home-hero__signals" role="list" aria-label="Короткие сигналы сервиса">
+          <div class="vn-home-hero__signal" role="listitem">
+            <span class="vn-home-hero__signal-label">Формат</span>
+            <span class="vn-home-hero__signal-value">Краснодар, Крым, дистанционно</span>
           </div>
-          <div class="vn-home-hero__proof-card" style="grid-column: 7 / 13" role="listitem">
-            <span class="vn-home-hero__proof-label">География</span>
-            <span class="vn-home-hero__proof-value">Краснодар · Крым · дистанционно</span>
-          </div>
-          <div class="vn-home-hero__proof-card" style="grid-column: 1 / 7" role="listitem">
-            <span class="vn-home-hero__proof-label">Формат</span>
-            <span class="vn-home-hero__proof-value">Первый разбор — без обязательств</span>
-          </div>
-          <div class="vn-home-hero__proof-card" style="grid-column: 7 / 13" role="listitem">
-            <span class="vn-home-hero__proof-label">Следующий шаг</span>
-            <span class="vn-home-hero__proof-value">Понятный план после разбора</span>
+          <div class="vn-home-hero__signal" role="listitem">
+            <span class="vn-home-hero__signal-label">Первый шаг</span>
+            <span class="vn-home-hero__signal-value">Понять, что подходит и с чего начать</span>
           </div>
         </div>
       </div>
 
-      <!-- Right: 6 колонок -->
-      <div class="vn-home-hero__right">
-        <div class="vn-home-hero__photo-outer">
-          <div class="vn-home-hero__portrait-frame">
-            <OptimizedImage
-              src="/images/mikhail-hero.png"
-              alt="Михаил Хряпин — эксперт по выбору новостроек по военной ипотеке"
-              loading="eager"
-              class="vn-home-hero__portrait"
-            />
-            <div class="vn-home-hero__name-card">
-              <p class="vn-home-hero__name-card-title">Михаил Хряпин</p>
-              <p class="vn-home-hero__name-card-sub">Помогаем военнослужащим выбрать новостройку по военной ипотеке</p>
+      <div class="vn-home-hero__aside" style="grid-column: 8 / 13">
+        <div class="vn-home-hero__service-card">
+          <span class="vn-home-hero__card-label">Как работает сервис</span>
+          <ol class="vn-home-hero__steps">
+            {serviceSteps.map((step, index) => (
+              <li class="vn-home-hero__step">
+                <span class="vn-home-hero__step-num">{String(index + 1).padStart(2, '0')}</span>
+                <span class="vn-home-hero__step-text">{step}</span>
+              </li>
+            ))}
+          </ol>
+
+          <div class="vn-home-hero__expert-card">
+            <div class="vn-home-hero__expert-photo">
+              <OptimizedImage
+                src="/images/mikhail-hero.png"
+                alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
+                loading="eager"
+                class="vn-home-hero__expert-image"
+              />
+            </div>
+            <div class="vn-home-hero__expert-meta">
+              <p class="vn-home-hero__expert-name">Михаил Хряпин</p>
+              <p class="vn-home-hero__expert-role">Главный навигатор сервиса и ведущий первичный разбор</p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-/* ─── Block 01: Hero ─── */
-.vn-home-hero {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-bg-primary);
-  padding-top: 160px;
-  padding-bottom: 96px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.vn-home-hero__grid-bg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.vn-home-hero__radial {
-  position: absolute;
-  top: -200px;
-  left: -200px;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-bg-surface) 60%, transparent) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.vn-home-hero__inner {
-  position: relative;
-  z-index: 1;
-  align-items: start;
-  width: 100%;
-}
-
-.vn-home-hero__left { min-width: 0; }
-
-.vn-home-hero__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: 28px;
-}
-.vn-home-hero__eyebrow::before {
-  content: "";
-  width: 32px;
-  height: 2px;
-  background: var(--color-accent-cta);
-  flex-shrink: 0;
-}
-
-.vn-home-hero__h1 {
-  margin: 0 0 24px;
-  font-size: var(--fs-display);
-  line-height: 1.05;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--color-text-primary);
-  text-wrap: balance;
-}
-
-.vn-home-hero__h1-accent { color: var(--color-accent-primary); }
-
-.vn-home-hero__sub {
-  margin: 0 0 36px;
-  font-size: var(--fs-lead);
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  text-wrap: balance;
-}
-
-.vn-home-hero__cta-row {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.vn-home-hero__btn-primary {
-  height: 54px;
-  padding: 0 40px;
-  font-size: var(--fs-body);
-}
-
-.vn-home-hero__cta-note {
-  margin: 0;
-  font-size: var(--fs-body-sm);
-  line-height: 1.55;
-  color: var(--color-text-tertiary);
-  text-wrap: pretty;
-}
-
-.vn-home-hero__proof {
-  margin-top: 30px;
-  gap: 10px;
-}
-
-.vn-home-hero__proof-card {
-  min-width: 0;
-  padding: 18px 18px 17px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-bg-surface) 58%, transparent);
-}
-
-.vn-home-hero__proof-label {
-  display: block;
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  margin-bottom: 6px;
-}
-
-.vn-home-hero__proof-value {
-  display: block;
-  font-size: var(--fs-body-sm);
-  line-height: 1.4;
-  font-weight: 500;
-  color: var(--color-text-primary);
-}
-
-/* Photo column */
-.vn-home-hero__left  { grid-column: 1 / 8; }
-
-.vn-home-hero__right {
-  grid-column: 8 / 13;
-  position: relative;
-  min-width: 0;
-  padding-top: 40px;
-}
-
-.vn-home-hero__photo-outer {
-  position: relative;
-  max-width: 420px;
-}
-
-.vn-home-hero__portrait-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow:
-    14px 14px 0 color-mix(in srgb, var(--color-accent-primary) 18%, transparent),
-    0 24px 64px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
-}
-
-.vn-home-hero__portrait {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-/* Glassmorphism name card */
-.vn-home-hero__name-card {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: color-mix(in srgb, var(--color-bg-dark) 65%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 16px 20px;
-}
-
-.vn-home-hero__name-card-title {
-  margin: 0 0 4px;
-  font-size: var(--fs-body);
-  font-weight: 600;
-  color: var(--color-bg-surface);
-}
-
-.vn-home-hero__name-card-sub {
-  margin: 0;
-  font-size: var(--fs-body-sm);
-  line-height: 1.4;
-  color: var(--color-text-ondark-mute);
-}
-
-@media (max-width: 1023px) {
-  .vn-home-hero__left  { grid-column: 1 / -1; }
-  .vn-home-hero__right { grid-column: 1 / -1; padding-top: 0; }
-  .vn-home-hero__photo-outer { max-width: 400px; margin: 0 auto; }
-  .vn-home-hero__right { margin-top: 48px; }
-
-  .vn-home-hero__proof.vn-grid-12 > .vn-home-hero__proof-card:nth-child(odd) {
-    grid-column: 1 / 7 !important;
+  .vn-home-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    padding-top: 152px;
+    padding-bottom: 88px;
+    background: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
   }
 
-  .vn-home-hero__proof.vn-grid-12 > .vn-home-hero__proof-card:nth-child(even) {
-    grid-column: 7 / 13 !important;
+  .vn-home-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
   }
-}
 
-@media (max-width: 640px) {
-  .vn-home-hero { padding-top: 100px; padding-bottom: 64px; }
-  .vn-home-hero__grid-bg { background-size: 48px 48px; }
-  .vn-home-hero__h1 { line-height: 1.1; letter-spacing: -0.02em; }
-  .vn-home-hero__cta-row { margin-bottom: 12px; }
-  .vn-home-hero__btn-primary { width: 100%; height: 52px; justify-content: center; }
-  .vn-home-hero__proof { margin-top: 24px; gap: 8px; }
-  .vn-home-hero__proof-card { padding: 14px 12px; }
-  .vn-home-hero__right { margin-top: 40px; }
-  .vn-home-hero__portrait-frame {
-    aspect-ratio: 4 / 5;
-    border-radius: 8px;
-    box-shadow:
-      8px 8px 0 color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
-      0 16px 40px color-mix(in srgb, var(--color-bg-dark) 12%, transparent);
+  .vn-home-hero__radial {
+    position: absolute;
+    top: -220px;
+    left: -200px;
+    width: 840px;
+    height: 840px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-bg-surface) 60%, transparent) 0%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
   }
-  .vn-home-hero__name-card { padding: 12px 16px; }
-}
+
+  .vn-home-hero__layout {
+    position: relative;
+    z-index: 1;
+    align-items: start;
+  }
+
+  .vn-home-hero__content {
+    min-width: 0;
+  }
+
+  .vn-home-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-hero__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-home-hero__title {
+    margin: 28px 0 0;
+    max-width: 780px;
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-hero__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-home-hero__lead {
+    margin: 28px 0 0;
+    max-width: 620px;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .vn-home-hero__cta {
+    min-height: 54px;
+    padding-inline: 36px;
+  }
+
+  .vn-home-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-bg-surface) 74%, transparent);
+    color: var(--color-text-primary);
+    font-size: var(--fs-body);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .vn-home-hero__secondary:hover {
+    background: var(--color-accent-cta-soft);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
+    color: var(--color-accent-cta);
+  }
+
+  .vn-home-hero__note {
+    margin: 14px 0 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-home-hero__signals {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+    max-width: 620px;
+  }
+
+  .vn-home-hero__signal {
+    display: grid;
+    gap: 6px;
+    padding: 18px 18px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
+  }
+
+  .vn-home-hero__signal-label {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-home-hero__signal-value {
+    font-size: var(--fs-body-sm);
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-hero__aside {
+    min-width: 0;
+  }
+
+  .vn-home-hero__service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100%;
+    padding: 28px;
+    border: 1px solid var(--color-border-ondark);
+    border-radius: 18px;
+    background: var(--color-bg-dark);
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 18%, transparent);
+  }
+
+  .vn-home-hero__card-label {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-ondark-mute);
+  }
+
+  .vn-home-hero__steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0;
+  }
+
+  .vn-home-hero__step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border-ondark);
+  }
+
+  .vn-home-hero__step-num {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+  }
+
+  .vn-home-hero__step-text {
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-home-hero__expert-card {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border-ondark);
+    align-items: center;
+  }
+
+  .vn-home-hero__expert-photo {
+    width: 96px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--color-bg-dark-elev);
+  }
+
+  .vn-home-hero__expert-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .vn-home-hero__expert-name {
+    margin: 0 0 6px;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-home-hero__expert-role {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-ondark-mute);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-hero {
+      min-height: auto;
+      padding-top: 120px;
+    }
+
+    .vn-home-hero__content,
+    .vn-home-hero__aside {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-hero__aside {
+      margin-top: 36px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-hero {
+      padding-top: 96px;
+      padding-bottom: 64px;
+    }
+
+    .vn-home-hero__grid {
+      background-size: 48px 48px;
+    }
+
+    .vn-home-hero__title {
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .vn-home-hero__actions {
+      flex-direction: column;
+    }
+
+    .vn-home-hero__cta,
+    .vn-home-hero__secondary {
+      width: 100%;
+    }
+
+    .vn-home-hero__signals {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-home-hero__service-card {
+      padding: 22px;
+    }
+
+    .vn-home-hero__expert-card {
+      grid-template-columns: 80px 1fr;
+    }
+
+    .vn-home-hero__expert-photo {
+      width: 80px;
+      height: 104px;
+    }
+  }
 </style>

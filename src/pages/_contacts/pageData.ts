@@ -48,7 +48,7 @@ export const schemas = [
     '@type': 'LocalBusiness',
     '@id': `${SITE.url}/contacts/#krasnodar`,
     name: SITE.name,
-    description: 'Навигатор по новостройкам Краснодара для военнослужащих',
+    description: 'Сервис выбора новостройки и маршрута покупки по военной ипотеке',
     url: `${SITE.url}/`,
     telephone: CONTACTS.phone,
     address: {
@@ -65,7 +65,7 @@ export const schemas = [
     '@type': 'LocalBusiness',
     '@id': `${SITE.url}/contacts/#crimea`,
     name: `${SITE.name} (Крым)`,
-    description: 'Работаем с объектами по всему Крыму по военной ипотеке',
+    description: 'Сервисный маршрут покупки новостройки по военной ипотеке в Крыму',
     url: `${SITE.url}/`,
     telephone: CONTACTS.phone,
     address: {

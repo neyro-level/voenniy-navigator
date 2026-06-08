@@ -1,0 +1,122 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const methodCards = [
+  {
+    title: 'Критерии фиксируются заранее',
+    text: 'Район, срок, формат квартиры, сценарий использования и ограничения по сделке становятся основой отбора.',
+  },
+  {
+    title: 'Ограничения учитываются до подбора',
+    text: 'Банк, НИС, бюджет, сроки и формат сделки проверяются раньше, чем вы смотрите конкретные объекты.',
+  },
+  {
+    title: 'Неподходящие варианты отсеиваются',
+    text: 'Сервис не держит в коротком списке объекты, которые не вписываются в вашу задачу только ради количества.',
+  },
+  {
+    title: 'Короткий список строится по задаче',
+    text: 'Подборка создаётся не по витрине и не по самому заметному объекту, а по логике вашего маршрута покупки.',
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-selection-method" class="vn-section vn-about-method" aria-labelledby="vn-about-method-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-about-method__header">
+        <div style="grid-column: 1 / 8">
+          <span class="vn-label-mono">Selection method</span>
+          <h2 class="vn-about-method__title" id="vn-about-method-title">
+            Как формируется подбор внутри сервиса
+          </h2>
+        </div>
+        <div style="grid-column: 8 / 13">
+          <p class="vn-about-method__lead">
+            Военный навигатор строит подбор от задачи клиента и ограничений по сделке.
+            Поэтому выбор не начинается с красивой витрины и не заканчивается длинным списком без логики.
+          </p>
+        </div>
+      </div>
+
+      <div class="vn-about-method__grid vn-grid-12">
+        {methodCards.map((card, index) => (
+          <article class="vn-about-method__card" style={`grid-column: ${index % 2 === 0 ? '1 / 7' : '7 / 13'}`}>
+            <h3 class="vn-about-method__card-title">{card.title}</h3>
+            <p class="vn-about-method__text">{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-about-method__header {
+    align-items: end;
+    margin-bottom: 36px;
+  }
+
+  .vn-about-method__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+  }
+
+  .vn-about-method__lead {
+    margin: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--color-border);
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-about-method__grid {
+    gap: 16px 24px;
+  }
+
+  .vn-about-method__card {
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-about-method__card-title {
+    margin: 0 0 10px;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.32;
+    color: var(--color-text-primary);
+  }
+
+  .vn-about-method__text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-about-method__header > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-about-method__lead {
+      margin-top: 16px;
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+    }
+
+    .vn-about-method__grid > .vn-about-method__card:nth-child(n) {
+      grid-column: 1 / -1 !important;
+    }
+  }
+</style>

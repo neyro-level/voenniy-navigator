@@ -1,0 +1,26 @@
+---
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const usefulLinks = [
+  {
+    label: 'О Военном навигаторе',
+    href: '/o-servise/',
+  },
+  {
+    label: 'Калькулятор военной ипотеки',
+    href: '/kalkulyator-voennoy-ipoteki/',
+  },
+];
+---
+
+<FinalCTA
+  eyebrow="ПЕРВЫЙ ШАГ СЕРВИСА"
+  title="Начните с разбора ситуации,"
+  accentText="потом переходите к подбору"
+  subtitle="На первом шаге Михаил уточнит задачу покупки, ограничения по программе и подскажет, какой маршрут логичен именно сейчас. Без случайной витрины и лишнего шума."
+  ctaText="Получить разбор ситуации"
+  ctaModalTitle="Получить разбор ситуации"
+  showStats={true}
+  showUsefulLinks={true}
+  usefulLinks={usefulLinks}
+/>

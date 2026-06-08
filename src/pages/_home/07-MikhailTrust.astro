@@ -1,0 +1,180 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+import OptimizedImage from '../../components/ui/OptimizedImage.astro';
+
+const trustPoints = [
+  'Михаил ведёт первичный разбор и помогает понять ограничения до выбора объекта',
+  'Сервис остаётся главным субъектом, а Михаил — лицом доверия и логики отбора',
+  'Подробная роль Михаила и устройство сервиса раскрываются на отдельной странице о Военном навигаторе',
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-mikhail-trust" class="vn-section vn-section--secondary vn-home-trust-preview" aria-labelledby="vn-home-trust-preview-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-home-trust-preview__layout">
+        <div class="vn-home-trust-preview__photo-wrap" style="grid-column: 1 / 5">
+          <OptimizedImage
+            src="/images/mikhail-desk.png"
+            alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
+            width={480}
+            height={580}
+            loading="lazy"
+            class="vn-home-trust-preview__photo"
+          />
+        </div>
+
+        <div class="vn-home-trust-preview__content" style="grid-column: 5 / 13">
+          <span class="vn-label-mono">Mikhail / Trust preview</span>
+          <h2 class="vn-home-trust-preview__title" id="vn-home-trust-preview-title">
+            Михаил Хряпин — главный навигатор сервиса и ведущий первичный разбор
+          </h2>
+          <p class="vn-home-trust-preview__lead">
+            На главной Михаил остаётся видимым лицом доверия, но не заменяет собой весь сервис.
+            Его роль — помочь понять задачу покупки, ограничения и логику отбора до того, как вы перейдёте к подбору объекта.
+          </p>
+
+          <div class="vn-home-trust-preview__points">
+            {trustPoints.map((point, index) => (
+              <div class="vn-home-trust-preview__point">
+                <span class="vn-home-trust-preview__point-num">{String(index + 1).padStart(2, '0')}</span>
+                <p>{point}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="vn-home-trust-preview__actions">
+            <a href="/o-servise/" class="vn-home-trust-preview__more">О Военном навигаторе →</a>
+            <a href="/contacts/#request" data-modal-open data-modal-title="Получить первичный разбор" class="vn-btn-primary vn-home-trust-preview__cta">
+              Получить первичный разбор
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-home-trust-preview__layout {
+    align-items: stretch;
+  }
+
+  .vn-home-trust-preview__photo-wrap {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .vn-home-trust-preview__photo {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .vn-home-trust-preview__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+  }
+
+  .vn-home-trust-preview__title {
+    margin: 16px 0 12px;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-trust-preview__lead {
+    margin: 0;
+    max-width: 560px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-trust-preview__points {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .vn-home-trust-preview__point {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-home-trust-preview__point:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-home-trust-preview__point-num {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    opacity: 0.8;
+  }
+
+  .vn-home-trust-preview__point p {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-trust-preview__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .vn-home-trust-preview__more {
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    color: var(--color-accent-cta);
+    text-decoration: none;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-trust-preview__photo-wrap,
+    .vn-home-trust-preview__content {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-home-trust-preview__content {
+      padding-left: 0;
+      margin-top: 28px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-trust-preview__photo {
+      min-height: 320px;
+      height: 320px;
+    }
+
+    .vn-home-trust-preview__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .vn-home-trust-preview__cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

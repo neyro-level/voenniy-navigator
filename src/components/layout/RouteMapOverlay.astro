@@ -10,6 +10,7 @@ const maxHref = getConfiguredValue(CONTACTS.max);
 const vkHref = getConfiguredValue(CONTACTS.vk);
 
 const CARD_BODIES: Record<string, string> = {
+  '/o-servise/': 'Что это за сервис, кто за ним стоит и почему первый шаг начинается с разбора.',
   '/voennaya-ipoteka-krasnodar/': 'Отбор новостроек под задачу, а не по витрине.',
   '/voennaya-ipoteka-krym/': 'Квартиры и новостройки под вашу цель покупки.',
   '/kalkulyator-voennoy-ipoteki/': 'Ориентир по сумме, накоплениям и бюджету покупки.',
@@ -20,6 +21,7 @@ const CARD_BODIES: Record<string, string> = {
 
 const LABEL_PREFIX: Record<NavGroup, string> = {
   object: 'OBJECT',
+  trust: 'TRUST',
   route: 'REMOTE',
   contact: 'CONTACT',
 };
@@ -38,7 +40,7 @@ const homeCard = {
   label: 'START / 00',
   icon: 'compass',
   title: 'Главная',
-  body: 'Кто такой Михаил и как начинается работа.',
+  body: 'Что такое сервис, какие маршруты он закрывает и с чего начинается работа.',
   href: '/',
   badge: null,
   group: 'contact' as NavGroup,
@@ -48,12 +50,12 @@ const cards = [...navCards, homeCard];
 
 const groups = [
   { id: 'object' as NavGroup, label: GROUP_LABELS.object.toUpperCase(), cards: cards.filter((c) => c.group === 'object') },
+  { id: 'trust' as NavGroup, label: GROUP_LABELS.trust.toUpperCase(), cards: cards.filter((c) => c.group === 'trust') },
   { id: 'route' as NavGroup, label: GROUP_LABELS.route.toUpperCase(), cards: cards.filter((c) => c.group === 'route') },
   { id: 'contact' as NavGroup, label: GROUP_LABELS.contact.toUpperCase(), cards: cards.filter((c) => c.group === 'contact') },
 ];
 
-// Задержки анимации: 100, 160, 220, 280, 340, 400ms
-const cardDelays = [100, 160, 220, 280, 340, 400];
+const cardDelays = [100, 160, 220, 280, 340, 400, 460, 520];
 ---
 
 <div
@@ -98,7 +100,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
         <path d="M27 33 L33 33 L33 27" stroke="var(--color-text-ondark)" opacity="0.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="20" cy="20" r="2.8" fill="var(--color-accent-cta)"/>
       </svg>
-      <span class="vn-overlay-logo-name">МИХАИЛ ХРЯПИН</span>
+      <span class="vn-overlay-logo-name">ВОЕННЫЙ НАВИГАТОР</span>
     </a>
 
     <span class="vn-overlay-header-label" aria-hidden="true">КАРТА МАРШРУТОВ</span>
@@ -120,12 +122,12 @@ const cardDelays = [100, 160, 220, 280, 340, 400];
 
     <!-- Левая зона (4 cols): Brand + CTA -->
     <aside class="vn-overlay-brand">
-      <div class="vn-overlay-brand-desc">
-        Навигатор по новостройкам<br/>и военной ипотеке
-      </div>
-      <p class="vn-overlay-brand-body">
-        Помогает военнослужащим и их семьям выбрать квартиру под задачу и пройти маршрут покупки без хаоса.
-      </p>
+        <div class="vn-overlay-brand-desc">
+          Сервис выбора новостройки<br/>и маршрута покупки
+        </div>
+        <p class="vn-overlay-brand-body">
+          Военный навигатор помогает военнослужащим и их семьям сначала понять задачу покупки, а потом перейти к подходящему маршруту и подбору объекта.
+        </p>
       <a
         href="/contacts/#request"
         data-modal-open

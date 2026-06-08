@@ -1,0 +1,104 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const roles = [
+  'Ведёт первичный разбор и помогает уточнить задачу покупки',
+  'Объясняет ограничения по программе, банку, срокам и формату сделки',
+  'Показывает, как формируется логика отбора объектов под вашу ситуацию',
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-role-of-mikhail" class="vn-section vn-about-role" aria-labelledby="vn-about-role-title">
+    <div class="vn-container">
+      <div class="vn-grid-12 vn-about-role__layout">
+        <div style="grid-column: 1 / 5">
+          <span class="vn-label-mono">Role of Mikhail</span>
+          <h2 class="vn-about-role__title" id="vn-about-role-title">
+            Михаил — экспертное лицо сервиса, а не отдельный слой поверх него
+          </h2>
+        </div>
+
+        <div style="grid-column: 6 / 13">
+          <p class="vn-about-role__lead">
+            Военный навигатор выступает как сервисный маршрут по покупке новостройки, а Михаил Хряпин — как человек,
+            который ведёт первый разбор, помогает увидеть ограничения и переводит разговор из уровня «посмотреть варианты»
+            в уровень «понять, какой сценарий покупки подходит именно вам».
+          </p>
+
+          <div class="vn-about-role__points">
+            {roles.map((role, index) => (
+              <div class="vn-about-role__point">
+                <span class="vn-about-role__num">{String(index + 1).padStart(2, '0')}</span>
+                <p>{role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-about-role__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-about-role__lead {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.68;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-about-role__points {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .vn-about-role__point {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-about-role__point:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-about-role__num {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-cta);
+    opacity: 0.8;
+  }
+
+  .vn-about-role__point p {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-about-role__layout > div {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-about-role__lead {
+      margin-top: 22px;
+    }
+  }
+</style>
