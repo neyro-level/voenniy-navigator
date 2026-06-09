@@ -1,27 +1,19 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from './_o-servise/01-Hero.astro';
-import WhatIsService from './_o-servise/02-WhatIsService.astro';
-import WhyMilitaryFamilies from './_o-servise/03-WhyMilitaryFamilies.astro';
+import ProofLayer from './_o-servise/02-ProofLayer.astro';
+import Process from './_o-servise/03-Process.astro';
 import RoleOfMikhail from './_o-servise/04-RoleOfMikhail.astro';
-import PrimaryReview from './_o-servise/05-PrimaryReview.astro';
-import SelectionMethod from './_o-servise/06-SelectionMethod.astro';
-import Transparency from './_o-servise/07-Transparency.astro';
-import ProofLayer from './_o-servise/08-ProofLayer.astro';
-import OfficesContact from './_o-servise/09-OfficesContact.astro';
-import FinalCTA from './_o-servise/10-FinalCTA.astro';
+import FAQ from './_o-servise/05-FAQ.astro';
+import FinalCTA from './_o-servise/06-FinalCTA.astro';
 import { pageMeta, schemas } from './_o-servise/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
   <Hero />
-  <WhatIsService />
-  <WhyMilitaryFamilies />
-  <RoleOfMikhail />
-  <PrimaryReview />
-  <SelectionMethod />
-  <Transparency />
   <ProofLayer />
-  <OfficesContact />
+  <Process />
+  <RoleOfMikhail />
+  <FAQ />
   <FinalCTA />
 </PageLayout>

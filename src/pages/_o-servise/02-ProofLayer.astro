@@ -1,0 +1,223 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const proofCards = [
+  {
+    number: '65',
+    label: 'СДЕЛОК',
+    title: 'По военной ипотеке',
+    text: 'Закрытых сделок с военнослужащими и их семьями.',
+  },
+  {
+    number: '180',
+    label: 'СДЕЛОК',
+    title: 'С недвижимостью',
+    text: 'Общий опыт работы на рынке недвижимости.',
+  },
+  {
+    number: '2016',
+    label: 'ГОД',
+    title: 'Основания сервиса',
+    text: 'Работаем с военной ипотекой с момента основания.',
+  },
+  {
+    number: '0',
+    label: 'КОМИССИЯ',
+    title: 'Для покупателя',
+    text: 'Цену новостройки оплачивает застройщик.',
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-proof" class="vn-section vn-about-proof" aria-labelledby="vn-about-proof-title">
+    <div class="vn-container">
+
+      <!-- Section header -->
+      <div class="vn-about-proof__header">
+        <span class="vn-about-proof__eyebrow">Доказательства</span>
+        <h2 class="vn-about-proof__title" id="vn-about-proof-title">
+          65 сделок по военной ипотеке.
+          <span class="vn-about-proof__title-accent">Цифры, а не обещания.</span>
+        </h2>
+        <p class="vn-about-proof__lead">
+          Реальный опыт работы с военнослужащими и их семьями. Без обещаний — только факты и закрытые сделки.
+        </p>
+      </div>
+
+      <!-- Proof cards -->
+      <div class="vn-about-proof__cards">
+        {proofCards.map((card) => (
+          <article class="vn-about-proof__card">
+            <span class="vn-about-proof__number">{card.number}</span>
+            <span class="vn-about-proof__label">{card.label}</span>
+            <h3 class="vn-about-proof__card-title">{card.title}</h3>
+            <p class="vn-about-proof__text">{card.text}</p>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-about-proof {
+    padding-block: 120px;
+    background: var(--color-bg-surface);
+  }
+
+  /* Header */
+  .vn-about-proof__header {
+    max-width: 720px;
+    margin-bottom: 64px;
+  }
+
+  .vn-about-proof__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-about-proof__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-about-proof__title {
+    margin: 24px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-about-proof__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-about-proof__lead {
+    margin: 20px 0 0;
+    max-width: 560px;
+    font-size: var(--fs-body-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  /* Cards grid */
+  .vn-about-proof__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .vn-about-proof__card {
+    position: relative;
+    padding: 32px 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface-lowest);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .vn-about-proof__card:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-bg-dark) 4%, transparent);
+  }
+
+  .vn-about-proof__number {
+    display: block;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-accent-cta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-about-proof__label {
+    display: block;
+    margin-top: 8px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-about-proof__card-title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+  }
+
+  .vn-about-proof__text {
+    margin: 10px 0 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  /* Tablet */
+  @media (max-width: 1023px) {
+    .vn-about-proof {
+      padding-block: 96px;
+    }
+
+    .vn-about-proof__header {
+      margin-bottom: 48px;
+    }
+
+    .vn-about-proof__cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .vn-about-proof {
+      padding-block: 64px;
+    }
+
+    .vn-about-proof__header {
+      margin-bottom: 36px;
+    }
+
+    .vn-about-proof__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    .vn-about-proof__lead {
+      font-size: var(--fs-body);
+      line-height: 1.55;
+    }
+
+    .vn-about-proof__cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .vn-about-proof__card {
+      padding: 24px 20px;
+    }
+
+    .vn-about-proof__number {
+      font-size: 40px;
+    }
+  }
+</style>

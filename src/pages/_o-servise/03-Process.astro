@@ -1,0 +1,245 @@
+---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const steps = [
+  { 
+    num: '01', 
+    title: 'Первичный разбор',
+    subtitle: '30 минут, бесплатно',
+    desc: 'Выясняем задачу, проверяем статус НИС и ограничения банка. Даём честную оценку шансов и бюджета.'
+  },
+  { 
+    num: '02', 
+    title: 'Точечный подбор новостроек',
+    subtitle: 'Только подходящие объекты',
+    desc: 'Отсеиваем неподходящие ЖК на этапе аккредитации и сроков сдачи. Оставляем только те варианты, которые реально одобрят.'
+  },
+  { 
+    num: '03', 
+    title: 'Ипотечный брокеридж',
+    subtitle: 'Бесплатно для вас',
+    desc: 'Готовим пакет документов, подаём заявки в нужные банки и добиваемся одобрения по военной ипотеке.'
+  },
+  { 
+    num: '04', 
+    title: 'Сопровождение сделки',
+    subtitle: 'До получения ключей',
+    desc: 'Контролируем договор, проверку объекта и регистрацию. Вы получаете ключи, мы закрываем задачу.'
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-process" class="vn-section vn-process" aria-labelledby="vn-process-title">
+    <div class="vn-container">
+
+      <!-- Section header -->
+      <div class="vn-process__header">
+        <span class="vn-process__eyebrow">Процесс</span>
+        <h2 class="vn-process__title" id="vn-process-title">
+          Четыре шага от первичного разбора до сделки. 
+          <span class="vn-process__title-accent">Без скрытых условий и навязанных объектов.</span>
+        </h2>
+        <p class="vn-process__lead">
+          Мы не отправляем вас изучать каталоги самостоятельно. Сначала определяем вашу реальную ситуацию, затем подбираем только те варианты, которые проходят по условиям военной ипотеки, и сопровождаем до регистрации права.
+        </p>
+      </div>
+
+      <!-- Steps grid -->
+      <div class="vn-process__grid">
+        {steps.map((step) => (
+          <div class="vn-process__card">
+            <span class="vn-process__card-num">{step.num}</span>
+            <div class="vn-process__card-content">
+              <h3 class="vn-process__card-title">{step.title}</h3>
+              <span class="vn-process__card-subtitle">{step.subtitle}</span>
+              <p class="vn-process__card-desc">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-process {
+    padding-block: 120px;
+    background: var(--color-bg-secondary);
+  }
+
+  /* Header */
+  .vn-process__header {
+    max-width: 720px;
+    margin-bottom: 64px;
+  }
+
+  .vn-process__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-process__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-process__title {
+    margin: 24px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-process__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-process__lead {
+    margin: 20px 0 0;
+    max-width: 640px;
+    font-size: var(--fs-body-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  /* Grid */
+  .vn-process__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Card */
+  .vn-process__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 36px 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .vn-process__card:hover {
+    border-color: var(--color-accent-cta);
+    transform: translateY(-2px);
+  }
+
+  .vn-process__card-num {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-accent-cta);
+    opacity: 0.8;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-process__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vn-process__card-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+  }
+
+  .vn-process__card-subtitle {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-accent-primary);
+  }
+
+  .vn-process__card-desc {
+    margin: 8px 0 0;
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  /* Tablet */
+  @media (max-width: 1023px) {
+    .vn-process {
+      padding-block: 96px;
+    }
+
+    .vn-process__header {
+      margin-bottom: 48px;
+    }
+
+    .vn-process__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .vn-process__card {
+      padding: 28px 24px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .vn-process {
+      padding-block: 64px;
+    }
+
+    .vn-process__header {
+      margin-bottom: 32px;
+    }
+
+    .vn-process__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    .vn-process__lead {
+      font-size: var(--fs-body);
+      line-height: 1.55;
+    }
+
+    .vn-process__card {
+      padding: 24px 20px;
+      gap: 16px;
+    }
+
+    .vn-process__card-num {
+      font-size: 36px;
+    }
+
+    .vn-process__card-title {
+      font-size: var(--fs-body-lg);
+    }
+
+    .vn-process__card-subtitle {
+      font-size: var(--fs-body-xs);
+    }
+
+    .vn-process__card-desc {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+    }
+  }
+</style>

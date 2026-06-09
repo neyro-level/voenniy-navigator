@@ -1,10 +1,10 @@
 ---
 import OptimizedImage from '../../components/ui/OptimizedImage.astro';
 
-const identitySignals = [
-  'Сервисный маршрут по военной ипотеке',
-  'Михаил Хряпин ведёт первичный разбор',
-  'Краснодар, Крым, дистанционный формат',
+const trustRow = [
+  '65 сделок по военной ипотеке',
+  'Без комиссии для покупателя',
+  'Ипотечный брокер бесплатно',
 ];
 ---
 
@@ -14,49 +14,70 @@ const identitySignals = [
 
   <div class="vn-container">
     <div class="vn-grid-12 vn-about-hero__layout">
+
+      <!-- Левая часть: тексты + CTA + trust-row -->
       <div class="vn-about-hero__content" style="grid-column: 1 / 8">
-        <span class="vn-about-hero__eyebrow">О Военном навигаторе</span>
+
+        <span class="vn-about-hero__eyebrow">О сервисе</span>
+
         <h1 class="vn-about-hero__title">
-          Военный навигатор — сервис по военной ипотеке
-          <span class="vn-about-hero__title-accent">с Михаилом Хряпиным</span>
+          Военный навигатор — сервис, который ведёт покупку новостройки по военной ипотеке от разбора до сделки.
+          <span class="vn-about-hero__title-accent">Без комиссии.</span>
         </h1>
-        <p class="vn-about-hero__lead">
-          Эта страница объясняет, что такое Военный навигатор, как устроен сервисный маршрут
-          по покупке новостройки и почему первичный разбор идёт раньше подбора объекта.
+
+        <p class="vn-about-hero__lead vn-about-hero__lead--desktop">
+          Покажет, где сейчас выгодные предложения и акции застройщиков. Поможет с ипотекой бесплатно. Экономия на сделке — до 350&nbsp;000&nbsp;₽.
+        </p>
+        <p class="vn-about-hero__lead vn-about-hero__lead--mobile">
+          Акции застройщиков. Ипотека бесплатно. Экономия — до 350&nbsp;000&nbsp;₽.
         </p>
 
         <div class="vn-about-hero__actions">
           <a href="/contacts/#request" data-modal-open data-modal-title="Получить первичный разбор" class="vn-btn-primary vn-about-hero__cta">
             Получить первичный разбор
           </a>
-          <a href="/" class="vn-about-hero__secondary">На главную</a>
         </div>
 
-        <div class="vn-about-hero__signals" role="list" aria-label="Ключевые сигналы страницы">
-          {identitySignals.map((signal) => (
-            <span class="vn-about-hero__signal" role="listitem">{signal}</span>
+        <!-- Trust-row: минималистичные пункты с разделителями -->
+        <div class="vn-about-hero__trust-row">
+          {trustRow.map((item, index) => (
+            <span class="vn-about-hero__trust-item">
+              {item}
+              {index < trustRow.length - 1 && <span class="vn-about-hero__trust-divider" aria-hidden="true"></span>}
+            </span>
           ))}
         </div>
       </div>
 
+      <!-- Правая часть: фото Михаила в premium photo-card -->
       <div class="vn-about-hero__aside" style="grid-column: 8 / 13">
         <div class="vn-about-hero__photo-card">
-          <div class="vn-about-hero__photo-wrap">
-            <OptimizedImage
-              src="/images/mikhail-desk.png"
-              alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
-              width={640}
-              height={780}
-              loading="eager"
-              class="vn-about-hero__photo"
-            />
+          <div class="vn-about-hero__photo-frame">
+
+            <!-- Corner brackets (Слой 7 дизайн-системы) -->
+            <span class="vn-about-hero__bracket vn-about-hero__bracket--tl" aria-hidden="true"></span>
+            <span class="vn-about-hero__bracket vn-about-hero__bracket--tr" aria-hidden="true"></span>
+            <span class="vn-about-hero__bracket vn-about-hero__bracket--bl" aria-hidden="true"></span>
+            <span class="vn-about-hero__bracket vn-about-hero__bracket--br" aria-hidden="true"></span>
+
+            <div class="vn-about-hero__photo-wrap">
+              <OptimizedImage
+                src="/images/mikhail-desk.png"
+                alt="Михаил Хряпин — эксперт по военной ипотеке"
+                width={640}
+                height={780}
+                loading="eager"
+                class="vn-about-hero__photo"
+              />
+            </div>
           </div>
           <div class="vn-about-hero__caption">
             <p class="vn-about-hero__name">Михаил Хряпин</p>
-            <p class="vn-about-hero__role">Экспертное лицо и главный навигатор сервиса</p>
+            <p class="vn-about-hero__role">Эксперт по военной ипотеке</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -101,6 +122,7 @@ const identitySignals = [
     align-items: center;
   }
 
+  /* Eyebrow / label-mono */
   .vn-about-hero__eyebrow {
     display: inline-flex;
     align-items: center;
@@ -119,6 +141,7 @@ const identitySignals = [
     background: var(--color-accent-cta);
   }
 
+  /* H1 */
   .vn-about-hero__title {
     margin: 28px 0 0;
     max-width: 760px;
@@ -134,6 +157,7 @@ const identitySignals = [
     color: var(--color-accent-primary);
   }
 
+  /* Lead / подзаголовок */
   .vn-about-hero__lead {
     margin: 24px 0 0;
     max-width: 620px;
@@ -143,6 +167,15 @@ const identitySignals = [
     text-wrap: pretty;
   }
 
+  .vn-about-hero__lead--desktop {
+    display: block;
+  }
+
+  .vn-about-hero__lead--mobile {
+    display: none;
+  }
+
+  /* CTA */
   .vn-about-hero__actions {
     display: flex;
     flex-wrap: wrap;
@@ -150,50 +183,127 @@ const identitySignals = [
     margin-top: 34px;
   }
 
-  .vn-about-hero__secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 54px;
-    padding: 0 28px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-bg-surface) 72%, transparent);
-    color: var(--color-text-primary);
-    font-size: var(--fs-body);
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  }
-
-  .vn-about-hero__secondary:hover {
-    background: var(--color-accent-cta-soft);
-    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
-    color: var(--color-accent-cta);
-  }
-
-  .vn-about-hero__signals {
+  /* Trust-row: минималистичные пункты с разделителями */
+  .vn-about-hero__trust-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 26px;
+    align-items: center;
+    gap: 0;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border);
   }
 
-  .vn-about-hero__signal {
+  .vn-about-hero__trust-item {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
-    padding: 0 14px;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--color-bg-surface) 58%, transparent);
     font-size: var(--fs-body-sm);
-    color: var(--color-text-secondary);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    white-space: nowrap;
   }
 
+  .vn-about-hero__trust-divider {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    margin: 0 20px;
+    background: var(--color-border);
+  }
+
+  /* Photo card */
   .vn-about-hero__photo-card {
     display: grid;
     gap: 18px;
+  }
+
+  .vn-about-hero__photo-frame {
+    position: relative;
+    padding: 16px;
+  }
+
+  /* Corner brackets — Слой 7 дизайн-системы */
+  .vn-about-hero__bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .vn-about-hero__bracket::before,
+  .vn-about-hero__bracket::after {
+    content: '';
+    position: absolute;
+    background: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  }
+
+  .vn-about-hero__bracket--tl {
+    top: 0;
+    left: 0;
+  }
+  .vn-about-hero__bracket--tl::before {
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 1px;
+  }
+  .vn-about-hero__bracket--tl::after {
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 12px;
+  }
+
+  .vn-about-hero__bracket--tr {
+    top: 0;
+    right: 0;
+  }
+  .vn-about-hero__bracket--tr::before {
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 1px;
+  }
+  .vn-about-hero__bracket--tr::after {
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 12px;
+  }
+
+  .vn-about-hero__bracket--bl {
+    bottom: 0;
+    left: 0;
+  }
+  .vn-about-hero__bracket--bl::before {
+    bottom: 0;
+    left: 0;
+    width: 12px;
+    height: 1px;
+  }
+  .vn-about-hero__bracket--bl::after {
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 12px;
+  }
+
+  .vn-about-hero__bracket--br {
+    bottom: 0;
+    right: 0;
+  }
+  .vn-about-hero__bracket--br::before {
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 1px;
+  }
+  .vn-about-hero__bracket--br::after {
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 12px;
   }
 
   .vn-about-hero__photo-wrap {
@@ -231,6 +341,7 @@ const identitySignals = [
     color: var(--color-text-secondary);
   }
 
+  /* Tablet */
   @media (max-width: 1023px) {
     .vn-about-hero {
       min-height: auto;
@@ -243,10 +354,30 @@ const identitySignals = [
     }
 
     .vn-about-hero__aside {
-      margin-top: 34px;
+      margin-top: 40px;
+      max-width: 480px;
+    }
+
+    .vn-about-hero__trust-item {
+      flex: 1 1 calc(50% - 16px);
+      padding-right: 16px;
+    }
+
+    .vn-about-hero__trust-item:nth-child(2) {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .vn-about-hero__trust-item:nth-child(3) {
+      margin-top: 16px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+      border-right: none;
+      padding-right: 0;
     }
   }
 
+  /* Mobile */
   @media (max-width: 640px) {
     .vn-about-hero {
       padding-top: 96px;
@@ -258,17 +389,52 @@ const identitySignals = [
     }
 
     .vn-about-hero__title {
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
       line-height: 1.1;
       letter-spacing: -0.02em;
+    }
+
+    /* Переключаем подзаголовок: скрываем десктопный, показываем мобильный */
+    .vn-about-hero__lead--desktop {
+      display: none;
+    }
+
+    .vn-about-hero__lead--mobile {
+      display: block;
+      font-size: var(--fs-body);
+      line-height: 1.5;
     }
 
     .vn-about-hero__actions {
       flex-direction: column;
     }
 
-    .vn-about-hero__cta,
-    .vn-about-hero__secondary {
+    .vn-about-hero__cta {
       width: 100%;
+      text-align: center;
+    }
+
+    .vn-about-hero__trust-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding-top: 20px;
+    }
+
+    .vn-about-hero__trust-item {
+      font-size: var(--fs-small);
+    }
+
+    .vn-about-hero__trust-divider {
+      display: none;
+    }
+
+    .vn-about-hero__aside {
+      max-width: none;
+    }
+
+    .vn-about-hero__photo-frame {
+      padding: 12px;
     }
   }
 </style>

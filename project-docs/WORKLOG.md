@@ -7,6 +7,43 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-09 — Полная пересборка страницы `/o-servise/` по brief v3.0
+
+- **Reworked Hero:** блок `01-Hero.astro` пересобран под более плотный trust-first сценарий: новый H1, 2 версии подзаголовка (desktop/mobile), минималистичный trust-row, photo-card Михаила с corner brackets.
+- **Created:** новый `02-ProofLayer.astro` сразу после Hero с цифрами доверия: 65 сделок по ВИ, 180 сделок, с 2016 года, 0% комиссии для покупателя.
+- **Created:** новый `03-Process.astro` вместо старого блока ограничений — 4 премиальных шага процесса: разбор, подбор, ипотека, сопровождение сделки.
+- **Rebuilt:** `04-RoleOfMikhail.astro` в editorial split-композиции: фото `mikhail-hero.png`, новый коммерческий H2, прямой lead и 3 смысла (опыт, ответственность, глубокий разбор).
+- **Rebuilt:** `05-FAQ.astro` приведён к точному визуальному паттерну главной страницы: sticky-левая колонка, нумерованный аккордеон, плавное раскрытие, все вопросы по умолчанию закрыты.
+- **Rebuilt:** `06-FinalCTA.astro` приведён к точному визуальному паттерну главной страницы: светлый фон, левый оффер и правая карточка гарантий. Тёмная версия убрана.
+- **Removed:** удалены устаревшие блоки `02-WhatIsService`, `03-WhyMilitaryFamilies`, `05-PrimaryReview`, `06-SelectionMethod`, `07-Transparency`, `08-ProofLayer`, `09-OfficesContact`, `10-FinalCTA`.
+- **Updated route:** `src/pages/o-servise.astro` переведён на новую 6-блочную структуру: Hero → ProofLayer → Process → RoleOfMikhail → FAQ → FinalCTA.
+- **Updated SEO layer:** `src/pages/_o-servise/pageData.ts` синхронизирован с новой субъектностью и OG для страницы.
+- **Updated brief:** `project-docs/briefs/PAGE_O_SERVISE.md` обновлён до v3.0 и синхронизирован с финальной структурой и светлым CTA.
+- **Checks:** `pnpm build` и `pnpm geo-check` проходят успешно; mobile-адаптация уточнена для Hero, RoleOfMikhail, FAQ и FinalCTA.
+
+### 2026-06-09 — Mobile UX правка Hero на главной
+
+- **Adjusted:** в `src/pages/_home/01-Hero.astro` убран принудительный `order: -1` у hero-визуала на tablet/mobile.
+- **Result:** в мобильной адаптации главной визуал теперь идёт после текста, CTA и trust-сигналов, а не поднимается над оффером.
+- **Reason:** первый экран на mobile стал ближе к коммерческой логике страницы: сначала смысл и действие, затем поддерживающий визуал.
+
+### 2026-06-09 — Аудит и чистка блока `04-FirstReview` на главной
+
+- **Audited:** блок `Как мы формируем ваш персональный маршрут покупки` проверен на laptop (`1366px`), small laptop/tablet (`1023px`, `768px`) и mobile (`390px`) через localhost.
+- **Root cause found:** лишний маркер `03` вверху экрана появлялся из-за responsive-ветки в `src/pages/_home/04-FirstReview.astro`: номер шага становился `position: absolute`, но карточка не имела корректного локального контекста и таймлайн разваливался.
+- **Reworked responsive pattern:** tablet/mobile-режим переведён с ломаного вертикального таймлайна на чистый стек карточек с inline badge-номерами `01 / 02 / 03`.
+- **Improved:** скрыты декоративные connectors на tablet/mobile, возвращены карточкам нормальные границы, фон, радиусы и читаемая внутренняя иерархия.
+- **Kept intact:** desktop-версия блока сохранена в горизонтальной 3-card композиции.
+- **Checks:** `pnpm build` проходит успешно после правки; браузерно подтверждён корректный вид блока на `1366 / 1023 / 768 / 390`.
+
+### 2026-06-09 — Усилен trust-блок Михаила и финальный CTA на главной
+
+- **Updated:** в `src/pages/_home/07-MikhailTrust.astro` фото Михаила переведено из простой вставки в layered photo-card: добавлены премиальная рамка, мягкая подложка, световой halo и нижняя caption-плашка с ролью.
+- **Responsive:** фото-блок Михаила проверен и адаптирован для desktop / tablet / mobile без потери читаемости и без конфликтов с текстовой частью секции.
+- **Updated:** в `src/pages/_home/10-FinalCTA.astro` правая гарантийная зона пересобрана в более премиальную visual-card композицию с layered shell, glow-подложкой и отдельными benefit-cards.
+- **Improved:** гарантии `Без комиссий`, `Можно дистанционно`, `20 минут` получили нумерацию, более сильную иерархию и устойчивый responsive-layout вместо простой плоской карточки.
+- **Checks:** `pnpm build` проходит успешно; финальный CTA и trust-блок Михаила просмотрены на `1366 / 768 / 390` через localhost.
+
 ### 2026-06-09 — Стратегическая пересборка главной страницы и footer
 
 - **Reworked:** главная `/` перестроена по новой коммерческой логике без смысловых повторов: оффер → процесс → маршруты → контраст риска и решения → живые сценарии → эксперт → FAQ → финальный CTA.
@@ -16,6 +53,17 @@
 - **Expanded icons:** в `src/icons/` добавлены локальные SVG-иконки `shield-check`, `globe`, `clock` для использования в компонентах без зависимости от внешнего набора.
 - **Rebuilt:** `src/components/layout/Footer.astro` полностью пересобран в спокойный премиальный footer без дублирующей заявки: бренд, контакты, 3 навигационные колонки и legal strip.
 - **Checks:** `pnpm build` проходит успешно после всех изменений; локальный dev-сервер перезапущен и отображает актуальную версию страницы.
+
+### 2026-06-09 — SEO/GEO аудит и синхронизация по семантическому ядру
+
+- **Audited:** SEO/GEO-модуль проверен по `BaseLayout`, `geo/config.ts`, `geo/schema.ts`, `robots.txt`, `llms.txt`, sitemap и indexable routes.
+- **Fixed module mismatch:** из глобального `WebSite` schema убран ложный `SearchAction`, потому что на сайте нет реального onsite-поиска.
+- **Synced GEO layer:** обновлены `GEO_SERVICES`, `GEO_PROCESS`, `GEO_FAQ`, `GEO_LINKS` и `llms.txt` под текущую сервисную субъектность, новую главную, страницу `/o-servise/` и семантические приоритеты проекта.
+- **Updated page SEO:** пересобраны `title`, `description`, OG и page-level schema для `/`, `/o-servise/`, `/voennaya-ipoteka-krasnodar/`, `/voennaya-ipoteka-krym/`, `/kalkulyator-voennoy-ipoteki/`, `/usloviya-voennoy-ipoteki/`, `/semeynaya-voennaya-ipoteka/`, `/contacts/`.
+- **Expanded schema coverage:** для страниц калькулятора, условий и семейной военной ипотеки добавлены `Service` + `FAQPage` JSON-LD; `faqItems` вынесены в `pageData.ts`, чтобы schema и видимый FAQ не расходились.
+- **Cleaned mismatch:** со страницы `/contacts/` убран `FAQPage` schema, потому что отдельный FAQ-блок в route не рендерится; contact page переведена в более точный brand/local SEO-слой.
+- **Fixed linking:** устранены битые ссылки на несуществующий route `/distancionnaya-pokupka/`; для contact CTA добавлен реальный anchor `#request` как fallback.
+- **Checks:** `pnpm build` и `pnpm geo-check` проходят успешно, GEO score `100/100`.
 
 ### 2026-06-08 — Усилен копирайтинг Hero-блока главной страницы
 

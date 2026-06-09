@@ -1,104 +1,308 @@
 ---
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+import OptimizedImage from '../../components/ui/OptimizedImage.astro';
 
-const roles = [
-  'Ведёт первичный разбор и помогает уточнить задачу покупки',
-  'Объясняет ограничения по программе, банку, срокам и формату сделки',
-  'Показывает, как формируется логика отбора объектов под вашу ситуацию',
+const points = [
+  {
+    title: 'Опыт, подтверждённый цифрами',
+    desc: 'Более 180 сделок на рынке недвижимости, из них 65 — целевых сделок по военной ипотеке с 2016 года.'
+  },
+  {
+    title: 'Персональная ответственность',
+    desc: 'Мы не передаем клиентов по цепочке. Финальную стратегию покупки и оценку рисков формирует и защищает конкретный эксперт.'
+  },
+  {
+    title: 'Глубокий первичный разбор',
+    desc: 'Анализ статуса НИС, реальных ограничений банка и бюджета проводится лично, чтобы сразу отсечь неподходящие варианты.'
+  }
 ];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-role-of-mikhail" class="vn-section vn-about-role" aria-labelledby="vn-about-role-title">
+  <section id="section-role-of-mikhail" class="vn-section vn-role" aria-labelledby="vn-role-title">
     <div class="vn-container">
-      <div class="vn-grid-12 vn-about-role__layout">
-        <div style="grid-column: 1 / 5">
-          <span class="vn-label-mono">Role of Mikhail</span>
-          <h2 class="vn-about-role__title" id="vn-about-role-title">
-            Михаил — экспертное лицо сервиса, а не отдельный слой поверх него
-          </h2>
+      <div class="vn-grid-12 vn-role__layout">
+        
+        <!-- Левая часть: Фото -->
+        <div class="vn-role__photo-col" style="grid-column: 1 / 6">
+          <div class="vn-role__photo-card">
+            <div class="vn-role__photo-frame">
+              <span class="vn-role__bracket vn-role__bracket--tl" aria-hidden="true"></span>
+              <span class="vn-role__bracket vn-role__bracket--tr" aria-hidden="true"></span>
+              <span class="vn-role__bracket vn-role__bracket--bl" aria-hidden="true"></span>
+              <span class="vn-role__bracket vn-role__bracket--br" aria-hidden="true"></span>
+              
+              <div class="vn-role__photo-wrap">
+                <OptimizedImage
+                  src="/images/mikhail-hero.png"
+                  alt="Михаил Хряпин — эксперт по военной ипотеке"
+                  width={560}
+                  height={680}
+                  loading="lazy"
+                  class="vn-role__photo"
+                />
+              </div>
+            </div>
+            <div class="vn-role__caption">
+              <p class="vn-role__name">Михаил Хряпин</p>
+              <p class="vn-role__role">Главный эксперт сервиса</p>
+            </div>
+          </div>
         </div>
 
-        <div style="grid-column: 6 / 13">
-          <p class="vn-about-role__lead">
-            Военный навигатор выступает как сервисный маршрут по покупке новостройки, а Михаил Хряпин — как человек,
-            который ведёт первый разбор, помогает увидеть ограничения и переводит разговор из уровня «посмотреть варианты»
-            в уровень «понять, какой сценарий покупки подходит именно вам».
+        <!-- Правая часть: Контент -->
+        <div class="vn-role__content-col" style="grid-column: 7 / 13">
+          <span class="vn-role__eyebrow">Экспертиза</span>
+          
+          <h2 class="vn-role__title" id="vn-role-title">
+            За каждым решением стоит конкретный эксперт, 
+            <span class="vn-role__title-accent">а не безликий менеджер.</span>
+          </h2>
+          
+          <p class="vn-role__lead">
+            Вы работаете напрямую с Михаилом Хряпиным. Он лично анализирует вашу ситуацию, проверяет ограничения банка и выстраивает стратегию покупки, опираясь на опыт 65+ успешных сделок по военной ипотеке.
           </p>
 
-          <div class="vn-about-role__points">
-            {roles.map((role, index) => (
-              <div class="vn-about-role__point">
-                <span class="vn-about-role__num">{String(index + 1).padStart(2, '0')}</span>
-                <p>{role}</p>
+          <div class="vn-role__points">
+            {points.map((point) => (
+              <div class="vn-role__point">
+                <h3 class="vn-role__point-title">{point.title}</h3>
+                <p class="vn-role__point-desc">{point.desc}</p>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </div>
   </section>
 </RevealOnScroll>
 
 <style>
-  .vn-about-role__title {
-    margin: 16px 0 0;
+  .vn-role {
+    padding-block: 120px;
+    background: var(--color-bg-surface);
+  }
+
+  .vn-role__layout {
+    align-items: center;
+    gap: 64px;
+  }
+
+  /* Photo */
+  .vn-role__photo-card {
+    display: grid;
+    gap: 18px;
+  }
+
+  .vn-role__photo-frame {
+    position: relative;
+    padding: 16px;
+  }
+
+  .vn-role__bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .vn-role__bracket::before,
+  .vn-role__bracket::after {
+    content: '';
+    position: absolute;
+    background: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  }
+
+  .vn-role__bracket--tl { top: 0; left: 0; }
+  .vn-role__bracket--tl::before { top: 0; left: 0; width: 12px; height: 1px; }
+  .vn-role__bracket--tl::after { top: 0; left: 0; width: 1px; height: 12px; }
+
+  .vn-role__bracket--tr { top: 0; right: 0; }
+  .vn-role__bracket--tr::before { top: 0; right: 0; width: 12px; height: 1px; }
+  .vn-role__bracket--tr::after { top: 0; right: 0; width: 1px; height: 12px; }
+
+  .vn-role__bracket--bl { bottom: 0; left: 0; }
+  .vn-role__bracket--bl::before { bottom: 0; left: 0; width: 12px; height: 1px; }
+  .vn-role__bracket--bl::after { bottom: 0; left: 0; width: 1px; height: 12px; }
+
+  .vn-role__bracket--br { bottom: 0; right: 0; }
+  .vn-role__bracket--br::before { bottom: 0; right: 0; width: 12px; height: 1px; }
+  .vn-role__bracket--br::after { bottom: 0; right: 0; width: 1px; height: 12px; }
+
+  .vn-role__photo-wrap {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
+  }
+
+  .vn-role__photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .vn-role__caption {
+    padding: 18px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-role__name {
+    margin: 0 0 6px;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-role__role {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  /* Content */
+  .vn-role__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-role__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+  }
+
+  .vn-role__title {
+    margin: 24px 0 0;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.16;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
-  .vn-about-role__lead {
-    margin: 0;
-    font-size: var(--fs-body);
-    line-height: 1.68;
+  .vn-role__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-role__lead {
+    margin: 20px 0 0;
+    font-size: var(--fs-body-lg);
+    line-height: 1.6;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
 
-  .vn-about-role__points {
+  .vn-role__points {
     display: grid;
-    gap: 12px;
-    margin-top: 28px;
+    gap: 0;
+    margin-top: 40px;
   }
 
-  .vn-about-role__point {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 12px;
-    align-items: start;
-    padding: 14px 0;
+  .vn-role__point {
+    padding: 20px 0;
     border-top: 1px solid var(--color-border);
   }
 
-  .vn-about-role__point:last-child {
+  .vn-role__point:last-child {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .vn-about-role__num {
-    font-size: var(--fs-caption);
+  .vn-role__point-title {
+    margin: 0 0 8px;
+    font-size: var(--fs-body);
     font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--color-accent-cta);
-    opacity: 0.8;
+    color: var(--color-text-primary);
   }
 
-  .vn-about-role__point p {
+  .vn-role__point-desc {
     margin: 0;
     font-size: var(--fs-body-sm);
     line-height: 1.55;
     color: var(--color-text-secondary);
   }
 
+  /* Tablet */
   @media (max-width: 1023px) {
-    .vn-about-role__layout > div {
+    .vn-role {
+      padding-block: 96px;
+    }
+
+    .vn-role__layout {
+      gap: 48px;
+    }
+
+    .vn-role__photo-col,
+    .vn-role__content-col {
       grid-column: 1 / -1 !important;
     }
 
-    .vn-about-role__lead {
-      margin-top: 22px;
+    .vn-role__photo-col {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .vn-role {
+      padding-block: 64px;
+    }
+
+    .vn-role__layout {
+      gap: 32px;
+    }
+
+    .vn-role__photo-frame {
+      padding: 12px;
+    }
+
+    .vn-role__caption {
+      padding: 14px 16px;
+    }
+
+    .vn-role__title {
+      font-size: clamp(1.5rem, 5vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    .vn-role__lead {
+      font-size: var(--fs-body);
+      line-height: 1.55;
+      margin-top: 16px;
+    }
+
+    .vn-role__points {
+      margin-top: 28px;
+    }
+
+    .vn-role__point {
+      padding: 16px 0;
+    }
+
+    .vn-role__point-title {
+      font-size: var(--fs-body-sm);
+      margin-bottom: 6px;
+    }
+
+    .vn-role__point-desc {
+      font-size: var(--fs-body-xs);
+      line-height: 1.5;
     }
   }
 </style>
