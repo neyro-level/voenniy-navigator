@@ -7,6 +7,7 @@ function absoluteOg(path: string) {
 export const OG_IMAGES = {
   default: absoluteOg('/images/mikhail-hero.png'),
   home: absoluteOg('/images/mikhail-hero.png'),
+  oServise: absoluteOg('/images/mikhail-desk.png'),
   voennayaIpoteka: absoluteOg('/images/krasnodar-newbuild-hero.png'),
   usloviya: absoluteOg('/images/mikhail-desk.png'),
   semeynaya: absoluteOg('/images/mikhail-hero.png'),
