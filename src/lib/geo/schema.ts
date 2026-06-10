@@ -42,7 +42,7 @@ export function organizationSchema() {
   };
 }
 
-/** WebSite с potentialAction (SearchAction) */
+/** WebSite */
 export function webSiteSchema() {
   return {
     ...ctx,
@@ -50,14 +50,6 @@ export function webSiteSchema() {
     name: GEO_SITE.name,
     url: `${GEO_SITE.url}/`,
     description: GEO_SITE.tagline,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${GEO_SITE.url}/?search={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 

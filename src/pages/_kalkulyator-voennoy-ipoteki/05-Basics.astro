@@ -1,0 +1,207 @@
+---
+// Компонент: 05-Basics.astro
+// Задача: показать 4 ключевых фактора одобрения не как сухую справку, а как рычаги, которыми мы управляем в интересах клиента.
+---
+
+<section id="section-calc-basics" class="vn-calc-basics">
+  <div class="vn-container">
+    <p class="vn-label-mono">Параметры / 05</p>
+
+    <h2 class="vn-calc-basics__title">
+      Из чего складывается реальное одобрение 
+      <span class="vn-calc-basics__title-accent">по военной ипотеке</span>
+    </h2>
+
+    <div class="vn-grid-12 vn-calc-basics__grid">
+      
+      <!-- Карточка 1: Программа и ставка -->
+      <article class="vn-calc-basics__card vn-col-6">
+        <div class="vn-calc-basics__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="5" x2="5" y2="19"></line>
+            <circle cx="6.5" cy="6.5" r="2.5"></circle>
+            <circle cx="17.5" cy="17.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <h3 class="vn-calc-basics__card-title">Программа и ставка</h3>
+        <p class="vn-calc-basics__card-fact">
+          От 2% (новые территории) до 18% (стандарт).
+        </p>
+        <p class="vn-calc-basics__card-benefit">
+          Мы не подаем заявку наугад, а выбираем тот банк и программу, где ваш профиль проходит по скорингу с минимальным риском отказа.
+        </p>
+      </article>
+
+      <!-- Карточка 2: Первоначальный взнос -->
+      <article class="vn-calc-basics__card vn-col-6">
+        <div class="vn-calc-basics__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+          </svg>
+        </div>
+        <h3 class="vn-calc-basics__card-title">Первоначальный взнос</h3>
+        <p class="vn-calc-basics__card-fact">
+          Накопления НИС + маткапитал + собственные средства.
+        </p>
+        <p class="vn-calc-basics__card-benefit">
+          Мы знаем, как правильно оформить эти средства, чтобы банк увидел в них надежное обеспечение, а не повод для дополнительных проверок.
+        </p>
+      </article>
+
+      <!-- Карточка 3: Срок кредита -->
+      <article class="vn-calc-basics__card vn-col-6">
+        <div class="vn-calc-basics__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <h3 class="vn-calc-basics__card-title">Срок кредита</h3>
+        <p class="vn-calc-basics__card-fact">
+          До 25–30 лет.
+        </p>
+        <p class="vn-calc-basics__card-benefit">
+          Грамотное увеличение срока снижает ежемесячный платеж, позволяя ему идеально уложиться в лимит НИС и повысить итоговую сумму.
+        </p>
+      </article>
+
+      <!-- Карточка 4: Аккредитованные банки -->
+      <article class="vn-calc-basics__card vn-col-6">
+        <div class="vn-calc-basics__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21h18"></path>
+            <path d="M5 21V7l8-4 8 4v14"></path>
+            <path d="M17 21v-8.5a1.5 1.5 0 0 0-3 0V21"></path>
+            <path d="M9 21v-8.5a1.5 1.5 0 0 0-3 0V21"></path>
+          </svg>
+        </div>
+        <h3 class="vn-calc-basics__card-title">Аккредитованные банки</h3>
+        <p class="vn-calc-basics__card-fact">
+          ПСБ, Сбер, ВТБ, ДОМ.РФ, Банк РОССИЯ.
+        </p>
+        <p class="vn-calc-basics__card-benefit">
+          Не каждая новостройка аккредитована везде. Мы заранее проверяем ваш объект и подаем документы только туда, где одобрение предсказуемо.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-basics {
+    background: var(--color-bg-primary);
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .vn-calc-basics__title {
+    margin: 16px 0 48px;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+    max-width: 720px;
+  }
+
+  .vn-calc-basics__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-basics__grid {
+    gap: 24px;
+  }
+
+  .vn-calc-basics__card {
+    padding: 28px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .vn-calc-basics__card:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--color-bg-dark) 4%, transparent);
+  }
+
+  .vn-calc-basics__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-basics__card-title {
+    margin: 0 0 12px;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-basics__card-fact {
+    margin: 0 0 12px;
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-basics__card-benefit {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-calc-basics__card {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-basics {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-basics__title {
+      margin-bottom: 32px;
+      font-size: var(--fs-h2);
+    }
+
+    .vn-calc-basics__card {
+      padding: 20px;
+    }
+
+    .vn-calc-basics__icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 16px;
+    }
+
+    .vn-calc-basics__icon svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>

@@ -2,7 +2,7 @@
 
 ## Цель задачи
 
-Подготовить безопасный порядок улучшения Astro-проекта «Военный навигатор» на основе документа `SITE_DEVELOPMENT_RESEARCH.md`: сначала стабилизировать текущую рабочую ветку, затем внедрять performance/UX/build-улучшения без поломки контента, SEO/GEO, форм и мобильной версии.
+Подготовить безопасный порядок улучшения Astro-проекта «Военный навигатор» на основе документа `project-docs/SITE_DEVELOPMENT_RESEARCH.md`: сначала стабилизировать текущую рабочую ветку, затем внедрять performance/UX/build-улучшения без поломки контента, SEO/GEO, форм и мобильной версии.
 
 ## Проверенный контекст
 
@@ -12,16 +12,16 @@
 - Папка: `C:\Users\User\Desktop\Сборка АМС\Военный навигатор (AMS)`.
 - Стек: Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands + pnpm.
 - Деплой: GitHub Actions → AMS Server → `https://voen-navigator.ru`.
-- Обязательный паспорт проекта найден как `PASSPORT_PROJECTS.md`; файл `PROJECT_PASSPORT.md` не найден, но по правилам АМС этот проект использует `PASSPORT_PROJECTS.md`.
-- `WORKLOG.md` фиксирует последний стабильный статус: `pnpm build` проходил без ошибок, `pnpm geo-check` давал `100/100`, production работал без console errors.
-- Документ Development Research найден: `SITE_DEVELOPMENT_RESEARCH.md`.
-- В `SITE_DEVELOPMENT_RESEARCH.md` приоритеты ближайших улучшений: `@astrojs/partytown`, Astro prefetch, затем `astro-min`, `astro-icon`, `PlayForm/Compress`, далее исследование `@unpic/astro`, `subfont`, View Transitions/loading indicator.
+- Обязательный паспорт проекта находится в `project-docs/PASSPORT_PROJECTS.md`; файл `PROJECT_PASSPORT.md` не используется в этом проекте.
+- `project-docs/WORKLOG.md` фиксирует последний стабильный статус: `pnpm build` проходил без ошибок, `pnpm geo-check` давал `100/100`, production работал без console errors.
+- Документ Development Research находится в `project-docs/SITE_DEVELOPMENT_RESEARCH.md`.
+- В `project-docs/SITE_DEVELOPMENT_RESEARCH.md` приоритеты ближайших улучшений: `@astrojs/partytown`, Astro prefetch, затем `astro-min`, `astro-icon`, `PlayForm/Compress`, далее исследование `@unpic/astro`, `subfont`, View Transitions/loading indicator.
 - `astro.config.mjs` сейчас минимальный: `react()`, `sitemap()`, Tailwind Vite plugin, `output: 'static'`; Partytown/prefetch/min/compress пока не подключены.
 - Аналитика сейчас устроена через `CookieBanner.tsx`, `window.ym`, `src/lib/analytics.ts` и inline-обработчики в `BaseLayout.astro`.
 - Изображения идут через собственный `src/components/ui/OptimizedImage.astro`; это не нужно заменять на `@unpic/astro` в первом спринте.
 - В проекте много inline SVG: `grep` показал 142 вхождения `<svg`/иконок в `src` — миграция на `astro-icon` должна быть отдельным этапом.
-- Есть брифы страниц в `pages/`: `PAGE_HOME.md`, `PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md`, `PAGE_USLOVIYA_VOENNOY_IPOTEKI.md`, `PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md`, `PAGE_VOENNAYA_IPOTEKA_KRYM.md`, `PAGE_CONTACTS.md` и др.
-- `SEMANTICS.md` — источник правды по Wordstat/SEO-кластерам.
+- Есть brief-документы страниц в `project-docs/briefs/`: `PAGE_HOME.md`, `PAGE_PODBOR.md`, `PAGE_BONUS.md`, `PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md`, `PAGE_USLOVIYA_VOENNOY_IPOTEKI.md`, `PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md`, `PAGE_VOENNAYA_IPOTEKA_KRYM.md`, `PAGE_CONTACTS.md` и др.
+- `project-docs/SEMANTICS.md` — источник правды по Wordstat/SEO-кластерам.
 
 **Критичный текущий статус:**
 
@@ -37,7 +37,7 @@
 - Изображения: `src/components/ui/OptimizedImage.astro`, `public/images/`, `src/assets/` при наличии.
 - Иконки: `src/components/layout/*`, `src/components/sections/FinalCTA.astro`, page-секции с inline SVG.
 - Навигация/UX: `astro.config.mjs`, `src/components/layout/Header.astro`, `RouteMapOverlay.astro`, route-файлы страниц.
-- Документация: `SITE_DEVELOPMENT_RESEARCH.md`, `WORKLOG.md`, при смысловых изменениях — релевантные `pages/PAGE_*.md`.
+- Документация: `project-docs/SITE_DEVELOPMENT_RESEARCH.md`, `project-docs/WORKLOG.md`, при смысловых изменениях — релевантные `project-docs/briefs/PAGE_*.md`.
 
 ## Что можно менять
 
@@ -49,7 +49,7 @@
 - `src/components/ui/ScriptLoader.astro` — если нужен единый загрузчик third-party скриптов.
 - `src/components/layout/*`, `src/components/sections/*` и отдельные page-секции — только на этапе `astro-icon`, без одновременного изменения текстов/структуры.
 - `.github/workflows/deploy-ams.yml` — только если меняется build/geo/compress-проверка в CI.
-- `WORKLOG.md` и `SITE_DEVELOPMENT_RESEARCH.md` — обязательно после каждого завершённого этапа.
+- `project-docs/WORKLOG.md` и `project-docs/SITE_DEVELOPMENT_RESEARCH.md` — обязательно после каждого завершённого этапа.
 
 ## Что нельзя менять
 
@@ -125,8 +125,8 @@
 
 ### Этап 8. Документация и закрытие каждого этапа
 
-1. Обновить `WORKLOG.md`: что изменено, какие проверки прошли, что отложено.
-2. Обновить `SITE_DEVELOPMENT_RESEARCH.md`: отметить статус каждой рекомендации — `внедрено`, `отложено`, `не подходит`, `требует проверки`.
+1. Обновить `project-docs/WORKLOG.md`: что изменено, какие проверки прошли, что отложено.
+2. Обновить `project-docs/SITE_DEVELOPMENT_RESEARCH.md`: отметить статус каждой рекомендации — `внедрено`, `отложено`, `не подходит`, `требует проверки`.
 3. Если меняется публичная логика аналитики/cookie/forms — обновить релевантные проектные документы.
 
 ## Проверка результата
@@ -156,14 +156,14 @@ pnpm geo-check
 
 Обновлять обязательно:
 
-- `WORKLOG.md` — после каждого этапа.
-- `SITE_DEVELOPMENT_RESEARCH.md` — living document: статус внедрения, найденные проблемы, фактические решения.
+- `project-docs/WORKLOG.md` — после каждого этапа.
+- `project-docs/SITE_DEVELOPMENT_RESEARCH.md` — living document: статус внедрения, найденные проблемы, фактические решения.
 
 Обновлять по необходимости:
 
-- `PASSPORT_PROJECTS.md` — если меняются правила сборки, обязательные команды или инфраструктура.
-- `SITE_ARCHITECTURE.md` — если изменяется навигация, SEO/GEO или карта сайта.
-- `pages/PAGE_*.md` — только если затронуты смыслы, структура, CTA, тексты или публичная логика страницы.
+- `project-docs/PASSPORT_PROJECTS.md` — если меняются правила сборки, обязательные команды или инфраструктура.
+- `project-docs/SITE_ARCHITECTURE.md` — если изменяется навигация, SEO/GEO или карта сайта.
+- `project-docs/briefs/PAGE_*.md` — только если затронуты смыслы, структура, CTA, тексты или публичная логика страницы.
 - `.env.example` — только для новых public-переменных, значения оставлять пустыми.
 
 ## Риски

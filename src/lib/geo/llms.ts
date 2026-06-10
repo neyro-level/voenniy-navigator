@@ -85,6 +85,7 @@ export function generateLlmsTxt(): string {
   lines.push(`- О Военном навигаторе: ${GEO_SITE.url}${GEO_LINKS.oServise}`);
   lines.push(`- Военная ипотека в Краснодаре: ${GEO_SITE.url}${GEO_LINKS.krasnodar}`);
   lines.push(`- Военная ипотека в Крыму: ${GEO_SITE.url}${GEO_LINKS.krym}`);
+  lines.push(`- Калькулятор военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.kalkulyator}`);
   lines.push(`- Условия военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.usloviya}`);
   lines.push(`- Семейная военная ипотека: ${GEO_SITE.url}${GEO_LINKS.semeynaya}`);
   lines.push(`- Контакты: ${GEO_SITE.url}${GEO_LINKS.contacts}`);

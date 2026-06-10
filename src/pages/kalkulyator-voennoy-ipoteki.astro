@@ -1,19 +1,19 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Hero from './_kalkulyator-voennoy-ipoteki/01-Hero.astro';
-import Explainer from './_kalkulyator-voennoy-ipoteki/02-Explainer.astro';
-import Basics from './_kalkulyator-voennoy-ipoteki/03-Basics.astro';
-import Scenarios from './_kalkulyator-voennoy-ipoteki/04-Scenarios.astro';
-import FAQ from './_kalkulyator-voennoy-ipoteki/05-FAQ.astro';
-import FinalCTA from './_kalkulyator-voennoy-ipoteki/06-CTA.astro';
+import Calculator from './_kalkulyator-voennoy-ipoteki/02-Calculator.astro';
+import Broker from './_kalkulyator-voennoy-ipoteki/03-Broker.astro';
+import Explainer from './_kalkulyator-voennoy-ipoteki/04-Explainer.astro';
+import Basics from './_kalkulyator-voennoy-ipoteki/05-Basics.astro';
+import FAQ from './_kalkulyator-voennoy-ipoteki/06-FAQ.astro';
+import FinalCTA from './_kalkulyator-voennoy-ipoteki/07-CTA.astro';
 import { pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
-  <Hero />
+  <Calculator />
+  <Broker />
   <Explainer />
   <Basics />
-  <Scenarios />
   <FAQ />
   <FinalCTA />
 </PageLayout>

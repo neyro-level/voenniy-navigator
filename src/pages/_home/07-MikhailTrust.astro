@@ -23,14 +23,23 @@ const trustPoints = [
     <div class="vn-container">
       <div class="vn-home-trust__layout">
         <div class="vn-home-trust__photo-wrap">
-          <OptimizedImage
-            src="/images/mikhail-desk.png"
-            alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
-            width={480}
-            height={580}
-            loading="lazy"
-            class="vn-home-trust__photo"
-          />
+          <div class="vn-home-trust__photo-panel">
+            <div class="vn-home-trust__photo-frame">
+              <OptimizedImage
+                src="/images/mikhail-desk.png"
+                alt="Михаил Хряпин — главный навигатор сервиса Военный навигатор"
+                width={480}
+                height={580}
+                loading="lazy"
+                class="vn-home-trust__photo"
+              />
+            </div>
+
+            <div class="vn-home-trust__photo-caption">
+              <p class="vn-home-trust__photo-name">Михаил Хряпин</p>
+              <p class="vn-home-trust__photo-role">Главный навигатор сервиса · первичный разбор и фильтр рисков</p>
+            </div>
+          </div>
         </div>
 
         <div class="vn-home-trust__content">
@@ -81,18 +90,104 @@ const trustPoints = [
   }
 
   .vn-home-trust__photo-wrap {
+    position: relative;
     display: flex;
     align-items: stretch;
+    isolation: isolate;
+  }
+
+  .vn-home-trust__photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 28px -18px -26px 26px;
+    border-radius: calc(var(--radius-xl) + 8px);
+    background:
+      linear-gradient(145deg,
+        color-mix(in srgb, var(--color-accent-cta) 9%, var(--color-bg-surface)) 0%,
+        color-mix(in srgb, var(--color-bg-primary) 84%, white) 58%,
+        color-mix(in srgb, var(--color-accent-primary) 7%, var(--color-bg-surface)) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 14%, var(--color-border));
+    z-index: 0;
+  }
+
+  .vn-home-trust__photo-wrap::after {
+    content: '';
+    position: absolute;
+    top: -26px;
+    right: -18px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-accent-cta) 18%, transparent) 0%,
+      transparent 72%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .vn-home-trust__photo-panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 14px;
+    border-radius: calc(var(--radius-xl) + 6px);
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 12%, var(--color-border));
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-primary) 92%, white) 0%,
+      color-mix(in srgb, var(--color-bg-surface) 96%, white) 100%
+    );
+    box-shadow:
+      0 30px 70px color-mix(in srgb, var(--color-bg-dark) 10%, transparent),
+      0 10px 26px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
+  }
+
+  .vn-home-trust__photo-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--radius-xl) - 2px);
+    background: var(--color-bg-dark);
+    border: 1px solid color-mix(in srgb, var(--color-bg-dark) 14%, var(--color-border));
   }
 
   .vn-home-trust__photo {
     width: 100%;
-    height: 100%;
-    min-height: 420px;
+    height: auto;
+    aspect-ratio: 48 / 58;
     object-fit: cover;
     object-position: center top;
-    border-radius: var(--radius-xl);
     display: block;
+  }
+
+  .vn-home-trust__photo-caption {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 26px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--color-border-ondark) 56%, transparent);
+    background: color-mix(in srgb, var(--color-bg-dark) 76%, transparent);
+    box-shadow: 0 16px 32px color-mix(in srgb, var(--color-bg-dark) 22%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .vn-home-trust__photo-name {
+    margin: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-home-trust__photo-role {
+    margin: 6px 0 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.45;
+    color: var(--color-text-ondark-mute);
+    text-wrap: pretty;
   }
 
   .vn-home-trust__title {
@@ -181,8 +276,29 @@ const trustPoints = [
       gap: 32px;
     }
 
-    .vn-home-trust__photo {
-      min-height: 360px;
+    .vn-home-trust__photo-wrap {
+      max-width: 560px;
+    }
+
+    .vn-home-trust__photo-wrap::before {
+      inset: 22px -12px -18px 18px;
+    }
+
+    .vn-home-trust__photo-wrap::after {
+      top: -18px;
+      right: -10px;
+      width: 150px;
+      height: 150px;
+    }
+
+    .vn-home-trust__photo-panel {
+      padding: 12px;
+    }
+
+    .vn-home-trust__photo-caption {
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
     }
   }
 
@@ -195,9 +311,50 @@ const trustPoints = [
       font-size: clamp(1.5rem, 5vw, 1.75rem);
     }
 
+    .vn-home-trust__photo-wrap {
+      max-width: none;
+    }
+
+    .vn-home-trust__photo-wrap::before {
+      inset: 18px -8px -14px 14px;
+      border-radius: calc(var(--radius-lg) + 8px);
+    }
+
+    .vn-home-trust__photo-wrap::after {
+      top: -12px;
+      right: -4px;
+      width: 112px;
+      height: 112px;
+    }
+
+    .vn-home-trust__photo-panel {
+      padding: 10px;
+      border-radius: calc(var(--radius-lg) + 4px);
+    }
+
+    .vn-home-trust__photo-frame {
+      border-radius: var(--radius-lg);
+    }
+
     .vn-home-trust__photo {
-      min-height: 320px;
-      height: 320px;
+      min-height: 0;
+      aspect-ratio: 1 / 1.16;
+    }
+
+    .vn-home-trust__photo-caption {
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      padding: 14px 14px 13px;
+      border-radius: 16px;
+    }
+
+    .vn-home-trust__photo-name {
+      font-size: 1rem;
+    }
+
+    .vn-home-trust__photo-role {
+      font-size: 0.875rem;
     }
 
     .vn-home-trust__actions {

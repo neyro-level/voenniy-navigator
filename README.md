@@ -51,7 +51,9 @@ cp .env.example .env
 
 ## Документация
 
-Все проектные документы в `_project-docs/`:
-- [`SITE_ARCHITECTURE.md`](SITE_ARCHITECTURE.md) — карта сайта, URL, стек
-- [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) — дизайн-система
-- [`_project-docs/briefs/INDEX.md`](_project-docs/briefs/INDEX.md) — брифы страниц
+Рабочий порядок документов:
+- [`project-docs/PASSPORT_PROJECTS.md`](project-docs/PASSPORT_PROJECTS.md)
+- [`project-docs/WORKLOG.md`](project-docs/WORKLOG.md)
+- [`project-docs/README.md`](project-docs/README.md)
+
+Все актуальные документы проекта собраны в `project-docs/`.

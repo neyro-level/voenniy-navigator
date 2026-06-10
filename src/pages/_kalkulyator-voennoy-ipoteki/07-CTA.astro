@@ -9,45 +9,43 @@ const maxHref = getConfiguredValue(CONTACTS.max);
 const guarantees = [
   { icon: 'shield-check', text: 'Без комиссий для покупателя' },
   { icon: 'globe', text: 'Можно полностью дистанционно' },
-  { icon: 'clock', text: 'Занимает всего 20 минут' }
+  { icon: 'clock', text: 'Занимает всего 20 минут' },
 ];
 ---
 
-<section id="section-cta-final" class="vn-final-cta-light" aria-labelledby="vn-final-cta-title">
+<section id="section-cta-final" class="vn-calc-cta" aria-labelledby="vn-calc-cta-title">
   <div class="vn-container">
-    <div class="vn-final-cta-light__layout">
-      
-      <!-- Левая часть: Оффер и действие -->
-      <div class="vn-final-cta-light__content">
-        <span class="vn-label-mono vn-final-cta-light__eyebrow">ПЕРВЫЙ ШАГ К КВАРТИРЕ</span>
-        <h2 class="vn-final-cta-light__title" id="vn-final-cta-title">
-          Начните с разбора ситуации, <br>
-          <span class="vn-final-cta-light__accent">а не со случайной витрины</span>
+    <div class="vn-calc-cta__layout">
+      <div class="vn-calc-cta__content">
+        <span class="vn-label-mono vn-calc-cta__eyebrow">ТОЧНЫЙ РАСЧЁТ</span>
+        <h2 class="vn-calc-cta__title" id="vn-calc-cta-title">
+          Получите точный расчёт под
+          <span class="vn-calc-cta__accent">вашу ситуацию</span>
         </h2>
-        <p class="vn-final-cta-light__subtitle">
-          За 20 минут мы выясним вашу цель, проверим лимиты банка и составим короткий список новостроек, которые реально одобрят. Без обязательств и скрытых платежей.
+        <p class="vn-calc-cta__subtitle">
+          Оставьте контакты. Мы разберём ваши вводные, проверим подходящий сценарий покупки, пересчитаем всё вручную и подскажем, какой объект реально доступен и что делать дальше.
         </p>
-        
-        <div class="vn-final-cta-light__actions">
+
+        <div class="vn-calc-cta__actions">
           <a
             href="/contacts/#request"
             data-modal-open
             data-modal-title="Получить разбор ситуации"
-            class="vn-btn-primary vn-final-cta-light__cta"
+            class="vn-btn-primary vn-calc-cta__cta"
           >
             Получить разбор ситуации
           </a>
-          
+
           {(telegramHref || maxHref) && (
-            <p class="vn-final-cta-light__alt">
+            <p class="vn-calc-cta__alt">
               <span>Или напишите напрямую:</span>
-              <span class="vn-final-cta-light__alt-links">
+              <span class="vn-calc-cta__alt-links">
                 {telegramHref && (
-                  <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-final-cta-light__alt-link">Telegram</a>
+                  <a href={telegramHref} target="_blank" rel="noopener noreferrer" class="vn-calc-cta__alt-link">Telegram</a>
                 )}
-                {telegramHref && maxHref && <span class="vn-final-cta-light__alt-sep">/</span>}
+                {telegramHref && maxHref && <span class="vn-calc-cta__alt-sep">/</span>}
                 {maxHref && (
-                  <a href={maxHref} target="_blank" rel="noopener noreferrer" class="vn-final-cta-light__alt-link">Max</a>
+                  <a href={maxHref} target="_blank" rel="noopener noreferrer" class="vn-calc-cta__alt-link">Max</a>
                 )}
               </span>
             </p>
@@ -55,34 +53,32 @@ const guarantees = [
         </div>
       </div>
 
-      <!-- Правая часть: Гарантии -->
-      <div class="vn-final-cta-light__guarantees-wrap">
-        <div class="vn-final-cta-light__guarantees">
-        {guarantees.map((item, index) => (
-          <div class="vn-final-cta-light__guarantee-item">
-            <span class="vn-final-cta-light__guarantee-index">{String(index + 1).padStart(2, '0')}</span>
-            <div class="vn-final-cta-light__guarantee-icon">
-              <Icon name={item.icon} width="20" height="20" aria-hidden="true" />
+      <div class="vn-calc-cta__guarantees-wrap">
+        <div class="vn-calc-cta__guarantees">
+          {guarantees.map((item, index) => (
+            <div class="vn-calc-cta__guarantee-item">
+              <span class="vn-calc-cta__guarantee-index">{String(index + 1).padStart(2, '0')}</span>
+              <div class="vn-calc-cta__guarantee-icon">
+                <Icon name={item.icon} width="20" height="20" aria-hidden="true" />
+              </div>
+              <span class="vn-calc-cta__guarantee-text">{item.text}</span>
             </div>
-            <span class="vn-final-cta-light__guarantee-text">{item.text}</span>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-  .vn-final-cta-light {
+  .vn-calc-cta {
     position: relative;
     padding-block: 96px;
     background: var(--color-bg-surface);
     overflow: hidden;
   }
 
-  .vn-final-cta-light::after {
+  .vn-calc-cta::after {
     content: '';
     position: absolute;
     right: -220px;
@@ -98,7 +94,7 @@ const guarantees = [
     pointer-events: none;
   }
 
-  .vn-final-cta-light__layout {
+  .vn-calc-cta__layout {
     position: relative;
     z-index: 1;
     display: grid;
@@ -107,13 +103,13 @@ const guarantees = [
     align-items: center;
   }
 
-  .vn-final-cta-light__eyebrow {
+  .vn-calc-cta__eyebrow {
     color: var(--color-accent-cta);
     font-weight: 600;
     letter-spacing: 0.05em;
   }
 
-  .vn-final-cta-light__title {
+  .vn-calc-cta__title {
     margin: 16px 0 20px;
     font-size: clamp(32px, 4vw, 48px);
     font-weight: 600;
@@ -123,11 +119,12 @@ const guarantees = [
     text-wrap: balance;
   }
 
-  .vn-final-cta-light__accent {
+  .vn-calc-cta__accent {
+    display: block;
     color: var(--color-accent-cta);
   }
 
-  .vn-final-cta-light__subtitle {
+  .vn-calc-cta__subtitle {
     margin: 0 0 36px;
     font-size: var(--fs-lead);
     line-height: 1.6;
@@ -136,21 +133,21 @@ const guarantees = [
     text-wrap: pretty;
   }
 
-  .vn-final-cta-light__actions {
+  .vn-calc-cta__actions {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
 
-  .vn-final-cta-light__cta {
-    font-size: var(--fs-body);
-    padding: 18px 36px;
+  .vn-calc-cta__cta {
     min-width: 280px;
+    padding: 18px 36px;
+    font-size: var(--fs-body);
     text-align: center;
   }
 
-  .vn-final-cta-light__alt {
+  .vn-calc-cta__alt {
     margin: 0;
     font-size: var(--fs-body-sm);
     line-height: 1.4;
@@ -161,19 +158,19 @@ const guarantees = [
     flex-wrap: wrap;
   }
 
-  .vn-final-cta-light__alt-links {
+  .vn-calc-cta__alt-links {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     line-height: 1;
   }
 
-  .vn-final-cta-light__alt-sep {
+  .vn-calc-cta__alt-sep {
     color: var(--color-text-tertiary);
     opacity: 0.5;
   }
 
-  .vn-final-cta-light__alt-link {
+  .vn-calc-cta__alt-link {
     display: inline-flex;
     align-items: center;
     color: var(--color-text-primary);
@@ -185,17 +182,16 @@ const guarantees = [
     transition: color 0.2s ease;
   }
 
-  .vn-final-cta-light__alt-link:hover {
+  .vn-calc-cta__alt-link:hover {
     color: var(--color-accent-cta);
   }
 
-  /* Гарантии */
-  .vn-final-cta-light__guarantees-wrap {
+  .vn-calc-cta__guarantees-wrap {
     position: relative;
     isolation: isolate;
   }
 
-  .vn-final-cta-light__guarantees-wrap::before {
+  .vn-calc-cta__guarantees-wrap::before {
     content: '';
     position: absolute;
     inset: 26px -18px -26px 18px;
@@ -210,7 +206,7 @@ const guarantees = [
     z-index: 0;
   }
 
-  .vn-final-cta-light__guarantees-wrap::after {
+  .vn-calc-cta__guarantees-wrap::after {
     content: '';
     position: absolute;
     top: -18px;
@@ -227,7 +223,7 @@ const guarantees = [
     pointer-events: none;
   }
 
-  .vn-final-cta-light__guarantees {
+  .vn-calc-cta__guarantees {
     position: relative;
     z-index: 1;
     display: grid;
@@ -245,12 +241,12 @@ const guarantees = [
       0 10px 24px color-mix(in srgb, var(--color-bg-dark) 5%, transparent);
   }
 
-  .vn-final-cta-light__guarantee-item {
+  .vn-calc-cta__guarantee-item {
     display: grid;
     grid-template-columns: auto auto minmax(0, 1fr);
     align-items: center;
     gap: 16px;
-    padding: 18px 18px;
+    padding: 18px;
     border: 1px solid color-mix(in srgb, var(--color-accent-cta) 10%, var(--color-border));
     border-radius: var(--radius-lg);
     background: linear-gradient(
@@ -261,7 +257,7 @@ const guarantees = [
     box-shadow: inset 0 1px 0 color-mix(in srgb, white 48%, transparent);
   }
 
-  .vn-final-cta-light__guarantee-index {
+  .vn-calc-cta__guarantee-index {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -278,7 +274,7 @@ const guarantees = [
     font-variant-numeric: tabular-nums;
   }
 
-  .vn-final-cta-light__guarantee-icon {
+  .vn-calc-cta__guarantee-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -293,72 +289,71 @@ const guarantees = [
     flex-shrink: 0;
   }
 
-  .vn-final-cta-light__guarantee-text {
+  .vn-calc-cta__guarantee-text {
     font-size: var(--fs-body);
     font-weight: 500;
     color: var(--color-text-primary);
     line-height: 1.4;
   }
 
-  /* Мобильная адаптация */
   @media (max-width: 1023px) {
-    .vn-final-cta-light {
+    .vn-calc-cta {
       padding-block: 72px;
     }
 
-    .vn-final-cta-light__layout {
+    .vn-calc-cta__layout {
       grid-template-columns: 1fr;
       gap: 48px;
     }
 
-    .vn-final-cta-light__guarantees-wrap {
+    .vn-calc-cta__guarantees-wrap {
       max-width: 760px;
     }
 
-    .vn-final-cta-light__guarantees-wrap::before {
+    .vn-calc-cta__guarantees-wrap::before {
       inset: 18px -10px -18px 12px;
     }
 
-    .vn-final-cta-light__guarantees-wrap::after {
+    .vn-calc-cta__guarantees-wrap::after {
       width: 140px;
       height: 140px;
       right: -6px;
       top: -12px;
     }
 
-    .vn-final-cta-light__guarantees {
+    .vn-calc-cta__guarantees {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
       padding: 24px;
     }
 
-    .vn-final-cta-light__guarantee-item {
+    .vn-calc-cta__guarantee-item {
       min-height: 100%;
       padding: 16px;
     }
 
-    .vn-final-cta-light__guarantee-item:last-child {
+    .vn-calc-cta__guarantee-item:last-child {
       grid-column: 1 / -1;
     }
   }
 
   @media (max-width: 640px) {
-    .vn-final-cta-light {
+    .vn-calc-cta {
       padding-block: 56px;
     }
 
-    .vn-final-cta-light__title {
+    .vn-calc-cta__title {
       font-size: 28px;
       line-height: 1.2;
     }
 
-    .vn-final-cta-light__subtitle {
-      font-size: var(--fs-body);
+    .vn-calc-cta__subtitle {
       margin-bottom: 28px;
+      font-size: var(--fs-body);
       line-height: 1.55;
     }
 
-    .vn-final-cta-light__cta {
+    .vn-calc-cta__cta {
       width: 100%;
       min-width: auto;
       min-height: 52px;
@@ -367,43 +362,42 @@ const guarantees = [
       justify-content: center;
     }
 
-    .vn-final-cta-light__guarantees {
+    .vn-calc-cta__guarantees {
       grid-template-columns: 1fr;
       gap: 12px;
       padding: 14px;
     }
 
-    .vn-final-cta-light__guarantee-item {
+    .vn-calc-cta__guarantee-item {
       padding: 16px;
-      grid-template-columns: auto auto minmax(0, 1fr);
       gap: 12px;
     }
 
-    .vn-final-cta-light__guarantees-wrap::before {
+    .vn-calc-cta__guarantees-wrap::before {
       inset: 14px -6px -10px 10px;
       border-radius: calc(var(--radius-lg) + 8px);
     }
 
-    .vn-final-cta-light__guarantees-wrap::after {
+    .vn-calc-cta__guarantees-wrap::after {
       width: 100px;
       height: 100px;
       right: -2px;
       top: -8px;
     }
 
-    .vn-final-cta-light__guarantee-index {
+    .vn-calc-cta__guarantee-index {
       min-width: 40px;
       height: 30px;
       padding: 0 10px;
       font-size: 0.75rem;
     }
 
-    .vn-final-cta-light__guarantee-icon {
+    .vn-calc-cta__guarantee-icon {
       width: 42px;
       height: 42px;
     }
 
-    .vn-final-cta-light__guarantee-text {
+    .vn-calc-cta__guarantee-text {
       font-size: var(--fs-body-sm);
       line-height: 1.45;
     }

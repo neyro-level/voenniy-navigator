@@ -1,403 +1,56 @@
 ---
-// Компонент: 01-Hero.astro (Калькулятор военной ипотеки)
-// Дизайн-система: Architectural Navigator v1.0 Final
-// Данные: НИС 2026 = 411 184,90 ₽/год (~34 265 ₽/мес)
+// Компонент: 01-Hero.astro
+// Задача: коротко ввести пользователя в страницу и сразу обозначить связь калькулятора с заявкой.
 ---
 
 <section id="section-calc-hero" class="vn-calc-hero">
-  <div class="vn-calc-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-calc-hero__grid" aria-hidden="true"></div>
   <div class="vn-calc-hero__radial" aria-hidden="true"></div>
 
   <div class="vn-container">
-    <div class="vn-grid-12 vn-calc-hero__inner">
-      <!-- Левая часть: Смысл и оффер -->
-      <div class="vn-calc-hero__content">
-        <p class="vn-label-mono">Военная ипотека / калькулятор / 01</p>
-        <h1 class="vn-calc-hero__title">
-          Калькулятор
-          <span class="vn-calc-hero__title-accent">военной ипотеки</span>
-        </h1>
-        <p class="vn-calc-hero__lead">
-          Рассчитайте ориентир по сумме и поймите, от чего зависит ваш реальный
-          бюджет покупки: накопления, банк, сценарий сделки и собственные
-          средства.
-        </p>
+    <div class="vn-calc-hero__shell">
+      <p class="vn-label-mono">Военная ипотека / калькулятор / 01</p>
 
-        <div class="vn-calc-hero__actions">
-          <button
-            type="button"
-            class="vn-btn-primary vn-calc-hero__primary"
-            data-modal-open
-            data-modal-title="Получить точный расчет под свою ситуацию"
-            data-track="cta_click"
-            data-track-params='{"placement":"calc_hero_primary","page":"kalkulyator-voennoy-ipoteki"}'
-          >
-            Получить точный расчет
-          </button>
-        </div>
-      </div>
+      <h1 class="vn-calc-hero__title">
+        Калькулятор военной ипотеки,
+        <span class="vn-calc-hero__title-accent">сколько даст банк?</span>
+      </h1>
 
-      <dl
-        class="vn-calc-hero__proof"
-        aria-label="Что помогает уточнить расчет"
+      <p class="vn-calc-hero__lead">
+        Рассчитайте сумму военной ипотеки с учетом актуальных банковских ставок.
+      </p>
+
+      <button
+        type="button"
+        class="vn-btn-primary vn-calc-hero__cta"
+        data-modal-open
+        data-modal-title="Подать заявку на разбор по военной ипотеке"
+        data-track="cta_click"
+        data-track-params='{"placement":"calc_hero_short","page":"kalkulyator-voennoy-ipoteki"}'
       >
-        <div class="vn-calc-hero__proof-item">
-          <dt>Сумма по военной ипотеке</dt>
-          <dd>Рассчитывается индивидуально</dd>
-        </div>
-        <div class="vn-calc-hero__proof-item">
-          <dt>Накопления НИС</dt>
-          <dd>Учитываются как первый взнос</dd>
-        </div>
-        <div class="vn-calc-hero__proof-item">
-          <dt>Ежемесячный платёж</dt>
-          <dd>Покрывается за счет государства</dd>
-        </div>
-        <div class="vn-calc-hero__proof-item">
-          <dt>Бюджет покупки</dt>
-          <dd>Кредит + накопления + свои средства</dd>
-        </div>
-      </dl>
-
-      <!-- Правая часть: Интерактивный калькулятор -->
-      <div class="vn-calc-hero__panel" data-calc-root>
-        <div class="vn-calc-hero__panel-shell">
-          <!-- Переключатель сценариев -->
-          <div class="vn-calc-hero__scenarios">
-            <button
-              type="button"
-              class="vn-calc-hero__scenario-btn active"
-              data-scenario="standard"
-            >
-              <span class="vn-label-mono">Стандартная</span>
-              <span class="vn-calc-hero__scenario-desc">До 2,3 млн ₽, ~18%</span
-              >
-            </button>
-            <button
-              type="button"
-              class="vn-calc-hero__scenario-btn"
-              data-scenario="family"
-            >
-              <span class="vn-label-mono">Военная + Семейная</span>
-              <span class="vn-calc-hero__scenario-desc">До 6 млн ₽, 6%</span>
-            </button>
-            <button
-              type="button"
-              class="vn-calc-hero__scenario-btn"
-              data-scenario="new-territories"
-            >
-              <span class="vn-label-mono">Новые территории</span>
-              <span class="vn-calc-hero__scenario-desc">До 6 млн ₽, 2%</span>
-            </button>
-          </div>
-
-          <form class="vn-calc-hero__form" novalidate onsubmit="return false;">
-            <!-- Поле 1: Ежемесячный платеж (база НИС) -->
-            <div class="vn-calc-hero__field">
-              <div class="vn-calc-hero__field-top">
-                <label for="calc-monthly">Ежемесячный платеж (лимит НИС)</label>
-                <output for="calc-monthly" data-output="monthly"
-                  >34 265 ₽</output
-                >
-              </div>
-              <input
-                type="range"
-                id="calc-monthly"
-                min="20000"
-                max="60000"
-                step="100"
-                value="34265"
-                data-input="monthly"
-              />
-            </div>
-
-            <!-- Поле 2: Накопления НИС -->
-            <div class="vn-calc-hero__field">
-              <div class="vn-calc-hero__field-top">
-                <label for="calc-savings">Накопления на счете НИС</label>
-                <output for="calc-savings" data-output="savings">0 ₽</output>
-              </div>
-              <input
-                type="range"
-                id="calc-savings"
-                min="0"
-                max="1500000"
-                step="50000"
-                value="0"
-                data-input="savings"
-              />
-            </div>
-
-            <!-- Поле 3: Собственные средства -->
-            <div class="vn-calc-hero__field">
-              <div class="vn-calc-hero__field-top">
-                <label for="calc-own-funds"
-                  >Собственные средства / Маткапитал</label
-                >
-                <output for="calc-own-funds" data-output="ownFunds">0 ₽</output>
-              </div>
-              <input
-                type="range"
-                id="calc-own-funds"
-                min="0"
-                max="3000000"
-                step="50000"
-                value="0"
-                data-input="ownFunds"
-              />
-            </div>
-
-            <!-- Поле 4 и 5: Ставка и Срок -->
-            <div class="vn-calc-hero__row">
-              <div class="vn-calc-hero__field vn-calc-hero__field--half">
-                <div class="vn-calc-hero__field-top">
-                  <label for="calc-rate">Ставка банка</label>
-                  <output for="calc-rate" data-output="rate">18%</output>
-                </div>
-                <input
-                  type="range"
-                  id="calc-rate"
-                  min="2"
-                  max="25"
-                  step="0.1"
-                  value="18"
-                  data-input="rate"
-                />
-              </div>
-
-              <div class="vn-calc-hero__field vn-calc-hero__field--half">
-                <div class="vn-calc-hero__field-top">
-                  <label for="calc-term">Срок кредита</label>
-                  <output for="calc-term" data-output="term">25 лет</output>
-                </div>
-                <input
-                  type="range"
-                  id="calc-term"
-                  min="1"
-                  max="30"
-                  step="1"
-                  value="25"
-                  data-input="term"
-                />
-              </div>
-            </div>
-          </form>
-
-          <!-- Блок результатов -->
-          <div class="vn-calc-hero__result" aria-live="polite">
-            <p class="vn-calc-hero__result-label">
-              Ориентировочная сумма кредита
-            </p>
-            <strong class="vn-calc-hero__result-value" data-result="loan"
-              >~2 150 000 ₽</strong
-            >
-
-            <div class="vn-calc-hero__result-grid">
-              <div class="vn-calc-hero__result-item">
-                <span>Первоначальный взнос</span>
-                <strong data-result="downpayment">0 ₽</strong>
-              </div>
-              <div
-                class="vn-calc-hero__result-item vn-calc-hero__result-item--budget"
-              >
-                <span>Доступный бюджет покупки</span>
-                <strong data-result="budget">~2 150 000 ₽</strong>
-              </div>
-            </div>
-
-            <div class="vn-calc-hero__banks">
-              <span class="vn-label-mono">Подходящие банки:</span>
-              <span data-result="banks">ПСБ, Банк РОССИЯ, Сбер, ВТБ</span>
-            </div>
-
-            <p class="vn-calc-hero__result-note">
-              Платеж по кредиту обычно погашается за счет средств НИС, пока
-              военнослужащий продолжает службу и соблюдает условия программы.
-              Итоговая сумма зависит от возраста, объекта и политики банка.
-            </p>
-          </div>
-
-          <div class="vn-calc-hero__panel-foot">
-            <p>
-              Расчет показывает ориентир. Для точного одобрения нужна проверка
-              анкеты и объекта.
-            </p>
-            <button
-              type="button"
-              class="vn-calc-hero__text-cta"
-              data-modal-open
-              data-modal-title="Проверить одобрение и подобрать квартиру"
-              data-track="cta_click"
-              data-track-params='{"placement":"calc_hero_panel","page":"kalkulyator-voennoy-ipoteki"}'
-            >
-              Проверить одобрение и подобрать квартиру →
-            </button>
-          </div>
-        </div>
-      </div>
+        Подать заявку
+      </button>
     </div>
   </div>
 </section>
 
-<script>
-  // Логика калькулятора военной ипотеки 2026
-  document.addEventListener("DOMContentLoaded", () => {
-    const roots = document.querySelectorAll("[data-calc-root]");
-
-    // Константы и сценарии
-    const SCENARIOS = {
-      standard: { rate: 18, maxTerm: 25, banks: "ПСБ, Банк РОССИЯ, Сбер, ВТБ" },
-      family: { rate: 6, maxTerm: 30, banks: "ПСБ, Сбер, ВТБ, ДОМ.РФ" },
-      "new-territories": {
-        rate: 2,
-        maxTerm: 30,
-        banks: "ПСБ (специальная программа)",
-      },
-    };
-
-    const formatCurrency = (num: number) => {
-      return new Intl.NumberFormat("ru-RU", {
-        style: "currency",
-        currency: "RUB",
-        maximumFractionDigits: 0,
-      })
-        .format(num)
-        .replace("₽", "₽")
-        .trim();
-    };
-
-    roots.forEach((root) => {
-      const inputs = {
-        monthly: root.querySelector(
-          '[data-input="monthly"]',
-        ) as HTMLInputElement,
-        savings: root.querySelector(
-          '[data-input="savings"]',
-        ) as HTMLInputElement,
-        ownFunds: root.querySelector(
-          '[data-input="ownFunds"]',
-        ) as HTMLInputElement,
-        rate: root.querySelector('[data-input="rate"]') as HTMLInputElement,
-        term: root.querySelector('[data-input="term"]') as HTMLInputElement,
-      };
-
-      const outputs = {
-        monthly: root.querySelector(
-          '[data-output="monthly"]',
-        ) as HTMLOutputElement,
-        savings: root.querySelector(
-          '[data-output="savings"]',
-        ) as HTMLOutputElement,
-        ownFunds: root.querySelector(
-          '[data-output="ownFunds"]',
-        ) as HTMLOutputElement,
-        rate: root.querySelector('[data-output="rate"]') as HTMLOutputElement,
-        term: root.querySelector('[data-output="term"]') as HTMLOutputElement,
-      };
-
-      const results = {
-        loan: root.querySelector('[data-result="loan"]') as HTMLElement,
-        downpayment: root.querySelector(
-          '[data-result="downpayment"]',
-        ) as HTMLElement,
-        budget: root.querySelector('[data-result="budget"]') as HTMLElement,
-        banks: root.querySelector('[data-result="banks"]') as HTMLElement,
-      };
-
-      const scenarioBtns = root.querySelectorAll(".vn-calc-hero__scenario-btn");
-
-      const calculate = () => {
-        const monthlyPayment = parseFloat(inputs.monthly.value);
-        const nisSavings = parseFloat(inputs.savings.value);
-        const ownFunds = parseFloat(inputs.ownFunds.value);
-        const annualRate = parseFloat(inputs.rate.value);
-        const termYears = parseFloat(inputs.term.value);
-
-        // Обновляем текстовые outputs
-        outputs.monthly.textContent = formatCurrency(monthlyPayment);
-        outputs.savings.textContent = formatCurrency(nisSavings);
-        outputs.ownFunds.textContent = formatCurrency(ownFunds);
-        outputs.rate.textContent = annualRate + "%";
-        outputs.term.textContent =
-          termYears +
-          (termYears === 1 ? " год" : termYears < 5 ? " года" : " лет");
-
-        // Формула аннуитета: maxLoan = P * (1 - (1 + r)^-n) / r
-        const monthlyRate = annualRate / 12 / 100;
-        const months = termYears * 12;
-
-        let maxLoan = 0;
-        if (monthlyRate > 0) {
-          maxLoan =
-            (monthlyPayment * (1 - Math.pow(1 + monthlyRate, -months))) /
-            monthlyRate;
-        } else {
-          maxLoan = monthlyPayment * months;
-        }
-
-        // Округляем до тысяч для чистоты восприятия
-        maxLoan = Math.floor(maxLoan / 1000) * 1000;
-        const totalBudget = maxLoan + nisSavings + ownFunds;
-        const downPayment = nisSavings + ownFunds;
-
-        // Вывод результатов
-        results.loan.textContent = "~" + formatCurrency(maxLoan);
-        results.downpayment.textContent = formatCurrency(downPayment);
-        results.budget.textContent = "~" + formatCurrency(totalBudget);
-      };
-
-      // Обработчик сценариев
-      scenarioBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          scenarioBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-
-          const scenario = btn.getAttribute(
-            "data-scenario",
-          ) as keyof typeof SCENARIOS;
-          const config = SCENARIOS[scenario];
-
-          // Обновляем значения
-          inputs.rate.value = config.rate.toString();
-          inputs.term.max = config.maxTerm.toString();
-          if (parseFloat(inputs.term.value) > config.maxTerm) {
-            inputs.term.value = config.maxTerm.toString();
-          }
-          results.banks.textContent = config.banks;
-
-          calculate();
-        });
-      });
-
-      // Навешиваем слушатели на все инпуты
-      Object.values(inputs).forEach((input) => {
-        input.addEventListener("input", calculate);
-      });
-
-      // Первичный расчет при загрузке
-      calculate();
-    });
-  });
-</script>
-
 <style>
-  /* ─── Блок 01: Hero Калькулятора (Architectural Navigator) ─── */
   .vn-calc-hero {
     position: relative;
     overflow: hidden;
-    background-color: var(--color-bg-primary);
-    padding-top: 120px;
-    padding-bottom: 120px;
+    background: var(--color-bg-primary);
+    padding-top: 132px;
+    padding-bottom: 72px;
   }
 
-  .vn-calc-hero__grid-bg,
+  .vn-calc-hero__grid,
   .vn-calc-hero__radial {
     position: absolute;
+    inset: 0;
     pointer-events: none;
   }
 
-  .vn-calc-hero__grid-bg {
-    inset: 0;
+  .vn-calc-hero__grid {
     background-image:
       linear-gradient(
         to right,
@@ -410,36 +63,35 @@
         transparent 1px
       );
     background-size: 64px 64px;
+    opacity: 0.85;
   }
 
   .vn-calc-hero__radial {
-    top: -200px;
-    left: -200px;
-    width: 800px;
-    height: 800px;
+    inset: auto auto -180px 52%;
+    width: 720px;
+    height: 420px;
+    border-radius: 999px;
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--color-bg-surface) 60%, transparent) 0%,
-      transparent 70%
+      color-mix(in srgb, var(--color-accent-primary) 8%, transparent) 0%,
+      transparent 68%
     );
+    transform: translateX(-50%);
   }
 
-  .vn-calc-hero__inner {
+  .vn-calc-hero__shell {
     position: relative;
     z-index: 1;
-    align-items: start;
-    gap: 32px;
-  }
-
-  .vn-calc-hero__content {
-    grid-column: 1 / 7;
-    padding-top: 24px;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .vn-calc-hero__title {
-    margin: 16px 0 24px;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.05;
+    margin: 16px 0 20px;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.04;
     font-weight: 600;
     letter-spacing: -0.03em;
     color: var(--color-text-primary);
@@ -451,518 +103,50 @@
   }
 
   .vn-calc-hero__lead {
+    max-width: 640px;
     margin: 0 0 28px;
-    font-size: var(--fs-lead);
-    line-height: 1.5;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.55;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
 
-  .vn-calc-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .vn-calc-hero__primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .vn-calc-hero__proof {
-    grid-column: 1 / 7;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .vn-calc-hero__proof-item {
-    padding: 16px;
-    border-left: 2px solid var(--color-accent-cta);
-    background: color-mix(in srgb, var(--color-bg-surface) 50%, transparent);
-  }
-
-  .vn-calc-hero__proof-item dt {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-    margin-bottom: 4px;
-  }
-
-  .vn-calc-hero__proof-item dd {
-    margin: 0;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-text-primary);
-  }
-
-  /* ─── Панель калькулятора ─── */
-  .vn-calc-hero__panel {
-    grid-column: 7 / 13;
-    grid-row: 1 / 3;
-  }
-
-  .vn-calc-hero__panel-shell {
-    background: var(--color-bg-surface);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: 0 4px 24px
-      color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
-    border: 1px solid var(--color-border);
-  }
-
-  /* Сценарии */
-  .vn-calc-hero__scenarios {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-
-  .vn-calc-hero__scenario-btn {
-    flex: 1;
-    min-width: 140px;
-    background: transparent;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 12px 16px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .vn-calc-hero__scenario-btn:hover {
-    border-color: var(--color-accent-cta);
-    background: color-mix(
-      in srgb,
-      var(--color-accent-cta-soft) 30%,
-      transparent
-    );
-  }
-
-  .vn-calc-hero__scenario-btn.active {
-    border-color: var(--color-accent-cta);
-    background: color-mix(
-      in srgb,
-      var(--color-accent-cta-soft) 50%,
-      transparent
-    );
-  }
-
-  .vn-calc-hero__scenario-btn .vn-label-mono {
-    display: block;
-    margin-bottom: 4px;
-    color: var(--color-text-primary);
-  }
-
-  .vn-calc-hero__scenario-desc {
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-secondary);
-  }
-
-  /* Форма */
-  .vn-calc-hero__form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-
-  .vn-calc-hero__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .vn-calc-hero__field-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 6px;
-    gap: 12px;
-  }
-
-  .vn-calc-hero__field-top label {
-    font-size: var(--fs-body-sm);
-    font-weight: 500;
-    color: var(--color-text-secondary);
-  }
-
-  .vn-calc-hero__field-top output {
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-accent-primary);
-    white-space: nowrap;
-  }
-
-  /* Стилизация ползунков */
-  .vn-calc-hero__field input[type="range"] {
-    width: 100%;
-    height: 6px;
-    background: var(--color-border);
-    border-radius: 3px;
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-  }
-
-  .vn-calc-hero__field input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    background: var(--color-accent-cta);
-    border-radius: 50%;
-    border: 3px solid var(--color-bg-surface);
-    box-shadow: 0 2px 8px
-      color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
-    transition: transform 0.1s ease;
-  }
-
-  .vn-calc-hero__field input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-  }
-
-  .vn-calc-hero__field input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: var(--color-accent-cta);
-    border-radius: 50%;
-    border: 3px solid var(--color-bg-surface);
-    box-shadow: 0 2px 8px
-      color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
-    cursor: pointer;
-  }
-
-  /* Результаты */
-  .vn-calc-hero__result {
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    margin-bottom: 16px;
-    border: 1px solid var(--color-border);
-  }
-
-  .vn-calc-hero__result-label {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-    margin: 0 0 8px;
-  }
-
-  .vn-calc-hero__result-value {
-    display: block;
-    font-size: 28px;
-    line-height: 1.1;
-    font-weight: 600;
-    color: var(--color-accent-primary);
-    margin-bottom: 12px;
-  }
-
-  .vn-calc-hero__result-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .vn-calc-hero__result-item span {
-    display: block;
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-secondary);
-    margin-bottom: 4px;
-  }
-
-  .vn-calc-hero__result-item strong {
-    display: block;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-text-primary);
-  }
-
-  .vn-calc-hero__result-item--budget {
-    background: color-mix(
-      in srgb,
-      var(--color-accent-cta-soft) 40%,
-      transparent
-    );
-    padding: 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid
-      color-mix(in srgb, var(--color-accent-cta) 20%, transparent);
-  }
-
-  .vn-calc-hero__result-item--budget strong {
-    color: var(--color-accent-cta);
-    font-size: var(--fs-h3);
-  }
-
-  .vn-calc-hero__banks {
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-secondary);
-  }
-
-  .vn-calc-hero__banks .vn-label-mono {
-    color: var(--color-text-tertiary);
-  }
-
-  .vn-calc-hero__result-note {
-    margin: 12px 0 0;
-    font-size: var(--fs-body-sm);
-    line-height: 1.5;
-    color: var(--color-text-tertiary);
-    text-wrap: pretty;
-  }
-
-  /* Футер панели */
-  .vn-calc-hero__panel-foot {
-    text-align: center;
-  }
-
-  .vn-calc-hero__panel-foot p {
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-tertiary);
-    margin: 0 0 10px;
-  }
-
-  .vn-calc-hero__text-cta {
-    background: none;
-    border: none;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-accent-cta);
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: color 0.2s ease;
-  }
-
-  .vn-calc-hero__text-cta:hover {
-    color: var(--color-accent-hover);
-  }
-
-  /* ─── Адаптивность ─── */
-  @media (max-width: 1023px) {
-    .vn-calc-hero__inner {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .vn-calc-hero__content,
-    .vn-calc-hero__proof,
-    .vn-calc-hero__panel {
-      grid-column: 1 / -1;
-      grid-row: auto;
-      width: 100%;
-    }
-
-    .vn-calc-hero__content {
-      order: 1;
-      padding-top: 0;
-    }
-
-    .vn-calc-hero__panel {
-      order: 2;
-      margin-top: 24px;
-    }
-
-    .vn-calc-hero__proof {
-      order: 3;
-      margin-top: 24px;
-    }
+  .vn-calc-hero__cta {
+    min-width: 220px;
   }
 
   @media (max-width: 640px) {
     .vn-calc-hero {
-      padding-top: 80px;
-      padding-bottom: 64px;
+      padding-top: 88px;
+      padding-bottom: 44px;
     }
 
-    .vn-calc-hero__grid-bg {
+    .vn-calc-hero__grid {
       background-size: 48px 48px;
     }
 
+    .vn-calc-hero__radial {
+      left: 50%;
+      bottom: -220px;
+      width: 540px;
+      height: 320px;
+    }
+
     .vn-calc-hero__title {
-      font-size: 30px;
-      line-height: 1.1;
-      margin: 12px 0 16px;
+      margin: 12px 0 14px;
+      font-size: 34px;
+      line-height: 1.08;
     }
 
     .vn-calc-hero__lead {
+      margin-bottom: 20px;
       font-size: var(--fs-body);
       line-height: 1.5;
-      margin-bottom: 20px;
     }
 
-    .vn-calc-hero__actions {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .vn-calc-hero__primary {
+    .vn-calc-hero__cta {
       width: 100%;
-    }
-
-    .vn-calc-hero__proof {
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .vn-calc-hero__proof-item {
-      padding: 10px 12px;
-    }
-
-    .vn-calc-hero__proof-item dt {
-      font-size: 10px;
-      margin-bottom: 2px;
-    }
-
-    .vn-calc-hero__proof-item dd {
-      font-size: 12px;
-    }
-
-    /* === Компактная мобильная адаптация калькулятора === */
-    .vn-calc-hero__panel {
-      margin-top: 20px;
-    }
-
-    .vn-calc-hero__panel-shell {
-      padding: 20px 16px;
-      border-radius: 16px;
-    }
-
-    .vn-calc-hero__scenarios {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .vn-calc-hero__scenario-btn {
-      min-width: 0;
-      min-height: 44px;
-      padding: 10px 12px;
-    }
-
-    .vn-calc-hero__scenario-btn .vn-label-mono {
-      font-size: 12px;
-      margin-bottom: 2px;
-    }
-
-    .vn-calc-hero__scenario-desc {
-      font-size: 12px;
-    }
-
-    .vn-calc-hero__form {
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .vn-calc-hero__row {
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .vn-calc-hero__field {
-      width: 100%;
-    }
-
-    .vn-calc-hero__field-top {
-      flex-direction: row;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .vn-calc-hero__field-top label {
-      font-size: 12px;
-    }
-
-    .vn-calc-hero__field-top output {
-      font-size: 14px;
-    }
-
-    .vn-calc-hero__field input[type="range"] {
-      width: 100%;
-      height: 5px;
-    }
-
-    .vn-calc-hero__field input[type="range"]::-webkit-slider-thumb {
-      width: 18px;
-      height: 18px;
-      border-width: 2px;
-    }
-
-    .vn-calc-hero__field input[type="range"]::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
-      border-width: 2px;
-    }
-
-    .vn-calc-hero__result {
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-
-    .vn-calc-hero__result-value {
-      font-size: 26px;
-      margin-bottom: 14px;
-    }
-
-    .vn-calc-hero__result-grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      padding-top: 14px;
-    }
-
-    .vn-calc-hero__result-item--budget {
-      padding: 12px;
-    }
-
-    .vn-calc-hero__result-item--budget strong {
-      font-size: var(--fs-body);
-    }
-
-    .vn-calc-hero__banks {
-      margin-top: 14px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      font-size: 12px;
-    }
-
-    .vn-calc-hero__result-note {
-      margin-top: 14px;
-      font-size: 12px;
-    }
-
-    .vn-calc-hero__panel-foot p {
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .vn-calc-hero__text-cta {
-      font-size: var(--fs-body-sm);
-    }
-  }
-
-  @media (max-width: 359px) {
-    .vn-calc-hero__scenarios {
-      grid-template-columns: 1fr;
-    }
-
-    .vn-calc-hero__row {
-      grid-template-columns: 1fr;
+      justify-content: center;
     }
   }
 </style>

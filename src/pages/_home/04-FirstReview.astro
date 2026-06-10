@@ -172,46 +172,49 @@ const formulaSteps = [
       padding-block: 72px;
     }
 
+    .vn-home-review__header {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
     .vn-home-review__formula {
-      flex-direction: column;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
 
     .vn-home-review__connector {
-      flex: 0 0 32px;
-      width: 100%;
-      justify-content: flex-start;
-      padding-left: 23px; /* Выравнивание по центру номера */
-    }
-
-    .vn-home-review__connector::before {
-      width: 1px;
-      height: 100%;
-      background: var(--color-border);
+      display: none;
     }
 
     .vn-home-review__step {
-      padding: 24px 24px 24px 72px;
-      border-radius: 0;
-      border: none;
-      border-left: 1px solid var(--color-border);
-      background: transparent;
-      box-shadow: none;
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-primary);
       transform: none !important;
     }
 
     .vn-home-review__step--result {
-      border-left-color: var(--color-accent-cta);
-      background: transparent;
+      border-color: color-mix(in srgb, var(--color-accent-cta) 28%, var(--color-border));
+      background: color-mix(in srgb, var(--color-accent-cta) 4%, var(--color-bg-primary));
     }
 
     .vn-home-review__step-num {
-      position: absolute;
-      left: -12px; /* Центрируем на линии */
-      top: 24px;
-      font-size: 1.5rem;
-      background: var(--color-bg-surface);
-      padding: 0 8px;
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 52px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 1rem;
+      line-height: 1;
+      background: color-mix(in srgb, var(--color-accent-cta) 10%, var(--color-bg-primary));
+      border: 1px solid color-mix(in srgb, var(--color-accent-cta) 16%, var(--color-border));
+      opacity: 1;
     }
   }
 
@@ -229,18 +232,19 @@ const formulaSteps = [
     }
 
     .vn-home-review__step {
-      padding: 20px 20px 20px 64px;
-    }
-
-    .vn-home-review__connector {
-      padding-left: 19px;
-      flex: 0 0 24px;
+      padding: 20px;
+      gap: 12px;
     }
 
     .vn-home-review__step-num {
-      top: 20px;
-      font-size: 1.25rem;
-      left: -10px;
+      min-width: 48px;
+      padding: 7px 10px;
+      font-size: 0.9375rem;
+    }
+
+    .vn-home-review__step-title {
+      font-size: clamp(1.375rem, 5vw, 1.5rem);
+      line-height: 1.28;
     }
   }
 </style>

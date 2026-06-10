@@ -1,0 +1,279 @@
+---
+// Компонент: 03-Broker.astro
+// Задача: предложить бесплатный анализ кредитной истории и подбор программы как логичный следующий шаг после калькулятора.
+import brokerImage from '../../assets/broker-irina.png';
+---
+
+<section id="section-calc-broker" class="vn-calc-broker">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-calc-broker__layout">
+      
+      <!-- Левая часть: Текст и шаги -->
+      <div class="vn-col-7">
+        <p class="vn-label-mono">Ипотечный брокер</p>
+
+        <h2 class="vn-calc-broker__title">
+          Бесплатный анализ вашей ситуации
+          <span class="vn-calc-broker__title-accent">перед выбором квартиры</span>
+        </h2>
+
+        <p class="vn-calc-broker__lead">
+          Помощь с военной ипотекой для вас бесплатна. Мы начинаем с проверки
+          кредитной истории и подбора программы, которая даст максимальный
+          лимит одобрения.
+        </p>
+
+        <div class="vn-grid-12 vn-calc-broker__steps">
+          <article class="vn-calc-broker__step vn-col-12">
+            <span class="vn-calc-broker__step-num" aria-hidden="true">01</span>
+            <h3 class="vn-calc-broker__step-title">Проверка кредитной истории</h3>
+            <p class="vn-calc-broker__step-body">
+              Найдем слабые места и заранее подготовим вас к одобрению в банке,
+              чтобы избежать неожиданных отказов.
+            </p>
+          </article>
+
+          <article class="vn-calc-broker__step vn-col-12">
+            <span class="vn-calc-broker__step-num" aria-hidden="true">02</span>
+            <h3 class="vn-calc-broker__step-title">Подбор программы</h3>
+            <p class="vn-calc-broker__step-body">
+              Сравним условия ПСБ, Сбера, ВТБ и Банка РОССИЯ именно под ваши
+              вводные, стаж и выбранный объект.
+            </p>
+          </article>
+
+          <article class="vn-calc-broker__step vn-col-12">
+            <span class="vn-calc-broker__step-num" aria-hidden="true">03</span>
+            <h3 class="vn-calc-broker__step-title">Сопровождение сделки</h3>
+            <p class="vn-calc-broker__step-body">
+              Проверим аккредитацию новостройки, подготовим документы и проведем
+              вас до получения ключей без стресса.
+            </p>
+          </article>
+        </div>
+
+        <div class="vn-calc-broker__cta">
+          <button
+            type="button"
+            class="vn-btn-primary"
+            data-modal-open
+            data-modal-title="Получить бесплатный анализ ситуации"
+            data-track="cta_click"
+            data-track-params='{"placement":"calc_broker","page":"kalkulyator-voennoy-ipoteki"}'
+          >
+            Получить бесплатный анализ ситуации
+          </button>
+        </div>
+      </div>
+
+      <!-- Правая часть: Фотография эксперта -->
+      <div class="vn-col-5 vn-calc-broker__visual">
+        <div class="vn-calc-broker__photo-card">
+          <img 
+            src={brokerImage.src} 
+            alt="Ирина Александровна, ипотечный брокер" 
+            width={brokerImage.width}
+            height={brokerImage.height}
+            class="vn-calc-broker__photo"
+            loading="lazy"
+          />
+          <div class="vn-calc-broker__photo-caption">
+            <strong>Ирина Александровна</strong>
+            <span>Ведущий ипотечный брокер · 7 лет в военной ипотеке</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-broker {
+    background: var(--color-bg-surface);
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .vn-calc-broker__layout {
+    align-items: start;
+    gap: 48px;
+  }
+
+  .vn-calc-broker__title {
+    margin: 16px 0 20px;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+    max-width: 720px;
+  }
+
+  .vn-calc-broker__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-broker__lead {
+    margin: 0 0 48px;
+    max-width: 680px;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-calc-broker__steps {
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .vn-calc-broker__step {
+    padding: 24px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-calc-broker__step:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, transparent);
+    transform: translateY(-4px);
+  }
+
+  .vn-calc-broker__step-num {
+    display: block;
+    margin-bottom: 12px;
+    font-size: var(--fs-stat);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-accent-primary);
+    opacity: 0.25;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-calc-broker__step-title {
+    margin: 0 0 10px;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-broker__step-body {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-calc-broker__cta {
+    text-align: left;
+  }
+
+  /* Визуальная часть (фото) */
+  .vn-calc-broker__visual {
+    position: sticky;
+    top: 120px;
+  }
+
+  .vn-calc-broker__photo-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
+  }
+
+  .vn-calc-broker__photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .vn-calc-broker__photo-caption {
+    padding: 16px 20px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .vn-calc-broker__photo-caption strong {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-broker__photo-caption span {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-calc-broker__layout {
+      gap: 32px;
+    }
+
+    .vn-calc-broker__visual {
+      position: static;
+      order: -1; /* Фотография сверху на планшете */
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .vn-calc-broker__step {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-broker {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-broker__layout {
+      gap: 24px;
+    }
+
+    .vn-calc-broker__title {
+      font-size: var(--fs-h2);
+      margin-bottom: 16px;
+    }
+
+    .vn-calc-broker__lead {
+      margin-bottom: 24px;
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-calc-broker__visual {
+      max-width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .vn-calc-broker__step {
+      padding: 20px;
+    }
+
+    .vn-calc-broker__step-num {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .vn-calc-broker__cta {
+      margin-top: 16px;
+    }
+
+    .vn-calc-broker__cta .vn-btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

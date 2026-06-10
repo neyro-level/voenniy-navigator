@@ -1,0 +1,325 @@
+---
+// Компонент: 06-FAQ.astro
+// Задача: закрыть возражения после калькулятора в том же FAQ-паттерне, что и на главной странице.
+import { faqItems } from './pageData';
+---
+
+<section id="section-calc-faq" class="vn-calc-faq" aria-labelledby="vn-calc-faq-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-calc-faq__grid">
+      <div class="vn-calc-faq__left" style="grid-column: 1 / 5">
+        <span class="vn-label-mono">Вопросы и ответы</span>
+        <h2 class="vn-calc-faq__title" id="vn-calc-faq-title">
+          Важные детали о расчете и одобрении
+        </h2>
+        <p class="vn-calc-faq__lead">
+          Здесь собраны ответы о том, как формируется сумма, какие банки работают с программой и как мы сопровождаем сделку до получения ключей.
+        </p>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить разбор ситуации"
+          class="vn-calc-faq__more-link"
+        >
+          Не нашли свой вопрос? Разберите ситуацию после расчёта&nbsp;→
+        </a>
+      </div>
+
+      <div class="vn-calc-faq__right" style="grid-column: 5 / 13" itemscope itemtype="https://schema.org/FAQPage">
+        {faqItems.map((item, i) => (
+          <details
+            class="vn-calc-faq__item"
+            open={false}
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="vn-calc-faq__question">
+              <span class="vn-calc-faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="vn-calc-faq__question-text" itemprop="name">{item.q}</span>
+              <svg
+                class="vn-calc-faq__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="vn-calc-faq__answer-wrap">
+              <div class="vn-calc-faq__answer-inner" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p class="vn-calc-faq__answer-text" itemprop="text">{item.a}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-faq {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-faq__grid {
+    align-items: start;
+  }
+
+  .vn-calc-faq__left {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-calc-faq__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-calc-faq__lead {
+    margin: 14px 0 0;
+    max-width: 340px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-calc-faq__more-link {
+    display: inline-flex;
+    margin-top: 28px;
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-accent-cta);
+    text-decoration: none;
+  }
+
+  .vn-calc-faq__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vn-calc-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-calc-faq__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-calc-faq__question {
+    width: 100%;
+    min-height: 56px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: var(--radius-lg);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .vn-calc-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn-calc-faq__question:hover {
+    background-color: color-mix(in srgb, var(--color-accent-cta) 4%, transparent);
+  }
+
+  .vn-calc-faq__num {
+    flex-shrink: 0;
+    width: 32px;
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-cta);
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-calc-faq__question-text {
+    flex: 1;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    text-wrap: pretty;
+    transition: color 0.2s ease;
+  }
+
+  .vn-calc-faq__question:hover .vn-calc-faq__question-text {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-calc-faq__icon {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+  }
+
+  .vn-calc-faq__item[open] .vn-calc-faq__question {
+    background-color: color-mix(in srgb, var(--color-accent-cta) 6%, transparent);
+  }
+
+  .vn-calc-faq__item[open] .vn-calc-faq__icon {
+    transform: rotate(180deg);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-calc-faq__item[open] .vn-calc-faq__question-text {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-calc-faq__answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.17, 0.84, 0.44, 1);
+  }
+
+  .vn-calc-faq__item[open]:not(.is-closing) .vn-calc-faq__answer-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .vn-calc-faq__answer-inner {
+    overflow: hidden;
+  }
+
+  .vn-calc-faq__answer-text {
+    margin: 0;
+    padding: 0 0 24px 44px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-calc-faq__left {
+      position: static;
+      grid-column: 1 / -1;
+      margin-bottom: 40px;
+    }
+
+    .vn-calc-faq__right {
+      grid-column: 1 / -1;
+    }
+
+    .vn-calc-faq__lead {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-faq {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-faq__question {
+      padding: 16px 0;
+      gap: 12px;
+      min-height: 48px;
+    }
+
+    .vn-calc-faq__question-text {
+      font-size: var(--fs-body);
+      line-height: 1.4;
+    }
+
+    .vn-calc-faq__answer-text {
+      padding: 0 0 20px 36px;
+      font-size: var(--fs-body-sm);
+      line-height: 1.55;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function hasAnalyticsConsent() {
+      try {
+        return window.localStorage.getItem('vn_cookie_consent') === 'accepted';
+      } catch (_) {
+        return false;
+      }
+    }
+
+    const container = document.querySelector('.vn-calc-faq__right');
+    if (!container) return;
+
+    const items = container.querySelectorAll('.vn-calc-faq__item');
+    const DURATION = 400;
+
+    items.forEach((details) => {
+      const summary = details.querySelector('.vn-calc-faq__question');
+      const content = details.querySelector('.vn-calc-faq__answer-wrap');
+      if (!(details instanceof HTMLDetailsElement) || !(summary instanceof HTMLElement) || !(content instanceof HTMLElement)) {
+        return;
+      }
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isOpen = details.hasAttribute('open');
+
+        if (!isOpen && hasAnalyticsConsent() && window.ym) {
+          const cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+          if (cid) window.ym(cid, 'reachGoal', 'faq_open');
+        }
+
+        items.forEach((sibling) => {
+          if (!(sibling instanceof HTMLDetailsElement) || sibling === details || !sibling.hasAttribute('open')) {
+            return;
+          }
+
+          const siblingContent = sibling.querySelector('.vn-calc-faq__answer-wrap');
+          if (!(siblingContent instanceof HTMLElement)) return;
+
+          sibling.classList.add('is-closing');
+          siblingContent.style.gridTemplateRows = '0fr';
+          window.setTimeout(() => {
+            sibling.removeAttribute('open');
+            sibling.classList.remove('is-closing');
+            siblingContent.style.gridTemplateRows = '';
+          }, DURATION);
+        });
+
+        if (isOpen) {
+          details.classList.add('is-closing');
+          content.style.gridTemplateRows = '0fr';
+          window.setTimeout(() => {
+            details.removeAttribute('open');
+            details.classList.remove('is-closing');
+            content.style.gridTemplateRows = '';
+          }, DURATION);
+          return;
+        }
+
+        details.setAttribute('open', '');
+        requestAnimationFrame(() => {
+          content.style.gridTemplateRows = '1fr';
+          window.setTimeout(() => {
+            content.style.gridTemplateRows = '';
+          }, DURATION);
+        });
+      });
+    });
+  })();
+</script>

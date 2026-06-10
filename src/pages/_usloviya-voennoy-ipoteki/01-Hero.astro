@@ -1,5 +1,6 @@
 ---
-
+// Компонент: 01-Hero.astro (Условия военной ипотеки)
+// Задача: дать ясный, премиальный первый экран с фокусом на реальный бюджет, без визуального шума.
 ---
 
 <section id="section-usl-hero" class="vn-usl-hero">
@@ -8,19 +9,19 @@
 
   <div class="vn-container">
     <div class="vn-grid-12 vn-usl-hero__inner">
-      <div class="vn-usl-hero__content" data-reveal="fade-up">
-        <p class="vn-label-mono">Военная ипотека / условия / 2026</p>
+      
+      <!-- Левая часть: Текст и CTA -->
+      <div class="vn-usl-hero__content vn-col-7" data-reveal="fade-up">
+        <p class="vn-label-mono">Условия / банки / суммы / 2026</p>
 
         <h1 class="vn-usl-hero__title">
-          Условия
-          <span class="vn-usl-hero__title-accent">военной ипотеки</span>
-          в 2026 году: сумма, банки, расчёт
+          Условия военной ипотеки в 2026 году: 
+          <span class="vn-usl-hero__title-accent">какой бюджет одобрит банк именно вам</span>
         </h1>
 
         <p class="vn-usl-hero__lead">
-          Сразу разберётесь, какие условия действуют в 2026 году, какую сумму
-          обычно одобряют банки и что делать, если этих денег не хватает на
-          нужный объект.
+          Без воды и общих фраз. Разбираем реальные суммы, требования банков 
+          и способы законно увеличить лимит под вашу конкретную ситуацию.
         </p>
 
         <div class="vn-usl-hero__actions">
@@ -33,62 +34,33 @@
             Получить разбор моей ситуации
           </a>
         </div>
-
-        <dl
-          class="vn-usl-hero__proof"
-          aria-label="Ключевые параметры военной ипотеки"
-        >
-          <div class="vn-usl-hero__proof-item">
-            <dt>НИС 2026</dt>
-            <dd>411 184,90 ₽ в год</dd>
-          </div>
-          <div class="vn-usl-hero__proof-item">
-            <dt>Сумма</dt>
-            <dd>Обычно около 2,1–2,3 млн ₽</dd>
-          </div>
-          <div class="vn-usl-hero__proof-item">
-            <dt>Итог</dt>
-            <dd>Зависит от банка, срока и объекта</dd>
-          </div>
-        </dl>
       </div>
 
-      <aside
-        class="vn-usl-hero__visual"
-        data-reveal="fade-in"
-        aria-label="Визуальный ориентир по НИС на 2026 год"
-      >
-        <div class="vn-usl-hero__card">
-          <div class="vn-usl-hero__card-head">
-            <p class="vn-usl-hero__card-label">НИС 2026</p>
-            <span class="vn-usl-hero__card-badge">Ориентир</span>
+      <!-- Правая часть: Карточка потенциала -->
+      <aside class="vn-usl-hero__visual vn-col-5" data-reveal="fade-in">
+        <div class="vn-usl-potential-card">
+          <div class="vn-usl-potential-card__row">
+            <span class="vn-usl-potential-card__label">Базовый лимит по НИС</span>
+            <span class="vn-usl-potential-card__value">~2,3 млн ₽</span>
+          </div>
+          
+          <div class="vn-usl-potential-card__divider"></div>
+          
+          <div class="vn-usl-potential-card__row vn-usl-potential-card__row--accent">
+            <span class="vn-usl-potential-card__label">Реальный бюджет</span>
+            <span class="vn-usl-potential-card__value">до 6,0 млн ₽</span>
+            <span class="vn-usl-potential-card__sublabel">при комбинировании программ</span>
           </div>
 
-          <div class="vn-usl-hero__card-main">
-            <p class="vn-usl-hero__card-amount">411 184,90 ₽</p>
-            <p class="vn-usl-hero__card-caption">
-              ежегодный взнос на именной накопительный счёт
-            </p>
-          </div>
-
-          <dl class="vn-usl-hero__card-stats">
-            <div class="vn-usl-hero__card-stat">
-              <dt>≈ 34 265 ₽ / мес</dt>
-              <dd>ежемесячный эквивалент НИС</dd>
-            </div>
-            <div class="vn-usl-hero__card-stat">
-              <dt>2,1–2,3 млн ₽</dt>
-              <dd>частый диапазон стандартной суммы</dd>
-            </div>
-          </dl>
-
-          <div class="vn-usl-hero__card-tags" aria-hidden="true">
-            <span><span class="vn-usl-hero__tag-dot"></span>условия</span>
-            <span><span class="vn-usl-hero__tag-dot"></span>сумма</span>
-            <span><span class="vn-usl-hero__tag-dot"></span>банки</span>
+          <div class="vn-usl-potential-card__footer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Проверено в ПСБ, Сбер, ВТБ, ДОМ.РФ</span>
           </div>
         </div>
       </aside>
+
     </div>
   </div>
 </section>
@@ -97,67 +69,56 @@
   .vn-usl-hero {
     position: relative;
     overflow: hidden;
-    min-height: 100svh;
-    padding-top: 160px;
-    padding-bottom: 96px;
     background: var(--color-bg-primary);
+    padding-top: 132px;
+    padding-bottom: 96px;
+  }
+
+  .vn-usl-hero__grid-bg,
+  .vn-usl-hero__radial {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
   }
 
   .vn-usl-hero__grid-bg {
-    position: absolute;
-    inset: 0;
     background-image:
-      linear-gradient(
-        to right,
-        var(--color-deco-grid-light) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        var(--color-deco-grid-light) 1px,
-        transparent 1px
-      );
+      linear-gradient(to right, var(--color-deco-grid-light) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid-light) 1px, transparent 1px);
     background-size: 64px 64px;
-    pointer-events: none;
+    opacity: 0.6;
   }
 
   .vn-usl-hero__radial {
-    position: absolute;
-    top: -200px;
-    right: -200px;
+    inset: auto auto -200px 60%;
     width: 800px;
-    height: 800px;
+    height: 500px;
+    border-radius: 999px;
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--color-bg-surface) 60%, transparent) 0%,
+      color-mix(in srgb, var(--color-accent-primary) 6%, transparent) 0%,
       transparent 70%
     );
-    pointer-events: none;
+    transform: translateX(-50%);
   }
 
   .vn-usl-hero__inner {
-    position: relative;
-    z-index: 1;
-    align-items: start;
+    align-items: center;
+    gap: 48px;
   }
 
   .vn-usl-hero__content {
-    grid-column: 1 / 8;
-    padding-top: 24px;
-  }
-
-  .vn-usl-hero__visual {
-    grid-column: 8 / -1;
-    position: relative;
-    padding-top: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .vn-usl-hero__title {
-    margin: 16px 0 24px;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.05;
+    margin: 16px 0 20px;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.08;
     font-weight: 600;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
@@ -167,267 +128,152 @@
   }
 
   .vn-usl-hero__lead {
-    margin: 0 0 36px;
-    font-size: var(--fs-lead);
-    line-height: 1.5;
+    max-width: 580px;
+    margin: 0 0 32px;
+    font-size: clamp(17px, 1.5vw, 19px);
+    line-height: 1.6;
     color: var(--color-text-secondary);
     text-wrap: pretty;
-    max-width: 640px;
   }
 
   .vn-usl-hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-
-  .vn-usl-hero__primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-cta);
-    color: var(--color-bg-surface);
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .vn-usl-hero__primary:hover {
-    background: var(--color-accent-hover);
-    transform: translateY(-1px);
-  }
-
-  .vn-usl-hero__proof {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
-    max-width: 720px;
   }
 
-  .vn-usl-hero__proof-item {
-    padding: 16px;
-    border-left: 2px solid var(--color-accent-cta);
-    background: color-mix(in srgb, var(--color-bg-surface) 50%, transparent);
-  }
-
-  .vn-usl-hero__proof-item dt {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-    margin-bottom: 4px;
-  }
-
-  .vn-usl-hero__proof-item dd {
-    margin: 0;
-    font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-text-primary);
-  }
-
-  .vn-usl-hero__card {
-    position: relative;
-    display: grid;
-    gap: 24px;
-    padding: 28px;
-    min-height: 100%;
+  /* Карточка потенциала */
+  .vn-usl-potential-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    background: var(--color-bg-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-bg-surface) 92%, transparent) 0%,
-      color-mix(in srgb, var(--color-bg-surface-lowest) 96%, transparent) 100%
-    );
-    box-shadow: 0 24px 60px
-      color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
-    overflow: hidden;
-  }
-
-  .vn-usl-hero__card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        to right,
-        var(--color-deco-grid-light) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        var(--color-deco-grid-light) 1px,
-        transparent 1px
-      );
-    background-size: 28px 28px;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 90%);
-    pointer-events: none;
-  }
-
-  .vn-usl-hero__card-head,
-  .vn-usl-hero__card-main,
-  .vn-usl-hero__card-stats,
-  .vn-usl-hero__card-tags {
-    position: relative;
-    z-index: 1;
-  }
-
-  .vn-usl-hero__card-head {
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--color-bg-dark) 4%, transparent);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .vn-usl-hero__card-label {
-    margin: 0;
+  .vn-usl-potential-card__row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vn-usl-potential-card__label {
     font-size: var(--fs-label);
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-text-tertiary);
   }
 
-  .vn-usl-hero__card-badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 30px;
-    padding: 0 12px;
-    border-radius: var(--radius-full);
-    background: var(--color-accent-cta-soft);
-    color: var(--color-accent-cta);
-    font-size: var(--fs-body-sm);
+  .vn-usl-potential-card__value {
+    font-size: 40px;
+    line-height: 1.1;
     font-weight: 600;
-  }
-
-  .vn-usl-hero__card-main {
-    display: grid;
-    gap: 10px;
-  }
-
-  .vn-usl-hero__card-amount {
-    margin: 0;
-    font-size: clamp(34px, 5vw, 54px);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
-    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--color-text-primary);
-    text-wrap: balance;
   }
 
-  .vn-usl-hero__card-caption {
-    margin: 0;
-    max-width: 24ch;
-    font-size: var(--fs-body);
-    line-height: 1.55;
-    color: var(--color-text-secondary);
+  .vn-usl-potential-card__row--accent .vn-usl-potential-card__value {
+    color: var(--color-accent-cta);
   }
 
-  .vn-usl-hero__card-stats {
-    display: grid;
-    gap: 14px;
-    padding-top: 18px;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .vn-usl-hero__card-stat {
-    display: grid;
-    gap: 4px;
-  }
-
-  .vn-usl-hero__card-stat dt {
-    margin: 0;
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.2;
-    font-weight: 600;
-    color: var(--color-accent-primary);
-  }
-
-  .vn-usl-hero__card-stat dd {
-    margin: 0;
+  .vn-usl-potential-card__sublabel {
     font-size: var(--fs-body-sm);
-    line-height: 1.5;
     color: var(--color-text-secondary);
+    margin-top: 2px;
   }
 
-  .vn-usl-hero__card-tags {
+  .vn-usl-potential-card__divider {
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .vn-usl-potential-card__footer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .vn-usl-hero__card-tags span {
-    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    min-height: 34px;
-    padding: 0 14px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    background: color-mix(in srgb, var(--color-bg-surface) 80%, transparent);
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
     font-size: var(--fs-body-sm);
-    font-weight: 500;
     color: var(--color-text-secondary);
+    font-weight: 500;
   }
 
-  .vn-usl-hero__tag-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-accent-cta);
+  .vn-usl-potential-card__footer svg {
+    color: var(--color-accent-primary);
+    flex-shrink: 0;
   }
 
+  /* Адаптивность */
   @media (max-width: 1023px) {
-    .vn-usl-hero__content {
-      grid-column: 1 / -1;
+    .vn-usl-hero {
+      padding-top: 100px;
+      padding-bottom: 64px;
     }
 
+    .vn-usl-hero__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 40px;
+    }
+
+    .vn-usl-hero__content,
     .vn-usl-hero__visual {
       grid-column: 1 / -1;
-      padding-top: 8px;
     }
 
-    .vn-usl-hero__card {
-      max-width: 560px;
+    .vn-usl-potential-card {
+      max-width: 100%;
+      margin: 0 auto;
     }
   }
 
   @media (max-width: 640px) {
     .vn-usl-hero {
-      padding-top: 120px;
-      padding-bottom: 64px;
+      padding-top: 88px;
+      padding-bottom: 48px;
+    }
+
+    .vn-usl-hero__grid-bg {
+      background-size: 48px 48px;
+    }
+
+    .vn-usl-hero__radial {
+      left: 50%;
+      bottom: -240px;
+      width: 600px;
+      height: 400px;
     }
 
     .vn-usl-hero__title {
+      margin: 12px 0 16px;
       font-size: 32px;
-      line-height: 1.1;
+      line-height: 1.12;
     }
 
     .vn-usl-hero__lead {
+      margin-bottom: 24px;
       font-size: var(--fs-body);
+      line-height: 1.55;
     }
 
-    .vn-usl-hero__primary {
+    .vn-usl-hero__actions .vn-btn-primary {
       width: 100%;
+      justify-content: center;
     }
 
-    .vn-usl-hero__proof {
-      grid-template-columns: 1fr;
+    .vn-usl-potential-card {
+      padding: 24px;
+      gap: 20px;
     }
 
-    .vn-usl-hero__card {
-      padding: 22px;
-    }
-
-    .vn-usl-hero__card-amount {
-      font-size: 34px;
+    .vn-usl-potential-card__value {
+      font-size: 32px;
     }
   }
 </style>

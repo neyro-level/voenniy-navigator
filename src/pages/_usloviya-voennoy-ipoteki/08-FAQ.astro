@@ -1,5 +1,6 @@
 ---
 import FinalCTA from '../../components/sections/FinalCTA.astro';
+import { faqItems } from './pageData';
 ---
 
 <section id="section-usl-faq" class="vn-faq" data-reveal="fade-up">
@@ -15,209 +16,28 @@ import FinalCTA from '../../components/sections/FinalCTA.astro';
       </div>
 
       <div class="vn-faq__list">
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Какая сумма военной ипотеки в 2026 году?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Базовый ориентир — около 2,1–2,3 млн ₽ при использовании только
-              средств НИС. Однако итоговая сумма одобрения всегда зависит от
-              конкретного банка, срока кредита и ваших дополнительных финансовых
-              возможностей.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Какой платеж покрывается средствами НИС?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              В 2026 году государство перечисляет 411 184,90 ₽ в год. Это
-              эквивалентно примерно 34 265 ₽ в месяц, которые направляются
-              банком на погашение основного долга и процентов по кредиту.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Какие банки работают с военной ипотекой?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Основные операторы программы: ПСБ, Сбер, ВТБ и Банк РОССИЯ. У
-              каждого из них свои максимальные лимиты и требования к объекту,
-              поэтому банк всегда подбирается индивидуально под вашу ситуацию.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Можно ли увеличить сумму военной ипотеки?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Да, и это стандартная практика. Бюджет можно расширить за счет
-              собственных накоплений, материнского капитала, программы «Семейная
-              ипотека» или если оба супруга являются участниками НИС.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Можно ли купить вторичное жилье по военной ипотеке?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Да, большинство банков одобряют покупку вторичного жилья. Однако
-              требования к году постройки, материалу стен и общему состоянию
-              объекта там значительно строже, чем к новостройкам.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Можно ли купить дом или таунхаус?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Да, покупка жилого дома или таунхауса возможна. Но объект должен
-              соответствовать строгим критериям банка по ликвидности, а земля
-              должна быть надлежащим образом оформлена.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span>Нужно ли добавлять свои деньги?</span>
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Не всегда. Но если вы хотите купить объект дороже базового лимита
-              или в более престижном районе, собственные средства или маткапитал
-              значительно расширят ваш выбор и улучшат условия сделки.
-            </p>
-          </div>
-        </details>
-
-        <details class="vn-faq__item">
-          <summary class="vn-faq__question">
-            <span
-              >Когда лучше идти в калькулятор, а когда сразу на консультацию?</span
-            >
-            <svg
-              class="vn-faq__icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="6 9 12 15 18 9"></polyline></svg
-            >
-          </summary>
-          <div class="vn-faq__answer">
-            <p>
-              Калькулятор отлично подходит для первичной оценки цифр и понимания
-              порядка сумм. Но если у вас нестандартная ситуация (сложный
-              объект, особые требования по срокам), лучше сразу записаться на
-              личный разбор.
-            </p>
-          </div>
-        </details>
+        {faqItems.map((item) => (
+          <details class="vn-faq__item">
+            <summary class="vn-faq__question">
+              <span>{item.q}</span>
+              <svg
+                class="vn-faq__icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><polyline points="6 9 12 15 18 9"></polyline></svg
+              >
+            </summary>
+            <div class="vn-faq__answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
       </div>
 
       <FinalCTA

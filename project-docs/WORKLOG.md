@@ -7,6 +7,59 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-10 — Пересборка блока Conditions на странице условий военной ипотеки
+
+- **Reframed block logic:** `src/pages/_usloviya-voennoy-ipoteki/02-Conditions.astro` переведён из общего списка правил в более сильный сценарий `4 ключевых параметра одобрения`.
+- **Strengthened conversion angle:** новый lead объясняет, что сервис проверяет параметры до подачи документов и помогает исключить отказ на старте, а не просто пересказывает правила НИС.
+- **Rebuilt cards:** вместо 6 перегруженных карточек собрана строгая сетка 2x2 с 4 карточками: стаж в НИС, ежегодный взнос государства, срок кредитования и требования к объекту.
+- **Refined visual layer:** карточки переведены в более премиальный flat-паттерн с тонкой рамкой, акцентными иконками, номером карточки и усилением ключевых цифр внутри текста.
+- **Updated brief:** `project-docs/briefs/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md` обновлён до v1.1 и синхронизирован с новым as-built смыслом блока `02 Conditions`.
+
+### 2026-06-10 — Фикс прыгающих ползунков в карточках накоплений и собственных средств
+
+- **Stabilized field headers:** в `src/pages/_kalkulyator-voennoy-ipoteki/02-Calculator.astro` шапка field-card переведена с `flex` на более жёсткую `grid`-схему, чтобы label и значение больше не спорили за ширину.
+- **Reserved value column:** для числового output задана стабильная ширина и `tabular-nums`, чтобы рост суммы не менял геометрию карточки.
+- **Locked label height:** label-слой зафиксирован под 2 строки, поэтому `Накопления НИС` и длинные подписи больше не двигают ползунок вверх-вниз.
+- **Shortened own-funds copy:** подпись `Собственные средства / маткапитал` сокращена до `Свои средства / маткапитал`, чтобы уверенно держаться в пределах двух строк.
+- **Checks:** `pnpm build` проходит успешно; локально подтверждено на tablet/laptop, что ползунки в карточках `Накопления НИС` и `Свои средства / маткапитал` больше не прыгают.
+
+### 2026-06-10 — Полировка калькулятора для laptop/tablet и облегчение вторичного текста
+
+- **Refined responsive logic:** в `src/pages/_kalkulyator-voennoy-ipoteki/02-Calculator.astro` скорректированы брейкпоинты калькулятора: на `~1100px` блок раньше переключается в более спокойный single-column tablet-layout вместо тесного desktop-режима.
+- **Reduced visual bulk:** уменьшены paddings у frame / controls / summary-panel, уплотнены tabs, сценарные карточки и field-cards, чтобы калькулятор легче выглядел на ноутбуках и планшетах.
+- **Softened secondary typography:** вторичные тексты, пояснения, label-слой, microcopy и summary-notes сделаны меньше и легче по визуальному весу без потери читаемости.
+- **Improved scenario rhythm:** на промежуточных ширинах сценарии собираются в более чистую 2-column композицию, а на tablet/mobile уходят в 1 колонку.
+- **Checks:** `pnpm build` проходит успешно; локально подтверждена адаптация калькулятора на `1180px`, `1024px` и `768px`.
+
+### 2026-06-10 — Синхронизация FAQ и финального CTA калькулятора с главной страницей
+
+- **Confirmed route state:** сценарный блок на странице калькулятора не возвращён в рендер; после блока параметров по странице сразу идёт FAQ.
+- **Updated FAQ design:** `src/pages/_kalkulyator-voennoy-ipoteki/06-FAQ.astro` приведён к визуальному паттерну главной страницы: sticky-левая колонка, CTA-ссылка, нумерованный аккордеон, hover/open-состояния и плавное раскрытие.
+- **Updated final CTA design:** `src/pages/_kalkulyator-voennoy-ipoteki/07-CTA.astro` переведён с shared dark CTA на тот же светлый премиальный финальный экран, что и на главной странице.
+- **Synced CTA copy:** финальная кнопка калькулятора возвращена к проектной формулировке `Получить разбор ситуации` вместо более слабого `Отправить на разбор`.
+- **Updated brief:** `project-docs/briefs/PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md` синхронизирован с новым as-built решением для FAQ и Final CTA.
+
+### 2026-06-10 — Пересборка страницы калькулятора под short hero + wide workbench
+
+- **Reworked Hero:** `src/pages/_kalkulyator-voennoy-ipoteki/01-Hero.astro` сокращён до короткого первого экрана без proof-слоя и лишних буллитов: новый H1 `Калькулятор военной ипотеки, сколько даст банк?`, короткий лид и CTA `Подать заявку`.
+- **Created:** новый блок `src/pages/_kalkulyator-voennoy-ipoteki/02-Calculator.astro` как основной full-width workbench страницы вместо зажатой hero-панели.
+- **Added logic:** калькулятор разделён на 2 режима — `Бюджет покупки` и `Накопления НИС`; добавлен мостик `Подставить накопления в бюджет покупки`.
+- **Expanded results:** в summary-rail теперь показываются сумма кредита, стартовый взнос, бюджет покупки и понятный KPI `Не хватает / Запас`.
+- **Updated flow:** route `src/pages/kalkulyator-voennoy-ipoteki.astro` переведён на новую структуру `Hero → Calculator → Explainer → Basics → Scenarios → FAQ → Final CTA`.
+- **Synced copy:** секции `02-Explainer`, `03-Basics`, `04-Scenarios`, `05-FAQ` обновлены по нумерации после добавления отдельного блока калькулятора.
+- **Updated brief:** `project-docs/briefs/PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md` обновлён под новую структуру и dual-logic модель.
+- **Checks:** `pnpm build` проходит успешно; через localhost подтверждены короткий hero, wide-калькулятор, mobile-адаптация и перенос накоплений НИС в основной расчёт.
+
+### 2026-06-10 — Оптимизация структуры страницы калькулятора: убран лишний блок, усилен FAQ
+
+- **Removed redundant block:** удалён дублирующий блок сценариев (`06-Scenarios.astro`), так как информация о лимитах и программах уже была раскрыта в блоке «Параметры». Это ускорило страницу и сфокусировало пользователя на целевом действии.
+- **Upgraded FAQ:** блок `06-FAQ.astro` пересобран в премиальном формате главной страницы (асимметричная сетка, нумерация, плавное раскрытие). Все вопросы по умолчанию закрыты.
+- **Strengthened copy:** вопросы и ответы в FAQ переписаны под интент пользователя после калькулятора (про расхождения в суммах, аккредитацию, дистанционные сделки и выбор банка).
+- **Restructured:** файлы блоков переименованы для сохранения хронологического порядка (`06-FAQ`, `07-CTA`).
+- **Updated route:** `src/pages/kalkulyator-voennoy-ipoteki.astro` обновлён с новой, более короткой и конверсионной последовательностью.
+- **Updated brief:** `project-docs/briefs/PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md` синхронизирован с новой 7-блочной структурой.
+- **Checks:** `pnpm build` проходит успешно; страница стала легче, быстрее и логичнее ведет к заявке.
+
 ### 2026-06-09 — Полная пересборка страницы `/o-servise/` по brief v3.0
 
 - **Reworked Hero:** блок `01-Hero.astro` пересобран под более плотный trust-first сценарий: новый H1, 2 версии подзаголовка (desktop/mobile), минималистичный trust-row, photo-card Михаила с corner brackets.

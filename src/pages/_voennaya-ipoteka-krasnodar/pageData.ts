@@ -3,9 +3,9 @@ import { OG_IMAGES } from '../../lib/og';
 import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from '../../lib/seo';
 
 export const pageMeta = {
-  title: 'Квартиры в Краснодаре по военной ипотеке | Подбор 12 ЖК',
+  title: 'Военная ипотека в Краснодаре — квартиры и новостройки',
   description:
-    'Получите подборку 12 проверенных ЖК Краснодара по военной ипотеке: районы, застройщики, ликвидность, условия банков и цель покупки.',
+    'Помогаем выбрать квартиру или новостройку в Краснодаре по военной ипотеке: районы, банки, лимит, ликвидность и подбор 12 ЖК под задачу покупки.',
   canonical: `${SITE.url}/voennaya-ipoteka-krasnodar/`,
   ogImage: OG_IMAGES.voennayaIpoteka,
 };
@@ -40,15 +40,15 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Подбор квартир и ЖК Краснодара по военной ипотеке',
+    name: 'Военная ипотека в Краснодаре: квартиры и новостройки под задачу',
     description:
-      'Подбор 12 проверенных жилых комплексов Краснодара по военной ипотеке с учетом цели покупки, района, ликвидности, условий банков и застройщиков.',
+      'Помогаем выбрать квартиру или новостройку в Краснодаре по военной ипотеке с учетом цели покупки, района, ликвидности, условий банков и застройщиков.',
     url: `${SITE.url}/voennaya-ipoteka-krasnodar/`,
     areaServed: 'Краснодар',
   }),
   faqSchema(faqItems),
   breadcrumbSchema([
     { name: 'Главная', url: `${SITE.url}/` },
-    { name: 'Квартиры в Краснодаре по военной ипотеке', url: `${SITE.url}/voennaya-ipoteka-krasnodar/` },
+    { name: 'Военная ипотека в Краснодаре', url: `${SITE.url}/voennaya-ipoteka-krasnodar/` },
   ]),
 ];

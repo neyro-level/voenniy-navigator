@@ -1,0 +1,166 @@
+---
+// Компонент: 04-Explainer.astro
+// Задача: показать экспертную ценность и скрытые резервы, которые не видит калькулятор.
+---
+
+<section id="section-calc-explainer" class="vn-calc-explainer">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-calc-explainer__layout">
+      
+      <!-- Левая часть: Заголовок (липкий на десктопе) -->
+      <div class="vn-calc-explainer__left vn-col-4">
+        <p class="vn-label-mono">Экспертиза</p>
+        <h2 class="vn-calc-explainer__title">
+          Что калькулятор не видит, 
+          <span class="vn-calc-explainer__title-accent">но учитываем мы</span>
+        </h2>
+      </div>
+
+      <!-- Правая часть: Список пунктов -->
+      <div class="vn-calc-explainer__right vn-col-8">
+        
+        <article class="vn-calc-explainer__item">
+          <span class="vn-calc-explainer__item-num" aria-hidden="true">01</span>
+          <h3 class="vn-calc-explainer__item-title">Скрытые резервы</h3>
+          <p class="vn-calc-explainer__item-body">
+            Калькулятор считает по базовому сценарию. Мы подскажем, как законно 
+            увеличить лимит за счёт семейной ипотеки или маткапитала.
+          </p>
+        </article>
+
+        <article class="vn-calc-explainer__item">
+          <span class="vn-calc-explainer__item-num" aria-hidden="true">02</span>
+          <h3 class="vn-calc-explainer__item-title">Аккредитация объекта</h3>
+          <p class="vn-calc-explainer__item-body">
+            Не каждая новостройка проходит в конкретном банке. Мы проверим 
+            застройщика и объект до подачи заявки, чтобы исключить риск отказа.
+          </p>
+        </article>
+
+        <article class="vn-calc-explainer__item">
+          <span class="vn-calc-explainer__item-num" aria-hidden="true">03</span>
+          <h3 class="vn-calc-explainer__item-title">Чистая кредитная история</h3>
+          <p class="vn-calc-explainer__item-body">
+            Алгоритм не анализирует ваши текущие обязательства. Мы заранее 
+            подготовим анкету так, чтобы банк увидел в вас надежного заёмщика.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-calc-explainer {
+    background: var(--color-bg-surface);
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .vn-calc-explainer__layout {
+    gap: 48px;
+    align-items: start;
+  }
+
+  .vn-calc-explainer__left {
+    position: sticky;
+    top: 120px;
+  }
+
+  .vn-calc-explainer__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-calc-explainer__title-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .vn-calc-explainer__item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-calc-explainer__item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .vn-calc-explainer__item:first-child {
+    padding-top: 0;
+  }
+
+  .vn-calc-explainer__item-num {
+    display: block;
+    margin-bottom: 12px;
+    font-size: var(--fs-stat);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-accent-primary);
+    opacity: 0.2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-calc-explainer__item-title {
+    margin: 0 0 10px;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-text-primary);
+  }
+
+  .vn-calc-explainer__item-body {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-calc-explainer__layout {
+      gap: 32px;
+    }
+
+    .vn-calc-explainer__left {
+      position: static;
+      grid-column: 1 / -1;
+      margin-bottom: 16px;
+    }
+
+    .vn-calc-explainer__right {
+      grid-column: 1 / -1;
+    }
+
+    .vn-calc-explainer__item {
+      padding: 20px 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-calc-explainer {
+      padding-top: var(--spacing-section-mobile);
+      padding-bottom: var(--spacing-section-mobile);
+    }
+
+    .vn-calc-explainer__title {
+      font-size: var(--fs-h2);
+    }
+
+    .vn-calc-explainer__item-num {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .vn-calc-explainer__item-title {
+      font-size: var(--fs-h3);
+    }
+  }
+</style>
