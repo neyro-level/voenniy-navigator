@@ -7,6 +7,12 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-17 — Hero Краснодара и Крыма поджаты по высоте
+
+- **Hero height reduced:** первые экраны `/voennaya-ipoteka-krasnodar/` и `/voennaya-ipoteka-krym/` уменьшены по вертикальному объёму, чтобы блок не оставлял лишнее пустое пространство на desktop и laptop.
+- **Responsive spacing tightened:** для tablet и mobile у обоих hero уменьшены верхний и нижний padding, а также отступ перед визуальным mockup.
+- **Scope kept:** оффер, CTA, композиция и контент hero не менялись; правка касается только вертикального ритма и высоты первого экрана.
+
 ### 2026-06-17 — Исправлен production-слой карты и SmartCaptcha
 
 - **Map root cause found:** карта на боевом домене не работала, потому что `PUBLIC_YANDEX_MAPS_API_KEY` не пробрасывался в GitHub deploy workflow, и production build собирался без ключа Яндекс.Карт.
