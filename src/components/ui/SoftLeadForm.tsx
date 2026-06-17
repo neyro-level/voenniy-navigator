@@ -138,6 +138,7 @@ export default function SoftLeadForm({
           sitekey={SMARTCAPTCHA_CLIENT_KEY}
           language="ru"
           visible={captchaVisible}
+          hideShield
           shieldPosition="bottom-right"
           onChallengeHidden={() => {
             setCaptchaVisible(false);

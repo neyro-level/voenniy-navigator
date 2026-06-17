@@ -7,6 +7,13 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-17 — Исправлен production-слой карты и SmartCaptcha
+
+- **Map root cause found:** карта на боевом домене не работала, потому что `PUBLIC_YANDEX_MAPS_API_KEY` не пробрасывался в GitHub deploy workflow, и production build собирался без ключа Яндекс.Карт.
+- **Deploy workflow fixed:** в `.github/workflows/deploy-ams.yml` добавлен `PUBLIC_YANDEX_MAPS_API_KEY` в build-env production-деплоя.
+- **SmartCaptcha cleaned:** для всех invisible-форм сайта включён штатный `hideShield`, чтобы на боевом домене не всплывал privacy/shield-виджет поверх интерфейса.
+- **Scope:** серверная проверка SmartCaptcha и сама защита формы сохранены; убран только лишний визуальный overlay.
+
 ### 2026-06-17 — Из переключателей Крыма убраны временные поясняющие комментарии
 
 - **Direction tabs cleaned:** под tabs `Симферополь / Севастополь / Побережье` больше не показываются временные редакторские пояснения ни в блоке карты, ни в каталоге.

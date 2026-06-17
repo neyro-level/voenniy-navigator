@@ -367,6 +367,7 @@ export default function LeadGenRequestModal({
                   sitekey={SMARTCAPTCHA_CLIENT_KEY}
                   language="ru"
                   visible={captchaVisible}
+                  hideShield
                   shieldPosition="bottom-right"
                   onChallengeHidden={() => {
                     setCaptchaVisible(false);
