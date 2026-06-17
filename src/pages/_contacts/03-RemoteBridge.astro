@@ -5,37 +5,51 @@
   <div class="vn-container">
     <div class="vn-grid-12 vn-contacts-remote__grid">
       <div class="vn-contacts-remote__left" style="grid-column: 1 / 6">
-        <span class="vn-label-mono vn-contacts-remote__label">Формат связи</span>
-        <h2>Не обязательно приезжать в офис</h2>
-        <p>
-          Первый расчёт можно провести онлайн. Этого достаточно, чтобы понять задачу,
-          ограничения и следующий шаг.
+        <span class="vn-label-mono vn-contacts-remote__label">Видеовстреча</span>
+        <h2 class="vn-type-h2 vn-contacts-remote__title">
+          Начните с 20-минутной видеовстречи
+        </h2>
+        <p class="vn-type-body vn-contacts-remote__lead">
+          Это самый быстрый способ познакомиться и обсудить вашу задачу. За одну встречу мы рассчитаем варианты, ответим на вопросы и определим, что делать дальше.
         </p>
-        <a href="#request" class="vn-contacts-remote__link">Перейти к онлайн-встрече ↓</a>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Записаться на видеовстречу"
+          class="vn-btn-primary vn-contacts-remote__cta"
+        >
+          Записаться на видеовстречу
+        </a>
       </div>
 
       <div class="vn-contacts-remote__right" style="grid-column: 7 / 13">
         <article class="vn-contacts-remote__row">
-          <span>01</span>
+          <span class="vn-contacts-remote__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          </span>
           <div>
-            <h3>Если вы в другом городе</h3>
-            <p>Не нужно откладывать покупку до отпуска или приезда.</p>
+            <h3 class="vn-type-h3 vn-contacts-remote__row-title">Экономия времени</h3>
+            <p class="vn-type-body vn-contacts-remote__row-text">Подключаетесь из дома или офиса. Без поездок и ожидания.</p>
           </div>
         </article>
 
         <article class="vn-contacts-remote__row">
-          <span>02</span>
+          <span class="vn-contacts-remote__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </span>
           <div>
-            <h3>Если объект ещё не выбран</h3>
-            <p>Можно начать с района, бюджета и сценария покупки.</p>
+            <h3 class="vn-type-h3 vn-contacts-remote__row-title">Наглядно на экране</h3>
+            <p class="vn-type-body vn-contacts-remote__row-text">Показываем карты, ЖК, планировки и цифры по бюджету в реальном времени.</p>
           </div>
         </article>
 
         <article class="vn-contacts-remote__row">
-          <span>03</span>
+          <span class="vn-contacts-remote__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
           <div>
-            <h3>Если есть сомнения по военной ипотеке</h3>
-            <p>Рассчитаем, что проверить до выбора новостройки.</p>
+            <h3 class="vn-type-h3 vn-contacts-remote__row-title">Чёткий план после встречи</h3>
+            <p class="vn-type-body vn-contacts-remote__row-text">Фиксируем, какие варианты смотреть, что проверить и какой следующий шаг.</p>
           </div>
         </article>
       </div>
@@ -65,85 +79,64 @@
   .vn-contacts-remote__grid {
     position: relative;
     z-index: 1;
-    align-items: start;
+    align-items: center;
   }
 
   .vn-contacts-remote__label {
     color: var(--color-accent-cta);
   }
 
-  .vn-contacts-remote h2 {
-    margin: 18px 0 0;
+  .vn-contacts-remote__title {
+    margin: 16px 0 0;
     color: var(--color-text-primary);
-    font-size: var(--fs-h2);
-    font-weight: 600;
-    line-height: 1.12;
-    text-wrap: balance;
   }
 
-  .vn-contacts-remote__left p {
-    margin: 20px 0 0;
-    max-width: 480px;
+  .vn-contacts-remote__lead {
+    margin: 16px 0 0;
+    max-width: 440px;
     color: var(--color-text-secondary);
-    font-size: var(--fs-lead);
-    line-height: 1.6;
-    text-wrap: pretty;
   }
 
-  .vn-contacts-remote__link {
-    display: inline-flex;
+  .vn-contacts-remote__cta {
     margin-top: 28px;
-    color: var(--color-accent-cta);
-    font-size: var(--fs-body-sm);
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .vn-contacts-remote__link:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    display: inline-flex;
   }
 
   .vn-contacts-remote__right {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    box-shadow: 0 14px 42px rgba(15, 20, 25, 0.08);
+    display: grid;
+    gap: 16px;
   }
 
   .vn-contacts-remote__row {
     display: grid;
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 22px;
-    padding: 28px 32px;
-    border-bottom: 1px solid var(--color-border);
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 18px;
+    padding: 24px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 24px rgba(15, 20, 25, 0.06);
   }
 
-  .vn-contacts-remote__row:last-child {
-    border-bottom: 0;
+  .vn-contacts-remote__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-primary);
   }
 
-  .vn-contacts-remote__row > span {
-    color: var(--color-accent-cta);
-    font-size: var(--fs-caption);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1.6;
-  }
-
-  .vn-contacts-remote__row h3 {
+  .vn-contacts-remote__row-title {
     margin: 0;
     color: var(--color-text-primary);
-    font-size: var(--fs-h3);
-    font-weight: 600;
-    line-height: 1.25;
   }
 
-  .vn-contacts-remote__row p {
+  .vn-contacts-remote__row-text {
     margin: 8px 0 0;
     color: var(--color-text-secondary);
-    font-size: var(--fs-body);
-    line-height: 1.55;
   }
 
   @media (max-width: 1023px) {
@@ -155,6 +148,10 @@
     .vn-contacts-remote__right {
       margin-top: 40px;
     }
+
+    .vn-contacts-remote__lead {
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 640px) {
@@ -162,10 +159,20 @@
       padding: 64px 0;
     }
 
+    .vn-contacts-remote__cta {
+      width: 100%;
+      justify-content: center;
+    }
+
     .vn-contacts-remote__row {
       grid-template-columns: 1fr;
-      gap: 8px;
-      padding: 24px;
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .vn-contacts-remote__icon {
+      width: 40px;
+      height: 40px;
     }
   }
 </style>

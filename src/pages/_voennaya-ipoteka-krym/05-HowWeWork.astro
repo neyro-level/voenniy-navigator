@@ -1,0 +1,227 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Уточняем вашу задачу',
+    text: 'Цель покупки, бюджет, сроки и реальные возможности по военной ипотеке.',
+  },
+  {
+    number: '02',
+    title: 'Проверяем ЖК по критериям',
+    text: 'Банки, ликвидность, срок сдачи, застройщик. Убираем всё, что не проходит.',
+  },
+  {
+    number: '03',
+    title: 'Даём короткий список вариантов',
+    text: '3–5 ЖК, которые стоит смотреть первыми, с пояснением почему.',
+  },
+];
+---
+
+<section id="section-krym-how-we-work" class="vn-krd-how-we-work" aria-labelledby="vn-krym-how-we-work-title">
+  <div class="vn-container">
+    <div class="vn-krd-how-we-work__header">
+      <span class="vn-label-mono vn-krd-how-we-work__eyebrow">КАК МЫ РАБОТАЕМ</span>
+      <h2 class="vn-krd-how-we-work__title" id="vn-krym-how-we-work-title">
+        Три шага до подходящей квартиры
+      </h2>
+      <p class="vn-krd-how-we-work__subtitle">
+        Работаем не по каталогу, а по вашей ситуации. Уточняем условия, отсеиваем лишнее и показываем
+        только то, что реально подходит.
+      </p>
+    </div>
+
+    <div class="vn-krd-how-we-work__grid">
+      {steps.map((step) => (
+        <div class="vn-krd-how-we-work__col">
+          <span class="vn-krd-how-we-work__number" aria-hidden="true">{step.number}</span>
+          <div class="vn-krd-how-we-work__content">
+            <h3 class="vn-krd-how-we-work__step-title">{step.title}</h3>
+            <p class="vn-krd-how-we-work__step-text">{step.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krd-how-we-work {
+    padding-block: 120px;
+    background: var(--color-bg-surface);
+  }
+
+  .vn-krd-how-we-work__header {
+    max-width: 680px;
+    margin: 0 auto 72px;
+    text-align: center;
+  }
+
+  .vn-krd-how-we-work__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .vn-krd-how-we-work__eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    margin-right: 12px;
+    background: var(--color-accent-cta);
+    vertical-align: middle;
+  }
+
+  .vn-krd-how-we-work__title {
+    margin: 20px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-krd-how-we-work__subtitle {
+    margin: 18px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-krd-how-we-work__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .vn-krd-how-we-work__col {
+    position: relative;
+    padding: 0 40px;
+  }
+
+  .vn-krd-how-we-work__col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 1px;
+    height: calc(100% - 24px);
+    background: var(--color-border);
+  }
+
+  .vn-krd-how-we-work__col:first-child {
+    padding-left: 0;
+  }
+
+  .vn-krd-how-we-work__col:last-child {
+    padding-right: 0;
+  }
+
+  .vn-krd-how-we-work__number {
+    display: block;
+    font-size: clamp(72px, 8vw, 104px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: color-mix(in srgb, var(--color-accent-cta) 12%, var(--color-border) 60%);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-krd-how-we-work__content {
+    margin-top: 18px;
+  }
+
+  .vn-krd-how-we-work__step-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-krd-how-we-work__step-text {
+    margin: 12px 0 0;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-krd-how-we-work {
+      padding-block: 96px;
+    }
+
+    .vn-krd-how-we-work__header {
+      margin-bottom: 56px;
+    }
+
+    .vn-krd-how-we-work__col {
+      padding: 0 28px;
+    }
+
+    .vn-krd-how-we-work__number {
+      font-size: 64px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-krd-how-we-work {
+      padding-block: 64px;
+    }
+
+    .vn-krd-how-we-work__header {
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .vn-krd-how-we-work__title {
+      line-height: 1.18;
+    }
+
+    .vn-krd-how-we-work__subtitle {
+      margin-top: 14px;
+      font-size: var(--fs-body);
+      line-height: 1.55;
+    }
+
+    .vn-krd-how-we-work__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .vn-krd-how-we-work__col {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .vn-krd-how-we-work__col:not(:last-child)::after {
+      display: none;
+    }
+
+    .vn-krd-how-we-work__number {
+      font-size: 48px;
+      line-height: 0.9;
+    }
+
+    .vn-krd-how-we-work__content {
+      margin-top: 4px;
+    }
+
+    .vn-krd-how-we-work__step-title {
+      font-size: var(--fs-body-lg);
+    }
+
+    .vn-krd-how-we-work__step-text {
+      margin-top: 8px;
+      font-size: var(--fs-body-sm);
+      line-height: 1.55;
+    }
+  }
+</style>

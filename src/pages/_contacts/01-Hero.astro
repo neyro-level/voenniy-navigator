@@ -11,14 +11,6 @@ const phoneClean = CONTACTS.phone.replace(/[^\d+]/g, "");
 
   <div class="vn-container">
     <div class="vn-contacts-hero__inner">
-      <nav aria-label="Breadcrumb" class="vn-contacts-hero__breadcrumb">
-        <a href="/">Главная</a>
-        <span>/</span>
-        <span>Контакты</span>
-      </nav>
-
-      <span class="vn-label-mono vn-contacts-hero__eyebrow">КОНТАКТЫ / МИХАИЛ ХРЯПИН</span>
-
       <h1 class="vn-contacts-hero__h1">Контакты Военного навигатора в Краснодаре и Крыму</h1>
 
       <p class="vn-contacts-hero__sub">
@@ -96,31 +88,6 @@ const phoneClean = CONTACTS.phone.replace(/[^\d+]/g, "");
     text-align: center;
     max-width: 760px;
     margin: 0 auto;
-  }
-
-  .vn-contacts-hero__breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--fs-body-sm);
-    color: var(--color-text-tertiary);
-    margin-bottom: 24px;
-  }
-  .vn-contacts-hero__breadcrumb a {
-    color: var(--color-text-tertiary);
-    text-decoration: none;
-    transition: color 150ms ease;
-  }
-  .vn-contacts-hero__breadcrumb a:hover {
-    color: var(--color-accent-cta);
-  }
-  .vn-contacts-hero__breadcrumb span:last-child {
-    color: var(--color-text-secondary);
-  }
-
-  .vn-contacts-hero__eyebrow {
-    color: var(--color-text-tertiary);
-    margin-bottom: 18px;
   }
 
   .vn-contacts-hero__h1 {

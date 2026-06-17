@@ -1,0 +1,337 @@
+---
+import { Check } from 'lucide-react';
+import KrymDirectionTabs from './KrymDirectionTabs';
+import KrymDirectionsMap from './KrymDirectionsMap';
+
+const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
+---
+
+<section class="vn-section vn-complexes-map-section">
+  <div class="vn-container">
+    <div class="vn-complexes-map-section__layout">
+      <aside class="vn-complexes-map-section__panel">
+        <div class="vn-complexes-map-section__panel-head">
+          <span class="vn-complexes-map-section__eyebrow">Карта жилых комплексов</span>
+          <h2 class="vn-complexes-map-section__title">Новостройки Крыма по военной ипотеке</h2>
+        </div>
+
+        <KrymDirectionTabs client:load />
+
+        <ul class="vn-complexes-map-section__points">
+          <li>
+            <Check size={18} strokeWidth={1.8} aria-hidden="true" />
+            Три направления по Крыму
+          </li>
+          <li>
+            <Check size={18} strokeWidth={1.8} aria-hidden="true" />
+            Отдельная карта под каждую зону
+          </li>
+          <li>
+            <Check size={18} strokeWidth={1.8} aria-hidden="true" />
+            По клику перейти к карточке объекта
+          </li>
+        </ul>
+      </aside>
+
+      <KrymDirectionsMap apiKey={mapsApiKey} client:load />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .vn-complexes-map-section {
+    background: var(--color-bg-surface);
+    padding-top: 64px;
+    padding-bottom: 24px;
+    scroll-margin-top: 108px;
+  }
+
+  .vn-complexes-map-section__layout {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .vn-complexes-map-section__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+    padding: 30px 30px 26px;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--color-bg-secondary) 32%, white);
+    border: 1px solid color-mix(in srgb, var(--color-border) 48%, white);
+  }
+
+  .vn-complexes-map-section__panel-head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vn-complexes-map-section__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 28px;
+    padding: 0 11px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 36%, white);
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .vn-complexes-map-section__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-complexes-map-section__points {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-top: 6px;
+  }
+
+  .vn-complexes-map-section__points li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .vn-complexes-map-section__points svg {
+    color: var(--color-accent-primary);
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+  }
+
+  .vn-complexes-map-section__map {
+    position: relative;
+    min-width: 0;
+  }
+
+  .vn-krym-direction-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .vn-krym-direction-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .vn-krym-direction-tabs__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 52%, white);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 34%, white);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-krym-direction-tabs__tab:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
+    color: var(--color-text-primary);
+  }
+
+  .vn-krym-direction-tabs__tab.is-active {
+    background: color-mix(in srgb, var(--color-accent-cta) 10%, white);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 34%, var(--color-border));
+    color: var(--color-text-primary);
+  }
+
+  .vn-krym-direction-tabs__tab-label {
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vn-krym-direction-tabs__tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-surface) 84%, white);
+    color: var(--color-text-primary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vn-krym-direction-tabs__tab.is-active .vn-krym-direction-tabs__tab-count {
+    background: color-mix(in srgb, var(--color-accent-cta) 16%, white);
+  }
+
+  .vn-complexes-map-section__map-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 24%, white);
+    border: 1px solid color-mix(in srgb, var(--color-border) 48%, white);
+    color: var(--color-text-primary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+  }
+
+  .vn-complexes-map__frame,
+  .vn-complexes-map__fallback {
+    position: relative;
+    min-height: 560px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--color-bg-secondary) 18%, white);
+    border: 1px solid color-mix(in srgb, var(--color-border) 46%, white);
+  }
+
+  .vn-complexes-map__canvas {
+    width: 100%;
+    height: 560px;
+  }
+
+  .vn-complexes-map__fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .vn-complexes-map__fallback p {
+    margin: 0;
+    max-width: 32ch;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+  }
+
+  .vn-complexes-map__marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 999px;
+    background: var(--color-accent-cta);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent-cta) 20%, transparent);
+    color: white;
+    font-size: var(--fs-body-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transform: translate(-50%, -100%);
+  }
+
+  .vn-complexes-map__marker span {
+    transform: translateY(0.5px);
+  }
+
+  .vn-complexes-map__marker:hover {
+    background: var(--color-accent-hover);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-complexes-map-section {
+      padding-top: 44px;
+      padding-bottom: 18px;
+      scroll-margin-top: 92px;
+    }
+
+    .vn-complexes-map-section__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-complexes-map-section__panel {
+      padding: 24px 22px;
+      border-radius: 22px;
+    }
+
+  }
+
+  @media (max-width: 640px) {
+    .vn-complexes-map-section__title {
+      line-height: 1.18;
+    }
+
+    .vn-complexes-map-section__panel {
+      gap: 18px;
+      padding: 22px 18px;
+      border-radius: 20px;
+    }
+
+    .vn-complexes-map-section__map-badge {
+      top: 14px;
+      left: 14px;
+    }
+
+    .vn-krym-direction-tabs__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vn-krym-direction-tabs__tab {
+      justify-content: space-between;
+      min-height: 42px;
+      padding-inline: 12px;
+    }
+
+    .vn-krym-direction-tabs__list > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .vn-complexes-map__frame,
+    .vn-complexes-map__fallback {
+      min-height: 420px;
+      border-radius: 20px;
+    }
+
+    .vn-complexes-map__canvas {
+      height: 420px;
+    }
+
+    .vn-complexes-map__marker {
+      width: 32px;
+      height: 32px;
+      font-size: var(--fs-caption);
+    }
+  }
+</style>

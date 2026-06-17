@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-type MapComplex = {
+export type MapComplex = {
   id: string;
   name: string;
   district: string;
