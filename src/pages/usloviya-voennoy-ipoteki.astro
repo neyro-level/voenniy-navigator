@@ -7,8 +7,10 @@ import Amount from "./_usloviya-voennoy-ipoteki/04-Amount.astro";
 import Scenarios from "./_usloviya-voennoy-ipoteki/05-Scenarios.astro";
 import Banks from "./_usloviya-voennoy-ipoteki/06-Banks.astro";
 import Process from "./_usloviya-voennoy-ipoteki/07-Process.astro";
-import FAQ from "./_usloviya-voennoy-ipoteki/08-FAQ.astro";
-import { pageMeta, schemas } from "./_usloviya-voennoy-ipoteki/pageData";
+import Geo from "./_usloviya-voennoy-ipoteki/08-Geo.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import FinalCTALight from "../components/sections/FinalCTALight.astro";
+import { pageMeta, schemas, faqItems } from "./_usloviya-voennoy-ipoteki/pageData";
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -19,5 +21,22 @@ import { pageMeta, schemas } from "./_usloviya-voennoy-ipoteki/pageData";
   <Scenarios />
   <Banks />
   <Process />
-  <FAQ />
+  <Geo />
+  <FAQ
+    items={faqItems}
+    eyebrow="FAQ"
+    title="Частые вопросы об условиях военной ипотеки"
+    lead="Короткие ответы на ключевые вопросы, которые обычно возникают до выбора банка, объекта и формата сделки. Если вашей ситуации здесь нет, лучше разобрать её отдельно."
+    linkText="Не нашли свой вопрос? Разберите ситуацию на первом шаге →"
+    linkHref="/contacts/#request"
+    linkModalTitle="Получить расчёт ситуации"
+  />
+  <FinalCTALight
+    eyebrow="ПЕРВЫЙ ШАГ К КВАРТИРЕ"
+    title="Начните с разбора ситуации,"
+    accentText="а не со случайной витрины"
+    subtitle="За 20 минут мы выясним вашу цель, проверим лимиты банка и составим короткий список новостроек, которые реально подходят по бюджету и сценарию сделки. Без обязательств и скрытых платежей."
+    ctaText="Получить расчёт ситуации"
+    ctaModalTitle="Получить расчёт ситуации"
+  />
 </PageLayout>

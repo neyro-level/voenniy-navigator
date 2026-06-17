@@ -1,0 +1,298 @@
+---
+import { Icon } from 'astro-icon/components';
+import SoftLeadForm from '../../components/ui/SoftLeadForm';
+
+const benefits = [
+  { icon: 'shield-check', text: 'Проверим лимиты банка и вашу ситуацию' },
+  { icon: 'compass', text: 'Отберём 3–5 ЖК под цель покупки' },
+  { icon: 'calculator', text: 'Покажем, где можно снизить стоимость или получить скидку' },
+];
+---
+
+<section id="section-krd-soft-cta" class="vn-krd-soft-cta" aria-labelledby="vn-krd-soft-cta-title">
+  <div class="vn-krd-soft-cta__grid-bg" aria-hidden="true"></div>
+  <div class="vn-krd-soft-cta__radial" aria-hidden="true"></div>
+
+  <div class="vn-container vn-rel">
+    <div class="vn-krd-soft-cta__layout">
+
+      <!-- Левая часть: текст и преимущества -->
+      <div class="vn-krd-soft-cta__content">
+        <span class="vn-label-mono vn-krd-soft-cta__eyebrow">ПОДБОРКА ПОД ВАШУ ЗАДАЧУ</span>
+        <h2 class="vn-krd-soft-cta__title" id="vn-krd-soft-cta-title">
+          Не разобрались с ЖК?
+        </h2>
+        <p class="vn-krd-soft-cta__subtitle">
+          Оставьте заявку — мы проверим ваши условия по военной ипотеке и подберём 3–5 подходящих
+          комплексов в Краснодаре.
+        </p>
+
+        <ul class="vn-krd-soft-cta__benefits" aria-label="Что будет в подборке">
+          {benefits.map((item) => (
+            <li class="vn-krd-soft-cta__benefit">
+              <span class="vn-krd-soft-cta__benefit-icon">
+                <Icon name={item.icon} width="18" height="18" aria-hidden="true" />
+              </span>
+              <span class="vn-krd-soft-cta__benefit-text">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="vn-krd-soft-cta__note">Бесплатно. Без обязательств.</p>
+      </div>
+
+      <!-- Правая часть: форма -->
+      <div class="vn-krd-soft-cta__form-wrap">
+        <div class="vn-krd-soft-cta__form-card">
+          <p class="vn-krd-soft-cta__form-head">Получите подборку ЖК</p>
+          <SoftLeadForm
+            client:load
+            formName="krd_soft_cta_form"
+            source="/voennaya-ipoteka-krasnodar/#section-krd-soft-cta"
+            submitLabel="Получить подборку"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-krd-soft-cta {
+    position: relative;
+    overflow: hidden;
+    padding-block: 96px;
+    background: var(--color-bg-primary);
+  }
+
+  .vn-krd-soft-cta__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-krd-soft-cta__radial {
+    position: absolute;
+    top: -180px;
+    left: -180px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-bg-surface) 55%, transparent) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-krd-soft-cta .vn-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .vn-krd-soft-cta__layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .vn-krd-soft-cta__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vn-krd-soft-cta__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .vn-krd-soft-cta__eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    margin-right: 12px;
+    background: var(--color-accent-cta);
+    vertical-align: middle;
+  }
+
+  .vn-krd-soft-cta__title {
+    margin: 20px 0 0;
+    max-width: 680px;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-krd-soft-cta__subtitle {
+    margin: 18px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    max-width: 520px;
+    text-wrap: pretty;
+  }
+
+  .vn-krd-soft-cta__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vn-krd-soft-cta__benefit {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: var(--fs-body);
+    line-height: 1.45;
+    color: var(--color-text-primary);
+  }
+
+  .vn-krd-soft-cta__benefit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-accent-cta) 10%, transparent);
+    color: var(--color-accent-cta);
+    flex-shrink: 0;
+  }
+
+  .vn-krd-soft-cta__note {
+    margin: 24px 0 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.4;
+    color: var(--color-text-tertiary);
+  }
+
+  /* Форма */
+  .vn-krd-soft-cta__form-wrap {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .vn-krd-soft-cta__form-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 26px -18px -26px 18px;
+    border-radius: calc(var(--radius-xl) + 8px);
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-surface)) 0%,
+      color-mix(in srgb, var(--color-bg-primary) 94%, white) 62%,
+      color-mix(in srgb, var(--color-accent-primary) 6%, var(--color-bg-surface)) 100%
+    );
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 12%, var(--color-border));
+    z-index: 0;
+  }
+
+  .vn-krd-soft-cta__form-card {
+    position: relative;
+    z-index: 1;
+    padding: 28px;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-primary) 94%, white) 0%,
+      color-mix(in srgb, var(--color-bg-surface) 96%, white) 100%
+    );
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 12%, var(--color-border));
+    border-radius: calc(var(--radius-xl) + 4px);
+    box-shadow:
+      0 26px 60px color-mix(in srgb, var(--color-bg-dark) 8%, transparent),
+      0 10px 24px color-mix(in srgb, var(--color-bg-dark) 5%, transparent);
+  }
+
+  .vn-krd-soft-cta__form-head {
+    margin: 0 0 18px;
+    font-size: var(--fs-body-lg);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    text-align: center;
+  }
+
+  /* Tablet */
+  @media (max-width: 1023px) {
+    .vn-krd-soft-cta {
+      padding-block: 72px;
+    }
+
+    .vn-krd-soft-cta__layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .vn-krd-soft-cta__form-wrap {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .vn-krd-soft-cta__form-wrap::before {
+      inset: 18px -10px -18px 12px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .vn-krd-soft-cta {
+      padding-block: 64px;
+    }
+
+    .vn-krd-soft-cta__eyebrow::before {
+      width: 24px;
+    }
+
+    .vn-krd-soft-cta__title {
+      margin-top: 16px;
+      line-height: 1.18;
+    }
+
+    .vn-krd-soft-cta__subtitle {
+      margin-top: 14px;
+      font-size: var(--fs-body);
+      line-height: 1.55;
+    }
+
+    .vn-krd-soft-cta__benefits {
+      margin-top: 24px;
+      gap: 12px;
+    }
+
+    .vn-krd-soft-cta__benefit {
+      align-items: flex-start;
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-krd-soft-cta__benefit-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .vn-krd-soft-cta__form-card {
+      padding: 20px;
+    }
+
+    .vn-krd-soft-cta__form-wrap::before {
+      inset: 14px -6px -10px 10px;
+      border-radius: calc(var(--radius-lg) + 8px);
+    }
+  }
+</style>

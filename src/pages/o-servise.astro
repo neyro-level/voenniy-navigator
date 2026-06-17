@@ -4,9 +4,9 @@ import Hero from './_o-servise/01-Hero.astro';
 import ProofLayer from './_o-servise/02-ProofLayer.astro';
 import Process from './_o-servise/03-Process.astro';
 import RoleOfMikhail from './_o-servise/04-RoleOfMikhail.astro';
-import FAQ from './_o-servise/05-FAQ.astro';
-import FinalCTA from './_o-servise/06-FinalCTA.astro';
-import { pageMeta, schemas } from './_o-servise/pageData';
+import FAQ from '../components/sections/FAQ.astro';
+import FinalCTALight from '../components/sections/FinalCTALight.astro';
+import { faqItems, pageMeta, schemas } from './_o-servise/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -14,6 +14,21 @@ import { pageMeta, schemas } from './_o-servise/pageData';
   <ProofLayer />
   <Process />
   <RoleOfMikhail />
-  <FAQ />
-  <FinalCTA />
+  <FAQ
+    items={faqItems}
+    eyebrow="FAQ"
+    title="Вопросы о сервисе и первом расчёте"
+    lead="Здесь собраны ответы о сервисе, расчёте вариантов, регионах работы и моменте перехода к подбору объекта."
+    linkText="Не нашли свой вопрос? Рассчитайте варианты на первом шаге →"
+    linkHref="/contacts/#request"
+    linkModalTitle="Рассчитать варианты"
+  />
+  <FinalCTALight
+    eyebrow="СЛЕДУЮЩИЙ ШАГ"
+    title="Начните с расчёта вариантов,"
+    accentText="без обязательств и скрытых условий"
+    subtitle="За 20 минут мы выясним вашу цель, проверим лимиты банка и составим короткий список новостроек, которые реально одобрят. Без обязательств и скрытых платежей."
+    ctaText="Рассчитать варианты"
+    ctaModalTitle="Рассчитать варианты"
+  />
 </PageLayout>

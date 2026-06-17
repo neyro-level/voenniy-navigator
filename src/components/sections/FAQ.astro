@@ -1,0 +1,331 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  linkText?: string;
+  linkHref?: string;
+  linkModalTitle?: string;
+}
+
+const { items, eyebrow = 'FAQ', title, lead, linkText, linkHref, linkModalTitle } = Astro.props;
+---
+
+<section class="vn-faq-section" aria-labelledby="vn-faq-section-title">
+  <div class="vn-container">
+    <div class="vn-grid-12 vn-faq-section__grid">
+      <div class="vn-faq-section__left" style="grid-column: 1 / 5">
+        <span class="vn-label-mono">{eyebrow}</span>
+        <h2 class="vn-faq-section__title" id="vn-faq-section-title">
+          {title}
+        </h2>
+        {lead && <p class="vn-faq-section__lead">{lead}</p>}
+        {linkText && linkHref && (
+          <a
+            href={linkHref}
+            {...(linkModalTitle ? { 'data-modal-open': '', 'data-modal-title': linkModalTitle } : {})}
+            class="vn-faq-section__more-link"
+          >
+            {linkText}
+          </a>
+        )}
+      </div>
+
+      <div class="vn-faq-section__right" style="grid-column: 5 / 13" itemscope itemtype="https://schema.org/FAQPage">
+        {items.map((item, i) => (
+          <details
+            class="vn-faq-section__item"
+            open={false}
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <summary class="vn-faq-section__question">
+              <span class="vn-faq-section__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="vn-faq-section__question-text" itemprop="name">{item.q}</span>
+              <svg
+                class="vn-faq-section__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="vn-faq-section__answer-wrap">
+              <div class="vn-faq-section__answer-inner" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p class="vn-faq-section__answer-text" itemprop="text">{item.a}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-faq-section {
+    padding: 96px 0;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  .vn-faq-section__grid {
+    align-items: start;
+  }
+
+  .vn-faq-section__left {
+    position: sticky;
+    top: 104px;
+  }
+
+  .vn-faq-section__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-faq-section__lead {
+    margin: 14px 0 0;
+    max-width: 340px;
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-faq-section__more-link {
+    display: inline-flex;
+    margin-top: 28px;
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-accent-cta);
+    text-decoration: none;
+  }
+
+  .vn-faq-section__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vn-faq-section__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-faq-section__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-faq-section__question {
+    width: 100%;
+    min-height: 56px;
+    padding: 24px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: var(--radius-lg);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .vn-faq-section__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn-faq-section__question:hover {
+    background-color: color-mix(in srgb, var(--color-accent-cta) 4%, transparent);
+  }
+
+  .vn-faq-section__num {
+    flex-shrink: 0;
+    width: 32px;
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-cta);
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-faq-section__question-text {
+    flex: 1;
+    color: var(--color-text-primary);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.5;
+    text-wrap: pretty;
+    transition: color 0.2s ease;
+  }
+
+  .vn-faq-section__question:hover .vn-faq-section__question-text {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-faq-section__icon {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+  }
+
+  .vn-faq-section__item[open] .vn-faq-section__question {
+    background-color: color-mix(in srgb, var(--color-accent-cta) 6%, transparent);
+  }
+
+  .vn-faq-section__item[open] .vn-faq-section__icon {
+    transform: rotate(180deg);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-faq-section__item[open] .vn-faq-section__question-text {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-faq-section__answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.17, 0.84, 0.44, 1);
+  }
+
+  .vn-faq-section__item[open]:not(.is-closing) .vn-faq-section__answer-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .vn-faq-section__answer-inner {
+    overflow: hidden;
+  }
+
+  .vn-faq-section__answer-text {
+    margin: 0;
+    padding: 0 0 24px 44px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-faq-section__left {
+      grid-column: 1 / -1 !important;
+      position: static;
+      margin-bottom: 40px;
+    }
+
+    .vn-faq-section__right {
+      grid-column: 1 / -1 !important;
+    }
+
+    .vn-faq-section__lead {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-faq-section {
+      padding: 56px 0;
+    }
+
+    .vn-faq-section__question {
+      padding: 16px 0;
+      gap: 12px;
+      min-height: 48px;
+    }
+
+    .vn-faq-section__question-text {
+      font-size: var(--fs-body);
+      line-height: 1.45;
+    }
+
+    .vn-faq-section__answer-text {
+      padding: 0 0 20px 36px;
+      font-size: var(--fs-body-sm);
+      line-height: 1.55;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function hasAnalyticsConsent() {
+      try {
+        return window.localStorage.getItem('vn_cookie_consent') === 'accepted';
+      } catch (_) {
+        return false;
+      }
+    }
+
+    const containers = document.querySelectorAll('.vn-faq-section__right');
+    const DURATION = 400;
+
+    containers.forEach((container) => {
+      const items = container.querySelectorAll<HTMLDetailsElement>('.vn-faq-section__item');
+
+      items.forEach((details) => {
+        const summary = details.querySelector<HTMLElement>('.vn-faq-section__question');
+        const content = details.querySelector<HTMLElement>('.vn-faq-section__answer-wrap');
+        if (!summary || !content) return;
+
+        summary.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = details.hasAttribute('open');
+
+          if (!isOpen && hasAnalyticsConsent() && window.ym) {
+            const cid = parseInt(document.querySelector('meta[name="ym-counter-id"]')?.getAttribute('content') || '0', 10);
+            if (cid) window.ym(cid, 'reachGoal', 'faq_open');
+          }
+
+          items.forEach((sibling) => {
+            if (sibling !== details && sibling.hasAttribute('open')) {
+              const siblingContent = sibling.querySelector<HTMLElement>('.vn-faq-section__answer-wrap');
+              if (siblingContent) {
+                sibling.classList.add('is-closing');
+                siblingContent.style.gridTemplateRows = '0fr';
+                window.setTimeout(() => {
+                  sibling.removeAttribute('open');
+                  sibling.classList.remove('is-closing');
+                  siblingContent.style.gridTemplateRows = '';
+                }, DURATION);
+              }
+            }
+          });
+
+          if (isOpen) {
+            details.classList.add('is-closing');
+            content.style.gridTemplateRows = '0fr';
+            window.setTimeout(() => {
+              details.removeAttribute('open');
+              details.classList.remove('is-closing');
+              content.style.gridTemplateRows = '';
+            }, DURATION);
+          } else {
+            details.setAttribute('open', '');
+            requestAnimationFrame(() => {
+              content.style.gridTemplateRows = '1fr';
+              window.setTimeout(() => {
+                content.style.gridTemplateRows = '';
+              }, DURATION);
+            });
+          }
+        });
+      });
+    });
+  })();
+</script>

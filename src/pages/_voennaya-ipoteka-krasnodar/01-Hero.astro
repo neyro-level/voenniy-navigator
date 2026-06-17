@@ -1,96 +1,304 @@
 ---
+// Визуальный элемент: абстрактный каталоговый мокап подборки ЖК
 ---
 
 <section id="section-krd-hero" class="vn-krd-hero">
   <div class="vn-krd-hero__grid-bg" aria-hidden="true"></div>
+  <div class="vn-krd-hero__radial" aria-hidden="true"></div>
 
   <div class="vn-container">
-    <div class="vn-grid-12">
+    <div class="vn-grid-12 vn-krd-hero__layout">
       <div class="vn-krd-hero__content">
-        <p class="vn-label-mono">Военная ипотека в Краснодаре / 12 ЖК с видеоразбором</p>
+        <span class="vn-krd-hero__eyebrow">Военная ипотека в Краснодаре</span>
 
-        <h1 class="vn-krd-hero__title">Военная ипотека в Краснодаре: квартиры и новостройки</h1>
+        <h1 class="vn-krd-hero__title">Новостройки Краснодара по военной ипотеке</h1>
 
         <p class="vn-krd-hero__lead">
-          Получите подборку 12 проверенных ЖК Краснодара с видеоразбором: комплексы для жизни,
-          аренды и инвестиций, условия военной ипотеки, район, ликвидность и квартиры,
-          которые стоит смотреть первыми.
+          Собрали актуальные комплексы, которые проходят по военной ипотеке. Сравните цены, сроки
+          сдачи, планировки и условия покупки.
+        </p>
+
+        <p class="vn-krd-hero__note">
+          Оставьте заявку — покажем, в каких ЖК сейчас действуют акции и скидки, и рассчитаем, как
+          сэкономить на покупке до 600 000 ₽.
         </p>
 
         <div class="vn-krd-hero__actions">
           <a
             href="/contacts/#request"
             data-modal-open
-            data-modal-title="Получить 12 ЖК с видеоразбором"
+            data-modal-title="Рассчитаем, сколько вы сэкономите"
+            data-modal-subtitle="Проверим актуальные акции застройщиков и покажем, как снизить стоимость квартиры по военной ипотеке."
             class="vn-btn-primary vn-krd-hero__primary"
           >
-            Получить 12 ЖК с видеоразбором
+            Экономия до 600 000 ₽
           </a>
-          <a href="#section-krd-selection" class="vn-btn-ghost vn-krd-hero__secondary">
-            Как проходит отбор
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Помощь с военной ипотекой"
+            data-modal-subtitle="Уточним бюджет, подберём банк с лучшими условиями и расскажем, как сейчас можно снизить ставку или первоначальный взнос."
+            class="vn-btn-ghost vn-krd-hero__secondary"
+          >
+            Помощь с ипотекой
           </a>
         </div>
 
-        <dl class="vn-krd-hero__proof" aria-label="Что проверяется в подборке">
-          <div class="vn-krd-hero__proof-item">
-            <dt>Видеоразбор</dt>
-            <dd>Почему ЖК попал в подборку</dd>
-          </div>
-          <div class="vn-krd-hero__proof-item">
-            <dt>Район</dt>
-            <dd>Инфраструктура, транспорт и цель семьи</dd>
-          </div>
-          <div class="vn-krd-hero__proof-item">
-            <dt>Ликвидность</dt>
-            <dd>Для жизни, аренды и инвестиций</dd>
-          </div>
-          <div class="vn-krd-hero__proof-item">
-            <dt>Квартира</dt>
-            <dd>Планировка, этаж, корпус и скидки</dd>
-          </div>
-        </dl>
+        <div class="vn-krd-hero__tags" aria-label="Преимущества">
+          <span class="vn-krd-hero__tag">Без комиссии</span>
+          <span class="vn-krd-hero__tag">Проверенные ЖК</span>
+          <span class="vn-krd-hero__tag">Цены и планировки</span>
+        </div>
       </div>
 
-      <div class="vn-krd-hero__visual" aria-label="Превью каталога 12 жилых комплексов">
-        <div class="vn-krd-hero__catalog">
-          <div class="vn-krd-hero__sheet vn-krd-hero__sheet--back" aria-hidden="true"></div>
-          <div class="vn-krd-hero__sheet vn-krd-hero__sheet--mid" aria-hidden="true"></div>
+      <div class="vn-krd-hero__visual" aria-hidden="true">
+        <div class="vn-krd-hero__visual-card">
+          <svg
+            class="vn-krd-hero__ui-mockup"
+            viewBox="0 0 500 380"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="250"
+              cy="190"
+              r="170"
+              fill="url(#krd-glow)"
+              opacity="0.1"
+              class="vn-krd-hero__animate-pulse-glow"
+            />
 
-          <div class="vn-krd-hero__cover">
-            <div class="vn-krd-hero__cover-top">
-              <span>Каталог + видеоразбор</span>
-              <span>Краснодар</span>
-            </div>
+            <rect
+              x="50"
+              y="45"
+              width="400"
+              height="290"
+              rx="22"
+              fill="var(--color-bg-dark)"
+              stroke="var(--color-border-ondark)"
+              stroke-width="1"
+              opacity="0.3"
+              class="vn-krd-hero__animate-float-slow"
+            />
 
-            <div class="vn-krd-hero__cover-main">
-              <strong>12</strong>
-              <p>ЖК Краснодара по военной ипотеке</p>
-            </div>
+            <rect
+              x="70"
+              y="25"
+              width="360"
+              height="330"
+              rx="24"
+              fill="var(--color-bg-dark-elev)"
+              stroke="var(--color-border-ondark)"
+              stroke-width="1"
+              class="vn-krd-hero__animate-float"
+              style="filter: drop-shadow(0 32px 64px rgba(0,0,0,0.4));"
+            />
 
-            <div class="vn-krd-hero__map" aria-hidden="true">
-              <span class="vn-krd-hero__pin vn-krd-hero__pin--one"></span>
-              <span class="vn-krd-hero__pin vn-krd-hero__pin--two"></span>
-              <span class="vn-krd-hero__pin vn-krd-hero__pin--three"></span>
-              <span class="vn-krd-hero__route vn-krd-hero__route--one"></span>
-              <span class="vn-krd-hero__route vn-krd-hero__route--two"></span>
-            </div>
+            <rect
+              x="105"
+              y="62"
+              width="190"
+              height="14"
+              rx="7"
+              fill="var(--color-text-ondark)"
+              opacity="0.9"
+            />
+            <rect
+              x="105"
+              y="88"
+              width="120"
+              height="10"
+              rx="5"
+              fill="var(--color-text-ondark-mute)"
+              opacity="0.35"
+            />
 
-            <div class="vn-krd-hero__chips" aria-hidden="true">
-              <span>банк</span>
-              <span>район</span>
-              <span>квартира</span>
-            </div>
-          </div>
+            <line
+              x1="105"
+              y1="118"
+              x2="395"
+              y2="118"
+              stroke="var(--color-border-ondark)"
+              stroke-width="1"
+            />
 
-          <div class="vn-krd-hero__floating vn-krd-hero__floating--left" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="vn-krd-hero__floating vn-krd-hero__floating--right" aria-hidden="true">
-            <strong>VIDEO</strong>
-            <span>разбор</span>
-          </div>
+            <!-- item 1 -->
+            <circle
+              cx="120"
+              cy="148"
+              r="10"
+              fill="color-mix(in srgb, var(--color-accent-cta) 16%, transparent)"
+              stroke="var(--color-accent-cta)"
+              stroke-width="1.5"
+            />
+            <path
+              d="M116 148 L119 151 L124 145"
+              stroke="var(--color-accent-cta)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="145"
+              y="142"
+              width="210"
+              height="10"
+              rx="5"
+              fill="var(--color-text-ondark)"
+              opacity="0.85"
+            />
+
+            <!-- item 2 -->
+            <circle
+              cx="120"
+              cy="188"
+              r="10"
+              fill="color-mix(in srgb, var(--color-accent-cta) 16%, transparent)"
+              stroke="var(--color-accent-cta)"
+              stroke-width="1.5"
+            />
+            <path
+              d="M116 188 L119 191 L124 185"
+              stroke="var(--color-accent-cta)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="145"
+              y="182"
+              width="180"
+              height="10"
+              rx="5"
+              fill="var(--color-text-ondark)"
+              opacity="0.85"
+            />
+
+            <!-- item 3 -->
+            <circle
+              cx="120"
+              cy="228"
+              r="10"
+              fill="color-mix(in srgb, var(--color-accent-cta) 16%, transparent)"
+              stroke="var(--color-accent-cta)"
+              stroke-width="1.5"
+            />
+            <path
+              d="M116 228 L119 231 L124 225"
+              stroke="var(--color-accent-cta)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="145"
+              y="222"
+              width="160"
+              height="10"
+              rx="5"
+              fill="var(--color-text-ondark)"
+              opacity="0.85"
+            />
+
+            <!-- item 4 -->
+            <circle
+              cx="120"
+              cy="268"
+              r="10"
+              fill="color-mix(in srgb, var(--color-accent-cta) 16%, transparent)"
+              stroke="var(--color-accent-cta)"
+              stroke-width="1.5"
+            />
+            <path
+              d="M116 268 L119 271 L124 265"
+              stroke="var(--color-accent-cta)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="145"
+              y="262"
+              width="190"
+              height="10"
+              rx="5"
+              fill="var(--color-text-ondark)"
+              opacity="0.85"
+            />
+
+            <!-- progress -->
+            <rect
+              x="105"
+              y="310"
+              width="290"
+              height="6"
+              rx="3"
+              fill="var(--color-bg-dark)"
+            />
+            <rect
+              x="105"
+              y="310"
+              width="250"
+              height="6"
+              rx="3"
+              fill="var(--color-accent-cta)"
+              opacity="0.8"
+            />
+
+            <!-- stamp -->
+            <rect
+              x="330"
+              y="300"
+              width="120"
+              height="50"
+              rx="14"
+              fill="var(--color-bg-dark)"
+              stroke="var(--color-border-ondark)"
+              stroke-width="1"
+              class="vn-krd-hero__animate-float-reverse"
+              style="filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));"
+            />
+            <circle cx="358" cy="325" r="9" fill="var(--color-accent-cta)" />
+            <path
+              d="M354 325 L357 328 L362 322"
+              stroke="var(--color-bg-dark)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="375"
+              y="318"
+              width="58"
+              height="8"
+              rx="4"
+              fill="var(--color-text-ondark-mute)"
+              opacity="0.7"
+            />
+            <rect
+              x="375"
+              y="332"
+              width="42"
+              height="6"
+              rx="3"
+              fill="var(--color-accent-cta)"
+              opacity="0.8"
+            />
+
+            <defs>
+              <radialGradient
+                id="krd-glow"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(250 190) rotate(90) scale(170)"
+              >
+                <stop stop-color="var(--color-accent-cta)" />
+                <stop offset="1" stop-color="var(--color-accent-cta)" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
         </div>
       </div>
     </div>
@@ -115,6 +323,22 @@
       linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
     background-size: 64px 64px;
     pointer-events: none;
+    z-index: 0;
+  }
+
+  .vn-krd-hero__radial {
+    position: absolute;
+    top: -180px;
+    left: -180px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-bg-surface) 55%, transparent) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 
   .vn-krd-hero .vn-container,
@@ -123,28 +347,62 @@
     z-index: 1;
   }
 
+  .vn-krd-hero__layout {
+    align-items: center;
+  }
+
   .vn-krd-hero__content {
     grid-column: 1 / 8;
     align-self: center;
+    min-width: 0;
+  }
+
+  .vn-krd-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-krd-hero__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent-cta);
+    flex-shrink: 0;
   }
 
   .vn-krd-hero__title {
     max-width: 720px;
-    margin: 24px 0 0;
+    margin: 28px 0 0;
     color: var(--color-text-primary);
     font-size: var(--fs-display);
     font-weight: 600;
     line-height: 1.06;
-    letter-spacing: 0;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
   .vn-krd-hero__lead {
-    max-width: 620px;
+    max-width: 580px;
     margin: 28px 0 0;
     color: var(--color-text-secondary);
     font-size: var(--fs-lead);
-    line-height: 1.65;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .vn-krd-hero__note {
+    max-width: 580px;
+    margin: 18px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    text-wrap: pretty;
   }
 
   .vn-krd-hero__actions {
@@ -161,278 +419,92 @@
     font-size: var(--fs-body);
   }
 
-  .vn-krd-hero__proof {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0;
-    max-width: 760px;
-    margin: 44px 0 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+  .vn-krd-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
   }
 
-  .vn-krd-hero__proof-item {
-    min-width: 0;
-    padding: 18px 18px 18px 0;
-    border-right: 1px solid var(--color-border);
-  }
-
-  .vn-krd-hero__proof-item:last-child {
-    border-right: 0;
-  }
-
-  .vn-krd-hero__proof dt {
-    margin: 0 0 6px;
-    color: var(--color-accent-primary);
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .vn-krd-hero__proof dd {
-    margin: 0;
+  .vn-krd-hero__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
     color: var(--color-text-secondary);
-    font-size: var(--fs-body-sm);
-    line-height: 1.45;
+    font-size: var(--fs-caption);
+    font-weight: 500;
+    line-height: 1.3;
   }
 
   .vn-krd-hero__visual {
     grid-column: 8 / 13;
     align-self: center;
+    display: flex;
+    justify-content: flex-end;
     min-width: 0;
   }
 
-  .vn-krd-hero__catalog {
+  .vn-krd-hero__visual-card {
     position: relative;
-    min-height: 560px;
-  }
-
-  .vn-krd-hero__sheet,
-  .vn-krd-hero__cover {
-    position: absolute;
-    inset: 44px 24px 0 34px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-surface);
-    box-shadow: var(--shadow-xl);
-  }
-
-  .vn-krd-hero__sheet--back {
-    transform: translate(28px, -24px) rotate(6deg);
-    opacity: 0.42;
-  }
-
-  .vn-krd-hero__sheet--mid {
-    transform: translate(14px, -12px) rotate(3deg);
-    opacity: 0.72;
-  }
-
-  .vn-krd-hero__cover {
-    display: grid;
-    grid-template-rows: auto 1fr auto auto;
-    overflow: hidden;
-    background:
-      linear-gradient(145deg, var(--color-bg-surface) 0%, var(--color-bg-surface-low) 52%, var(--color-bg-secondary) 100%);
-  }
-
-  .vn-krd-hero__cover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-  }
-
-  .vn-krd-hero__cover-top,
-  .vn-krd-hero__cover-main,
-  .vn-krd-hero__map,
-  .vn-krd-hero__chips {
-    position: relative;
-    z-index: 1;
-  }
-
-  .vn-krd-hero__cover-top {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 500 / 380;
     display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 28px 30px 0;
-    color: var(--color-text-tertiary);
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
   }
 
-  .vn-krd-hero__cover-main {
-    display: grid;
-    align-content: center;
-    padding: 28px 30px 20px;
+  .vn-krd-hero__ui-mockup {
+    width: 100%;
+    height: 100%;
   }
 
-  .vn-krd-hero__cover-main strong {
-    display: block;
-    color: var(--color-accent-primary);
-    /* type-exception: decorative/catalog-cover-number */
-    font-size: clamp(88px, 12vw, 148px);
-    font-weight: 600;
-    line-height: 0.86;
-    letter-spacing: 0;
+  @keyframes krd-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
   }
 
-  .vn-krd-hero__cover-main p {
-    max-width: 280px;
-    margin: 18px 0 0;
-    color: var(--color-text-primary);
-    font-size: var(--fs-h3);
-    font-weight: 600;
-    line-height: 1.12;
-    text-wrap: balance;
+  @keyframes krd-float-slow {
+    0%, 100% { transform: translateY(0px) translateX(-8px); }
+    50% { transform: translateY(-7px) translateX(-8px); }
   }
 
-  .vn-krd-hero__map {
-    min-height: 150px;
-    margin: 0 30px 22px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background:
-      linear-gradient(90deg, transparent 49%, var(--color-border) 50%, transparent 51%),
-      linear-gradient(0deg, transparent 49%, var(--color-border) 50%, transparent 51%),
-      var(--color-bg-surface-low);
-    background-size: 72px 72px;
+  @keyframes krd-float-reverse {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(7px); }
   }
 
-  .vn-krd-hero__pin {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 3px solid var(--color-bg-surface);
-    border-radius: var(--radius-full);
-    background: var(--color-accent-cta);
-    box-shadow: 0 0 0 8px var(--color-accent-cta-soft);
+  @keyframes krd-pulse-glow {
+    0%, 100% { opacity: 0.12; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.04); }
   }
 
-  .vn-krd-hero__pin--one {
-    top: 34px;
-    left: 22%;
+  .vn-krd-hero__animate-float {
+    animation: krd-float 6s ease-in-out infinite;
   }
 
-  .vn-krd-hero__pin--two {
-    top: 76px;
-    left: 57%;
+  .vn-krd-hero__animate-float-slow {
+    animation: krd-float-slow 8s ease-in-out infinite;
   }
 
-  .vn-krd-hero__pin--three {
-    top: 104px;
-    left: 78%;
+  .vn-krd-hero__animate-float-reverse {
+    animation: krd-float-reverse 7s ease-in-out infinite;
   }
 
-  .vn-krd-hero__route {
-    position: absolute;
-    height: 2px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--color-accent-primary) 28%, transparent);
-    transform-origin: left center;
-  }
-
-  .vn-krd-hero__route--one {
-    top: 48px;
-    left: 25%;
-    width: 34%;
-    transform: rotate(17deg);
-  }
-
-  .vn-krd-hero__route--two {
-    top: 90px;
-    left: 59%;
-    width: 22%;
-    transform: rotate(18deg);
-  }
-
-  .vn-krd-hero__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 0 30px 30px;
-  }
-
-  .vn-krd-hero__chips span {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    background: var(--color-bg-surface);
-    padding: 8px 11px;
-    color: var(--color-text-secondary);
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .vn-krd-hero__floating {
-    position: absolute;
-    z-index: 2;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-bg-surface) 88%, transparent);
-    box-shadow: 0 18px 42px color-mix(in srgb, var(--color-text-primary) 13%, transparent);
-    backdrop-filter: blur(10px);
-  }
-
-  .vn-krd-hero__floating--left {
-    left: 0;
-    bottom: 84px;
-    display: grid;
-    gap: 8px;
-    width: 118px;
-    padding: 14px;
-  }
-
-  .vn-krd-hero__floating--left span {
-    display: block;
-    height: 7px;
-    border-radius: 99px;
-    background: var(--color-accent-soft);
-  }
-
-  .vn-krd-hero__floating--left span:nth-child(2) {
-    width: 74%;
-  }
-
-  .vn-krd-hero__floating--left span:nth-child(3) {
-    width: 52%;
-  }
-
-  .vn-krd-hero__floating--right {
-    right: 0;
-    top: 72px;
-    display: grid;
-    gap: 2px;
-    min-width: 88px;
-    padding: 14px 16px;
-    text-align: center;
-  }
-
-  .vn-krd-hero__floating--right strong {
-    color: var(--color-accent-cta);
-    font-size: var(--fs-body);
-    font-weight: 600;
-  }
-
-  .vn-krd-hero__floating--right span {
-    color: var(--color-text-tertiary);
-    font-size: var(--fs-caption);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  .vn-krd-hero__animate-pulse-glow {
+    animation: krd-pulse-glow 4s ease-in-out infinite;
+    transform-origin: center;
   }
 
   @media (max-width: 1023px) {
     .vn-krd-hero {
       min-height: auto;
-      padding-top: 112px;
-      padding-bottom: 64px;
+      padding-top: 120px;
+      padding-bottom: 72px;
     }
 
     .vn-krd-hero__content,
@@ -441,52 +513,45 @@
     }
 
     .vn-krd-hero__visual {
-      margin-top: 40px;
+      justify-content: center;
+      margin-top: 56px;
     }
 
-    .vn-krd-hero__proof {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .vn-krd-hero__proof-item:nth-child(2) {
-      border-right: 0;
-    }
-
-    .vn-krd-hero__proof-item:nth-child(-n + 2) {
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .vn-krd-hero__catalog {
-      max-width: 520px;
-      margin-inline: auto;
+    .vn-krd-hero__visual-card {
+      max-width: 460px;
     }
   }
 
   @media (max-width: 640px) {
     .vn-krd-hero {
       padding-top: 96px;
-      padding-bottom: 56px;
-    }
-
-    .vn-krd-hero .vn-label-mono {
-      display: none;
+      padding-bottom: 64px;
     }
 
     .vn-krd-hero__title {
-      margin-top: 0;
+      margin-top: 20px;
+      font-size: var(--fs-h1);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
     .vn-krd-hero__lead {
       margin-top: 20px;
-      font-size: var(--fs-lead);
-      line-height: 1.6;
+      font-size: var(--fs-body-lg);
+      line-height: 1.55;
+    }
+
+    .vn-krd-hero__note {
+      margin-top: 14px;
+      font-size: var(--fs-body);
+      line-height: 1.5;
     }
 
     .vn-krd-hero__actions {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       width: 100%;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .vn-krd-hero__primary,
@@ -496,66 +561,16 @@
       text-align: center;
     }
 
-    .vn-krd-hero__secondary {
-      display: none;
-    }
-
-    .vn-krd-hero__proof {
-      display: none;
+    .vn-krd-hero__tags {
+      margin-top: 24px;
     }
 
     .vn-krd-hero__visual {
-      margin-top: 34px;
+      margin-top: 40px;
     }
 
-    .vn-krd-hero__catalog {
-      min-height: 430px;
-    }
-
-    .vn-krd-hero__sheet,
-    .vn-krd-hero__cover {
-      inset: 28px 12px 0;
-    }
-
-    .vn-krd-hero__cover-top,
-    .vn-krd-hero__cover-main,
-    .vn-krd-hero__chips {
-      padding-inline: 20px;
-    }
-
-    .vn-krd-hero__cover-top {
-      padding-top: 22px;
-    }
-
-    .vn-krd-hero__cover-main {
-      padding-top: 20px;
-      padding-bottom: 16px;
-    }
-
-    .vn-krd-hero__cover-main strong {
-      /* type-exception: decorative/catalog-cover-number */
-      font-size: clamp(78px, 24vw, 96px);
-    }
-
-    .vn-krd-hero__cover-main p {
-      max-width: 230px;
-      margin-top: 14px;
-      font-size: var(--fs-h3);
-    }
-
-    .vn-krd-hero__map {
-      min-height: 118px;
-      margin-inline: 22px;
-      margin-bottom: 18px;
-    }
-
-    .vn-krd-hero__floating--left {
-      display: none;
-    }
-
-    .vn-krd-hero__floating--right {
-      right: 4px;
-      top: 46px;
+    .vn-krd-hero__visual-card {
+      max-width: 100%;
     }
   }
 </style>

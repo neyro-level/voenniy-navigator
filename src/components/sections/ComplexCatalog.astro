@@ -1,0 +1,550 @@
+---
+import { complexes } from '../../data/krasnodar-complexes';
+import ComplexCatalogReact from './ComplexCatalogReact';
+
+function formatComplexName(name: string) {
+  return name.replace(/^(?:ЖК|Квартал|Клубный квартал)\s+/u, '').replace(/[«»]/gu, '').trim();
+}
+
+function formatPrice(value: number) {
+  const millions = value / 1_000_000;
+  const formatted = millions % 1 === 0 ? String(millions) : millions.toFixed(1).replace('.', ',');
+  return `от ${formatted} млн ₽`;
+}
+---
+
+<section id="section-krd-catalog" class="vn-section vn-complex-catalog-section">
+  <div class="vn-container">
+    <ComplexCatalogReact complexes={complexes} client:load />
+
+    <div class="vn-complex-catalog-section__seo" aria-label="Список жилых комплексов Краснодара по военной ипотеке">
+      <p>
+        В каталоге собраны жилые комплексы Краснодара, которые можно рассматривать для покупки по военной ипотеке:
+        с разными районами, сроками сдачи, бюджетом входа и форматом квартир. Здесь представлены комплексы для
+        семейной покупки, жизни, аренды и долгого горизонта выбора.
+      </p>
+      <ul>
+        {complexes.map((complex) => (
+          <li>
+            {formatComplexName(complex.name)} — {complex.district}, {formatPrice(complex.priceMin)}, срок сдачи{' '}
+            {complex.deadline}, подходит для покупки квартиры по военной ипотеке в Краснодаре.
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .vn-complex-catalog-section {
+    position: relative;
+    background-color: var(--color-bg-surface);
+    overflow: hidden;
+    padding-top: 22px;
+    scroll-margin-top: 108px;
+  }
+
+  @media (max-width: 640px) {
+    .vn-complex-catalog-section {
+      padding-top: 18px;
+      scroll-margin-top: 88px;
+    }
+  }
+
+  .vn-complex-catalog-section__seo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .vn-complex-catalog {
+    margin-top: 18px;
+  }
+
+  .vn-complex-catalog__status {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px 24px;
+    padding: 0 2px;
+  }
+
+  .vn-complex-catalog__status-main,
+  .vn-complex-catalog__status-note {
+    margin: 0;
+  }
+
+  .vn-complex-catalog__status-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .vn-complex-catalog__status-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 9px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 58%, white);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 76%, white);
+    color: var(--color-text-primary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vn-complex-catalog__status-note {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-caption);
+    line-height: 1.45;
+  }
+
+  .vn-complex-catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 24px;
+    margin-top: 26px;
+  }
+
+  /* ─── Complex Card ─── */
+  .vn-complex-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 470px;
+    scroll-margin-top: 116px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    transition:
+      transform 0.3s ease;
+  }
+
+  .vn-complex-card:hover {
+    transform: none;
+  }
+
+  .vn-complex-card__visual {
+    position: relative;
+    margin: 0;
+    height: 81%;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--color-bg-secondary);
+    transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .vn-complex-card.is-info-active .vn-complex-card__visual {
+    height: 61%;
+  }
+
+  .vn-complex-card__slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .vn-complex-card__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.45s ease, transform 0.55s ease;
+    transform: scale(1.03);
+  }
+
+  .vn-complex-card__slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .vn-complex-card__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vn-complex-card__badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    pointer-events: none;
+  }
+
+  .vn-complex-card__badges span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 0 8px;
+    border: 1px solid color-mix(in srgb, white 78%, transparent);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, white 92%, transparent);
+    backdrop-filter: blur(8px);
+    color: var(--color-text-primary);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .vn-complex-card__slide-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-tertiary);
+    opacity: 0.7;
+  }
+
+  .vn-complex-card__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+
+  .vn-complex-card__dots span {
+    width: 32px;
+    height: 2px;
+    background: color-mix(in srgb, white 70%, transparent);
+    border-radius: var(--radius-full);
+    opacity: 0.7;
+    transition:
+      opacity 0.2s ease,
+      width 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .vn-complex-card__dots span.is-active {
+    opacity: 1;
+    width: 52px;
+    background: white;
+  }
+
+  .vn-complex-card__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 6px;
+    height: 19%;
+    padding: 12px 2px 0;
+    transition:
+      height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .vn-complex-card.is-info-active .vn-complex-card__body {
+    height: 39%;
+    padding: 14px 2px 0;
+  }
+
+  .vn-complex-card__primary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+  }
+
+  .vn-complex-card__main-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .vn-complex-card__title {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: var(--fs-body);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  .vn-complex-card__price {
+    margin: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-complex-card__address {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-tertiary);
+    line-height: 1.45;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .vn-complex-card__divider {
+    width: 100%;
+    height: 1px;
+    margin-top: 7px;
+    background: color-mix(in srgb, var(--color-border) 74%, white);
+    transform-origin: left center;
+    opacity: 0;
+    transform: scaleX(0.72);
+    transition: opacity 0.28s ease, transform 0.32s ease;
+  }
+
+  .vn-complex-card.is-info-active .vn-complex-card__divider {
+    opacity: 0.92;
+    transform: scaleX(1);
+  }
+
+  .vn-complex-card__details {
+    display: grid;
+    gap: 8px;
+    padding-top: 7px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: max-height 0.4s ease, opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .vn-complex-card.is-info-active .vn-complex-card__details {
+    max-height: 260px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .vn-complex-card__meta {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 6px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+  }
+
+  .vn-complex-card__features {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .vn-complex-card__features li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+  }
+
+  .vn-complex-card__features svg {
+    color: var(--color-accent-primary);
+    flex-shrink: 0;
+  }
+
+  .vn-complex-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 8px;
+    padding: 12px 84px 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  }
+
+  .vn-complex-card__footer-note {
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-caption);
+    line-height: 1.45;
+  }
+
+  .vn-complex-card__quick-cta {
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-caption);
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition:
+      color 0.2s ease,
+      opacity 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  .vn-complex-card.is-info-active .vn-complex-card__quick-cta {
+    opacity: 0.84;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .vn-complex-card__quick-cta:hover {
+    color: color-mix(in srgb, var(--color-accent-cta) 84%, white);
+    opacity: 1;
+    transform: translateX(1px);
+  }
+
+  .vn-complex-card__quick-cta:focus-visible {
+    outline: none;
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-complex-catalog__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-complex-catalog {
+      margin-top: 20px;
+    }
+
+    .vn-complex-card {
+      scroll-margin-top: 96px;
+    }
+
+    .vn-complex-catalog__status {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .vn-complex-catalog__status-main {
+      gap: 7px;
+    }
+
+    .vn-complex-catalog__status-count {
+      min-width: 26px;
+      height: 26px;
+    }
+
+    .vn-complex-catalog__status-note {
+      line-height: 1.4;
+    }
+
+    .vn-complex-catalog__grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .vn-complex-card {
+      height: auto;
+      min-height: 450px;
+    }
+
+    .vn-complex-card__visual {
+      margin: 0;
+      height: 336px;
+    }
+
+    .vn-complex-card.is-info-active .vn-complex-card__visual {
+      height: 302px;
+    }
+
+    .vn-complex-card__body {
+      height: auto;
+      padding: 12px 2px 0;
+    }
+
+    .vn-complex-card.is-info-active .vn-complex-card__body {
+      height: auto;
+      padding: 12px 2px 0;
+    }
+
+    .vn-complex-card__main-line {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .vn-complex-card__dots {
+      left: 50%;
+      bottom: 14px;
+    }
+
+    .vn-complex-card__badges {
+      top: 12px;
+      left: 12px;
+      right: 12px;
+    }
+
+    .vn-complex-card__badges span {
+      min-height: 18px;
+      padding: 0 7px;
+      font-size: 9px;
+    }
+
+    .vn-complex-card__address,
+    .vn-complex-card__meta,
+    .vn-complex-card__features li {
+      line-height: 1.45;
+    }
+
+    .vn-complex-card__price {
+      line-height: 1.3;
+    }
+
+    .vn-complex-card__footer-note {
+      line-height: 1.4;
+    }
+
+    .vn-complex-card__quick-cta {
+      right: 2px;
+      bottom: 0;
+    }
+
+    .vn-complex-card__footer {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>

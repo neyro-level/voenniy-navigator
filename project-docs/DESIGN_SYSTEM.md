@@ -71,7 +71,7 @@ error/on-container      \#93000A
 
 **Шрифт**
 
-Inter — единственный шрифт на всю систему.
+Manrope — единственный шрифт на всю систему.
 
 Веса в использовании:
 
@@ -113,6 +113,10 @@ number-card         48px / 1 / Semi Bold (номера карточек)
 **Правила применения**
 
 **Typography mixing:** в ключевых заголовках можно комбинировать text/primary (\#0F1419) и accent/primary (\#0F2547) в одном предложении. Акцент делается на смысловом слове.
+
+**FAQ standard:** единственный канонический FAQ-компонент сайта — `src/components/sections/FAQ.astro`. Вопрос в аккордеоне FAQ не считается `H3`. Для всех FAQ-блоков сайта вопрос набирается в шкале `body` с Semi Bold/600 и line-height около `1.45-1.5`, чтобы блок оставался собранным и не спорил по масштабу с соседними секциями.
+
+**Final CTA standard:** единственный канонический финальный CTA-компонент сайта — `src/components/sections/FinalCTALight.astro`. Он повторяет эталон главной страницы и используется на всех route-страницах; допускается менять только copy, modal title и якорь секции, но не сам паттерн, сетку и типографическую шкалу.
 
 Пример:
 
@@ -198,7 +202,7 @@ section-padding-y   64
 
 **Принцип 5\. Single Font Family**
 
-Inter на всю систему. Никаких serif, никаких декоративных дополнительных шрифтов.
+Manrope на всю систему. Никаких serif, никаких декоративных дополнительных шрифтов.
 
 **Принцип 6\. No Pure Black**
 
@@ -225,7 +229,7 @@ lines:              1px, цвет decoration/grid-light (rgba 15,37,71 / 0.04)
 **Слой 2\. Section Number Markers**
 
 size:               200-220px (desktop), 120px (mobile)  
-font:               Inter Semi Bold  
+font:               Manrope Semi Bold  
 color:              decoration/marker (filled, opacity 0.05)  
 position:           absolute в углах секций  
 поведение:          частично выходят за край секции для создания edge-tension
@@ -301,7 +305,7 @@ color:              accent/primary с opacity 0.3
 **Primary Button:**
 
 bg:                 accent/secondary (\#2563EB)  
-text:               \#FFFFFF, Inter Medium 15-16px  
+text:               \#FFFFFF, Manrope Medium 15-16px  
 padding:            14px 28px (desktop), 16px 24px (mobile)  
 radius:             radius/md (10px)  
 hover:              bg → accent/hover (\#1D4ED8), translate Y \-1px  
@@ -311,7 +315,7 @@ hover:              bg → accent/hover (\#1D4ED8), translate Y \-1px
 
 bg:                 transparent  
 border:             1px solid outline/variant  
-text:               text/primary, Inter Medium 15-16px  
+text:               text/primary, Manrope Medium 15-16px  
 padding:            14px 24px  
 radius:             radius/md (10px)  
 hover:              bg → bg/surface, border → outline/variant с opacity 0.25
@@ -388,7 +392,7 @@ accent divider:     4px × 2px, fill accent/secondary (перед основны
 **Section Markers**
 
 size:               200-220px (desktop), 120px (mobile)  
-font:               Inter Semi Bold  
+font:               Manrope Semi Bold  
 color:              decoration/marker  
 position:           absolute, в углах секции, частично обрезается краем
 
@@ -518,7 +522,7 @@ position:           absolute, в углах секции, частично об�
 ☐ Все корнер\-радиусы в диапазоне 6-16px  
 ☐ Нет warm tones  
 ☐ Нет \#000000 (только \#0F1419)  
-☐ Inter во всех элементах  
+☐ Manrope во всех элементах  
 ☐ Mobile-версия протестирована  
 ---
 

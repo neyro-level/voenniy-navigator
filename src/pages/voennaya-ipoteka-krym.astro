@@ -2,8 +2,8 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Checklist from './_voennaya-ipoteka-krym/05-Checklist.astro';
 import Cities from './_voennaya-ipoteka-krym/04-Cities.astro';
-import FinalCTA from '../components/sections/FinalCTA.astro';
-import FAQ from './_voennaya-ipoteka-krym/08-FAQ.astro';
+import FinalCTALight from '../components/sections/FinalCTALight.astro';
+import FAQ from '../components/sections/FAQ.astro';
 import Hero from './_voennaya-ipoteka-krym/01-Hero.astro';
 import Remote from './_voennaya-ipoteka-krym/07-Remote.astro';
 import { pageMeta, schemas, faqItems } from './_voennaya-ipoteka-krym/pageData';
@@ -14,19 +14,21 @@ import { pageMeta, schemas, faqItems } from './_voennaya-ipoteka-krym/pageData';
   <Cities />
   <Checklist />
   <Remote />
-  <FAQ items={faqItems} />
-  <FinalCTA
+  <FAQ
+    items={faqItems}
+    eyebrow="ЧАСТЫЕ ВОПРОСЫ"
+    title="Ответы на частые вопросы по Крыму"
+    lead="Вопросы о дистанционной покупке, выборе города и условиях военной ипотеки в Крыму."
+    linkText="Не нашли ответ? Задайте вопрос при расчёте →"
+    linkHref="/contacts/#request"
+    linkModalTitle="Разобрать покупку в Крыму"
+  />
+  <FinalCTALight
     eyebrow="ПОКУПКА В КРЫМУ"
     title="Разберите покупку в Крыму"
     accentText="под вашу задачу"
     subtitle="Уточним цель покупки, формат сделки и покажем, какие города и объекты стоит рассмотреть в первую очередь."
     ctaText="Разобрать покупку в Крыму"
     ctaModalTitle="Разобрать покупку в Крыму"
-    showStats={true}
-    showUsefulLinks={true}
-    usefulLinks={[
-      { label: 'Условия военной ипотеки', href: '/usloviya-voennoy-ipoteki/' },
-      { label: 'Контакты и онлайн-разбор', href: '/contacts/' }
-    ]}
   />
 </PageLayout>

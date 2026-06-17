@@ -66,27 +66,6 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
   <!-- Дополнительные JSON-LD из страниц -->
   <slot name="head" />
 
-  <!-- Локальный шрифт Inter Variable + fallback metrics (woodme/lidenskap pattern) -->
-  <link rel="preload" as="font" href="/fonts/InterVariable.woff2" type="font/woff2" crossorigin />
-  <style is:inline>
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/InterVariable.woff2') format('woff2');
-      font-weight: 100 900;
-      font-display: swap;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Inter Fallback';
-      src: local('Arial');
-      font-display: swap;
-      ascent-override: 91.59%;
-      descent-override: 22.81%;
-      line-gap-override: 0%;
-      size-adjust: 105.77%;
-    }
-  </style>
-
   <!-- llms.txt для AI-crawler'ов (GEO) -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
 

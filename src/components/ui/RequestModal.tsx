@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { InvisibleSmartCaptcha } from '@yandex/smart-captcha';
 import { track } from '../../lib/analytics';
-import { Check, Loader2, MessageCircle, Phone, Send, X } from 'lucide-react';
+import { Check, Loader2, X } from 'lucide-react';
 import { sendLead } from '@/lib/leads';
+import {
+  formatPhone,
+  getUtmPayload,
+  METHOD_OPTIONS,
+  normalizePhoneDigits,
+  validateForm,
+  type ContactMethod,
+  type FormErrors,
+} from '../../lib/form-utils';
 import '../../styles/modal.css';
 
-type ContactMethod = 'call' | 'telegram' | 'max';
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
 type OpenModalDetail = {
@@ -23,13 +32,6 @@ type RequestModalProps = {
   formName?: string;
 };
 
-type FormErrors = {
-  name?: string;
-  phone?: string;
-  method?: string;
-  consent?: string;
-};
-
 declare global {
   interface Window {
     ym?: (...args: unknown[]) => void;
@@ -39,85 +41,9 @@ declare global {
 
 const DEFAULT_TITLE = 'Напишите ваше имя и телефон';
 const DEFAULT_SUBTITLE = 'Уточню ваш запрос и задачу, а затем подготовлю подборку квартир.';
+const SMARTCAPTCHA_CLIENT_KEY = (import.meta.env.PUBLIC_SMARTCAPTCHA_CLIENT_KEY || '').trim();
 
-const METHOD_OPTIONS: Array<{ value: ContactMethod; label: string; icon: typeof Phone }> = [
-  { value: 'call', label: 'Звонок', icon: Phone },
-  { value: 'telegram', label: 'Telegram', icon: Send },
-  { value: 'max', label: 'Max', icon: MessageCircle },
-];
 
-function normalizePhoneDigits(value: string) {
-  const digits = value.replace(/\D/g, '');
-
-  if (digits.startsWith('8')) {
-    return `7${digits.slice(1)}`.slice(0, 11);
-  }
-
-  if (digits.startsWith('7')) {
-    return digits.slice(0, 11);
-  }
-
-  return `7${digits}`.slice(0, 11);
-}
-
-function formatPhone(value: string) {
-  const digits = normalizePhoneDigits(value);
-
-  if (digits.length <= 1) {
-    return value.replace(/\D/g, '').length === 0 ? '' : '+7';
-  }
-
-  const body = digits.slice(1);
-  const part1 = body.slice(0, 3);
-  const part2 = body.slice(3, 6);
-  const part3 = body.slice(6, 8);
-  const part4 = body.slice(8, 10);
-
-  let result = '+7';
-
-  if (part1) result += ` (${part1}`;
-  if (part1.length === 3) result += ')';
-  if (part2) result += ` ${part2}`;
-  if (part3) result += `-${part3}`;
-  if (part4) result += `-${part4}`;
-
-  return result;
-}
-
-function getUtmPayload() {
-  const params = new URLSearchParams(window.location.search);
-
-  return {
-    utm_source: params.get('utm_source') || '',
-    utm_medium: params.get('utm_medium') || '',
-    utm_campaign: params.get('utm_campaign') || '',
-    utm_content: params.get('utm_content') || '',
-    utm_term: params.get('utm_term') || '',
-  };
-}
-
-function validateForm(name: string, phone: string, method: ContactMethod | '', consent: boolean) {
-  const errors: FormErrors = {};
-  const phoneDigits = normalizePhoneDigits(phone);
-
-  if (name.trim().length < 2) {
-    errors.name = 'Введите имя, чтобы Михаил понял как к вам обратиться.';
-  }
-
-  if (phoneDigits.length !== 11) {
-    errors.phone = 'Введите телефон в формате +7 (999) 999-99-99.';
-  }
-
-  if (!method) {
-    errors.method = 'Выберите, куда удобнее ответить.';
-  }
-
-  if (!consent) {
-    errors.consent = 'Нужно согласие на обработку персональных данных.';
-  }
-
-  return errors;
-}
 
 export default function RequestModal({
   title = DEFAULT_TITLE,
@@ -137,11 +63,14 @@ export default function RequestModal({
   const [method, setMethod] = useState<ContactMethod | ''>('');
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState('');
+  const [captchaVisible, setCaptchaVisible] = useState(false);
+  const [isCaptchaPending, setIsCaptchaPending] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
   const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
 
   const openedAtRef = useRef<number>(Date.now());
+  const isSubmittingLeadRef = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
@@ -159,6 +88,8 @@ export default function RequestModal({
     setMethod('');
     setConsent(false);
     setHoneypot('');
+    setCaptchaVisible(false);
+    setIsCaptchaPending(false);
     setSubmitState('idle');
     setSubmitError('');
     setErrors({});
@@ -254,17 +185,8 @@ export default function RequestModal({
     }
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const nextErrors = validateForm(name, phone, method, consent);
-    setErrors(nextErrors);
-
-    if (Object.keys(nextErrors).length > 0) {
-      setSubmitState('idle');
-      return;
-    }
-
+  const submitLead = async (smartCaptchaToken?: string) => {
+    isSubmittingLeadRef.current = true;
     setSubmitState('loading');
     setSubmitError('');
 
@@ -281,6 +203,7 @@ export default function RequestModal({
         source: modalSource,
         honeypot,
         openedAt,
+        smartCaptchaToken,
         utm: getUtmPayload(),
       });
 
@@ -294,7 +217,41 @@ export default function RequestModal({
     } catch (error) {
       setSubmitState('error');
       setSubmitError(error instanceof Error ? error.message : 'Не удалось отправить заявку.');
+    } finally {
+      isSubmittingLeadRef.current = false;
+      setCaptchaVisible(false);
+      setIsCaptchaPending(false);
     }
+  };
+
+  const handleCaptchaFailure = (message: string) => {
+    setCaptchaVisible(false);
+    setIsCaptchaPending(false);
+    setSubmitState('error');
+    setSubmitError(message);
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const nextErrors = validateForm(name, phone, method, consent);
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setSubmitState('idle');
+      return;
+    }
+
+    if (SMARTCAPTCHA_CLIENT_KEY) {
+      setSubmitState('loading');
+      setSubmitError('');
+      setIsCaptchaPending(true);
+      setCaptchaVisible(false);
+      window.setTimeout(() => setCaptchaVisible(true), 0);
+      return;
+    }
+
+    await submitLead();
   };
 
   if (!isOpen) return null;
@@ -351,6 +308,28 @@ export default function RequestModal({
             </div>
 
             <form className="vn-modal__form" onSubmit={handleSubmit} noValidate>
+              {SMARTCAPTCHA_CLIENT_KEY && (
+                <InvisibleSmartCaptcha
+                  sitekey={SMARTCAPTCHA_CLIENT_KEY}
+                  language="ru"
+                  visible={captchaVisible}
+                  shieldPosition="bottom-right"
+                  onChallengeHidden={() => {
+                    setCaptchaVisible(false);
+                    if (isCaptchaPending && !isSubmittingLeadRef.current) {
+                      setIsCaptchaPending(false);
+                      setSubmitState('idle');
+                    }
+                  }}
+                  onNetworkError={() => handleCaptchaFailure('Не удалось запустить SmartCaptcha. Попробуйте ещё раз.')}
+                  onTokenExpired={() => handleCaptchaFailure('Проверка SmartCaptcha истекла. Попробуйте ещё раз.')}
+                  onJavascriptError={() => handleCaptchaFailure('SmartCaptcha временно недоступна. Попробуйте ещё раз.')}
+                  onSuccess={(token) => {
+                    if (!isCaptchaPending) return;
+                    void submitLead(token);
+                  }}
+                />
+              )}
               <div className="vn-modal__field">
                 <label className="vn-modal__label" htmlFor="request-name">
                   Имя
@@ -499,7 +478,11 @@ export default function RequestModal({
                   'Отправить заявку'
                 )}
               </button>
-              <p className="vn-modal__submit-note">Без спама. Только чтобы связаться по вашей задаче.</p>
+              <p className="vn-modal__submit-note">
+                {SMARTCAPTCHA_CLIENT_KEY
+                  ? 'Форма защищена Yandex SmartCaptcha. Без спама, только связь по вашей задаче.'
+                  : 'Без спама. Только чтобы связаться по вашей задаче.'}
+              </p>
             </form>
           </>
         )}

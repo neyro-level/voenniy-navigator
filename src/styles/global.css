@@ -1,3 +1,4 @@
+@import "@fontsource-variable/manrope/wght.css";
 @import "tailwindcss";
 
 @theme {
@@ -36,7 +37,7 @@
   --color-error-on:          #93000A;
 
   /* ─── Typography: family ─── */
-  --font-family-base:        'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-family-base:        'Manrope Variable', system-ui, -apple-system, sans-serif;
 
   /* ─── Spacing (section-level) ─── */
   --spacing-section:         120px;

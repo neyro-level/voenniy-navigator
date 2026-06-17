@@ -167,7 +167,7 @@ export default function ReviewWidget() {
           z-index: 2147483000;
           width: min(380px, calc(100vw - 32px));
           color: #0f1419;
-          font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-family: "Manrope Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
         .vn-review-widget__panel {

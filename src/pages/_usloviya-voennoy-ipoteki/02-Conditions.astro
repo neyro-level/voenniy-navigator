@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <section
@@ -10,16 +9,12 @@
   <div class="vn-container">
     <div class="vn-conditions__inner">
       <div class="vn-conditions__header">
-        <span class="vn-label-mono vn-conditions__eyebrow">
-          Параметры одобрения
-        </span>
+        <span class="vn-label-mono">Параметры одобрения</span>
         <h2 class="vn-conditions__title">
-          Базовые условия, от которых зависит одобрение вашей заявки
+          Одобрение зависит не от одной цифры, а от 4 базовых параметров
         </h2>
         <p class="vn-conditions__lead">
-          Программа НИС задает общие рамки, но итоговое решение всегда принимает
-          банк. Мы проверяем эти 4 параметра до подачи документов, чтобы
-          исключить отказ на старте.
+          Программа НИС задаёт общие рамки, но итоговое решение принимает банк. Эти четыре точки лучше проверить до подачи документов, чтобы не потерять время уже на первом круге.
         </p>
       </div>
 
@@ -45,11 +40,9 @@
           </div>
 
           <h3 class="vn-conditions__card-title">Стаж в НИС</h3>
-          <p class="vn-conditions__card-highlight">Минимум <strong>3 года</strong> в реестре участников.</p>
+          <p class="vn-conditions__card-highlight">Минимум <strong>3 года</strong> в реестре участников</p>
           <p class="vn-conditions__card-text">
-            Мы проверяем ваш актуальный статус и остаток на счете до начала
-            подбора, чтобы вы не тратили время на заведомо неподходящие
-            варианты.
+            Проверяем актуальный статус и остаток на счёте до начала подбора, чтобы вы не тратили время на заведомо неподходящие варианты.
           </p>
         </article>
 
@@ -78,11 +71,9 @@
           </div>
 
           <h3 class="vn-conditions__card-title">Ежегодный взнос государства</h3>
-          <p class="vn-conditions__card-highlight"><strong>411 184,90 ₽</strong> в 2026 году.</p>
+          <p class="vn-conditions__card-highlight"><strong>411 184,90 ₽</strong> в 2026 году</p>
           <p class="vn-conditions__card-text">
-            Это эквивалент <strong>~34 265 ₽/мес</strong>, которые банк
-            автоматически направляет на погашение основного долга и процентов в
-            рамках лимита.
+            Это ориентир около <strong>34 265 ₽ в месяц</strong>, которые направляются банком на погашение долга и процентов в рамках лимита НИС.
           </p>
         </article>
 
@@ -108,11 +99,9 @@
           </div>
 
           <h3 class="vn-conditions__card-title">Срок кредитования</h3>
-          <p class="vn-conditions__card-highlight">До <strong>20-25 лет</strong>.</p>
+          <p class="vn-conditions__card-highlight">Обычно до <strong>20–25 лет</strong></p>
           <p class="vn-conditions__card-text">
-            Банк строго рассчитывает ваш возраст на момент полного погашения,
-            обычно не старше <strong>65-75 лет</strong>. Чем вы моложе, тем
-            выше может быть сумма.
+            Банк считает возраст на момент полного погашения. Чем раньше вы входите в сделку, тем выше может быть доступный диапазон суммы.
           </p>
         </article>
 
@@ -138,11 +127,9 @@
           </div>
 
           <h3 class="vn-conditions__card-title">Требования к объекту</h3>
-          <p class="vn-conditions__card-highlight"><strong>Новостройки</strong> vs <strong>вторичка</strong>.</p>
+          <p class="vn-conditions__card-highlight"><strong>Новостройка</strong> и <strong>вторичка</strong> проверяются по-разному</p>
           <p class="vn-conditions__card-text">
-            Новостройки от аккредитованных застройщиков одобряются быстрее. Для
-            вторичного жилья действуют строгие лимиты по году постройки и
-            материалу стен.
+            Новостройки от аккредитованных застройщиков проходят быстрее. Для вторичного жилья банк внимательнее смотрит на год постройки, материал стен и ликвидность.
           </p>
         </article>
       </div>
@@ -152,12 +139,12 @@
 
 <style>
   .vn-conditions {
-    padding: 96px 0;
+    padding-block: var(--spacing-section);
     background: var(--color-bg-surface);
   }
 
   .vn-conditions__inner {
-    max-width: 960px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 
@@ -165,38 +152,22 @@
     margin-bottom: 40px;
   }
 
-  .vn-conditions__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-    color: var(--color-text-tertiary);
-  }
-
-  .vn-conditions__eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--color-accent-cta);
-  }
-
   .vn-conditions__title {
-    max-width: 760px;
-    margin: 0 0 16px;
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.1;
+    max-width: 720px;
+    margin: 16px 0 16px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-conditions__lead {
-    max-width: 700px;
+    max-width: 680px;
     margin: 0;
-    font-size: var(--fs-lead);
-    line-height: 1.55;
+    font-size: var(--fs-body);
+    line-height: 1.62;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
@@ -230,7 +201,7 @@
       );
       background: color-mix(
         in srgb,
-        var(--color-accent-primary-soft) 36%,
+        var(--color-accent-soft) 36%,
         var(--color-bg-surface)
       );
       transform: translateY(-2px);
@@ -255,13 +226,13 @@
     color: var(--color-accent-primary);
     background: color-mix(
       in srgb,
-      var(--color-accent-primary-soft) 72%,
+      var(--color-accent-soft) 72%,
       var(--color-bg-surface)
     );
   }
 
   .vn-conditions__card-number {
-    font-size: 12px;
+    font-size: var(--fs-label);
     line-height: 1;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -270,18 +241,17 @@
 
   .vn-conditions__card-title {
     margin: 0 0 12px;
-    font-size: 22px;
-    line-height: 1.25;
+    font-size: var(--fs-h3);
+    line-height: 1.3;
     font-weight: 600;
-    letter-spacing: -0.01em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-conditions__card-highlight {
     margin: 0 0 12px;
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: var(--fs-body);
+    line-height: 1.55;
     color: var(--color-text-primary);
     text-wrap: pretty;
   }
@@ -302,7 +272,7 @@
 
   @media (max-width: 767px) {
     .vn-conditions {
-      padding: 64px 0;
+      padding-block: var(--spacing-section-mobile);
     }
 
     .vn-conditions__header {
@@ -328,12 +298,10 @@
     }
 
     .vn-conditions__card-title {
-      font-size: 19px;
       margin-bottom: 10px;
     }
 
     .vn-conditions__card-highlight {
-      font-size: 16px;
       margin-bottom: 10px;
     }
   }

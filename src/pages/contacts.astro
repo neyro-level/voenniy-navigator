@@ -1,9 +1,9 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import Hero from './_contacts/01-Hero.astro';
 import Offices from './_contacts/02-Offices.astro';
 import RemoteBridge from './_contacts/03-RemoteBridge.astro';
-import FinalCTA from './_contacts/04-FinalCTA.astro';
 import { pageMeta, schemas } from './_contacts/pageData';
 ---
 
@@ -11,5 +11,13 @@ import { pageMeta, schemas } from './_contacts/pageData';
   <Hero />
   <Offices />
   <RemoteBridge />
-  <FinalCTA />
+  <FinalCTALight
+    sectionId="request"
+    eyebrow="ОНЛАЙН-ВСТРЕЧА"
+    title="Рассчитайте варианты под вашу ситуацию"
+    accentText="или онлайн-встречу"
+    subtitle="За 20–30 минут рассчитаем варианты, ограничения по военной ипотеке и следующий шаг. Можно подключиться из дома, офиса или другого региона."
+    ctaText="Записаться на видеовстречу"
+    ctaModalTitle="Записаться на видеовстречу"
+  />
 </PageLayout>

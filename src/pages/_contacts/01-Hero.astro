@@ -3,115 +3,63 @@ import { CONTACTS } from "../../lib/constants";
 import { getConfiguredValue } from "../../lib/utils";
 
 const telegramHref = getConfiguredValue(CONTACTS.telegram);
-const maxHref = getConfiguredValue(CONTACTS.max);
+const phoneClean = CONTACTS.phone.replace(/[^\d+]/g, "");
 ---
 
 <section id="section-contacts-hero" class="vn-contacts-hero">
+  <div class="vn-contacts-hero__grid" aria-hidden="true"></div>
+
   <div class="vn-container">
-    <div class="vn-grid-12">
-      <div class="vn-contacts-hero__content" style="grid-column: 1 / 7">
-        <nav aria-label="Breadcrumb" class="vn-contacts-hero__breadcrumb">
-          <a href="/">Главная</a>
-          <span>/</span>
-          <span>Контакты</span>
-        </nav>
+    <div class="vn-contacts-hero__inner">
+      <nav aria-label="Breadcrumb" class="vn-contacts-hero__breadcrumb">
+        <a href="/">Главная</a>
+        <span>/</span>
+        <span>Контакты</span>
+      </nav>
 
-        <div class="vn-contacts-hero__eyebrow">Контакты</div>
+      <span class="vn-label-mono vn-contacts-hero__eyebrow">КОНТАКТЫ / МИХАИЛ ХРЯПИН</span>
 
-        <h1 class="vn-contacts-hero__h1">
-          Контакты Военного навигатора в Краснодаре и Крыму
-        </h1>
+      <h1 class="vn-contacts-hero__h1">Контакты Военного навигатора в Краснодаре и Крыму</h1>
 
-        <p class="vn-contacts-hero__sub">
-          Запишитесь на первичный разбор, позвоните или напишите в мессенджер.
-        </p>
+      <p class="vn-contacts-hero__sub">
+        Свяжитесь, чтобы рассчитать варианты покупки новостройки по военной ипотеке или уточнить вопрос.
+        Встречи возможны по предварительной договорённости в Краснодаре и Бахчисарае.
+      </p>
 
-        <div class="vn-contacts-hero__cta-row">
+      <div class="vn-contacts-hero__cta-row">
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Рассчитать варианты"
+          class="vn-btn-primary vn-contacts-hero__btn"
+        >
+          Рассчитать варианты
+        </a>
+
+        {telegramHref && (
           <a
-            href="/contacts/#request"
-            data-modal-open
-            data-modal-title="Записаться на разбор"
-            class="vn-btn-primary vn-contacts-hero__btn"
+            href={telegramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vn-contacts-hero__secondary"
           >
-            Записаться на разбор
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Написать в Telegram
           </a>
-          {telegramHref && (
-            <a
-              href={telegramHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="vn-contacts-hero__messenger"
-            >
-              Telegram
-            </a>
-          )}
-          {maxHref && (
-            <a
-              href={maxHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="vn-contacts-hero__messenger"
-            >
-              Max
-            </a>
-          )}
-          <a
-            href={`tel:${CONTACTS.phone.replace(/[^\d+]/g, "")}`}
-            class="vn-contacts-hero__phone"
-          >
-            Позвонить
-          </a>
-        </div>
+        )}
 
-        <div class="vn-contacts-hero__trust" role="list">
-          <span role="listitem">Краснодар</span>
-          <span class="vn-contacts-hero__trust-divider" aria-hidden="true"
-          ></span>
-          <span role="listitem">Крым</span>
-        </div>
+        <a href={`tel:${phoneClean}`} class="vn-contacts-hero__secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Позвонить
+        </a>
       </div>
 
-      <div
-        class="vn-contacts-hero__visual"
-        style="grid-column: 7 / 13"
-        aria-label="Фото офиса будет добавлено позже"
-        role="img"
-      >
-        <div class="vn-contacts-hero__photo-placeholder">
-          <div class="vn-contacts-hero__photo-top">
-            <span>office-meeting.jpg</span>
-            <span>фото позже</span>
-          </div>
-          <div class="vn-contacts-hero__office-scene" aria-hidden="true">
-            <div class="vn-contacts-hero__wall">
-              <div class="vn-contacts-hero__screen">
-                <div
-                  class="vn-contacts-hero__plan vn-contacts-hero__plan--large"
-                >
-                </div>
-                <div class="vn-contacts-hero__plan"></div>
-                <div class="vn-contacts-hero__plan"></div>
-              </div>
-            </div>
-            <div class="vn-contacts-hero__table">
-              <div class="vn-contacts-hero__laptop">
-                <span></span>
-              </div>
-              <div class="vn-contacts-hero__papers">
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div
-              class="vn-contacts-hero__person vn-contacts-hero__person--left"
-            >
-            </div>
-            <div
-              class="vn-contacts-hero__person vn-contacts-hero__person--right"
-            >
-            </div>
-          </div>
-        </div>
+      <div class="vn-contacts-hero__trust" role="list">
+        <span role="listitem">Краснодар</span>
+        <span class="vn-contacts-hero__trust-divider" aria-hidden="true"></span>
+        <span role="listitem">Крым</span>
+        <span class="vn-contacts-hero__trust-divider" aria-hidden="true"></span>
+        <span role="listitem">Дистанционно</span>
       </div>
     </div>
   </div>
@@ -121,32 +69,17 @@ const maxHref = getConfiguredValue(CONTACTS.max);
   .vn-contacts-hero {
     position: relative;
     overflow: hidden;
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--color-bg-dark-elev) 52%, transparent),
-        transparent 38%
-      ),
-      var(--color-bg-dark);
+    background: var(--color-bg-primary);
     padding-top: 160px;
     padding-bottom: 96px;
   }
 
-  .vn-contacts-hero::before {
-    content: "";
+  .vn-contacts-hero__grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(
-        to right,
-        var(--color-deco-grid-dark) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        var(--color-deco-grid-dark) 1px,
-        transparent 1px
-      );
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
     background-size: 64px 64px;
     pointer-events: none;
   }
@@ -156,16 +89,13 @@ const maxHref = getConfiguredValue(CONTACTS.max);
     z-index: 1;
   }
 
-  .vn-contacts-hero .vn-grid-12 {
-    align-items: center;
-  }
-
-  .vn-contacts-hero__content {
+  .vn-contacts-hero__inner {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    max-width: 600px;
+    align-items: center;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .vn-contacts-hero__breadcrumb {
@@ -173,11 +103,11 @@ const maxHref = getConfiguredValue(CONTACTS.max);
     align-items: center;
     gap: 8px;
     font-size: var(--fs-body-sm);
-    color: var(--color-text-ondark-mute);
+    color: var(--color-text-tertiary);
     margin-bottom: 24px;
   }
   .vn-contacts-hero__breadcrumb a {
-    color: var(--color-text-ondark-mute);
+    color: var(--color-text-tertiary);
     text-decoration: none;
     transition: color 150ms ease;
   }
@@ -185,15 +115,11 @@ const maxHref = getConfiguredValue(CONTACTS.max);
     color: var(--color-accent-cta);
   }
   .vn-contacts-hero__breadcrumb span:last-child {
-    color: var(--color-text-ondark);
+    color: var(--color-text-secondary);
   }
 
   .vn-contacts-hero__eyebrow {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-accent-cta);
+    color: var(--color-text-tertiary);
     margin-bottom: 18px;
   }
 
@@ -202,26 +128,26 @@ const maxHref = getConfiguredValue(CONTACTS.max);
     font-size: var(--fs-h1);
     line-height: 1.1;
     font-weight: 600;
-    letter-spacing: 0;
-    color: var(--color-text-ondark);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-contacts-hero__sub {
-    margin: 16px 0 0;
+    margin: 20px 0 0;
     font-size: var(--fs-lead);
     line-height: 1.6;
-    color: var(--color-text-ondark-mute);
-    max-width: 460px;
+    color: var(--color-text-secondary);
+    max-width: 600px;
     text-wrap: pretty;
   }
 
   .vn-contacts-hero__cta-row {
     display: flex;
-    gap: 12px;
-    margin-top: 32px;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
   }
 
   .vn-contacts-hero__btn {
@@ -229,312 +155,85 @@ const maxHref = getConfiguredValue(CONTACTS.max);
     padding: 0 28px;
     font-size: var(--fs-body);
   }
-  .vn-contacts-hero__messenger,
-  .vn-contacts-hero__phone {
+
+  .vn-contacts-hero__secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    padding: 0 16px;
-    border: 1px solid var(--color-border-ondark);
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    background: color-mix(in srgb, var(--color-bg-dark-elev) 82%, transparent);
-    color: var(--color-text-ondark);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
     text-decoration: none;
     font-size: var(--fs-body-sm);
     font-weight: 500;
-    white-space: nowrap; /* Запрещает разрыв текста внутри кнопки */
     transition:
       border-color 150ms ease,
       background-color 150ms ease,
       color 150ms ease;
   }
-
-  .vn-contacts-hero__messenger:hover,
-  .vn-contacts-hero__phone:hover {
-    border-color: color-mix(
-      in srgb,
-      var(--color-accent-cta) 36%,
-      var(--color-border)
-    );
-    background: color-mix(
-      in srgb,
-      var(--color-accent-cta) 14%,
-      var(--color-bg-dark-elev)
-    );
-    color: var(--color-text-ondark);
+  .vn-contacts-hero__secondary:hover {
+    border-color: var(--color-accent-cta);
+    background: var(--color-accent-soft);
+    color: var(--color-text-primary);
   }
+  .vn-contacts-hero__secondary svg {
+    flex-shrink: 0;
+  }
+
   .vn-contacts-hero__trust {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0;
-    margin-top: 28px;
+    margin-top: 32px;
     font-size: var(--fs-caption);
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--color-text-ondark-mute);
+    color: var(--color-text-tertiary);
   }
   .vn-contacts-hero__trust span[role="listitem"] {
-    padding: 0 12px;
+    padding: 0 14px;
   }
-
   .vn-contacts-hero__trust-divider {
     width: 1px;
     height: 12px;
     background-color: var(--color-border);
   }
 
-  .vn-contacts-hero__visual {
-    position: relative;
-  }
-
-  .vn-contacts-hero__photo-placeholder {
-    position: relative;
-    min-height: 460px;
-    overflow: hidden;
-    border: 1px solid var(--color-border-ondark);
-    border-radius: var(--radius-xl);
-    background:
-      linear-gradient(
-        180deg,
-        rgba(241, 243, 245, 0.08),
-        rgba(241, 243, 245, 0.02)
-      ),
-      var(--color-bg-dark-elev);
-    box-shadow: var(--shadow-xl);
-  }
-
-  .vn-contacts-hero__photo-placeholder::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(
-        circle at 68% 22%,
-        color-mix(in srgb, var(--color-accent-cta) 22%, transparent) 0%,
-        transparent 28%
-      ),
-      linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.08) 48%,
-        transparent 49%
-      );
-    pointer-events: none;
-  }
-
-  .vn-contacts-hero__photo-top {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 20px;
-    color: var(--color-text-ondark-mute);
-    font-size: var(--fs-caption);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .vn-contacts-hero__office-scene {
-    position: absolute;
-    inset: 58px 22px 22px;
-  }
-
-  .vn-contacts-hero__wall {
-    position: absolute;
-    inset: 0 0 42%;
-    border: 1px solid rgba(241, 243, 245, 0.1);
-    border-radius: 12px;
-    background:
-      linear-gradient(to right, rgba(241, 243, 245, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(241, 243, 245, 0.04) 1px, transparent 1px);
-    background-size: 36px 36px;
-  }
-
-  .vn-contacts-hero__screen {
-    position: absolute;
-    left: 50%;
-    top: 28px;
-    width: 62%;
-    height: 142px;
-    transform: translateX(-50%);
-    border: 1px solid rgba(241, 243, 245, 0.16);
-    border-radius: 8px;
-    background: rgba(15, 20, 25, 0.72);
-    padding: 16px;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 10px;
-  }
-
-  .vn-contacts-hero__plan {
-    border-radius: 4px;
-    background:
-      linear-gradient(to right, rgba(37, 99, 235, 0.42) 2px, transparent 2px),
-      linear-gradient(to bottom, rgba(241, 243, 245, 0.16) 2px, transparent 2px);
-    background-size: 18px 18px;
-    border: 1px solid rgba(241, 243, 245, 0.1);
-  }
-
-  .vn-contacts-hero__plan--large {
-    grid-row: span 2;
-  }
-
-  .vn-contacts-hero__table {
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 18%;
-    height: 96px;
-    border-radius: 50%;
-    background: linear-gradient(
-      180deg,
-      rgba(241, 243, 245, 0.18),
-      rgba(241, 243, 245, 0.06)
-    );
-    transform: perspective(420px) rotateX(58deg);
-    border: 1px solid rgba(241, 243, 245, 0.12);
-  }
-
-  .vn-contacts-hero__laptop {
-    position: absolute;
-    left: 43%;
-    top: 20px;
-    width: 88px;
-    height: 58px;
-    border-radius: 6px;
-    background: rgba(15, 20, 25, 0.86);
-    border: 1px solid rgba(241, 243, 245, 0.16);
-  }
-
-  .vn-contacts-hero__laptop span {
-    display: block;
-    width: 64%;
-    height: 3px;
-    margin: 16px auto 0;
-    background: var(--color-accent-cta);
-    box-shadow:
-      0 10px 0 rgba(241, 243, 245, 0.24),
-      0 20px 0 rgba(241, 243, 245, 0.14);
-  }
-
-  .vn-contacts-hero__papers {
-    position: absolute;
-    left: 20%;
-    top: 24px;
-    display: flex;
-    gap: 10px;
-  }
-
-  .vn-contacts-hero__papers span {
-    width: 70px;
-    height: 48px;
-    border-radius: 4px;
-    background: rgba(241, 243, 245, 0.22);
-    border: 1px solid rgba(241, 243, 245, 0.16);
-    transform: rotate(-8deg);
-  }
-
-  .vn-contacts-hero__papers span + span {
-    transform: rotate(7deg);
-  }
-
-  .vn-contacts-hero__person {
-    position: absolute;
-    bottom: 52px;
-    width: 72px;
-    height: 112px;
-    border-radius: 40px 40px 14px 14px;
-    background: linear-gradient(
-      180deg,
-      rgba(241, 243, 245, 0.28),
-      rgba(241, 243, 245, 0.09)
-    );
-    border: 1px solid rgba(241, 243, 245, 0.12);
-  }
-
-  .vn-contacts-hero__person::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: -28px;
-    width: 42px;
-    height: 42px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: rgba(241, 243, 245, 0.22);
-    border: 1px solid rgba(241, 243, 245, 0.12);
-  }
-
-  .vn-contacts-hero__person--left {
-    left: 16%;
-  }
-
-  .vn-contacts-hero__person--right {
-    right: 15%;
-    background: linear-gradient(
-      180deg,
-      rgba(37, 99, 235, 0.32),
-      rgba(241, 243, 245, 0.08)
-    );
-  }
-
   @media (max-width: 640px) {
     .vn-contacts-hero {
-      padding-top: 100px;
-      padding-bottom: 64px;
+      padding-top: 120px;
+      padding-bottom: 72px;
     }
     .vn-contacts-hero__h1 {
-      font-size: var(--fs-h1);
+      font-size: var(--fs-h1-mobile, var(--fs-h1));
     }
     .vn-contacts-hero__cta-row {
       width: 100%;
+      flex-direction: column;
+      align-items: stretch;
     }
-    .vn-contacts-hero__btn {
+    .vn-contacts-hero__btn,
+    .vn-contacts-hero__secondary {
       width: 100%;
       justify-content: center;
     }
-    .vn-contacts-hero__messenger,
-    .vn-contacts-hero__phone {
-      flex: 1 1 auto;
-    }
     .vn-contacts-hero__trust {
       display: grid;
-      display: flex;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 0;
     }
     .vn-contacts-hero__trust span[role="listitem"] {
-      padding: 0 4px;
+      padding: 0;
     }
     .vn-contacts-hero__trust-divider {
       display: none;
-    }
-    .vn-contacts-hero__content,
-    .vn-contacts-hero__visual {
-      grid-column: 1 / -1 !important;
-    }
-    .vn-contacts-hero__visual {
-      margin-top: 36px;
-    }
-    .vn-contacts-hero__photo-placeholder {
-      min-height: 340px;
-    }
-    .vn-contacts-hero__office-scene {
-      inset: 52px 14px 16px;
-    }
-    .vn-contacts-hero__screen {
-      width: 72%;
-      height: 108px;
-      padding: 12px;
-    }
-    .vn-contacts-hero__person {
-      bottom: 38px;
-      width: 56px;
-      height: 88px;
     }
   }
 </style>

@@ -5,7 +5,7 @@ import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from '
 export const pageMeta = {
   title: 'Калькулятор военной ипотеки — рассчитать сумму',
   description:
-    'Калькулятор военной ипотеки помогает рассчитать ориентир по сумме, накоплениям и сценарию покупки. Поймите, когда онлайн-расчёта достаточно, а когда нужен разбор.',
+    'Калькулятор военной ипотеки помогает рассчитать ориентир по сумме, накоплениям и сценарию покупки. Поймите, когда онлайн-расчёта достаточно, а когда нужен расчёт.',
   canonical: `${SITE.url}/kalkulyator-voennoy-ipoteki/`,
   ogImage: OG_IMAGES.kalkulyator,
 };
@@ -40,7 +40,7 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Калькулятор военной ипотеки и разбор суммы покупки',
+    name: 'Калькулятор военной ипотеки и расчёт суммы покупки',
     description:
       'Помогаем рассчитать ориентир по сумме военной ипотеки, накоплениям, банкам и сценарию покупки до выбора квартиры или новостройки.',
     url: `${SITE.url}/kalkulyator-voennoy-ipoteki/`,

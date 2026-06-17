@@ -26,7 +26,7 @@ export const OFFICES = [
 export const CONTACTS = {
   phone:    '+7 (938) 407 44 57',
   telegram: 'https://t.me/Mikhail_khryapin?text=Михаил%2C%20здравствуйте%2C%20я%20с%20вашего%20сайта.%20Нужно%20обсудить%20мою%20ситуацию',
-  max:      '[MAX_LINK]',        // TODO: уточнить у Михаила (Max — российский мессенджер)
+  max:      'tel:+79384074457',  // Временная ссылка для Max до подключения прямого профиля
   vk:       '[VK_GROUP]',        // TODO: уточнить у Михаила
   email:    '[PRIMARY_EMAIL]',   // TODO: уточнить у Михаила
 };

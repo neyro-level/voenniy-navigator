@@ -1,0 +1,282 @@
+.vn-soft-form {
+  display: grid;
+  gap: 18px;
+}
+
+.vn-soft-form__field {
+  display: grid;
+  gap: 8px;
+}
+
+.vn-soft-form__label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 540;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.vn-soft-form__input {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, white);
+  border-radius: 14px;
+  font: inherit;
+  font-size: 0.96rem;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.vn-soft-form__input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.vn-soft-form__input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent-cta);
+  box-shadow: 0 0 0 3px var(--color-accent-cta-soft);
+}
+
+.vn-soft-form__input:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.vn-soft-form__input[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
+.vn-soft-form__method {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.vn-soft-form__method > .vn-soft-form__label {
+  margin-bottom: 4px;
+}
+
+.vn-soft-form__method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vn-soft-form__method-option {
+  min-width: 0;
+}
+
+.vn-soft-form__method-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.vn-soft-form__method-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 50px;
+  min-width: 48px;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, white);
+  border-radius: 14px;
+  font-size: 0.84rem;
+  font-weight: 540;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.vn-soft-form__method-label:hover {
+  color: var(--color-text-primary);
+  border-color: color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
+  transform: translateY(-1px);
+}
+
+.vn-soft-form__method-input:checked + .vn-soft-form__method-label {
+  color: var(--color-accent-cta);
+  border-color: var(--color-accent-cta);
+  box-shadow: 0 0 0 3px var(--color-accent-cta-soft);
+}
+
+.vn-soft-form__method[aria-invalid='true'] .vn-soft-form__method-label {
+  border-color: color-mix(in srgb, var(--color-error) 28%, transparent);
+}
+
+.vn-soft-form__method[aria-invalid='true'] .vn-soft-form__method-input:checked + .vn-soft-form__method-label {
+  border-color: var(--color-accent-cta);
+}
+
+.vn-soft-form__method-input:focus-visible + .vn-soft-form__method-label {
+  outline: 2px solid var(--color-accent-cta);
+  outline-offset: 2px;
+}
+
+.vn-soft-form__consent {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  font-size: var(--fs-body-sm);
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+.vn-soft-form__consent a {
+  color: var(--color-accent-cta);
+  text-decoration: none;
+}
+
+.vn-soft-form__consent a:hover {
+  text-decoration: underline;
+}
+
+.vn-soft-form__checkbox {
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--color-accent-cta);
+}
+
+.vn-soft-form__error {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.35;
+  color: var(--color-error);
+}
+
+.vn-soft-form__submit-error {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-error) 22%, transparent);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 7%, transparent);
+}
+
+.vn-soft-form__submit {
+  width: 100%;
+  justify-content: center;
+  min-height: 54px;
+  padding-block: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.vn-soft-form__submit:disabled {
+  cursor: wait;
+  opacity: 0.78;
+  transform: none;
+}
+
+.vn-soft-form__spinner {
+  animation: vn-soft-form-spin 0.8s linear infinite;
+}
+
+.vn-soft-form__submit-note {
+  margin: -8px 0 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-text-tertiary);
+}
+
+.vn-soft-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.vn-soft-form__success {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-accent-cta) 4%, var(--color-bg-surface));
+}
+
+.vn-soft-form__success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  color: var(--color-accent-cta);
+  background: var(--color-accent-cta-soft);
+}
+
+.vn-soft-form__success-title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.vn-soft-form__success-text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+@keyframes vn-soft-form-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .vn-soft-form__method-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .vn-soft-form__method-label {
+    justify-content: flex-start;
+    min-height: 48px;
+  }
+
+  .vn-soft-form__success {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-soft-form__input,
+  .vn-soft-form__method-label {
+    transition: none;
+  }
+
+  .vn-soft-form__spinner {
+    animation: none;
+  }
+}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { InvisibleSmartCaptcha } from '@yandex/smart-captcha';
 import { track } from '../../lib/analytics';
 import { Check, Loader2, MessageCircle, Phone, Send, X } from 'lucide-react';
 import { sendLead } from '@/lib/leads';
@@ -37,6 +38,7 @@ declare global {
 const DEFAULT_TITLE = 'Напишите ваше имя и телефон';
 const DEFAULT_SUBTITLE = 'Уточню ваш запрос и задачу, а затем подготовлю подборку квартир.';
 const DEFAULT_THANK_YOU_URL = '/podbor/thanks/';
+const SMARTCAPTCHA_CLIENT_KEY = (import.meta.env.PUBLIC_SMARTCAPTCHA_CLIENT_KEY || '').trim();
 
 const METHOD_OPTIONS: Array<{ value: ContactMethod; label: string; icon: typeof Phone }> = [
   { value: 'call', label: 'Звонок', icon: Phone },
@@ -121,11 +123,14 @@ export default function LeadGenRequestModal({
   const [method, setMethod] = useState<ContactMethod | ''>('');
   const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState('');
+  const [captchaVisible, setCaptchaVisible] = useState(false);
+  const [isCaptchaPending, setIsCaptchaPending] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
   const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
 
   const openedAtRef = useRef<number>(Date.now());
+  const isSubmittingLeadRef = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
@@ -143,6 +148,8 @@ export default function LeadGenRequestModal({
     setMethod('');
     setConsent(false);
     setHoneypot('');
+    setCaptchaVisible(false);
+    setIsCaptchaPending(false);
     setSubmitState('idle');
     setSubmitError('');
     setErrors({});
@@ -233,17 +240,8 @@ export default function LeadGenRequestModal({
     }
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const nextErrors = validateForm(name, phone, method, consent);
-    setErrors(nextErrors);
-
-    if (Object.keys(nextErrors).length > 0) {
-      setSubmitState('idle');
-      return;
-    }
-
+  const submitLead = async (smartCaptchaToken?: string) => {
+    isSubmittingLeadRef.current = true;
     setSubmitState('loading');
     setSubmitError('');
 
@@ -260,6 +258,7 @@ export default function LeadGenRequestModal({
         source: modalSource,
         honeypot,
         openedAt,
+        smartCaptchaToken,
       });
 
       setSubmitState('success');
@@ -272,7 +271,41 @@ export default function LeadGenRequestModal({
     } catch (error) {
       setSubmitState('error');
       setSubmitError(error instanceof Error ? error.message : 'Не удалось отправить заявку.');
+    } finally {
+      isSubmittingLeadRef.current = false;
+      setCaptchaVisible(false);
+      setIsCaptchaPending(false);
     }
+  };
+
+  const handleCaptchaFailure = (message: string) => {
+    setCaptchaVisible(false);
+    setIsCaptchaPending(false);
+    setSubmitState('error');
+    setSubmitError(message);
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const nextErrors = validateForm(name, phone, method, consent);
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setSubmitState('idle');
+      return;
+    }
+
+    if (SMARTCAPTCHA_CLIENT_KEY) {
+      setSubmitState('loading');
+      setSubmitError('');
+      setIsCaptchaPending(true);
+      setCaptchaVisible(false);
+      window.setTimeout(() => setCaptchaVisible(true), 0);
+      return;
+    }
+
+    await submitLead();
   };
 
   if (!isOpen) return null;
@@ -329,6 +362,28 @@ export default function LeadGenRequestModal({
             </div>
 
             <form className="vn-modal__form" onSubmit={handleSubmit} noValidate>
+              {SMARTCAPTCHA_CLIENT_KEY && (
+                <InvisibleSmartCaptcha
+                  sitekey={SMARTCAPTCHA_CLIENT_KEY}
+                  language="ru"
+                  visible={captchaVisible}
+                  shieldPosition="bottom-right"
+                  onChallengeHidden={() => {
+                    setCaptchaVisible(false);
+                    if (isCaptchaPending && !isSubmittingLeadRef.current) {
+                      setIsCaptchaPending(false);
+                      setSubmitState('idle');
+                    }
+                  }}
+                  onNetworkError={() => handleCaptchaFailure('Не удалось запустить SmartCaptcha. Попробуйте ещё раз.')}
+                  onTokenExpired={() => handleCaptchaFailure('Проверка SmartCaptcha истекла. Попробуйте ещё раз.')}
+                  onJavascriptError={() => handleCaptchaFailure('SmartCaptcha временно недоступна. Попробуйте ещё раз.')}
+                  onSuccess={(token) => {
+                    if (!isCaptchaPending) return;
+                    void submitLead(token);
+                  }}
+                />
+              )}
               <div className="vn-modal__field">
                 <label className="vn-modal__label" htmlFor="leadgen-name">
                   Имя
@@ -477,7 +532,11 @@ export default function LeadGenRequestModal({
                   'Отправить заявку'
                 )}
               </button>
-              <p className="vn-modal__submit-note">Без спама. Только чтобы связаться по вашей задаче.</p>
+              <p className="vn-modal__submit-note">
+                {SMARTCAPTCHA_CLIENT_KEY
+                  ? 'Форма защищена Yandex SmartCaptcha. Без спама, только связь по вашей задаче.'
+                  : 'Без спама. Только чтобы связаться по вашей задаче.'}
+              </p>
             </form>
           </>
         )}

@@ -6,7 +6,7 @@ import { getConfiguredValue } from '../../lib/utils';
 export const pageMeta = {
   title: 'Контакты Военного навигатора — Краснодар и Крым',
   description:
-    'Контакты Военного навигатора: офисы в Краснодаре и Бахчисарае, телефон, Telegram и запись на первичный разбор по военной ипотеке.',
+    'Контакты Военного навигатора: офисы в Краснодаре и Бахчисарае, телефон, Telegram и запись на расчёт вариантов по военной ипотеке.',
   canonical: `${SITE.url}/contacts/`,
   ogImage: OG_IMAGES.contacts,
 };

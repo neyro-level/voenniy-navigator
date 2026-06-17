@@ -36,7 +36,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'О сервисе',
     labelShort: 'О сервисе',
     href: '/o-servise/',
-    description: 'Что такое Военный навигатор, как устроен сервис и кто ведёт первичный разбор.',
+    description: 'Что такое Военный навигатор, как устроен сервис и кто ведёт первичный расчёт.',
     group: 'trust',
     icon: 'compass',
   },

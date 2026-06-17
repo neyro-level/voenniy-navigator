@@ -20,9 +20,15 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.2.1
         version: 3.7.2
+      '@fontsource-variable/manrope':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.3.0(vite@6.4.2(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))
+      '@yandex/smart-captcha':
+        specifier: ^2.9.1
+        version: 2.9.1(react@18.3.1)
       astro:
         specifier: ^5.7.0
         version: 5.18.1(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.3)(typescript@5.9.3)(yaml@2.9.0)
@@ -683,6 +689,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fontsource-variable/manrope@5.2.8':
+    resolution: {integrity: sha512-nc9lOuCRz73UHnovDE2bwXUdghE2SEOc7Aii0qGe3CLyE03W1a7VnY5Z6euRiapiKbCkGS+eXbY3s/kvWeGeSw==}
+
   '@iconify/tools@4.2.0':
     resolution: {integrity: sha512-WRxPva/ipxYkqZd1+CkEAQmd86dQmrwH0vwK89gmp2Kh2WyyVw57XbPng0NehP3x4V1LzLsXUneP1uMfTMZmUA==}
 
@@ -1228,6 +1237,11 @@ packages:
 
   '@vscode/l10n@0.0.18':
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
+
+  '@yandex/smart-captcha@2.9.1':
+    resolution: {integrity: sha512-0PnrNOxAQqskDhaDI3TL9qk27WGIgJACuKwtWc1u34tkbOJBzoo3cPvzyOLiYIIc8P0FuYP4KosSaf9hH9gXZg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   acorn@8.16.0:
     resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==}
@@ -3279,6 +3293,8 @@ snapshots:
   '@esbuild/win32-x64@0.27.7':
     optional: true
 
+  '@fontsource-variable/manrope@5.2.8': {}
+
   '@iconify/tools@4.2.0':
     dependencies:
       '@iconify/types': 2.0.0
@@ -3752,6 +3768,10 @@ snapshots:
       vscode-uri: 3.1.0
 
   '@vscode/l10n@0.0.18': {}
+
+  '@yandex/smart-captcha@2.9.1(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   acorn@8.16.0: {}
 

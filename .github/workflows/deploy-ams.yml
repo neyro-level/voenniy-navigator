@@ -44,6 +44,7 @@ jobs:
       - name: Build
         env:
           PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}
+          PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.PUBLIC_SMARTCAPTCHA_CLIENT_KEY }}
           PUBLIC_REVIEW_SITE_KEY: ${{ secrets.PUBLIC_REVIEW_SITE_KEY }}
         run: pnpm build
 
@@ -67,6 +68,8 @@ jobs:
             "mkdir -p '$root/releases/$release' '$root/shared'"
           rsync -az --delete -e "ssh -i ~/.ssh/ams_deploy_key" dist/ \
             "${{ secrets.AMS_USER }}@${{ secrets.AMS_HOST }}:$root/releases/$release/"
+          ssh -i ~/.ssh/ams_deploy_key "${{ secrets.AMS_USER }}@${{ secrets.AMS_HOST }}" \
+            "chgrp -R www-data '$root/releases/$release' && find '$root/releases/$release' -type d -exec chmod 2755 {} \\; && find '$root/releases/$release' -type f -exec chmod 0644 {} \\;"
 
       - name: Activate release
         run: |

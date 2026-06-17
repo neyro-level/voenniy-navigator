@@ -1,6 +1,4 @@
 ---
-// Компонент: 01-Hero.astro (Условия военной ипотеки)
-// Задача: дать ясный, премиальный первый экран с фокусом на реальный бюджет, без визуального шума.
 ---
 
 <section id="section-usl-hero" class="vn-usl-hero">
@@ -9,58 +7,59 @@
 
   <div class="vn-container">
     <div class="vn-grid-12 vn-usl-hero__inner">
-      
-      <!-- Левая часть: Текст и CTA -->
       <div class="vn-usl-hero__content vn-col-7" data-reveal="fade-up">
         <p class="vn-label-mono">Условия / банки / суммы / 2026</p>
 
         <h1 class="vn-usl-hero__title">
-          Условия военной ипотеки в 2026 году: 
-          <span class="vn-usl-hero__title-accent">какой бюджет одобрит банк именно вам</span>
+          Условия военной ипотеки в 2026 году:
+          <span class="vn-usl-hero__title-accent">какой бюджет реально собирается под вашу ситуацию</span>
         </h1>
 
         <p class="vn-usl-hero__lead">
-          Без воды и общих фраз. Разбираем реальные суммы, требования банков 
-          и способы законно увеличить лимит под вашу конкретную ситуацию.
+          Показываем, как правила НИС, банк, срок и формат сделки влияют на сумму до выбора новостройки. Сначала можно быстро рассчитать сценарий, а потом перейти к расчёту без лишних догадок.
         </p>
 
         <div class="vn-usl-hero__actions">
           <a
+            href="/kalkulyator-voennoy-ipoteki/"
+            class="vn-btn-ghost"
+          >
+            Рассчитать в калькуляторе
+          </a>
+          <a
             href="/contacts/#request"
             data-modal-open
-            data-modal-title="Получить разбор моей ситуации"
-            class="vn-btn-primary vn-usl-hero__primary"
+            data-modal-title="Получить расчёт ситуации"
+            class="vn-btn-primary"
           >
-            Получить разбор моей ситуации
+            Получить расчёт ситуации
           </a>
         </div>
       </div>
 
-      <!-- Правая часть: Карточка потенциала -->
       <aside class="vn-usl-hero__visual vn-col-5" data-reveal="fade-in">
         <div class="vn-usl-potential-card">
           <div class="vn-usl-potential-card__row">
             <span class="vn-usl-potential-card__label">Базовый лимит по НИС</span>
             <span class="vn-usl-potential-card__value">~2,3 млн ₽</span>
           </div>
-          
+
           <div class="vn-usl-potential-card__divider"></div>
-          
+
           <div class="vn-usl-potential-card__row vn-usl-potential-card__row--accent">
             <span class="vn-usl-potential-card__label">Реальный бюджет</span>
             <span class="vn-usl-potential-card__value">до 6,0 млн ₽</span>
-            <span class="vn-usl-potential-card__sublabel">при комбинировании программ</span>
+            <span class="vn-usl-potential-card__sublabel">в сценариях с доплатой и комбинированием программ</span>
           </div>
 
           <div class="vn-usl-potential-card__footer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
             </svg>
-            <span>Проверено в ПСБ, Сбер, ВТБ, ДОМ.РФ</span>
+            <span>Ориентир по сценариям с ПСБ, Сбером, ВТБ и Банком Россия</span>
           </div>
         </div>
       </aside>
-
     </div>
   </div>
 </section>
@@ -83,8 +82,8 @@
 
   .vn-usl-hero__grid-bg {
     background-image:
-      linear-gradient(to right, var(--color-deco-grid-light) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-deco-grid-light) 1px, transparent 1px);
+      linear-gradient(to right, var(--color-deco-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-deco-grid) 1px, transparent 1px);
     background-size: 64px 64px;
     opacity: 0.6;
   }
@@ -104,7 +103,6 @@
 
   .vn-usl-hero__inner {
     align-items: center;
-    gap: 48px;
   }
 
   .vn-usl-hero__content {
@@ -115,10 +113,11 @@
 
   .vn-usl-hero__title {
     margin: 16px 0 20px;
-    font-size: clamp(36px, 4.5vw, 56px);
-    line-height: 1.08;
+    max-width: 780px;
+    font-size: var(--fs-display);
+    line-height: 1.07;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
@@ -128,9 +127,9 @@
   }
 
   .vn-usl-hero__lead {
-    max-width: 580px;
+    max-width: 640px;
     margin: 0 0 32px;
-    font-size: clamp(17px, 1.5vw, 19px);
+    font-size: var(--fs-lead);
     line-height: 1.6;
     color: var(--color-text-secondary);
     text-wrap: pretty;
@@ -142,7 +141,10 @@
     gap: 16px;
   }
 
-  /* Карточка потенциала */
+  .vn-usl-hero__visual {
+    justify-self: end;
+  }
+
   .vn-usl-potential-card {
     width: 100%;
     max-width: 420px;
@@ -150,7 +152,7 @@
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    box-shadow: 0 16px 40px color-mix(in srgb, var(--color-bg-dark) 4%, transparent);
+    box-shadow: var(--shadow-card-hover);
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -171,7 +173,7 @@
   }
 
   .vn-usl-potential-card__value {
-    font-size: 40px;
+    font-size: var(--fs-stat);
     line-height: 1.1;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -186,6 +188,7 @@
     font-size: var(--fs-body-sm);
     color: var(--color-text-secondary);
     margin-top: 2px;
+    line-height: 1.55;
   }
 
   .vn-usl-potential-card__divider {
@@ -195,41 +198,31 @@
 
   .vn-usl-potential-card__footer {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     padding-top: 8px;
     border-top: 1px solid var(--color-border);
     font-size: var(--fs-body-sm);
     color: var(--color-text-secondary);
     font-weight: 500;
+    line-height: 1.5;
   }
 
   .vn-usl-potential-card__footer svg {
     color: var(--color-accent-primary);
     flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  /* Адаптивность */
   @media (max-width: 1023px) {
     .vn-usl-hero {
       padding-top: 100px;
       padding-bottom: 64px;
     }
 
-    .vn-usl-hero__inner {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 40px;
-    }
-
-    .vn-usl-hero__content,
-    .vn-usl-hero__visual {
-      grid-column: 1 / -1;
-    }
-
     .vn-usl-potential-card {
       max-width: 100%;
-      margin: 0 auto;
+      margin-top: 8px;
     }
   }
 
@@ -252,17 +245,21 @@
 
     .vn-usl-hero__title {
       margin: 12px 0 16px;
-      font-size: 32px;
-      line-height: 1.12;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .vn-usl-hero__lead {
       margin-bottom: 24px;
-      font-size: var(--fs-body);
       line-height: 1.55;
     }
 
-    .vn-usl-hero__actions .vn-btn-primary {
+    .vn-usl-hero__actions {
+      width: 100%;
+    }
+
+    .vn-usl-hero__actions .vn-btn-primary,
+    .vn-usl-hero__actions .vn-btn-ghost {
       width: 100%;
       justify-content: center;
     }
@@ -273,7 +270,7 @@
     }
 
     .vn-usl-potential-card__value {
-      font-size: 32px;
+      font-size: clamp(26px, 9vw, 34px);
     }
   }
 </style>

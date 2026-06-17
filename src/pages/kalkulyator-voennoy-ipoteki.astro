@@ -4,9 +4,9 @@ import Calculator from './_kalkulyator-voennoy-ipoteki/02-Calculator.astro';
 import Broker from './_kalkulyator-voennoy-ipoteki/03-Broker.astro';
 import Explainer from './_kalkulyator-voennoy-ipoteki/04-Explainer.astro';
 import Basics from './_kalkulyator-voennoy-ipoteki/05-Basics.astro';
-import FAQ from './_kalkulyator-voennoy-ipoteki/06-FAQ.astro';
-import FinalCTA from './_kalkulyator-voennoy-ipoteki/07-CTA.astro';
-import { pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/pageData';
+import FAQ from '../components/sections/FAQ.astro';
+import FinalCTALight from '../components/sections/FinalCTALight.astro';
+import { faqItems, pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -14,6 +14,21 @@ import { pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/pageData';
   <Broker />
   <Explainer />
   <Basics />
-  <FAQ />
-  <FinalCTA />
+  <FAQ
+    items={faqItems}
+    eyebrow="Вопросы и ответы"
+    title="Важные детали о расчете и одобрении"
+    lead="Здесь собраны ответы о том, как формируется сумма, какие банки работают с программой и как мы сопровождаем сделку до получения ключей."
+    linkText="Не нашли свой вопрос? Разберите ситуацию после расчёта →"
+    linkHref="/contacts/#request"
+    linkModalTitle="Рассчитать варианты"
+  />
+  <FinalCTALight
+    eyebrow="ТОЧНЫЙ РАСЧЁТ"
+    title="Получите точный расчёт под"
+    accentText="вашу ситуацию"
+    subtitle="Оставьте контакты. Мы разберём ваши вводные, проверим подходящий сценарий покупки, пересчитаем всё вручную и подскажем, какой объект реально доступен и что делать дальше."
+    ctaText="Рассчитать варианты"
+    ctaModalTitle="Рассчитать варианты"
+  />
 </PageLayout>

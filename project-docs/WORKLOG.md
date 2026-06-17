@@ -7,6 +7,206 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-17 — Локально восстановлена интерактивность каталога Краснодара и перепроверена карта
+
+- **Catalog hover restored:** в `src/components/ui/ComplexCard.tsx` hover-состояние снова уверенно активируется при наведении на карточку, включая визуальную зону с фото, а не только узкую текстовую область.
+- **Mouse transition stabilized:** при движении курсора внутри карточки сохранён плавный сценарий `photo → details`, без ощущения, что карточка «не реагирует на мышку».
+- **Map runtime confirmed:** локальная browser-проверка страницы `/voennaya-ipoteka-krasnodar/` подтвердила наличие `Yandex Maps` canvas и живого map-root внутри блока карты; route и секция карты в репозитории не потеряны.
+- **Checks:** `pnpm build` проходит успешно после фикса; page runtime дополнительно проверен на локальном preview с headless browser.
+
+### 2026-06-17 — Страница условий приведена к стандарту калькулятора
+
+- **Frame aligned:** `/usloviya-voennoy-ipoteki/` собрана в общем контейнере сайта без инородных wide-обводок и без ощущения отдельного лендинга.
+- **Typography normalized:** hero, секционные заголовки, карточки, таблица банков, FAQ и финальный CTA выровнены под общий стандарт `display / h2 / h3 / lead / body / body-sm` из `src/styles/global.css`.
+- **Blocks polished:** подчищены все активные секции страницы — `Hero`, `Conditions`, `Eligibility`, `Amount`, `Scenarios`, `Banks`, `Next Steps`, `Geo`, shared `FAQ` и shared `FinalCTALight`.
+- **Copy cleaned:** убраны спорные oversized-тексты, технический мусор и неточные формулировки; CTA разделены по логике страницы: калькулятор там, где нужен расчёт, и разбор там, где нужен персональный маршрут сделки.
+- **Shared standards kept:** страница использует единый FAQ-компонент сайта и эталонную финальную форму, как на главной странице.
+- **Checks:** `pnpm build` проходит успешно; страница готова как референс для следующей волны выравнивания внутренних SEO-страниц.
+
+### 2026-06-17 — Калькулятор приведён к эталону по фрейму и типографике
+
+- **Frame normalized:** `/kalkulyator-voennoy-ipoteki/` больше не ощущается отдельным wide-лендингом; oversized-обёртка в `02-Calculator.astro` убрана, первый экран и workbench собраны внутри общего `vn-container`.
+- **Typography standardized:** по всей странице выровнены `H1/H2/H3`, lead, body и supportive text под токены сайта из `src/styles/global.css`; локальная система `clamp/px/rem` для обычных заголовков и вводных текстов убрана.
+- **Blocks polished:** под один ритм приведены `02-Calculator`, `03-Broker`, `04-Explainer`, `05-Basics`, финальный CTA и FAQ; калькулятор теперь живёт по тем же shared-паттернам, что и главная.
+- **Reference decision:** калькулятор принят как референс для следующих внутренних страниц по четырём слоям — фрейм, типографика, ритм секций и shared FAQ-паттерн.
+- **Text standard fixed:** базовое правило для сайта — `Hero H1 = var(--fs-display)`, `Section H2 = var(--fs-h2)`, `H3 = var(--fs-h3)`, hero/final CTA lead = `var(--fs-lead)`, секционные вводные = `var(--fs-body)`, supportive text = `var(--fs-body-sm)`; исключения допускаются только для UI-чисел калькулятора.
+- **Checks:** `pnpm build` проходит успешно; локально проверены `/kalkulyator-voennoy-ipoteki/` и `/` на `1280`, `1024`, `768`, `390` через headless browser screenshots — страница визуально собрана в общий контейнер, без заметного horizontal overflow и без скачков типографики между блоками.
+
+### 2026-06-17 — FAQ-аккордеон переведён на более компактный стандарт вопросов
+
+- **Question size reduced:** в site-wide FAQ-паттерне вопрос больше не живёт как `H3`; стандарт снижен до шкалы `body` с весом `600` и line-height около `1.45-1.5`.
+- **Shared component updated:** `src/components/sections/FAQ.astro` поджат по размеру вопроса и по вертикальному ритму строки, чтобы аккордеон выглядел спокойнее на desktop и laptop.
+- **Legacy active FAQs aligned:** тот же стандарт применён к активным локальным FAQ на страницах сервиса, семейной военной ипотеки и Крыма, чтобы на сайте не осталось двух разных масштабов вопросов.
+- **Docs synced:** правило зафиксировано в `project-docs/DESIGN_SYSTEM.md` как стандарт для FAQ-блоков сайта.
+
+### 2026-06-17 — На всём сайте оставлен один FAQ-компонент
+
+- **Single source of truth:** все route-страницы с FAQ теперь используют только `src/components/sections/FAQ.astro`.
+- **Routes unified:** на shared FAQ переведены `/`, `/kalkulyator-voennoy-ipoteki/`, `/o-servise/`, `/semeynaya-voennaya-ipoteka/`, `/usloviya-voennoy-ipoteki/`, `/voennaya-ipoteka-krasnodar/`, `/voennaya-ipoteka-krym/`.
+- **Data separated from UI:** вопросы и ответы для `o-servise` и `voennaya-ipoteka-krasnodar` подняты в `pageData.ts`; UI-компонент больше не хранит page-specific контент внутри себя.
+- **Local duplicates removed:** старые локальные FAQ-файлы удалены из `_home`, `_kalkulyator-voennoy-ipoteki`, `_o-servise`, `_semeynaya-voennaya-ipoteka`, `_voennaya-ipoteka-krym`, `_voennaya-ipoteka-krasnodar`.
+
+### 2026-06-17 — Краснодар доведён до финального as-built и взят как эталон geo/object page
+
+- **Final route fixed:** страница `/voennaya-ipoteka-krasnodar/` зафиксирована в финальной структуре `Hero → Map → Catalog → Soft CTA → How We Work → Trust → Reviews → FAQ → Final CTA` без мёртвых локальных хвостов.
+- **Typography polished:** у Hero, карты, soft CTA, процесса, trust, отзывов и финального CTA убраны локальные oversized-отклонения; ключевые заголовки приведены к `var(--fs-h2)`, служебный текст — к общей шкале `body/body-sm/label`.
+- **Frame and catalog aligned:** карта и каталог живут в общем контейнере сайта, без инородных white-box отклонений и без ощущения отдельного лендинга внутри проекта.
+- **Single shared endings:** Краснодар переведён на канонические shared-компоненты `src/components/sections/FAQ.astro` и `src/components/sections/FinalCTALight.astro`; тот же финальный CTA-паттерн теперь используется на главной, в Крыму, сервисе, калькуляторе, условиях, семейной ипотеке и контактах.
+- **Docs cleaned:** финальный brief Краснодара переписан как as-built, удалены obsolete-файлы `PAGE_VOENNAYA_IPOTEKA_KRASNODAR_v2.md`, `KRASNODAR_ZHK_CATALOG.md`, `KRASNODAR_COMPLEXES_RESEARCH.md`, а промежуточная краснодарская история в `WORKLOG.md` свёрнута до одного актуального entry.
+
+### 2026-06-17 — Max добавлен в общий контактный стандарт сайта
+
+- **Max enabled:** в `CONTACTS.max` временно подключён кликабельный контакт `tel:+79384074457`, пока отдельная ссылка на профиль Max ещё не выдана.
+- **Shared CTA coverage:** Max автоматически появился во всех shared contact-зонах, где компонент уже поддерживал второй мессенджер: финальный CTA, hero контактов и route-map overlay.
+- **Footer aligned:** в `src/components/layout/Footer.astro` рядом с Telegram добавлена отдельная плашка `Max`, чтобы нижний контактный слой тоже жил по единому паттерну.
+- **Phone-link polish:** для временного `Max` убрано принудительное открытие в новой вкладке; ссылка теперь ведёт как обычный кликабельный телефонный action.
+
+### 2026-06-16 — Глобальная замена шрифта с Inter на Manrope
+
+- **Installed:** в проект добавлен `@fontsource-variable/manrope` как новый базовый шрифт сайта.
+- **Updated global typography:** `src/styles/global.css` теперь импортирует `Manrope` и использует его в `--font-family-base`.
+- **Removed legacy font layer:** из `src/layouts/BaseLayout.astro` убраны preload и inline `@font-face` для старого `InterVariable.woff2`.
+- **Updated source of truth:** `project-docs/DESIGN_SYSTEM.md` синхронизирован под `Manrope` как новый основной шрифт.
+- **Verification:** локальная сборка после замены шрифта проходит успешно.
+
+### 2026-06-16 — Из названий карточек убран префикс «ЖК»
+
+- **Updated UI copy:** в каталоге Краснодара названия комплексов теперь отображаются без префиксов `ЖК`, `Квартал`, `Клубный квартал` и без типографских кавычек, чтобы карточки выглядели чище и ближе к визуальному референсу.
+- **Kept data intact:** исходные названия в `src/data/krasnodar-complexes.ts` не переписывались; очистка сделана на уровне UI в `src/components/ui/ComplexCard.tsx`.
+- **Aligned CTA context:** в сценарий заявки из карточки передаётся уже очищенное название комплекса.
+
+### 2026-06-16 — Убраны CTA-хвосты из карточек и поджаты названия ЖК
+
+- **Removed CTA hint:** из всех карточек каталога убран нижний текстовый call to action, чтобы карточки выглядели чище и визуально ближе к референсу.
+- **Refined title row:** строка `название + цена` в карточках стала компактнее; убраны ограничения, которые раньше преждевременно ломали длинные названия вроде `Родные просторы`.
+- **Adjusted typography:** заголовки сделаны мельче и легче по весу, без лишней тяжести, с более премиальным ритмом.
+
+### 2026-06-16 — Смягчено раскрытие карточки и упрощены верхние плашки
+
+- **Adjusted hover behavior:** при наведении на текст фото теперь сжимается мягче; убран слишком большой разрыв между изображением и текстовым блоком.
+- **Aligned filters:** панель фильтров на десктопе растянута на всю ширину сетки карточек.
+- **Simplified badges:** из верхних плашек убраны `Военная ипотека` и класс объекта; оставлен только статус `Есть сданные` или `Новый этап`.
+- **Softened badge style:** статусная плашка уменьшена по высоте и кеглю, чтобы оставаться заметной, но не спорить с фотографией.
+
+### 2026-06-16 — Доведён mobile tap-сценарий карточек каталога
+
+- **Reduced hover gap:** в раскрытом состоянии карточки фотография теперь уходит вверх мягче, а зазор между визуалом и текстом уменьшен ещё сильнее.
+- **Improved touch UX:** на мобильных и тач-устройствах первый тап по текстовой части карточки раскрывает детали, второй выполняет действие карточки.
+- **Kept desktop behavior:** на десктопе сохранён быстрый hover-сценарий без лишних кликов.
+
+### 2026-06-16 — Карточки каталога сделаны чище по визуалу
+
+- **Removed hover shadow:** у карточек убрана тень при наведении; hover теперь держится на чистой рамке без лишнего объёма.
+- **Rounded visual block:** фотография внутри карточки стала более округлой и отделённой от белой подложки, ближе к витринному референсу.
+- **Added premium footer row:** в нижней части карточки добавлена тонкая разделительная линия и аккуратный action-ряд с `Получить консультацию`.
+
+### 2026-06-16 — Добавлен тонкий divider после адреса в карточке
+
+- **Refined text hierarchy:** после адреса в карточке добавлена деликатная горизонтальная линия, чтобы разделить первичный блок заголовка и детальный блок характеристик.
+- **Matched reference rhythm:** нижняя часть карточки стала ближе к референсу по визуальной паузе и структурности текста.
+
+### 2026-06-16 — Divider переведён в hover-состояние, текст карточек дополнительно уменьшен
+
+- **Updated divider behavior:** линия после адреса теперь скрыта в спокойном состоянии и проявляется только при раскрытии карточки.
+- **Refined typography:** вторичный текст, адрес, цена и нижний action-ряд карточки уменьшены на desktop и mobile для более аккуратной, премиальной подачи.
+
+### 2026-06-16 — Поджата типографика карточек и добавлены фото ещё для 3 ЖК
+
+- **Refined typography:** в каталоге `/voennaya-ipoteka-krasnodar/` уменьшен размер названий жилых комплексов, ослаблен визуальный вес цены и адреса, чтобы карточки читались аккуратнее и спокойнее на десктопе.
+- **Added assets:** подключены реальные локальные фото из CIAN для `ЖК «Самолёт»`, `ЖК «Парк Победы»` и `ЖК «Народные кварталы»`.
+- **Updated data:** в `src/data/krasnodar-complexes.ts` у трёх карточек заменены `null`-заглушки на реальные пути к изображениям.
+- **Decision:** оставили по 3 кадра на карточку, чтобы сохранить премиальный ритм каталога и не перегрузить hover-слайдер.
+- **Next:** продолжить тем же способом наполнение остальных карточек каталога реальными фотографиями.
+
+### 2026-06-16 — Премиальная пересборка каталога ЖК на странице Краснодара
+
+- **Updated:** блок каталога `/voennaya-ipoteka-krasnodar/` визуально упрощён и очищен.
+- **Removed:** служебный лейбл `Каталог ЖК / 02` и подзаголовок под H2, чтобы секция начиналась сразу с сильного заголовка.
+- **Restyled:** фильтры переведены в более спокойную белую панель с тонкими разделителями и меньшим визуальным шумом.
+- **Restyled:** карточки переведены с серой подложки на белую, с мягкой рамкой, тенью и более спокойной иерархией внутри.
+- **Changed interaction:** автослайдер по таймеру заменён на ручное переключение фото по горизонтальным зонам наведения на изображение; индикаторы заменены с точек на премиальные линейные маркеры.
+- **Improved data UX:** исправлена логика фильтра `2027 и позже` — теперь учитывается `deadlineMax`, а не только `deadlineMin`.
+- **Verification:** `pnpm build` прошёл; desktop/mobile визуально проверены на localhost без ошибок сборки.
+
+### 2026-06-16 — Подключены реальные фото для карточки DOGMA PARK
+
+- **Source:** `https://zhk-dogma-park-krasnodar-i.cian.ru/` (CIAN, 3 выбранных рендера ЖК).
+- **Added assets:** `public/images/complexes/dogma-park/dogma-park-1.jpg`, `dogma-park-2.jpg`, `dogma-park-3.jpg`.
+- **Updated data:** в `src/data/krasnodar-complexes.ts` карточка `DOGMA PARK` переведена с `null`-заглушек на локальные изображения.
+- **Decision:** оставили 3 фотографии, а не 5, чтобы карточка оставалась лёгкой и слайдер не перегружал каталог.
+- **Next:** при необходимости собрать таким же способом фото для остальных 11 ЖК и затем довести UX карточки/hover-сценарий.
+
+### 2026-06-16 — Production hotfix: восстановлен `voen-navigator.ru`
+
+- **Issue:** production-сайт открывал HTML главной, но ассеты `/_astro/*`, `/fonts/*` и внутренние страницы отдавали `404/403`; внешняя проверка могла выглядеть как зависание/нерабочий сайт.
+- **Root cause:** директории текущего релиза `/var/www/client-sites/voenniy-navigator/releases/20260615154415-smartcaptcha` имели права `drwx------ root:www-data`, из-за чего nginx не мог зайти в папки релиза.
+- **Server fix:** на AMS Server нормализованы права текущего релиза: директории `2755`, файлы `0644`, группа `www-data`; `nginx -t` успешен, nginx перезагружен.
+- **Verified:** `https://voen-navigator.ru/`, `/voennaya-ipoteka-krasnodar/`, `/o-servise/` и CSS `/_astro/index.CbnYArwn.css` возвращают `200`.
+- **Hardening:** в `.github/workflows/deploy-ams.yml` добавлен post-rsync шаг нормализации прав релиза, чтобы следующий деплой не повторил проблему.
+
+### 2026-06-15 — SmartCaptcha readiness for AMS Leads API
+
+- **Added:** client-side Yandex SmartCaptcha support for both lead flows:
+  - `src/components/ui/RequestModal.tsx`
+  - `src/components/leadgen/LeadGenRequestModal.tsx`
+- **Updated:** `src/lib/leads.ts` now forwards `smartCaptchaToken` into AMS Leads API payloads.
+- **Updated:** `.env.example` now includes `PUBLIC_SMARTCAPTCHA_CLIENT_KEY`.
+- **Installed:** `@yandex/smart-captcha`.
+- **Shared backend:** on AMS Server deployed shared AMS Leads API update with SmartCaptcha support and nginx rate limit for `/api/leads`, so all connected projects получили серверный антифлуд-слой уже сейчас.
+- **Kept:** existing modal logic, copy, thank-you redirects and analytics events; changed only the anti-bot protection layer.
+- **Verification:** `pnpm build` — passed.
+
+### 2026-06-11 — Пересборка блоков 03 (Eligibility) и 04 (Amount)
+
+- **Block 03 (Eligibility):** пересобран по H2-BRIDGE и Risk Reversal.
+  - H2: «Три условия, без которых банк не начнёт рассмотрение» (напряжение + механизм).
+  - Lead: конкретный риск — «потерять месяцы на пересборку пакета».
+  - Критерии сокращены до 3 пунктов, документы — до 2, без воды.
+  - Добавлен фильтр «Кому не подходит» (Risk Reversal): 3 пункта отсечения.
+  - CTA: «Рассчитать в калькуляторе» (ведёт на `/kalkulyator-voennoy-ipoteki/`).
+  - Mobile: grid → 1 column, filter → vertical stack.
+- **Block 04 (Amount):** пересобран с премиальным визуалом «карточка-квитанция».
+  - H2: «2,1–2,3 млн — но это не ваш финальный бюджет» (конкретика + напряжение).
+  - Lead: «Банк не одобряет по таблице» — сразу отстройка.
+  - Визуал: тёмная карточка-квитанция (bank statement) с базовой суммой, 4 рычага и итогом «до 5 млн ₽».
+  - 4 фактора в mini-cards: срок, банк, объект, дополнительные средства.
+  - CTA: «Рассчитать сумму» (ведёт на калькулятор).
+  - Mobile: квитанция full-width, факторы 2×2 grid.
+- **Build:** `pnpm build` проходит с 0 errors, 0 warnings.
+- **Next:** блок 05 (Scenarios) → 06 (Banks) → 07 (Next Steps) → 08 (Geo) → 09 (FAQ).
+
+### 2026-06-11 — Пересборка блоков 06–09 на странице `/usloviya-voennoy-ipoteki/`
+
+- **Block 06 (Banks):** пересобран в таблицу сравнения 4 банков (ПСБ, Сбер, ВТБ, Банк РОССИЯ).
+  - Десктоп: responsive-таблица с параметрами (ставка, сумма, срок, первоначальный взнос, объекты, возраст, особенности).
+  - Mobile: карточки с параметрами вместо таблицы.
+  - CTA: «Подобрать банк под мою ситуацию» → модалка на `/contacts/#request`.
+  - Стиль: премиальные тёмные карточки, accent badges, hover-эффекты.
+- **Block 07 (Next Steps):** пересобран из 7 шагов оформления в 4 шага сервиса.
+  - Шаги: Первичный разбор → Финальный расчёт → Подбор объекта → Сопровождение сделки.
+  - 4 карточки в grid (4 cols desktop, 2 cols tablet, 1 col mobile).
+  - CTA: «Начать с первичного разбора» → модалка.
+- **Block 08 (Geo):** создан новый блок перекрёстных ссылок.
+  - 2 карточки: Краснодар (50+ проектов, 2–4 недели) и Крым (15+ проектов, 3–5 недель).
+  - Ссылки: `/voennaya-ipoteka-krasnodar/` и `/voennaya-ipoteka-krym/`.
+  - Подключён в `usloviya-voennoy-ipoteki.astro` между Process и FAQ.
+- **Block 09 (FAQ):** расширен с 8 до 11 вопросов.
+  - Добавлены: процентная ставка, развод, продажа квартиры.
+  - Все вопросы по FAQ-SAFE: прямые ответы, без рекламы, с ограничениями.
+  - Schema `faqSchema` автоматически синхронизирован через `pageData.ts`.
+- **Build:** `pnpm build` проходит с 0 errors, 0 warnings.
+- **Next:** проверка мобильной версии, Safari iOS, финальный QA.
+
+### 2026-06-11 — Финализация брифа страницы Условия военной ипотеки (v2.0)
+
+- **Decision:** утверждена финальная структура страницы `/usloviya-voennoy-ipoteki/` из 9 блоков по методологии АМС.
+- **Removed:** удалён старый дублирующий бриф `pages/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md`. Единственный бриф — `project-docs/briefs/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md`.
+- **New structure (9 blocks):** 01-Hero → 02-Conditions → 03-Eligibility → 04-Amount → 05-Scenarios → 06-Banks → 07-NextSteps → 08-Geo → 09-FAQ.
+- **Key changes:** добавлен фильтр «Кому не подходит» в Eligibility; Banks пересобран в таблицу сравнения; Process укорочен до 4 шагов сервиса; добавлен Geo-мостик на Краснодар и Крым; FAQ расширен до 10+ вопросов с процентом, ставкой, разводом, продажей.
+- **CTA logic:** блоки 02-05 → калькулятор; блоки 06-09 → разбор.
+- **SEO-check:** все H2 по H2-BRIDGE, FAQ по FAQ-SAFE, Risk Reversal через фильтр отсечения.
+- **Next:** пересборка блоков 03-09 по финальному брифу.
+
 ### 2026-06-10 — Пересборка блока Conditions на странице условий военной ипотеки
 
 - **Reframed block logic:** `src/pages/_usloviya-voennoy-ipoteki/02-Conditions.astro` переведён из общего списка правил в более сильный сценарий `4 ключевых параметра одобрения`.
@@ -34,8 +234,8 @@
 ### 2026-06-10 — Синхронизация FAQ и финального CTA калькулятора с главной страницей
 
 - **Confirmed route state:** сценарный блок на странице калькулятора не возвращён в рендер; после блока параметров по странице сразу идёт FAQ.
-- **Updated FAQ design:** `src/pages/_kalkulyator-voennoy-ipoteki/06-FAQ.astro` приведён к визуальному паттерну главной страницы: sticky-левая колонка, CTA-ссылка, нумерованный аккордеон, hover/open-состояния и плавное раскрытие.
-- **Updated final CTA design:** `src/pages/_kalkulyator-voennoy-ipoteki/07-CTA.astro` переведён с shared dark CTA на тот же светлый премиальный финальный экран, что и на главной странице.
+- **Updated FAQ design:** FAQ страницы калькулятора приведён к визуальному паттерну главной страницы: sticky-левая колонка, CTA-ссылка, нумерованный аккордеон, hover/open-состояния и плавное раскрытие.
+- **Updated final CTA design:** финальный CTA калькулятора переведён на тот же светлый премиальный shared-паттерн, что и на главной странице.
 - **Synced CTA copy:** финальная кнопка калькулятора возвращена к проектной формулировке `Получить разбор ситуации` вместо более слабого `Отправить на разбор`.
 - **Updated brief:** `project-docs/briefs/PAGE_KALKULYATOR_VOENNOY_IPOTEKI.md` синхронизирован с новым as-built решением для FAQ и Final CTA.
 
@@ -66,8 +266,8 @@
 - **Created:** новый `02-ProofLayer.astro` сразу после Hero с цифрами доверия: 65 сделок по ВИ, 180 сделок, с 2016 года, 0% комиссии для покупателя.
 - **Created:** новый `03-Process.astro` вместо старого блока ограничений — 4 премиальных шага процесса: разбор, подбор, ипотека, сопровождение сделки.
 - **Rebuilt:** `04-RoleOfMikhail.astro` в editorial split-композиции: фото `mikhail-hero.png`, новый коммерческий H2, прямой lead и 3 смысла (опыт, ответственность, глубокий разбор).
-- **Rebuilt:** `05-FAQ.astro` приведён к точному визуальному паттерну главной страницы: sticky-левая колонка, нумерованный аккордеон, плавное раскрытие, все вопросы по умолчанию закрыты.
-- **Rebuilt:** `06-FinalCTA.astro` приведён к точному визуальному паттерну главной страницы: светлый фон, левый оффер и правая карточка гарантий. Тёмная версия убрана.
+- **Rebuilt:** FAQ приведён к точному визуальному паттерну главной страницы: sticky-левая колонка, нумерованный аккордеон, плавное раскрытие, все вопросы по умолчанию закрыты.
+- **Rebuilt:** финальный CTA приведён к точному светлому паттерну главной страницы. Тёмная версия убрана.
 - **Removed:** удалены устаревшие блоки `02-WhatIsService`, `03-WhyMilitaryFamilies`, `05-PrimaryReview`, `06-SelectionMethod`, `07-Transparency`, `08-ProofLayer`, `09-OfficesContact`, `10-FinalCTA`.
 - **Updated route:** `src/pages/o-servise.astro` переведён на новую 6-блочную структуру: Hero → ProofLayer → Process → RoleOfMikhail → FAQ → FinalCTA.
 - **Updated SEO layer:** `src/pages/_o-servise/pageData.ts` синхронизирован с новой субъектностью и OG для страницы.
@@ -93,7 +293,7 @@
 
 - **Updated:** в `src/pages/_home/07-MikhailTrust.astro` фото Михаила переведено из простой вставки в layered photo-card: добавлены премиальная рамка, мягкая подложка, световой halo и нижняя caption-плашка с ролью.
 - **Responsive:** фото-блок Михаила проверен и адаптирован для desktop / tablet / mobile без потери читаемости и без конфликтов с текстовой частью секции.
-- **Updated:** в `src/pages/_home/10-FinalCTA.astro` правая гарантийная зона пересобрана в более премиальную visual-card композицию с layered shell, glow-подложкой и отдельными benefit-cards.
+- **Updated:** финальный CTA главной пересобран в более премиальную visual-card композицию с layered shell, glow-подложкой и отдельными benefit-cards.
 - **Improved:** гарантии `Без комиссий`, `Можно дистанционно`, `20 минут` получили нумерацию, более сильную иерархию и устойчивый responsive-layout вместо простой плоской карточки.
 - **Checks:** `pnpm build` проходит успешно; финальный CTA и trust-блок Михаила просмотрены на `1366 / 768 / 390` через localhost.
 
@@ -196,3 +396,10 @@
 - **Verified:** HTML уже отдаётся с `Content-Encoding: gzip`.
 - **Found:** для JS/CSS компрессия не включена.
 - **Decision:** этап `PlayForm/Compress` отложен как инфраструктурно заблокированный.
+
+### 2026-06-15 — SmartCaptcha и production hardening
+
+- **Added:** для проекта `voenniy-navigator` в `AMS Leads API` включена обязательная Yandex SmartCaptcha.
+- **Published:** на `voen-navigator.ru` выкачена новая production-сборка с `PUBLIC_SMARTCAPTCHA_CLIENT_KEY`; обе lead-формы передают `smartCaptchaToken`.
+- **Verified:** прямой `POST https://voen-navigator.ru/api/leads` без `smartCaptchaToken` возвращает `400 captcha_required`.
+- **Infra:** server-side rate-limit на leads-роуте и Nginx-level throttling остаются активны как антибот-слой.

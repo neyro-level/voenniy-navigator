@@ -44,7 +44,7 @@ const crimea = OFFICES[1];
             <span>Крым</span>
           </div>
           <h3>Бахчисарай, ул. Комарова, 13</h3>
-          <p>Офис для встреч и разборов по предварительной записи.</p>
+          <p>Офис для встреч и расчётов по предварительной записи.</p>
           <div class="vn-contacts-office__bottom">
             <span>Встречи по предварительной записи</span>
             <a href="https://yandex.ru/maps/-/CHQl5ZMo" target="_blank" rel="noopener noreferrer">Построить маршрут →</a>
@@ -93,7 +93,13 @@ const crimea = OFFICES[1];
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    box-shadow: 0 12px 36px rgba(15, 20, 25, 0.08);
+    box-shadow: 0 8px 24px rgba(15, 20, 25, 0.06);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .vn-contacts-office:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(15, 20, 25, 0.1);
   }
 
   .vn-contacts-office::before {

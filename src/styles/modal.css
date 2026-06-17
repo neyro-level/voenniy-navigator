@@ -6,20 +6,22 @@
   place-items: center;
   padding: 24px;
   overflow-y: auto;
-  background: color-mix(in srgb, var(--color-bg-dark) 62%, transparent);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--color-bg-dark) 56%, transparent);
+  backdrop-filter: blur(12px);
 }
 
 .vn-modal__panel {
   position: relative;
-  width: min(100%, 540px);
+  width: min(100%, 560px);
   max-height: calc(100dvh - 48px);
   overflow-y: auto;
-  padding: 40px;
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
+  padding: 36px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 82%, white);
+  border-radius: 22px;
   background: var(--color-bg-surface);
-  box-shadow: var(--shadow-xl);
+  box-shadow:
+    0 28px 80px color-mix(in srgb, var(--color-text-primary) 16%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 88%, transparent);
 }
 
 .vn-modal__close {
@@ -50,55 +52,58 @@
 }
 
 .vn-modal__header {
-  padding-right: 52px;
+  padding-right: 60px;
 }
 
 .vn-modal__header-copy {
-  max-width: 430px;
+  max-width: 450px;
 }
 
 .vn-modal__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 12px;
-  font-size: var(--fs-label);
-  font-weight: 600;
+  margin: 0 0 10px;
+  font-size: 0.72rem;
+  font-weight: 500;
   line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-accent-primary);
+  opacity: 0.82;
 }
 
 .vn-modal__eyebrow::before {
   content: '';
-  width: 2px;
-  height: 18px;
+  width: 18px;
+  height: 1px;
   border-radius: 999px;
   background: var(--color-accent-cta);
 }
 
 .vn-modal__title {
   margin: 0;
-  font-size: var(--fs-h2);
-  font-weight: 650;
-  line-height: 1.12;
+  font-size: clamp(1.7rem, 1.5rem + 0.5vw, 2.15rem);
+  font-weight: 560;
+  line-height: 1.08;
   color: var(--color-text-primary);
   text-wrap: balance;
+  letter-spacing: 0;
 }
 
 .vn-modal__subtitle {
-  margin: 14px 0 0;
-  font-size: var(--fs-body);
-  line-height: 1.6;
+  margin: 12px 0 0;
+  font-size: 0.96rem;
+  line-height: 1.58;
   color: var(--color-text-secondary);
   text-wrap: pretty;
+  max-width: 43ch;
 }
 
 .vn-modal__form {
   display: grid;
-  gap: 20px;
-  margin-top: 32px;
+  gap: 18px;
+  margin-top: 28px;
 }
 
 .vn-modal__field {
@@ -108,20 +113,20 @@
 
 .vn-modal__label {
   margin: 0;
-  font-size: var(--fs-body-sm);
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 540;
   line-height: 1.3;
   color: var(--color-text-primary);
 }
 
 .vn-modal__input {
   width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, white);
+  border-radius: 14px;
   font: inherit;
-  font-size: var(--fs-body);
+  font-size: 0.96rem;
   line-height: 1.35;
   color: var(--color-text-primary);
   background: var(--color-bg-surface);
@@ -171,7 +176,7 @@
 .vn-modal__method-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .vn-modal__method-option {
@@ -192,13 +197,13 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  min-height: 48px;
+  min-height: 50px;
   min-width: 48px;
   padding: 10px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-body-sm);
-  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, white);
+  border-radius: 14px;
+  font-size: 0.84rem;
+  font-weight: 540;
   line-height: 1.2;
   color: var(--color-text-secondary);
   background: var(--color-bg-surface);
@@ -285,10 +290,10 @@
 .vn-modal__submit {
   width: 100%;
   justify-content: center;
-  min-height: 54px;
+  min-height: 56px;
   padding-block: 16px;
-  font-size: var(--fs-body);
-  font-weight: 650;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .vn-modal__submit:disabled {
