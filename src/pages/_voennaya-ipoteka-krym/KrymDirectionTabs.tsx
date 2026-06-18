@@ -7,6 +7,7 @@ import {
 } from './krymDirections';
 
 type KrymDirectionTabsProps = {
+  variant?: 'map' | 'catalog';
 };
 
 declare global {
@@ -34,7 +35,7 @@ function broadcastDirection(direction: DirectionKey) {
   );
 }
 
-export default function KrymDirectionTabs({}: KrymDirectionTabsProps) {
+export default function KrymDirectionTabs({ variant = 'catalog' }: KrymDirectionTabsProps) {
   const [activeDirection, setActiveDirection] = useState<DirectionKey>(getInitialDirection);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function KrymDirectionTabs({}: KrymDirectionTabsProps) {
     krymDirectionGroups.find((direction) => direction.id === activeDirection) ?? krymDirectionGroups[0];
 
   return (
-    <div className="vn-krym-direction-tabs">
+    <div className={`vn-krym-direction-tabs vn-krym-direction-tabs--${variant}`}>
       <div className="vn-krym-direction-tabs__list" role="tablist" aria-label="Направления Крыма">
         {krymDirectionGroups.map((direction) => {
           const isActive = direction.id === activeGroup.id;

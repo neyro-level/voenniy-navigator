@@ -36,16 +36,25 @@ export default function KrymDirectionsCatalog() {
   const activeGroup =
     krymDirectionGroups.find((direction) => direction.id === activeDirection) ?? krymDirectionGroups[0];
 
+  const formatComplexCount = (count: number) => {
+    const mod10 = count % 10;
+    const mod100 = count % 100;
+
+    if (mod10 === 1 && mod100 !== 11) return `${count} объект`;
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${count} объекта`;
+    return `${count} объектов`;
+  };
+
   return (
     <div className="vn-krym-catalog-shell">
       <div className="vn-krym-catalog-shell__switcher">
-        <KrymDirectionTabs />
+        <KrymDirectionTabs variant="catalog" />
       </div>
 
       <ComplexCatalogReact
         complexes={activeGroup.complexes}
         statusMain={`Подборка объектов по направлению ${activeGroup.label}`}
-        statusNote={`Показаны ${activeGroup.complexes.length} объектов текущей временной подборки`}
+        statusNote={`Показаны все ${formatComplexCount(activeGroup.complexes.length)} по выбранному направлению`}
         requestTitlePrefix="Разбор вариантов по объекту"
         requestSubtitle="Покажем планировки, обсудим сценарий покупки в Крыму и подскажем следующий шаг по военной ипотеке."
       />

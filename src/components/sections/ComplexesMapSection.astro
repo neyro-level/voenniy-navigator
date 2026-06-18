@@ -4,6 +4,7 @@ import { complexes } from '../../data/krasnodar-complexes';
 import ComplexesMapReact from '../ui/ComplexesMapReact';
 
 const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
+const primaryComplexes = complexes.filter((complex) => complex.catalogTier === 'primary');
 ---
 
 <section class="vn-section vn-complexes-map-section">
@@ -15,15 +16,10 @@ const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
           <h2 class="vn-complexes-map-section__title">Новостройки Краснодара по военной ипотеке</h2>
         </div>
 
-        <p class="vn-complexes-map-section__lead">
-          Сравните расположение комплексов, посмотрите районы и перейдите к нужной карточке каталога одним кликом по
-          метке.
-        </p>
-
         <ul class="vn-complexes-map-section__points">
           <li>
             <Check size={18} strokeWidth={1.8} aria-hidden="true" />
-            Актуальные жилые комплексы
+            25 жилых комплексов
           </li>
           <li>
             <Check size={18} strokeWidth={1.8} aria-hidden="true" />
@@ -42,7 +38,7 @@ const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
           Краснодар
         </div>
         <ComplexesMapReact
-          complexes={complexes.map((complex) => ({
+          complexes={primaryComplexes.map((complex) => ({
             id: complex.id,
             name: complex.name,
             district: complex.district,
@@ -116,22 +112,12 @@ const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
     text-wrap: balance;
   }
 
-  .vn-complexes-map-section__lead {
-    margin: 0;
-    max-width: 32ch;
-    color: var(--color-text-secondary);
-    font-size: var(--fs-body);
-    line-height: 1.6;
-    margin-top: 2px;
-  }
-
   .vn-complexes-map-section__points {
     list-style: none;
     display: grid;
     gap: 10px;
     margin: 0;
     padding: 0;
-    margin-top: 6px;
   }
 
   .vn-complexes-map-section__points li {
@@ -248,9 +234,6 @@ const mapsApiKey = import.meta.env.PUBLIC_YANDEX_MAPS_API_KEY || '';
       border-radius: 22px;
     }
 
-    .vn-complexes-map-section__lead {
-      max-width: 100%;
-    }
   }
 
   @media (max-width: 640px) {

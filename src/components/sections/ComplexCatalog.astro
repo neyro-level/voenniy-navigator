@@ -19,9 +19,9 @@ function formatPrice(value: number) {
 
     <div class="vn-complex-catalog-section__seo" aria-label="Список жилых комплексов Краснодара по военной ипотеке">
       <p>
-        В каталоге собраны жилые комплексы Краснодара, которые можно рассматривать для покупки по военной ипотеке:
-        с разными районами, сроками сдачи, бюджетом входа и форматом квартир. Здесь представлены комплексы для
-        семейной покупки, жизни, аренды и долгого горизонта выбора.
+        В каталоге собраны 25 жилых комплексов Краснодара, которые можно рассматривать для покупки по военной
+        ипотеке: с разным бюджетом входа, стадией готовности, классом жилья и сценариями покупки. Каталог включает
+        основные объекты и расширенную подборку, которая раскрывается по кнопке и поддерживает фильтр по статусу.
       </p>
       <ul>
         {complexes.map((complex) => (
@@ -65,6 +65,53 @@ function formatPrice(value: number) {
 
   .vn-complex-catalog {
     margin-top: 18px;
+  }
+
+  .vn-complex-catalog__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 2px;
+    margin-bottom: 18px;
+  }
+
+  .vn-complex-catalog__filter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, white);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 68%, white);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .vn-complex-catalog__filter:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 22%, var(--color-border));
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+  }
+
+  .vn-complex-catalog__filter.is-active {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 38%, white);
+    background: color-mix(in srgb, var(--color-accent-primary) 10%, white);
+    color: var(--color-text-primary);
+  }
+
+  .vn-complex-catalog__filter:focus-visible,
+  .vn-complex-catalog__more-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent-primary) 18%, white);
   }
 
   .vn-complex-catalog__status {
@@ -119,6 +166,38 @@ function formatPrice(value: number) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px 24px;
     margin-top: 26px;
+  }
+
+  .vn-complex-catalog__more {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .vn-complex-catalog__more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 24px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 58%, white);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 70%, white);
+    color: var(--color-text-primary);
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-complex-catalog__more-button:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 24%, var(--color-border));
+    background: color-mix(in srgb, var(--color-bg-secondary) 56%, white);
+    transform: translateY(-1px);
   }
 
   /* ─── Complex Card ─── */
@@ -446,6 +525,16 @@ function formatPrice(value: number) {
       margin-top: 20px;
     }
 
+    .vn-complex-catalog__filters {
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .vn-complex-catalog__filter {
+      min-height: 38px;
+      padding: 0 16px;
+    }
+
     .vn-complex-card {
       scroll-margin-top: 96px;
     }
@@ -473,6 +562,14 @@ function formatPrice(value: number) {
       grid-template-columns: 1fr;
       gap: 18px;
       margin-top: 20px;
+    }
+
+    .vn-complex-catalog__more {
+      margin-top: 24px;
+    }
+
+    .vn-complex-catalog__more-button {
+      width: 100%;
     }
 
     .vn-complex-card {

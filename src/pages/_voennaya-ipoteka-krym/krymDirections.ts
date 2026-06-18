@@ -1,4 +1,5 @@
-import { complexes, type Complex } from '../../data/krasnodar-complexes';
+import { krymComplexGroups } from '../../data/krym-complex-groups';
+import type { Complex } from '../../data/krasnodar-complexes';
 import type { MapComplex } from '../../components/ui/ComplexesMapReact';
 
 export type DirectionKey = 'simferopol' | 'sevastopol' | 'coast';
@@ -24,11 +25,7 @@ const createMapComplex = (complex: Complex): MapComplex => ({
   coordinates: complex.coordinates,
 });
 
-const directionComplexSets = {
-  simferopol: complexes.slice(0, 6),
-  sevastopol: complexes.slice(6, 12),
-  coast: [complexes[2], complexes[4], complexes[8], complexes[10]],
-} satisfies Record<DirectionKey, Complex[]>;
+const directionComplexSets = krymComplexGroups satisfies Record<DirectionKey, Complex[]>;
 
 export const krymDirectionGroups: KrymDirectionGroup[] = [
   {

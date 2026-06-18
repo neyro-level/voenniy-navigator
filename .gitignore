@@ -22,6 +22,10 @@ Thumbs.db
 *.log
 npm-debug.log*
 pnpm-debug.log*
+/.tmp-astro-*.log
+/dev-server*.log
+/preview-*.log
+/tmp-devserver*.log
 
 .vercel
 
@@ -40,3 +44,14 @@ pnpm-debug.log*
 # Personal photos at root (not web assets)
 /chirkov-andrey.jpg
 /*.png
+/*.jpg
+/*.jpeg
+
+# Local QA / temp artifacts
+/.tmp/
+/tmp/
+/screenshots/
+/test-results/
+/photo-search/
+/tmp-*.html
+/tmp-*.png

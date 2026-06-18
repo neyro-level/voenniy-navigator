@@ -1,6 +1,6 @@
 ---
 import KrymDirectionsCatalog from './KrymDirectionsCatalog';
-import { complexes } from '../../data/krasnodar-complexes';
+import { krymComplexes } from '../../data/krym-complexes';
 
 function formatComplexName(name: string) {
   return name.replace(/^(?:ЖК|Квартал|Клубный квартал)\s+/u, '').replace(/[«»]/gu, '').trim();
@@ -19,14 +19,15 @@ function formatPrice(value: number) {
 
     <div class="vn-complex-catalog-section__seo" aria-label="Список объектов Крыма по военной ипотеке">
       <p>
-        В каталоге собраны объекты, которые сейчас используются на странице Крыма как временная база для сценария
-        покупки по военной ипотеке: с разными локациями, сроками сдачи, бюджетом входа и форматом квартир.
+        В каталоге собраны новостройки Крыма, которые можно рассматривать для покупки по военной ипотеке в
+        Симферополе, Севастополе и на побережье: с разными локациями, сроками сдачи, бюджетом входа и форматом
+        квартир.
       </p>
       <ul>
-        {complexes.map((complex) => (
+        {krymComplexes.map((complex) => (
           <li>
             {formatComplexName(complex.name)} — {complex.district}, {formatPrice(complex.priceMin)}, срок сдачи{' '}
-            {complex.deadline}, используется как карточка каталога для сценария покупки по военной ипотеке в Крыму.
+            {complex.deadline}, входит в подборку новостроек Крыма по военной ипотеке.
           </li>
         ))}
       </ul>
@@ -75,6 +76,74 @@ function formatPrice(value: number) {
   .vn-krym-catalog-shell__switcher {
     display: flex;
     justify-content: flex-start;
+  }
+
+  .vn-krym-direction-tabs--catalog {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 52%, white);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-secondary) 34%, white);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
+    color: var(--color-text-primary);
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab.is-active {
+    background: color-mix(in srgb, var(--color-accent-cta) 10%, white);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 34%, var(--color-border));
+    color: var(--color-text-primary);
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab-label {
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-surface) 84%, white);
+    color: var(--color-text-primary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab.is-active .vn-krym-direction-tabs__tab-count {
+    background: color-mix(in srgb, var(--color-accent-cta) 16%, white);
   }
 
   .vn-complex-catalog__status {
@@ -456,6 +525,21 @@ function formatPrice(value: number) {
 
     .vn-krym-catalog-shell {
       gap: 16px;
+    }
+
+    .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__tab {
+      justify-content: space-between;
+      min-height: 42px;
+      padding-inline: 12px;
+    }
+
+    .vn-krym-direction-tabs--catalog .vn-krym-direction-tabs__list > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
 
     .vn-complex-card {
