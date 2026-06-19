@@ -11,21 +11,21 @@ interface Guarantee {
 interface Props {
   sectionId?: string;
   eyebrow?: string;
-  title: string;
+  title?: string;
   accentText?: string;
-  subtitle: string;
-  ctaText: string;
+  subtitle?: string;
+  ctaText?: string;
   ctaModalTitle?: string;
   guarantees?: Guarantee[];
 }
 
 const {
   sectionId = "section-cta-final",
-  eyebrow = "ПЕРВЫЙ ШАГ К КВАРТИРЕ",
-  title,
-  accentText,
-  subtitle,
-  ctaText,
+  eyebrow = "ПЕРСОНАЛЬНЫЙ РАЗБОР",
+  title = "Получите разбор вашей ситуации",
+  accentText = "и реальный план покупки",
+  subtitle = "За 20 минут выясним вашу задачу, проверим лимиты банка и подберём объекты, которые реально одобрят. Без обязательств и скрытых платежей.",
+  ctaText = "Получить подборку",
   ctaModalTitle = ctaText,
   guarantees = [
     { icon: 'shield-check', text: 'Без комиссий для покупателя' },

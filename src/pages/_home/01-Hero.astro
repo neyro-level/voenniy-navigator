@@ -1,105 +1,153 @@
 ---
-// Визуальный элемент: минималистичный UI-мокет интерфейса сервиса
+import { Icon } from 'astro-icon/components';
+
+const ROUTES = [
+  {
+    title: 'Новостройки',
+    subtitle: 'Квартиры от застройщика',
+    modalTitle: 'Подберём лучшие новостройки под военную ипотеку бесплатно',
+    modalSubtitle:
+      'Уточним бюджет, банк и регион, а затем соберём короткий список новостроек, которые реально подходят под вашу программу. Без комиссий для вас.',
+    modalSource: 'home-hero-route-newbuild',
+    image: '/images/complexes/samolet/samolet-1.jpg',
+  },
+  {
+    title: 'Дома',
+    subtitle: 'Коттеджи и таунхаусы',
+    modalTitle: 'Поможем подобрать дом под ваш сценарий покупки бесплатно',
+    modalSubtitle:
+      'Разберём, подходит ли вам формат дома, какие ограничения есть по банку и бюджету, и подскажем, какие варианты стоит смотреть в первую очередь.',
+    modalSource: 'home-hero-route-houses',
+    image: '/images/cottages-hero.jpg',
+  },
+  {
+    title: 'Вторичка',
+    subtitle: 'Готовые квартиры',
+    modalTitle: 'Поможем подобрать готовую квартиру на вторичном рынке бесплатно',
+    modalSubtitle:
+      'Поймём вашу задачу, проверим бюджет и ограничения по ипотеке, а затем подскажем, какие готовые квартиры имеет смысл рассматривать без лишних просмотров.',
+    modalSource: 'home-hero-route-secondary',
+    image: '/images/secondary-hero.jpg',
+  },
+  {
+    title: 'Ипотека',
+    subtitle: 'Условия и одобрение',
+    modalTitle: 'Поможем с военной ипотекой бесплатно',
+    modalSubtitle:
+      'Проверим лимиты, объясним, как сейчас пройти одобрение спокойнее, и подскажем следующий шаг по банку, ставке и маршруту покупки.',
+    modalSource: 'home-hero-route-mortgage',
+    image: '/images/mortgage-hero.webp',
+  },
+] as const;
+
+const FEATURED_IMAGE = '/images/krasnodar-newbuild-hero.png';
 ---
 
 <section id="section-hero" class="vn-home-hero">
   <div class="vn-home-hero__grid" aria-hidden="true"></div>
   <div class="vn-home-hero__radial" aria-hidden="true"></div>
 
-  <div class="vn-container">
-    <div class="vn-grid-12 vn-home-hero__layout">
-      <div class="vn-home-hero__content" style="grid-column: 1 / 8">
-        <span class="vn-home-hero__eyebrow">Военный навигатор · сервис выбора новостройки по военной ипотеке</span>
+  <div class="vn-container vn-home-hero__container">
+    <div class="vn-home-hero__layout">
+      <!-- Левая плита: текст + CTA -->
+      <div class="vn-home-hero__content">
+        <span class="vn-home-hero__eyebrow">
+          Военный навигатор · бесплатно для военнослужащих
+        </span>
 
         <h1 class="vn-home-hero__title">
-          Сервис выбора новостройки
-          <span class="vn-home-hero__title-accent">по военной ипотеке под вашу задачу</span>
+          <span class="vn-home-hero__title-line">Подбираем новостройки</span>
+          <span class="vn-home-hero__title-line">
+            <span class="vn-home-hero__title-accent">по военной ипотеке</span>
+            бесплатно
+          </span>
         </h1>
 
         <p class="vn-home-hero__lead">
-          Помогаем найти и безопасно оформить новостройку. Проверяем ограничения банка, ликвидность объекта и реальные сроки сдачи до того, как вы потратите время на просмотр случайных объявлений.
+          Проверяем одобрение банков, ликвидность и сроки сдачи до первого просмотра.
         </p>
 
         <div class="vn-home-hero__actions">
           <a
             href="/contacts/#request"
-            data-modal-open
-            data-modal-title="Рассчитать варианты"
             class="vn-btn-primary vn-home-hero__cta"
+            data-modal-open
+            data-modal-title="Получить разбор ситуации"
+            data-modal-subtitle="Уточним вашу цель, бюджет и ограничения по военной ипотеке, а затем подскажем, какой маршрут покупки сейчас самый разумный."
+            data-modal-source="home-hero-primary-cta"
           >
-            Рассчитать варианты
-          </a>
-          <a href="/kalkulyator-voennoy-ipoteki/" class="vn-home-hero__secondary">
-            Рассчитать ипотеку
+            Получить подборку
+            <Icon name="arrow-up-right" class="vn-home-hero__cta-icon" />
           </a>
         </div>
 
-        <div class="vn-home-hero__signals" role="list" aria-label="Преимущества подхода">
-          <div class="vn-home-hero__signal" role="listitem">
-            <svg class="vn-home-hero__signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <div class="vn-home-hero__signal-content">
-              <span class="vn-home-hero__signal-label">Точный подбор</span>
-              <span class="vn-home-hero__signal-value">Показываем только те объекты, которые реально одобрит банк под ваш сертификат.</span>
-            </div>
-          </div>
-          <div class="vn-home-hero__signal" role="listitem">
-            <svg class="vn-home-hero__signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <div class="vn-home-hero__signal-content">
-              <span class="vn-home-hero__signal-label">Прозрачный маршрут</span>
-              <span class="vn-home-hero__signal-value">От первичного расчёта вариантов до сделки, без скрытых условий и навязанных услуг.</span>
-            </div>
-          </div>
-        </div>
+        <p class="vn-home-hero__micro-trust" aria-label="Краткие гарантии">
+          Бесплатно для военнослужащих · Работаем с 8 банками
+        </p>
       </div>
 
-      <div class="vn-home-hero__aside" style="grid-column: 8 / 13">
-        <div class="vn-home-hero__visual-card">
-          <!-- Премиальный UI-мокет с многослойностью и анимацией -->
-          <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="vn-home-hero__ui-mockup" aria-hidden="true">
-            <!-- Фоновое свечение -->
-            <circle cx="250" cy="200" r="180" fill="url(#glow-gradient)" opacity="0.15" class="animate-pulse-glow" />
-            
-            <!-- Задняя карточка (для глубины) -->
-            <rect x="30" y="50" width="360" height="300" rx="20" fill="var(--color-bg-dark)" stroke="var(--color-border-ondark)" stroke-width="1" opacity="0.5" class="animate-float-slow" />
-            
-            <!-- Основная карточка -->
-            <rect x="70" y="30" width="400" height="340" rx="24" fill="var(--color-bg-dark-elev)" stroke="var(--color-border-ondark)" stroke-width="1" class="animate-float" style="filter: drop-shadow(0 32px 64px rgba(0,0,0,0.4));" />
-            
-            <!-- Заголовок мокета -->
-            <rect x="100" y="60" width="160" height="16" rx="8" fill="var(--color-text-ondark)" opacity="0.8" />
-            <rect x="100" y="88" width="220" height="10" rx="5" fill="var(--color-text-ondark-mute)" opacity="0.3" />
-            
-            <!-- Разделитель -->
-            <line x1="100" y1="120" x2="440" y2="120" stroke="var(--color-border-ondark)" stroke-width="1" />
-            
-            <!-- Секция "Бюджет" -->
-            <rect x="100" y="140" width="100" height="12" rx="6" fill="var(--color-text-ondark)" opacity="0.7" />
-            <rect x="100" y="168" width="340" height="10" rx="5" fill="var(--color-border-ondark)" />
-            <rect x="100" y="168" width="240" height="10" rx="5" fill="var(--color-accent-cta)" opacity="0.8" class="animate-progress" />
-            <circle cx="340" cy="173" r="12" fill="var(--color-accent-cta)" class="animate-pulse-dot" />
-            
-            <!-- Секция "Статус" -->
-            <rect x="100" y="210" width="140" height="12" rx="6" fill="var(--color-text-ondark)" opacity="0.7" />
-            <rect x="100" y="238" width="160" height="40" rx="12" fill="color-mix(in srgb, var(--color-accent-cta) 12%, transparent)" stroke="var(--color-accent-cta)" stroke-width="1.5" opacity="0.8" />
-            <circle cx="120" cy="258" r="8" fill="var(--color-accent-cta)" />
-            <path d="M116 258 L119 261 L124 255" stroke="var(--color-bg-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <rect x="140" y="254" width="100" height="10" rx="5" fill="var(--color-accent-cta)" opacity="0.9" />
-
-            <!-- Плавающий бейдж -->
-            <rect x="310" y="250" width="140" height="48" rx="14" fill="var(--color-bg-dark)" stroke="var(--color-border-ondark)" stroke-width="1" class="animate-float-reverse" style="filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));" />
-            <rect x="328" y="266" width="80" height="10" rx="5" fill="var(--color-text-ondark-mute)" opacity="0.6" />
-            <rect x="328" y="282" width="60" height="8" rx="4" fill="var(--color-accent-cta)" opacity="0.8" />
-
-            <defs>
-              <radialGradient id="glow-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 200) rotate(90) scale(180)">
-                <stop stop-color="var(--color-accent-cta)" />
-                <stop offset="1" stop-color="var(--color-accent-cta)" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-          </svg>
+      <!-- Правая плита: featured-card -->
+      <div class="vn-home-hero__featured">
+        <div class="vn-home-hero__featured-card">
+          <img
+            src={FEATURED_IMAGE}
+            alt="Современный жилой комплекс в Краснодаре для военной ипотеки"
+            class="vn-home-hero__featured-image"
+            loading="eager"
+            decoding="async"
+            width="760"
+            height="520"
+          />
+          <div class="vn-home-hero__featured-badges">
+            <span class="vn-home-hero__featured-badge vn-home-hero__featured-badge--accent">
+              Бесплатно
+            </span>
+            <span class="vn-home-hero__featured-badge">
+              Сопровождение сделки
+            </span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Нижний ряд: route-cards -->
+    <nav class="vn-home-hero__routes" aria-label="Быстрые маршруты">
+      {
+        ROUTES.map((route) => (
+          <button
+            type="button"
+            class:list={[
+              'vn-home-hero__route',
+              'vn-home-hero__route--photo',
+            ]}
+            data-modal-open
+            data-modal-title={route.modalTitle}
+            data-modal-subtitle={route.modalSubtitle}
+            data-modal-source={route.modalSource}
+          >
+            <img
+              src={route.image}
+              alt=""
+              class="vn-home-hero__route-image"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="vn-home-hero__route-overlay"></div>
+
+            <div class="vn-home-hero__route-arrow" aria-hidden="true">
+              <Icon name="arrow-up-right" class="vn-home-hero__route-arrow-icon" />
+            </div>
+
+            <div class="vn-home-hero__route-text">
+              <span class="vn-home-hero__route-kicker">Бесплатно для вас</span>
+              <span class="vn-home-hero__route-title">{route.title}</span>
+              <span class="vn-home-hero__route-subtitle">{route.subtitle}</span>
+            </div>
+          </button>
+        ))
+      }
+    </nav>
   </div>
 </section>
 
@@ -109,10 +157,11 @@
     overflow: hidden;
     min-height: 100vh;
     padding-top: 152px;
-    padding-bottom: 88px;
+    padding-bottom: 64px;
     background: var(--color-bg-primary);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .vn-home-hero__grid {
@@ -137,10 +186,19 @@
     z-index: 0;
   }
 
-  .vn-home-hero__layout {
+  .vn-home-hero__container {
     position: relative;
     z-index: 1;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .vn-home-hero__layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
   }
 
   .vn-home-hero__content {
@@ -168,190 +226,303 @@
 
   .vn-home-hero__title {
     margin: 28px 0 0;
-    max-width: 780px;
+    max-width: 720px;
     font-size: var(--fs-display);
     line-height: 1.05;
     font-weight: 600;
     letter-spacing: -0.03em;
     color: var(--color-text-primary);
     text-wrap: balance;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .vn-home-hero__title-line {
+    display: block;
   }
 
   .vn-home-hero__title-accent {
     color: var(--color-accent-primary);
+    font-weight: 400;
   }
 
   .vn-home-hero__lead {
-    margin: 28px 0 0;
-    max-width: 620px;
+    margin: 24px 0 0;
+    max-width: 560px;
     font-size: var(--fs-lead);
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--color-text-secondary);
     text-wrap: pretty;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .vn-home-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 36px;
+    margin-top: 32px;
   }
 
   .vn-home-hero__cta {
     min-height: 54px;
-    padding-inline: 36px;
+    padding-inline: 32px;
   }
 
-  .vn-home-hero__secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 54px;
-    padding: 0 28px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-bg-surface) 74%, transparent);
-    color: var(--color-text-primary);
-    font-size: var(--fs-body);
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  .vn-home-hero__cta-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
   }
 
-  .vn-home-hero__secondary:hover {
-    background: var(--color-accent-cta-soft);
-    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
-    color: var(--color-accent-cta);
+  .vn-home-hero__cta:hover .vn-home-hero__cta-icon {
+    transform: translate(1px, -1px);
   }
 
-  .vn-home-hero__note {
-    margin: 14px 0 0;
+  .vn-home-hero__micro-trust {
+    margin-top: 20px;
     font-size: var(--fs-body-sm);
-    line-height: 1.55;
+    font-weight: 500;
     color: var(--color-text-tertiary);
   }
 
-  .vn-home-hero__signals {
+  .vn-home-hero__featured {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .vn-home-hero__featured-card {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-bg-dark);
+    box-shadow:
+      0 28px 80px color-mix(in srgb, var(--color-text-primary) 18%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--color-bg-surface) 18%, transparent) inset;
+  }
+
+  .vn-home-hero__featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .vn-home-hero__featured-card:hover .vn-home-hero__featured-image {
+    transform: scale(1.03);
+  }
+
+  .vn-home-hero__featured-badges {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vn-home-hero__featured-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-dark) 72%, transparent);
+    border: 1px solid var(--color-border-ondark);
+    color: var(--color-text-ondark);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1;
+    backdrop-filter: blur(8px);
+  }
+
+  .vn-home-hero__featured-badge--accent {
+    background: var(--color-accent-cta);
+    border-color: var(--color-accent-cta);
+    color: var(--color-bg-surface);
+  }
+
+  .vn-home-hero__routes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .vn-home-hero__route {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-    max-width: 560px;
-  }
-
-  .vn-home-hero__signal {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 16px 20px;
-    border: 1px solid var(--color-border);
+    justify-content: flex-end;
+    min-height: 140px;
+    padding: 16px;
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
+    overflow: hidden;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+    width: 100%;
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease;
   }
 
-  .vn-home-hero__signal-icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
+  .vn-home-hero__route--photo {
+    min-height: 160px;
+  }
+
+  .vn-home-hero__route--calculator {
+    background: var(--color-accent-soft);
+    border-color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent);
+  }
+
+  .vn-home-hero__route:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 24%, var(--color-border));
+  }
+
+  .vn-home-hero__route-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .vn-home-hero__route--photo:hover .vn-home-hero__route-image {
+    transform: scale(1.05);
+  }
+
+  .vn-home-hero__route-icon-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-accent-soft) 0%, transparent 100%);
+  }
+
+  .vn-home-hero__route-main-icon {
+    width: 44px;
+    height: 44px;
     color: var(--color-accent-cta);
-    margin-top: 2px;
+    opacity: 0.9;
   }
 
-  .vn-home-hero__signal-content {
+  .vn-home-hero__route-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, color-mix(in srgb, var(--color-bg-dark) 72%, transparent) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .vn-home-hero__route--calculator .vn-home-hero__route-overlay {
+    background: linear-gradient(to top, color-mix(in srgb, var(--color-bg-surface) 90%, transparent) 0%, transparent 70%);
+  }
+
+  .vn-home-hero__route-arrow {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-bg-surface) 90%, transparent);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-home-hero__route:hover .vn-home-hero__route-arrow {
+    background: var(--color-accent-cta);
+    color: var(--color-bg-surface);
+    border-color: var(--color-accent-cta);
+    transform: translate(1px, -1px);
+  }
+
+  .vn-home-hero__route-arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .vn-home-hero__route-text {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
 
-  .vn-home-hero__signal-label {
-    font-size: var(--fs-body);
+  .vn-home-hero__route-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg-surface) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-bg-surface) 18%, transparent);
+    color: color-mix(in srgb, var(--color-bg-surface) 90%, transparent);
+    font-size: var(--fs-caption);
     font-weight: 600;
+    line-height: 1;
+    backdrop-filter: blur(6px);
+  }
+
+  .vn-home-hero__route-title {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-bg-surface);
+    line-height: 1.2;
+  }
+
+  .vn-home-hero__route--calculator .vn-home-hero__route-title {
     color: var(--color-text-primary);
   }
 
-  .vn-home-hero__signal-value {
+  .vn-home-hero__route-subtitle {
     font-size: var(--fs-body-sm);
-    line-height: 1.5;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--color-bg-surface) 80%, transparent);
+    line-height: 1.4;
+  }
+
+  .vn-home-hero__route--calculator .vn-home-hero__route-subtitle {
     color: var(--color-text-secondary);
   }
 
-  .vn-home-hero__aside {
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  @media (max-width: 1200px) {
+    .vn-home-hero__title {
+      max-width: 640px;
+    }
 
-  .vn-home-hero__visual-card {
-    position: relative;
-    width: 100%;
-    max-width: 580px;
-    aspect-ratio: 500 / 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1000px;
-  }
+    .vn-home-hero__lead {
+      max-width: 520px;
+    }
 
-  .vn-home-hero__ui-mockup {
-    width: 100%;
-    height: 100%;
-    max-width: 500px;
-  }
+    .vn-home-hero__layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
 
-  /* Премиальные анимации */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  
-  @keyframes float-slow {
-    0%, 100% { transform: translateY(0px) translateX(-10px); }
-    50% { transform: translateY(-8px) translateX(-10px); }
-  }
-
-  @keyframes float-reverse {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(8px); }
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.15; transform: scale(1); }
-    50% { opacity: 0.25; transform: scale(1.05); }
-  }
-
-  @keyframes progress-load {
-    0% { width: 0; }
-    100% { width: 240px; }
-  }
-
-  @keyframes pulse-dot {
-    0%, 100% { r: 12; opacity: 1; }
-    50% { r: 14; opacity: 0.8; }
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-float-slow {
-    animation: float-slow 8s ease-in-out infinite;
-  }
-
-  .animate-float-reverse {
-    animation: float-reverse 7s ease-in-out infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 4s ease-in-out infinite;
-  }
-
-  .animate-progress {
-    animation: progress-load 2s ease-out forwards;
-  }
-
-  .animate-pulse-dot {
-    animation: pulse-dot 2s ease-in-out infinite;
+    .vn-home-hero__featured-card {
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 1023px) {
@@ -360,24 +531,30 @@
       padding-top: 120px;
     }
 
-    .vn-home-hero__content,
-    .vn-home-hero__aside {
-      grid-column: 1 / -1 !important;
+    .vn-home-hero__layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
 
-    .vn-home-hero__aside {
-      margin-top: 48px;
+    .vn-home-hero__featured {
+      justify-content: center;
     }
-    
-    .vn-home-hero__visual-card {
-      max-width: 480px;
+
+    .vn-home-hero__featured-card {
+      max-width: 560px;
+      aspect-ratio: 16 / 10;
+    }
+
+    .vn-home-hero__routes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
   }
 
   @media (max-width: 640px) {
     .vn-home-hero {
       padding-top: 96px;
-      padding-bottom: 64px;
+      padding-bottom: 48px;
     }
 
     .vn-home-hero__grid {
@@ -385,30 +562,75 @@
     }
 
     .vn-home-hero__title {
-      line-height: 1.1;
+      max-width: none;
+      font-size: clamp(2.6rem, 10.8vw, 3.9rem);
+      line-height: 1.08;
       letter-spacing: -0.02em;
+      text-wrap: pretty;
+    }
+
+    .vn-home-hero__lead {
+      max-width: none;
+      font-size: clamp(1.0625rem, 4.4vw, 1.1875rem);
     }
 
     .vn-home-hero__actions {
       flex-direction: column;
     }
 
-    .vn-home-hero__cta,
-    .vn-home-hero__secondary {
+    .vn-home-hero__cta {
       width: 100%;
+      justify-content: center;
     }
 
-    .vn-home-hero__signal {
-      padding: 14px 16px;
+    .vn-home-hero__micro-trust {
+      text-align: left;
     }
-    
-    .vn-home-hero__visual-card {
-      max-width: 340px;
-      margin-bottom: 12px;
+
+    .vn-home-hero__featured-card {
+      aspect-ratio: 4 / 3;
     }
-    
-    .vn-home-hero__aside {
-      margin-top: 32px;
+
+    .vn-home-hero__featured-badges {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .vn-home-hero__featured-badge {
+      padding: 6px 10px;
+      font-size: var(--fs-caption);
+    }
+
+    .vn-home-hero__routes {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-home-hero__route--photo,
+    .vn-home-hero__route--calculator {
+      min-height: 120px;
+    }
+
+    .vn-home-hero__route-kicker {
+      margin-bottom: 4px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-hero__featured-image,
+    .vn-home-hero__route-image,
+    .vn-home-hero__route,
+    .vn-home-hero__route-arrow,
+    .vn-home-hero__cta-icon {
+      transition: none;
+    }
+
+    .vn-home-hero__featured-card:hover .vn-home-hero__featured-image,
+    .vn-home-hero__route--photo:hover .vn-home-hero__route-image,
+    .vn-home-hero__route:hover,
+    .vn-home-hero__route:hover .vn-home-hero__route-arrow,
+    .vn-home-hero__cta:hover .vn-home-hero__cta-icon {
+      transform: none;
     }
   }
 </style>

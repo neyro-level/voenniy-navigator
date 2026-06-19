@@ -7,6 +7,56 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-20 — Legal-страницы: политика выровнена по паттерну согласия
+
+- **Privacy TOC normalized:** в `src/components/technical/pages/PrivacyPage.astro` блок `Содержание документа` перестроен по образцу из `ConsentPage.astro` — теперь это светлая сетка карточек-ссылок с единым фоном, рамкой и hover-state.
+- **Operator contacts restyled:** финальный блок `Контактная информация оператора` на `/politika/` убран с тёмного фона и переведён в обычную светлую карточку страницы с трёхколоночной сеткой на desktop и вертикальным стеком на tablet/mobile.
+- **Visual consistency improved:** подписи полей, значения, отступы и блок `Вернуться на главную` приведены к тому же спокойному legal-style, что и остальные светлые секции документа.
+- **Checks passed:** `pnpm build` проходит успешно; `/politika/` локально переснята для визуального smoke-check после правки.
+
+### 2026-06-19 — Финальный CTA приведён к единому премиальному виду на всех страницах
+
+- **Copy updated:** финальный CTA изменён на премиальный вариант:
+  - eyebrow `ПЕРСОНАЛЬНЫЙ РАЗБОР`;
+  - title `Получите разбор вашей ситуации`;
+  - accent `и реальный план покупки`;
+  - subtitle `За 20 минут выясним вашу задачу, проверим лимиты банка и подберём объекты, которые реально одобрят. Без обязательств и скрытых платежей.`;
+  - CTA `Получить подборку`.
+- **Removed from copy:** убраны формулировки `Первый шаг к квартире` и `а не со случайной витрины`, чтобы блок не привязывался к квартире и звучал дороже.
+- **Component defaults updated:** в `src/components/sections/FinalCTALight.astro` обновлены дефолтные значения пропсов, title / subtitle / ctaText сделаны необязательными.
+- **Site-wide sync:** все вызовы `<FinalCTALight />` на страницах `/`, `/kalkulyator-voennoy-ipoteki/`, `/contacts/`, `/voennaya-ipoteka-krasnodar/`, `/usloviya-voennoy-ipoteki/`, `/semeynaya-voennaya-ipoteka/`, `/o-servise/`, `/voennaya-ipoteka-krym/` приведены к единому виду. На `/contacts/` сохранён `sectionId="request"` для якоря формы.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` обновлён раздел 14.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings.
+
+### 2026-06-19 — Главная: собран блок 04 «Калькулятор / Ипотечный центр»
+
+- **File added:** создан `src/pages/_home/04-Mortgage.astro`.
+- **Composition:** split-screen — слева H2 + 4 преимущества в сетке 2×2, справа мини-калькулятор на `bg-primary`.
+- **Copy:** eyebrow `Ипотечный центр`, H2 `Рассчитайте военную ипотеку`, 4 преимущества с иконками `calculator`, `building-2`, `users`, `globe`.
+- **Mini-calculator:** переключатель сценариев `Стандартная / Семейная / Новые территории` (ставки 18% / 6% / 2%, срок 25 / 30 / 30 лет), ползунки `Стоимость квартиры / Взнос НИС в месяц / Первоначальный взнос`, итоговые плашки `Банк одобрит / Бюджет покупки / Не хватает или Запас`.
+- **Logic:** формула `loanFromPayment` взята из полного калькулятора `_kalkulyator-voennoy-ipoteki/02-Calculator.astro`, адаптирована под 3 поля.
+- **CTA:** `Рассчитать точнее →` ведёт на `/kalkulyator-voennoy-ipoteki/`.
+- **Integration:** блок подключён в `src/pages/index.astro` после `03-WhyFree`.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` обновлён раздел 04.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop и mobile через localhost пройдена.
+
+### 2026-06-19 — Главная: удалён старый блок «Первичный расчёт», собран блок 03 «Почему бесплатно» (вариант А)
+
+- **Old block removed:** удалён `src/pages/_home/04-FirstReview.astro` («Как мы формируем ваш персональный маршрут покупки») и его подключение из `src/pages/index.astro`.
+- **WhyFree block added:** создан `src/pages/_home/03-WhyFree.astro` с 4 иконочными карточками в сетке 2×2 (1 колонка на mobile) на фоне `bg-primary`, сами карточки — `bg-surface`.
+- **Copy:** eyebrow `Бизнес-модель`, H2 `Почему это бесплатно для вас`, подзаголовок `Комиссию платит застройщик или продавец...`, 4 карточки с иконками `building-2`, `percent`, `shield-check`, `badge-check`.
+- **Design:** радиус 12px, иконка 44px, hover — lift + акцентная линия сверху, адаптивная мобильная раскладка с горизонтальными карточками.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` обновлён под актуальную структуру блоков 02–04.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop и mobile через localhost пройдена.
+
+### 2026-06-19 — Hero главной переведён на category-entry с разными modal-офферами
+
+- **Hero routes rewired:** в `src/pages/_home/01-Hero.astro` карточки `Новостройки / Дома / Вторичка / Ипотека` переведены из обычных ссылок в modal-entry слой с отдельными `data-modal-title`, `data-modal-subtitle` и `data-modal-source` под каждый сценарий.
+- **Sales copy differentiated:** для каждой карточки задан собственный оффер: бесплатный подбор новостроек под военную ипотеку, разбор сценария по дому, подбор готовой квартиры на вторичном рынке и отдельная бесплатная помощь по военной ипотеке.
+- **Primary CTA synced:** главный CTA первого экрана теперь тоже открывает modal с формулировкой `Получить разбор ситуации`, а не уводит пользователя в нейтральный переход без контекста.
+- **Responsive polish applied:** для hero отдельно усилена mobile/laptop-адаптация — зафиксирован более устойчивый двухстрочный H1, добавлены безопасные переносы для крупной типографики и сохранён grid/cards layout `4 → 2×2 → 1`.
+- **Technical checks passed:** `pnpm build` проходит успешно; локальный hero переснят через headless Edge на laptop и mobile для smoke-QA после правки.
+
 ### 2026-06-18 — Research layer по расширению каталога Краснодара под военную ипотеку
 
 - **Krasnodar monitoring started:** проведён отдельный web-monitoring Яндекс.Недвижимости и ЦИАН по странице `/voennaya-ipoteka-krasnodar/` с задачей понять, как расширять каталог дальше `12` текущих ЖК.

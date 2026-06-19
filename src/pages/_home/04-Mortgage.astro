@@ -1,0 +1,626 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const benefits = [
+  {
+    icon: 'calculator',
+    title: 'Накопления НИС',
+    text: 'Учитываем ваши взносы и срок участия',
+  },
+  {
+    icon: 'building-2',
+    title: 'Банки-партнёры',
+    text: 'Подбираем под условия 8 банков',
+  },
+  {
+    icon: 'users',
+    title: 'Семейная + ВИ',
+    text: 'Совмещаем военную и семейную ипотеку',
+  },
+  {
+    icon: 'globe',
+    title: 'Дистанционно',
+    text: 'Можно без приезда, из любого региона',
+  },
+];
+
+const scenarios = [
+  { key: 'standard', label: 'Стандартная', rate: 18, maxTerm: 25 },
+  { key: 'family', label: 'Семейная', rate: 6, maxTerm: 30 },
+  { key: 'new-territories', label: 'Новые территории', rate: 2, maxTerm: 30 },
+];
+---
+
+<section
+  class="vn-home-mortgage"
+  id="section-mortgage"
+  aria-labelledby="home-mortgage-title"
+>
+  <div class="vn-container">
+    <div class="vn-home-mortgage__layout">
+      <div class="vn-home-mortgage__content">
+        <span class="vn-label-mono vn-home-mortgage__eyebrow">Ипотечный центр</span>
+        <h2 id="home-mortgage-title" class="vn-home-mortgage__title">
+          Рассчитайте военную ипотеку
+        </h2>
+        <p class="vn-home-mortgage__lead">
+          Ориентир по сумме, накоплениям НИС и ежемесячному платежу.
+        </p>
+
+        <div class="vn-home-mortgage__benefits">
+          {
+            benefits.map((item) => (
+              <div class="vn-home-mortgage__benefit">
+                <span class="vn-home-mortgage__benefit-icon" aria-hidden="true">
+                  <Icon name={item.icon} size={28} />
+                </span>
+                <div class="vn-home-mortgage__benefit-body">
+                  <h3 class="vn-home-mortgage__benefit-title">{item.title}</h3>
+                  <p class="vn-home-mortgage__benefit-text">{item.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="vn-home-mortgage__calc" data-mini-calc>
+        <div class="vn-home-mortgage__calc-header">
+          <p class="vn-label-mono">Ориентировочный расчёт</p>
+        </div>
+
+        <div class="vn-home-mortgage__scenarios" role="tablist" aria-label="Сценарий военной ипотеки">
+          {
+            scenarios.map((s, index) => (
+              <button
+                type="button"
+                class={`vn-home-mortgage__scenario ${index === 0 ? 'is-active' : ''}`}
+                data-scenario={s.key}
+                aria-selected={index === 0 ? 'true' : 'false'}
+              >
+                {s.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="vn-home-mortgage__fields">
+          <div class="vn-home-mortgage__field">
+            <div class="vn-home-mortgage__field-top">
+              <label for="mini-calc-price">Стоимость квартиры</label>
+              <output for="mini-calc-price" data-output="price">6 000 000 ₽</output>
+            </div>
+            <input
+              type="range"
+              id="mini-calc-price"
+              min="1500000"
+              max="12000000"
+              step="50000"
+              value="6000000"
+              data-input="price"
+            />
+          </div>
+
+          <div class="vn-home-mortgage__field">
+            <div class="vn-home-mortgage__field-top">
+              <label for="mini-calc-monthly">Взнос НИС в месяц</label>
+              <output for="mini-calc-monthly" data-output="monthly">34 265 ₽</output>
+            </div>
+            <input
+              type="range"
+              id="mini-calc-monthly"
+              min="20000"
+              max="60000"
+              step="100"
+              value="34265"
+              data-input="monthly"
+            />
+          </div>
+
+          <div class="vn-home-mortgage__field">
+            <div class="vn-home-mortgage__field-top">
+              <label for="mini-calc-downpayment">Первоначальный взнос</label>
+              <output for="mini-calc-downpayment" data-output="downpayment">0 ₽</output>
+            </div>
+            <input
+              type="range"
+              id="mini-calc-downpayment"
+              min="0"
+              max="5000000"
+              step="50000"
+              value="0"
+              data-input="downpayment"
+            />
+          </div>
+        </div>
+
+        <div class="vn-home-mortgage__result">
+          <div class="vn-home-mortgage__result-row">
+            <span>Банк одобрит</span>
+            <strong data-result="loan">~2 150 000 ₽</strong>
+          </div>
+          <div class="vn-home-mortgage__result-row">
+            <span>Бюджет покупки</span>
+            <strong data-result="budget">~2 150 000 ₽</strong>
+          </div>
+          <div class="vn-home-mortgage__result-row vn-home-mortgage__result-row--accent" data-gap-state="negative">
+            <span>Не хватает</span>
+            <strong data-result="gap">3 850 000 ₽</strong>
+          </div>
+        </div>
+
+        <a
+          href="/kalkulyator-voennoy-ipoteki/"
+          class="vn-btn-primary vn-home-mortgage__calc-cta"
+        >
+          Рассчитать точнее
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <p class="vn-home-mortgage__calc-note">
+          Точную сумму банк подтвердит после проверки анкеты и объекта.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  type ScenarioKey = 'standard' | 'family' | 'new-territories';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const roots = document.querySelectorAll<HTMLElement>('[data-mini-calc]');
+
+    const scenarios: Record<ScenarioKey, { rate: number; maxTerm: number }> = {
+      standard: { rate: 18, maxTerm: 25 },
+      family: { rate: 6, maxTerm: 30 },
+      'new-territories': { rate: 2, maxTerm: 30 },
+    };
+
+    const formatCurrency = (value: number): string =>
+      new Intl.NumberFormat('ru-RU', {
+        style: 'currency',
+        currency: 'RUB',
+        maximumFractionDigits: 0,
+      })
+        .format(Math.round(value))
+        .trim();
+
+    const loanFromPayment = (
+      monthlyPayment: number,
+      annualRate: number,
+      termYears: number,
+    ): number => {
+      const months = termYears * 12;
+      const monthlyRate = annualRate / 12 / 100;
+      if (months <= 0) return 0;
+      if (monthlyRate === 0) return monthlyPayment * months;
+      return (
+        (monthlyPayment * (1 - Math.pow(1 + monthlyRate, -months))) /
+        monthlyRate
+      );
+    };
+
+    const setRangeFill = (input: HTMLInputElement): void => {
+      const min = Number(input.min || 0);
+      const max = Number(input.max || 100);
+      const value = Number(input.value || 0);
+      const percent = max === min ? 0 : ((value - min) / (max - min)) * 100;
+      input.style.backgroundSize = `${percent}% 100%`;
+    };
+
+    roots.forEach((root) => {
+      const scenarioButtons = root.querySelectorAll<HTMLButtonElement>('[data-scenario]');
+      const ranges = root.querySelectorAll<HTMLInputElement>('input[type="range"]');
+
+      const inputs = {
+        price: root.querySelector<HTMLInputElement>('[data-input="price"]')!,
+        monthly: root.querySelector<HTMLInputElement>('[data-input="monthly"]')!,
+        downpayment: root.querySelector<HTMLInputElement>('[data-input="downpayment"]')!,
+      };
+
+      const outputs = {
+        price: root.querySelector<HTMLOutputElement>('[data-output="price"]')!,
+        monthly: root.querySelector<HTMLOutputElement>('[data-output="monthly"]')!,
+        downpayment: root.querySelector<HTMLOutputElement>('[data-output="downpayment"]')!,
+      };
+
+      const results = {
+        loan: root.querySelector<HTMLElement>('[data-result="loan"]')!,
+        budget: root.querySelector<HTMLElement>('[data-result="budget"]')!,
+        gap: root.querySelector<HTMLElement>('[data-result="gap"]')!,
+      };
+
+      const gapRow = root.querySelector<HTMLElement>('.vn-home-mortgage__result-row--accent')!;
+      let currentScenario: ScenarioKey = 'standard';
+
+      const applyScenario = (key: ScenarioKey): void => {
+        currentScenario = key;
+        scenarioButtons.forEach((button) => {
+          const isActive = button.getAttribute('data-scenario') === key;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+      };
+
+      const recalc = (): void => {
+        const price = Number(inputs.price.value);
+        const monthly = Number(inputs.monthly.value);
+        const downpayment = Number(inputs.downpayment.value);
+        const { rate, maxTerm } = scenarios[currentScenario];
+
+        outputs.price.textContent = formatCurrency(price);
+        outputs.monthly.textContent = formatCurrency(monthly);
+        outputs.downpayment.textContent = formatCurrency(downpayment);
+
+        const maxLoan = Math.floor(loanFromPayment(monthly, rate, maxTerm) / 1000) * 1000;
+        const budget = maxLoan + downpayment;
+        const gap = price - budget;
+
+        results.loan.textContent = `~${formatCurrency(maxLoan)}`;
+        results.budget.textContent = `~${formatCurrency(budget)}`;
+
+        if (gap > 0) {
+          results.gap.textContent = formatCurrency(gap);
+          gapRow.querySelector('span')!.textContent = 'Не хватает';
+          gapRow.setAttribute('data-gap-state', 'negative');
+        } else {
+          results.gap.textContent = formatCurrency(Math.abs(gap));
+          gapRow.querySelector('span')!.textContent = 'Запас';
+          gapRow.setAttribute('data-gap-state', 'positive');
+        }
+      };
+
+      scenarioButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          applyScenario((button.getAttribute('data-scenario') as ScenarioKey) ?? 'standard');
+          recalc();
+        });
+      });
+
+      ranges.forEach((input) => {
+        setRangeFill(input);
+        input.addEventListener('input', () => {
+          setRangeFill(input);
+          recalc();
+        });
+      });
+
+      applyScenario(currentScenario);
+      recalc();
+    });
+  });
+</script>
+
+<style>
+  .vn-home-mortgage {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-home-mortgage__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .vn-home-mortgage__content {
+    max-width: 560px;
+  }
+
+  .vn-home-mortgage__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+  }
+
+  .vn-home-mortgage__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-mortgage__lead {
+    margin: 12px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-mortgage__benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .vn-home-mortgage__benefit {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .vn-home-mortgage__benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    color: var(--color-accent-cta);
+  }
+
+  .vn-home-mortgage__benefit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .vn-home-mortgage__benefit-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .vn-home-mortgage__benefit-title {
+    margin: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-mortgage__benefit-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-mortgage__calc {
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background:
+      radial-gradient(
+        circle at top right,
+        color-mix(in srgb, var(--color-accent-cta) 8%, transparent) 0%,
+        transparent 40%
+      ),
+      var(--color-bg-primary);
+  }
+
+  .vn-home-mortgage__calc-header {
+    margin-bottom: 20px;
+  }
+
+  .vn-home-mortgage__calc-header p {
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-mortgage__scenarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .vn-home-mortgage__scenario {
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.35;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-home-mortgage__scenario:hover {
+    transform: translateY(-1px);
+  }
+
+  .vn-home-mortgage__scenario.is-active {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 42%, transparent);
+    background: color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-surface));
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-mortgage__fields {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .vn-home-mortgage__field {
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-home-mortgage__field-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .vn-home-mortgage__field-top label {
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-mortgage__field-top output {
+    flex-shrink: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-accent-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-home-mortgage__field input[type="range"] {
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-color: color-mix(in srgb, var(--color-accent-primary) 8%, var(--color-bg-primary));
+    background-image: linear-gradient(
+      90deg,
+      var(--color-accent-cta) 0%,
+      color-mix(in srgb, var(--color-accent-primary) 60%, var(--color-accent-cta)) 100%
+    );
+    background-repeat: no-repeat;
+  }
+
+  .vn-home-mortgage__field input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-accent-cta);
+    border: 3px solid var(--color-bg-surface);
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+  }
+
+  .vn-home-mortgage__field input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-accent-cta);
+    border: 3px solid var(--color-bg-surface);
+    box-shadow: 0 6px 14px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+  }
+
+  .vn-home-mortgage__result {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 18px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+  }
+
+  .vn-home-mortgage__result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .vn-home-mortgage__result-row span {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-mortgage__result-row strong {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-home-mortgage__result-row--accent {
+    padding-top: 10px;
+    margin-top: 4px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vn-home-mortgage__result-row--accent strong {
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-mortgage__result-row--accent[data-gap-state="negative"] strong {
+    color: color-mix(in srgb, var(--color-error-base) 85%, var(--color-text-primary));
+  }
+
+  .vn-home-mortgage__calc-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vn-home-mortgage__calc-note {
+    margin: 12px 0 0;
+    font-size: var(--fs-caption);
+    line-height: 1.5;
+    color: var(--color-text-tertiary);
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 1100px) {
+    .vn-home-mortgage__layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .vn-home-mortgage__content {
+      max-width: 720px;
+    }
+
+    .vn-home-mortgage__calc {
+      max-width: 560px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-home-mortgage__benefits {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .vn-home-mortgage__calc {
+      padding: 20px;
+    }
+
+    .vn-home-mortgage__scenarios {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vn-home-mortgage__scenario {
+      min-height: 44px;
+      padding-inline: 10px;
+      text-align: center;
+    }
+
+    .vn-home-mortgage__scenario:nth-child(3) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-mortgage__scenario {
+      transition: none;
+    }
+
+    .vn-home-mortgage__scenario:hover {
+      transform: none;
+    }
+  }
+</style>

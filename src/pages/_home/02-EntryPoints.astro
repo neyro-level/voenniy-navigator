@@ -1,0 +1,305 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const collections = [
+  {
+    title: 'С хорошим ремонтом',
+    description: 'Готовые квартиры без дополнительных вложений',
+    href: '/podbor/',
+    icon: 'badge-check',
+  },
+  {
+    title: 'С большой кухней',
+    description: 'Просторные кухни-гостиные для семьи',
+    href: '/podbor/',
+    icon: 'max',
+  },
+  {
+    title: 'Дом рядом с городом',
+    description: 'Коттеджи и малоэтажная застройка',
+    href: '/contacts/#request',
+    icon: 'home',
+  },
+  {
+    title: 'Новостройки с отделкой',
+    description: 'Заселяйтесь сразу после сдачи',
+    href: '/podbor/',
+    icon: 'building-check',
+  },
+  {
+    title: 'Цена снижена',
+    description: 'Специальные условия от застройщиков',
+    href: '/podbor/',
+    icon: 'percent',
+  },
+  {
+    title: 'Участки под строительство',
+    description: 'Земля для индивидуального жилищного строительства',
+    href: '/contacts/#request',
+    icon: 'hammer',
+  },
+];
+---
+
+<section
+  class="vn-home-collections"
+  id="section-collections"
+  aria-labelledby="home-collections-title"
+>
+  <div class="vn-container">
+    <div class="vn-home-collections__head">
+      <span class="vn-label-mono vn-home-collections__eyebrow">Подборки</span>
+      <h2 id="home-collections-title" class="vn-home-collections__title">
+        Готовые подборки
+      </h2>
+      <p class="vn-home-collections__lead">
+        Выберите сценарий, который близок к вашей задаче.
+      </p>
+    </div>
+
+    <div class="vn-home-collections__grid" aria-label="Популярные подборки недвижимости">
+      {
+        collections.map((item) => (
+          <a class="vn-home-collections__card" href={item.href}>
+            <span class="vn-home-collections__icon" aria-hidden="true">
+              <Icon name={item.icon} size={40} />
+            </span>
+
+            <span class="vn-home-collections__body">
+              <span class="vn-home-collections__name">{item.title}</span>
+              <span class="vn-home-collections__description">{item.description}</span>
+            </span>
+
+            <span class="vn-home-collections__arrow" aria-hidden="true">
+              <Icon name="arrow-up-right" size={18} />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-home-collections {
+    padding-top: 64px;
+    padding-bottom: var(--spacing-section);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-home-collections__head {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .vn-home-collections__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+  }
+
+  .vn-home-collections__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-collections__lead {
+    margin: 12px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-collections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .vn-home-collections__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 188px;
+    padding: 28px;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    background: var(--color-bg-primary);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    transition:
+      transform 0.28s ease,
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
+  }
+
+  .vn-home-collections__card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--color-accent-cta);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.28s ease;
+  }
+
+  .vn-home-collections__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-accent-cta);
+  }
+
+  .vn-home-collections__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .vn-home-collections__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+    padding-right: 32px;
+  }
+
+  .vn-home-collections__name {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+    transition: transform 0.28s ease;
+  }
+
+  .vn-home-collections__description {
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  .vn-home-collections__arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-cta);
+    color: var(--color-bg-surface);
+    border-radius: 50%;
+    transition:
+      transform 0.28s ease,
+      background-color 0.28s ease;
+  }
+
+  .vn-home-collections__arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .vn-home-collections__card:hover {
+    transform: translateY(-3px);
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-home-collections__card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .vn-home-collections__card:hover .vn-home-collections__name {
+    transform: translateX(2px);
+  }
+
+  .vn-home-collections__card:hover .vn-home-collections__arrow {
+    transform: translate(2px, -2px);
+    background: var(--color-accent-hover);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-home-collections__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vn-home-collections__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .vn-home-collections__card {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      min-height: 0;
+      padding: 18px 20px;
+    }
+
+    .vn-home-collections__card::before {
+      inset: auto 0 0;
+      height: 2px;
+    }
+
+    .vn-home-collections__icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .vn-home-collections__body {
+      margin: 0;
+      padding-right: 0;
+    }
+
+    .vn-home-collections__name {
+      font-size: var(--fs-body);
+    }
+
+    .vn-home-collections__description {
+      font-size: var(--fs-caption);
+    }
+
+    .vn-home-collections__arrow {
+      position: static;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      background: transparent;
+      color: var(--color-accent-cta);
+    }
+
+    .vn-home-collections__card:hover {
+      transform: translateX(4px);
+      box-shadow: none;
+    }
+
+    .vn-home-collections__card:hover .vn-home-collections__arrow {
+      transform: translateX(4px);
+      background: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-collections__card,
+    .vn-home-collections__card::before,
+    .vn-home-collections__name,
+    .vn-home-collections__arrow {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

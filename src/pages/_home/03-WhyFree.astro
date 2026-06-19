@@ -1,0 +1,225 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const reasons = [
+  {
+    title: 'Подбор новостройки',
+    description: 'Застройщик платит за привлечённого покупателя',
+    icon: 'building-2',
+  },
+  {
+    title: 'Ипотечное сопровождение',
+    description: 'Услуги банка-партнёра, для вас бесплатно',
+    icon: 'percent',
+  },
+  {
+    title: 'Сопровождение сделки',
+    description: 'Входит в комиссию от продавца',
+    icon: 'shield-check',
+  },
+  {
+    title: 'Никаких скрытых платежей',
+    description: 'Вы платите только по договору купли-продажи',
+    icon: 'badge-check',
+  },
+];
+---
+
+<section
+  class="vn-home-why-free"
+  id="section-why-free"
+  aria-labelledby="home-why-free-title"
+>
+  <div class="vn-container">
+    <div class="vn-home-why-free__head">
+      <span class="vn-label-mono vn-home-why-free__eyebrow">Бизнес-модель</span>
+      <h2 id="home-why-free-title" class="vn-home-why-free__title">
+        Почему это бесплатно для вас
+      </h2>
+      <p class="vn-home-why-free__lead">
+        Комиссию платит застройщик или продавец. Вы получаете подбор, расчёт и сопровождение без дополнительных расходов.
+      </p>
+    </div>
+
+    <div class="vn-home-why-free__grid" aria-label="Почему услуги бесплатны для военного">
+      {
+        reasons.map((item) => (
+          <article class="vn-home-why-free__card">
+            <span class="vn-home-why-free__icon" aria-hidden="true">
+              <Icon name={item.icon} size={44} />
+            </span>
+            <div class="vn-home-why-free__body">
+              <h3 class="vn-home-why-free__card-title">{item.title}</h3>
+              <p class="vn-home-why-free__card-text">{item.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-home-why-free {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    background: var(--color-bg-primary);
+  }
+
+  .vn-home-why-free__head {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .vn-home-why-free__eyebrow {
+    color: var(--color-accent-cta);
+    font-weight: 600;
+  }
+
+  .vn-home-why-free__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-home-why-free__lead {
+    margin: 12px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-why-free__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .vn-home-why-free__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    overflow: hidden;
+    background: var(--color-bg-surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    transition:
+      transform 0.28s ease,
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
+  }
+
+  .vn-home-why-free__card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--color-accent-cta);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.28s ease;
+  }
+
+  .vn-home-why-free__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-accent-cta);
+  }
+
+  .vn-home-why-free__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .vn-home-why-free__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vn-home-why-free__card-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+  }
+
+  .vn-home-why-free__card-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-why-free__card:hover {
+    transform: translateY(-3px);
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-home-why-free__card:hover::before {
+    transform: scaleX(1);
+  }
+
+  @media (max-width: 768px) {
+    .vn-home-why-free__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .vn-home-why-free__card {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .vn-home-why-free__card::before {
+      inset: auto 0 0;
+      height: 2px;
+    }
+
+    .vn-home-why-free__icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .vn-home-why-free__card-title {
+      font-size: var(--fs-body);
+    }
+
+    .vn-home-why-free__card-text {
+      font-size: var(--fs-caption);
+    }
+
+    .vn-home-why-free__card:hover {
+      transform: translateX(4px);
+      box-shadow: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-why-free__card,
+    .vn-home-why-free__card::before {
+      transition: none;
+    }
+
+    .vn-home-why-free__card:hover {
+      transform: none;
+    }
+  }
+</style>

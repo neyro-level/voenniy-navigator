@@ -78,11 +78,11 @@ const schema = breadcrumbSchema([
   <section class="vn-section vn-section--secondary vn-pp-toc" id="pp-toc">
     <div class="vn-container">
       <h2 class="vn-pp-toc__title">Содержание документа</h2>
-      <div class="vn-grid-12 vn-pp-toc__grid">
-        {tocItems.map((item, i) => (
-          <a href={item.href} class="vn-pp-toc__item" style={`grid-column: ${i < 5 ? '1 / 6' : '6 / 12'};`}>
+      <div class="vn-pp-toc__grid">
+        {tocItems.map((item) => (
+          <a href={item.href} class="vn-pp-toc__item">
             <span class="vn-pp-toc__dot" aria-hidden="true"></span>
-            <span class="vn-pp-toc__text">{item.num} · {item.label}</span>
+            <span>{item.num} · {item.label}</span>
           </a>
         ))}
       </div>
@@ -343,11 +343,11 @@ const schema = breadcrumbSchema([
     </div>
   </section>
 
-  <section class="vn-section vn-section--dark vn-pp-contacts" id="pp-contacts">
+  <section class="vn-section vn-pp-contacts" id="pp-contacts">
     <div class="vn-container">
-      <div class="vn-pp-contacts__card">
+      <article class="vn-pp-contacts__card">
         <span class="vn-label-mono vn-pp-contacts__label">Контактная информация оператора</span>
-        <div class="vn-grid-12 vn-pp-contacts__grid">
+        <div class="vn-pp-contacts__grid">
           <div class="vn-pp-contacts__col">
             <div class="vn-pp-contacts__field">
               <span class="vn-pp-contacts__field-label">Наименование</span>
@@ -383,7 +383,7 @@ const schema = breadcrumbSchema([
             </div>
           </div>
         </div>
-      </div>
+      </article>
       <div class="vn-pp-contacts__back">
         <a href="/" class="vn-pp-contacts__back-link">Вернуться на главную</a>
       </div>
@@ -475,7 +475,7 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-toc {
-    padding-block: 40px;
+    padding-block: 56px;
   }
 
   .vn-pp-toc__title {
@@ -486,28 +486,35 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-toc__grid {
-    row-gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .vn-pp-toc__item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 0;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
     color: var(--color-text-secondary);
     font-size: var(--fs-body-sm);
     text-decoration: none;
-    transition: color 0.15s ease;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
   .vn-pp-toc__item:hover {
-    color: var(--color-accent-cta);
+    color: var(--color-text-primary);
+    border-color: color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
   }
 
   .vn-pp-toc__dot {
-    width: 6px;
-    height: 6px;
-    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
     border-radius: 50%;
     background-color: var(--color-accent-cta);
   }
@@ -631,25 +638,28 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-contacts__card {
-    max-width: 840px;
-    margin-inline: auto;
+    max-width: 960px;
+    margin: 0 auto;
     padding: 40px;
-    border: 1px solid var(--color-border-ondark);
-    border-radius: var(--radius-xl);
-    background-color: var(--color-bg-dark-elev);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
   }
 
   .vn-pp-contacts__label {
+    display: inline-block;
     margin-bottom: 24px;
     color: var(--color-accent-cta);
   }
 
   .vn-pp-contacts__grid {
-    row-gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
   }
 
   .vn-pp-contacts__col {
-    grid-column: span 4;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -662,7 +672,7 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-contacts__field-label {
-    color: var(--color-text-ondark-mute);
+    color: var(--color-text-tertiary);
     font-size: var(--fs-caption);
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -670,9 +680,9 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-contacts__field-value {
-    color: var(--color-text-ondark);
-    font-size: var(--fs-body-sm);
-    line-height: 1.5;
+    color: var(--color-text-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
   }
 
   .vn-pp-contacts__back {
@@ -681,14 +691,14 @@ const schema = breadcrumbSchema([
   }
 
   .vn-pp-contacts__back-link {
-    color: var(--color-text-ondark-mute);
+    color: var(--color-text-secondary);
     font-size: var(--fs-body-sm);
     text-decoration: none;
     transition: color 0.15s ease;
   }
 
   .vn-pp-contacts__back-link:hover {
-    color: var(--color-text-ondark);
+    color: var(--color-text-primary);
   }
 
   @media (max-width: 1023px) {
@@ -710,8 +720,8 @@ const schema = breadcrumbSchema([
       font-size: var(--fs-h1);
     }
 
-    .vn-pp-toc__item {
-      grid-column: 1 / -1 !important;
+    .vn-pp-toc__grid {
+      grid-template-columns: 1fr 1fr;
     }
 
     .vn-pp-card {
@@ -724,11 +734,21 @@ const schema = breadcrumbSchema([
     }
 
     .vn-pp-contacts__col {
-      grid-column: 1 / -1;
+      grid-column: auto;
     }
 
     .vn-pp-contacts__card {
       padding: 28px 24px;
+    }
+
+    .vn-pp-contacts__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-pp-toc__grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

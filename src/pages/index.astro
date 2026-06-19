@@ -1,9 +1,10 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from './_home/01-Hero.astro';
-import ShortAnswer from './_home/02-ShortAnswer.astro';
-import Routes from './_home/03-Routes.astro';
-import FirstReview from './_home/04-FirstReview.astro';
+import EntryPoints from './_home/02-EntryPoints.astro';
+
+import WhyFree from './_home/03-WhyFree.astro';
+import Mortgage from './_home/04-Mortgage.astro';
 import SelectionLogic from './_home/05-SelectionLogic.astro';
 import Scenarios from './_home/06-Scenarios.astro';
 import MikhailTrust from './_home/07-MikhailTrust.astro';
@@ -69,9 +70,9 @@ const schemas = [
   schema={schemas}
 >
   <Hero />
-  <ShortAnswer />
-  <Routes />
-  <FirstReview />
+  <EntryPoints />
+  <WhyFree />
+  <Mortgage />
   <SelectionLogic />
   <Scenarios />
   <MikhailTrust />
@@ -80,16 +81,9 @@ const schemas = [
     eyebrow="FAQ"
     title="Вопросы о сервисе и первом расчёте"
     lead="Здесь собраны ответы о сервисе, расчёте вариантов, регионах работы и моменте перехода к подбору объекта."
-    linkText="Не нашли свой вопрос? Рассчитайте варианты на первом шаге →"
+    linkText="Не нашли свой вопрос? Получите подборку на первом шаге →"
     linkHref="/contacts/#request"
-    linkModalTitle="Рассчитать варианты"
+    linkModalTitle="Получить подборку"
   />
-  <FinalCTALight
-    eyebrow="ПЕРВЫЙ ШАГ К КВАРТИРЕ"
-    title="Начните с расчёта вариантов,"
-    accentText="а не со случайной витрины"
-    subtitle="За 20 минут мы выясним вашу цель, проверим лимиты банка и составим короткий список новостроек, которые реально одобрят. Без обязательств и скрытых платежей."
-    ctaText="Рассчитать варианты"
-    ctaModalTitle="Рассчитать варианты"
-  />
+  <FinalCTALight />
 </PageLayout>
