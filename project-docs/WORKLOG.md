@@ -7,6 +7,62 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-21 — Release-проверка главной, cleanup навигации и синхронизация brief
+
+- **Reviewed:** главная `/` перепроверена после последних ручных правок относительно `project-docs/briefs/PAGE_HOME.md` и текущей реализации в `src/pages/index.astro`.
+- **Fixed:** в `src/lib/navigation/navData.ts` убран временный badge `new` у пункта `Крым`, чтобы header не отдавал тестовый шум в production.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` очищен от устаревших ссылок на старые блоки, выровнен по актуальным секциям `Подход / Сценарии / Михаил`, синхронизированы CTA-логика, SEO-рамка, нумерация разделов и статус as-built.
+- **Browser QA:** локальная главная просмотрена на desktop и mobile; горизонтального overflow нет, reveal-блоки корректно раскрываются при скролле.
+- **Checks passed:** `pnpm astro check`, `pnpm build`, `pnpm geo-check` — без ошибок, GEO score `100/100`.
+
+### 2026-06-21 — Блок калькулятора на главной переведён в полноширинный премиальный layout
+
+- **Layout changed:** `src/pages/_home/04-Mortgage.astro` пересобран из узкого split-screen в полноширинную карточку в рамках контейнера.
+- **Composition:** заголовок + lead сверху, под ними широкая карточка калькулятора в две колонки (панель ввода слева, sticky карточка результата справа), 4 преимущества — отдельным рядом под калькулятором.
+- **Visual polish:** добавлен typography mixing в H2, улучшена итоговая карточка с крупным числом «Банк одобрит», soft/error tint для строки gap, премиальная тень и рамки.
+- **Responsive:** на tablet/mobile сохранён вертикальный stack без overflow; ползунки и сценарии адаптированы под узкие экраны.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` обновлён раздел 8 под новый layout блока 04.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop, tablet и mobile через localhost пройдена.
+
+### 2026-06-21 — Блок 05 «Подход» на главной: переработка comparison-карточек
+
+- **Decision:** вместо запланированного в брифе блока `Как работает сервис` оставлен comparison-блок `src/pages/_home/05-SelectionLogic.astro`, потому что он сильнее закрывает возражение «почему не искать самому через агрегатор».
+- **Copy reframed:** eyebrow изменён с `Главное отличие` на `Подход`; H2 переписан на `Не каталог, а проверенный маршрут от ситуации к объекту` с typography mixing; lead сокращён и усилен.
+- **Visual upgrade:** фон блока переведён на `bg-primary` для tonal shift; карточки получили document-style header с иконками `x` / `check`, divider, bullet-списки и премиальные hover-состояния.
+- **Contrast improved:** левая карточка «Обычный поиск» — приглушённая, правая «Военный навигатор» — с акцентной обводкой и мягкой тенью.
+- **Responsive:** на tablet/mobile карточки собираются в вертикальный stack без overflow.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` обновлён — раздел 4 (структура блоков) и раздел 9 (описание блока 05) приведены к реальному компоненту.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop и mobile через localhost пройдена.
+
+### 2026-06-21 — Блок 06 «Живые сценарии» на главной: премиальная переработка
+
+- **File updated:** `src/pages/_home/06-Scenarios.astro`.
+- **Copy reframed:** eyebrow сохранён `Живые сценарии`; H2 изменён на `Сценарии, которые закрываем` с typography mixing; lead сокращён и усилен фокусом на результат.
+- **Scenarios aligned:** карточки приведены к 4 каноническим сценариям: `Квартира для жизни`, `Переезд позже`, `Вложение средств`, `Дистанционная покупка`.
+- **Visual upgrade:** карточки стали document-style — иконка в круге, decorative marker `01–04`, accent line, hover с lift и акцентной обводкой.
+- **Icons added:** подключены иконки `home`, `compass`, `percent`, `globe` через `astro-icon`.
+- **CTA added:** добавлена кнопка `Обсудить мой сценарий`, открывающая модалку заявки.
+- **Responsive:** 4 колонки на desktop, 2×2 на tablet, 1 колонка на mobile.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` раздел 10 обновлён под новый дизайн и тексты.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop и mobile через localhost пройдена.
+
+### 2026-06-21 — Блок 07 «Михаил / Trust» на главной: усиление копи и дизайна
+
+- **File updated:** `src/pages/_home/07-MikhailTrust.astro`.
+- **Copy reframed:**
+  - caption на фото заменён с непонятного `Главный навигатор сервиса · первичный расчёт и фильтр рисков` на коммерческий `Главный навигатор сервиса · персональный подбор и сопровождение`;
+  - lead переписан от третьего лица: акцент на том, что Михаил лично разбирает ситуацию и предлагает варианты, которые реально одобрит банк;
+  - 3 trust-point заменены на `Личный разбор`, `Проверка объектов`, `Прозрачные условия` с более конкретными и коммерческими описаниями.
+- **Visual upgrade:**
+  - фото в чистой рамке с акцентными corner brackets вместо перегруженного glow;
+  - trust-point оформлены как карточки с иконками в круглых badge и hover-lift;
+  - caption на фото оформлен glassmorphism'ом с корректными светлыми цветами (`--color-text-ondark`).
+- **Icons added:** подключены иконки `users`, `building-check`, `file-text` через `astro-icon`.
+- **CTA kept:** `Обсудить мою ситуацию` (модалка) + ссылка на `/o-servise/`.
+- **Responsive:** desktop — две колонки 5:7, mobile — вертикальный stack, фото адаптировано под высоту viewport.
+- **Docs synced:** `project-docs/briefs/PAGE_HOME.md` раздел 12 переписан под актуальный блок 07; таблица CTA-логики приведена в соответствие.
+- **Checks passed:** `pnpm astro check` и `pnpm build` — 0 errors, 0 warnings; визуальная проверка desktop и mobile через localhost пройдена.
+
 ### 2026-06-20 — Legal-страницы: политика выровнена по паттерну согласия
 
 - **Privacy TOC normalized:** в `src/components/technical/pages/PrivacyPage.astro` блок `Содержание документа` перестроен по образцу из `ConsentPage.astro` — теперь это светлая сетка карточек-ссылок с единым фоном, рамкой и hover-state.

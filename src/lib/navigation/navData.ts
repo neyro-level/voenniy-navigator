@@ -29,7 +29,6 @@ export const NAV_ITEMS: NavItem[] = [
     description: 'Квартиры и новостройки в Крыму под вашу цель покупки.',
     group: 'object',
     icon: 'map-pinned',
-    badge: 'new',
   },
   {
     number: '03',

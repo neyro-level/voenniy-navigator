@@ -1,50 +1,72 @@
 ---
+import { Icon } from 'astro-icon/components';
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const cards = [
+  {
+    type: 'risk',
+    icon: 'x',
+    title: 'Обычный поиск',
+    items: [
+      'Объекты без фильтра по вашей военной ипотеке',
+      'Заявка в банк до проверки реальных лимитов',
+      'Скрытые риски с застройщиком и ликвидностью',
+      'Потеря времени на варианты, которые не одобрят',
+    ],
+  },
+  {
+    type: 'solution',
+    icon: 'check',
+    title: 'Военный навигатор',
+    items: [
+      'Разбор ситуации, бюджета и ограничений на старте',
+      'Проверка ликвидности, сроков и надёжности застройщика',
+      'Короткий список из 3–5 объектов под ваш сертификат',
+      'Сопровождение от первого расчёта до сделки',
+    ],
+  },
+];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-comparison" class="vn-home-comparison" aria-labelledby="vn-home-comparison-title">
+  <section
+    id="section-comparison"
+    class="vn-home-comparison"
+    aria-labelledby="vn-home-comparison-title"
+  >
     <div class="vn-container">
       <div class="vn-home-comparison__header">
-        <span class="vn-label-mono">Главное отличие</span>
+        <span class="vn-label-mono">Подход</span>
         <h2 class="vn-home-comparison__title" id="vn-home-comparison-title">
-          Почему обычный поиск новостроек — это риск
+          Не каталог, а <span class="vn-home-comparison__title-accent">проверенный маршрут</span> от ситуации к объекту
         </h2>
         <p class="vn-home-comparison__lead">
-          Агрегаторы показывают всё, что есть в базе, чтобы получить ваш клик. 
-          Мы работаем наоборот: сначала отсекаем неподходящие варианты по строгим критериям, 
-          и только проверенные объекты попадают в вашу персональную подборку.
+          Агрегаторы продают клики. Мы работаем на результат: сначала проверяем ваши лимиты, 
+          потом отбираем только те новостройки, которые реально одобрят.
         </p>
       </div>
 
       <div class="vn-home-comparison__grid">
-        <!-- Обычный подход -->
-        <article class="vn-home-comparison__card vn-home-comparison__card--risk">
-          <div class="vn-home-comparison__card-header">
-            <span class="vn-home-comparison__icon" aria-hidden="true">✕</span>
-            <h3 class="vn-home-comparison__card-title">Обычный поиск</h3>
-          </div>
-          <ul class="vn-home-comparison__list">
-            <li>Выбор объекта по красивой картинке и рекламным обещаниям</li>
-            <li>Подача заявки без понимания реальных лимитов банка</li>
-            <li>Внезапный отказ или скрытые проблемы с ликвидностью и застройщиком</li>
-            <li>Потеря времени, нервов и возможного задатка</li>
-          </ul>
-        </article>
+        {
+          cards.map((card) => (
+            <article
+              class={`vn-home-comparison__card vn-home-comparison__card--${card.type}`}
+            >
+              <div class="vn-home-comparison__card-header">
+                <span class="vn-home-comparison__icon-bg" aria-hidden="true">
+                  <Icon name={card.icon} size={18} />
+                </span>
+                <h3 class="vn-home-comparison__card-title">{card.title}</h3>
+              </div>
 
-        <!-- Подход Навигатора -->
-        <article class="vn-home-comparison__card vn-home-comparison__card--solution">
-          <div class="vn-home-comparison__card-header">
-            <span class="vn-home-comparison__icon" aria-hidden="true">✓</span>
-            <h3 class="vn-home-comparison__card-title">Подход Военного навигатора</h3>
-          </div>
-          <ul class="vn-home-comparison__list">
-            <li>Разбор вашей ситуации, бюджета и ограничений программы на старте</li>
-            <li>Проверка ликвидности, сроков и надёжности застройщика на бумаге</li>
-            <li>Формирование короткого списка из 3–5 реальных объектов под ваш сертификат</li>
-            <li>Сделка без сюрпризов и чёткий план следующих действий</li>
-          </ul>
-        </article>
+              <ul class="vn-home-comparison__list">
+                {card.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -52,90 +74,117 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
 <style>
   .vn-home-comparison {
-    padding-block: 96px;
-    background: var(--color-bg-surface);
+    position: relative;
+    padding-block: var(--spacing-section);
+    background: var(--color-bg-primary);
+    overflow: hidden;
   }
 
   .vn-home-comparison__header {
+    position: relative;
     max-width: 720px;
     margin-bottom: 56px;
+  }
+
+  .vn-home-comparison__header > .vn-label-mono {
+    color: var(--color-accent-cta);
+    font-weight: 600;
   }
 
   .vn-home-comparison__title {
     margin: 16px 0 14px;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: var(--lh-title);
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
+  .vn-home-comparison__title-accent {
+    color: var(--color-accent-primary);
+  }
+
   .vn-home-comparison__lead {
     margin: 0;
-    font-size: var(--fs-body);
-    line-height: 1.65;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
 
   .vn-home-comparison__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
+    position: relative;
   }
 
   .vn-home-comparison__card {
+    position: relative;
     padding: 32px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border);
     background: var(--color-bg-primary);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .vn-home-comparison__card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
+    transform: translateY(-3px);
   }
 
   .vn-home-comparison__card--risk {
-    border-color: color-mix(in srgb, var(--color-text-tertiary) 30%, var(--color-border));
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+  }
+
+  .vn-home-comparison__card--risk:hover {
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 5%, transparent);
   }
 
   .vn-home-comparison__card--solution {
-    border-color: color-mix(in srgb, var(--color-accent-cta) 40%, var(--color-border));
-    background: color-mix(in srgb, var(--color-accent-cta) 4%, var(--color-bg-primary));
+    background: var(--color-bg-surface);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 35%, var(--color-border));
+    box-shadow:
+      0 1px 2px color-mix(in srgb, var(--color-accent-primary) 3%, transparent),
+      0 24px 48px color-mix(in srgb, var(--color-accent-primary) 5%, transparent);
   }
 
   .vn-home-comparison__card--solution:hover {
-    border-color: color-mix(in srgb, var(--color-accent-cta) 60%, var(--color-border));
+    border-color: color-mix(in srgb, var(--color-accent-cta) 55%, var(--color-border));
+    box-shadow:
+      0 1px 2px color-mix(in srgb, var(--color-accent-primary) 4%, transparent),
+      0 28px 56px color-mix(in srgb, var(--color-accent-primary) 7%, transparent);
   }
 
   .vn-home-comparison__card-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .vn-home-comparison__icon {
+  .vn-home-comparison__icon-bg {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    font-weight: 700;
-    font-size: 1.1rem;
     flex-shrink: 0;
   }
 
-  .vn-home-comparison__card--risk .vn-home-comparison__icon {
-    background: color-mix(in srgb, var(--color-text-tertiary) 15%, transparent);
+  .vn-home-comparison__card--risk .vn-home-comparison__icon-bg {
+    background: color-mix(in srgb, var(--color-text-tertiary) 12%, transparent);
     color: var(--color-text-tertiary);
   }
 
-  .vn-home-comparison__card--solution .vn-home-comparison__icon {
-    background: color-mix(in srgb, var(--color-accent-cta) 20%, transparent);
+  .vn-home-comparison__card--solution .vn-home-comparison__icon-bg {
+    background: color-mix(in srgb, var(--color-accent-cta) 12%, transparent);
     color: var(--color-accent-cta);
   }
 
@@ -158,19 +207,20 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
   .vn-home-comparison__list li {
     position: relative;
-    padding-left: 24px;
-    font-size: var(--fs-body-sm);
-    line-height: 1.6;
+    padding-left: 22px;
+    font-size: var(--fs-body);
+    line-height: 1.55;
     color: var(--color-text-secondary);
+    text-wrap: pretty;
   }
 
   .vn-home-comparison__list li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.6em;
-    width: 8px;
-    height: 8px;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
   }
 
@@ -185,10 +235,6 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
   /* Мобильная адаптация */
   @media (max-width: 1023px) {
-    .vn-home-comparison {
-      padding-block: 72px;
-    }
-
     .vn-home-comparison__grid {
       grid-template-columns: 1fr;
       gap: 16px;
@@ -197,19 +243,38 @@ import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
     .vn-home-comparison__card {
       padding: 24px;
     }
+
+    .vn-home-comparison__card-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+    }
   }
 
   @media (max-width: 640px) {
-    .vn-home-comparison {
-      padding-block: 56px;
-    }
-
     .vn-home-comparison__header {
       margin-bottom: 40px;
     }
 
     .vn-home-comparison__title {
-      font-size: clamp(1.5rem, 5vw, 1.75rem);
+      font-size: var(--fs-h2);
+    }
+
+    .vn-home-comparison__lead {
+      font-size: var(--fs-body);
+    }
+
+    .vn-home-comparison__list li {
+      font-size: var(--fs-body-sm);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-comparison__card {
+      transition: none;
+    }
+
+    .vn-home-comparison__card:hover {
+      transform: none;
     }
   }
 </style>

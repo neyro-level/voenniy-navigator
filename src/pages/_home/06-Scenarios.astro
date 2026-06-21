@@ -1,47 +1,87 @@
 ---
+import { Icon } from 'astro-icon/components';
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
 const scenarios = [
   {
-    title: 'Переезд в другой регион',
-    text: 'Вы покупаете квартиру сейчас, а переезжаете позже. Мы подбираем объект с хорошей отдачей от аренды и сопровождаем сделку полностью удалённо.'
+    marker: '01',
+    icon: 'home',
+    title: 'Квартира для жизни',
+    text: 'Подбираем под ваш ритм жизни: район, инфраструктура, срок сдачи и планировку. Проверяем застройщика и документы до задатка.',
   },
   {
-    title: 'Покупка для семьи',
-    text: 'Главный фокус — безопасность, район и инфраструктура. Мы отсеиваем проблемных застройщиков и проверяем документы до того, как вы внесёте задаток.'
+    marker: '02',
+    icon: 'compass',
+    title: 'Переезд позже',
+    text: 'Покупаете сейчас, переезжаете потом. Ищем объект с арендным потенциалом и ведём сделку удалённо, если вы в другом городе.',
   },
   {
-    title: 'Инвестиция и сохранение средств',
-    text: 'Оцениваем не только цену входа, но и реальный потенциал роста цены, ликвидность и сроки сдачи, чтобы ваши средства работали эффективно.'
+    marker: '03',
+    icon: 'percent',
+    title: 'Вложение средств',
+    text: 'Считаем не только цену входа, но и ликвидность, потенциал роста и сроки сдачи. Цель — чтобы деньги работали, а не лежали.',
   },
   {
-    title: 'Дистанционная сделка',
-    text: 'Проводим все этапы согласования онлайн, организуем показ доверенным лицом и готовим документы, чтобы вам не пришлось летать на встречи.'
-  }
+    marker: '04',
+    icon: 'globe',
+    title: 'Дистанционная покупка',
+    text: 'Все этапы — онлайн. Показы организуем доверенным лицом, документы готовим так, чтобы вам не пришлось летать на встречи.',
+  },
 ];
 ---
 
 <RevealOnScroll mode="fade-up">
-  <section id="section-scenarios" class="vn-home-scenarios" aria-labelledby="vn-home-scenarios-title">
+  <section
+    id="section-scenarios"
+    class="vn-home-scenarios"
+    aria-labelledby="vn-home-scenarios-title"
+  >
     <div class="vn-container">
-      <div class="vn-home-scenarios__header">
-        <span class="vn-label-mono">Живые сценарии</span>
-        <h2 class="vn-home-scenarios__title" id="vn-home-scenarios-title">
-          Мы уже помогали в таких ситуациях
-        </h2>
-        <p class="vn-home-scenarios__lead">
-          Не важно, на каком этапе вы сейчас. Мы не требуем от вас быть экспертом в ипотеке. 
-          Достаточно описать свою задачу — мы подстроим маршрут под вашу реальную ситуацию.
-        </p>
-      </div>
+      <div class="vn-home-scenarios__layout">
+        <div class="vn-home-scenarios__header">
+          <span class="vn-label-mono">Живые сценарии</span>
+          <h2 class="vn-home-scenarios__title" id="vn-home-scenarios-title">
+            Сценарии, <span class="vn-home-scenarios__title-accent">которые закрываем</span>
+          </h2>
+          <p class="vn-home-scenarios__lead">
+            Каждая ситуация требует своего маршрута. Вот самые частые — с фокусом на результат, 
+            а не на обещания.
+          </p>
+        </div>
 
-      <div class="vn-home-scenarios__grid">
-        {scenarios.map((scenario) => (
-          <article class="vn-home-scenarios__card">
-            <h3 class="vn-home-scenarios__card-title">{scenario.title}</h3>
-            <p class="vn-home-scenarios__text">{scenario.text}</p>
-          </article>
-        ))}
+        <div class="vn-home-scenarios__grid">
+          {
+            scenarios.map((scenario) => (
+              <article class="vn-home-scenarios__card">
+                <div class="vn-home-scenarios__card-top">
+                  <span class="vn-home-scenarios__card-icon" aria-hidden="true">
+                    <Icon name={scenario.icon} size={24} />
+                  </span>
+                  <span class="vn-home-scenarios__card-marker" aria-hidden="true">
+                    {scenario.marker}
+                  </span>
+                </div>
+
+                <div class="vn-home-scenarios__card-accent" aria-hidden="true"></div>
+
+                <h3 class="vn-home-scenarios__card-title">{scenario.title}</h3>
+                <p class="vn-home-scenarios__text">{scenario.text}</p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="vn-home-scenarios__cta">
+          <button
+            type="button"
+            class="vn-btn-primary"
+            data-modal-open
+            data-modal-title="Обсудить мой сценарий"
+            data-modal-subtitle="Расскажите, в какой ситуации вы сейчас — мы подберём маршрут под вашу задачу."
+          >
+            Обсудить мой сценарий
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -49,53 +89,104 @@ const scenarios = [
 
 <style>
   .vn-home-scenarios {
-    padding-block: 96px;
+    padding-block: var(--spacing-section);
     background: var(--color-bg-primary);
+  }
+
+  .vn-home-scenarios__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
   }
 
   .vn-home-scenarios__header {
     max-width: 720px;
-    margin-bottom: 56px;
+  }
+
+  .vn-home-scenarios__header > .vn-label-mono {
+    color: var(--color-accent-cta);
+    font-weight: 600;
   }
 
   .vn-home-scenarios__title {
     margin: 16px 0 14px;
     font-size: var(--fs-h2);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: var(--lh-title);
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
+  .vn-home-scenarios__title-accent {
+    color: var(--color-accent-primary);
+  }
+
   .vn-home-scenarios__lead {
     margin: 0;
-    font-size: var(--fs-body);
-    line-height: 1.65;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
 
   .vn-home-scenarios__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
   }
 
   .vn-home-scenarios__card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 32px;
+    gap: 16px;
+    padding: 28px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     background: var(--color-bg-surface);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .vn-home-scenarios__card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     border-color: color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border));
-    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 6%, transparent);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--color-accent-primary) 6%, transparent);
+  }
+
+  .vn-home-scenarios__card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .vn-home-scenarios__card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: var(--color-accent-cta);
+    background: color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-primary));
+  }
+
+  .vn-home-scenarios__card-marker {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-text-primary);
+    opacity: 0.05;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vn-home-scenarios__card-accent {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--color-accent-cta);
   }
 
   .vn-home-scenarios__card-title {
@@ -111,14 +202,23 @@ const scenarios = [
     font-size: var(--fs-body-sm);
     line-height: 1.6;
     color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-home-scenarios__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
   }
 
   /* Мобильная адаптация */
-  @media (max-width: 1023px) {
-    .vn-home-scenarios {
-      padding-block: 72px;
+  @media (max-width: 1160px) {
+    .vn-home-scenarios__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
+  @media (max-width: 640px) {
     .vn-home-scenarios__grid {
       grid-template-columns: 1fr;
       gap: 16px;
@@ -127,19 +227,23 @@ const scenarios = [
     .vn-home-scenarios__card {
       padding: 24px;
     }
-  }
-
-  @media (max-width: 640px) {
-    .vn-home-scenarios {
-      padding-block: 56px;
-    }
-
-    .vn-home-scenarios__header {
-      margin-bottom: 40px;
-    }
 
     .vn-home-scenarios__title {
-      font-size: clamp(1.5rem, 5vw, 1.75rem);
+      font-size: var(--fs-h2);
+    }
+
+    .vn-home-scenarios__lead {
+      font-size: var(--fs-body);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-home-scenarios__card {
+      transition: none;
+    }
+
+    .vn-home-scenarios__card:hover {
+      transform: none;
     }
   }
 </style>
