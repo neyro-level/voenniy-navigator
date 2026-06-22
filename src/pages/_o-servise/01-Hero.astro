@@ -1,11 +1,4 @@
 ---
-import OptimizedImage from '../../components/ui/OptimizedImage.astro';
-
-const trustRow = [
-  '65 сделок по военной ипотеке',
-  'Без комиссии для покупателя',
-  'Ипотечный брокер бесплатно',
-];
 ---
 
 <section id="section-o-service-hero" class="vn-about-hero">
@@ -14,70 +7,61 @@ const trustRow = [
 
   <div class="vn-container">
     <div class="vn-grid-12 vn-about-hero__layout">
-
-      <!-- Левая часть: тексты + CTA + trust-row -->
       <div class="vn-about-hero__content" style="grid-column: 1 / 8">
-
         <span class="vn-about-hero__eyebrow">О сервисе</span>
 
         <h1 class="vn-about-hero__title">
-          Военный навигатор — сервис, который ведёт покупку новостройки по военной ипотеке от расчёта до сделки.
-          <span class="vn-about-hero__title-accent">Без комиссии.</span>
+          Военный навигатор — сервис, который ведёт покупку новостройки по военной ипотеке
+          <span class="vn-about-hero__title-accent">от разбора до сделки.</span>
         </h1>
 
-        <p class="vn-about-hero__lead vn-about-hero__lead--desktop">
-          Покажет, где сейчас выгодные предложения и акции застройщиков. Поможет с ипотекой бесплатно. Экономия на сделке — до 350&nbsp;000&nbsp;₽.
-        </p>
-        <p class="vn-about-hero__lead vn-about-hero__lead--mobile">
-          Акции застройщиков. Ипотека бесплатно. Экономия — до 350&nbsp;000&nbsp;₽.
+        <p class="vn-about-hero__lead">
+          Проверяем статус НИС, сравниваем банки и подбираем новостройки, которые реально одобрят. Без комиссии для покупателя.
         </p>
 
         <div class="vn-about-hero__actions">
-          <a href="/contacts/#request" data-modal-open data-modal-title="Рассчитать варианты" class="vn-btn-primary vn-about-hero__cta">
-            Рассчитать варианты
+          <a
+            href="/contacts/#request"
+            data-modal-open
+            data-modal-title="Получить первичный разбор"
+            class="vn-btn-primary vn-about-hero__cta"
+          >
+            Получить первичный разбор
           </a>
         </div>
 
-        <!-- Trust-row: минималистичные пункты с разделителями -->
         <div class="vn-about-hero__trust-row">
-          {trustRow.map((item, index) => (
-            <span class="vn-about-hero__trust-item">
-              {item}
-              {index < trustRow.length - 1 && <span class="vn-about-hero__trust-divider" aria-hidden="true"></span>}
-            </span>
-          ))}
+          <span class="vn-about-hero__trust-item">65 сделок по военной ипотеке</span>
+          <span class="vn-about-hero__trust-divider" aria-hidden="true"></span>
+          <span class="vn-about-hero__trust-item">180 сделок с недвижимостью</span>
+          <span class="vn-about-hero__trust-divider" aria-hidden="true"></span>
+          <span class="vn-about-hero__trust-item">С 2016 года</span>
         </div>
       </div>
 
-      <!-- Правая часть: фото Михаила в premium photo-card -->
       <div class="vn-about-hero__aside" style="grid-column: 8 / 13">
-        <div class="vn-about-hero__photo-card">
-          <div class="vn-about-hero__photo-frame">
-
-            <!-- Corner brackets (Слой 7 дизайн-системы) -->
-            <span class="vn-about-hero__bracket vn-about-hero__bracket--tl" aria-hidden="true"></span>
-            <span class="vn-about-hero__bracket vn-about-hero__bracket--tr" aria-hidden="true"></span>
-            <span class="vn-about-hero__bracket vn-about-hero__bracket--bl" aria-hidden="true"></span>
-            <span class="vn-about-hero__bracket vn-about-hero__bracket--br" aria-hidden="true"></span>
-
-            <div class="vn-about-hero__photo-wrap">
-              <OptimizedImage
-                src="/images/mikhail-desk.png"
-                alt="Михаил Хряпин — эксперт по военной ипотеке"
-                width={640}
-                height={780}
-                loading="eager"
-                class="vn-about-hero__photo"
-              />
-            </div>
-          </div>
-          <div class="vn-about-hero__caption">
-            <p class="vn-about-hero__name">Михаил Хряпин</p>
-            <p class="vn-about-hero__role">Эксперт по военной ипотеке</p>
-          </div>
+        <div class="vn-about-hero__route">
+          <span class="vn-about-hero__route-label">Маршрут сервиса</span>
+          <ol class="vn-about-hero__route-list">
+            <li class="vn-about-hero__route-item">
+              <span class="vn-about-hero__route-num">01</span>
+              <span class="vn-about-hero__route-name">Разбор ситуации</span>
+            </li>
+            <li class="vn-about-hero__route-item">
+              <span class="vn-about-hero__route-num">02</span>
+              <span class="vn-about-hero__route-name">Подбор новостроек</span>
+            </li>
+            <li class="vn-about-hero__route-item">
+              <span class="vn-about-hero__route-num">03</span>
+              <span class="vn-about-hero__route-name">Помощь с ипотекой</span>
+            </li>
+            <li class="vn-about-hero__route-item">
+              <span class="vn-about-hero__route-num">04</span>
+              <span class="vn-about-hero__route-name">Сопровождение сделки</span>
+            </li>
+          </ol>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -86,12 +70,9 @@ const trustRow = [
   .vn-about-hero {
     position: relative;
     overflow: hidden;
-    min-height: 92vh;
-    padding-top: 152px;
-    padding-bottom: 88px;
+    padding-top: 132px;
+    padding-bottom: 96px;
     background: var(--color-bg-primary);
-    display: flex;
-    align-items: center;
   }
 
   .vn-about-hero__grid {
@@ -111,7 +92,11 @@ const trustRow = [
     right: -180px;
     width: 880px;
     height: 880px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-primary) 12%, transparent) 0%, transparent 72%);
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-accent-primary) 10%, transparent) 0%,
+      transparent 72%
+    );
     pointer-events: none;
     z-index: 0;
   }
@@ -122,7 +107,6 @@ const trustRow = [
     align-items: center;
   }
 
-  /* Eyebrow / label-mono */
   .vn-about-hero__eyebrow {
     display: inline-flex;
     align-items: center;
@@ -141,9 +125,8 @@ const trustRow = [
     background: var(--color-accent-cta);
   }
 
-  /* H1 */
   .vn-about-hero__title {
-    margin: 28px 0 0;
+    margin: 24px 0 0;
     max-width: 760px;
     font-size: var(--fs-display);
     line-height: 1.05;
@@ -157,7 +140,6 @@ const trustRow = [
     color: var(--color-accent-primary);
   }
 
-  /* Lead / подзаголовок */
   .vn-about-hero__lead {
     margin: 24px 0 0;
     max-width: 620px;
@@ -167,23 +149,13 @@ const trustRow = [
     text-wrap: pretty;
   }
 
-  .vn-about-hero__lead--desktop {
-    display: block;
-  }
-
-  .vn-about-hero__lead--mobile {
-    display: none;
-  }
-
-  /* CTA */
   .vn-about-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 34px;
+    margin-top: 32px;
   }
 
-  /* Trust-row: минималистичные пункты с разделителями */
   .vn-about-hero__trust-row {
     display: flex;
     flex-wrap: wrap;
@@ -211,141 +183,62 @@ const trustRow = [
     background: var(--color-border);
   }
 
-  /* Photo card */
-  .vn-about-hero__photo-card {
-    display: grid;
-    gap: 18px;
-  }
-
-  .vn-about-hero__photo-frame {
-    position: relative;
-    padding: 16px;
-  }
-
-  /* Corner brackets — Слой 7 дизайн-системы */
-  .vn-about-hero__bracket {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .vn-about-hero__bracket::before,
-  .vn-about-hero__bracket::after {
-    content: '';
-    position: absolute;
-    background: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
-  }
-
-  .vn-about-hero__bracket--tl {
-    top: 0;
-    left: 0;
-  }
-  .vn-about-hero__bracket--tl::before {
-    top: 0;
-    left: 0;
-    width: 12px;
-    height: 1px;
-  }
-  .vn-about-hero__bracket--tl::after {
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 12px;
-  }
-
-  .vn-about-hero__bracket--tr {
-    top: 0;
-    right: 0;
-  }
-  .vn-about-hero__bracket--tr::before {
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 1px;
-  }
-  .vn-about-hero__bracket--tr::after {
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 12px;
-  }
-
-  .vn-about-hero__bracket--bl {
-    bottom: 0;
-    left: 0;
-  }
-  .vn-about-hero__bracket--bl::before {
-    bottom: 0;
-    left: 0;
-    width: 12px;
-    height: 1px;
-  }
-  .vn-about-hero__bracket--bl::after {
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 12px;
-  }
-
-  .vn-about-hero__bracket--br {
-    bottom: 0;
-    right: 0;
-  }
-  .vn-about-hero__bracket--br::before {
-    bottom: 0;
-    right: 0;
-    width: 12px;
-    height: 1px;
-  }
-  .vn-about-hero__bracket--br::after {
-    bottom: 0;
-    right: 0;
-    width: 1px;
-    height: 12px;
-  }
-
-  .vn-about-hero__photo-wrap {
-    overflow: hidden;
-    border-radius: 18px;
-    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
-  }
-
-  .vn-about-hero__photo {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .vn-about-hero__caption {
-    padding: 18px 20px;
+  .vn-about-hero__route {
+    padding: 32px;
     border: 1px solid var(--color-border);
-    border-radius: 14px;
+    border-radius: var(--radius-xl);
     background: var(--color-bg-surface);
   }
 
-  .vn-about-hero__name {
-    margin: 0 0 6px;
-    font-size: var(--fs-body);
+  .vn-about-hero__route-label {
+    display: block;
+    margin-bottom: 24px;
+    font-size: var(--fs-label);
     font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-about-hero__route-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vn-about-hero__route-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .vn-about-hero__route-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-cta-soft);
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .vn-about-hero__route-name {
+    font-size: var(--fs-body);
+    font-weight: 500;
     color: var(--color-text-primary);
   }
 
-  .vn-about-hero__role {
-    margin: 0;
-    font-size: var(--fs-body-sm);
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-  }
-
-  /* Tablet */
   @media (max-width: 1023px) {
     .vn-about-hero {
-      min-height: auto;
-      padding-top: 120px;
+      padding-top: 100px;
+      padding-bottom: 64px;
     }
 
     .vn-about-hero__content,
@@ -358,30 +251,26 @@ const trustRow = [
       max-width: 480px;
     }
 
+    .vn-about-hero__trust-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 16px;
+      align-items: stretch;
+    }
+
     .vn-about-hero__trust-item {
-      flex: 1 1 calc(50% - 16px);
-      padding-right: 16px;
+      white-space: normal;
     }
 
-    .vn-about-hero__trust-item:nth-child(2) {
-      border-right: none;
-      padding-right: 0;
-    }
-
-    .vn-about-hero__trust-item:nth-child(3) {
-      margin-top: 16px;
-      border-top: 1px solid var(--color-border);
-      padding-top: 16px;
-      border-right: none;
-      padding-right: 0;
+    .vn-about-hero__trust-divider {
+      display: none;
     }
   }
 
-  /* Mobile */
   @media (max-width: 640px) {
     .vn-about-hero {
-      padding-top: 96px;
-      padding-bottom: 64px;
+      padding-top: 88px;
+      padding-bottom: 48px;
     }
 
     .vn-about-hero__grid {
@@ -394,15 +283,9 @@ const trustRow = [
       letter-spacing: -0.02em;
     }
 
-    /* Переключаем подзаголовок: скрываем десктопный, показываем мобильный */
-    .vn-about-hero__lead--desktop {
-      display: none;
-    }
-
-    .vn-about-hero__lead--mobile {
-      display: block;
+    .vn-about-hero__lead {
       font-size: var(--fs-body);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .vn-about-hero__actions {
@@ -415,26 +298,29 @@ const trustRow = [
     }
 
     .vn-about-hero__trust-row {
-      flex-direction: column;
-      align-items: flex-start;
+      grid-template-columns: 1fr;
       gap: 12px;
       padding-top: 20px;
     }
 
     .vn-about-hero__trust-item {
-      font-size: var(--fs-small);
-    }
-
-    .vn-about-hero__trust-divider {
-      display: none;
+      font-size: var(--fs-body-sm);
     }
 
     .vn-about-hero__aside {
       max-width: none;
     }
 
-    .vn-about-hero__photo-frame {
-      padding: 12px;
+    .vn-about-hero__route {
+      padding: 24px;
+    }
+
+    .vn-about-hero__route-item {
+      gap: 12px;
+    }
+
+    .vn-about-hero__route-name {
+      font-size: var(--fs-body-sm);
     }
   }
 </style>

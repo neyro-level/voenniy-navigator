@@ -2,29 +2,29 @@
 import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
 
 const steps = [
-  { 
-    num: '01', 
-    title: 'Первичный расчёт',
+  {
+    num: '01',
+    title: 'Первичный разбор',
     subtitle: '30 минут, бесплатно',
-    desc: 'Выясняем задачу, проверяем статус НИС и ограничения банка. Даём честную оценку шансов и бюджета.'
+    desc: 'Выясняем задачу, проверяем статус НИС и ограничения банка. Даём честную оценку шансов и бюджета.',
   },
-  { 
-    num: '02', 
+  {
+    num: '02',
     title: 'Точечный подбор новостроек',
     subtitle: 'Только подходящие объекты',
-    desc: 'Отсеиваем неподходящие ЖК на этапе аккредитации и сроков сдачи. Оставляем только те варианты, которые реально одобрят.'
+    desc: 'Отсеиваем неподходящие ЖК на этапе аккредитации и сроков сдачи. Оставляем только те варианты, которые реально одобрят.',
   },
-  { 
-    num: '03', 
-    title: 'Ипотечный брокеридж',
+  {
+    num: '03',
+    title: 'Помощь с ипотекой',
     subtitle: 'Бесплатно для вас',
-    desc: 'Готовим пакет документов, подаём заявки в нужные банки и добиваемся одобрения по военной ипотеке.'
+    desc: 'Готовим пакет документов, подаём заявки в нужные банки и добиваемся одобрения по военной ипотеке.',
   },
-  { 
-    num: '04', 
+  {
+    num: '04',
     title: 'Сопровождение сделки',
     subtitle: 'До получения ключей',
-    desc: 'Контролируем договор, проверку объекта и регистрацию. Вы получаете ключи, мы закрываем задачу.'
+    desc: 'Контролируем договор, проверку объекта и регистрацию. Вы получаете ключи, мы закрываем задачу.',
   },
 ];
 ---
@@ -32,21 +32,19 @@ const steps = [
 <RevealOnScroll mode="fade-up">
   <section id="section-process" class="vn-section vn-process" aria-labelledby="vn-process-title">
     <div class="vn-container">
-
       <!-- Section header -->
       <div class="vn-process__header">
         <span class="vn-process__eyebrow">Процесс</span>
         <h2 class="vn-process__title" id="vn-process-title">
-          Четыре шага от первичного расчёта до сделки. 
-          <span class="vn-process__title-accent">Без скрытых условий и навязанных объектов.</span>
+          Четыре шага от первичного разбора до сделки
         </h2>
         <p class="vn-process__lead">
-          Мы не отправляем вас изучать каталоги самостоятельно. Сначала определяем вашу реальную ситуацию, затем подбираем только те варианты, которые проходят по условиям военной ипотеки, и сопровождаем до регистрации права.
+          Сначала определяем вашу реальную ситуацию, затем подбираем только те варианты, которые проходят по условиям военной ипотеки, и сопровождаем до регистрации права.
         </p>
       </div>
 
-      <!-- Steps grid -->
-      <div class="vn-process__grid">
+      <!-- Steps timeline -->
+      <div class="vn-process__timeline">
         {steps.map((step) => (
           <div class="vn-process__card">
             <span class="vn-process__card-num">{step.num}</span>
@@ -58,7 +56,6 @@ const steps = [
           </div>
         ))}
       </div>
-
     </div>
   </section>
 </RevealOnScroll>
@@ -103,10 +100,6 @@ const steps = [
     text-wrap: balance;
   }
 
-  .vn-process__title-accent {
-    color: var(--color-accent-primary);
-  }
-
   .vn-process__lead {
     margin: 20px 0 0;
     max-width: 640px;
@@ -116,45 +109,61 @@ const steps = [
     text-wrap: pretty;
   }
 
-  /* Grid */
-  .vn-process__grid {
+  /* Timeline grid */
+  .vn-process__timeline {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 48px 24px;
+  }
+
+  .vn-process__timeline::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+    z-index: 0;
   }
 
   /* Card */
   .vn-process__card {
     position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 36px 32px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-surface);
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .vn-process__card:hover {
-    border-color: var(--color-accent-cta);
-    transform: translateY(-2px);
   }
 
   .vn-process__card-num {
-    font-size: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 56px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-secondary);
+    font-size: var(--fs-body);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--color-accent-cta);
-    opacity: 0.8;
     font-variant-numeric: tabular-nums;
   }
 
   .vn-process__card-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    padding: 28px 28px 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-surface);
   }
 
   .vn-process__card-title {
@@ -166,10 +175,9 @@ const steps = [
   }
 
   .vn-process__card-subtitle {
-    font-size: var(--fs-label);
+    font-size: var(--fs-body-sm);
     font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: var(--color-accent-primary);
   }
 
@@ -178,6 +186,7 @@ const steps = [
     font-size: var(--fs-body);
     line-height: 1.55;
     color: var(--color-text-secondary);
+    text-wrap: pretty;
   }
 
   /* Tablet */
@@ -190,13 +199,22 @@ const steps = [
       margin-bottom: 48px;
     }
 
-    .vn-process__grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
+    .vn-process__timeline {
+      gap: 40px 20px;
     }
 
-    .vn-process__card {
-      padding: 28px 24px;
+    .vn-process__timeline::before {
+      top: 20px;
+    }
+
+    .vn-process__card-num {
+      height: 40px;
+      min-width: 52px;
+      padding: 0 12px;
+    }
+
+    .vn-process__card-content {
+      padding: 24px;
     }
   }
 
@@ -220,13 +238,41 @@ const steps = [
       line-height: 1.55;
     }
 
+    .vn-process__timeline {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-left: 28px;
+    }
+
+    .vn-process__timeline::before {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+
     .vn-process__card {
-      padding: 24px 20px;
+      flex-direction: row;
       gap: 16px;
     }
 
     .vn-process__card-num {
-      font-size: 36px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-process__card-content {
+      flex: 1;
+      padding: 20px;
+      gap: 4px;
     }
 
     .vn-process__card-title {
@@ -238,6 +284,7 @@ const steps = [
     }
 
     .vn-process__card-desc {
+      margin-top: 6px;
       font-size: var(--fs-body-sm);
       line-height: 1.5;
     }

@@ -392,4 +392,5 @@ Full-width layout в рамках контейнера: заголовок + lea
 ## 18. Статус
 
 As-built brief синхронизирован с текущей главной страницей.
+В `src/pages/_home/` оставлены только активные блоки текущего route `/`; старые неиспользуемые home-секции удалены из файловой структуры.
 Локальные проверки `pnpm astro check`, `pnpm build`, `pnpm geo-check` пройдены; release-фиксация и production-статус отражаются в `project-docs/WORKLOG.md`.

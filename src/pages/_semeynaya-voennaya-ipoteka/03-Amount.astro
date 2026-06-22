@@ -1,0 +1,374 @@
+---
+import { Icon } from 'astro-icon/components';
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const factors = [
+  {
+    icon: 'calendar-days',
+    title: 'Срок кредита',
+    text: 'Чем дольше срок и спокойнее возрастной запас, тем шире может быть доступная сумма.',
+  },
+  {
+    icon: 'percent',
+    title: 'Банк',
+    text: 'ПСБ, Сбер, ВТБ и Банк ДОМ.РФ по-разному считают совмещение: лимит, взнос и срок.',
+  },
+  {
+    icon: 'home',
+    title: 'Тип объекта',
+    text: 'Новостройки обычно проходят проще. Вторичка и дома требуют более внимательной проверки банка.',
+  },
+  {
+    icon: 'file-text',
+    title: 'Дополнительные средства',
+    text: 'Маткапитал, семейная программа и собственные деньги напрямую расширяют итоговый бюджет.',
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-sem-amount" class="vn-sem-amount">
+    <div class="vn-container">
+      <div class="vn-sem-amount__header">
+        <span class="vn-label-mono">Цифры и лимиты</span>
+        <h2 class="vn-sem-amount__title">
+          От 2,3 млн до 6 млн ₽ — как складывается бюджет
+        </h2>
+        <p class="vn-sem-amount__lead">
+          Базовый НИС покрывает недорогую квартиру. Семейная программа позволяет смотреть объекты до 6 млн ₽ под льготную ставку.
+        </p>
+      </div>
+
+      <div class="vn-sem-amount__visual-block">
+        <div class="vn-sem-amount__receipt">
+          <div class="vn-sem-amount__receipt-header">
+            <span class="vn-sem-amount__receipt-label">Базовый ориентир, 2026</span>
+          </div>
+          <div class="vn-sem-amount__receipt-body">
+            <div class="vn-sem-amount__receipt-row">
+              <span class="vn-sem-amount__receipt-item">Сумма НИС</span>
+              <span class="vn-sem-amount__receipt-value">2,1–2,3 млн ₽</span>
+            </div>
+            <div class="vn-sem-amount__receipt-divider"></div>
+            <div class="vn-sem-amount__receipt-row vn-sem-amount__receipt-row--bonus">
+              <span class="vn-sem-amount__receipt-item">+ Семейная программа</span>
+              <span class="vn-sem-amount__receipt-value">до 6 млн ₽</span>
+            </div>
+            <div class="vn-sem-amount__receipt-row vn-sem-amount__receipt-row--bonus">
+              <span class="vn-sem-amount__receipt-item">+ Материнский капитал</span>
+              <span class="vn-sem-amount__receipt-value">+650 тыс ₽</span>
+            </div>
+            <div class="vn-sem-amount__receipt-row vn-sem-amount__receipt-row--bonus">
+              <span class="vn-sem-amount__receipt-item">+ Собственные средства</span>
+              <span class="vn-sem-amount__receipt-value">по возможности</span>
+            </div>
+            <div class="vn-sem-amount__receipt-divider vn-sem-amount__receipt-divider--thick"></div>
+            <div class="vn-sem-amount__receipt-row vn-sem-amount__receipt-row--total">
+              <span class="vn-sem-amount__receipt-item">Итого</span>
+              <span class="vn-sem-amount__receipt-value">до 5–6 млн ₽</span>
+            </div>
+          </div>
+          <div class="vn-sem-amount__receipt-footer">
+            <span>Итог зависит от банка, возраста и формата сделки</span>
+          </div>
+        </div>
+
+        <div class="vn-sem-amount__factors">
+          {
+            factors.map((factor) => (
+              <div class="vn-sem-amount__factor">
+                <div class="vn-sem-amount__factor-icon">
+                  <Icon name={factor.icon} size={20} />
+                </div>
+                <div class="vn-sem-amount__factor-content">
+                  <h3 class="vn-sem-amount__factor-title">{factor.title}</h3>
+                  <p class="vn-sem-amount__factor-text">{factor.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="vn-sem-amount__cta-block">
+        <p class="vn-sem-amount__cta-text">
+          Не гадайте по общим цифрам. Лучше один раз посчитать сумму по вашим параметрам.
+        </p>
+        <a href="/kalkulyator-voennoy-ipoteki/" class="vn-btn-primary vn-sem-amount__btn">
+          Рассчитать сумму
+        </a>
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-sem-amount {
+    padding-block: var(--spacing-section);
+    background: var(--color-bg-primary);
+  }
+
+  .vn-sem-amount__header {
+    margin-bottom: 48px;
+  }
+
+  .vn-sem-amount__title {
+    max-width: 700px;
+    margin: 16px 0 16px;
+    font-size: var(--fs-h2);
+    line-height: 1.18;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-amount__lead {
+    max-width: 700px;
+    font-size: var(--fs-body);
+    line-height: 1.62;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+    margin: 0;
+  }
+
+  .vn-sem-amount__visual-block {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .vn-sem-amount__receipt {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-dark);
+    color: var(--color-text-ondark);
+    border: 1px solid var(--color-border-ondark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vn-sem-amount__receipt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent-cta),
+      color-mix(in srgb, var(--color-accent-cta) 60%, transparent)
+    );
+  }
+
+  .vn-sem-amount__receipt-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed color-mix(
+      in srgb,
+      var(--color-text-ondark-mute) 30%,
+      transparent
+    );
+  }
+
+  .vn-sem-amount__receipt-label {
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-ondark-mute);
+  }
+
+  .vn-sem-amount__receipt-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .vn-sem-amount__receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vn-sem-amount__receipt-row--bonus {
+    opacity: 0.84;
+  }
+
+  .vn-sem-amount__receipt-row--total {
+    margin-top: 4px;
+  }
+
+  .vn-sem-amount__receipt-item {
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-ondark-mute);
+  }
+
+  .vn-sem-amount__receipt-value {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-ondark);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .vn-sem-amount__receipt-row--total .vn-sem-amount__receipt-item {
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-ondark);
+  }
+
+  .vn-sem-amount__receipt-row--total .vn-sem-amount__receipt-value {
+    font-size: var(--fs-h3);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-sem-amount__receipt-divider {
+    height: 1px;
+    background: color-mix(in srgb, var(--color-text-ondark-mute) 20%, transparent);
+  }
+
+  .vn-sem-amount__receipt-divider--thick {
+    height: 2px;
+    background: color-mix(in srgb, var(--color-text-ondark-mute) 35%, transparent);
+  }
+
+  .vn-sem-amount__receipt-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed color-mix(
+      in srgb,
+      var(--color-text-ondark-mute) 30%,
+      transparent
+    );
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-ondark-mute);
+    line-height: 1.5;
+  }
+
+  .vn-sem-amount__factors {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vn-sem-amount__factor {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .vn-sem-amount__factor:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 30%, var(--color-border));
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-sem-amount__factor-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    color: var(--color-accent-cta);
+    background: color-mix(in srgb, var(--color-accent-cta) 8%, var(--color-bg-primary));
+  }
+
+  .vn-sem-amount__factor-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .vn-sem-amount__factor-title {
+    margin: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .vn-sem-amount__factor-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-sem-amount__cta-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .vn-sem-amount__cta-text {
+    margin: 0;
+    max-width: 560px;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-sem-amount__btn {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .vn-sem-amount__visual-block {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-sem-amount__receipt {
+      max-width: 480px;
+    }
+
+    .vn-sem-amount__cta-block {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .vn-sem-amount__btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-sem-amount__receipt {
+      padding: 24px;
+    }
+
+    .vn-sem-amount__factor {
+      padding: 20px;
+    }
+
+    .vn-sem-amount__cta-block {
+      padding: 24px;
+    }
+
+    .vn-sem-amount__cta-text {
+      font-size: var(--fs-body);
+    }
+  }
+</style>

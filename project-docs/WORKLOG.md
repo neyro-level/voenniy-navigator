@@ -7,6 +7,28 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-22 — Полировка hero `/semeynaya-voennaya-ipoteka/` перед production
+
+- **Hero visual:** на странице семейной военной ипотеки расширена visual-колонка с цифрами на desktop; potential-card пересобрана в responsive bento-виджет без изменения пользовательских текстов.
+- **Mobile QA:** проверены viewport `375`, `390`, `768`; карточка цифр занимает почти всю ширину экрана на mobile, значения не переносятся и горизонтального overflow нет.
+- **Desktop QA:** проверены viewport `1024`, `1366`, `1440`; баннер справа стал шире, значения в metric tiles остаются в одну строку.
+- **Docs synced:** `project-docs/briefs/PAGE_SEMEYNAYA_VOENNOY_IPOTEKI.md` обновлён по as-built визуальному решению hero.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`.
+
+### 2026-06-22 — QA страниц `/o-servise/` и `/semeynaya-voennaya-ipoteka/`
+
+- **Reviewed:** сверены роуты, локальные блоки, page data и брифы страниц услуги и семейной военной ипотеки.
+- **Cleanup check:** в `src/pages/_o-servise/` и `src/pages/_semeynaya-voennaya-ipoteka/` не найдено неиспользуемых старых блоков; актуальные секции соответствуют импортам в страницах.
+- **Fixed:** в hero страницы `/o-servise/` убраны старые `nth-child`-правила для trust-row, которые могли попадать в divider-элементы на tablet; адаптив теперь работает через grid.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`; локальный preview-smoke `/o-servise/` и `/semeynaya-voennaya-ipoteka/` — HTTP 200 и ключевые тексты на месте.
+
+### 2026-06-22 — Cleanup старых home-блоков и фиксация proof-фактов
+
+- **Home cleanup:** из `src/pages/_home/` удалены неиспользуемые старые блоки, которые не импортируются в актуальную главную: `03-Problem`, `04-Scenarios`, `05-Review`, `06-Limits`, `07-Service`, `08-Trust`, `09-Reviews`.
+- **Docs synced:** `project-docs/SITE_ARCHITECTURE.md` и `project-docs/briefs/PAGE_USLOVIYA_VOENNOY_IPOTEKI.md` обновлены: цифры `65 сделок по военной ипотеке`, `180 сделок всего`, `с 2016 года` зафиксированы как подтверждённая фактура без TODO на подтверждение.
+- **Pending facts kept:** VK-группа и email остаются TODO до передачи клиентом.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`.
+
 ### 2026-06-21 — Release-проверка главной, cleanup навигации и синхронизация brief
 
 - **Reviewed:** главная `/` перепроверена после последних ручных правок относительно `project-docs/briefs/PAGE_HOME.md` и текущей реализации в `src/pages/index.astro`.

@@ -9,12 +9,12 @@
   <div class="vn-container">
     <div class="vn-conditions__inner">
       <div class="vn-conditions__header">
-        <span class="vn-label-mono">Параметры одобрения</span>
+        <span class="vn-label-mono">Кто подходит и что нужно для рассмотрения</span>
         <h2 class="vn-conditions__title">
-          Одобрение зависит не от одной цифры, а от 4 базовых параметров
+          Три условия, без которых банк не начнёт рассмотрение
         </h2>
         <p class="vn-conditions__lead">
-          Программа НИС задаёт общие рамки, но итоговое решение принимает банк. Эти четыре точки лучше проверить до подачи документов, чтобы не потерять время уже на первом круге.
+          Проверьте базовые критерии до сбора документов. На первом круге банк смотрит на статус в НИС, срок участия и возраст — уже потом на детали сделки.
         </p>
       </div>
 
@@ -23,115 +23,163 @@
           <div class="vn-conditions__card-head">
             <div class="vn-conditions__icon" aria-hidden="true">
               <svg
-                width="20"
-                height="20"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.8"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v5l3 2"></path>
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <span class="vn-conditions__card-number">01</span>
+            <h3 class="vn-conditions__card-title">Критерии участия</h3>
           </div>
-
-          <h3 class="vn-conditions__card-title">Стаж в НИС</h3>
-          <p class="vn-conditions__card-highlight">Минимум <strong>3 года</strong> в реестре участников</p>
-          <p class="vn-conditions__card-text">
-            Проверяем актуальный статус и остаток на счёте до начала подбора, чтобы вы не тратили время на заведомо неподходящие варианты.
-          </p>
+          <ul class="vn-conditions__list">
+            <li class="vn-conditions__list-item">
+              <svg
+                class="vn-conditions__check"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Участник НИС.</strong> Действующий статус в накопительно-ипотечной системе обязателен.</span>
+            </li>
+            <li class="vn-conditions__list-item">
+              <svg
+                class="vn-conditions__check"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Стаж от 3 лет.</strong> Непрерывное членство в реестре НИС — минимальный порог для банков.</span>
+            </li>
+            <li class="vn-conditions__list-item">
+              <svg
+                class="vn-conditions__check"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Возраст от 21 года.</strong> До полного погашения кредита обычно ориентируются на диапазон до 65–75 лет, в зависимости от банка.</span>
+            </li>
+          </ul>
         </article>
 
         <article class="vn-conditions__card">
           <div class="vn-conditions__card-head">
             <div class="vn-conditions__icon" aria-hidden="true">
               <svg
-                width="20"
-                height="20"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.8"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M4 7h16"></path>
-                <path d="M6 4v6"></path>
-                <path d="M18 4v6"></path>
-                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
-                <path d="M8 13h8"></path>
-                <path d="M8 16h5"></path>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
             </div>
-            <span class="vn-conditions__card-number">02</span>
+            <h3 class="vn-conditions__card-title">Пакет документов</h3>
           </div>
-
-          <h3 class="vn-conditions__card-title">Ежегодный взнос государства</h3>
-          <p class="vn-conditions__card-highlight"><strong>411 184,90 ₽</strong> в 2026 году</p>
-          <p class="vn-conditions__card-text">
-            Это ориентир около <strong>34 265 ₽ в месяц</strong>, которые направляются банком на погашение долга и процентов в рамках лимита НИС.
-          </p>
-        </article>
-
-        <article class="vn-conditions__card">
-          <div class="vn-conditions__card-head">
-            <div class="vn-conditions__icon" aria-hidden="true">
+          <ul class="vn-conditions__list">
+            <li class="vn-conditions__list-item">
               <svg
-                width="20"
-                height="20"
+                class="vn-conditions__file"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.8"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-              >
-                <path d="M4 12h16"></path>
-                <path d="M12 4v16"></path>
-                <path d="M19 7l-7-3-7 3v5c0 4.5 3 7.5 7 8 4-.5 7-3.5 7-8V7z"></path>
-              </svg>
-            </div>
-            <span class="vn-conditions__card-number">03</span>
-          </div>
-
-          <h3 class="vn-conditions__card-title">Срок кредитования</h3>
-          <p class="vn-conditions__card-highlight">Обычно до <strong>20–25 лет</strong></p>
-          <p class="vn-conditions__card-text">
-            Банк считает возраст на момент полного погашения. Чем раньше вы входите в сделку, тем выше может быть доступный диапазон суммы.
-          </p>
-        </article>
-
-        <article class="vn-conditions__card">
-          <div class="vn-conditions__card-head">
-            <div class="vn-conditions__icon" aria-hidden="true">
+              ><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              <span><strong>Базовый пакет:</strong> паспорт РФ, свидетельство о праве на ЦЖЗ и документы на объект.</span>
+            </li>
+            <li class="vn-conditions__list-item">
               <svg
-                width="20"
-                height="20"
+                class="vn-conditions__file"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.8"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-              >
-                <path d="M3 10.5 12 3l9 7.5"></path>
-                <path d="M5 9.5V20h14V9.5"></path>
-                <path d="M9 20v-6h6v6"></path>
-              </svg>
-            </div>
-            <span class="vn-conditions__card-number">04</span>
-          </div>
-
-          <h3 class="vn-conditions__card-title">Требования к объекту</h3>
-          <p class="vn-conditions__card-highlight"><strong>Новостройка</strong> и <strong>вторичка</strong> проверяются по-разному</p>
-          <p class="vn-conditions__card-text">
-            Новостройки от аккредитованных застройщиков проходят быстрее. Для вторичного жилья банк внимательнее смотрит на год постройки, материал стен и ликвидность.
-          </p>
+              ><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              <span><strong>Для расширения бюджета:</strong> материнский капитал, свидетельство о браке, справки о доходах и другие подтверждающие документы по сценарию сделки.</span>
+            </li>
+          </ul>
         </article>
+      </div>
+
+      <div class="vn-conditions__filter">
+        <div class="vn-conditions__filter-icon" aria-hidden="true">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        </div>
+        <div class="vn-conditions__filter-content">
+          <h3 class="vn-conditions__filter-title">Кому не подходит</h3>
+          <ul class="vn-conditions__filter-list">
+            <li>Не участник НИС — без статуса в реестре одобрения не будет</li>
+            <li>Стаж в НИС менее 3 лет — банки не рассматривают</li>
+            <li>Нет подтверждённого дохода для доплаты, если базового лимита не хватает</li>
+          </ul>
+          <p class="vn-conditions__filter-note">
+            Если вы не уверены в статусе, документах или формате сделки, лучше начать с первичного разбора, а не с хаотичного сбора пакета.
+          </p>
+        </div>
+      </div>
+
+      <div class="vn-conditions__footer">
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Получить расчёт ситуации"
+          class="vn-btn-primary vn-conditions__btn"
+        >
+          Получить разбор ситуации
+        </a>
       </div>
     </div>
   </div>
@@ -149,7 +197,7 @@
   }
 
   .vn-conditions__header {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
 
   .vn-conditions__title {
@@ -174,103 +222,176 @@
 
   .vn-conditions__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
   }
 
   .vn-conditions__card {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    padding: 28px;
+    gap: 24px;
+    padding: 32px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg-surface);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-primary);
     transition:
       border-color 0.2s ease,
-      transform 0.2s ease,
-      background-color 0.2s ease;
+      box-shadow 0.2s ease;
   }
 
   @media (hover: hover) and (pointer: fine) {
     .vn-conditions__card:hover {
-      border-color: color-mix(
-        in srgb,
-        var(--color-accent-primary) 32%,
-        var(--color-border)
-      );
-      background: color-mix(
-        in srgb,
-        var(--color-accent-soft) 36%,
-        var(--color-bg-surface)
-      );
-      transform: translateY(-2px);
+      border-color: var(--color-accent-cta);
+      box-shadow: 0 8px 24px
+        color-mix(in srgb, var(--color-accent-cta) 5%, transparent);
     }
   }
 
   .vn-conditions__card-head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
-    margin-bottom: 20px;
   }
 
   .vn-conditions__icon {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-md);
-    color: var(--color-accent-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
     background: color-mix(
       in srgb,
-      var(--color-accent-soft) 72%,
-      var(--color-bg-surface)
+      var(--color-accent-cta-soft) 30%,
+      transparent
     );
-  }
-
-  .vn-conditions__card-number {
-    font-size: var(--fs-label);
-    line-height: 1;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--color-text-tertiary);
+    color: var(--color-accent-cta);
   }
 
   .vn-conditions__card-title {
-    margin: 0 0 12px;
     font-size: var(--fs-h3);
-    line-height: 1.3;
     font-weight: 600;
     color: var(--color-text-primary);
-    text-wrap: balance;
-  }
-
-  .vn-conditions__card-highlight {
-    margin: 0 0 12px;
-    font-size: var(--fs-body);
-    line-height: 1.55;
-    color: var(--color-text-primary);
-    text-wrap: pretty;
-  }
-
-  .vn-conditions__card-highlight strong,
-  .vn-conditions__card-text strong {
-    font-weight: 600;
-    color: var(--color-text-primary);
-  }
-
-  .vn-conditions__card-text {
     margin: 0;
-    font-size: var(--fs-body-sm);
+    line-height: 1.3;
+  }
+
+  .vn-conditions__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vn-conditions__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: var(--fs-body);
     line-height: 1.6;
     color: var(--color-text-secondary);
     text-wrap: pretty;
   }
 
-  @media (max-width: 767px) {
+  .vn-conditions__list-item strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  .vn-conditions__check {
+    flex-shrink: 0;
+    color: var(--color-accent-cta);
+    margin-top: 3px;
+  }
+
+  .vn-conditions__file {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    margin-top: 3px;
+  }
+
+  .vn-conditions__filter {
+    display: flex;
+    gap: 20px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+    border-radius: var(--radius-xl);
+    background: color-mix(
+      in srgb,
+      var(--color-accent-cta-soft) 8%,
+      var(--color-bg-primary)
+    );
+  }
+
+  .vn-conditions__filter-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: color-mix(
+      in srgb,
+      var(--color-accent-cta-soft) 40%,
+      transparent
+    );
+    color: var(--color-accent-cta);
+  }
+
+  .vn-conditions__filter-content {
+    flex: 1;
+  }
+
+  .vn-conditions__filter-title {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .vn-conditions__filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vn-conditions__filter-list li {
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .vn-conditions__filter-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-conditions__filter-note {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+    color: var(--color-text-tertiary);
+  }
+
+  .vn-conditions__footer {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 768px) {
     .vn-conditions {
       padding-block: var(--spacing-section-mobile);
     }
@@ -281,28 +402,52 @@
 
     .vn-conditions__grid {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 16px;
     }
 
     .vn-conditions__card {
-      padding: 22px 20px;
-    }
-
-    .vn-conditions__card-head {
-      margin-bottom: 16px;
+      padding: 20px;
+      gap: 16px;
     }
 
     .vn-conditions__icon {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
 
-    .vn-conditions__card-title {
-      margin-bottom: 10px;
+    .vn-conditions__list {
+      gap: 12px;
     }
 
-    .vn-conditions__card-highlight {
-      margin-bottom: 10px;
+    .vn-conditions__list-item {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+    }
+
+    .vn-conditions__filter {
+      flex-direction: column;
+      padding: 20px;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .vn-conditions__filter-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .vn-conditions__filter-list li {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+    }
+
+    .vn-conditions__footer {
+      justify-content: stretch;
+    }
+
+    .vn-conditions__btn {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

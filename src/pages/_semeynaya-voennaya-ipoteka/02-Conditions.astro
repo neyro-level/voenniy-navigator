@@ -1,0 +1,219 @@
+---
+import { Icon } from 'astro-icon/components';
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const conditions = [
+  {
+    icon: 'users',
+    title: 'Есть дети и право на семейную программу',
+    text: 'Обязательное условие. Без него совмещение невозможно.',
+  },
+  {
+    icon: 'shield-check',
+    title: 'Участник НИС со стажем от 3 лет',
+    text: 'Базовое требование банка. Государство покрывает платёж, семейная программа расширяет лимит.',
+  },
+  {
+    icon: 'home',
+    title: 'Нужна квартира дороже базового лимита',
+    text: 'Если хватает только НИС, совмещение не нужно. Смысл — смотреть более дорогие объекты без рыночной ставки.',
+  },
+];
+---
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-sem-conditions" class="vn-sem-conditions">
+    <div class="vn-container">
+      <div class="vn-sem-conditions__header">
+        <span class="vn-label-mono">Кто подходит</span>
+        <h2 class="vn-sem-conditions__title">
+          Когда семейная ипотека реально увеличивает бюджет
+        </h2>
+        <p class="vn-sem-conditions__lead">
+          Не всем военнослужащим нужно совмещение. Три условия, при которых оно имеет смысл.
+        </p>
+      </div>
+
+      <div class="vn-sem-conditions__grid">
+        {
+          conditions.map((item) => (
+            <article class="vn-sem-conditions__card">
+              <span class="vn-sem-conditions__icon" aria-hidden="true">
+                <Icon name={item.icon} size={44} />
+              </span>
+              <div class="vn-sem-conditions__body">
+                <h3 class="vn-sem-conditions__card-title">{item.title}</h3>
+                <p class="vn-sem-conditions__card-text">{item.text}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</RevealOnScroll>
+
+<style>
+  .vn-sem-conditions {
+    padding-block: var(--spacing-section);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-sem-conditions__header {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .vn-sem-conditions__title {
+    margin: 16px 0 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-conditions__lead {
+    margin: 12px 0 0;
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-sem-conditions__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .vn-sem-conditions__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    overflow: hidden;
+    background: var(--color-bg-primary);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    transition:
+      transform 0.28s ease,
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
+  }
+
+  .vn-sem-conditions__card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--color-accent-cta);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.28s ease;
+  }
+
+  .vn-sem-conditions__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-accent-cta);
+  }
+
+  .vn-sem-conditions__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .vn-sem-conditions__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vn-sem-conditions__card-title {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: var(--lh-title);
+    color: var(--color-text-primary);
+  }
+
+  .vn-sem-conditions__card-text {
+    margin: 0;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-sem-conditions__card:hover {
+    transform: translateY(-3px);
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-sem-conditions__card:hover::before {
+    transform: scaleX(1);
+  }
+
+  @media (max-width: 1023px) {
+    .vn-sem-conditions__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vn-sem-conditions__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .vn-sem-conditions__card {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .vn-sem-conditions__card::before {
+      inset: auto 0 0;
+      height: 2px;
+    }
+
+    .vn-sem-conditions__icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .vn-sem-conditions__card-title {
+      font-size: var(--fs-body);
+    }
+
+    .vn-sem-conditions__card-text {
+      font-size: var(--fs-body-sm);
+    }
+
+    .vn-sem-conditions__card:hover {
+      transform: translateX(4px);
+      box-shadow: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vn-sem-conditions__card,
+    .vn-sem-conditions__card::before {
+      transition: none;
+    }
+
+    .vn-sem-conditions__card:hover {
+      transform: none;
+    }
+  }
+</style>

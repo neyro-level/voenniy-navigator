@@ -4,16 +4,16 @@ import OptimizedImage from '../../components/ui/OptimizedImage.astro';
 
 const points = [
   {
-    title: 'Опыт, подтверждённый цифрами',
-    desc: 'Более 180 сделок на рынке недвижимости, из них 65 — целевых сделок по военной ипотеке с 2016 года.'
+    title: 'Практика на реальных сделках',
+    desc: '180 сделок с недвижимостью, из них 65 — по военной ипотеке. Опыт с 2016 года.'
   },
   {
     title: 'Персональная ответственность',
-    desc: 'Мы не передаем клиентов по цепочке. Финальную стратегию покупки и оценку рисков формирует и защищает конкретный эксперт.'
+    desc: 'Клиент не передаёт по цепочке. Михаил лично формирует стратегию и контролирует каждый этап.'
   },
   {
-    title: 'Глубокий первичный расчёт',
-    desc: 'Анализ статуса НИС, реальных ограничений банка и бюджета проводится лично, чтобы сразу отсечь неподходящие варианты.'
+    title: 'Разбор до выбора объекта',
+    desc: 'Сначала проверяет статус НИС, ограничения банка и реальный бюджет — и только потом подбирает варианты.'
   }
 ];
 ---
@@ -22,7 +22,7 @@ const points = [
   <section id="section-role-of-mikhail" class="vn-section vn-role" aria-labelledby="vn-role-title">
     <div class="vn-container">
       <div class="vn-grid-12 vn-role__layout">
-        
+
         <!-- Левая часть: Фото -->
         <div class="vn-role__photo-col" style="grid-column: 1 / 6">
           <div class="vn-role__photo-card">
@@ -31,14 +31,15 @@ const points = [
               <span class="vn-role__bracket vn-role__bracket--tr" aria-hidden="true"></span>
               <span class="vn-role__bracket vn-role__bracket--bl" aria-hidden="true"></span>
               <span class="vn-role__bracket vn-role__bracket--br" aria-hidden="true"></span>
-              
+
               <div class="vn-role__photo-wrap">
                 <OptimizedImage
-                  src="/images/mikhail-hero.png"
+                  src="/images/mikhail-hero.jpg"
                   alt="Михаил Хряпин — эксперт по военной ипотеке"
                   width={560}
                   height={680}
-                  loading="lazy"
+                  loading="eager"
+                  fetchpriority="high"
                   class="vn-role__photo"
                 />
               </div>
@@ -53,14 +54,14 @@ const points = [
         <!-- Правая часть: Контент -->
         <div class="vn-role__content-col" style="grid-column: 7 / 13">
           <span class="vn-role__eyebrow">Экспертиза</span>
-          
+
           <h2 class="vn-role__title" id="vn-role-title">
-            За каждым решением стоит конкретный эксперт, 
-            <span class="vn-role__title-accent">а не безликий менеджер.</span>
+            Первичный разбор ведёт Михаил Хряпин —
+            <span class="vn-role__title-accent">главный эксперт сервиса.</span>
           </h2>
-          
+
           <p class="vn-role__lead">
-            Вы работаете напрямую с Михаилом Хряпиным. Он лично анализирует вашу ситуацию, проверяет ограничения банка и выстраивает стратегию покупки, опираясь на опыт 65+ успешных сделок по военной ипотеке.
+            Михаил лично проводит первичный разбор: проверяет статус НИС, ограничения банка и реальный бюджет, чтобы сразу отсечь неподходящие варианты.
           </p>
 
           <div class="vn-role__points">
@@ -133,11 +134,11 @@ const points = [
 
   .vn-role__photo-wrap {
     overflow: hidden;
-    border-radius: 18px;
-    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-bg-dark) 14%, transparent);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-bg-dark) 8%, transparent);
   }
 
-  .vn-role__photo {
+  :global(.vn-role__photo) {
     width: 100%;
     height: 100%;
     display: block;

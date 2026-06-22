@@ -1,117 +1,348 @@
 ---
+import RevealOnScroll from '../../components/ui/RevealOnScroll.astro';
+
+const banks = [
+  {
+    name: 'ПСБ',
+    rate: 'от 6%',
+    limit: 'до 6 млн ₽',
+    term: 'до 25 лет',
+    downPayment: '0–15%',
+    features: 'Гибкие условия совмещения, работают с новостройками и вторичкой',
+  },
+  {
+    name: 'Сбер',
+    rate: 'от 6%',
+    limit: 'до 6 млн ₽',
+    term: 'до 30 лет',
+    downPayment: '10–20%',
+    features: 'Широкая сеть отделений, понятный процесс для семей с детьми',
+  },
+  {
+    name: 'ВТБ',
+    rate: 'от 6%',
+    limit: 'до 6 млн ₽',
+    term: 'до 30 лет',
+    downPayment: '0–15%',
+    features: 'Активно работает с военнослужащими, удобно использовать маткапитал',
+  },
+  {
+    name: 'Банк ДОМ.РФ',
+    rate: 'от 6%',
+    limit: 'до 6 млн ₽',
+    term: 'до 25 лет',
+    downPayment: '5–15%',
+    features: 'Специализированные жилищные программы, индивидуальные сценарии',
+  },
+];
+
+const parameters = [
+  { key: 'rate', label: 'Ставка' },
+  { key: 'limit', label: 'Лимит семейной' },
+  { key: 'term', label: 'Срок' },
+  { key: 'downPayment', label: 'Первоначальный взнос' },
+  { key: 'features', label: 'Особенности' },
+];
 ---
-<!-- ══════════════════════════════════════════════
-     БЛОК 04 — БАНКИ ДЛЯ СОВМЕЩЕНИЯ
-════════════════════════════════════════════════ -->
-<section id="section-sem-banks" class="vn-sem-banks">
-  <div class="vn-container">
-    <div class="vn-grid-12 vn-sem-banks__grid">
-      
-      <div class="vn-sem-banks__content" style="grid-column: 1 / 7">
-        <span class="vn-label-mono">ПАРТНЁРЫ ПРОГРАММЫ</span>
+
+<RevealOnScroll mode="fade-up">
+  <section id="section-sem-banks" class="vn-sem-banks">
+    <div class="vn-container">
+      <div class="vn-sem-banks__header">
+        <span class="vn-label-mono">Банки и программы</span>
         <h2 class="vn-sem-banks__title">
-          Какие банки работают с совмещением
+          Какой банк выбрать для совмещения
         </h2>
         <p class="vn-sem-banks__lead">
-          Не все банки одинаково гибко подходят к совмещению военной и семейной ипотеки. 
-          Мы помогаем выбрать ту программу, которая даст максимальное одобрение под вашу ситуацию.
+          ПСБ, Сбер, ВТБ и Банк ДОМ.РФ работают с совмещением, но условия отличаются. Сравниваем по ставке, сроку и требованиям.
         </p>
       </div>
 
-      <div class="vn-sem-banks__list" style="grid-column: 7 / 13">
-        <div class="vn-sem-banks__item">
-          <h3>ПСБ</h3>
-          <p>Один из ключевых операторов военной ипотеки. Гибкие условия для совмещения с семейной программой.</p>
-        </div>
-        <div class="vn-sem-banks__item">
-          <h3>Сбербанк</h3>
-          <p>Широкая сеть отделений и понятный процесс одобрения совмещенных программ для семей с детьми.</p>
-        </div>
-        <div class="vn-sem-banks__item">
-          <h3>ВТБ</h3>
-          <p>Активно работает с военнослужащими, предлагает конкурентные условия при использовании маткапитала.</p>
-        </div>
-        <div class="vn-sem-banks__item">
-          <h3>Банк ДОМ.РФ</h3>
-          <p>Специализированный институт развития в жилищной сфере, часто предлагает индивидуальные решения.</p>
-        </div>
+      <div class="vn-sem-banks__table-wrapper" data-table="desktop">
+        <table class="vn-sem-banks__table">
+          <thead>
+            <tr>
+              <th scope="col" class="vn-sem-banks__th">Параметр</th>
+              {banks.map((bank) => (
+                <th scope="col" class="vn-sem-banks__th">{bank.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {parameters.map((param) => (
+              <tr>
+                <td class="vn-sem-banks__td vn-sem-banks__td--label">{param.label}</td>
+                {banks.map((bank) => (
+                  <td class="vn-sem-banks__td">
+                    {bank[param.key as keyof typeof bank]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
+      <div class="vn-sem-banks__mobile-cards" data-table="mobile">
+        {banks.map((bank) => (
+          <article class="vn-sem-banks__m-card">
+            <div class="vn-sem-banks__m-head">
+              <span class="vn-sem-banks__m-name">{bank.name}</span>
+            </div>
+            <div class="vn-sem-banks__m-params">
+              {parameters.map((param) => (
+                <div class="vn-sem-banks__m-row">
+                  <span class="vn-sem-banks__m-label">{param.label}</span>
+                  <span class="vn-sem-banks__m-value">{bank[param.key as keyof typeof bank]}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="vn-sem-banks__note">
+        Ориентир, точные условия зависят от банка и вашей ситуации.
+      </p>
+
+      <div class="vn-sem-banks__cta-section">
+        <div class="vn-sem-banks__cta-content">
+          <h3 class="vn-sem-banks__cta-title">
+            Банк выбирают не по рекламе, а по вашему сценарию сделки
+          </h3>
+          <p class="vn-sem-banks__cta-text">
+            Мы поможем выбрать банк, который подходит именно под ваши параметры, а не просто выглядит сильнее в таблице.
+          </p>
+        </div>
+        <a
+          href="/contacts/#request"
+          data-modal-open
+          data-modal-title="Подобрать банк под мою ситуацию"
+          data-modal-subtitle="Проверим бюджет, формат сделки и подскажем, какой банк логичнее смотреть именно в вашем сценарии."
+          class="vn-btn-primary vn-sem-banks__cta-btn"
+        >
+          Подобрать банк под мою ситуацию
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</RevealOnScroll>
 
 <style>
   .vn-sem-banks {
-    padding: 96px 0;
+    padding-block: var(--spacing-section);
     background: var(--color-bg-surface);
   }
 
-  .vn-sem-banks__grid {
-    align-items: start;
-  }
-
-  .vn-sem-banks__content {
-    position: sticky;
-    top: 104px;
+  .vn-sem-banks__header {
+    margin-bottom: 48px;
   }
 
   .vn-sem-banks__title {
-    margin: 16px 0 0;
+    max-width: 760px;
+    margin: 16px 0 16px;
     font-size: var(--fs-h2);
-    font-weight: 650;
     line-height: 1.18;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     color: var(--color-text-primary);
     text-wrap: balance;
   }
 
   .vn-sem-banks__lead {
-    margin: 16px 0 0;
+    max-width: 760px;
+    margin: 0;
     font-size: var(--fs-body);
-    line-height: 1.65;
+    line-height: 1.62;
     color: var(--color-text-secondary);
-    max-width: 480px;
+    text-wrap: pretty;
   }
 
-  .vn-sem-banks__list {
-    display: flex;
+  .vn-sem-banks__table-wrapper {
+    margin-bottom: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary);
+    overflow-x: auto;
+  }
+
+  .vn-sem-banks__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+
+  .vn-sem-banks__table thead {
+    background: var(--color-bg-surface-low);
+  }
+
+  .vn-sem-banks__th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  .vn-sem-banks__td {
+    padding: 16px 20px;
+    font-size: var(--fs-body-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+
+  .vn-sem-banks__td--label {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: var(--color-bg-surface);
+  }
+
+  .vn-sem-banks__table tbody tr:last-child .vn-sem-banks__td {
+    border-bottom: none;
+  }
+
+  .vn-sem-banks__note {
+    margin: 0 0 48px;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+  }
+
+  .vn-sem-banks__mobile-cards {
+    display: none;
     flex-direction: column;
-    gap: 0;
-    border-top: 1px solid var(--color-border);
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
-  .vn-sem-banks__item {
-    padding: 24px 0;
+  .vn-sem-banks__m-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .vn-sem-banks__m-head {
+    padding: 16px 20px;
+    background: var(--color-bg-surface-low);
     border-bottom: 1px solid var(--color-border);
   }
 
-  .vn-sem-banks__item h3 {
-    margin: 0 0 8px;
-    font-size: var(--fs-h3);
+  .vn-sem-banks__m-name {
+    font-size: var(--fs-body);
     font-weight: 600;
     color: var(--color-text-primary);
   }
 
-  .vn-sem-banks__item p {
-    margin: 0;
+  .vn-sem-banks__m-params {
+    padding: 12px 20px;
+  }
+
+  .vn-sem-banks__m-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vn-sem-banks__m-row:last-child {
+    border-bottom: none;
+  }
+
+  .vn-sem-banks__m-label {
     font-size: var(--fs-body-sm);
+    font-weight: 500;
     color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .vn-sem-banks__m-value {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-primary);
+    text-align: right;
+    max-width: 55%;
+  }
+
+  .vn-sem-banks__cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 32px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .vn-sem-banks__cta-title {
+    margin: 0 0 8px;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    text-wrap: balance;
+  }
+
+  .vn-sem-banks__cta-text {
+    margin: 0;
+    max-width: 560px;
+    font-size: var(--fs-body);
     line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .vn-sem-banks__cta-btn {
+    flex-shrink: 0;
   }
 
   @media (max-width: 1023px) {
-    .vn-sem-banks__content {
-      grid-column: 1 / -1 !important;
-      position: static;
-      margin-bottom: 40px;
+    .vn-sem-banks__table-wrapper {
+      display: none;
     }
-    .vn-sem-banks__list {
-      grid-column: 1 / -1 !important;
+
+    .vn-sem-banks__mobile-cards {
+      display: flex;
+    }
+
+    .vn-sem-banks__cta-section {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .vn-sem-banks__cta-btn {
+      width: 100%;
+      justify-content: center;
     }
   }
 
   @media (max-width: 640px) {
-    .vn-sem-banks { padding: 72px 0; }
-    .vn-sem-banks__item { padding: 20px 0; }
+    .vn-sem-banks__cta-section {
+      padding: 24px;
+    }
+
+    .vn-sem-banks__m-value {
+      max-width: 60%;
+    }
   }
 </style>

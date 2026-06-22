@@ -2,21 +2,23 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import Hero from './_semeynaya-voennaya-ipoteka/01-Hero.astro';
-import Mechanism from './_semeynaya-voennaya-ipoteka/02-Mechanism.astro';
-import Budget from './_semeynaya-voennaya-ipoteka/03-Budget.astro';
+import Conditions from './_semeynaya-voennaya-ipoteka/02-Conditions.astro';
+import Amount from './_semeynaya-voennaya-ipoteka/03-Amount.astro';
 import Banks from './_semeynaya-voennaya-ipoteka/04-Banks.astro';
+import Scenarios from './_semeynaya-voennaya-ipoteka/05-Scenarios.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import { faqItems, pageMeta, schemas } from './_semeynaya-voennaya-ipoteka/pageData';
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
   <Hero />
-  <Mechanism />
-  <Budget />
+  <Conditions />
+  <Amount />
   <Banks />
+  <Scenarios />
   <FAQ
     items={faqItems}
-    eyebrow="ЧАСТЫЕ ВОПРОСЫ"
+    eyebrow="Частые вопросы"
     title="Ответы о совмещении программ"
     lead="Ключевые моменты, которые важно понять перед подачей заявки в банк."
     linkText="Не нашли ответ? Задайте вопрос при расчёте →"

@@ -16,23 +16,23 @@
         </h1>
 
         <p class="vn-usl-hero__lead">
-          Показываем, как правила НИС, банк, срок и формат сделки влияют на сумму до выбора новостройки. Сначала можно быстро рассчитать сценарий, а потом перейти к расчёту без лишних догадок.
+          Показываем, как правила НИС, банк, срок и формат сделки влияют на сумму до выбора новостройки. Сначала разберём условия, а потом — ваш персональный сценарий.
         </p>
 
         <div class="vn-usl-hero__actions">
-          <a
-            href="/kalkulyator-voennoy-ipoteki/"
-            class="vn-btn-ghost"
-          >
-            Рассчитать в калькуляторе
-          </a>
           <a
             href="/contacts/#request"
             data-modal-open
             data-modal-title="Получить расчёт ситуации"
             class="vn-btn-primary"
           >
-            Получить расчёт ситуации
+            Получить разбор ситуации
+          </a>
+          <a
+            href="/kalkulyator-voennoy-ipoteki/"
+            class="vn-usl-hero__ghost-link"
+          >
+            Или сначала рассчитать в калькуляторе →
           </a>
         </div>
       </div>
@@ -138,7 +138,24 @@
   .vn-usl-hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .vn-usl-hero__ghost-link {
+    font-size: var(--fs-body);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text-tertiary) 40%, transparent);
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .vn-usl-hero__ghost-link:hover {
+    color: var(--color-accent-cta);
+    border-color: var(--color-accent-cta);
   }
 
   .vn-usl-hero__visual {
@@ -256,12 +273,19 @@
 
     .vn-usl-hero__actions {
       width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
     }
 
-    .vn-usl-hero__actions .vn-btn-primary,
-    .vn-usl-hero__actions .vn-btn-ghost {
+    .vn-usl-hero__actions .vn-btn-primary {
       width: 100%;
       justify-content: center;
+    }
+
+    .vn-usl-hero__ghost-link {
+      text-align: center;
+      align-self: center;
     }
 
     .vn-usl-potential-card {
