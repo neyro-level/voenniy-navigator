@@ -10,6 +10,7 @@
 ### 2026-06-22 — Полировка hero `/semeynaya-voennaya-ipoteka/` перед production
 
 - **Hero visual:** на странице семейной военной ипотеки расширена visual-колонка с цифрами на desktop; potential-card пересобрана в responsive bento-виджет без изменения пользовательских текстов.
+- **Cleanup:** удалён неиспользуемый legacy-компонент `src/pages/_usloviya-voennoy-ipoteki/04-Amount.astro`; актуальный route использует `03-Amount`, `04-Banks`, `05-Geo`.
 - **Mobile QA:** проверены viewport `375`, `390`, `768`; карточка цифр занимает почти всю ширину экрана на mobile, значения не переносятся и горизонтального overflow нет.
 - **Desktop QA:** проверены viewport `1024`, `1366`, `1440`; баннер справа стал шире, значения в metric tiles остаются в одну строку.
 - **Docs synced:** `project-docs/briefs/PAGE_SEMEYNAYA_VOENNOY_IPOTEKI.md` обновлён по as-built визуальному решению hero.
