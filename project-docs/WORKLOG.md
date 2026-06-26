@@ -7,6 +7,56 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-26 — Добавлен файл подтверждения Яндекс.Вебмастера
+
+- **Added:** `public/yandex_3736f6157fb9c46c.html` с кодом `Verification: 3736f6157fb9c46c`.
+- **Purpose:** файл должен отдаваться из корня production-сайта по `/yandex_3736f6157fb9c46c.html` после следующего деплоя.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; файл присутствует в `dist/yandex_3736f6157fb9c46c.html`; `pnpm geo-check` — GEO score `100/100`.
+
+### 2026-06-26 — Подключены VK Михаила Хряпина и Яндекс.Метрика
+
+- **VK:** ссылка `https://vk.com/mikhail_khryapin` добавлена в единые `CONTACTS` и `GEO_CONTACTS`; теперь выводится в footer, карте маршрутов, hero страницы `/contacts/`, Schema.org `sameAs` и `/llms.txt`.
+- **Yandex Metrika:** счётчик `110176980` подключён через существующий consent-gated `CookieBanner` + Partytown с параметрами из кода Яндекса; добавлен `noscript` fallback.
+- **Deploy:** `PUBLIC_YM_COUNTER_ID=110176980` закреплён в GitHub Actions env для production build.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`; в `dist` проверены VK-ссылка и счётчик `110176980`.
+
+### 2026-06-26 — Telegram-группа подключена к заявкам
+
+- **Decision:** сайт не меняем; заявки продолжают идти через `/api/leads` в общий `AMS Leads API`.
+- **Server config:** для проекта `voenniy-navigator` обновлен `VOENNIY_NAVIGATOR_TELEGRAM_CHAT_ID`; Telegram delivery в registry уже включен через `chatIdEnv`.
+- **Relay:** для `AMS Leads API` подключен `ams-telegram-relay`, потому что AMS Server не открывает `api.telegram.org:443` напрямую.
+- **Verified:** тестовое сообщение от leads-бота ушло в Telegram-группу, Telegram вернул `message_id=322`; `/api/leads` без SmartCaptcha ожидаемо возвращает `400 captcha_required`.
+
+### 2026-06-26 — MAX-группа подключена к заявкам
+
+- **Decision:** сайт не меняем; MAX подключен как второй delivery channel в общем `AMS Leads API`.
+- **Chat id:** получен через события MAX-бота `ams-lead` после добавления бота в группу и сообщения `/start`; значение сохранено в server env и Doppler как `VOENNIY_NAVIGATOR_MAX_CHAT_ID`.
+- **Server config:** registry проекта обновлен: `"max": { "enabled": true, "chatIdEnv": "VOENNIY_NAVIGATOR_MAX_CHAT_ID" }`.
+- **Verified:** тестовое сообщение в MAX-группу отправлено через `platform-api.max.ru/messages`, API вернул `message_id=mid.ffffba9a039c8d53019f0425e7247787`; `/api/leads` без SmartCaptcha ожидаемо возвращает `400 captcha_required`.
+
+### 2026-06-26 — Перенос на отдельный VPS отложен
+
+- **Decision:** работаем на текущем AMS Server, Timeweb Cloud `5.42.100.161`.
+- **Migration plan:** `project-docs/SERVER_MIGRATION_PLAN.md` переведен в статус `deferred / on hold`.
+- **Deploy/API:** GitHub Actions secrets, DNS и `/api/leads` не меняем; общий `AMS Leads API` остается в текущем рабочем контуре.
+- **Next:** возвращаться к серверной миграции только по отдельному решению.
+
+### 2026-06-26 — Зафиксирован план переноса сайта на отдельный VPS клиента
+
+- **Plan added:** создан `project-docs/SERVER_MIGRATION_PLAN.md`.
+- **Decision:** переносим только статический Astro-сайт; заявки пока остаются через общий managed `AMS Leads API` АМС.
+- **Infra model:** отдельный Timeweb Cloud VPS клиента, GitHub Actions release-based deploy, staging-first cutover.
+- **Blocked until:** клиент зарегистрирует сервер и передаст IP/SSH или Timeweb Terraform access.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`.
+
+### 2026-06-26 — Полное удаление виджета обратной связи
+
+- **Removed:** удалён React island виджета из `src/components/ui/`.
+- **Layout cleanup:** `src/layouts/BaseLayout.astro` больше не импортирует и не рендерит виджет обратной связи.
+- **Env cleanup:** из `.env.example` и `.github/workflows/deploy-ams.yml` удалены публичные review-переменные и review-секрет из build-env.
+- **Docs cleanup:** из research-документа удалена устаревшая строка про env-gate виджета.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — GEO score `100/100`.
+
 ### 2026-06-22 — Полировка hero `/semeynaya-voennaya-ipoteka/` перед production
 
 - **Hero visual:** на странице семейной военной ипотеки расширена visual-колонка с цифрами на desktop; potential-card пересобрана в responsive bento-виджет без изменения пользовательских текстов.

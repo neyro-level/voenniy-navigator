@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { COOKIE_NAME } from '../../lib/constants';
 import '../../styles/cookie-banner.css';
 
+const YANDEX_METRIKA_COUNTER_ID = import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980';
+
 declare global {
   interface Window {
     ym?: (...args: unknown[]) => void;
@@ -33,8 +35,8 @@ function initYandexMetrika(counterId: string) {
     m[i].l=1*new Date();
     for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-    ym(${counterId},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    (window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=${counterId}","ym");
+    ym(${counterId},"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
   `;
 
   window.__vnMetrikaInitialized = true;
@@ -50,14 +52,14 @@ export default function CookieBanner() {
     if (!consent) {
       setVisible(true);
     } else if (consent === 'accepted') {
-      const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
+      const counterId = YANDEX_METRIKA_COUNTER_ID;
       if (counterId) initYandexMetrika(counterId);
     }
 
     const handleConsentChanged = (event: Event) => {
       const detail = (event as CustomEvent<{ consent?: string }>).detail;
       if (detail?.consent === 'accepted') {
-        const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
+        const counterId = YANDEX_METRIKA_COUNTER_ID;
         if (counterId) initYandexMetrika(counterId);
       }
     };
@@ -73,7 +75,7 @@ export default function CookieBanner() {
     localStorage.setItem(COOKIE_NAME, 'accepted');
     setVisible(false);
     dispatchConsentEvent('accepted');
-    const counterId = import.meta.env.PUBLIC_YM_COUNTER_ID;
+    const counterId = YANDEX_METRIKA_COUNTER_ID;
     if (counterId) initYandexMetrika(counterId);
   };
 

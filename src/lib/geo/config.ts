@@ -17,7 +17,7 @@ export const GEO_SITE = {
 export const GEO_CONTACTS = {
   phone: '+7 (938) 407 44 57',
   telegram: 'https://t.me/Mikhail_khryapin?text=Михаил%2C%20здравствуйте%2C%20я%20с%20вашего%20сайта.%20Нужно%20обсудить%20мою%20ситуацию',
-  vk: '[VK_GROUP]',        // TODO: уточнить у Михаила
+  vk: 'https://vk.com/mikhail_khryapin',
   max: 'tel:+79384074457',
   email: '[PRIMARY_EMAIL]', // TODO: уточнить у Михаила
 } as const;

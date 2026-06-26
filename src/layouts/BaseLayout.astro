@@ -3,7 +3,6 @@ import '../styles/global.css';
 import { SITE } from '../lib/constants';
 import { OG_IMAGES } from '../lib/og';
 import { webSiteSchema } from '../lib/seo';
-import ReviewWidget from '../components/ui/ReviewWidget';
 
 interface Props {
   title: string;
@@ -23,7 +22,7 @@ const {
   schema,
 } = Astro.props;
 
-const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
+const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980';
 ---
 <html lang="ru">
 <head>
@@ -76,7 +75,13 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '';
 </head>
 <body>
   <slot />
-  {import.meta.env.PUBLIC_REVIEW_ENABLED === 'true' && <ReviewWidget client:load />}
+  {ymCounterId && (
+    <noscript>
+      <div>
+        <img src={`https://mc.yandex.ru/watch/${ymCounterId}`} style="position:absolute; left:-9999px;" alt="" />
+      </div>
+    </noscript>
+  )}
 
   <!-- Global click tracking for data-track attributes -->
   <script is:inline>

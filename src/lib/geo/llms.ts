@@ -61,6 +61,7 @@ export function generateLlmsTxt(): string {
   lines.push('');
   lines.push(`- **Телефон**: ${GEO_CONTACTS.phone}`);
   lines.push(`- **Telegram**: ${GEO_CONTACTS.telegram}`);
+  lines.push(`- **ВКонтакте**: ${GEO_CONTACTS.vk}`);
 
   const primaryOffice = GEO_OFFICES.find((o) => o.primary) ?? GEO_OFFICES[0];
   if (primaryOffice) {

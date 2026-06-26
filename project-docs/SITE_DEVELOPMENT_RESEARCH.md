@@ -26,7 +26,6 @@
 - ✅ Image pipeline (`OptimizedImage.astro`) с LQIP
 - ✅ Motion system (`RevealOnScroll.astro`) + CSS `vn-reveal`
 - ✅ Unified analytics layer (`analytics.ts`) для Яндекс.Метрики
-- ✅ Env-gate для `ReviewWidget`
 - ✅ CI/CD с `pnpm geo-check` gate
 
 ### Зоны роста (что можно усилить)
