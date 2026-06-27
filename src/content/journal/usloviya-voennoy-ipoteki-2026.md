@@ -8,6 +8,7 @@ categorySlug: "voennaya-ipoteka"
 tags: ["военная ипотека условия", "военная ипотека 2026", "условия программы"]
 cover: "/images/mortgage-hero.webp"
 coverAlt: "Документы и расчёт условий военной ипотеки"
+coverPosition: "50% 22%"
 featured: true
 popular: true
 priority: 3

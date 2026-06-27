@@ -27,6 +27,7 @@ const readingTime = getReadingTime(post.body);
       width="640"
       height="420"
       loading="lazy"
+      style={`object-position: ${post.data.coverPosition ?? 'center'};`}
     />
   </a>
   <div class="vn-journal-card__body">

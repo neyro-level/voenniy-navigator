@@ -20,6 +20,7 @@ const journalCollection = defineCollection({
     tags: z.array(z.string()).default([]),
     cover: z.string(),
     coverAlt: z.string(),
+    coverPosition: z.string().optional(),
     featured: z.boolean().default(false),
     popular: z.boolean().default(false),
     priority: z.number().default(100),

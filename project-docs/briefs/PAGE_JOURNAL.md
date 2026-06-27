@@ -27,6 +27,12 @@
 
 Технический паттерн взят из проекта `Союз Ростов (AMS)` и адаптирован под дизайн-систему Военного навигатора.
 
+Медиа-контракт:
+
+- `cover` — путь к обложке статьи;
+- `coverAlt` — осмысленный alt-текст;
+- `coverPosition` — опциональный CSS `object-position` для портретов и кадров с людьми, чтобы лица не обрезались в карточках и hero статьи на laptop/mobile.
+
 Маршруты:
 
 - `/journal/`
@@ -79,6 +85,7 @@
 - `/journal/`, статьи и рубрики попадают в sitemap.
 - `/journal/` добавлен в footer, карту маршрутов и `/llms.txt`.
 - На главной FAQ заменён на preview журнала, поэтому `FAQPage` schema с главной убрана.
+- Технический SEO gate: `pnpm seo-check` после `pnpm build`.
 
 ---
 
@@ -88,10 +95,12 @@
 
 - `pnpm build` — 0 errors, 0 warnings;
 - `pnpm geo-check` — 100/100;
+- `pnpm seo-check` — 0 blockers, 0 warnings;
 - `/`, `/journal/`, `/journal/2/`, статья и рубрика — HTTP 200 в local preview;
 - `/blog/` — 404, как и запланировано;
 - sitemap содержит журнальные URL;
 - главная не содержит `FAQPage` schema;
 - Playwright screenshots: desktop/mobile archive, article, category, home preview.
+- После правки кропов отдельно проверены `/journal/`, `/journal/summa-voennoy-ipoteki-i-raschet/`, `/journal/usloviya-voennoy-ipoteki-2026/` на 1024px и 390px: головы в проблемных фото не обрезаются.
 
 `/api/leads` в local static preview возвращает 404 ожидаемо: production-прокси живёт в Nginx, не в Astro preview.

@@ -8,6 +8,7 @@ categorySlug: "raschet-i-summa"
 tags: ["сумма военной ипотеки", "расчёт военной ипотеки", "бюджет покупки"]
 cover: "/images/mikhail-desk.png"
 coverAlt: "Расчёт бюджета покупки квартиры по военной ипотеке"
+coverPosition: "50% 28%"
 featured: true
 popular: false
 priority: 4

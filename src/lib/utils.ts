@@ -11,12 +11,12 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Resolve an absolute site URL from environment variables.
- * Falls back through: PUBLIC_SITE_URL → localhost
+ * Falls back through: PUBLIC_SITE_URL → production domain.
  */
 export function getURL(path: string = ''): string {
   const url =
     (import.meta.env.PUBLIC_SITE_URL?.trim() || '') ||
-    'http://localhost:4321/';
+    'https://voen-navigator.ru/';
 
   const base = url
     .replace(/\/+$/, '')

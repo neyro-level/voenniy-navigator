@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "geo-check": "node scripts/geo-check.mjs"
+    "geo-check": "node scripts/geo-check.mjs",
+    "seo-check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
