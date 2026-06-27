@@ -68,6 +68,15 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     number: '07',
+    label: 'Журнал',
+    labelShort: 'Журнал',
+    href: '/journal/',
+    description: 'Разборы по военной ипотеке, банкам, сумме, Краснодару и Крыму.',
+    group: 'route',
+    icon: 'file-text',
+  },
+  {
+    number: '08',
     label: 'Контакты',
     labelShort: 'Контакты',
     href: '/contacts/',
@@ -86,7 +95,7 @@ export const GROUP_LABELS: Record<NavGroup, string> = {
 
 // Header default (84px) — без «Семейная» (ведём через footer / linking)
 export const HEADER_NAV = NAV_ITEMS.filter(
-  (item) => item.href !== '/semeynaya-voennaya-ipoteka/',
+  (item) => item.href !== '/semeynaya-voennaya-ipoteka/' && item.href !== '/journal/',
 );
 
 // Dock (60px, при скролле) — как header

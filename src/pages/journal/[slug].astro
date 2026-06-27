@@ -1,0 +1,379 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import JournalBreadcrumbs from '../../components/journal/JournalBreadcrumbs.astro';
+import JournalCard from '../../components/journal/JournalCard.astro';
+import JournalPopular from '../../components/journal/JournalPopular.astro';
+import { SITE } from '../../lib/constants';
+import { breadcrumbSchema } from '../../lib/seo';
+import {
+  formatJournalDate,
+  getJournalCategory,
+  getJournalCategoryUrl,
+  getJournalPostUrl,
+  getJournalPosts,
+  getPopularJournalPosts,
+  getReadingTime,
+  getRelatedJournalPosts,
+  toAbsoluteUrl,
+  type JournalPostEntry,
+} from '../../lib/journal';
+
+export const getStaticPaths = (async () => {
+  const posts = await getJournalPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  post: JournalPostEntry;
+}
+
+const { post } = Astro.props as Props;
+const posts = await getJournalPosts();
+const category = getJournalCategory(post.data.categorySlug);
+const relatedPosts = getRelatedJournalPosts(post, posts, 3);
+const popularPosts = getPopularJournalPosts(posts, 4, post.slug);
+const { Content } = await render(post);
+const canonical = new URL(getJournalPostUrl(post), SITE.url).href;
+const title = post.data.title;
+const description = post.data.excerpt;
+const readingTime = getReadingTime(post.body);
+const ogImage = toAbsoluteUrl(post.data.cover, SITE.url);
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.excerpt,
+    datePublished: post.data.publishDate.toISOString(),
+    dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: post.data.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: `${SITE.url}/`,
+    },
+    articleSection: category.label,
+    keywords: post.data.tags.join(', '),
+    image: [ogImage],
+    mainEntityOfPage: canonical,
+  },
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Журнал', url: `${SITE.url}/journal/` },
+    { name: category.label, url: `${SITE.url}${getJournalCategoryUrl(category.slug)}` },
+    { name: post.data.title, url: canonical },
+  ]),
+];
+---
+
+<PageLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
+  <section class="vn-journal-post" aria-labelledby="vn-journal-post-title">
+    <div class="vn-container vn-journal-post__inner">
+      <JournalBreadcrumbs
+        items={[
+          { label: 'Главная', href: '/' },
+          { label: 'Журнал', href: '/journal/' },
+          { label: category.label, href: getJournalCategoryUrl(category.slug) },
+          { label: post.data.title },
+        ]}
+      />
+
+      <div class="vn-journal-post__grid">
+        <article class="vn-journal-post__article">
+          <header class="vn-journal-post__header">
+            <div class="vn-journal-post__meta">
+              <a href={getJournalCategoryUrl(category.slug)}>{category.label}</a>
+              <span>{formatJournalDate(post.data.publishDate)}</span>
+              <span>{readingTime}</span>
+            </div>
+            <h1 class="vn-journal-post__title" id="vn-journal-post-title">{post.data.title}</h1>
+            <p class="vn-journal-post__excerpt">{post.data.excerpt}</p>
+            <img
+              src={post.data.cover}
+              alt={post.data.coverAlt}
+              class="vn-journal-post__cover"
+              width="1040"
+              height="620"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </header>
+
+          <div class="vn-journal-post__body">
+            <Content />
+          </div>
+
+          <footer class="vn-journal-post__cta">
+            <p class="vn-journal-post__cta-kicker">Следующий шаг</p>
+            <h2>Разберём вашу ситуацию на конкретных вводных</h2>
+            <p>Расскажите, какой регион, бюджет и срок покупки рассматриваете. Подбор начнётся с ограничений программы, а не со случайной витрины объектов.</p>
+            <a
+              href="/contacts/#request"
+              class="vn-btn-primary vn-journal-post__cta-button"
+              data-modal-open
+              data-modal-title="Получить подборку"
+              data-modal-subtitle="Оставьте контакты. Михаил уточнит задачу, бюджет и ограничения, а затем подскажет первый реалистичный шаг."
+              data-modal-source={`journal-post-${post.slug}`}
+            >
+              Получить подборку
+            </a>
+          </footer>
+        </article>
+
+        <aside class="vn-journal-post__aside" aria-label="Навигация по журналу">
+          <JournalPopular posts={popularPosts} />
+        </aside>
+      </div>
+
+      {relatedPosts.length > 0 && (
+        <section class="vn-journal-post__related" aria-labelledby="vn-journal-related-title">
+          <div class="vn-journal-post__related-head">
+            <p class="vn-journal-post__related-eyebrow">Похожие материалы</p>
+            <h2 id="vn-journal-related-title">Ещё материалы по теме</h2>
+          </div>
+          <div class="vn-journal-post__related-grid">
+            {relatedPosts.map((relatedPost) => <JournalCard post={relatedPost} compact />)}
+          </div>
+        </section>
+      )}
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .vn-journal-post {
+    padding: 112px 0 96px;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-journal-post__inner {
+    display: grid;
+    gap: 34px;
+  }
+
+  .vn-journal-post__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 34px;
+    align-items: start;
+  }
+
+  .vn-journal-post__article {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-journal-post__header {
+    display: grid;
+    gap: 18px;
+    padding: 34px;
+  }
+
+  .vn-journal-post__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-ui);
+  }
+
+  .vn-journal-post__meta a {
+    color: var(--color-accent-cta);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .vn-journal-post__meta a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .vn-journal-post__title {
+    max-width: 900px;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    line-height: var(--lh-heading);
+    text-wrap: balance;
+  }
+
+  .vn-journal-post__excerpt {
+    max-width: 780px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-long);
+  }
+
+  .vn-journal-post__cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-journal-post__body {
+    max-width: 780px;
+    padding: 0 34px 42px;
+    color: var(--color-text-primary);
+    font-size: 17px;
+    line-height: 1.76;
+  }
+
+  .vn-journal-post__body :global(h2) {
+    margin: 36px 0 12px;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-post__body :global(h3) {
+    margin: 28px 0 10px;
+    color: var(--color-text-primary);
+    font-size: 18px;
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-post__body :global(p),
+  .vn-journal-post__body :global(ul),
+  .vn-journal-post__body :global(ol) {
+    margin: 0 0 17px;
+  }
+
+  .vn-journal-post__body :global(ul),
+  .vn-journal-post__body :global(ol) {
+    padding-left: 22px;
+  }
+
+  .vn-journal-post__body :global(li + li) {
+    margin-top: 8px;
+  }
+
+  .vn-journal-post__body :global(a) {
+    color: var(--color-accent-cta);
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .vn-journal-post__body :global(strong) {
+    font-weight: 800;
+  }
+
+  .vn-journal-post__cta {
+    display: grid;
+    gap: 12px;
+    margin: 0 34px 34px;
+    padding: 24px;
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+    border-left: 4px solid var(--color-accent-cta);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-accent-cta) 5%, var(--color-bg-surface));
+    color: var(--color-text-primary);
+  }
+
+  .vn-journal-post__cta-kicker,
+  .vn-journal-post__related-eyebrow {
+    margin: 0;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-journal-post__cta h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-post__cta p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
+  }
+
+  .vn-journal-post__cta-button {
+    width: fit-content;
+  }
+
+  .vn-journal-post__aside {
+    position: sticky;
+    top: 96px;
+    min-width: 0;
+  }
+
+  .vn-journal-post__related {
+    display: grid;
+    gap: 24px;
+    padding-top: 18px;
+  }
+
+  .vn-journal-post__related-head h2 {
+    margin: 8px 0 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-post__related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  @media (max-width: 1120px) {
+    .vn-journal-post__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-journal-post__aside {
+      position: static;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .vn-journal-post__related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vn-journal-post {
+      padding: 92px 0 72px;
+    }
+
+    .vn-journal-post__header,
+    .vn-journal-post__body {
+      padding-inline: 20px;
+    }
+
+    .vn-journal-post__body {
+      font-size: 16px;
+    }
+
+    .vn-journal-post__cta {
+      margin-inline: 20px;
+      padding: 22px;
+    }
+  }
+</style>

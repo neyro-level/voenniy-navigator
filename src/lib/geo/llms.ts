@@ -89,6 +89,7 @@ export function generateLlmsTxt(): string {
   lines.push(`- Калькулятор военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.kalkulyator}`);
   lines.push(`- Условия военной ипотеки: ${GEO_SITE.url}${GEO_LINKS.usloviya}`);
   lines.push(`- Семейная военная ипотека: ${GEO_SITE.url}${GEO_LINKS.semeynaya}`);
+  lines.push(`- Журнал Военный навигатор: ${GEO_SITE.url}${GEO_LINKS.journal}`);
   lines.push(`- Контакты: ${GEO_SITE.url}${GEO_LINKS.contacts}`);
   lines.push(`- Политика конфиденциальности: ${GEO_SITE.url}${GEO_LINKS.privacy}`);
   lines.push(`- Согласие на обработку данных: ${GEO_SITE.url}${GEO_LINKS.agreement}`);

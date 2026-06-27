@@ -39,13 +39,14 @@ function main() {
   const mainText = mainMatch ? mainMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
   checks.push(score('First 200 words (main + text)', 20, mainText.length >= 200));
 
-  // 2. Schema.org (15 pts) — Organization (or RealEstateAgent/ProfessionalService) + FAQPage + WebSite
+  // 2. Schema.org (15 pts) — Organization (or RealEstateAgent/ProfessionalService) + WebSite.
+  // FAQPage is checked separately and must match visible FAQ markup if a FAQ block is rendered.
   const hasOrg = html.includes('"@type":"Organization"') || html.includes('"@type": "Organization"') ||
                  html.includes('"@type":"RealEstateAgent"') || html.includes('"@type": "RealEstateAgent"') ||
                  html.includes('"@type":"ProfessionalService"') || html.includes('"@type": "ProfessionalService"');
   const hasFAQ = html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"');
   const hasWebSite = html.includes('"@type":"WebSite"') || html.includes('"@type": "WebSite"');
-  checks.push(score('Schema.org (Org + FAQ + WebSite)', 15, hasOrg && hasFAQ && hasWebSite));
+  checks.push(score('Schema.org (Org + WebSite)', 15, hasOrg && hasWebSite));
 
   // 3. llms.txt (10 pts)
   checks.push(score('llms.txt exists', 10, llms.length > 0 && llms.startsWith('#')));
@@ -55,9 +56,9 @@ function main() {
   const ariaLabelCount = (html.match(/aria-label=/gi) || []).length;
   checks.push(score('Semantic HTML (main + 5 sections + 3 aria-label)', 15, !!mainMatch && sectionCount >= 5 && ariaLabelCount >= 3));
 
-  // 5. FAQ structure (10 pts) — FAQPage schema + itemscope/itemtype microdata
+  // 5. FAQ structure (10 pts) — visible FAQ must have FAQPage schema; no visible FAQ must not fake FAQPage.
   const hasFAQMicrodata = html.includes('itemscope') && html.includes('https://schema.org/FAQPage');
-  checks.push(score('FAQ structure (JSON-LD + microdata)', 10, hasFAQ && hasFAQMicrodata));
+  checks.push(score('FAQ structure consistency', 10, hasFAQMicrodata ? hasFAQ : !hasFAQ));
 
   // 6. Meta tags (10 pts) — title, description, og:image, canonical
   const hasTitle = html.includes('<title>');

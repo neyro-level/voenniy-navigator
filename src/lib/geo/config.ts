@@ -120,6 +120,7 @@ export const GEO_LINKS = {
   kalkulyator: '/kalkulyator-voennoy-ipoteki/',
   usloviya: '/usloviya-voennoy-ipoteki/',
   semeynaya: '/semeynaya-voennaya-ipoteka/',
+  journal: '/journal/',
   contacts: '/contacts/',
   privacy: '/politika/',
   agreement: '/soglasie/',

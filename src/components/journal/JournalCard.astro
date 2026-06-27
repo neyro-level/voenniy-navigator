@@ -1,0 +1,144 @@
+---
+import type { JournalPostEntry } from '../../lib/journal';
+import {
+  formatJournalDate,
+  getJournalCategory,
+  getJournalCategoryUrl,
+  getJournalPostUrl,
+  getReadingTime,
+} from '../../lib/journal';
+
+interface Props {
+  post: JournalPostEntry;
+  compact?: boolean;
+}
+
+const { post, compact = false } = Astro.props;
+const category = getJournalCategory(post.data.categorySlug);
+const readingTime = getReadingTime(post.body);
+---
+
+<article class:list={['vn-journal-card', compact && 'vn-journal-card--compact']}>
+  <a href={getJournalPostUrl(post)} class="vn-journal-card__image-link" aria-label={`Открыть статью: ${post.data.title}`}>
+    <img
+      src={post.data.cover}
+      alt={post.data.coverAlt}
+      class="vn-journal-card__image"
+      width="640"
+      height="420"
+      loading="lazy"
+    />
+  </a>
+  <div class="vn-journal-card__body">
+    <div class="vn-journal-card__meta">
+      <a href={getJournalCategoryUrl(category.slug)} class="vn-journal-card__category">{category.label}</a>
+      <span>{formatJournalDate(post.data.publishDate)}</span>
+      <span>{readingTime}</span>
+    </div>
+    <h3 class="vn-journal-card__title">
+      <a href={getJournalPostUrl(post)}>{post.data.title}</a>
+    </h3>
+    <p class="vn-journal-card__excerpt">{post.data.excerpt}</p>
+  </div>
+</article>
+
+<style>
+  .vn-journal-card {
+    display: grid;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .vn-journal-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 26%, var(--color-border));
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-journal-card__image-link {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-journal-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.32s ease;
+  }
+
+  .vn-journal-card:hover .vn-journal-card__image {
+    transform: scale(1.035);
+  }
+
+  .vn-journal-card__body {
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+  }
+
+  .vn-journal-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    color: var(--color-text-tertiary);
+    font-size: 13px;
+    line-height: var(--lh-ui);
+  }
+
+  .vn-journal-card__category {
+    color: var(--color-accent-cta);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .vn-journal-card__category:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .vn-journal-card__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .vn-journal-card__title a:hover {
+    color: var(--color-accent-cta);
+  }
+
+  .vn-journal-card__excerpt {
+    display: -webkit-box;
+    min-height: calc(var(--fs-body-sm) * var(--lh-body) * 2);
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .vn-journal-card--compact .vn-journal-card__body {
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .vn-journal-card--compact .vn-journal-card__title {
+    font-size: 18px;
+  }
+</style>

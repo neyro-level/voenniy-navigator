@@ -7,6 +7,16 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-27 — Запущен Журнал Военный навигатор
+
+- **Created:** новый evergreen SEO-раздел `/journal/` на Astro content collection: архив, `/journal/2/`, страницы статей, рубрики, популярные и похожие материалы.
+- **Content:** добавлены 10 экспертных коммерческих статей по SEO-базе `SEMANTICS.md`: Краснодар, Крым, условия, сумма, банки, калькулятор, семейный сценарий и риски сделки.
+- **Home:** FAQ на главной заменён на preview журнала из 3 featured-материалов; `FAQPage` schema с главной убрана, потому что видимого FAQ больше нет.
+- **Navigation/GEO:** `/journal/` добавлен в footer, карту маршрутов и `/llms.txt`; в верхнее меню не добавлен, чтобы header остался компактным.
+- **SEO:** архивы и рубрики используют `CollectionPage`, статьи — `BlogPosting`; sitemap содержит `/journal/`, `/journal/2/`, рубрики и 10 статей; `/blog/` не создаётся.
+- **Audit:** после первичной сборки проведён дизайн/content-аудит; preview на главной сокращён с 4 до 3 карточек для более спокойной премиальной сетки.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — 100/100; local preview `/`, `/journal/`, `/journal/2/`, статья и рубрика — HTTP 200; `/blog/` — 404 как ожидается.
+
 ### 2026-06-26 — Добавлен файл подтверждения Яндекс.Вебмастера
 
 - **Added:** `public/yandex_3736f6157fb9c46c.html` с кодом `Verification: 3736f6157fb9c46c`.

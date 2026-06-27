@@ -1,0 +1,129 @@
+---
+import JournalCard from '../../components/journal/JournalCard.astro';
+import { getFeaturedJournalPosts, getJournalPosts } from '../../lib/journal';
+
+const posts = getFeaturedJournalPosts(await getJournalPosts(), 3);
+---
+
+<section class="vn-home-journal" aria-labelledby="vn-home-journal-title">
+  <div class="vn-container vn-home-journal__inner">
+    <div class="vn-home-journal__head">
+      <div class="vn-home-journal__copy">
+        <p class="vn-home-journal__eyebrow">Журнал</p>
+        <h2 class="vn-home-journal__title" id="vn-home-journal-title">
+          Разберитесь в военной ипотеке до выбора квартиры
+        </h2>
+        <p class="vn-home-journal__lead">
+          Короткие экспертные разборы про сумму, банки, калькулятор, Краснодар и Крым — чтобы идти к подбору с понятными вводными.
+        </p>
+      </div>
+      <a class="vn-home-journal__all" href="/journal/">Все статьи</a>
+    </div>
+
+    <div class="vn-home-journal__grid">
+      {posts.map((post) => <JournalCard post={post} compact />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vn-home-journal {
+    padding: 76px 0 96px;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-home-journal__inner {
+    display: grid;
+    gap: 28px;
+  }
+
+  .vn-home-journal__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: end;
+  }
+
+  .vn-home-journal__copy {
+    display: grid;
+    gap: 10px;
+    max-width: 760px;
+  }
+
+  .vn-home-journal__eyebrow {
+    margin: 0;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-home-journal__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: var(--lh-title);
+    text-wrap: balance;
+  }
+
+  .vn-home-journal__lead {
+    max-width: 660px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  .vn-home-journal__all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: var(--fs-body-sm);
+    font-weight: 800;
+    line-height: var(--lh-ui);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .vn-home-journal__all:hover {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 34%, var(--color-border));
+    background: var(--color-accent-cta-soft);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-home-journal__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    .vn-home-journal__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .vn-home-journal {
+      padding: 64px 0 76px;
+    }
+
+    .vn-home-journal__head,
+    .vn-home-journal__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-home-journal__all {
+      width: fit-content;
+    }
+  }
+</style>

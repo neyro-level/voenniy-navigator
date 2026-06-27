@@ -1,0 +1,75 @@
+---
+import { JOURNAL_BASE_PATH, JOURNAL_CATEGORIES, getJournalCategoryUrl } from '../../lib/journal';
+
+interface Props {
+  activeSlug?: string;
+}
+
+const { activeSlug } = Astro.props;
+---
+
+<nav class="vn-journal-categories" aria-label="Рубрики журнала">
+  <a class:list={['vn-journal-categories__link', !activeSlug && 'is-active']} href={JOURNAL_BASE_PATH}>
+    Все статьи
+  </a>
+  {JOURNAL_CATEGORIES.map((category) => (
+    <a
+      class:list={['vn-journal-categories__link', activeSlug === category.slug && 'is-active']}
+      href={getJournalCategoryUrl(category.slug)}
+      aria-current={activeSlug === category.slug ? 'page' : undefined}
+    >
+      {category.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .vn-journal-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vn-journal-categories__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 700;
+    line-height: var(--lh-ui);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .vn-journal-categories__link:hover,
+  .vn-journal-categories__link.is-active {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 34%, var(--color-border));
+    background: var(--color-accent-cta-soft);
+    color: var(--color-accent-cta);
+  }
+
+  @media (max-width: 640px) {
+    .vn-journal-categories {
+      flex-wrap: nowrap;
+      margin-inline: -20px;
+      padding-inline: 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .vn-journal-categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .vn-journal-categories__link {
+      flex: 0 0 auto;
+      min-height: 40px;
+    }
+  }
+</style>

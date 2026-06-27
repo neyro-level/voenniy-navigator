@@ -1,0 +1,201 @@
+---
+import type { GetStaticPaths } from 'astro';
+import PageLayout from '../../../../layouts/PageLayout.astro';
+import JournalBreadcrumbs from '../../../../components/journal/JournalBreadcrumbs.astro';
+import JournalCard from '../../../../components/journal/JournalCard.astro';
+import JournalCategoryNav from '../../../../components/journal/JournalCategoryNav.astro';
+import JournalPagination from '../../../../components/journal/JournalPagination.astro';
+import JournalPopular from '../../../../components/journal/JournalPopular.astro';
+import { SITE } from '../../../../lib/constants';
+import { OG_IMAGES } from '../../../../lib/og';
+import { breadcrumbSchema } from '../../../../lib/seo';
+import {
+  JOURNAL_CATEGORIES,
+  JOURNAL_POSTS_PER_PAGE,
+  chunkItems,
+  getJournalCategoryUrl,
+  getJournalPosts,
+  getJournalPostsByCategory,
+  getPopularJournalPosts,
+  type JournalCategory,
+  type JournalPostEntry,
+} from '../../../../lib/journal';
+
+export const getStaticPaths = (async () => {
+  const allPosts = await getJournalPosts();
+  const popularPosts = getPopularJournalPosts(allPosts, 4);
+  const paths = [];
+
+  for (const category of JOURNAL_CATEGORIES) {
+    const categoryPosts = getJournalPostsByCategory(allPosts, category.slug);
+    const pages = chunkItems(categoryPosts, JOURNAL_POSTS_PER_PAGE);
+
+    for (let index = 0; index < pages.length; index += 1) {
+      paths.push({
+        params: {
+          category: category.slug,
+          page: index === 0 ? undefined : String(index + 1),
+        },
+        props: {
+          category,
+          posts: pages[index],
+          popularPosts,
+          total: categoryPosts.length,
+          currentPage: index + 1,
+          lastPage: pages.length,
+        },
+      });
+    }
+  }
+
+  return paths;
+}) satisfies GetStaticPaths;
+
+interface Props {
+  category: JournalCategory;
+  posts: JournalPostEntry[];
+  popularPosts: JournalPostEntry[];
+  total: number;
+  currentPage: number;
+  lastPage: number;
+}
+
+const { category, posts, popularPosts, total, currentPage, lastPage } = Astro.props as Props;
+const title =
+  currentPage === 1
+    ? `${category.label} — статьи журнала Военный навигатор`
+    : `${category.label} — журнал Военный навигатор, страница ${currentPage}`;
+const description =
+  currentPage === 1
+    ? category.metaDescription
+    : `${category.metaDescription} Страница ${currentPage}.`;
+const canonical = new URL(getJournalCategoryUrl(category.slug, currentPage), SITE.url).href;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: canonical,
+    numberOfItems: total,
+  },
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Журнал', url: `${SITE.url}/journal/` },
+    { name: category.label, url: canonical },
+  ]),
+];
+---
+
+<PageLayout title={title} description={description} canonical={canonical} ogImage={OG_IMAGES.default} schema={schema}>
+  <section class="vn-journal-category" aria-labelledby="vn-journal-category-title">
+    <div class="vn-container vn-journal-category__inner">
+      <JournalBreadcrumbs
+        items={[
+          { label: 'Главная', href: '/' },
+          { label: 'Журнал', href: '/journal/' },
+          { label: category.label },
+        ]}
+      />
+
+      <div class="vn-journal-category__head">
+        <p class="vn-journal-category__eyebrow">Рубрика</p>
+        <h1 class="vn-journal-category__title" id="vn-journal-category-title">{category.label}</h1>
+        <p class="vn-journal-category__lead">{category.description}</p>
+      </div>
+
+      <JournalCategoryNav activeSlug={category.slug} />
+
+      <div class="vn-journal-category__grid">
+        <div class="vn-journal-category__main">
+          <div class="vn-journal-category__cards">
+            {posts.map((post) => <JournalCard post={post} />)}
+          </div>
+          <JournalPagination
+            currentPage={currentPage}
+            lastPage={lastPage}
+            getPageUrl={(pageNumber) => getJournalCategoryUrl(category.slug, pageNumber)}
+          />
+        </div>
+
+        <JournalPopular posts={popularPosts} />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .vn-journal-category {
+    padding: 112px 0 96px;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-journal-category__inner {
+    display: grid;
+    gap: 32px;
+  }
+
+  .vn-journal-category__head {
+    max-width: 840px;
+  }
+
+  .vn-journal-category__eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-journal-category__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-display);
+    font-weight: 700;
+    line-height: var(--lh-heading);
+    text-wrap: balance;
+  }
+
+  .vn-journal-category__lead {
+    max-width: 740px;
+    margin: 18px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-long);
+  }
+
+  .vn-journal-category__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .vn-journal-category__main {
+    min-width: 0;
+  }
+
+  .vn-journal-category__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  @media (max-width: 1120px) {
+    .vn-journal-category__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .vn-journal-category {
+      padding: 92px 0 72px;
+    }
+
+    .vn-journal-category__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

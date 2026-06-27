@@ -71,7 +71,7 @@
 | 05 | Подход | Контраст обычного поиска и подхода Военного навигатора | `src/pages/_home/05-SelectionLogic.astro` |
 | 06 | Сценарии покупки | Для жизни / переезд / вложение / дистанционно | `src/pages/_home/06-Scenarios.astro` |
 | 07 | Михаил / Trust | Короткий trust preview + ссылка на `/o-servise/` | `src/pages/_home/07-MikhailTrust.astro` |
-| 08 | FAQ | Снятие возражений | shared `src/components/sections/FAQ.astro` |
+| 08 | Журнал | SEO-прогрев и экспертные разборы вместо FAQ на главной | `src/pages/_home/08-JournalPreview.astro` |
 | 09 | Final CTA | Финальный подвод к заявке | shared `src/components/sections/FinalCTALight.astro` |
 
 ---
@@ -302,17 +302,21 @@ Full-width layout в рамках контейнера: заголовок + lea
 
 ---
 
-## 12. Блок 08. FAQ
+## 12. Блок 08. Журнал
 
-Использовать shared `src/components/sections/FAQ.astro`.
+**Компонент:** `src/pages/_home/08-JournalPreview.astro`
 
-Темы:
-1. Что такое Военный навигатор?
-2. Почему услуги бесплатны?
-3. Как происходит подбор?
-4. Можно ли работать дистанционно?
-5. С какими регионами вы работаете?
-6. Когда переходят к ипотеке и сделке?
+**Роль блока:** заменить FAQ на главной более сильным SEO-прогревом: показать, что у сервиса есть экспертные материалы по военной ипотеке, расчёту, банкам, Краснодару и Крыму.
+
+**Структура:**
+
+- Eyebrow: `Журнал`
+- H2: `Разберитесь в военной ипотеке до выбора квартиры`
+- Lead: короткое объяснение, что материалы помогают идти к подбору с понятными вводными
+- 3 featured-карточки статей
+- Ссылка `Все статьи` на `/journal/`
+
+**SEO-решение:** после удаления видимого FAQ с главной `FAQPage` schema на главной не используется.
 
 ---
 
@@ -343,7 +347,7 @@ Full-width layout в рамках контейнера: заголовок + lea
 | Подход | — | информационный блок |
 | Сценарии | `Обсудить мой сценарий` | модалка |
 | Trust / Михаил | `Обсудить мою ситуацию` | модалка |
-| FAQ | `Получить подборку` | модалка |
+| Журнал | `Все статьи` | переход на `/journal/` |
 | Final CTA | `Получить подборку` | модалка |
 
 ---
@@ -369,7 +373,7 @@ Full-width layout в рамках контейнера: заголовок + lea
 5. `src/pages/_home/05-SelectionLogic.astro` — использовать вместо старого process-блока.
 6. `src/pages/_home/06-Scenarios.astro` — переработать текущий `_home/06-Scenarios.astro`.
 7. `src/pages/_home/07-MikhailTrust.astro` — переработать trust-preview Михаила: усилить тексты, заменить caption на фото, обновить дизайн в рамках премиальной системы.
-8. shared `src/components/sections/FAQ.astro` — использовать вместо локального FAQ-блока.
+8. `src/pages/_home/08-JournalPreview.astro` — использовать вместо FAQ-блока.
 9. shared `src/components/sections/FinalCTALight.astro` — использовать вместо локального final CTA.
 10. `src/pages/index.astro` — синхронизировать порядок блоков и SEO-рамку.
 11. `src/lib/navigation/navData.ts` — держать header без временных badge и лишнего шума.

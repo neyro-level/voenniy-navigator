@@ -1,0 +1,101 @@
+---
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  getPageUrl: (page: number) => string;
+}
+
+const { currentPage, lastPage, getPageUrl } = Astro.props;
+const pages = Array.from({ length: lastPage }, (_, index) => index + 1);
+---
+
+{lastPage > 1 && (
+  <nav class="vn-journal-pagination" aria-label="Пагинация журнала">
+    <a
+      class:list={['vn-journal-pagination__link', currentPage <= 1 && 'is-disabled']}
+      href={currentPage > 1 ? getPageUrl(currentPage - 1) : undefined}
+      aria-disabled={currentPage <= 1 ? 'true' : undefined}
+    >
+      Назад
+    </a>
+    <div class="vn-journal-pagination__pages">
+      {pages.map((page) => (
+        <a
+          class:list={['vn-journal-pagination__page', currentPage === page && 'is-active']}
+          href={getPageUrl(page)}
+          aria-current={currentPage === page ? 'page' : undefined}
+        >
+          {page}
+        </a>
+      ))}
+    </div>
+    <a
+      class:list={['vn-journal-pagination__link', currentPage >= lastPage && 'is-disabled']}
+      href={currentPage < lastPage ? getPageUrl(currentPage + 1) : undefined}
+      aria-disabled={currentPage >= lastPage ? 'true' : undefined}
+    >
+      Вперёд
+    </a>
+  </nav>
+)}
+
+<style>
+  .vn-journal-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 34px;
+  }
+
+  .vn-journal-pagination__pages {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .vn-journal-pagination__link,
+  .vn-journal-pagination__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    font-weight: 800;
+    line-height: var(--lh-ui);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .vn-journal-pagination__link:hover,
+  .vn-journal-pagination__page:hover,
+  .vn-journal-pagination__page.is-active {
+    border-color: color-mix(in srgb, var(--color-accent-cta) 34%, var(--color-border));
+    background: var(--color-accent-cta-soft);
+    color: var(--color-accent-cta);
+  }
+
+  .vn-journal-pagination__link.is-disabled {
+    pointer-events: none;
+    opacity: 0.38;
+  }
+
+  @media (max-width: 520px) {
+    .vn-journal-pagination {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .vn-journal-pagination__pages {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+  }
+</style>

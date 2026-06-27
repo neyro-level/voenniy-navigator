@@ -1,0 +1,280 @@
+---
+import type { GetStaticPaths } from 'astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import JournalBreadcrumbs from '../../components/journal/JournalBreadcrumbs.astro';
+import JournalCard from '../../components/journal/JournalCard.astro';
+import JournalCategoryNav from '../../components/journal/JournalCategoryNav.astro';
+import JournalPagination from '../../components/journal/JournalPagination.astro';
+import JournalPopular from '../../components/journal/JournalPopular.astro';
+import { SITE } from '../../lib/constants';
+import { OG_IMAGES } from '../../lib/og';
+import { breadcrumbSchema } from '../../lib/seo';
+import {
+  JOURNAL_DESCRIPTION,
+  JOURNAL_H1,
+  JOURNAL_POSTS_PER_PAGE,
+  JOURNAL_TITLE,
+  chunkItems,
+  getJournalIndexUrl,
+  getJournalPosts,
+  getPopularJournalPosts,
+  type JournalPostEntry,
+} from '../../lib/journal';
+
+export const getStaticPaths = (async () => {
+  const allPosts = await getJournalPosts();
+  const pages = chunkItems(allPosts, JOURNAL_POSTS_PER_PAGE);
+  const popularPosts = getPopularJournalPosts(allPosts, 4);
+
+  return pages.map((posts, index) => ({
+    params: {
+      page: index === 0 ? undefined : String(index + 1),
+    },
+    props: {
+      posts,
+      popularPosts,
+      total: allPosts.length,
+      currentPage: index + 1,
+      lastPage: pages.length,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  posts: JournalPostEntry[];
+  popularPosts: JournalPostEntry[];
+  total: number;
+  currentPage: number;
+  lastPage: number;
+}
+
+const { posts, popularPosts, total, currentPage, lastPage } = Astro.props as Props;
+const title = currentPage === 1 ? JOURNAL_TITLE : `Журнал Военный навигатор — страница ${currentPage}`;
+const description =
+  currentPage === 1
+    ? JOURNAL_DESCRIPTION
+    : `Страница ${currentPage} журнала Военный навигатор: разборы о военной ипотеке, расчёте, банках, Краснодаре и Крыму.`;
+const canonical = new URL(getJournalIndexUrl(currentPage), SITE.url).href;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: canonical,
+    numberOfItems: total,
+  },
+  breadcrumbSchema([
+    { name: 'Главная', url: `${SITE.url}/` },
+    { name: 'Журнал', url: `${SITE.url}/journal/` },
+  ]),
+];
+---
+
+<PageLayout title={title} description={description} canonical={canonical} ogImage={OG_IMAGES.default} schema={schema}>
+  <section class="vn-journal-hero" aria-labelledby="vn-journal-title">
+    <div class="vn-container vn-journal-hero__inner">
+      <JournalBreadcrumbs items={[{ label: 'Главная', href: '/' }, { label: 'Журнал' }]} />
+      <div class="vn-journal-hero__copy">
+        <p class="vn-journal-hero__eyebrow">Журнал Военный навигатор</p>
+        <h1 class="vn-journal-hero__title" id="vn-journal-title">{JOURNAL_H1}</h1>
+        <p class="vn-journal-hero__lead">
+          Разборы для военнослужащих и семей: как считать бюджет, смотреть условия, выбирать новостройку и не идти к сделке вслепую.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vn-journal-archive" aria-labelledby="vn-journal-archive-title">
+    <div class="vn-container vn-journal-archive__inner">
+      <JournalCategoryNav />
+
+      <div class="vn-journal-archive__grid">
+        <div class="vn-journal-archive__main">
+          <div class="vn-journal-archive__head">
+            <p class="vn-journal-archive__eyebrow">Все статьи</p>
+            <h2 class="vn-journal-archive__title" id="vn-journal-archive-title">
+              Сначала понять маршрут, потом выбирать объект
+            </h2>
+          </div>
+
+          <div class="vn-journal-archive__cards">
+            {posts.map((post) => <JournalCard post={post} />)}
+          </div>
+
+          <JournalPagination
+            currentPage={currentPage}
+            lastPage={lastPage}
+            getPageUrl={(pageNumber) => getJournalIndexUrl(pageNumber)}
+          />
+        </div>
+
+        <aside class="vn-journal-archive__aside" aria-label="Дополнительные материалы журнала">
+          <JournalPopular posts={popularPosts} />
+          <div class="vn-journal-archive__cta">
+            <p class="vn-journal-archive__cta-kicker">Нужен короткий путь?</p>
+            <h2>Подберём варианты под вашу ситуацию</h2>
+            <p>Если не хочется собирать ответы по частям, начните с первичного подбора: цель, бюджет, регион и ограничения.</p>
+            <a
+              href="/contacts/#request"
+              class="vn-btn-primary vn-journal-archive__cta-button"
+              data-modal-open
+              data-modal-title="Получить подборку"
+              data-modal-subtitle="Оставьте контакты. Михаил уточнит задачу, бюджет и ограничения, а затем подскажет первый реалистичный шаг."
+              data-modal-source="journal-archive"
+            >
+              Получить подборку
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .vn-journal-hero {
+    padding: 104px 0 64px;
+    background: var(--color-bg-primary);
+  }
+
+  .vn-journal-hero__inner,
+  .vn-journal-archive__inner {
+    display: grid;
+    gap: 32px;
+  }
+
+  .vn-journal-hero__copy {
+    max-width: 820px;
+  }
+
+  .vn-journal-hero__eyebrow,
+  .vn-journal-archive__eyebrow,
+  .vn-journal-archive__cta-kicker {
+    margin: 0 0 12px;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-journal-hero__title {
+    max-width: 780px;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-display);
+    font-weight: 700;
+    line-height: var(--lh-heading);
+    text-wrap: balance;
+  }
+
+  .vn-journal-hero__lead {
+    max-width: 700px;
+    margin: 18px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-long);
+  }
+
+  .vn-journal-archive {
+    padding: 64px 0 96px;
+    background: var(--color-bg-secondary);
+  }
+
+  .vn-journal-archive__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .vn-journal-archive__main {
+    min-width: 0;
+  }
+
+  .vn-journal-archive__head {
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+
+  .vn-journal-archive__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: var(--lh-title);
+    text-wrap: balance;
+  }
+
+  .vn-journal-archive__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .vn-journal-archive__aside {
+    position: sticky;
+    top: 96px;
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .vn-journal-archive__cta {
+    display: grid;
+    gap: 12px;
+    padding: 22px;
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 20%, var(--color-border));
+    border-left: 4px solid var(--color-accent-cta);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-accent-cta) 5%, var(--color-bg-surface));
+    color: var(--color-text-primary);
+  }
+
+  .vn-journal-archive__cta h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-archive__cta p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
+  }
+
+  .vn-journal-archive__cta-button {
+    width: fit-content;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 1120px) {
+    .vn-journal-archive__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vn-journal-archive__aside {
+      position: static;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .vn-journal-hero {
+      padding: 92px 0 56px;
+    }
+
+    .vn-journal-archive {
+      padding: 54px 0 72px;
+    }
+
+    .vn-journal-archive__cards,
+    .vn-journal-archive__aside {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
