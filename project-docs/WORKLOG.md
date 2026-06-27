@@ -11,7 +11,7 @@
 
 - **Journal media:** добавлен frontmatter-параметр `coverPosition` и применён в карточках/hero статей, чтобы портреты не обрезали головы на laptop и mobile.
 - **Fixed covers:** скорректированы статьи `Сумма по военной ипотеке: как понять реальный бюджет`, `Условия военной ипотеки в 2026 году: что проверить до подбора` и повторное использование портрета Михаила в статье про развод.
-- **SEO cleanup:** добавлен `pnpm seo-check` как post-build технический gate: meta/canonical/OG, JSON-LD, sitemap/noindex, внутренние ссылки, robots/llms и favicon assets.
+- **SEO cleanup:** добавлен `pnpm seo-check` как post-build технический gate: meta/canonical/OG, JSON-LD, sitemap/noindex, внутренние ссылки, media assets, robots/llms и favicon assets.
 - **Favicon baseline:** добавлены `favicon.ico`, `favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` и соответствующие links в `BaseLayout`.
 - **Cleanup:** production fallback URL в `src/lib/utils.ts` заменён с localhost на `https://voen-navigator.ru/`.
 - **Checks passed:** `pnpm build` — 0 errors, 0 warnings, 0 hints; `pnpm geo-check` — 100/100; `pnpm seo-check` — 0 blockers, 0 warnings; локальные скриншоты `/journal/`, `/journal/summa-voennoy-ipoteki-i-raschet/`, `/journal/usloviya-voennoy-ipoteki-2026/` на 1024/390 подтверждают корректный кроп.

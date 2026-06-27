@@ -85,7 +85,7 @@
 - `/journal/`, статьи и рубрики попадают в sitemap.
 - `/journal/` добавлен в footer, карту маршрутов и `/llms.txt`.
 - На главной FAQ заменён на preview журнала, поэтому `FAQPage` schema с главной убрана.
-- Технический SEO gate: `pnpm seo-check` после `pnpm build`.
+- Технический SEO gate: `pnpm seo-check` после `pnpm build`, включая проверку локальных media assets для карточек и статей.
 
 ---
 

@@ -112,6 +112,23 @@ function routeExists(route) {
   return fs.existsSync(routeToHtmlPath(clean)) || fs.existsSync(path.join(DIST, `${clean.replace(/^\//, '').replace(/\/$/, '')}.html`));
 }
 
+function toLocalSitePath(value) {
+  if (!value || value.startsWith('#') || value.startsWith('data:') || value.startsWith('blob:')) return '';
+  try {
+    const url = new URL(value, SITE_URL);
+    if (url.origin !== SITE_URL) return '';
+    return url.pathname;
+  } catch {
+    return value.startsWith('/') ? value.split('#')[0].split('?')[0] : '';
+  }
+}
+
+function assetExists(value) {
+  const localPath = toLocalSitePath(value);
+  if (!localPath || !ASSET_RE.test(localPath)) return true;
+  return fs.existsSync(path.join(DIST, localPath.replace(/^\//, '')));
+}
+
 function sitemapRoutes() {
   const sitemapFiles = walk(DIST).filter((file) => /sitemap.*\.xml$/i.test(path.basename(file)));
   const routes = new Set();
@@ -225,6 +242,30 @@ function checkInternalLinks(file, blockers) {
   }
 }
 
+function checkMediaSources(file, blockers) {
+  const html = read(file);
+  const route = toRoute(file);
+  const sources = new Set();
+
+  for (const match of html.matchAll(/\b(?:src|poster)=["']([^"']+)["']/gi)) {
+    sources.add(match[1]);
+  }
+
+  for (const match of html.matchAll(/\bsrcset=["']([^"']+)["']/gi)) {
+    match[1].split(',').forEach((candidate) => {
+      const source = candidate.trim().split(/\s+/)[0];
+      if (source) sources.add(source);
+    });
+  }
+
+  for (const source of sources) {
+    const localPath = toLocalSitePath(source);
+    if (localPath && ASSET_RE.test(localPath) && !assetExists(localPath)) {
+      blockers.push(`${route}: missing media asset ${localPath}`);
+    }
+  }
+}
+
 function checkGlobalFiles(blockers) {
   const robotsPath = path.join(DIST, 'robots.txt');
   const llmsPath = path.join(DIST, 'llms.txt');
@@ -294,6 +335,7 @@ function main() {
   for (const file of seoHtmlFiles) {
     checkPage(file, sitemap, blockers, warnings);
     checkInternalLinks(file, blockers);
+    checkMediaSources(file, blockers);
   }
 
   console.log('\n╔══════════════════════════════════════════════════════════════╗');

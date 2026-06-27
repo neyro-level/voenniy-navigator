@@ -146,13 +146,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
 
         <div class="ams-cover-author">
-          <img
-            src="/images/chirkov-andrey.jpg"
-            alt="Андрей Чирков"
-            width="56"
-            height="56"
-            loading="eager"
-          />
+          <div class="ams-cover-author__avatar" aria-hidden="true">АЧ</div>
           <div>
             <p class="ams-cover-name">Андрей Чирков</p>
             <p class="ams-cover-role">Архитектор маркетинговых систем</p>
@@ -1458,14 +1452,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="ams-author" style="margin-top: 48px;">
           <div class="vn-grid-12">
             <div style="grid-column: 1 / 5">
-              <img
-                src="/images/chirkov-andrey.jpg"
-                alt="Андрей Чирков"
-                width="280"
-                height="320"
-                loading="lazy"
-                class="ams-author__photo"
-              />
+              <div class="ams-author__photo" aria-hidden="true">АЧ</div>
             </div>
             <div style="grid-column: 5 / 13">
               <div
@@ -1803,10 +1790,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     text-align: left;
   }
 
-  .ams-cover-author img {
+  .ams-cover-author__avatar {
+    display: grid;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    place-items: center;
     border-radius: 50%;
-    object-fit: cover;
     border: 2px solid rgba(158, 7, 7, 0.4);
+    background: linear-gradient(135deg, rgba(158, 7, 7, 0.18), rgba(158, 7, 7, 0.05));
+    color: var(--color-text-ondark);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
   }
 
   .ams-cover-name {
@@ -2544,13 +2540,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   .ams-author__photo {
+    display: grid;
     width: 100%;
     max-width: 280px;
-    height: auto;
     aspect-ratio: 280 / 320;
-    object-fit: cover;
+    place-items: center;
     border-radius: 14px;
     border: 2px solid rgba(158, 7, 7, 0.3);
+    background: linear-gradient(135deg, rgba(158, 7, 7, 0.16), rgba(15, 20, 25, 0.08));
+    color: var(--color-text-primary);
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 0;
   }
 
   .ams-badge {
@@ -2686,7 +2687,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .ams-author__photo {
       max-width: 200px;
       margin: 0 auto 24px;
-      display: block;
     }
   }
 
