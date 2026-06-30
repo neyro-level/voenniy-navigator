@@ -33,8 +33,11 @@ const readingTime = getReadingTime(post.body);
   <div class="vn-journal-card__body">
     <div class="vn-journal-card__meta">
       <a href={getJournalCategoryUrl(category.slug)} class="vn-journal-card__category">{category.label}</a>
-      <span>{formatJournalDate(post.data.publishDate)}</span>
-      <span>{readingTime}</span>
+      <div class="vn-journal-card__meta-details" aria-label="Дата публикации и время чтения">
+        <span>{formatJournalDate(post.data.publishDate)}</span>
+        <span class="vn-journal-card__meta-separator" aria-hidden="true">•</span>
+        <span>{readingTime}</span>
+      </div>
     </div>
     <h3 class="vn-journal-card__title">
       <a href={getJournalPostUrl(post)}>{post.data.title}</a>
@@ -86,19 +89,30 @@ const readingTime = getReadingTime(post.body);
   }
 
   .vn-journal-card__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    align-items: center;
+    display: grid;
+    gap: 6px;
     color: var(--color-text-tertiary);
     font-size: 13px;
     line-height: var(--lh-ui);
   }
 
   .vn-journal-card__category {
+    width: fit-content;
     color: var(--color-accent-cta);
     font-weight: 800;
     text-decoration: none;
+  }
+
+  .vn-journal-card__meta-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .vn-journal-card__meta-separator {
+    color: color-mix(in srgb, var(--color-text-tertiary) 72%, transparent);
   }
 
   .vn-journal-card__category:hover {
@@ -141,5 +155,25 @@ const readingTime = getReadingTime(post.body);
 
   .vn-journal-card--compact .vn-journal-card__title {
     font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    .vn-journal-card__body {
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .vn-journal-card__meta {
+      gap: 8px;
+    }
+
+    .vn-journal-card__meta-details {
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .vn-journal-card__title {
+      font-size: 20px;
+    }
   }
 </style>

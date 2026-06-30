@@ -7,6 +7,13 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-30 — Исправлен meta-layout карточек журнала на desktop и mobile
+
+- **File updated:** `src/components/journal/JournalCard.astro`.
+- **Problem fixed:** в превью-карточках `/journal/` рубрика, дата публикации и время чтения визуально расползались: на desktop/laptop дата и `N мин` опускались относительно рубрики, а на mobile вся meta-строка ломала ритм карточек.
+- **Layout updated:** meta-зона карточки переведена с плавающего `flex-wrap` на явную двухстрочную структуру: рубрика отдельно, дата и время чтения — в отдельной компактной строке с разделителем.
+- **Verified:** `pnpm build`, `pnpm geo-check` и `pnpm seo-check` завершились успешно; локальный preview `/journal/` проверен на `1366px` и `390px` — дата и `N мин` больше не сползают, горизонтального overflow нет.
+
 ### 2026-06-30 — Уточнены продающие заголовки модалки в блоке «Готовые подборки»
 
 - **File updated:** `src/pages/_home/02-EntryPoints.astro`.
