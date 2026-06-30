@@ -6,8 +6,8 @@ author: "Военный навигатор"
 category: "Краснодар"
 categorySlug: "krasnodar"
 tags: ["новостройки Краснодара", "квартиры по военной ипотеке", "застройщик"]
-cover: "/images/complexes/samolet/samolet-1.jpg"
-coverAlt: "Жилой комплекс в Краснодаре для подбора по военной ипотеке"
+cover: "/images/journal/novostroyki-krasnodara-cover.jpg"
+coverAlt: "Новый жилой комплекс в Краснодаре для подбора квартиры по военной ипотеке"
 featured: true
 popular: true
 priority: 2

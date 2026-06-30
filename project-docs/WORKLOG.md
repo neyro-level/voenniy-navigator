@@ -7,6 +7,71 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-30 — Заменена обложка статьи про покупку квартиры в Краснодаре
+
+- **Article:** `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/`.
+- **Source image:** пользовательское фото `Для журнала фото 3.jpg` перенесено в публичный media-слой как `public/images/journal/kak-kupit-kvartiru-v-krasnodare-cover.jpg`.
+- **Content updated:** `src/content/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare.md` переведён с `/images/krasnodar-newbuild-hero.png` на новый JPG; `coverAlt` обновлён под новый сюжет.
+- **Verified:** `pnpm build` завершился успешно; в `dist/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/index.html` и `dist/journal/index.html` статья и карточка архива уже используют `/images/journal/kak-kupit-kvartiru-v-krasnodare-cover.jpg`.
+- **Note:** Astro во время `build` выводит non-blocking warning `Duplicate id "kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare"` для этой статьи; route собирается штатно, но content-loader слой стоит отдельно перепроверить при следующем тех-аудите журнала.
+
+### 2026-06-30 — Заменена обложка статьи про новостройки Краснодара
+
+- **Article:** `/journal/novostroyki-krasnodara-po-voennoy-ipoteke/`.
+- **Source image:** пользовательское фото `Для журнала фото 2.jpg` перенесено в публичный media-слой как `public/images/journal/novostroyki-krasnodara-cover.jpg`.
+- **Content updated:** `src/content/journal/novostroyki-krasnodara-po-voennoy-ipoteke.md` переведён с `/images/complexes/samolet/samolet-1.jpg` на новый JPG; `coverAlt` обновлён под новый сюжет.
+- **Verified:** `pnpm build` завершился успешно; в `dist/journal/novostroyki-krasnodara-po-voennoy-ipoteke/index.html` и `dist/journal/index.html` статья и карточка архива уже используют `/images/journal/novostroyki-krasnodara-cover.jpg`.
+- **Note:** Astro во время `build` выводит non-blocking warning `Duplicate id "novostroyki-krasnodara-po-voennoy-ipoteke"` для этой статьи; route собирается штатно, но content-loader слой стоит отдельно перепроверить при следующем тех-аудите журнала.
+
+### 2026-06-30 — Заменена обложка статьи про калькулятор военной ипотеки
+
+- **Article:** `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/`.
+- **Source image:** пользовательское фото `Фото для блога военный 1.jpg` перенесено в публичный media-слой как `public/images/journal/kalkulyator-voennoy-ipoteki-cover.jpg`.
+- **Content updated:** `src/content/journal/kalkulyator-voennoy-ipoteki-chto-schitat.md` переведён с `/images/mortgage-hero.webp` на новый JPG; `coverAlt` обновлён под новый сюжет.
+- **Verified:** `pnpm build` завершился успешно; в `dist/journal/kalkulyator-voennoy-ipoteki-chto-schitat/index.html` и `dist/journal/index.html` статья и карточка архива уже используют `/images/journal/kalkulyator-voennoy-ipoteki-cover.jpg`.
+- **Note:** Astro во время `build` выводит non-blocking warning `Duplicate id "kalkulyator-voennoy-ipoteki-chto-schitat"` для этой статьи; route собирается штатно, но content-loader слой стоит отдельно перепроверить при следующем тех-аудите журнала.
+
+### 2026-06-30 — Обновлён единый social / OG cover сайта
+
+- **Problem:** текущий social-preview использовал старые портретные изображения Михаила Хряпина; в предпросмотре соцсетей это давало неаккуратный кроп с обрезанной головой.
+- **Decision:** вместо разных OG-картинок для сервисных страниц введён единый site-level social-cover с акцентом на новостройки и маршрут по военной ипотеке.
+- **Created:** `public/images/og/voenniy-navigator-social-cover.png`.
+- **Generator:** добавлен `scripts/generate-social-cover.ps1`, чтобы можно было быстро пересобрать social-cover без ручной работы в стороннем редакторе.
+- **Meta layer updated:** `src/lib/og.ts` переведён на новый shared asset для главной, Краснодара, Крыма, калькулятора, условий, контактов, thank-you и страницы сервиса.
+- **Verified:** `pnpm build` проходит с `0 errors`, `0 warnings`; в `dist/index.html`, `dist/voennaya-ipoteka-krasnodar/index.html`, `dist/voennaya-ipoteka-krym/index.html`, `dist/o-servise/index.html` и `dist/contacts/index.html` `og:image` и `twitter:image` уже указывают на `https://voen-navigator.ru/images/og/voenniy-navigator-social-cover.png`.
+
+### 2026-06-30 — Восстановлен production-слой карты после ручного релиза form-fix
+
+- **Incident:** на live-страницах `/voennaya-ipoteka-krasnodar/` и `/voennaya-ipoteka-krym/` карта показывала fallback `Ключ Яндекс.Карт ещё не подключён к окружению сайта.` вместо маркеров.
+- **Root cause:** активный ручной релиз form-fix `/var/www/client-sites/voenniy-navigator/releases/202606301343-sourcefix-env` был собран без `PUBLIC_YANDEX_MAPS_API_KEY`; в production HTML `KrymDirectionsMap` и `ComplexesMapReact` уходили с `apiKey=""`, хотя в рабочем checkout и GitHub Actions секрет уже присутствуют.
+- **Fixed:** текущий checkout пересобран локально с `.env.local`, где подключён `PUBLIC_YANDEX_MAPS_API_KEY`, и перевыкатан на AMS Server как release `202606301425-mapkey-restore` с переключением `current` на новый каталог.
+- **Verified on production:** `current/voennaya-ipoteka-krasnodar/index.html` и `current/voennaya-ipoteka-krym/index.html` больше не содержат пустой `apiKey`; live browser-check подтвердил возврат числовых маркеров на карте Краснодара и Крыма.
+- **Network proof:** `GET https://api-maps.yandex.ru/2.1/?apikey=...&lang=ru_RU` на production возвращает `200`; island `/_astro/ComplexesMapReact*.js` загружается штатно.
+
+### 2026-06-30 — Исправлен production-сбой форм из-за невалидного `source`
+
+- **Incident:** тестовые заявки на `voen-navigator.ru` доходили до `AMS Leads API`, но отклонялись валидацией `source` как `Invalid url`; симптом подтверждён на AMS Server через `journalctl -u ams-leads-api` и логи `POST /v1/leads` от `voen-navigator.ru`.
+- **Root cause:** фронт отправлял в поле `source` не абсолютный URL страницы, а относительный путь (`/bonus/`, `/podbor/hero`) или аналитическую метку (`home-hero-primary-cta`, `journal-archive`), тогда как API требует валидный URL.
+- **Fixed:** `src/lib/leads.ts` теперь нормализует `source` до абсолютного URL и сохраняет исходную route/marketing-метку отдельно в `meta.source_context`.
+- **Fallback fixed:** `src/layouts/PageLayout.astro` синхронизирован с тем же правилом для fallback-модалки без React-island; дополнительно исправлено извлечение текста ошибки из API-ответа.
+- **Release:** из-за грязного основного worktree production был перевыкатан из отдельного clean worktree; активный релиз на AMS Server переключён на `/var/www/client-sites/voenniy-navigator/releases/202606301343-sourcefix-env`.
+- **Server registry fixed:** в `/etc/ams-platform/ams-leads-api.projects.json` для `voenniy-navigator` добавлены live-origin’ы `https://voen-navigator.ru` и `https://www.voen-navigator.ru`, без которых сервер отклонял валидную SmartCaptcha с production-домена как `captcha_host_mismatch`.
+- **Backend hotfix:** в live `AMS Leads API` ослаблена server-side валидация `source`: API больше не режет лиды только из-за относительного пути или старого marketing-marker’а. Теперь сервер сам нормализует `source` в абсолютный URL по host/origin запроса и сохраняет исходный marker в `meta.source_context`.
+- **Backend contract synced:** live schema `AMS Leads API` больше не выкидывает `meta.source_context`, `method`, `contact_method`, `magnet`, `quiz_answers`; это позволяет не терять контекст маршрута и квиз-данные, даже если запрос пришёл от старого bundle или открытой до релиза вкладки.
+- **Verified on production:** `current/_astro/leads*.js` содержит `apiUrl=/api/leads`, `projectId=voenniy-navigator`, `siteKey=vn_9217643557b1477587e2da65e0c887c3`, а live `AMS Leads API` уже принимает `source` не только как строгий `url()`, но и в tolerant-режиме с server-side нормализацией.
+- **Live smoke:** после server hotfix реальный browser-submit через production-домен дал `POST https://voen-navigator.ru/api/leads => 200` и реальный редирект на `/thanks/?method=call`; в request body подтверждены `source=https://voen-navigator.ru/` и `meta.source_context=/`.
+- **Checks passed:** `pnpm build` — 0 errors, 0 warnings; `pnpm geo-check` — 100/100; `pnpm seo-check` — 0 blockers, 0 warnings.
+
+### 2026-06-29 — Блок 02 «Готовые подборки» на главной: выравнивание + модальные офферы
+
+- **File updated:** `src/pages/_home/02-EntryPoints.astro`.
+- **Alignment fixed:** убрано `justify-content: space-between` + `margin-top: auto`, из-за которого названия и иконки карточек «плясали» по вертикали при разной длине описаний. Десктоп/планшет переведён на единый `gap: 24px` — иконка и название выровнены по верху. На mobile `align-items: flex-start` + `align-self: center` для стрелки — иконка выравнивается по названию, стрелка по центру.
+- **Modal wiring:** карточки переведены из обычных ссылок в modal-entry слой через `data-modal-open` / `data-modal-title` / `data-modal-subtitle` / `data-modal-source`. Использован стандартный `RequestModal`, подключённый глобально в `PageLayout.astro`.
+- **Sales copy:** для каждой из 6 карточек задан собственный сильный заголовок и подзаголовок оффера: квартиры с ремонтом, с большой кухней, дома рядом с городом, новостройки с отделкой, цена снижена, участки под строительство.
+- **Analytics sources:** каждая карточка получила уникальный `modalSource` (`home-collections-repair`, `home-collections-kitchen`, `home-collections-house`, `home-collections-finishing`, `home-collections-discount`, `home-collections-land`) для отслеживания заявок по подборкам.
+- **Kept intact:** тексты карточек (title/description), иконки и href не менялись.
+- **Checks passed:** dev-сервер компилирует страницу без ошибок; data-атрибуты и все 6 заголовков присутствуют в HTML (проверено через node-fetch).
+
 ### 2026-06-27 — Скорректированы кропы фото журнала и добавлен SEO-check
 
 - **Journal media:** добавлен frontmatter-параметр `coverPosition` и применён в карточках/hero статей, чтобы портреты не обрезали головы на laptop и mobile.

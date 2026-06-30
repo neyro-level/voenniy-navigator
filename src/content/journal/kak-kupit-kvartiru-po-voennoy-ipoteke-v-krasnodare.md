@@ -6,8 +6,8 @@ author: "Военный навигатор"
 category: "Краснодар"
 categorySlug: "krasnodar"
 tags: ["военная ипотека Краснодар", "новостройки Краснодара", "маршрут покупки"]
-cover: "/images/krasnodar-newbuild-hero.png"
-coverAlt: "Новостройки Краснодара для выбора квартиры по военной ипотеке"
+cover: "/images/journal/kak-kupit-kvartiru-v-krasnodare-cover.jpg"
+coverAlt: "Покупатели обсуждают выбор квартиры в Краснодаре перед сделкой по военной ипотеке"
 featured: true
 popular: true
 priority: 1

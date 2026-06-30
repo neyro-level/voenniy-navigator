@@ -6,8 +6,8 @@ author: "Военный навигатор"
 category: "Расчёт и сумма"
 categorySlug: "raschet-i-summa"
 tags: ["калькулятор военной ипотеки", "рассчитать военную ипотеку", "платёж"]
-cover: "/images/mortgage-hero.webp"
-coverAlt: "Калькулятор и расчёт военной ипотеки перед выбором квартиры"
+cover: "/images/journal/kalkulyator-voennoy-ipoteki-cover.jpg"
+coverAlt: "Военнослужащий рассчитывает параметры военной ипотеки перед выбором квартиры"
 featured: false
 popular: true
 priority: 6
