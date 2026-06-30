@@ -7,6 +7,14 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-30 — Заменена обложка статьи про банки по военной ипотеке
+
+- **Article:** `/journal/banki-po-voennoy-ipoteke/`.
+- **Source image:** пользовательское фото `Для журнала фото 4.webp` перенесено в публичный media-слой как `public/images/journal/banki-po-voennoy-ipoteke-cover.webp`.
+- **Content updated:** `src/content/journal/banki-po-voennoy-ipoteke.md` переведён с `/images/secondary-hero.jpg` на новый WEBP; `coverAlt` обновлён под новый сюжет.
+- **Verified:** `pnpm build`, `pnpm geo-check` и `pnpm seo-check` завершились успешно; в `dist/journal/banki-po-voennoy-ipoteke/index.html` и `dist/journal/index.html` статья и карточка архива уже используют `/images/journal/banki-po-voennoy-ipoteke-cover.webp`.
+- **Note:** Astro во время `build` выводит non-blocking warning `Duplicate id "banki-po-voennoy-ipoteke"` для этой статьи; route собирается штатно, но content-loader слой стоит отдельно перепроверить при следующем тех-аудите журнала.
+
 ### 2026-06-30 — Заменена обложка статьи про покупку квартиры в Краснодаре
 
 - **Article:** `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/`.

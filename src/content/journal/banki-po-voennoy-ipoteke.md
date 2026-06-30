@@ -6,8 +6,8 @@ author: "Военный навигатор"
 category: "Банки и условия"
 categorySlug: "banki-i-usloviya"
 tags: ["банки военная ипотека", "ставка военной ипотеки", "одобрение объекта"]
-cover: "/images/secondary-hero.jpg"
-coverAlt: "Обсуждение банка и условий военной ипотеки перед выбором квартиры"
+cover: "/images/journal/banki-po-voennoy-ipoteke-cover.webp"
+coverAlt: "Военнослужащий обсуждает выбор банка по военной ипотеке перед покупкой квартиры"
 featured: false
 popular: true
 priority: 5
