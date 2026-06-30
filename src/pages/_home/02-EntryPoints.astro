@@ -1,42 +1,66 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 const collections = [
   {
-    title: 'С хорошим ремонтом',
-    description: 'Готовые квартиры без дополнительных вложений',
-    href: '/podbor/',
-    icon: 'badge-check',
+    title: "С хорошим ремонтом",
+    description: "Готовые квартиры без дополнительных вложений",
+    href: "/podbor/",
+    icon: "badge-check",
+    modalTitle: "Получите подборку готовых квартир с хорошим ремонтом",
+    modalSubtitle:
+      "Квартиры, в которых уже сделан аккуратный ремонт — заезжайте без лишних трат и ожидания.",
+    modalSource: "home-collections-repair",
   },
   {
-    title: 'С большой кухней',
-    description: 'Просторные кухни-гостиные для семьи',
-    href: '/podbor/',
-    icon: 'max',
+    title: "С большой кухней",
+    description: "Просторные кухни-гостиные для семьи",
+    href: "/podbor/",
+    icon: "max",
+    modalTitle: "Получите подборку квартир с большой кухней-гостиной",
+    modalSubtitle:
+      "Просторные планировки для семьи, ужинов с друзьями и комфорта каждый день.",
+    modalSource: "home-collections-kitchen",
   },
   {
-    title: 'Дом рядом с городом',
-    description: 'Коттеджи и малоэтажная застройка',
-    href: '/contacts/#request',
-    icon: 'home',
+    title: "Дом рядом с городом",
+    description: "Коттеджи и малоэтажная застройка",
+    href: "/contacts/#request",
+    icon: "home",
+    modalTitle: "Получите подборку домов рядом с городом",
+    modalSubtitle:
+      "Коттеджи и малоэтажные кварталы — больше пространства и тишины в нескольких минутах от города.",
+    modalSource: "home-collections-house",
   },
   {
-    title: 'Новостройки с отделкой',
-    description: 'Заселяйтесь сразу после сдачи',
-    href: '/podbor/',
-    icon: 'building-check',
+    title: "Новостройки с отделкой",
+    description: "Заселяйтесь сразу после сдачи",
+    href: "/podbor/",
+    icon: "building-check",
+    modalTitle: "Получите подборку новостроек с готовой отделкой",
+    modalSubtitle:
+      "Не придётся вкладываться в ремонт — заезжайте сразу после сдачи дома и экономьте на отделке.",
+    modalSource: "home-collections-finishing",
   },
   {
-    title: 'Цена снижена',
-    description: 'Специальные условия от застройщиков',
-    href: '/podbor/',
-    icon: 'percent',
+    title: "Цена снижена",
+    description: "Специальные условия от застройщиков",
+    href: "/podbor/",
+    icon: "percent",
+    modalTitle: "Получите подборку квартир по сниженной цене",
+    modalSubtitle:
+      "Актуальные скидки и спецпредложения от застройщиков — поможем забрать квартиру по лучшей цене.",
+    modalSource: "home-collections-discount",
   },
   {
-    title: 'Участки под строительство',
-    description: 'Земля для индивидуального жилищного строительства',
-    href: '/contacts/#request',
-    icon: 'hammer',
+    title: "Участки под строительство",
+    description: "Земля для индивидуального жилищного строительства",
+    href: "/contacts/#request",
+    icon: "hammer",
+    modalTitle: "Получите подборку участков под строительство дома",
+    modalSubtitle:
+      "Земля под ИЖС в подходящих районах — поможем выбрать участок, который подходит под военную ипотеку.",
+    modalSource: "home-collections-land",
   },
 ];
 ---
@@ -57,17 +81,29 @@ const collections = [
       </p>
     </div>
 
-    <div class="vn-home-collections__grid" aria-label="Популярные подборки недвижимости">
+    <div
+      class="vn-home-collections__grid"
+      aria-label="Популярные подборки недвижимости"
+    >
       {
         collections.map((item) => (
-          <a class="vn-home-collections__card" href={item.href}>
+          <a
+            class="vn-home-collections__card"
+            href={item.href}
+            data-modal-open
+            data-modal-title={item.modalTitle}
+            data-modal-subtitle={item.modalSubtitle}
+            data-modal-source={item.modalSource}
+          >
             <span class="vn-home-collections__icon" aria-hidden="true">
               <Icon name={item.icon} size={40} />
             </span>
 
             <span class="vn-home-collections__body">
               <span class="vn-home-collections__name">{item.title}</span>
-              <span class="vn-home-collections__description">{item.description}</span>
+              <span class="vn-home-collections__description">
+                {item.description}
+              </span>
             </span>
 
             <span class="vn-home-collections__arrow" aria-hidden="true">
@@ -124,7 +160,7 @@ const collections = [
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 24px;
     min-height: 188px;
     padding: 28px;
     overflow: hidden;
@@ -141,7 +177,7 @@ const collections = [
   }
 
   .vn-home-collections__card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0 0 auto;
     height: 2px;
@@ -169,7 +205,6 @@ const collections = [
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-top: auto;
     padding-right: 32px;
   }
 
@@ -243,7 +278,7 @@ const collections = [
 
     .vn-home-collections__card {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
       min-height: 0;
       padding: 18px 20px;
@@ -275,6 +310,7 @@ const collections = [
 
     .vn-home-collections__arrow {
       position: static;
+      align-self: center;
       width: 28px;
       height: 28px;
       flex-shrink: 0;

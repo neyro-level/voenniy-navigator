@@ -7,6 +7,13 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+### 2026-06-30 — Уточнены продающие заголовки модалки в блоке «Готовые подборки»
+
+- **File updated:** `src/pages/_home/02-EntryPoints.astro`.
+- **Modal behavior kept:** все 6 карточек второго блока на главной продолжают открывать стандартную модальную форму заявки через `data-modal-open`.
+- **Sales copy updated:** заголовки модалки на всех карточках приведены к единому формату `Получите подборку ...`, чтобы оффер сразу совпадал со сценарием выбранной подборки.
+- **Verified:** `pnpm build`, `pnpm geo-check` и `pnpm seo-check` завершились успешно; в `dist/index.html` на всех 6 карточках главной уже стоят нужные `data-modal-title` со своими продающими заголовками.
+
 ### 2026-06-30 — Заменена обложка статьи про банки по военной ипотеке
 
 - **Article:** `/journal/banki-po-voennoy-ipoteke/`.
