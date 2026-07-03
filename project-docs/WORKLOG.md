@@ -3,7 +3,7 @@
 ## Текущий статус
 
 - **Stack:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands.
-- **Build:** `pnpm build` passes with 0 errors, 0 warnings.
+- **Build:** `pnpm build` passes; текущая сборка без ошибок, с 1 неблокирующим warning от Astro content loader.
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
@@ -42,6 +42,8 @@
   - browser QA preview на `1366px` и `390px` для `/journal/`, `/journal/3/`, `/journal/distantsionnaya-pokupka-po-voennoy-ipoteke/`, `/journal/category/sdelka-i-riski/`, `/usloviya-voennoy-ipoteki/`
 - **Browser QA result:** горизонтального overflow не найдено; пагинация `/journal/3/` собирается и открывается; новые article routes, archive, category pages и supporting-blocks отображаются корректно; проверочные HEAD-запросы к новым SVG и связанным image assets вернули `200`.
 - **Accepted warning:** `pnpm seo-check` оставляет `5` soft-warnings по длинным journal titles; warning принят осознанно, потому что в рамках этого релиза видимые `title / H1` запрещено менять по ТЗ пользователя.
+- **Production release:** commit `bd9b9c5` (`Publish expanded journal and sync SEO docs`) отправлен в `main`; GitHub Actions workflow `Deploy to AMS Server` (`run 28667231921`) завершился успешно.
+- **Live smoke-check:** production `https://voen-navigator.ru` после деплоя проверен вручную; `200` и корректные live-title подтверждены для `/`, `/journal/`, `/journal/3/`, `/journal/distantsionnaya-pokupka-po-voennoy-ipoteke/`, `/journal/dokumenty-dlya-voennoy-ipoteki/`, `/journal/voennaya-ipoteka-v-sochi-i-novorossiyske/`, `/usloviya-voennoy-ipoteki/`; реальные `cover` новых материалов отдают `200`, archive-layer и supporting-blocks доступны на проде.
 
 ## 2026-07-03 — Созданы брифы на 5 новых статей журнала по глобальному SEO-плану
 
