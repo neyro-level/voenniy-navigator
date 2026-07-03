@@ -850,3 +850,34 @@
 - **Documented:** создана рабочая матрица `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md` как источник правды по связям article -> money page и page -> supporting layer.
 - **Verified:** `pnpm build` — success; `pnpm geo-check` — `100/100`; `pnpm seo-check` — `0 blockers`, `0 warnings`.
 - **Verified in dist:** архив `/journal/`, рубрики и priority money pages действительно содержат новые блоки `Главные страницы по теме`, `Следующий шаг` и `Полезные материалы`.
+
+### 2026-07-03 — Top-50 ядро дополнено live-сверкой `title / description / H1`
+
+- **Updated:** root-файл `SEO_CORE_TOP50_VOEN_NAVIGATOR_2026-07-03.md`.
+- **Added:** секция `3A` с live-сверкой Top-50 ядра против фактических опубликованных `title / description / H1` и оценкой совпадения по money pages и anti-objection статье.
+- **Added:** секция `3B` с inventory всех опубликованных SEO-страниц: основные commercial/trust pages, архив журнала, рубрики и все 10 стартовых статей.
+- **Fixed source of truth:** в документе явно зафиксировано, что exact-match `title` и `H1` уже стоят на пяти приоритетных commercial pages, а главные незакрытые SEO-gap pages сейчас — `/kvartiry-po-voennoy-ipoteke/`, `/voennaya-ipoteka-sevastopol/`, `/voennaya-ipoteka-simferopol/`.
+- **Live evidence:** мета-слой снимался с опубликованного сайта `https://voen-navigator.ru/` 2026-07-03, а не только из локального кода.
+
+### 2026-07-03 — Для журнала создан отдельный контур редакционных брифов
+
+- **Created:** `project-docs/JOURNAL_EDITORIAL_MAP.md` как master-файл по развитию журнала: роль, правила написания, антиканнибализация, ориентиры по длине, article map и будущие темы.
+- **Created:** `project-docs/briefs/journal/README.md` как вход в папку журнальных брифов.
+- **Created:** отдельные брифы `project-docs/briefs/journal/ARTICLE_*.md` на все 10 опубликованных статей журнала.
+- **Synced:** `project-docs/briefs/README.md` и `project-docs/briefs/PAGE_JOURNAL.md` обновлены, чтобы новый журналный контур стал официальной частью документации проекта.
+- **Purpose fixed:** теперь журнал можно развивать не хаотично по статье за статьёй, а через master-map + article briefs, включая работу через ИИ, редактора и SEO-слой.
+
+### 2026-07-03 — SEO-стратегия и Top-50 объединены в единый SEO-паспорт
+
+- **Created:** `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` как канонический SEO-документ проекта.
+- **Included in passport:** профиль сайта, регионы, главная SEO-формула, live-структура, live `title / description / H1`, Top-50 ядро, journal-layer, gap pages, перелинковка и 6-месячный план.
+- **Simplified:** вместо двух главных документов (`SEO_STRATEGY_CLUSTER_MAP_VOEN_NAVIGATOR_2026-07-03.md` + `SEO_CORE_TOP50_VOEN_NAVIGATOR_2026-07-03.md`) теперь есть один рабочий SEO-паспорт для постоянной поддержки.
+- **Marked as source layers:** root-файлы `SEO_STRATEGY_CLUSTER_MAP_VOEN_NAVIGATOR_2026-07-03.md` и `SEO_CORE_TOP50_VOEN_NAVIGATOR_2026-07-03.md` оставлены как исторические и source-материалы, но не как текущий канон.
+- **Synced docs:** `project-docs/README.md` и `project-docs/PASSPORT_PROJECTS.md` обновлены, чтобы при SEO-задачах новый вход шел через SEO-паспорт.
+
+### 2026-07-03 — Зафиксирована полная SEO-система проекта, включая журнал
+
+- **Extended passport:** в `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` добавлены правила, что является каноном, что является supporting-слоем и что не нужно удалять как "лишние дубли".
+- **Fixed reading order:** для любого SEO-захода теперь явно задан маршрут `SEO_PASSPORT -> SEMANTICS -> INTERNAL_LINKING -> JOURNAL_EDITORIAL_MAP -> PAGE/ARTICLE brief`.
+- **Journal linked into SEO system:** `project-docs/README.md`, `project-docs/briefs/README.md` и `project-docs/briefs/PAGE_JOURNAL.md` обновлены так, чтобы журнал читался как полноценный SEO-кластер, а не как отдельная папка со статьями.
+- **Deletion rule fixed:** root SEO-файлы оставлены как архивный source-слой; удалять их сейчас не рекомендуется, лучше позже вынести в отдельный `archive/seo/`, если понадобится визуальная чистка проекта.

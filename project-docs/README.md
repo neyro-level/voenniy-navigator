@@ -9,7 +9,16 @@
 3. `SITE_ARCHITECTURE.md`
 4. `DESIGN_SYSTEM.md`
 5. `SEMANTICS.md`
-6. `briefs/PAGE_*.md`
+6. `SEO_PASSPORT_VOEN_NAVIGATOR.md` — если задача связана с SEO, семантикой, мета-слоем, журналом или перелинковкой
+7. `briefs/PAGE_*.md`
+
+Если задача связана именно с SEO, порядок входа такой:
+
+1. `SEO_PASSPORT_VOEN_NAVIGATOR.md`
+2. `SEMANTICS.md`
+3. `SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`
+4. `JOURNAL_EDITORIAL_MAP.md`
+5. нужный `briefs/PAGE_*.md` или `briefs/journal/ARTICLE_*.md`
 
 Правила позиционирования, тона, первого шага и CTA теперь зафиксированы внутри `PASSPORT_PROJECTS.md` и больше не вынесены в отдельный standard-документ.
 
@@ -18,6 +27,9 @@
 - `SITE_ARCHITECTURE.md` — единый источник правды по архитектуре сайта
 - `DESIGN_SYSTEM.md` — дизайн-система проекта
 - `SEMANTICS.md` — семантика и Wordstat-основа
+- `SEO_PASSPORT_VOEN_NAVIGATOR.md` — единый SEO-паспорт проекта: ядро, live-мета, страницы, журнал, gap pages и правила обновления
+- `SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md` — рабочая матрица SEO-перелинковки между journal и commercial pages
+- `JOURNAL_EDITORIAL_MAP.md` — главный SEO-документ по развитию журнала и правил написания статей
 - `PASSPORT_PROJECTS.md` — паспорт проекта, позиционирование, tone rules и CTA-правила
 - `briefs/` — brief-документы конкретных страниц
 - `_templates/` — шаблоны архитектуры и page-brief

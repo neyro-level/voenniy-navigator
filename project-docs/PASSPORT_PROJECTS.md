@@ -68,8 +68,9 @@ pnpm preview
 3. `project-docs/SITE_ARCHITECTURE.md`
 4. `project-docs/DESIGN_SYSTEM.md`
 5. `project-docs/SEMANTICS.md` — если задача связана с SEO, спросом, структурой страницы, FAQ или рекламными интентами
-6. нужный `project-docs/briefs/PAGE_*.md`
-7. актуальный файл route / блока, который меняется
+6. `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` — если задача связана с SEO-стратегией, мета-слоем, ядром, журналом, gap pages или перелинковкой
+7. нужный `project-docs/briefs/PAGE_*.md`
+8. актуальный файл route / блока, который меняется
 
 Не начинать сборку страницы или блока без чтения соответствующего brief-документа, если страница относится к смысловым, entity/trust или promo-страницам.
 
@@ -83,7 +84,8 @@ pnpm preview
 4. `project-docs/briefs/PAGE_*.md` — источник правды по конкретной странице
 5. `project-docs/DESIGN_SYSTEM.md` — визуальные правила и токены
 6. `project-docs/SEMANTICS.md` — SEO-основа и кластеры
-7. глобальные Astro/Kilo-правила — методика технической сборки
+7. `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` — канонический SEO-паспорт: ядро, live-мета, journal-layer, gap pages и roadmap
+8. глобальные Astro/Kilo-правила — методика технической сборки
 
 Если код и brief расходятся после прямых правок пользователя, сначала актуализировать brief как `as-built`, затем продолжать работу.
 
