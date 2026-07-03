@@ -3,7 +3,7 @@ import { OG_IMAGES } from '../../lib/og';
 import { breadcrumbSchema, faqSchema, organizationSchema, serviceSchema } from '../../lib/seo';
 
 export const pageMeta = {
-  title: 'Военная ипотека в Крыму — квартиры, новостройки, города',
+  title: 'Военная ипотека в Крыму',
   description:
     'Разберите покупку квартиры или новостройки в Крыму по военной ипотеке: Севастополь, Симферополь, побережье, дистанционный формат и следующий шаг.',
   canonical: `${SITE.url}/voennaya-ipoteka-krym/`,
@@ -48,7 +48,7 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Военная ипотека в Крыму: выбор квартиры и новостройки',
+    name: 'Военная ипотека в Крыму',
     description:
       'Помогаем рассчитать варианты покупки квартиры или новостройки в Крыму по военной ипотеке: города, дистанционный формат, ограничения и следующий шаг.',
     url: `${SITE.url}/voennaya-ipoteka-krym/`,

@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import CommercialSupportingMaterials from '../components/sections/CommercialSupportingMaterials.astro';
 import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import Hero from './_voennaya-ipoteka-krym/01-Hero.astro';
@@ -10,6 +11,9 @@ import HowWeWork from './_voennaya-ipoteka-krym/05-HowWeWork.astro';
 import Trust from './_voennaya-ipoteka-krym/06-Trust.astro';
 import Reviews from './_voennaya-ipoteka-krym/07-Reviews.astro';
 import { pageMeta, schemas, faqItems } from './_voennaya-ipoteka-krym/pageData';
+import { getJournalPosts } from '../lib/journal';
+
+const journalPosts = await getJournalPosts();
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -20,6 +24,7 @@ import { pageMeta, schemas, faqItems } from './_voennaya-ipoteka-krym/pageData';
   <HowWeWork />
   <Trust />
   <Reviews />
+  <CommercialSupportingMaterials pageKey="krym" posts={journalPosts} />
   <FAQ
     items={faqItems}
     eyebrow="ЧАСТЫЕ ВОПРОСЫ"

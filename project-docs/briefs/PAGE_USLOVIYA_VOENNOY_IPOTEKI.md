@@ -350,3 +350,18 @@
 ---
 
 **Статус:** Бриф готов к согласованию. После утверждения — обновление компонентов и pageData.
+
+---
+
+## 12. SEO supporting-layer
+
+- Страница условий закреплена как primary money page для запроса `условия военной ипотеки` и смежного intent по банкам, лимитам и ограничениям.
+- В страницу встроен отдельный блок `Полезные материалы`, который должен показывать только релевантные разборы по условиям, а не весь журнал подряд.
+- Базовый supporting-набор:
+  - `/journal/usloviya-voennoy-ipoteki-2026/`
+  - `/journal/banki-po-voennoy-ipoteke/`
+  - `/journal/summa-voennoy-ipoteki-i-raschet/`
+  - `/journal/kvartira-po-voennoy-ipoteke-pri-razvode/`
+- Статья `условия` не дублирует money page, а усиливает её и ведёт в `/usloviya-voennoy-ipoteki/` как в следующий шаг.
+- Статья про развод может вторично ссылаться в future `/kvartiry-po-voennoy-ipoteke/`, но блок условий остаётся главным маршрутом для правового и банковского интента.
+- Источник правды: `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`.

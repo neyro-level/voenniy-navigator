@@ -837,3 +837,16 @@
 - **Published:** на `voen-navigator.ru` выкачена новая production-сборка с `PUBLIC_SMARTCAPTCHA_CLIENT_KEY`; обе lead-формы передают `smartCaptchaToken`.
 - **Verified:** прямой `POST https://voen-navigator.ru/api/leads` без `smartCaptchaToken` возвращает `400 captcha_required`.
 - **Infra:** server-side rate-limit на leads-роуте и Nginx-level throttling остаются активны как антибот-слой.
+
+### 2026-07-03 — SEO-перелинковка journal ↔ commercial pages доведена до кластерной архитектуры
+
+- **Implemented:** в `src/lib/journal/index.ts` собрана единая матрица связей между статьями, рубриками и приоритетными commercial pages: Краснодар, Крым, Калькулятор, Условия, Семейная.
+- **Added:** новые компоненты `src/components/journal/CommercialRouteCard.astro`, `src/components/journal/JournalMainRoutes.astro`, `src/components/sections/CommercialSupportingMaterials.astro`.
+- **Updated journal archive:** `/journal/` теперь содержит направляющий SEO-блок `Главные страницы по теме`, а карточки статей показывают `Следующий шаг` в релевантную money page.
+- **Updated category pages:** у рубрик появился отдельный коммерческий переход в страницу кластера; `JournalPopular` теперь может показывать `Главный следующий шаг`, а не только статьи.
+- **Updated article pages:** финальный CTA в статье больше не ведёт по умолчанию в `/contacts/`, а маршрутизирует в основную commercial page темы; secondary route используется как смежный шаг, если он логически нужен.
+- **Updated commercial pages:** на `/voennaya-ipoteka-krasnodar/`, `/voennaya-ipoteka-krym/`, `/kalkulyator-voennoy-ipoteki/`, `/usloviya-voennoy-ipoteki/`, `/semeynaya-voennaya-ipoteka/` встроен обратный SEO-блок `Полезные материалы` с релевантными supporting-статьями и соседними кластерами.
+- **Synced money-query layer:** `title` и `H1` на пяти приоритетных commercial pages приведены к строгой связке с основным кластерным запросом: `Военная ипотека Краснодар`, `Военная ипотека в Крыму`, `Калькулятор военной ипотеки`, `Условия военной ипотеки`, `Семейная военная ипотека`.
+- **Documented:** создана рабочая матрица `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md` как источник правды по связям article -> money page и page -> supporting layer.
+- **Verified:** `pnpm build` — success; `pnpm geo-check` — `100/100`; `pnpm seo-check` — `0 blockers`, `0 warnings`.
+- **Verified in dist:** архив `/journal/`, рубрики и priority money pages действительно содержат новые блоки `Главные страницы по теме`, `Следующий шаг` и `Полезные материалы`.

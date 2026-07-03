@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import CommercialSupportingMaterials from '../components/sections/CommercialSupportingMaterials.astro';
 import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import Hero from './_semeynaya-voennaya-ipoteka/01-Hero.astro';
 import Conditions from './_semeynaya-voennaya-ipoteka/02-Conditions.astro';
@@ -8,6 +9,9 @@ import Banks from './_semeynaya-voennaya-ipoteka/04-Banks.astro';
 import Scenarios from './_semeynaya-voennaya-ipoteka/05-Scenarios.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import { faqItems, pageMeta, schemas } from './_semeynaya-voennaya-ipoteka/pageData';
+import { getJournalPosts } from '../lib/journal';
+
+const journalPosts = await getJournalPosts();
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -16,6 +20,7 @@ import { faqItems, pageMeta, schemas } from './_semeynaya-voennaya-ipoteka/pageD
   <Amount />
   <Banks />
   <Scenarios />
+  <CommercialSupportingMaterials pageKey="family" posts={journalPosts} />
   <FAQ
     items={faqItems}
     eyebrow="Частые вопросы"

@@ -1,0 +1,80 @@
+---
+import CommercialRouteCard from './CommercialRouteCard.astro';
+import { getPriorityCommercialPages } from '../../lib/journal';
+
+const pages = getPriorityCommercialPages();
+---
+
+<section class="vn-journal-main-routes" aria-labelledby="vn-journal-main-routes-title">
+  <div class="vn-journal-main-routes__head">
+    <p class="vn-journal-main-routes__eyebrow">Главные страницы по теме</p>
+    <h2 class="vn-journal-main-routes__title" id="vn-journal-main-routes-title">
+      Сначала выбрать нужный маршрут, потом углубляться в статьи
+    </h2>
+    <p class="vn-journal-main-routes__lead">
+      Журнал объясняет сценарии и риски, а основные коммерческие страницы собирают money-intent по регионам,
+      расчёту, условиям и семейному сценарию.
+    </p>
+  </div>
+
+  <div class="vn-journal-main-routes__grid">
+    {pages.map((page) => <CommercialRouteCard page={page} />)}
+  </div>
+</section>
+
+<style>
+  .vn-journal-main-routes {
+    display: grid;
+    gap: 22px;
+    padding: 26px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vn-journal-main-routes__head {
+    max-width: 760px;
+  }
+
+  .vn-journal-main-routes__eyebrow {
+    margin: 0 0 10px;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-journal-main-routes__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-title);
+  }
+
+  .vn-journal-main-routes__lead {
+    max-width: 680px;
+    margin: 10px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
+  }
+
+  .vn-journal-main-routes__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  @media (max-width: 760px) {
+    .vn-journal-main-routes {
+      padding: 20px;
+    }
+
+    .vn-journal-main-routes__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

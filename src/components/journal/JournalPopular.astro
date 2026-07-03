@@ -1,12 +1,15 @@
 ---
 import type { JournalPostEntry } from '../../lib/journal';
+import type { CommercialPageDescriptor } from '../../lib/journal';
 import { formatJournalDate, getJournalCategory, getJournalPostUrl } from '../../lib/journal';
+import CommercialRouteCard from './CommercialRouteCard.astro';
 
 interface Props {
   posts: JournalPostEntry[];
+  nextStep?: CommercialPageDescriptor;
 }
 
-const { posts } = Astro.props;
+const { posts, nextStep } = Astro.props;
 ---
 
 <aside class="vn-journal-popular" aria-labelledby="vn-journal-popular-title">
@@ -26,6 +29,7 @@ const { posts } = Astro.props;
       );
     })}
   </div>
+  {nextStep && <CommercialRouteCard page={nextStep} compact eyebrow="Главный следующий шаг" />}
 </aside>
 
 <style>

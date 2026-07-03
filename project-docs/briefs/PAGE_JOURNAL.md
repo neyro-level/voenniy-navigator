@@ -104,3 +104,20 @@
 - После правки кропов отдельно проверены `/journal/`, `/journal/summa-voennoy-ipoteki-i-raschet/`, `/journal/usloviya-voennoy-ipoteki-2026/` на 1024px и 390px: головы в проблемных фото не обрезаются.
 
 `/api/leads` в local static preview возвращает 404 ожидаемо: production-прокси живёт в Nginx, не в Astro preview.
+
+---
+
+## 7. SEO-перелинковка v2
+
+- Архив `/journal/` теперь работает не только как информационный хаб, но и как навигационный вход в money-layer: добавлен блок `Главные страницы по теме`.
+- Карточки статей в архиве и рубриках показывают отдельный маршрут `Следующий шаг` в основную commercial page кластера, чтобы журнал не гонял трафик только внутри себя.
+- Страницы рубрик получили рекомендованную commercial page:
+  - `Краснодар` -> `/voennaya-ipoteka-krasnodar/`
+  - `Крым` -> `/voennaya-ipoteka-krym/`
+  - `Расчёт и сумма` -> `/kalkulyator-voennoy-ipoteki/`
+  - `Банки и условия` -> `/usloviya-voennoy-ipoteki/`
+  - `Семейная ипотека` -> `/semeynaya-voennaya-ipoteka/`
+  - `Сделка и риски` -> future `/kvartiry-po-voennoy-ipoteke/` и secondary `/usloviya-voennoy-ipoteki/`
+- Страница каждой статьи должна иметь 1 primary route в money page и может иметь 1 secondary route как следующий шаг по соседнему intent.
+- `Popular` и related-блоки больше не считаются достаточной перелинковкой сами по себе: рядом с article-to-article маршрутом должен быть article-to-commercial маршрут.
+- Источник правды по архитектуре links: `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`.

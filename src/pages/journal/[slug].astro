@@ -14,8 +14,10 @@ import {
   getJournalPostUrl,
   getJournalPosts,
   getPopularJournalPosts,
+  getPrimaryCommercialPageForPost,
   getReadingTime,
   getRelatedJournalPosts,
+  getSecondaryCommercialPageForPost,
   toAbsoluteUrl,
   type JournalPostEntry,
 } from '../../lib/journal';
@@ -43,6 +45,8 @@ const title = post.data.title;
 const description = post.data.excerpt;
 const readingTime = getReadingTime(post.body);
 const ogImage = toAbsoluteUrl(post.data.cover, SITE.url);
+const primaryRoute = getPrimaryCommercialPageForPost(post);
+const secondaryRoute = getSecondaryCommercialPageForPost(post);
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -114,23 +118,31 @@ const schema = [
 
           <footer class="vn-journal-post__cta">
             <p class="vn-journal-post__cta-kicker">Следующий шаг</p>
-            <h2>Разберём вашу ситуацию на конкретных вводных</h2>
-            <p>Расскажите, какой регион, бюджет и срок покупки рассматриваете. Подбор начнётся с ограничений программы, а не со случайной витрины объектов.</p>
-            <a
-              href="/contacts/#request"
-              class="vn-btn-primary vn-journal-post__cta-button"
-              data-modal-open
-              data-modal-title="Получить подборку"
-              data-modal-subtitle="Оставьте контакты. Михаил уточнит задачу, бюджет и ограничения, а затем подскажет первый реалистичный шаг."
-              data-modal-source={`journal-post-${post.slug}`}
-            >
-              Получить подборку
-            </a>
+            <h2>
+              {primaryRoute
+                ? `Логичный следующий шаг по теме статьи — ${primaryRoute.title}`
+                : 'Разберём вашу ситуацию на конкретных вводных'}
+            </h2>
+            <p>
+              {primaryRoute
+                ? primaryRoute.description
+                : 'Расскажите, какой регион, бюджет и срок покупки рассматриваете. Подбор начнётся с ограничений программы, а не со случайной витрины объектов.'}
+            </p>
+            {primaryRoute && (
+              <a href={primaryRoute.url} class="vn-btn-primary vn-journal-post__cta-button">
+                {primaryRoute.ctaLabel}
+              </a>
+            )}
+            {secondaryRoute && (
+              <a href={secondaryRoute.url} class="vn-journal-post__cta-secondary">
+                Смежный маршрут: {secondaryRoute.title} →
+              </a>
+            )}
           </footer>
         </article>
 
         <aside class="vn-journal-post__aside" aria-label="Навигация по журналу">
-          <JournalPopular posts={popularPosts} />
+          <JournalPopular posts={popularPosts} nextStep={primaryRoute} />
         </aside>
       </div>
 
@@ -315,6 +327,15 @@ const schema = [
 
   .vn-journal-post__cta-button {
     width: fit-content;
+  }
+
+  .vn-journal-post__cta-secondary {
+    width: fit-content;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 800;
+    line-height: var(--lh-ui);
+    text-decoration: none;
   }
 
   .vn-journal-post__aside {

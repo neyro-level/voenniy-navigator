@@ -8,7 +8,7 @@ function formatComplexName(name: string) {
 }
 
 export const pageMeta = {
-  title: 'Военная ипотека в Краснодаре — квартиры и новостройки',
+  title: 'Военная ипотека Краснодар',
   description:
     'Помогаем выбрать квартиру или новостройку в Краснодаре по военной ипотеке: районы, банки, лимит, ликвидность и подбор ЖК под задачу покупки.',
   canonical: `${SITE.url}/voennaya-ipoteka-krasnodar/`,
@@ -53,7 +53,7 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Военная ипотека в Краснодаре: квартиры и новостройки под задачу',
+    name: 'Военная ипотека Краснодар',
     description:
       'Помогаем выбрать квартиру или новостройку в Краснодаре по военной ипотеке с учетом цели покупки, района, ликвидности, условий банков и застройщиков.',
     url: `${SITE.url}/voennaya-ipoteka-krasnodar/`,

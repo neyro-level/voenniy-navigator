@@ -1,7 +1,7 @@
 # PAGE_VOENNAYA_IPOTEKA_KRASNODAR.md
 
 **Проект:** Военный навигатор  
-**Страница:** Военная ипотека в Краснодаре  
+**Страница:** Военная ипотека Краснодар
 **URL:** `/voennaya-ipoteka-krasnodar/`  
 **Дата:** 2026-06-18  
 **Статус:** Final as-built / эталон geo-object страницы
@@ -110,3 +110,19 @@
 - Shared FAQ-паттерн.
 - Shared Final CTA-паттерн.
 - Общий контейнер и типографическую шкалу, уже синхронизированные с главной.
+
+---
+
+## 9. SEO supporting-layer
+
+- Для страницы встроен обязательный обратный блок `Полезные материалы` через `src/components/sections/CommercialSupportingMaterials.astro`.
+- Блок должен показывать только релевантные supporting-статьи кластера Краснодара, а не общий поток журнала.
+- Базовый supporting-набор:
+  - `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/`
+  - `/journal/novostroyki-krasnodara-po-voennoy-ipoteke/`
+  - `/journal/summa-voennoy-ipoteki-i-raschet/`
+  - `/journal/banki-po-voennoy-ipoteke/`
+  - `/journal/usloviya-voennoy-ipoteki-2026/`
+- Внутри журнала все статьи кластера Краснодара должны вести в `/voennaya-ipoteka-krasnodar/` как в primary money page.
+- Соседние commercial links допустимы только как secondary маршрут и без смешения с крымским интентом в одном SEO-блоке.
+- Источник правды: `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`.

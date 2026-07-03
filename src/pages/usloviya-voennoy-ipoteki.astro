@@ -1,13 +1,17 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
-import Hero from "./_usloviya-voennoy-ipoteki/01-Hero.astro";
-import Conditions from "./_usloviya-voennoy-ipoteki/02-Conditions.astro";
-import Amount from "./_usloviya-voennoy-ipoteki/03-Amount.astro";
-import Banks from "./_usloviya-voennoy-ipoteki/04-Banks.astro";
-import Geo from "./_usloviya-voennoy-ipoteki/05-Geo.astro";
-import FAQ from "../components/sections/FAQ.astro";
-import FinalCTALight from "../components/sections/FinalCTALight.astro";
-import { pageMeta, schemas, faqItems } from "./_usloviya-voennoy-ipoteki/pageData";
+import PageLayout from '../layouts/PageLayout.astro';
+import CommercialSupportingMaterials from '../components/sections/CommercialSupportingMaterials.astro';
+import Hero from './_usloviya-voennoy-ipoteki/01-Hero.astro';
+import Conditions from './_usloviya-voennoy-ipoteki/02-Conditions.astro';
+import Amount from './_usloviya-voennoy-ipoteki/03-Amount.astro';
+import Banks from './_usloviya-voennoy-ipoteki/04-Banks.astro';
+import Geo from './_usloviya-voennoy-ipoteki/05-Geo.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import FinalCTALight from '../components/sections/FinalCTALight.astro';
+import { pageMeta, schemas, faqItems } from './_usloviya-voennoy-ipoteki/pageData';
+import { getJournalPosts } from '../lib/journal';
+
+const journalPosts = await getJournalPosts();
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -16,6 +20,7 @@ import { pageMeta, schemas, faqItems } from "./_usloviya-voennoy-ipoteki/pageDat
   <Amount />
   <Banks />
   <Geo />
+  <CommercialSupportingMaterials pageKey="conditions" posts={journalPosts} />
   <FAQ
     items={faqItems}
     eyebrow="FAQ"

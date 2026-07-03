@@ -106,3 +106,19 @@
 
 - [ ] Подтвердить, нужны ли отдельные банковские пресеты поверх текущих сценариев покупки
 - [ ] При следующем проходе решить, нужно ли выводить накопления НИС с инвестдоходом как отдельный режим
+
+---
+
+## 8. SEO supporting-layer
+
+- Страница калькулятора закреплена как основной money-entry для intent `калькулятор военной ипотеки` и смежных расчётных сценариев.
+- В страницу встроен блок `Полезные материалы` с 3-4 supporting-материалами по расчёту, сумме и условиям.
+- Базовый supporting-набор:
+  - `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/`
+  - `/journal/summa-voennoy-ipoteki-i-raschet/`
+  - `/journal/usloviya-voennoy-ipoteki-2026/`
+  - `/journal/semeynaya-i-voennaya-ipoteka/`
+- Калькуляторная статья должна вести в `/kalkulyator-voennoy-ipoteki/` как в primary route.
+- Статья про сумму может вести вторичной ссылкой в `/usloviya-voennoy-ipoteki/`, но exact-match intent расчёта остаётся за калькулятором.
+- В блоке supporting links после расчёта допустимы соседние маршруты в `условия` и `семейную`, если они продолжение сценария, а не дубль запроса.
+- Источник правды: `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`.

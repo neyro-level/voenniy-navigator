@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import CommercialSupportingMaterials from '../components/sections/CommercialSupportingMaterials.astro';
 import Calculator from './_kalkulyator-voennoy-ipoteki/02-Calculator.astro';
 import Broker from './_kalkulyator-voennoy-ipoteki/03-Broker.astro';
 import Explainer from './_kalkulyator-voennoy-ipoteki/04-Explainer.astro';
@@ -7,6 +8,9 @@ import Basics from './_kalkulyator-voennoy-ipoteki/05-Basics.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import { faqItems, pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/pageData';
+import { getJournalPosts } from '../lib/journal';
+
+const journalPosts = await getJournalPosts();
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -14,6 +18,7 @@ import { faqItems, pageMeta, schemas } from './_kalkulyator-voennoy-ipoteki/page
   <Broker />
   <Explainer />
   <Basics />
+  <CommercialSupportingMaterials pageKey="calculator" posts={journalPosts} />
   <FAQ
     items={faqItems}
     eyebrow="Вопросы и ответы"

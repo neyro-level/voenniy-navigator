@@ -71,6 +71,137 @@ export type JournalCategorySlug = (typeof JOURNAL_CATEGORIES)[number]['slug'];
 export type JournalCategory = (typeof JOURNAL_CATEGORIES)[number];
 export type JournalPostEntry = CollectionEntry<'journal'>;
 
+export const COMMERCIAL_PAGES = {
+  krasnodar: {
+    key: 'krasnodar',
+    url: '/voennaya-ipoteka-krasnodar/',
+    label: 'Военная ипотека Краснодар',
+    title: 'Военная ипотека Краснодар',
+    description:
+      'Подбор квартир и новостроек по военной ипотеке в Краснодаре: районы, бюджет, каталог и сценарий покупки.',
+    ctaLabel: 'Перейти к странице Краснодара',
+  },
+  krym: {
+    key: 'krym',
+    url: '/voennaya-ipoteka-krym/',
+    label: 'Военная ипотека Крым',
+    title: 'Военная ипотека в Крыму',
+    description:
+      'Маршрут покупки по военной ипотеке в Крыму: города, новостройки, дистанционный формат и следующий шаг.',
+    ctaLabel: 'Перейти к странице Крыма',
+  },
+  calculator: {
+    key: 'calculator',
+    url: '/kalkulyator-voennoy-ipoteki/',
+    label: 'Калькулятор военной ипотеки',
+    title: 'Калькулятор военной ипотеки',
+    description:
+      'Расчёт бюджета, накоплений НИС и рабочего лимита по военной ипотеке до выбора объекта.',
+    ctaLabel: 'Открыть калькулятор',
+  },
+  conditions: {
+    key: 'conditions',
+    url: '/usloviya-voennoy-ipoteki/',
+    label: 'Условия военной ипотеки',
+    title: 'Условия военной ипотеки',
+    description:
+      'Условия, банки, сумма, документы и ограничения по военной ипотеке одним маршрутом.',
+    ctaLabel: 'Перейти к условиям',
+  },
+  family: {
+    key: 'family',
+    url: '/semeynaya-voennaya-ipoteka/',
+    label: 'Семейная военная ипотека',
+    title: 'Семейная военная ипотека',
+    description:
+      'Как совместить семейную и военную ипотеку, увеличить бюджет и выбрать рабочий сценарий.',
+    ctaLabel: 'Перейти к семейному сценарию',
+  },
+} as const;
+
+export type CommercialPageKey = keyof typeof COMMERCIAL_PAGES;
+export type CommercialPageDescriptor = (typeof COMMERCIAL_PAGES)[CommercialPageKey];
+
+const PRIORITY_COMMERCIAL_PAGE_KEYS: readonly CommercialPageKey[] = [
+  'krasnodar',
+  'krym',
+  'calculator',
+  'conditions',
+  'family',
+];
+
+const PRIMARY_COMMERCIAL_PAGE_BY_POST_SLUG: Partial<Record<string, CommercialPageKey>> = {
+  'kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare': 'krasnodar',
+  'novostroyki-krasnodara-po-voennoy-ipoteke': 'krasnodar',
+  'summa-voennoy-ipoteki-i-raschet': 'calculator',
+  'banki-po-voennoy-ipoteke': 'conditions',
+  'usloviya-voennoy-ipoteki-2026': 'conditions',
+  'kalkulyator-voennoy-ipoteki-chto-schitat': 'calculator',
+  'voennaya-ipoteka-v-krymu': 'krym',
+  'sevastopol-ili-simferopol-po-voennoy-ipoteke': 'krym',
+  'semeynaya-i-voennaya-ipoteka': 'family',
+  'kvartira-po-voennoy-ipoteke-pri-razvode': 'conditions',
+};
+
+const SECONDARY_COMMERCIAL_PAGE_BY_POST_SLUG: Partial<Record<string, CommercialPageKey>> = {
+  'summa-voennoy-ipoteki-i-raschet': 'conditions',
+  'banki-po-voennoy-ipoteke': 'calculator',
+  'kalkulyator-voennoy-ipoteki-chto-schitat': 'conditions',
+  'voennaya-ipoteka-v-krymu': 'calculator',
+  'sevastopol-ili-simferopol-po-voennoy-ipoteke': 'conditions',
+  'semeynaya-i-voennaya-ipoteka': 'calculator',
+};
+
+const PRIMARY_COMMERCIAL_PAGE_BY_CATEGORY: Record<JournalCategorySlug, CommercialPageKey> = {
+  'voennaya-ipoteka': 'conditions',
+  'raschet-i-summa': 'calculator',
+  'banki-i-usloviya': 'conditions',
+  krasnodar: 'krasnodar',
+  krym: 'krym',
+  'semeynaya-ipoteka': 'family',
+  'sdelka-i-riski': 'conditions',
+};
+
+const SUPPORTING_POST_SLUGS_BY_COMMERCIAL_PAGE: Record<CommercialPageKey, readonly string[]> = {
+  krasnodar: [
+    'kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare',
+    'novostroyki-krasnodara-po-voennoy-ipoteke',
+    'summa-voennoy-ipoteki-i-raschet',
+    'banki-po-voennoy-ipoteke',
+  ],
+  krym: [
+    'voennaya-ipoteka-v-krymu',
+    'sevastopol-ili-simferopol-po-voennoy-ipoteke',
+    'summa-voennoy-ipoteki-i-raschet',
+    'usloviya-voennoy-ipoteki-2026',
+  ],
+  calculator: [
+    'kalkulyator-voennoy-ipoteki-chto-schitat',
+    'summa-voennoy-ipoteki-i-raschet',
+    'usloviya-voennoy-ipoteki-2026',
+    'semeynaya-i-voennaya-ipoteka',
+  ],
+  conditions: [
+    'usloviya-voennoy-ipoteki-2026',
+    'banki-po-voennoy-ipoteke',
+    'summa-voennoy-ipoteki-i-raschet',
+    'kvartira-po-voennoy-ipoteke-pri-razvode',
+  ],
+  family: [
+    'semeynaya-i-voennaya-ipoteka',
+    'kalkulyator-voennoy-ipoteki-chto-schitat',
+    'usloviya-voennoy-ipoteki-2026',
+  ],
+};
+
+const RELATED_COMMERCIAL_PAGE_KEYS: Record<CommercialPageKey, readonly CommercialPageKey[]> = {
+  krasnodar: ['calculator', 'conditions'],
+  krym: ['conditions', 'calculator'],
+  calculator: ['conditions', 'family'],
+  conditions: ['calculator', 'krasnodar'],
+  family: ['calculator', 'conditions'],
+};
+
 export function getJournalCategory(slug: string): JournalCategory {
   const category = JOURNAL_CATEGORIES.find((item) => item.slug === slug);
   if (!category) {
@@ -136,6 +267,53 @@ export function getRelatedJournalPosts(
 
 export function getJournalPostsByCategory(posts: JournalPostEntry[], categorySlug: string): JournalPostEntry[] {
   return posts.filter((post) => post.data.categorySlug === categorySlug);
+}
+
+export function getCommercialPage(key: CommercialPageKey): CommercialPageDescriptor {
+  return COMMERCIAL_PAGES[key];
+}
+
+export function getPriorityCommercialPages(): CommercialPageDescriptor[] {
+  return PRIORITY_COMMERCIAL_PAGE_KEYS.map((key) => getCommercialPage(key));
+}
+
+export function getPrimaryCommercialPageForPost(
+  postOrSlug: JournalPostEntry | string,
+): CommercialPageDescriptor | undefined {
+  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.slug;
+  const key = PRIMARY_COMMERCIAL_PAGE_BY_POST_SLUG[slug];
+  return key ? getCommercialPage(key) : undefined;
+}
+
+export function getSecondaryCommercialPageForPost(
+  postOrSlug: JournalPostEntry | string,
+): CommercialPageDescriptor | undefined {
+  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.slug;
+  const key = SECONDARY_COMMERCIAL_PAGE_BY_POST_SLUG[slug];
+  return key ? getCommercialPage(key) : undefined;
+}
+
+export function getPrimaryCommercialPageForCategory(
+  categorySlug: JournalCategorySlug,
+): CommercialPageDescriptor {
+  return getCommercialPage(PRIMARY_COMMERCIAL_PAGE_BY_CATEGORY[categorySlug]);
+}
+
+export function getSupportingPostsForCommercialPage(
+  pageKey: CommercialPageKey,
+  posts: JournalPostEntry[],
+  limit?: number,
+): JournalPostEntry[] {
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const orderedPosts = SUPPORTING_POST_SLUGS_BY_COMMERCIAL_PAGE[pageKey]
+    .map((slug) => postsBySlug.get(slug))
+    .filter((post): post is JournalPostEntry => Boolean(post));
+
+  return typeof limit === 'number' ? orderedPosts.slice(0, limit) : orderedPosts;
+}
+
+export function getRelatedCommercialPages(pageKey: CommercialPageKey): CommercialPageDescriptor[] {
+  return RELATED_COMMERCIAL_PAGE_KEYS[pageKey].map((key) => getCommercialPage(key));
 }
 
 export function getJournalPostUrl(post: JournalPostEntry): string {

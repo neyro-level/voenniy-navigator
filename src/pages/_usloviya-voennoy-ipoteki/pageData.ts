@@ -3,7 +3,7 @@ import { OG_IMAGES } from "../../lib/og";
 import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from "../../lib/seo";
 
 export const pageMeta = {
-  title: "Условия военной ипотеки в 2026 году — сумма, банки, документы",
+  title: "Условия военной ипотеки",
   description:
     "Условия военной ипотеки в 2026 году: кто подходит, какая сумма, какие банки и документы учитывать перед выбором квартиры или новостройки.",
   canonical: `${SITE.url}/usloviya-voennoy-ipoteki/`,
@@ -44,7 +44,7 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Условия военной ипотеки в 2026 году',
+    name: 'Условия военной ипотеки',
     description:
       'Объясняем условия военной ипотеки: сумма, банки, документы, ограничения и порядок оформления перед выбором квартиры или новостройки.',
     url: `${SITE.url}/usloviya-voennoy-ipoteki/`,

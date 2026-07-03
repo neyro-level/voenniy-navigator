@@ -1,0 +1,88 @@
+---
+import type { CommercialPageDescriptor } from '../../lib/journal';
+
+interface Props {
+  page: CommercialPageDescriptor;
+  eyebrow?: string;
+  compact?: boolean;
+}
+
+const { page, eyebrow = 'Основная страница по теме', compact = false } = Astro.props;
+---
+
+<a class:list={['vn-commercial-route-card', compact && 'vn-commercial-route-card--compact']} href={page.url}>
+  <span class="vn-commercial-route-card__eyebrow">{eyebrow}</span>
+  <span class="vn-commercial-route-card__title">{page.title}</span>
+  <span class="vn-commercial-route-card__description">{page.description}</span>
+  <span class="vn-commercial-route-card__cta">
+    {page.ctaLabel}
+    <span aria-hidden="true">→</span>
+  </span>
+</a>
+
+<style>
+  .vn-commercial-route-card {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid color-mix(in srgb, var(--color-accent-cta) 18%, var(--color-border));
+    border-radius: var(--radius-sm);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-accent-cta) 4%, var(--color-bg-surface)) 0%,
+      var(--color-bg-surface) 100%
+    );
+    color: var(--color-text-primary);
+    text-decoration: none;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .vn-commercial-route-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-accent-cta) 36%, var(--color-border));
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .vn-commercial-route-card__eyebrow {
+    color: var(--color-accent-cta);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: var(--lh-ui);
+    text-transform: uppercase;
+  }
+
+  .vn-commercial-route-card__title {
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: var(--lh-title);
+  }
+
+  .vn-commercial-route-card__description {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
+  }
+
+  .vn-commercial-route-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    color: var(--color-accent-cta);
+    font-size: var(--fs-body-sm);
+    font-weight: 800;
+    line-height: var(--lh-ui);
+  }
+
+  .vn-commercial-route-card--compact {
+    padding: 18px;
+    gap: 8px;
+  }
+
+  .vn-commercial-route-card--compact .vn-commercial-route-card__title {
+    font-size: 18px;
+  }
+</style>

@@ -195,3 +195,17 @@
 - [ ] Актуальность цифр по банкам (ставки, взносы, лимиты) — сейчас используются ориентиры.
 - [ ] Правильность ссылок на калькулятор.
 - [ ] Работа FAQ-аккордеона и schema.org на mobile.
+
+---
+
+## 10. SEO supporting-layer
+
+- Страница семейного сценария закреплена как primary money page для интента `семейная военная ипотека`.
+- В страницу встроен блок `Полезные материалы` с supporting-статьями по совмещению программ, расчёту и условиям.
+- Базовый supporting-набор:
+  - `/journal/semeynaya-i-voennaya-ipoteka/`
+  - `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/`
+  - `/journal/usloviya-voennoy-ipoteki-2026/`
+- Статья про совмещение программ должна вести в `/semeynaya-voennaya-ipoteka/` как в главный money route.
+- Калькуляторная статья может ссылаться сюда как secondary route, если речь идёт о расширении бюджета семьи, но не должна перехватывать exact-match intent семейной страницы.
+- Источник правды: `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`.

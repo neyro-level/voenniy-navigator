@@ -3,7 +3,7 @@ import { OG_IMAGES } from '../../lib/og';
 import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from '../../lib/seo';
 
 export const pageMeta = {
-  title: 'Семейная военная ипотека: как увеличить бюджет и снизить ставку',
+  title: 'Семейная военная ипотека',
   description:
     'Условия совмещения военной и семейной ипотеки для военнослужащих с детьми. Как увеличить лимит до 6 млн ₽ и снизить ставку. Разбор ситуации.',
   canonical: `${SITE.url}/semeynaya-voennaya-ipoteka/`,
@@ -44,7 +44,7 @@ export const faqItems = [
 export const schemas = [
   organizationSchema(),
   serviceSchema({
-    name: 'Семейная военная ипотека: проверка сценария совмещения',
+    name: 'Семейная военная ипотека',
     description:
       'Помогаем понять, можно ли совместить военную и семейную ипотеку, как это влияет на бюджет, банки и маршрут покупки.',
     url: `${SITE.url}/semeynaya-voennaya-ipoteka/`,

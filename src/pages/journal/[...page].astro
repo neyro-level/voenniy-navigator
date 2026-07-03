@@ -4,6 +4,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import JournalBreadcrumbs from '../../components/journal/JournalBreadcrumbs.astro';
 import JournalCard from '../../components/journal/JournalCard.astro';
 import JournalCategoryNav from '../../components/journal/JournalCategoryNav.astro';
+import JournalMainRoutes from '../../components/journal/JournalMainRoutes.astro';
 import JournalPagination from '../../components/journal/JournalPagination.astro';
 import JournalPopular from '../../components/journal/JournalPopular.astro';
 import { SITE } from '../../lib/constants';
@@ -88,6 +89,7 @@ const schema = [
   <section class="vn-journal-archive" aria-labelledby="vn-journal-archive-title">
     <div class="vn-container vn-journal-archive__inner">
       <JournalCategoryNav />
+      <JournalMainRoutes />
 
       <div class="vn-journal-archive__grid">
         <div class="vn-journal-archive__main">

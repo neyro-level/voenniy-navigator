@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import ComplexCatalog from '../components/sections/ComplexCatalog.astro';
 import ComplexesMapSection from '../components/sections/ComplexesMapSection.astro';
+import CommercialSupportingMaterials from '../components/sections/CommercialSupportingMaterials.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import FinalCTALight from '../components/sections/FinalCTALight.astro';
 import Hero from './_voennaya-ipoteka-krasnodar/01-Hero.astro';
@@ -10,6 +11,9 @@ import Reviews from './_voennaya-ipoteka-krasnodar/07-Reviews.astro';
 import SoftCTA from './_voennaya-ipoteka-krasnodar/04-SoftCTA.astro';
 import Trust from './_voennaya-ipoteka-krasnodar/06-Trust.astro';
 import { faqItems, pageMeta, schemas } from './_voennaya-ipoteka-krasnodar/pageData';
+import { getJournalPosts } from '../lib/journal';
+
+const journalPosts = await getJournalPosts();
 ---
 
 <PageLayout {...pageMeta} schema={schemas}>
@@ -20,6 +24,7 @@ import { faqItems, pageMeta, schemas } from './_voennaya-ipoteka-krasnodar/pageD
   <HowWeWork />
   <Trust />
   <Reviews />
+  <CommercialSupportingMaterials pageKey="krasnodar" posts={journalPosts} />
   <FAQ
     items={faqItems}
     eyebrow="Частые вопросы"
