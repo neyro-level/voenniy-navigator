@@ -176,6 +176,68 @@ const primaryComplexes = complexes.filter((complex) => complex.catalogTier === '
     height: 560px;
   }
 
+  .vn-complexes-map__static-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vn-complexes-map__static-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  .vn-complexes-map__static-marker {
+    position: absolute;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 999px;
+    background: var(--color-accent-cta);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent-cta) 20%, transparent);
+    color: white;
+    font-size: var(--fs-body-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transform: translate(-50%, -100%);
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .vn-complexes-map__static-marker:hover {
+    background: var(--color-accent-hover);
+    transform: translate(-50%, -100%) scale(1.04);
+  }
+
+  .vn-complexes-map__static-marker span {
+    transform: translateY(0.5px);
+  }
+
+  .vn-complexes-map__notice {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    z-index: 3;
+    max-width: min(340px, calc(100% - 36px));
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid color-mix(in srgb, var(--color-border) 48%, white);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-sm);
+    line-height: 1.45;
+    box-shadow: 0 16px 30px rgba(16, 24, 40, 0.08);
+    backdrop-filter: blur(8px);
+  }
+
   .vn-complexes-map__fallback {
     display: flex;
     align-items: center;
@@ -262,7 +324,22 @@ const primaryComplexes = complexes.filter((complex) => complex.catalogTier === '
       height: 420px;
     }
 
+    .vn-complexes-map__notice {
+      right: 14px;
+      bottom: 14px;
+      max-width: calc(100% - 28px);
+      padding: 11px 12px;
+      border-radius: 14px;
+      font-size: var(--fs-caption);
+    }
+
     .vn-complexes-map__marker {
+      width: 32px;
+      height: 32px;
+      font-size: var(--fs-caption);
+    }
+
+    .vn-complexes-map__static-marker {
       width: 32px;
       height: 32px;
       font-size: var(--fs-caption);
