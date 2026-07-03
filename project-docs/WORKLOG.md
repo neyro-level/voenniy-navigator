@@ -7,6 +7,92 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+## 2026-07-03 — Опубликован усиленный journal-layer и синхронизирован SEO-документный контур
+
+- **Goal:** вывести в live-слой весь подготовленный журнал без переписывания текстов, `title` и `H1`, синхронизировать SEO-паспорт и клиентский PDF-документ, пройти локальные technical + browser checks и подготовить production-release.
+- **Live journal sync:** все `ARTICLE_*.md` в `project-docs/briefs/journal/` механически перенесены в `src/content/journal/` по canonical fenced-блокам `Полный текст статьи для переноса`; текущий live-слой журнала теперь содержит `18` опубликованных статей.
+- **New articles published:** добавлены live-файлы:
+  - `src/content/journal/dokumenty-dlya-voennoy-ipoteki.md`
+  - `src/content/journal/prodat-kvartiru-po-voennoy-ipoteke.md`
+  - `src/content/journal/vtorichka-po-voennoy-ipoteke.md`
+  - `src/content/journal/pervonachalnyy-vznos-po-voennoy-ipoteke.md`
+  - `src/content/journal/distantsionnaya-pokupka-po-voennoy-ipoteke.md`
+  - `src/content/journal/skolko-stoit-sdelka-po-voennoy-ipoteke.md`
+  - `src/content/journal/proverka-obekta-po-voennoy-ipoteke.md`
+  - `src/content/journal/voennaya-ipoteka-v-sochi-i-novorossiyske.md`
+- **Assets added:** созданы временные SVG-обложки:
+  - `public/images/journal/distantsionnaya-pokupka-po-voennoy-ipoteke-cover.svg`
+  - `public/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.svg`
+  - `public/images/journal/proverka-obekta-po-voennoy-ipoteke-cover.svg`
+  - `public/images/journal/skolko-stoit-sdelka-po-voennoy-ipoteke-cover.svg`
+  - `public/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg`
+- **Journal logic synced:** `src/lib/journal/index.ts` обновлён под новые primary/secondary routes и supporting-кластеры для money pages.
+- **Docs synced:** приведены к фактическому live-состоянию:
+  - `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md`
+  - `project-docs/JOURNAL_EDITORIAL_MAP.md`
+  - `project-docs/JOURNAL_SEO_ENHANCEMENT_PLAN.md`
+  - `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`
+  - `project-docs/CLIENT_SEO_PDF_3M_VOEN_NAVIGATOR.md`
+  - `project-docs/briefs/journal/README.md`
+- **Technical fixes:** исправлена опечатка во внутреннем slug-ссылке в материале про первоначальный взнос; `scripts/seo-check.mjs` доработан так, чтобы journal pagination `/journal/N/` корректно считалась archive-layer, а не article-layer.
+- **Verification passed:**
+  - `pnpm build`
+  - `pnpm geo-check`
+  - `pnpm seo-check`
+  - browser QA preview на `1366px` и `390px` для `/journal/`, `/journal/3/`, `/journal/distantsionnaya-pokupka-po-voennoy-ipoteke/`, `/journal/category/sdelka-i-riski/`, `/usloviya-voennoy-ipoteki/`
+- **Browser QA result:** горизонтального overflow не найдено; пагинация `/journal/3/` собирается и открывается; новые article routes, archive, category pages и supporting-blocks отображаются корректно; проверочные HEAD-запросы к новым SVG и связанным image assets вернули `200`.
+- **Accepted warning:** `pnpm seo-check` оставляет `5` soft-warnings по длинным journal titles; warning принят осознанно, потому что в рамках этого релиза видимые `title / H1` запрещено менять по ТЗ пользователя.
+
+## 2026-07-03 — Созданы брифы на 5 новых статей журнала по глобальному SEO-плану
+
+- **Goal:** реализовать предложения из глобального плана развития журнала: закрыть пробелы по первоначальному взносу, дистанционной покупке, стоимости сделки, проверке объекта и гео-расширению (Сочи / Новороссийск).
+- **New article briefs created:**
+  - `project-docs/briefs/journal/ARTICLE_PERVONACHALNY_VZNOS_PO_VOENNOY_IPOTEKE.md` — «Первоначальный взнос по военной ипотеке: сколько нужно своих денег».
+  - `project-docs/briefs/journal/ARTICLE_DISTANTSIONNAYA_POKUPKA_PO_VOENNOY_IPOTEKE.md` — «Дистанционная покупка квартиры по военной ипотеке: как купить, находясь в другом городе».
+  - `project-docs/briefs/journal/ARTICLE_STOIMOST_SDELKI_PO_VOENNOY_IPOTEKE.md` — «Сколько стоит сделка по военной ипотеке: скрытые расходы, которые не видны сразу».
+  - `project-docs/briefs/journal/ARTICLE_PROVERKA_OBEKTA_PO_VOENNOY_IPOTEKE.md` — «Проверка объекта перед покупкой по военной ипотеке: что смотреть, чтобы не купить проблемы».
+  - `project-docs/briefs/journal/ARTICLE_SOCHI_NOVOROSSIYSK_VOENNAYA_IPOTEKA.md` — «Военная ипотека в Сочи и Новороссийске: стоит ли покупать на юге России».
+- **Each brief includes:**
+  - live `title / description / H1 / excerpt / tags`;
+  - cover path + `coverAlt`;
+  - детальное описание нужной фотографии;
+  - ТЗ для Codex: создать временную SVG-заглушку обложки;
+  - роль статьи, семантический фокус, объём, тон, каркас;
+  - 3 семейных сценария;
+  - типичные ошибки;
+  - чек-лист;
+  - перелинковка и CTA;
+  - полный текст статьи для переноса в `site/src/content/journal/`;
+  - FAQ из 5 вопросов;
+  - ТЗ по schema (BlogPosting + BreadcrumbList).
+- **Documentation synced:**
+  - `project-docs/JOURNAL_SEO_ENHANCEMENT_PLAN.md` — фаза 3 дополнена 8 статьями, добавлена фаза 5 с будущими кандидатами.
+  - `project-docs/JOURNAL_EDITORIAL_MAP.md` — таблица статей, будущие статьи, раздел глобальных усилений и список брифов обновлены.
+  - `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` — раздел 5.3 дополнен 5 новыми статьями.
+- **Note:** сайт не изменялся. Все материалы готовы для реализации Codex.
+
+## 2026-07-03 — Предложено глобальное усиление журнала и созданы брифы 3 новых статей
+
+- **Goal:** выйти за рамки завершённой фазы 2 SEO-усиления журнала и предложить масштабное развитие кластера `/journal/`.
+- **Global enhancement added:** в `project-docs/JOURNAL_EDITORIAL_MAP.md` добавлен раздел 10 «Глобальные усиления журнала» с предложениями по расширению кластера, форматам, hub-странице, перелинковке и метрикам.
+- **New article briefs created:**
+  - `project-docs/briefs/journal/ARTICLE_DOKUMENTY_DLYA_VOENNOY_IPOTEKI.md` — «Документы для военной ипотеки: что собрать до похода в банк».
+  - `project-docs/briefs/journal/ARTICLE_PRODAT_KVARTIRU_PO_VOENNOY_IPOTEKE.md` — «Можно ли продать квартиру, купленную по военной ипотеке: правила и ограничения».
+  - `project-docs/briefs/journal/ARTICLE_VTORICHKA_PO_VOENNOY_IPOTEKE.md` — «Вторичка по военной ипотеке: когда готовая квартира выгоднее новостройки».
+- **Documentation synced:**
+  - `project-docs/JOURNAL_SEO_ENHANCEMENT_PLAN.md` — фаза 3 обновлена списком новых статей.
+  - `project-docs/JOURNAL_EDITORIAL_MAP.md` — таблица статей, будущие статьи и список брифов обновлены.
+  - `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` — раздел 5.3 дополнен 3 новыми статьями.
+- **Style:** все тексты в журналистско-экспертном стиле, с живыми вводными, 3 сценариями, типичными ошибками и чек-листами. Сайт не изменялся — брифы готовы для переноса в `site/src/content/journal/`.
+
+## 2026-07-03 — Исправлены карты на страницах Краснодара и Крыма
+
+- **Problem confirmed on production:** на `https://voen-navigator.ru/voennaya-ipoteka-krasnodar/` и `https://voen-navigator.ru/voennaya-ipoteka-krym/` Yandex Maps JS API возвращал `Invalid API key`, из-за чего интерактивная карта могла зависать пустым блоком.
+- **Code updated:** `src/components/ui/ComplexesMapReact.tsx` переведён на отказоустойчивую схему: при валидном ключе остаётся интерактивная карта, при ошибке или отсутствии ключа автоматически показывается статичная карта Яндекс с кликабельными маркерами и сохранённым переходом к карточкам ЖК.
+- **Styles synced:** `src/components/sections/ComplexesMapSection.astro` и `src/pages/_voennaya-ipoteka-krym/02-Map.astro` получили стили для статичной карты, маркеров и сервисного уведомления.
+- **Verification passed:** локально открыты страницы `/voennaya-ipoteka-krasnodar/` и `/voennaya-ipoteka-krym/`, карта отображается, маркеры рендерятся, консоль без ошибок и warning.
+- **Build passed:** `pnpm build` (`astro check && astro build`) — 0 errors, 0 warnings.
+
 ### 2026-06-30 — Исправлен meta-layout карточек журнала на desktop и mobile
 
 - **File updated:** `src/components/journal/JournalCard.astro`.
@@ -881,3 +967,107 @@
 - **Fixed reading order:** для любого SEO-захода теперь явно задан маршрут `SEO_PASSPORT -> SEMANTICS -> INTERNAL_LINKING -> JOURNAL_EDITORIAL_MAP -> PAGE/ARTICLE brief`.
 - **Journal linked into SEO system:** `project-docs/README.md`, `project-docs/briefs/README.md` и `project-docs/briefs/PAGE_JOURNAL.md` обновлены так, чтобы журнал читался как полноценный SEO-кластер, а не как отдельная папка со статьями.
 - **Deletion rule fixed:** root SEO-файлы оставлены как архивный source-слой; удалять их сейчас не рекомендуется, лучше позже вынести в отдельный `archive/seo/`, если понадобится визуальная чистка проекта.
+
+### 2026-07-03 — Усилен SEO-слой журнала (фаза 1)
+
+- **Scope:** все 10 статей `src/content/journal/*.md`, hub `/journal/`, 7 рубрик, `src/lib/journal/index.ts`, `src/pages/journal/[slug].astro`.
+- **Meta updated:** уникальные `title / description / H1` у каждой статьи; обновлены title/description hub `/journal/` и категорий.
+- **Schema updated:** `BlogPosting` получил `dateModified`, `speakable`, `url` для `author`/`publisher`, `articleSection`.
+- **Internal links:** добавлены contextual links из каждой статьи на primary commercial pages (`/voennaya-ipoteka-krasnodar/`, `/voennaya-ipoteka-krym/`, `/kalkulyator-voennoy-ipoteki/`, `/usloviya-voennoy-ipoteki/`, `/semeynaya-voennaya-ipoteka/`).
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+- **Checks passed:** `astro check && astro build` — 0 errors, 0 warnings.
+- **Note:** Astro выводит non-blocking warning `Duplicate id ...` для журнальных статей при сборке; route собирается штатно.
+
+### 2026-07-03 — Завершена фаза 2: усилены все 10 брифов журнала
+
+- **Scope:** все брифы в `project-docs/briefs/journal/ARTICLE_*.md`.
+- **Done:** каждый бриф теперь содержит live title/description/H1, target word count, тон и стиль, каркас, 2–3 семейных сценария, маршрут/фильтры, типичные ошибки, чек-лист, CTA и полный текст статьи для переноса на сайт.
+- **Style:** журналистский, экспертный, человечный, без признаков AI; цепляющие H2/H3.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с усиленными брифами.
+- **Next:** фаза 3 — связь журнала с будущими gap-pages (`/kvartiry-po-voennoy-ipoteke/`, `/voennaya-ipoteka-sevastopol/`, `/voennaya-ipoteka-simferopol/`).
+
+### 2026-07-03 — Усилен бриф десятой статьи журнала
+
+- **Article:** `/journal/kvartira-po-voennoy-ipoteke-pri-razvode/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_KVARTIRA_PO_VOENNOY_IPOTEKE_PRI_RAZVODE.md` расширен до полноценного editorial brief: title/H1/description, объём, ситуации, факторы раздела имущества, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~710 до ~1600–1800 слов, добавлена живая вводная, три типичные ситуации, разбор шести факторов, типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф девятой статьи журнала
+
+- **Article:** `/journal/semeynaya-i-voennaya-ipoteka/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_SEMEYNAYA_I_VOENNAYA_IPOTEKA.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии семей, разбор «сравнивать vs совмещать», ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~830 до ~1700–1900 слов, добавлена живая вводная, три сценария выбора программы, пять факторов выбора, типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф восьмой статьи журнала
+
+- **Article:** `/journal/sevastopol-ili-simferopol-po-voennoy-ipoteke/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_SEVASTOPOL_ILI_SIMFEROPOL_PO_VOENNOY_IPOTEKE.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии семей, критерии сравнения, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~760 до ~1700–1900 слов, добавлена живая вводная, три сценария выбора города, три ломающих выбор фактора, типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф седьмой статьи журнала
+
+- **Article:** `/journal/voennaya-ipoteka-v-krymu/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_VOENNAYA_IPOTEKA_V_KRYMU.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии семей, дистанционная сделка, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~995 до ~2000–2200 слов, добавлена живая вводная, три сценария (Симферополь для жизни, Севастополь на будущее, дистанционная покупка у моря), типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф шестой статьи журнала
+
+- **Article:** `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_KALKULYATOR_VOENNOY_IPOTEKI_CHTO_SCHITAT.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии участников, пять параметров расчёта, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~780 до ~1700–1900 слов, добавлена живая вводная, три сценария расчёта, разбор вводных, типичные ошибки, чек-лист после расчёта.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф пятой статьи журнала
+
+- **Article:** `/journal/banki-po-voennoy-ipoteke/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_BANKI_PO_VOENNOY_IPOTEKE.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии, шесть параметров оценки банка, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~910 до ~1900–2100 слов, добавлена живая вводная, три сценария (Краснодар, Крым дистанционно, ранняя стадия), таблица сравнения банков, типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф четвёртой статьи журнала
+
+- **Article:** `/journal/summa-voennoy-ipoteki-i-raschet/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_SUMMA_VOENNOY_IPOTEKI_I_RASCHET.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии участников, структура бюджета, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~600 до ~1700–1900 слов, добавлена живая вводная, три сценария бюджета, разбор пяти элементов реального бюджета, ловушка «чуть-чуть добавить», чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф третьей статьи журнала
+
+- **Article:** `/journal/usloviya-voennoy-ipoteki-2026/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_USLOVIYA_VOENNOY_IPOTEKI_2026.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии участников, фильтры, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~998 до ~2000–2200 слов, добавлена живая вводная, три сценария участников, разбор ставки/лимита/ограничений, типичные ошибки, чек-лист.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф второй статьи журнала
+
+- **Article:** `/journal/novostroyki-krasnodara-po-voennoy-ipoteke/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_NOVOSTROYKI_KRASNODARA_PO_VOENNOY_IPOTEKE.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии, фильтры, ошибки, чек-лист, CTA, перелинковка.
+- **Content planned:** статья расширена с ~760 до ~1700–1900 слов, добавлена живая вводная, три сценария семей (Петровы — жизнь, Соколовы — аренда, Воронины — на будущее), три фильтра отбора, типичные ошибки, чек-лист объекта.
+- **Docs synced:** `SEO_PASSPORT_VOEN_NAVIGATOR.md`, `JOURNAL_EDITORIAL_MAP.md`, `JOURNAL_SEO_ENHANCEMENT_PLAN.md` приведены в соответствие с live-слоем.
+
+### 2026-07-03 — Усилен бриф и текст первой статьи журнала
+
+- **Article:** `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/`.
+- **Brief updated:** `project-docs/briefs/journal/ARTICLE_KAK_KUPIT_KVARTIRU_PO_VOENNOY_IPOTEKE_V_KRASNODARE.md` расширен до полноценного editorial brief: title/H1/description, объём, сценарии, маршрут, ошибки, чек-лист, CTA, перелинковка.
+- **Content updated on site:** статья расширена с ~1008 до ~1851 слова, добавлена живая вводная, три сценария семей (Петровы, Соколовы, Воронины), 6 вводных, 6 шагов маршрута, типичные ошибки, чек-лист.
+- **Live meta updated:** title `Как купить квартиру в Краснодаре по военной ипотеке: пошаговый маршрут`, excerpt `С чего начать покупку в Краснодаре по военной ипотеке: бюджет, банк, район, новостройка и типичные ошибки, которые удлиняют сделку.`, `updatedDate: 2026-07-03`.
+- **Checks passed:** `astro check && astro build` — 0 errors, 0 warnings.
+
+### 2026-07-03 — Старые root SEO-файлы удалены после консолидации
+
+- **Deleted:** `SEO_STRATEGY_CLUSTER_MAP_VOEN_NAVIGATOR_2026-07-03.md`.
+- **Deleted:** `SEO_CORE_TOP50_VOEN_NAVIGATOR_2026-07-03.md`.
+- **Reason:** после сборки `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` эти документы стали лишним параллельным слоем и создавали риск путаницы.
+- **New rule:** в проекте действует один SEO-канон — `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md`; отдельные параллельные SEO-стратегии и отдельные Top-50 файлы больше не ведем.
+- **History kept:** логика стратегии и ядра сохранена внутри SEO-паспорта, `project-docs/WORKLOG.md` и git-истории репозитория `site`.
+
+### 2026-07-03 — Собран клиентский markdown-файл под PDF на первые 3 месяца SEO
+
+- **Created:** `project-docs/CLIENT_SEO_PDF_3M_VOEN_NAVIGATOR.md`.
+- **Purpose:** компактная клиентская версия без внутренней технической перегрузки: исходная точка, стартовое ядро, приоритетные страницы, роль журнала и план работ на 3 месяца.
+- **Based on:** `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md` как канонический SEO-источник проекта.
+- **Use case:** файл можно сразу конвертировать в PDF и отправлять клиенту как понятный документ по старту SEO-продвижения.

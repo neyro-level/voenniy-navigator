@@ -3,7 +3,7 @@
 **Проект:** Военный навигатор  
 **Раздел:** Журнал  
 **Дата:** 2026-07-03  
-**Статус:** рабочая редакционная карта журнала + правила написания и усиления статей
+**Статус:** рабочая редакционная карта журнала, синхронизированная с live-слоем из 18 статей
 
 ---
 
@@ -185,33 +185,88 @@
 
 | Статья | URL | Рубрика | Главный интент | Primary commercial page | Secondary route | Приоритет | Статус |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Как купить квартиру в Краснодаре по военной ипотеке | `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/` | Краснодар | process / how-to | `/voennaya-ipoteka-krasnodar/` | `—` | `P1` | опубликована, усиливать |
-| Какие новостройки Краснодара подходят под военную ипотеку | `/journal/novostroyki-krasnodara-po-voennoy-ipoteke/` | Краснодар | local choice / object filter | `/voennaya-ipoteka-krasnodar/` | `—` | `P1` | опубликована, усиливать |
-| Условия военной ипотеки в 2026 году | `/journal/usloviya-voennoy-ipoteki-2026/` | Военная ипотека | update / conditions | `/usloviya-voennoy-ipoteki/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | опубликована, усиливать |
-| Сумма по военной ипотеке | `/journal/summa-voennoy-ipoteki-i-raschet/` | Расчёт и сумма | budget / amount | `/kalkulyator-voennoy-ipoteki/` | `/usloviya-voennoy-ipoteki/` | `P1` | опубликована, усиливать |
-| Какие банки работают с военной ипотекой | `/journal/banki-po-voennoy-ipoteke/` | Банки и условия | banks / filter | `/usloviya-voennoy-ipoteki/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | опубликована, усиливать |
-| Калькулятор военной ипотеки | `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/` | Расчёт и сумма | process / calculator | `/kalkulyator-voennoy-ipoteki/` | `/usloviya-voennoy-ipoteki/` | `P1` | опубликована, усиливать |
-| Военная ипотека в Крыму | `/journal/voennaya-ipoteka-v-krymu/` | Крым | geo overview / scenario | `/voennaya-ipoteka-krym/` | `/kalkulyator-voennoy-ipoteki/` | `P1-P2` | опубликована, усиливать |
-| Севастополь или Симферополь | `/journal/sevastopol-ili-simferopol-po-voennoy-ipoteke/` | Крым | local comparison | `/voennaya-ipoteka-krym/` | `/usloviya-voennoy-ipoteki/` | `P2` | опубликована, усиливать |
-| Семейная и военная ипотека | `/journal/semeynaya-i-voennaya-ipoteka/` | Семейная ипотека | comparison / scenario | `/semeynaya-voennaya-ipoteka/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | опубликована, усиливать |
-| Квартира по военной ипотеке при разводе | `/journal/kvartira-po-voennoy-ipoteke-pri-razvode/` | Сделка и риски | risk / objection | `/usloviya-voennoy-ipoteki/` сейчас | future `/kvartiry-po-voennoy-ipoteke/` | `P2` | опубликована, усиливать |
+| Как купить квартиру в Краснодаре по военной ипотеке: пошаговый маршрут | `/journal/kak-kupit-kvartiru-po-voennoy-ipoteke-v-krasnodare/` | Краснодар | process / how-to | `/voennaya-ipoteka-krasnodar/` | `—` | `P1` | усилена, бриф обновлён |
+| Какие новостройки Краснодара подходят под военную ипотеку: критерии отбора | `/journal/novostroyki-krasnodara-po-voennoy-ipoteke/` | Краснодар | local choice / object filter | `/voennaya-ipoteka-krasnodar/` | `—` | `P1` | усилена, бриф обновлён |
+| Условия военной ипотеки в 2026 году: что проверить перед подбором квартиры | `/journal/usloviya-voennoy-ipoteki-2026/` | Военная ипотека | update / conditions | `/usloviya-voennoy-ipoteki/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | усилена, бриф обновлён |
+| Сумма по военной ипотеке: как понять реальный бюджет на квартиру | `/journal/summa-voennoy-ipoteki-i-raschet/` | Расчёт и сумма | budget / amount | `/kalkulyator-voennoy-ipoteki/` | `/usloviya-voennoy-ipoteki/` | `P1` | усилена, бриф обновлён |
+| Какие банки работают с военной ипотекой: на что смотреть, кроме ставки | `/journal/banki-po-voennoy-ipoteke/` | Банки и условия | banks / filter | `/usloviya-voennoy-ipoteki/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | усилена, бриф обновлён |
+| Калькулятор военной ипотеки: что считать, чтобы не ошибиться с квартирой | `/journal/kalkulyator-voennoy-ipoteki-chto-schitat/` | Расчёт и сумма | process / calculator | `/kalkulyator-voennoy-ipoteki/` | `/usloviya-voennoy-ipoteki/` | `P1` | усилена, бриф обновлён |
+| Военная ипотека в Крыму: с чего начать выбор города и новостройки | `/journal/voennaya-ipoteka-v-krymu/` | Крым | geo overview / scenario | `/voennaya-ipoteka-krym/` | `/kalkulyator-voennoy-ipoteki/` | `P1-P2` | усилена, бриф обновлён |
+| Севастополь или Симферополь по военной ипотеке: где покупать квартиру | `/journal/sevastopol-ili-simferopol-po-voennoy-ipoteke/` | Крым | local comparison | `/voennaya-ipoteka-krym/` | `/usloviya-voennoy-ipoteki/` | `P2` | усилена, бриф обновлён |
+| Семейная и военная ипотека: когда выгодно сравнивать и совмещать | `/journal/semeynaya-i-voennaya-ipoteka/` | Семейная ипотека | comparison / scenario | `/semeynaya-voennaya-ipoteka/` | `/kalkulyator-voennoy-ipoteki/` | `P1` | усилена, бриф обновлён |
+| Делится ли квартира по военной ипотеке при разводе: что важно знать до сделки | `/journal/kvartira-po-voennoy-ipoteke-pri-razvode/` | Сделка и риски | risk / objection | `/usloviya-voennoy-ipoteki/` сейчас | future `/kvartiry-po-voennoy-ipoteke/` | `P2` | усилена, бриф обновлён |
+| Документы для военной ипотеки: что собрать до похода в банк | `/journal/dokumenty-dlya-voennoy-ipoteki/` | Военная ипотека | docs / process | `/usloviya-voennoy-ipoteki/` | `—` | `P2` | опубликована, бриф синхронизирован |
+| Можно ли продать квартиру, купленную по военной ипотеке: правила и ограничения | `/journal/prodat-kvartiru-po-voennoy-ipoteke/` | Сделка и риски | risk / objection | `/usloviya-voennoy-ipoteki/` сейчас | future `/kvartiry-po-voennoy-ipoteke/` | `P2` | опубликована, бриф синхронизирован |
+| Вторичка по военной ипотеке: когда готовая квартира выгоднее новостройки | `/journal/vtorichka-po-voennoy-ipoteke/` | Военная ипотека | object choice / secondary | `/usloviya-voennoy-ipoteki/` сейчас | future `/kvartiry-po-voennoy-ipoteke/` | `P2` | опубликована, бриф синхронизирован |
+| Первоначальный взнос по военной ипотеке: сколько нужно своих денег | `/journal/pervonachalnyy-vznos-po-voennoy-ipoteke/` | Военная ипотека | budget / down payment | `/usloviya-voennoy-ipoteki/` | `/kalkulyator-voennoy-ipoteki/` | `P2` | опубликована, бриф синхронизирован |
+| Дистанционная покупка квартиры по военной ипотеке: как купить, находясь в другом городе | `/journal/distantsionnaya-pokupka-po-voennoy-ipoteke/` | Сделка и риски | remote / how-to | `/usloviya-voennoy-ipoteki/` | `/voennaya-ipoteka-krasnodar/` | `P2` | опубликована, бриф синхронизирован |
+| Сколько стоит сделка по военной ипотеке: скрытые расходы, которые не видны сразу | `/journal/skolko-stoit-sdelka-po-voennoy-ipoteke/` | Расчёт и сумма | cost / budget | `/kalkulyator-voennoy-ipoteki/` | `/usloviya-voennoy-ipoteki/` | `P2` | опубликована, бриф синхронизирован |
+| Проверка объекта перед покупкой по военной ипотеке: что смотреть, чтобы не купить проблемы | `/journal/proverka-obekta-po-voennoy-ipoteke/` | Сделка и риски | risk / checklist | `/usloviya-voennoy-ipoteki/` | `/journal/vtorichka-po-voennoy-ipoteke/` | `P2` | опубликована, бриф синхронизирован |
+| Военная ипотека в Сочи и Новороссийске: стоит ли покупать на юге России | `/journal/voennaya-ipoteka-v-sochi-i-novorossiyske/` | Краснодар | geo comparison | `/voennaya-ipoteka-krasnodar/` | `/voennaya-ipoteka-krym/` | `P2` | опубликована, бриф синхронизирован |
 
 ---
 
-## 9. Будущие статьи, которые логично готовить дальше
+## 9. Следующая волна журнала
 
-После усиления текущих 10 статей логичны следующие материалы:
+После публикации 18 live-статей следующая логичная волна выглядит так:
 
-- `вторичка по военной ипотеке`
 - `дом по военной ипотеке`
-- `можно ли продать квартиру по военной ипотеке`
 - `военная ипотека в Севастополе`
 - `военная ипотека в Симферополе`
-- `какие документы нужны для военной ипотеки`
+- `рефинансирование военной ипотеки`
+- `можно ли сдавать квартиру по военной ипотеке`
 
 ---
 
-## 10. Где лежат детальные брифы
+## 10. Глобальные усиления журнала (предложения)
+
+### 10.1. Расширение кластера статей
+
+Журнал уже покрывает основные информационные интенты, но можно усилить кластер вокруг ключевых болей и сценариев:
+
+- **Документы и подготовка** — ✅ статья про документы снимает барьер перед банком.
+- **Продажа и обременение** — ✅ anti-objection материал, который снимает страх «а если захочу продать».
+- **Вторичный рынок** — ✅ развеивает миф о новостройках и расширяет выбор объектов.
+- **Первоначальный взнос** — ✅ закрывает вопрос «сколько своих денег».
+- **Стоимость сделки** — ✅ учит считать скрытые расходы.
+- **Проверка объекта** — ✅ снижает риск купить проблемы.
+- **Дистанционная сделка** — ✅ важный сценарий для военных в других регионах.
+- **Сочи и Новороссийск** — ✅ расширение гео-кластера Краснодарского края.
+- **Дом / таунхаус / ИЖС** — следующий логичный шаг после квартирных материалов.
+- **Севастополь и Симферополь** — локальные city-разборы под Крым.
+- **Рефинансирование военной ипотеки** — взрослый интент для тех, кто уже в программе.
+
+### 10.2. Форматы, которые усилят вовлечённость
+
+- **Кейсы с цифрами:** «Как майор Иванов купил трёшку в Краснодаре за 6,2 млн по военной ипотеке».
+- **Чек-листы для скачивания:** PDF-гайды по документам, по выбору банка, по проверке новостройки.
+- **Видео-вставки / подкасты:** интервью с экспертами, короткие разборы по документам.
+- **Интерактивные фильтры:** «Подберите статью по своей ситуации» на странице `/journal/`.
+- **Регулярные обновления:** ежеквартальные «Что изменилось в военной ипотеке».
+
+### 10.3. Структурные улучшения hub-страницы `/journal/`
+
+- Добавить блок «Выберите свой сценарий» с быстрыми ссылками на статьи.
+- Добавить блок «Популярное» на основе аналитики.
+- Добавить подписку на обновления журнала.
+- Улучшить навигацию по рубрикам.
+
+### 10.4. Перелинковочный усилитель
+
+- Связать статьи между собой по сценариям: «Читали про документы? Вот как выбрать банк».
+- Добавить breadcrumb-навигацию внутри статей.
+- Внедрить «Следующий шаг» в конце каждой статьи.
+
+### 10.5. Метрики успеха
+
+- Рост organic-трафика на `/journal/`.
+- Рост переходов из журнала на commercial pages.
+- Увеличение времени на странице.
+- Рост обратной связи и заявок через CTA в статьях.
+
+---
+
+## 11. Где лежат детальные брифы
 
 - `project-docs/briefs/journal/README.md`
 - `project-docs/briefs/journal/ARTICLE_BANKI_PO_VOENNOY_IPOTEKE.md`
@@ -224,3 +279,11 @@
 - `project-docs/briefs/journal/ARTICLE_SUMMA_VOENNOY_IPOTEKI_I_RASCHET.md`
 - `project-docs/briefs/journal/ARTICLE_USLOVIYA_VOENNOY_IPOTEKI_2026.md`
 - `project-docs/briefs/journal/ARTICLE_VOENNAYA_IPOTEKA_V_KRYMU.md`
+- `project-docs/briefs/journal/ARTICLE_DOKUMENTY_DLYA_VOENNOY_IPOTEKI.md`
+- `project-docs/briefs/journal/ARTICLE_PRODAT_KVARTIRU_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_VTORICHKA_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_PERVONACHALNY_VZNOS_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_DISTANTSIONNAYA_POKUPKA_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_STOIMOST_SDELKI_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_PROVERKA_OBEKTA_PO_VOENNOY_IPOTEKE.md`
+- `project-docs/briefs/journal/ARTICLE_SOCHI_NOVOROSSIYSK_VOENNAYA_IPOTEKA.md`

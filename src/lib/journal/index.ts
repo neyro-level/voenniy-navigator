@@ -3,17 +3,17 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export const JOURNAL_BASE_PATH = '/journal/';
 export const JOURNAL_POSTS_PER_PAGE = 6;
 export const JOURNAL_TITLE =
-  'Журнал Военный навигатор: военная ипотека и новостройки';
+  'Журнал Военный навигатор: военная ипотека, новостройки, расчёт';
 export const JOURNAL_H1 = 'Журнал Военный навигатор';
 export const JOURNAL_DESCRIPTION =
-  'Экспертные разборы о военной ипотеке, сумме, банках, калькуляторе, новостройках Краснодара и Крыма.';
+  'Экспертные разборы о военной ипотеке: условия, сумма, банки, калькулятор, выбор квартиры в Краснодаре и Крыму.';
 
 export const JOURNAL_CATEGORIES = [
   {
     slug: 'voennaya-ipoteka',
     label: 'Военная ипотека',
     description:
-      'Как устроен маршрут покупки по военной ипотеке: от первого расчёта до выбора объекта и следующего шага по сделке.',
+      'Как устроена военная ипотека: условия программы, маршрут покупки, ограничения и первые шаги до выбора квартиры.',
     metaDescription:
       'Статьи о военной ипотеке: условия, маршрут покупки, ограничения, документы и первые шаги перед подбором квартиры.',
   },
@@ -21,7 +21,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'raschet-i-summa',
     label: 'Расчёт и сумма',
     description:
-      'Как считать бюджет по военной ипотеке: накопления, ориентир по сумме, ежемесячный платёж и запас на сделку.',
+      'Как считать бюджет по военной ипотеке: ориентир по сумме, накопления, ежемесячный платёж и запас на сделку.',
     metaDescription:
       'Расчёт и сумма по военной ипотеке: как понять бюджет, пользоваться калькулятором и не выбирать квартиру вслепую.',
   },
@@ -29,7 +29,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'banki-i-usloviya',
     label: 'Банки и условия',
     description:
-      'Что смотреть в банках и условиях программы: ставка, требования к объекту, документы, одобрение и ограничения.',
+      'Как выбирать банк и условия военной ипотеки: ставка, требования к объекту, документы, одобрение и ограничения.',
     metaDescription:
       'Банки и условия военной ипотеки: ставка, требования к объекту, документы, одобрение и важные ограничения перед сделкой.',
   },
@@ -37,7 +37,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'krasnodar',
     label: 'Краснодар',
     description:
-      'Новостройки Краснодара под военную ипотеку: как отбирать районы, застройщиков, сроки сдачи и реальные сценарии покупки.',
+      'Как купить квартиру в Краснодаре по военной ипотеке: районы, новостройки, застройщики, сроки сдачи и сценарии покупки.',
     metaDescription:
       'Военная ипотека и новостройки Краснодара: как выбрать район, застройщика, срок сдачи и квартиру под задачу.',
   },
@@ -45,7 +45,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'krym',
     label: 'Крым',
     description:
-      'Крым и военная ипотека: как сравнивать города, новостройки, дистанционный формат и ограничения сделки.',
+      'Военная ипотека в Крыму: как сравнивать города, выбирать новостройку, вести дистанционную сделку и не ошибиться с объектом.',
     metaDescription:
       'Военная ипотека в Крыму: Севастополь, Симферополь, новостройки, дистанционная покупка и выбор города.',
   },
@@ -53,7 +53,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'semeynaya-ipoteka',
     label: 'Семейная ипотека',
     description:
-      'Когда семейная и военная ипотека могут идти рядом: как сравнивать программы, бюджет семьи и сценарий покупки.',
+      'Когда сравнивать и совмещать семейную и военную ипотеку: программы, бюджет семьи, объект и сценарий покупки.',
     metaDescription:
       'Семейная и военная ипотека: как сравнить программы, бюджет, ограничения и выбрать рабочий сценарий покупки.',
   },
@@ -61,7 +61,7 @@ export const JOURNAL_CATEGORIES = [
     slug: 'sdelka-i-riski',
     label: 'Сделка и риски',
     description:
-      'Риски сделки по военной ипотеке: документы, развод, продажа, дистанционный формат и вопросы, которые лучше задать заранее.',
+      'Риски сделки по военной ипотеке: документы, развод, продажа квартиры, дистанционный формат и вопросы, которые лучше задать заранее.',
     metaDescription:
       'Сделка и риски по военной ипотеке: документы, развод, продажа квартиры, дистанционный формат и ограничения.',
   },
@@ -141,6 +141,14 @@ const PRIMARY_COMMERCIAL_PAGE_BY_POST_SLUG: Partial<Record<string, CommercialPag
   'sevastopol-ili-simferopol-po-voennoy-ipoteke': 'krym',
   'semeynaya-i-voennaya-ipoteka': 'family',
   'kvartira-po-voennoy-ipoteke-pri-razvode': 'conditions',
+  'dokumenty-dlya-voennoy-ipoteki': 'conditions',
+  'prodat-kvartiru-po-voennoy-ipoteke': 'conditions',
+  'vtorichka-po-voennoy-ipoteke': 'conditions',
+  'pervonachalnyy-vznos-po-voennoy-ipoteke': 'conditions',
+  'distantsionnaya-pokupka-po-voennoy-ipoteke': 'conditions',
+  'skolko-stoit-sdelka-po-voennoy-ipoteke': 'calculator',
+  'proverka-obekta-po-voennoy-ipoteke': 'conditions',
+  'voennaya-ipoteka-v-sochi-i-novorossiyske': 'krasnodar',
 };
 
 const SECONDARY_COMMERCIAL_PAGE_BY_POST_SLUG: Partial<Record<string, CommercialPageKey>> = {
@@ -150,6 +158,10 @@ const SECONDARY_COMMERCIAL_PAGE_BY_POST_SLUG: Partial<Record<string, CommercialP
   'voennaya-ipoteka-v-krymu': 'calculator',
   'sevastopol-ili-simferopol-po-voennoy-ipoteke': 'conditions',
   'semeynaya-i-voennaya-ipoteka': 'calculator',
+  'pervonachalnyy-vznos-po-voennoy-ipoteke': 'calculator',
+  'distantsionnaya-pokupka-po-voennoy-ipoteke': 'krasnodar',
+  'skolko-stoit-sdelka-po-voennoy-ipoteke': 'conditions',
+  'voennaya-ipoteka-v-sochi-i-novorossiyske': 'krym',
 };
 
 const PRIMARY_COMMERCIAL_PAGE_BY_CATEGORY: Record<JournalCategorySlug, CommercialPageKey> = {
@@ -168,6 +180,7 @@ const SUPPORTING_POST_SLUGS_BY_COMMERCIAL_PAGE: Record<CommercialPageKey, readon
     'novostroyki-krasnodara-po-voennoy-ipoteke',
     'summa-voennoy-ipoteki-i-raschet',
     'banki-po-voennoy-ipoteke',
+    'voennaya-ipoteka-v-sochi-i-novorossiyske',
   ],
   krym: [
     'voennaya-ipoteka-v-krymu',
@@ -178,13 +191,21 @@ const SUPPORTING_POST_SLUGS_BY_COMMERCIAL_PAGE: Record<CommercialPageKey, readon
   calculator: [
     'kalkulyator-voennoy-ipoteki-chto-schitat',
     'summa-voennoy-ipoteki-i-raschet',
+    'skolko-stoit-sdelka-po-voennoy-ipoteke',
+    'pervonachalnyy-vznos-po-voennoy-ipoteke',
     'usloviya-voennoy-ipoteki-2026',
     'semeynaya-i-voennaya-ipoteka',
   ],
   conditions: [
     'usloviya-voennoy-ipoteki-2026',
     'banki-po-voennoy-ipoteke',
+    'dokumenty-dlya-voennoy-ipoteki',
     'summa-voennoy-ipoteki-i-raschet',
+    'pervonachalnyy-vznos-po-voennoy-ipoteke',
+    'distantsionnaya-pokupka-po-voennoy-ipoteke',
+    'vtorichka-po-voennoy-ipoteke',
+    'proverka-obekta-po-voennoy-ipoteke',
+    'prodat-kvartiru-po-voennoy-ipoteke',
     'kvartira-po-voennoy-ipoteke-pri-razvode',
   ],
   family: [

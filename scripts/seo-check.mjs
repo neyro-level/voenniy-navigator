@@ -202,11 +202,12 @@ function checkPage(file, sitemap, blockers, warnings) {
   if (description.length > 180) warnings.push(`${route}: description is long (${description.length} chars)`);
 
   const types = parseJsonLd(html, route, blockers);
+  const isJournalIndexRoute = /^\/journal\/(?:\d+\/)?$/.test(route);
   if (!types.includes('WebSite')) blockers.push(`${route}: missing WebSite schema`);
-  if (route.startsWith('/journal/') && route !== '/journal/' && route !== '/journal/2/' && !route.startsWith('/journal/category/') && !types.includes('BlogPosting')) {
+  if (route.startsWith('/journal/') && !isJournalIndexRoute && !route.startsWith('/journal/category/') && !types.includes('BlogPosting')) {
     blockers.push(`${route}: journal article must include BlogPosting schema`);
   }
-  if ((route === '/journal/' || route === '/journal/2/' || route.startsWith('/journal/category/')) && !types.includes('CollectionPage')) {
+  if ((isJournalIndexRoute || route.startsWith('/journal/category/')) && !types.includes('CollectionPage')) {
     blockers.push(`${route}: journal archive/category must include CollectionPage schema`);
   }
 

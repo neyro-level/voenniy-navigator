@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="70" x2="1060" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FAFC"/>
+      <stop offset="1" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+  <circle cx="600" cy="228" r="112" fill="#1A365D" fill-opacity="0.08"/>
+  <path d="M490 282V188L600 126L710 188V282H490Z" fill="#1A365D"/>
+  <rect x="536" y="220" width="42" height="62" rx="8" fill="#F7FAFC"/>
+  <rect x="590" y="220" width="42" height="62" rx="8" fill="#F7FAFC"/>
+  <rect x="644" y="220" width="42" height="62" rx="8" fill="#F7FAFC"/>
+  <circle cx="744" cy="234" r="62" fill="#2C5282"/>
+  <circle cx="744" cy="234" r="34" fill="#F7FAFC"/>
+  <path d="M786 276L834 324" stroke="#1A365D" stroke-width="20" stroke-linecap="round"/>
+  <text x="600" y="380" text-anchor="middle" fill="#1A365D" font-family="Arial, sans-serif" font-size="34" font-weight="700">
+    Проверка объекта по военной ипотеке
+  </text>
+  <text x="600" y="428" text-anchor="middle" fill="#2C5282" font-family="Arial, sans-serif" font-size="22">
+    Временная обложка для статьи журнала
+  </text>
+  <text x="600" y="560" text-anchor="middle" fill="#1A365D" fill-opacity="0.72" font-family="Arial, sans-serif" font-size="20" font-weight="700">
+    Военный навигатор
+  </text>
+</svg>
