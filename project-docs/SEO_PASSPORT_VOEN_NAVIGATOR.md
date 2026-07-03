@@ -84,6 +84,18 @@ SEO-система проекта теперь состоит не из одно
 2. supporting-слой живёт в `project-docs/SEMANTICS.md`, `project-docs/SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md`, `project-docs/JOURNAL_EDITORIAL_MAP.md` и article/page briefs;
 3. новые параллельные SEO-стратегии вне `project-docs/` не создаём.
 
+### 0.4. AI / GEO source of truth
+
+Для generative SEO и AI-crawler layer канонический технический слой проекта теперь такой:
+
+- `src/lib/geo/config.ts` — базовые GEO-данные, контакты, legal и AI-policy;
+- `src/lib/geo/llms.ts` — генерация `llms.txt` из live-структуры сайта и журнала;
+- `src/lib/geo/schema.ts` — Organization / WebSite / Person / Service / FAQ schema factory;
+- `src/layouts/BaseLayout.astro` — единый head-layer, canonical, OG, favicon, JSON-LD и `llms.txt` reference;
+- `scripts/geo-check.mjs` — проверка, что AI/GEO-слой соответствует текущей live-структуре, включая journal archive, category pages и статьи.
+
+Если после расширения журнала, новых SEO-страниц или смены cluster-map меняется структура сайта, сначала синхронизируем этот слой, а уже потом делаем deploy.
+
 ---
 
 ## 1. Профиль сайта

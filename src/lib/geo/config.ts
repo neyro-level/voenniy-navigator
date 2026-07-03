@@ -19,7 +19,7 @@ export const GEO_CONTACTS = {
   telegram: 'https://t.me/Mikhail_khryapin?text=Михаил%2C%20здравствуйте%2C%20я%20с%20вашего%20сайта.%20Нужно%20обсудить%20мою%20ситуацию',
   vk: 'https://vk.com/mikhail_khryapin',
   max: 'tel:+79384074457',
-  email: '[PRIMARY_EMAIL]', // TODO: уточнить у Михаила
+  email: '',
 } as const;
 
 export const GEO_OFFICES = [

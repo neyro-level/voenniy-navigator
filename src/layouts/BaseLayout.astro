@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import { SITE } from '../lib/constants';
 import { OG_IMAGES } from '../lib/og';
-import { webSiteSchema } from '../lib/seo';
+import { organizationSchema, webSiteSchema } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -23,6 +23,21 @@ const {
 } = Astro.props;
 
 const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980';
+const providedSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+function hasSchemaType(items: object[], schemaType: string) {
+  return items.some((item) => {
+    if (!item || typeof item !== 'object' || !('@type' in item)) return false;
+    const value = item['@type'];
+    return Array.isArray(value) ? value.includes(schemaType) : value === schemaType;
+  });
+}
+
+const headSchemas = [
+  ...(hasSchemaType(providedSchemas, 'WebSite') ? [] : [webSiteSchema()]),
+  ...(hasSchemaType(providedSchemas, 'Organization') ? [] : [organizationSchema()]),
+  ...providedSchemas,
+];
 ---
 <html lang="ru">
 <head>
@@ -56,11 +71,7 @@ const ymCounterId = import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980';
 
   <!-- JSON-LD структурированные данные -->
   <script is:inline type="application/ld+json" set:html={
-    JSON.stringify(
-      schema
-        ? (Array.isArray(schema) ? [webSiteSchema(), ...schema] : [webSiteSchema(), schema])
-        : [webSiteSchema()]
-    )
+    JSON.stringify(headSchemas)
   } />
   <!-- Дополнительные JSON-LD из страниц -->
   <slot name="head" />

@@ -23,13 +23,17 @@ export function organizationSchema() {
   const sameAs = [GEO_CONTACTS.vk, GEO_CONTACTS.telegram]
     .map((value) => getConfiguredValue(value))
     .filter((value): value is string => Boolean(value));
+  const email = getConfiguredValue(GEO_CONTACTS.email);
 
   return {
     ...ctx,
     '@type': 'Organization',
     name: GEO_SITE.name,
     url: `${GEO_SITE.url}/`,
+    description:
+      `${GEO_SITE.tagline}. Подбор квартир и новостроек по военной ипотеке в Краснодаре, Крыму и дистанционном формате.`,
     telephone: GEO_CONTACTS.phone,
+    ...(email ? { email } : {}),
     address: {
       '@type': 'PostalAddress',
       streetAddress: primary
@@ -38,6 +42,16 @@ export function organizationSchema() {
       addressLocality: primary?.city,
       addressCountry: GEO_SITE.country,
     },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: GEO_CONTACTS.phone,
+        contactType: 'customer support',
+        areaServed: ['Краснодар', 'Крым', 'Севастополь', 'Симферополь'],
+        availableLanguage: ['ru-RU'],
+      },
+    ],
+    areaServed: ['Краснодар', 'Крым', 'Севастополь', 'Симферополь'],
     sameAs,
   };
 }
@@ -50,6 +64,12 @@ export function webSiteSchema() {
     name: GEO_SITE.name,
     url: `${GEO_SITE.url}/`,
     description: GEO_SITE.tagline,
+    inLanguage: GEO_SITE.locale,
+    publisher: {
+      '@type': 'Organization',
+      name: GEO_SITE.name,
+      url: `${GEO_SITE.url}/`,
+    },
   };
 }
 
@@ -61,6 +81,12 @@ export function personSchema() {
     '@type': 'Person',
     name: GEO_PERSON.name,
     jobTitle: GEO_PERSON.jobTitle,
+    url: `${GEO_SITE.url}${GEO_LINKS.oServise}`,
+    worksFor: {
+      '@type': 'Organization',
+      name: GEO_SITE.name,
+      url: `${GEO_SITE.url}/`,
+    },
     address: {
       '@type': 'PostalAddress',
       addressLocality: primary?.city,

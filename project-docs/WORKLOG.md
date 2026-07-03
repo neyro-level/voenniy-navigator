@@ -7,6 +7,29 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+## 2026-07-03 — Проведён повторный SEO/GEO-аудит после расширения структуры журнала
+
+- **Goal:** синхронизировать AI/SEO-модуль сайта с расширенным journal-layer, новыми route-страницами и обновлённой SEO-структурой перед повторным production deploy.
+- **AI/GEO layer updated:**
+  - `src/lib/geo/llms.ts` переведён на live-генерацию `llms.txt` из фактической структуры сайта: priority commercial pages, journal archive, все rubrics и все 18 опубликованных статей теперь автоматически попадают в AI-readable map;
+  - `src/pages/llms.txt.ts` сделан асинхронным, чтобы `llms.txt` собирался из реального content-layer, а не из статичного списка;
+  - `src/lib/geo/schema.ts` усилен: `Organization` теперь отдаёт более полный entity-signal, `contactPoint`, `areaServed`, description и publisher-связку для AI/SEO-слоя;
+  - `src/layouts/BaseLayout.astro` теперь гарантирует sitewide baseline `WebSite + Organization` schema даже на journal-layer, где раньше organization-сигнал не был стабильно задан на всех страницах.
+- **GEO check updated:** `scripts/geo-check.mjs` переписан под текущую live-архитектуру:
+  - проверяет priority commercial pages;
+  - проверяет meta/schema coverage на indexable pages;
+  - валидирует `BlogPosting` на статьях;
+  - валидирует `CollectionPage` на archive/category routes;
+  - проверяет, что `llms.txt` реально отражает commercial layer + journal structure + live article URLs;
+  - корректно исключает utility/noindex routes из sitemap expectations.
+- **Cleanup:** placeholder email убран из `src/lib/geo/config.ts`, чтобы GEO-config не держал production-like TODO-значение.
+- **Verification passed:**
+  - `pnpm build`
+  - `pnpm geo-check` → `100 / 100`
+  - `pnpm seo-check` → `0 blockers`, `5 warnings`
+- **Accepted warnings:** 5 warning по длинным journal `title` приняты осознанно, потому что пользователь отдельно запретил править тексты, `title` и `H1` в рамках этого релиза.
+- **Docs synced:** обновлён `project-docs/SEO_PASSPORT_VOEN_NAVIGATOR.md`, чтобы AI/GEO source of truth был зафиксирован в каноническом SEO-документе проекта.
+
 ## 2026-07-03 — Опубликован усиленный journal-layer и синхронизирован SEO-документный контур
 
 - **Goal:** вывести в live-слой весь подготовленный журнал без переписывания текстов, `title` и `H1`, синхронизировать SEO-паспорт и клиентский PDF-документ, пройти локальные technical + browser checks и подготовить production-release.
