@@ -7,6 +7,14 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+## 2026-07-06 — Заменён root verification-файл Яндекс.Вебмастера
+
+- **Goal:** перевести домен на новый аккаунт Яндекс.Вебмастера и убрать старый verification-код из корня сайта.
+- **Removed:** `public/yandex_3736f6157fb9c46c.html`
+- **Added:** `public/yandex_7114ad7de7461e1d.html`
+- **Verification code:** `Verification: 7114ad7de7461e1d`
+- **Check:** по проекту не осталось ссылок на старый root verification-файл; служебные regex в `scripts/geo-check.mjs` и `scripts/seo-check.mjs` менять не потребовалось, потому что они матчат любой `yandex_<hex>.html`.
+
 ## 2026-07-03 — Проведён повторный SEO/GEO-аудит после расширения структуры журнала
 
 - **Goal:** синхронизировать AI/SEO-модуль сайта с расширенным journal-layer, новыми route-страницами и обновлённой SEO-структурой перед повторным production deploy.
