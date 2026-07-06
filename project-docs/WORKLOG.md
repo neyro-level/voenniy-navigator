@@ -7,6 +7,13 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+## 2026-07-06 — Обновлена фотография карточки `Ипотека` на главной
+
+- **Goal:** заменить изображение в hero-карточке `Ипотека` на более релевантный кадр консультации по военной ипотеке.
+- **Updated file:** `src/pages/_home/01-Hero.astro`
+- **New asset:** `public/images/mortgage-consultation.png`
+- **Visual adjustment:** для карточки `Ипотека` добавлен `object-position: 58% center`, чтобы в компактном кропе лучше сохранялись лица и ипотечный фон.
+
 ## 2026-07-06 — Заменён ID Яндекс.Метрики и выкачен новый счётчик
 
 - **Goal:** переключить сайт на новый счётчик Яндекс.Метрики `110444627` и сразу выкатить это в production.

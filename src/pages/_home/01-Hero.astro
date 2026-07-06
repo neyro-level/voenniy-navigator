@@ -1,7 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const ROUTES = [
+type HeroRoute = {
+  title: string;
+  subtitle: string;
+  modalTitle: string;
+  modalSubtitle: string;
+  modalSource: string;
+  image: string;
+  imagePosition?: string;
+};
+
+const ROUTES: HeroRoute[] = [
   {
     title: 'Новостройки',
     subtitle: 'Квартиры от застройщика',
@@ -36,9 +46,10 @@ const ROUTES = [
     modalSubtitle:
       'Проверим лимиты, объясним, как сейчас пройти одобрение спокойнее, и подскажем следующий шаг по банку, ставке и маршруту покупки.',
     modalSource: 'home-hero-route-mortgage',
-    image: '/images/mortgage-hero.webp',
+    image: '/images/mortgage-consultation.png',
+    imagePosition: '58% center',
   },
-] as const;
+];
 
 const FEATURED_IMAGE = '/images/krasnodar-newbuild-hero.png';
 ---
@@ -129,6 +140,7 @@ const FEATURED_IMAGE = '/images/krasnodar-newbuild-hero.png';
               src={route.image}
               alt=""
               class="vn-home-hero__route-image"
+              style={route.imagePosition ? `object-position: ${route.imagePosition};` : undefined}
               loading="lazy"
               decoding="async"
             />
