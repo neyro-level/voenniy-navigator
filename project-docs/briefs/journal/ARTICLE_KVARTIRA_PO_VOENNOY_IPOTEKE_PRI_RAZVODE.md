@@ -18,9 +18,9 @@
 - `excerpt`: `Раздел квартиры по военной ипотеке зависит от многих обстоятельств. Объясняем, на что смотреть в документах и когда нужен юрист.`
 - `updatedDate`: `2026-07-03`
 - `tags`: `["квартира по военной ипотеке при разводе", "риски сделки", "документы"]`
-- `cover`: `/images/mikhail-desk.png`
+- `cover`: `/images/journal/kvartira-po-voennoy-ipoteke-pri-razvode-cover.png`
 - `coverAlt`: `Разбор документов и рисков сделки по военной ипотеке`
-- `coverPosition`: `50% 28%`
+- `coverPosition`: `50% 50%`
 
 ---
 
@@ -138,9 +138,9 @@ author: "Военный навигатор"
 category: "Сделка и риски"
 categorySlug: "sdelka-i-riski"
 tags: ["квартира по военной ипотеке при разводе", "риски сделки", "документы"]
-cover: "/images/mikhail-desk.png"
+cover: "/images/journal/kvartira-po-voennoy-ipoteke-pri-razvode-cover.png"
 coverAlt: "Разбор документов и рисков сделки по военной ипотеке"
-coverPosition: "50% 28%"
+coverPosition: "50% 50%"
 featured: false
 popular: false
 priority: 10

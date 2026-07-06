@@ -56,7 +56,7 @@ export default function KrymDirectionsCatalog() {
         statusMain={`Подборка объектов по направлению ${activeGroup.label}`}
         statusNote={`Показаны все ${formatComplexCount(activeGroup.complexes.length)} по выбранному направлению`}
         requestTitlePrefix="Разбор вариантов по объекту"
-        requestSubtitle="Покажем планировки, обсудим сценарий покупки в Крыму и подскажем следующий шаг по военной ипотеке."
+        requestSubtitle="Покажем планировки, обсудим вариант покупки в Крыму и подскажем следующий шаг по военной ипотеке."
       />
     </div>
   );

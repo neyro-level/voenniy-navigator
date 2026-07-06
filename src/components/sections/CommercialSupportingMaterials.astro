@@ -28,7 +28,7 @@ const relatedPages = getRelatedCommercialPages(pageKey);
           Разборы, которые усиливают страницу «{page.title}»
         </h2>
         <p class="vn-supporting-materials__lead">
-          Эти материалы закрывают supporting-intent вокруг основной страницы: расчёт, выбор сценария,
+          Эти материалы закрывают вопросы вокруг основной страницы: расчёт, выбор направления,
           локальные нюансы и частые возражения до заявки.
         </p>
       </div>
@@ -53,7 +53,7 @@ const relatedPages = getRelatedCommercialPages(pageKey);
 
       {relatedPages.length > 0 && (
         <div class="vn-supporting-materials__routes">
-          <p class="vn-supporting-materials__routes-title">Соседние маршруты по теме</p>
+          <p class="vn-supporting-materials__routes-title">Соседние направления по теме</p>
           <div class="vn-supporting-materials__routes-list">
             {relatedPages.map((relatedPage) => (
               <a class="vn-supporting-materials__route" href={relatedPage.url}>
@@ -70,7 +70,7 @@ const relatedPages = getRelatedCommercialPages(pageKey);
 
 <style>
   .vn-supporting-materials {
-    padding: 0 0 72px;
+    padding: 96px 0 72px;
     background: var(--color-bg-secondary);
   }
 

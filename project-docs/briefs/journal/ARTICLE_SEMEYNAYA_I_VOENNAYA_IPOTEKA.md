@@ -18,8 +18,9 @@
 - `excerpt`: `Сравниваем семейную и военную ипотеку: в каких случаях одна сильнее другой, как считать бюджет и когда комбинация программ реальна.`
 - `updatedDate`: `2026-07-03`
 - `tags`: `["семейная военная ипотека", "семейная ипотека", "сравнение программ"]`
-- `cover`: `/images/mikhail-hero.jpg`
-- `coverAlt`: `Семейный сценарий покупки квартиры по ипотеке`
+- `cover`: `/images/journal/semeynaya-i-voennaya-ipoteka-cover.png`
+- `coverAlt`: `Семья военнослужащего сравнивает семейную и военную ипотеку с консультантом`
+- `coverPosition`: `50% 35%`
 
 ---
 
@@ -137,8 +138,9 @@ author: "Военный навигатор"
 category: "Семейная ипотека"
 categorySlug: "semeynaya-ipoteka"
 tags: ["семейная военная ипотека", "семейная ипотека", "сравнение программ"]
-cover: "/images/mikhail-hero.jpg"
-coverAlt: "Семейный сценарий покупки квартиры по ипотеке"
+cover: "/images/journal/semeynaya-i-voennaya-ipoteka-cover.png"
+coverAlt: "Семья военнослужащего сравнивает семейную и военную ипотеку с консультантом"
+coverPosition: "50% 35%"
 featured: false
 popular: false
 priority: 9

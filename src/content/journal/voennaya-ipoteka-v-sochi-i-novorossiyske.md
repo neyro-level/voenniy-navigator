@@ -1,15 +1,15 @@
 ﻿---
 title: "Военная ипотека в Сочи и Новороссийске: стоит ли покупать на юге России"
 excerpt: "Военная ипотека в Сочи и Новороссийске: цены, ликвидность, климат, инфраструктура и для кого эти города подходят лучше Краснодара."
-publishDate: "2026-07-03"
-updatedDate: "2026-07-03"
+publishDate: "2026-07-08"
+updatedDate: "2026-07-06"
 author: "Военный навигатор"
 category: "Краснодар"
 categorySlug: "krasnodar"
 tags: ["военная ипотека сочи", "военная ипотека новороссийск", "купить квартиру сочи военная ипотека"]
-cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg"
-coverAlt: "Панорама Сочи или Новороссийска — военная ипотека на юге России"
-coverPosition: "50% 50%"
+cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.png"
+coverAlt: "Новостройка у моря в Сочи — покупка квартиры по военной ипотеке на юге России"
+coverPosition: "50% 45%"
 featured: false
 popular: false
 priority: 18

@@ -287,7 +287,7 @@ export default function RequestModal({
               Заявка отправлена
             </h2>
             <p className="vn-modal__subtitle" id="vn-modal-subtitle">
-              Свяжемся с вами в удобном формате и подскажем следующий шаг по маршруту покупки.
+              Свяжемся с вами в удобном формате и подскажем следующий шаг в покупке.
             </p>
             <button className="vn-btn-primary vn-modal__submit" type="button" onClick={closeModal}>
               Хорошо

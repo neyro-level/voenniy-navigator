@@ -125,7 +125,7 @@ export default function SoftLeadForm({
         </span>
         <h3 className="vn-soft-form__success-title">Заявка отправлена</h3>
         <p className="vn-soft-form__success-text">
-          Свяжемся с вами в удобном формате и подскажем следующий шаг по маршруту покупки.
+          Свяжемся с вами в удобном формате и подскажем следующий шаг в покупке.
         </p>
       </div>
     );

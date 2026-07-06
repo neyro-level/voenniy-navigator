@@ -15,7 +15,7 @@
 
         <p class="vn-krd-hero__lead">
           Собрали актуальные объекты, которые можно рассматривать по военной ипотеке в Крыму.
-          Сравните цены, сроки сдачи, планировки и сценарии покупки.
+          Сравните цены, сроки сдачи, планировки и варианты покупки.
         </p>
 
         <p class="vn-krd-hero__note">
@@ -400,8 +400,8 @@
   }
 
   .vn-krd-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-top: 36px;
   }
@@ -411,6 +411,9 @@
     min-height: 54px;
     padding: 15px 26px;
     font-size: var(--fs-body);
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 
   .vn-krd-hero__tags {

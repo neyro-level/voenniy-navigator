@@ -42,7 +42,7 @@ const homeCard = {
   label: 'START / 00',
   icon: 'compass',
   title: 'Главная',
-  body: 'Что такое сервис, какие маршруты он закрывает и с чего начинается работа.',
+  body: 'Что такое сервис, какие задачи он закрывает и с чего начинается работа.',
   href: '/',
   badge: null,
   group: 'contact' as NavGroup,
@@ -86,7 +86,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400, 460, 520];
     <path d="M0 48 H40 V0" stroke="var(--color-text-ondark)" opacity="0.08" stroke-width="1" fill="none"/>
   </svg>
   <!-- Watermark -->
-  <span class="vn-overlay-watermark" aria-hidden="true">МАРШРУТ</span>
+  <span class="vn-overlay-watermark" aria-hidden="true">НАВИГАЦИЯ</span>
 
   <!-- ── Overlay Header (72px) ── -->
   <div class="vn-overlay-header">
@@ -105,7 +105,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400, 460, 520];
       <span class="vn-overlay-logo-name">ВОЕННЫЙ НАВИГАТОР</span>
     </a>
 
-    <span class="vn-overlay-header-label" aria-hidden="true">КАРТА МАРШРУТОВ</span>
+    <span class="vn-overlay-header-label" aria-hidden="true">КАРТА САЙТА</span>
 
     <!-- Close button -->
     <button
@@ -125,10 +125,10 @@ const cardDelays = [100, 160, 220, 280, 340, 400, 460, 520];
     <!-- Левая зона (4 cols): Brand + CTA -->
     <aside class="vn-overlay-brand">
         <div class="vn-overlay-brand-desc">
-          Сервис выбора новостройки<br/>и маршрута покупки
+          Сервис выбора новостройки<br/>и условий покупки
         </div>
         <p class="vn-overlay-brand-body">
-          Военный навигатор помогает военнослужащим и их семьям сначала понять задачу покупки, а потом перейти к подходящему маршруту и подбору объекта.
+          Военный навигатор помогает военнослужащим и их семьям сначала понять задачу покупки, а потом перейти к подходящему варианту и подбору объекта.
         </p>
       <a
         href="/contacts/#request"
@@ -170,7 +170,7 @@ const cardDelays = [100, 160, 220, 280, 340, 400, 460, 520];
                         <span class="vn-route-card-badge">{card.badge}</span>
                       )}
                       {(isActive || isActiveHome) && (
-                        <span class="vn-route-card-active-label">ТЕКУЩИЙ МАРШРУТ</span>
+                        <span class="vn-route-card-active-label">ТЕКУЩИЙ РАЗДЕЛ</span>
                       )}
                     </span>
                   )}

@@ -17,8 +17,9 @@
 - `H1`: `Первоначальный взнос по военной ипотеке: сколько нужно своих денег`
 - `excerpt`: `Нужен ли первоначальный взнос по военной ипотеке, сколько денег собирать и как считать собственные средства вместе с лимитом программы.`
 - `tags`: `["первоначальный взнос военная ипотека", "собственные средства военная ипотека", "сколько нужно денег военная ипотека"]`
-- `cover`: `/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.svg`
-- `coverAlt`: `Расчёт первоначального взноса и собственных средств по военной ипотеке`
+- `cover`: `/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.jpg`
+- `coverAlt`: `Миниатюрный домик и ключи — символ первоначального взноса и покупки жилья по военной ипотеке`
+- `coverPosition`: `50% 45%`
 
 ---
 
@@ -133,7 +134,7 @@
 ### 13.2. Cover-изображение
 **Нужная фотография:** нейтральный предметный кадр на светлом фоне: планшет или лист бумаги с простой таблицей расчёта, ручка, калькулятор, ключи от квартиры и небольшая стопка рублевых купюр. Цвета сдержанные, без ярких акцентов. Композиция снимается сверху под лёгким углом, свет мягкий. Атмосфера: спокойный финансовый планирование, не «быстрые деньги».
 
-**Временная затычка:** создать SVG-заглушку `public/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.svg`.
+**Обложка:** `public/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.jpg` (Unsplash, фото: миниатюрный домик и ключи).
 - Размер 1200×630 px, viewBox="0 0 1200 630".
 - Фон: градиент от #F8F7F4 к #EAE6DF.
 - В центре: стилизованная иконка — калькулятор + ключ + стопка монет, цвет #1A365D.
@@ -152,7 +153,7 @@ author: "Военный навигатор"
 category: "Военная ипотека"
 categorySlug: "voennaya-ipoteka"
 tags: ["первоначальный взнос военная ипотека", "собственные средства военная ипотека", "сколько нужно денег военная ипотека"]
-cover: "/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.svg"
+cover: "/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.jpg"
 coverAlt: "Расчёт первоначального взноса и собственных средств по военной ипотеке"
 coverPosition: "50% 50%"
 featured: false
@@ -191,7 +192,7 @@ author: "Военный навигатор"
 category: "Военная ипотека"
 categorySlug: "voennaya-ipoteka"
 tags: ["первоначальный взнос военная ипотека", "собственные средства военная ипотека", "сколько нужно денег военная ипотека"]
-cover: "/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.svg"
+cover: "/images/journal/pervonachalnyy-vznos-po-voennoy-ipoteke-cover.jpg"
 coverAlt: "Расчёт первоначального взноса и собственных средств по военной ипотеке"
 coverPosition: "50% 50%"
 featured: false

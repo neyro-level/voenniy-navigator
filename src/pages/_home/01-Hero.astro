@@ -24,7 +24,7 @@ const ROUTES: HeroRoute[] = [
   {
     title: 'Дома',
     subtitle: 'Коттеджи и таунхаусы',
-    modalTitle: 'Поможем подобрать дом под ваш сценарий покупки бесплатно',
+    modalTitle: 'Поможем подобрать дом под вашу задачу покупки бесплатно',
     modalSubtitle:
       'Разберём, подходит ли вам формат дома, какие ограничения есть по банку и бюджету, и подскажем, какие варианты стоит смотреть в первую очередь.',
     modalSource: 'home-hero-route-houses',
@@ -44,7 +44,7 @@ const ROUTES: HeroRoute[] = [
     subtitle: 'Условия и одобрение',
     modalTitle: 'Поможем с военной ипотекой бесплатно',
     modalSubtitle:
-      'Проверим лимиты, объясним, как сейчас пройти одобрение спокойнее, и подскажем следующий шаг по банку, ставке и маршруту покупки.',
+      'Проверим лимиты, объясним, как сейчас пройти одобрение спокойнее, и подскажем следующий шаг по банку, ставке и порядку действий по покупке.',
     modalSource: 'home-hero-route-mortgage',
     image: '/images/mortgage-consultation.png',
     imagePosition: '58% center',
@@ -84,7 +84,7 @@ const FEATURED_IMAGE = '/images/krasnodar-newbuild-hero.png';
             class="vn-btn-primary vn-home-hero__cta"
             data-modal-open
             data-modal-title="Получить разбор ситуации"
-            data-modal-subtitle="Уточним вашу цель, бюджет и ограничения по военной ипотеке, а затем подскажем, какой маршрут покупки сейчас самый разумный."
+            data-modal-subtitle="Уточним вашу цель, бюджет и ограничения по военной ипотеке, а затем подскажем, какой порядок действий по покупке сейчас самый разумный."
             data-modal-source="home-hero-primary-cta"
           >
             Получить подборку
@@ -122,7 +122,7 @@ const FEATURED_IMAGE = '/images/krasnodar-newbuild-hero.png';
     </div>
 
     <!-- Нижний ряд: route-cards -->
-    <nav class="vn-home-hero__routes" aria-label="Быстрые маршруты">
+    <nav class="vn-home-hero__routes" aria-label="Быстрые разделы">
       {
         ROUTES.map((route) => (
           <button

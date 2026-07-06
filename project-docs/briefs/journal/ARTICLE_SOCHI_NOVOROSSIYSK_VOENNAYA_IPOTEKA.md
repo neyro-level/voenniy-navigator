@@ -17,8 +17,9 @@
 - `H1`: `Военная ипотека в Сочи и Новороссийске: стоит ли покупать на юге России`
 - `excerpt`: `Военная ипотека в Сочи и Новороссийске: цены, ликвидность, климат, инфраструктура и для кого эти города подходят лучше Краснодара.`
 - `tags`: `["военная ипотека сочи", "военная ипотека новороссийск", "купить квартиру сочи военная ипотека"]`
-- `cover`: `/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg`
-- `coverAlt`: `Панорама Сочи или Новороссийска — военная ипотека на юге России`
+- `cover`: `/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.png`
+- `coverAlt`: `Новостройка у моря в Сочи — покупка квартиры по военной ипотеке на юге России`
+- `coverPosition`: `50% 45%`
 
 ---
 
@@ -133,7 +134,7 @@
 ### 13.2. Cover-изображение
 **Нужная фотография:** панорамный вид на один из городов — Сочи или Новороссийск. Например, набережная Новороссийска с портом и морем на закате, или вид на Сочи с холмов с морем на заднем плане. Фотография должна быть атмосферной, без перегруза туристическими объектами. Цвета: тёплые, природные. Людей в кадре немного или нет.
 
-**Временная затычка:** создать SVG-заглушку `public/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg`.
+**Обложка:** `public/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.png` (новостройка у моря в Сочи).
 - Размер 1200×630 px.
 - Фон: градиент от #E0F2FE к #BAE6FD (морской/небесный).
 - В центре: стилизованная иконка побережья с пальмой/маяком и домами, цвет #1A365D.
@@ -151,9 +152,9 @@ author: "Военный навигатор"
 category: "Краснодар"
 categorySlug: "krasnodar"
 tags: ["военная ипотека сочи", "военная ипотека новороссийск", "купить квартиру сочи военная ипотека"]
-cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg"
-coverAlt: "Панорама Сочи или Новороссийска — военная ипотека на юге России"
-coverPosition: "50% 50%"
+cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.png"
+coverAlt: "Новостройка у моря в Сочи — покупка квартиры по военной ипотеке на юге России"
+coverPosition: "50% 45%"
 featured: false
 popular: false
 priority: 18
@@ -187,9 +188,9 @@ author: "Военный навигатор"
 category: "Краснодар"
 categorySlug: "krasnodar"
 tags: ["военная ипотека сочи", "военная ипотека новороссийск", "купить квартиру сочи военная ипотека"]
-cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.svg"
-coverAlt: "Панорама Сочи или Новороссийска — военная ипотека на юге России"
-coverPosition: "50% 50%"
+cover: "/images/journal/voennaya-ipoteka-v-sochi-i-novorossiyske-cover.png"
+coverAlt: "Новостройка у моря в Сочи — покупка квартиры по военной ипотеке на юге России"
+coverPosition: "50% 45%"
 featured: false
 popular: false
 priority: 18

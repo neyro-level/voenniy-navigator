@@ -40,7 +40,7 @@ export async function generateLlmsTxt(): Promise<string> {
   lines.push('');
   lines.push(
     `${GEO_SITE.tagline}. Это нишевой сервис про покупку квартир и новостроек по военной ипотеке, ` +
-      `а не широкий портал про всю недвижимость. Основной сценарий сайта: сначала расчёт и ограничения, ` +
+      `а не широкий портал про всю недвижимость. Основная логика сайта: сначала расчёт и ограничения, ` +
       `потом география выбора, объект и следующий шаг по сделке.`
   );
   lines.push('');
@@ -50,7 +50,7 @@ export async function generateLlmsTxt(): Promise<string> {
   for (const page of Object.values(COMMERCIAL_PAGES)) {
     lines.push(`- **${page.title}** — ${absoluteUrl(page.url)} — ${page.description}`);
   }
-  lines.push(`- **Главная** — ${absoluteUrl(GEO_LINKS.home)} — главный сервисный вход и маршрутизация по сценариям.`);
+  lines.push(`- **Главная** — ${absoluteUrl(GEO_LINKS.home)} — главный сервисный вход и навигация по вариантам.`);
   lines.push(`- **О Военном навигаторе** — ${absoluteUrl(GEO_LINKS.oServise)} — trust-страница про сервис и эксперта.`);
   lines.push(`- **Контакты** — ${absoluteUrl(GEO_LINKS.contacts)} — контакты, география работы и форма обращения.`);
   lines.push('');

@@ -44,7 +44,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'Калькулятор',
     labelShort: 'Калькулятор',
     href: '/kalkulyator-voennoy-ipoteki/',
-    description: 'Рассчитать ориентир по сумме, накоплениям и сценарию покупки.',
+    description: 'Рассчитать ориентир по сумме, накоплениям и варианту покупки.',
     group: 'route',
     icon: 'calculator',
   },
@@ -89,7 +89,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const GROUP_LABELS: Record<NavGroup, string> = {
   object:  '01 · Выбрать объект',
   trust:   '02 · Понять сервис',
-  route:   '03 · Понять маршрут',
+  route:   '03 · Понять процесс',
   contact: '04 · Связаться',
 };
 
