@@ -14,7 +14,7 @@ env:
   SITE_SLUG: voenniy-navigator
   PUBLIC_LEADS_API_URL: /api/leads
   PUBLIC_PROJECT_ID: voenniy-navigator
-  PUBLIC_YM_COUNTER_ID: "110176980"
+  PUBLIC_YM_COUNTER_ID: "110444627"
 
 jobs:
   deploy:

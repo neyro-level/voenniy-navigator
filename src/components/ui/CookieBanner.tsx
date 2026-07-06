@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { COOKIE_NAME } from '../../lib/constants';
 import '../../styles/cookie-banner.css';
 
-const YANDEX_METRIKA_COUNTER_ID = import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980';
+const YANDEX_METRIKA_COUNTER_ID = import.meta.env.PUBLIC_YM_COUNTER_ID || '110444627';
 
 declare global {
   interface Window {

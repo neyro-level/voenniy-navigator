@@ -13,7 +13,7 @@ import { COOKIE_NAME } from './constants';
 // Window.ym type is already declared in CookieBanner.tsx and RequestModal.tsx
 // as (...args: unknown[]) => void; we use that here to avoid TS2717 conflicts.
 
-const COUNTER_ID = Number(import.meta.env.PUBLIC_YM_COUNTER_ID || '110176980');
+const COUNTER_ID = Number(import.meta.env.PUBLIC_YM_COUNTER_ID || '110444627');
 
 /** All tracked events across the site */
 export type AnalyticsEvent =

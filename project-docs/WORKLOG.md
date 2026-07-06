@@ -7,6 +7,14 @@
 - **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
 - **Documentation source of truth:** `project-docs/`.
 
+## 2026-07-06 — Заменён ID Яндекс.Метрики и выкачен новый счётчик
+
+- **Goal:** переключить сайт на новый счётчик Яндекс.Метрики `110444627` и сразу выкатить это в production.
+- **Updated runtime:** `src/components/ui/CookieBanner.tsx`, `src/layouts/BaseLayout.astro`, `src/lib/analytics.ts`
+- **Updated deploy env:** `.github/workflows/deploy-ams.yml`
+- **Old counter replaced:** `110176980` → `110444627`
+- **Metrika config kept:** `ssr:true`, `webvisor:true`, `clickmap:true`, `ecommerce:"dataLayer"`, `referrer`, `url`, `accurateTrackBounce:true`, `trackLinks:true`
+
 ## 2026-07-06 — Заменён root verification-файл Яндекс.Вебмастера
 
 - **Goal:** перевести домен на новый аккаунт Яндекс.Вебмастера и убрать старый verification-код из корня сайта.
