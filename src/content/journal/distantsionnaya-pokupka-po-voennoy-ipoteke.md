@@ -2,13 +2,13 @@
 title: "Дистанционная покупка квартиры по военной ипотеке: как купить, находясь в другом городе"
 excerpt: "Как купить квартиру по военной ипотеке дистанционно: пошаговый разбор, риски, доверенность и что можно сделать без личного присутствия."
 publishDate: "2026-05-09"
-updatedDate: "2026-05-09"
+updatedDate: "2026-07-07"
 author: "Военный навигатор"
 category: "Сделка и риски"
 categorySlug: "sdelka-i-riski"
 tags: ["дистанционная покупка военная ипотека", "купить квартиру удаленно военная ипотека", "военная ипотека в другом городе"]
-cover: "/images/journal/distantsionnaya-pokupka-po-voennoy-ipoteke-cover.svg"
-coverAlt: "Ноутбук, документы и ключи — дистанционная покупка квартиры по военной ипотеке"
+cover: "/images/journal/distantsionnaya-pokupka-po-voennoy-ipoteke-cover.png"
+coverAlt: "Военнослужащий на видеоконсультации с консультантом по дистанционному подбору квартиры"
 coverPosition: "50% 50%"
 featured: false
 popular: false
