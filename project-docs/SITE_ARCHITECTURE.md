@@ -420,3 +420,45 @@ NAP-слой:
 2. собрать route `/o-servise/` и блоки страницы;
 3. обновить footer / route map / при необходимости header;
 4. обновить SEO / schema / sitemap / llms-слой для новой страницы.
+
+---
+
+## 13. Delivery contract
+
+### 13.1. Profile and canonical repository
+
+`DELIVERY_PROFILE = COMMERCIAL`: сайт принимает реальные обращения и влияет на
+репутацию клиента, поэтому каждый merge выполняется только через Pull Request,
+review и один ручной exact-head SourceCraft gate соответствующего риска.
+
+Canonical primary — существующий приватный SourceCraft-репозиторий
+`integrator-p/voen-navigator`; `origin` обязан указывать только на него.
+Создавать, дублировать, переносить или заменять SourceCraft-репозиторий в
+рамках проекта запрещено. Remote `github` — только зеркало и не является
+каноническим местом для PR, gate, merge или production.
+
+### 13.2. Trigger policy
+
+- push в branch и создание/обновление Pull Request не запускают CI, build или
+  deploy;
+- `main` не запускает автоматический build или production deploy;
+- перед merge вручную запускается ровно один `merge-risky` либо
+  `merge-standard` на exact head SHA;
+- production запускается только явной командой владельца из clean SourceCraft
+  `main`; эта команда не относится к обычному merge;
+- GitHub workflow переходного периода не может быть источником production
+  deploy и будет отключён отдельной задачей EPIC-01.
+
+### 13.3. Artifact, activation and rollback
+
+Release строит один неизменяемый статический artifact вне production host и
+сохраняет его checksum вместе с exact SourceCraft SHA. Artifact загружается в
+новый `<site-root>/releases/<release-id>` без переключения `current`.
+Предактивационная проверка подтверждает состав файлов, public configuration и
+права. Затем `current` атомарно переключается на новый release, Nginx проходит
+проверку конфигурации и выполняется live smoke.
+
+Rollback не пересобирает сайт: `current` атомарно возвращается на предыдущий
+known-good release, после чего повторяются Nginx validation и критичный live
+smoke. Имена секретов и их значения остаются в Secret Master и не попадают в
+репозиторий или журнал доказательств.

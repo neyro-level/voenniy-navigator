@@ -1,0 +1,53 @@
+on:
+  push:
+    - workflows: [merge-risky]
+      filter:
+        branches: []
+
+workflows:
+  merge-risky:
+    inputs:
+      expected_commit_sha:
+        type: string
+        required: true
+        description: Full immutable SHA of the reviewed Pull Request head.
+    tasks:
+      - name: verify-exact-head
+        env:
+          EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
+        cubes:
+          - name: node-24-build
+            image: docker.io/library/node:24-bookworm-slim
+            script:
+              - corepack enable
+              - corepack prepare pnpm@11.5.1 --activate
+              - node scripts/verify-sourcecraft-gate.mjs
+              - pnpm install --frozen-lockfile
+              - pnpm build
+              - pnpm geo-check
+
+  publish-release:
+    inputs:
+      expected_main_sha:
+        type: string
+        required: true
+        description: Full immutable SHA of the clean SourceCraft main commit to package.
+    tasks:
+      - name: publish-static-artifact
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        cubes:
+          - name: node-24-artifact
+            image: docker.io/library/node:24-bookworm-slim
+            script:
+              - corepack enable
+              - corepack prepare pnpm@11.5.1 --activate
+              - node scripts/verify-sourcecraft-release.mjs
+              - pnpm install --frozen-lockfile
+              - pnpm build
+              - pnpm geo-check
+              - node scripts/prepare-release-artifact.mjs
+            artifacts:
+              paths:
+                - dist/**
+                - .release/**
