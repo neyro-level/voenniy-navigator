@@ -2,12 +2,18 @@
   "name": "voenniy-navigator",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.5.1",
+  "engines": {
+    "node": "24.21.0",
+    "pnpm": "11.5.1"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "verify:astro5-baseline": "node scripts/verify-astro5-baseline.mjs",
     "geo-check": "node scripts/geo-check.mjs",
     "seo-check": "node scripts/seo-check.mjs"
   },

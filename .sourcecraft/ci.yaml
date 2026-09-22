@@ -17,7 +17,7 @@ workflows:
           EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
         cubes:
           - name: node-24-build
-            image: docker.io/library/node:24-bookworm-slim
+            image: docker.io/library/node:24.21.0-bookworm-slim
             script:
               - corepack enable
               - corepack prepare pnpm@11.5.1 --activate
@@ -38,7 +38,7 @@ workflows:
           EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         cubes:
           - name: node-24-artifact
-            image: docker.io/library/node:24-bookworm-slim
+            image: docker.io/library/node:24.21.0-bookworm-slim
             script:
               - corepack enable
               - corepack prepare pnpm@11.5.1 --activate
