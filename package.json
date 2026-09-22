@@ -14,6 +14,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "verify:astro5-baseline": "node scripts/verify-astro5-baseline.mjs",
+    "qa:crawl": "node scripts/qa-route-crawl.mjs",
+    "qa:images": "node scripts/qa-image-inventory.mjs",
+    "qa:browser": "node scripts/qa-browser-scenarios.mjs",
+    "qa:visual-manifest": "node scripts/qa-visual-manifest.mjs",
     "geo-check": "node scripts/geo-check.mjs",
     "seo-check": "node scripts/seo-check.mjs"
   },
@@ -38,6 +42,8 @@
   "devDependencies": {
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "playwright-core": "^1.63.0",
+    "sharp": "^0.35.4",
     "typescript": "^6.0.3"
   }
 }
