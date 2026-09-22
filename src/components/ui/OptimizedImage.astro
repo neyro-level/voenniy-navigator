@@ -50,7 +50,6 @@ const onloadHandler = placeholder
 ---
 
 {typeof src !== 'string' ? (
-  <!-- Imported image: use Astro Image component with full optimization -->
   <Image
     src={src}
     alt={alt}
@@ -66,7 +65,6 @@ const onloadHandler = placeholder
     onload={onloadHandler}
   />
 ) : isExternal ? (
-  <!-- External URL: use native img with LQIP support -->
   <img
     src={src}
     alt={alt}
@@ -81,7 +79,6 @@ const onloadHandler = placeholder
     onerror="this.style.display='none'"
   />
 ) : (
-  <!-- Public path or relative string: use native img with optimization attrs -->
   <img
     src={src}
     alt={alt}

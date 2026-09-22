@@ -25,7 +25,7 @@ import {
 export const getStaticPaths = (async () => {
   const posts = await getJournalPosts();
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
@@ -38,12 +38,12 @@ const { post } = Astro.props as Props;
 const posts = await getJournalPosts();
 const category = getJournalCategory(post.data.categorySlug);
 const relatedPosts = getRelatedJournalPosts(post, posts, 3);
-const popularPosts = getPopularJournalPosts(posts, 4, post.slug);
+const popularPosts = getPopularJournalPosts(posts, 4, post.id);
 const { Content } = await render(post);
 const canonical = new URL(getJournalPostUrl(post), SITE.url).href;
 const title = post.data.title;
 const description = post.data.excerpt;
-const readingTime = getReadingTime(post.body);
+const readingTime = getReadingTime(post.body ?? '');
 const ogImage = toAbsoluteUrl(post.data.cover, SITE.url);
 const primaryRoute = getPrimaryCommercialPageForPost(post);
 const secondaryRoute = getSecondaryCommercialPageForPost(post);
