@@ -16,6 +16,7 @@ const gateRunSlug = args.get('gate-run');
 const previousSha = args.get('previous-sha')?.toLowerCase();
 const previousReleaseId = args.get('previous-release-id');
 const storeReleaseTag = args.get('store-release-tag');
+const partsPath = resolve(args.get('parts') ?? '');
 const artifactPath = resolve(args.get('artifact') ?? '');
 const outPath = resolve(args.get('out') ?? 'RELEASE_EVIDENCE.json');
 const shaPattern = /^[0-9a-f]{40}$/u;
@@ -33,12 +34,23 @@ const checksumLine = readFileSync(checksumPath, 'utf8').trim();
 if (checksumLine !== `${checksum}  ${basename(artifactPath)}`) {
   throw new Error('artifact checksum sidecar does not match the release unit');
 }
+const transportParts = JSON.parse(readFileSync(partsPath, 'utf8'));
+if (!Array.isArray(transportParts.parts) || transportParts.parts.length !== 3) {
+  throw new Error('release transport must contain exactly three verified parts');
+}
 
 const evidence = {
   contractVersion: 1,
   source: { provider: 'sourcecraft', sha },
   gate: { runSlug: gateRunSlug, status: 'api-verified-before-trigger' },
-  artifact: { file: basename(artifactPath), checksumFile: basename(checksumPath), sha256: checksum, layout: 'astro-static' },
+  artifact: {
+    file: basename(artifactPath),
+    checksumFile: basename(checksumPath),
+    sha256: checksum,
+    layout: 'astro-static',
+    transport: 'three ordered SourceCraft artifact parts',
+    parts: transportParts.parts,
+  },
   buildConfiguration: {
     requiredProductionNames: ['PUBLIC_LEADS_SITE_KEY', 'PUBLIC_YANDEX_MAPS_API_KEY', 'PUBLIC_SMARTCAPTCHA_CLIENT_KEY'],
     valuesRecorded: false,

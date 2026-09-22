@@ -90,7 +90,10 @@ workflows:
               - bash scripts/ci/sourcecraft-release.sh
             artifacts:
               paths:
-                - release-output/release.tar.gz
+                - release-output/release.tar.gz.part-00
+                - release-output/release.tar.gz.part-01
+                - release-output/release.tar.gz.part-02
                 - release-output/release.tar.gz.sha256
+                - release-output/RELEASE_PARTS.json
                 - release-output/RELEASE_EVIDENCE.json
                 - release-output/REHEARSAL_RESULT.txt

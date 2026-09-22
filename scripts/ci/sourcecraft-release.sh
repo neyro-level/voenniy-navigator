@@ -46,6 +46,12 @@ node scripts/prepare-release-artifact.mjs
 mkdir -p release-output
 tar -czf release-output/release.tar.gz dist ".release/voenniy-navigator-${ACTUAL_SHA}"
 node scripts/write-release-checksum.mjs release-output/release.tar.gz
+split -b 40m -d -a 2 release-output/release.tar.gz release-output/release.tar.gz.part-
+node scripts/write-release-parts.mjs release-output release.tar.gz.part- release-output/RELEASE_PARTS.json
+test -s release-output/release.tar.gz.part-00
+test -s release-output/release.tar.gz.part-01
+test -s release-output/release.tar.gz.part-02
+test ! -e release-output/release.tar.gz.part-03
 
 REHEARSAL_ROOT="$(mktemp -d)"
 trap 'rm -rf "$REHEARSAL_ROOT"' EXIT
@@ -64,6 +70,7 @@ node scripts/write-release-evidence.mjs \
   --previous-sha "$PREVIOUS_RELEASE_SHA" \
   --previous-release-id "$PREVIOUS_RELEASE_ID" \
   --store-release-tag "$STORE_RELEASE_TAG" \
+  --parts release-output/RELEASE_PARTS.json \
   --out release-output/RELEASE_EVIDENCE.json
 
 echo "Static release unit prepared once for ${ACTUAL_SHA}; production not touched."

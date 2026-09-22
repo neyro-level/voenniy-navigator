@@ -29,8 +29,11 @@ test('release remains manual and outside development triggers', () => {
   assert.doesNotMatch(triggerBlock, /release-single-build/);
   assert.match(workflow, /release-single-build:/);
   for (const artifact of [
-    'release.tar.gz',
+    'release.tar.gz.part-00',
+    'release.tar.gz.part-01',
+    'release.tar.gz.part-02',
     'release.tar.gz.sha256',
+    'RELEASE_PARTS.json',
     'RELEASE_EVIDENCE.json',
     'REHEARSAL_RESULT.txt',
   ]) {

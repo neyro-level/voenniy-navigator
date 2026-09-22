@@ -469,6 +469,11 @@ rollback rehearsal и evidence JSON. CI artifact хранится 14 дней; �
 передача выполняется через attachment непубличного draft SourceCraft Release.
 Production host получает готовую статику и не запускает Node, pnpm или build.
 
+Если единый tar превышает лимит одного CI artifact, transport хранит три
+упорядоченные части до 40 MiB с отдельными checksums. Перед deploy части
+соединяются в исходный tar и обязаны совпасть с его единым SHA-256; это не три
+разных release artifact и не разрешение пересобирать сайт.
+
 До настройки Secret Master → SourceCraft consumer bridge rehearsal evidence
 обязательно помечает artifact как `productionReady: false`: production build не
 имеет права молча потерять `PUBLIC_LEADS_SITE_KEY`, `PUBLIC_YANDEX_MAPS_API_KEY`
