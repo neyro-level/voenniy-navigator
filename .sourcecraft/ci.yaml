@@ -57,7 +57,13 @@ workflows:
               - pnpm build
               - pnpm geo-check
               - node scripts/prepare-release-artifact.mjs
+              - cp ".release/voenniy-navigator-${SOURCECRAFT_COMMIT_SHA}/release-manifest.json" .release/release-manifest.json
+              - cp ".release/voenniy-navigator-${SOURCECRAFT_COMMIT_SHA}/release-tree.sha256" .release/release-tree.sha256
+              - tar -czf .release/voenniy-navigator-release.tar.gz -C dist .
+              - sha256sum .release/voenniy-navigator-release.tar.gz > .release/voenniy-navigator-release.tar.gz.sha256
             artifacts:
               paths:
-                - dist/**
-                - .release/**
+                - .release/voenniy-navigator-release.tar.gz
+                - .release/voenniy-navigator-release.tar.gz.sha256
+                - .release/release-manifest.json
+                - .release/release-tree.sha256

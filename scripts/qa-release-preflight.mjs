@@ -42,8 +42,15 @@ function main() {
     'PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}',
     'PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.VOENNIY_NAVIGATOR_SMARTCAPTCHA_CLIENT_KEY }}',
     'PUBLIC_YANDEX_MAPS_API_KEY: ${{ secrets.PUBLIC_YANDEX_MAPS_API_KEY }}',
+    '.release/voenniy-navigator-release.tar.gz',
+    '.release/voenniy-navigator-release.tar.gz.sha256',
+    '.release/release-manifest.json',
+    '.release/release-tree.sha256',
   ]) {
     if (!workflow.includes(required)) failures.push(`release workflow is missing protected public build config: ${required}`);
+  }
+  for (const forbidden of ['dist/**', '.release/**']) {
+    if (workflow.includes(forbidden)) failures.push(`release workflow uses an unsupported glob artifact path: ${forbidden}`);
   }
   if (!releaseVerifier.includes('SOURCECRAFT_COMMIT_SHA')) failures.push('release verifier does not bind the artifact to SourceCraft commit SHA');
   for (const required of [
