@@ -38,6 +38,13 @@ function main() {
   for (const required of ['publish-release:', 'expected_main_sha:', 'EXPECTED_MAIN_SHA']) {
     if (!workflow.includes(required)) failures.push(`.sourcecraft/ci.yaml is missing ${required}`);
   }
+  for (const required of [
+    'PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}',
+    'PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.VOENNIY_NAVIGATOR_SMARTCAPTCHA_CLIENT_KEY }}',
+    'PUBLIC_YANDEX_MAPS_API_KEY: ${{ secrets.PUBLIC_YANDEX_MAPS_API_KEY }}',
+  ]) {
+    if (!workflow.includes(required)) failures.push(`release workflow is missing protected public build config: ${required}`);
+  }
   if (!releaseVerifier.includes('SOURCECRAFT_COMMIT_SHA')) failures.push('release verifier does not bind the artifact to SourceCraft commit SHA');
   for (const required of [
     'Rollback target — VERIFIED',

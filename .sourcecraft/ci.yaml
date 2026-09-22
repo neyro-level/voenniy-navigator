@@ -36,6 +36,13 @@ workflows:
       - name: publish-static-artifact
         env:
           EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PUBLIC_YM_COUNTER_ID: "110444627"
+          PUBLIC_LEADS_API_URL: /api/leads
+          PUBLIC_PROJECT_ID: voenniy-navigator
+          PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}
+          PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.VOENNIY_NAVIGATOR_SMARTCAPTCHA_CLIENT_KEY }}
+          PUBLIC_YANDEX_MAPS_API_KEY: ${{ secrets.PUBLIC_YANDEX_MAPS_API_KEY }}
+          PUBLIC_SITE_URL: https://voen-navigator.ru
         cubes:
           - name: node-24-artifact
             image: docker.io/library/node:24.21.0-bookworm-slim
@@ -43,6 +50,9 @@ workflows:
               - corepack enable
               - corepack prepare pnpm@11.5.1 --activate
               - node scripts/verify-sourcecraft-release.mjs
+              - test -n "$PUBLIC_LEADS_SITE_KEY"
+              - test -n "$PUBLIC_SMARTCAPTCHA_CLIENT_KEY"
+              - test -n "$PUBLIC_YANDEX_MAPS_API_KEY"
               - pnpm install --frozen-lockfile
               - pnpm build
               - pnpm geo-check
