@@ -445,8 +445,11 @@ Canonical primary — существующий приватный SourceCraft-р
 
 - canonical SourceCraft `main`: `cf64b6015f91681d94d521d1fb43ad8ca4078217`;
 - Node/pnpm contract: `24.21.0` / `11.5.1`;
-- активный SourceCraft gate: manual-only `merge-risky`; representative runs
-  занимают около одной минуты, поэтому отдельный cache/image layer не нужен;
+- SourceCraft gates: manual-only лёгкий `merge-standard` для обычного
+  content/UI diff и `merge-risky` с обязательным `runtime-release`, `seo-geo`
+  или `dependencies` scope; выбирается ровно один gate на exact PR head;
+- representative RISKY runs занимают около одной минуты, поэтому отдельный
+  cache/image layer не нужен без нового измеримого расхода;
 - `publish-release` сейчас только собирает `dist`, manifest и checksum в CI;
   transport на AMS Server, pre-activation, atomic switch и live smoke ещё не
   замкнуты в одном SourceCraft release route;
