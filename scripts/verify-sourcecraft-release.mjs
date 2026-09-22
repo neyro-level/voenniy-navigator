@@ -1,5 +1,3 @@
-import { execFileSync } from 'node:child_process';
-
 const SHA_PATTERN = /^[0-9a-f]{40}$/i;
 
 function requireSha(name) {
@@ -22,12 +20,21 @@ if (expected !== actual) {
   throw new Error('Expected main SHA does not match SOURCECRAFT_COMMIT_SHA. Refusing to package a different commit.');
 }
 
-const remoteMainLine = execFileSync('git', ['ls-remote', 'origin', 'refs/heads/main'], {
-  encoding: 'utf8',
-}).trim();
-const remoteMain = remoteMainLine.split(/\s+/)[0]?.toLowerCase();
+const sourcecraftToken = process.env.SOURCECRAFT_TOKEN?.trim();
+if (!sourcecraftToken) {
+  throw new Error('SOURCECRAFT_TOKEN is required to verify canonical main through the SourceCraft API.');
+}
+const response = await fetch(
+  'https://api.sourcecraft.tech/repos/integrator-p/voen-navigator/branches?filter=main&page_size=20',
+  { headers: { Authorization: `Bearer ${sourcecraftToken}` } },
+);
+if (!response.ok) {
+  throw new Error(`SourceCraft branch verification failed with HTTP ${response.status}.`);
+}
+const payload = await response.json();
+const remoteMain = payload.branches?.find((branch) => branch.name === 'main')?.commit?.hash?.toLowerCase();
 if (!remoteMain || !SHA_PATTERN.test(remoteMain)) {
-  throw new Error('Cannot resolve the canonical origin/main SHA. Refusing to package an unverified commit.');
+  throw new Error('Cannot resolve the canonical SourceCraft main SHA. Refusing to package an unverified commit.');
 }
 if (remoteMain !== actual) {
   throw new Error('SOURCECRAFT_COMMIT_SHA is not the current canonical origin/main SHA. Refusing to package a stale commit.');
