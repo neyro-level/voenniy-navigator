@@ -53,28 +53,44 @@ workflows:
             script:
               - bash scripts/ci/sourcecraft-risky.sh
 
-  publish-release:
+  release-single-build:
     inputs:
-      expected_main_sha:
+      expected_commit_sha:
         type: string
         required: true
-        description: Full immutable SHA of the clean SourceCraft main commit to package.
+        description: Exact release-candidate SHA.
+      gate_run_slug:
+        type: string
+        required: true
+        description: API-verified green Merge Gate run for the same SHA.
+      previous_release_sha:
+        type: string
+        required: true
+        description: Full SHA of the known-good rollback release.
+      previous_release_id:
+        type: string
+        required: true
+        description: Server release directory of the known-good rollback target.
+      store_release_tag:
+        type: string
+        required: true
+        description: Unpublished SourceCraft Release tag used as durable artifact storage.
     tasks:
-      - name: publish-static-artifact
+      - name: prepare-static-release-unit
         env:
-          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
+          GATE_RUN_SLUG: ${{ inputs.gate_run_slug }}
+          PREVIOUS_RELEASE_SHA: ${{ inputs.previous_release_sha }}
+          PREVIOUS_RELEASE_ID: ${{ inputs.previous_release_id }}
+          STORE_RELEASE_TAG: ${{ inputs.store_release_tag }}
         cubes:
-          - name: node-24-artifact
+          - name: build-pack-rehearse
             image: docker.io/library/node:24.21.0-bookworm-slim
             script:
-              - corepack enable
-              - corepack prepare pnpm@11.5.1 --activate
-              - node scripts/verify-sourcecraft-release.mjs
-              - pnpm install --frozen-lockfile
-              - pnpm build
-              - pnpm geo-check
-              - node scripts/prepare-release-artifact.mjs
+              - bash scripts/ci/sourcecraft-release.sh
             artifacts:
               paths:
-                - dist/**
-                - .release/**
+                - release-output/release.tar.gz
+                - release-output/release.tar.gz.sha256
+                - release-output/RELEASE_EVIDENCE.json
+                - release-output/REHEARSAL_RESULT.txt

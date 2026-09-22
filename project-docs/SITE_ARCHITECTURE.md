@@ -463,6 +463,17 @@ Canonical primary — существующий приватный SourceCraft-р
 Production rollback остаётся переключением `current` на предыдущий known-good
 release без повторной сборки. Текущий production не изменяется этой миграцией.
 
+Release candidate создаётся одним manual-only `release-single-build`: один
+`astro build`, manifest/tree checksum, один tar-артефакт, extract/activation/
+rollback rehearsal и evidence JSON. CI artifact хранится 14 дней; долговременная
+передача выполняется через attachment непубличного draft SourceCraft Release.
+Production host получает готовую статику и не запускает Node, pnpm или build.
+
+До настройки Secret Master → SourceCraft consumer bridge rehearsal evidence
+обязательно помечает artifact как `productionReady: false`: production build не
+имеет права молча потерять `PUBLIC_LEADS_SITE_KEY`, `PUBLIC_YANDEX_MAPS_API_KEY`
+или `PUBLIC_SMARTCAPTCHA_CLIENT_KEY`.
+
 ### 13.2. Trigger policy
 
 - push в branch и создание/обновление Pull Request не запускают CI, build или

@@ -19,6 +19,7 @@
     "verify:risk:seo-geo": "astro check && pnpm seo-check && pnpm geo-check",
     "verify:risk:dependencies": "pnpm build",
     "test:sourcecraft-contract": "node --test scripts/ci/sourcecraft-contract.test.mjs",
+    "test:release-evidence": "node --test scripts/release-evidence.test.mjs",
     "geo-check": "node scripts/geo-check.mjs",
     "seo-check": "node scripts/seo-check.mjs"
   },

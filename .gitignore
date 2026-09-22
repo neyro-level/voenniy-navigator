@@ -27,6 +27,7 @@ pnpm-debug.log*
 /preview-*.log
 /tmp-devserver*.log
 /.release/
+/release-output/
 
 .vercel
 

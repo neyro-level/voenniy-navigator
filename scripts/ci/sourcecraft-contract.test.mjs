@@ -26,7 +26,15 @@ test('RISKY requires one supported project boundary', () => {
 
 test('release remains manual and outside development triggers', () => {
   const triggerBlock = workflow.slice(0, workflow.indexOf('workflows:'));
-  assert.doesNotMatch(triggerBlock, /publish-release/);
-  assert.match(workflow, /publish-release:/);
+  assert.doesNotMatch(triggerBlock, /release-single-build/);
+  assert.match(workflow, /release-single-build:/);
+  for (const artifact of [
+    'release.tar.gz',
+    'release.tar.gz.sha256',
+    'RELEASE_EVIDENCE.json',
+    'REHEARSAL_RESULT.txt',
+  ]) {
+    assert.match(workflow, new RegExp(`release-output/${artifact.replaceAll('.', '\\.')}`));
+  }
   assert.doesNotMatch(workflow, /(?:^|\s)(?:ssh|scp|rsync)\s/m);
 });

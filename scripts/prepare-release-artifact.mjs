@@ -4,10 +4,10 @@ import path from 'node:path';
 
 const siteSlug = 'voenniy-navigator';
 const distRoot = path.resolve('dist');
-const expectedMainSha = process.env.EXPECTED_MAIN_SHA?.trim().toLowerCase();
+const expectedCommitSha = process.env.EXPECTED_COMMIT_SHA?.trim().toLowerCase();
 
-if (!/^[0-9a-f]{40}$/.test(expectedMainSha ?? '')) {
-  throw new Error('EXPECTED_MAIN_SHA must be a full 40-character commit SHA.');
+if (!/^[0-9a-f]{40}$/.test(expectedCommitSha ?? '')) {
+  throw new Error('EXPECTED_COMMIT_SHA must be a full 40-character commit SHA.');
 }
 
 async function collectFiles(directory, relative = '') {
@@ -46,11 +46,11 @@ if (files.length === 0) {
 const treeSha256 = createHash('sha256')
   .update(files.map((file) => `${file.sha256}  ${file.bytes}  ${file.path}\n`).join(''))
   .digest('hex');
-const artifactDirectory = path.join('.release', `${siteSlug}-${expectedMainSha}`);
+const artifactDirectory = path.join('.release', `${siteSlug}-${expectedCommitSha}`);
 const manifest = {
   schemaVersion: 1,
   siteSlug,
-  sourceCommit: expectedMainSha,
+  sourceCommit: expectedCommitSha,
   artifactRoot: 'dist',
   treeSha256,
   files,
@@ -63,4 +63,4 @@ await writeFile(
 );
 await writeFile(path.join(artifactDirectory, 'release-tree.sha256'), `${treeSha256}  dist-tree\n`);
 
-process.stdout.write(`Release artifact prepared: ${siteSlug}@${expectedMainSha} (${files.length} files)\n`);
+process.stdout.write(`Release artifact prepared: ${siteSlug}@${expectedCommitSha} (${files.length} files)\n`);
