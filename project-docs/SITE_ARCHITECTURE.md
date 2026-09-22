@@ -437,6 +437,29 @@ Canonical primary — существующий приватный SourceCraft-р
 рамках проекта запрещено. Remote `github` — только зеркало и не является
 каноническим местом для PR, gate, merge или production.
 
+`PROJECT_CLASS = COMMERCIAL_SITE` и `DELIVERY_PROFILE = COMMERCIAL` — разные
+характеристики: первая описывает назначение продукта, вторая — цену ошибки и
+обязательность review/gate.
+
+### 13.1.1. Frozen migration baseline (2026-09-22)
+
+- canonical SourceCraft `main`: `cf64b6015f91681d94d521d1fb43ad8ca4078217`;
+- Node/pnpm contract: `24.21.0` / `11.5.1`;
+- активный SourceCraft gate: manual-only `merge-risky`; representative runs
+  занимают около одной минуты, поэтому отдельный cache/image layer не нужен;
+- `publish-release` сейчас только собирает `dist`, manifest и checksum в CI;
+  transport на AMS Server, pre-activation, atomic switch и live smoke ещё не
+  замкнуты в одном SourceCraft release route;
+- GitHub mirror `main`: `cc5bc7f1b455b0a49a42011bee98a16e3868ea18`;
+  зеркало отстаёт от canonical main, GitHub Actions включены, а на зеркале всё
+  ещё существует legacy `deploy-ams.yml` с автоматическим production deploy;
+- до доказанного SourceCraft rehearsal обычный mirror push запрещён. Безопасная
+  последовательность: SourceCraft rehearsal → отключение GitHub Actions через
+  API → exact mirror sync → proof отсутствия нового run.
+
+Production rollback остаётся переключением `current` на предыдущий known-good
+release без повторной сборки. Текущий production не изменяется этой миграцией.
+
 ### 13.2. Trigger policy
 
 - push в branch и создание/обновление Pull Request не запускают CI, build или

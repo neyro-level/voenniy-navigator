@@ -30,9 +30,14 @@
 ## 3. Тип проекта
 
 - Клиентский Astro-проект АМС.
-- Рабочая папка: `C:\Users\User\Desktop\Сборка АМС\Военный навигатор (AMS)`.
+- Рабочий checkout определяется через canonical SourceCraft remote
+  `integrator-p/voen-navigator`; абсолютный путь конкретной рабочей станции не
+  является частью проектного контракта.
 - Режим работы: сопровождение, нормализация документации, развитие страниц и сценариев.
-- Деплой: AMS Server (Timeweb Cloud, `5.42.100.161`) via GitHub Actions → `voen-navigator.ru`.
+- Production: AMS Server (Timeweb Cloud) → `voen-navigator.ru`.
+- Git и delivery: приватный SourceCraft `integrator-p/voen-navigator` — canonical
+  primary; GitHub используется только как зеркало. Production запускается
+  только по явной команде владельца из exact green SourceCraft `main`.
 
 ## 4. Стек
 
