@@ -2,15 +2,15 @@
 
 Персональный сайт эксперта по военной ипотеке в Краснодаре.
 
-**Стек:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands  
-**Деплой:** AMS Server (Timeweb) → `voen-navigator.ru`
+**Стек:** Astro 7 + Tailwind CSS v4 + TypeScript 6 strict + React islands
+**Доставка:** SourceCraft primary → ручной release на AMS Server (Timeweb) после явной команды владельца. GitHub — зеркало.
 
 ---
 
 ## Быстрый старт
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev        # http://localhost:4321
 ```
 
@@ -21,6 +21,7 @@ pnpm dev        # http://localhost:4321
 | `pnpm dev` | Дев-сервер на localhost:4321 |
 | `pnpm build` | Type-check + production build |
 | `pnpm preview` | Preview production build |
+| `pnpm qa:release-candidate` | Сводный отчёт кандидата: SHA, маршруты, sitemap, canonical, robots, llms и изображения |
 
 ## Структура
 
@@ -45,9 +46,13 @@ cp .env.example .env
 
 | Переменная | Описание |
 |---|---|
-| `TELEGRAM_BOT_TOKEN` | Токен Telegram-бота для уведомлений |
-| `TELEGRAM_CHAT_ID` | ID чата для уведомлений |
-| `PUBLIC_YM_COUNTER_ID` | ID счётчика Яндекс.Метрики |
+| `PUBLIC_YM_COUNTER_ID` | ID счётчика Яндекс.Метрики; предусмотрено значение по умолчанию |
+| `PUBLIC_LEADS_API_URL` | Same-origin URL AMS Leads API |
+| `PUBLIC_PROJECT_ID` | Идентификатор проекта для Leads API |
+| `PUBLIC_LEADS_SITE_KEY` | Публичный ключ сайта для Leads API |
+| `PUBLIC_SMARTCAPTCHA_CLIENT_KEY` | Публичный ключ Yandex SmartCaptcha |
+| `PUBLIC_YANDEX_MAPS_API_KEY` | Публичный ключ Яндекс.Карт |
+| `PUBLIC_SITE_URL` | Необязательное переопределение канонического URL сайта |
 
 ## Документация
 

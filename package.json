@@ -18,6 +18,9 @@
     "qa:images": "node scripts/qa-image-inventory.mjs",
     "qa:browser": "node scripts/qa-browser-scenarios.mjs",
     "qa:visual-manifest": "node scripts/qa-visual-manifest.mjs",
+    "qa:release-candidate": "node scripts/qa-release-candidate.mjs",
+    "qa:docs-drift": "node scripts/qa-docs-drift.mjs",
+    "qa:release-preflight": "node scripts/qa-release-preflight.mjs",
     "geo-check": "node scripts/geo-check.mjs",
     "seo-check": "node scripts/seo-check.mjs"
   },
