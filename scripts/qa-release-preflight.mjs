@@ -42,8 +42,9 @@ function main() {
     'PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}',
     'PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.VOENNIY_NAVIGATOR_SMARTCAPTCHA_CLIENT_KEY }}',
     'PUBLIC_YANDEX_MAPS_API_KEY: ${{ secrets.PUBLIC_YANDEX_MAPS_API_KEY }}',
-    '.release/voenniy-navigator-release.tar.gz',
     '.release/voenniy-navigator-release.tar.gz.sha256',
+    '.release/voenniy-navigator-release.tar.gz.part-00',
+    '.release/voenniy-navigator-release.tar.gz.part-15',
     '.release/release-manifest.json',
     '.release/release-tree.sha256',
   ]) {
@@ -51,6 +52,12 @@ function main() {
   }
   for (const forbidden of ['dist/**', '.release/**']) {
     if (workflow.includes(forbidden)) failures.push(`release workflow uses an unsupported glob artifact path: ${forbidden}`);
+  }
+  const chunkPaths = [...workflow.matchAll(/^\s*-\s+(\.release\/voenniy-navigator-release\.tar\.gz\.part-(\d{2}))\s*$/gm)]
+    .map((match) => match[2]);
+  const expectedChunks = Array.from({ length: 16 }, (_, index) => String(index).padStart(2, '0'));
+  if (chunkPaths.join(',') !== expectedChunks.join(',')) {
+    failures.push(`release workflow must export exactly chunks 00-15; found: ${chunkPaths.join(',') || 'none'}`);
   }
   if (!releaseVerifier.includes('SOURCECRAFT_COMMIT_SHA')) failures.push('release verifier does not bind the artifact to SourceCraft commit SHA');
   for (const required of [

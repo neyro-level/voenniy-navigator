@@ -61,9 +61,25 @@ workflows:
               - cp ".release/voenniy-navigator-${SOURCECRAFT_COMMIT_SHA}/release-tree.sha256" .release/release-tree.sha256
               - tar -czf .release/voenniy-navigator-release.tar.gz -C dist .
               - sha256sum .release/voenniy-navigator-release.tar.gz > .release/voenniy-navigator-release.tar.gz.sha256
+              - split -n 16 -d -a 2 .release/voenniy-navigator-release.tar.gz .release/voenniy-navigator-release.tar.gz.part-
             artifacts:
               paths:
-                - .release/voenniy-navigator-release.tar.gz
+                - .release/voenniy-navigator-release.tar.gz.part-00
+                - .release/voenniy-navigator-release.tar.gz.part-01
+                - .release/voenniy-navigator-release.tar.gz.part-02
+                - .release/voenniy-navigator-release.tar.gz.part-03
+                - .release/voenniy-navigator-release.tar.gz.part-04
+                - .release/voenniy-navigator-release.tar.gz.part-05
+                - .release/voenniy-navigator-release.tar.gz.part-06
+                - .release/voenniy-navigator-release.tar.gz.part-07
+                - .release/voenniy-navigator-release.tar.gz.part-08
+                - .release/voenniy-navigator-release.tar.gz.part-09
+                - .release/voenniy-navigator-release.tar.gz.part-10
+                - .release/voenniy-navigator-release.tar.gz.part-11
+                - .release/voenniy-navigator-release.tar.gz.part-12
+                - .release/voenniy-navigator-release.tar.gz.part-13
+                - .release/voenniy-navigator-release.tar.gz.part-14
+                - .release/voenniy-navigator-release.tar.gz.part-15
                 - .release/voenniy-navigator-release.tar.gz.sha256
                 - .release/release-manifest.json
                 - .release/release-tree.sha256
