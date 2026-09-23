@@ -13,6 +13,10 @@
 7. `SERVER_MIGRATION_PLAN.md` — если задача связана с server/release-контуром
 8. `briefs/PAGE_*.md`
 
+Для CI, release и production действующим Source of Truth является раздел 13
+`SITE_ARCHITECTURE.md`. Отложенный `SERVER_MIGRATION_PLAN.md` описывает только
+возможный будущий перенос сервера и не переопределяет текущий delivery contract.
+
 Если задача связана именно с SEO, порядок входа такой:
 
 1. `SEO_PASSPORT_VOEN_NAVIGATOR.md`

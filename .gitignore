@@ -27,6 +27,7 @@ pnpm-debug.log*
 /preview-*.log
 /tmp-devserver*.log
 /.release/
+/release-output/
 
 .vercel
 
@@ -34,7 +35,7 @@ pnpm-debug.log*
 .claude/
 .playwright-mcp/
 
-# Project docs (kept locally, not in GitHub)
+# Legacy root document paths; canonical project docs are tracked in project-docs/
 /pages/
 /_project-docs/
 /SITE_ARCHITECTURE.md

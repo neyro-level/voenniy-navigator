@@ -437,6 +437,48 @@ Canonical primary — существующий приватный SourceCraft-р
 рамках проекта запрещено. Remote `github` — только зеркало и не является
 каноническим местом для PR, gate, merge или production.
 
+`PROJECT_CLASS = COMMERCIAL_SITE` и `DELIVERY_PROFILE = COMMERCIAL` — разные
+характеристики: первая описывает назначение продукта, вторая — цену ошибки и
+обязательность review/gate.
+
+### 13.1.1. Frozen migration baseline (2026-09-22)
+
+- canonical SourceCraft `main`: `cf64b6015f91681d94d521d1fb43ad8ca4078217`;
+- Node/pnpm contract: `24.21.0` / `11.5.1`;
+- SourceCraft gates: manual-only лёгкий `merge-standard` для обычного
+  content/UI diff и `merge-risky` с обязательным `runtime-release`, `seo-geo`
+  или `dependencies` scope; выбирается ровно один gate на exact PR head;
+- representative RISKY runs занимают около одной минуты, поэтому отдельный
+  cache/image layer не нужен без нового измеримого расхода;
+- `publish-release` сейчас только собирает `dist`, manifest и checksum в CI;
+  transport на AMS Server, pre-activation, atomic switch и live smoke ещё не
+  замкнуты в одном SourceCraft release route;
+- GitHub mirror `main`: `cc5bc7f1b455b0a49a42011bee98a16e3868ea18`;
+  зеркало отстаёт от canonical main, GitHub Actions включены, а на зеркале всё
+  ещё существует legacy `deploy-ams.yml` с автоматическим production deploy;
+- до доказанного SourceCraft rehearsal обычный mirror push запрещён. Безопасная
+  последовательность: SourceCraft rehearsal → отключение GitHub Actions через
+  API → exact mirror sync → proof отсутствия нового run.
+
+Production rollback остаётся переключением `current` на предыдущий known-good
+release без повторной сборки. Текущий production не изменяется этой миграцией.
+
+Release candidate создаётся одним manual-only `release-single-build`: один
+`astro build`, manifest/tree checksum, один tar-артефакт, extract/activation/
+rollback rehearsal и evidence JSON. CI artifact хранится 14 дней; долговременная
+передача выполняется через attachment непубличного draft SourceCraft Release.
+Production host получает готовую статику и не запускает Node, pnpm или build.
+
+Если единый tar превышает лимит одного CI artifact, transport хранит три
+упорядоченные части до 40 MiB с отдельными checksums. Перед deploy части
+соединяются в исходный tar и обязаны совпасть с его единым SHA-256; это не три
+разных release artifact и не разрешение пересобирать сайт.
+
+До настройки Secret Master → SourceCraft consumer bridge rehearsal evidence
+обязательно помечает artifact как `productionReady: false`: production build не
+имеет права молча потерять `PUBLIC_LEADS_SITE_KEY`, `PUBLIC_YANDEX_MAPS_API_KEY`
+или `PUBLIC_SMARTCAPTCHA_CLIENT_KEY`.
+
 ### 13.2. Trigger policy
 
 - push в branch и создание/обновление Pull Request не запускают CI, build или

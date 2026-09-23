@@ -1,85 +1,99 @@
 on:
+  # Empty paths are the explicit never-trigger sentinel. Manual headless runs
+  # remain available for the one final exact-head gate selected by risk.
   push:
-    - workflows: [merge-risky]
+    - workflows: [merge-standard, merge-risky]
       filter:
-        branches: []
+        paths: []
+
+  pull_request:
+    - workflows: [merge-standard, merge-risky]
+      filter:
+        paths: []
 
 workflows:
-  merge-risky:
+  merge-standard:
     inputs:
       expected_commit_sha:
         type: string
         required: true
         description: Full immutable SHA of the reviewed Pull Request head.
     tasks:
+      - name: verify-exact-head-standard
+        env:
+          EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
+        cubes:
+          - name: node-24-light
+            image: docker.io/library/node:24.21.0-bookworm-slim
+            script:
+              - bash scripts/ci/sourcecraft-standard.sh
+
+  merge-risky:
+    inputs:
+      expected_commit_sha:
+        type: string
+        required: true
+        description: Full immutable SHA of the reviewed Pull Request head.
+      risk_scope:
+        type: choice
+        required: true
+        description: Only the affected high-risk boundary.
+        options:
+          - runtime-release
+          - seo-geo
+          - dependencies
+    tasks:
       - name: verify-exact-head
         env:
           EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
+          RISK_SCOPE: ${{ inputs.risk_scope }}
         cubes:
           - name: node-24-build
             image: docker.io/library/node:24.21.0-bookworm-slim
             script:
-              - corepack enable
-              - corepack prepare pnpm@11.5.1 --activate
-              - node scripts/verify-sourcecraft-gate.mjs
-              - pnpm install --frozen-lockfile
-              - pnpm build
-              - pnpm geo-check
+              - bash scripts/ci/sourcecraft-risky.sh
 
-  publish-release:
+  release-single-build:
     inputs:
-      expected_main_sha:
+      expected_commit_sha:
         type: string
         required: true
-        description: Full immutable SHA of the clean SourceCraft main commit to package.
+        description: Exact release-candidate SHA.
+      gate_run_slug:
+        type: string
+        required: true
+        description: API-verified green Merge Gate run for the same SHA.
+      previous_release_sha:
+        type: string
+        required: true
+        description: Full SHA of the known-good rollback release.
+      previous_release_id:
+        type: string
+        required: true
+        description: Server release directory of the known-good rollback target.
+      store_release_tag:
+        type: string
+        required: true
+        description: Unpublished SourceCraft Release tag used as durable artifact storage.
     tasks:
-      - name: publish-static-artifact
+      - name: prepare-static-release-unit
         env:
-          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
-          PUBLIC_YM_COUNTER_ID: "110444627"
-          PUBLIC_LEADS_API_URL: /api/leads
-          PUBLIC_PROJECT_ID: voenniy-navigator
-          PUBLIC_LEADS_SITE_KEY: ${{ secrets.PUBLIC_LEADS_SITE_KEY }}
-          PUBLIC_SMARTCAPTCHA_CLIENT_KEY: ${{ secrets.VOENNIY_NAVIGATOR_SMARTCAPTCHA_CLIENT_KEY }}
-          PUBLIC_YANDEX_MAPS_API_KEY: ${{ secrets.PUBLIC_YANDEX_MAPS_API_KEY }}
-          PUBLIC_SITE_URL: https://voen-navigator.ru
+          EXPECTED_COMMIT_SHA: ${{ inputs.expected_commit_sha }}
+          GATE_RUN_SLUG: ${{ inputs.gate_run_slug }}
+          PREVIOUS_RELEASE_SHA: ${{ inputs.previous_release_sha }}
+          PREVIOUS_RELEASE_ID: ${{ inputs.previous_release_id }}
+          STORE_RELEASE_TAG: ${{ inputs.store_release_tag }}
         cubes:
-          - name: node-24-artifact
+          - name: build-pack-rehearse
             image: docker.io/library/node:24.21.0-bookworm-slim
             script:
-              - corepack enable
-              - corepack prepare pnpm@11.5.1 --activate
-              - node scripts/verify-sourcecraft-release.mjs
-              - test -n "$PUBLIC_LEADS_SITE_KEY"
-              - test -n "$PUBLIC_SMARTCAPTCHA_CLIENT_KEY"
-              - test -n "$PUBLIC_YANDEX_MAPS_API_KEY"
-              - pnpm install --frozen-lockfile
-              - pnpm build
-              - pnpm geo-check
-              - node scripts/prepare-release-artifact.mjs
-              - cp ".release/voenniy-navigator-${SOURCECRAFT_COMMIT_SHA}/release-manifest.json" .release/release-manifest.json
-              - cp ".release/voenniy-navigator-${SOURCECRAFT_COMMIT_SHA}/release-tree.sha256" .release/release-tree.sha256
-              - tar -czf .release/voenniy-navigator-release.tar.gz -C dist .
-              - sha256sum .release/voenniy-navigator-release.tar.gz > .release/voenniy-navigator-release.tar.gz.sha256
-              - split -n 16 -d -a 2 .release/voenniy-navigator-release.tar.gz .release/voenniy-navigator-release.tar.gz.part-
+              - bash scripts/ci/sourcecraft-release.sh
             artifacts:
               paths:
-                - .release/voenniy-navigator-release.tar.gz.part-00
-                - .release/voenniy-navigator-release.tar.gz.part-01
-                - .release/voenniy-navigator-release.tar.gz.part-02
-                - .release/voenniy-navigator-release.tar.gz.part-03
-                - .release/voenniy-navigator-release.tar.gz.part-04
-                - .release/voenniy-navigator-release.tar.gz.part-05
-                - .release/voenniy-navigator-release.tar.gz.part-06
-                - .release/voenniy-navigator-release.tar.gz.part-07
-                - .release/voenniy-navigator-release.tar.gz.part-08
-                - .release/voenniy-navigator-release.tar.gz.part-09
-                - .release/voenniy-navigator-release.tar.gz.part-10
-                - .release/voenniy-navigator-release.tar.gz.part-11
-                - .release/voenniy-navigator-release.tar.gz.part-12
-                - .release/voenniy-navigator-release.tar.gz.part-13
-                - .release/voenniy-navigator-release.tar.gz.part-14
-                - .release/voenniy-navigator-release.tar.gz.part-15
-                - .release/voenniy-navigator-release.tar.gz.sha256
-                - .release/release-manifest.json
-                - .release/release-tree.sha256
+                - release-output/release.tar.gz.part-00
+                - release-output/release.tar.gz.part-01
+                - release-output/release.tar.gz.part-02
+                - release-output/release.tar.gz.sha256
+                - release-output/RELEASE_PARTS.json
+                - release-output/RELEASE_EVIDENCE.json
+                - release-output/REHEARSAL_RESULT.txt
