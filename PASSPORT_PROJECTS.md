@@ -4,10 +4,11 @@
 
 Клиентский Astro-проект АМС для сервиса `Военный навигатор`.
 
-- Папка проекта: `C:\Users\User\Desktop\Сборка АМС\Военный навигатор (AMS)`
+- Папка проекта: `C:\Users\User\Desktop\Сборка АМС\Военный навигатор`
 - Production: `https://voen-navigator.ru`
-- Стек: Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands
+- Стек: Astro 7 + Tailwind CSS v4 + TypeScript 6 strict + React islands
 - Формы: AMS Leads API
+- Git: SourceCraft primary; GitHub — только exact-SHA зеркало.
 
 ## Источник правды
 

@@ -257,7 +257,7 @@ export function getPopularJournalPosts(
   excludeSlug?: string,
 ): JournalPostEntry[] {
   return posts
-    .filter((post) => post.slug !== excludeSlug)
+    .filter((post) => post.id !== excludeSlug)
     .sort((a, b) => {
       if (a.data.popular !== b.data.popular) return a.data.popular ? -1 : 1;
       if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
@@ -273,7 +273,7 @@ export function getRelatedJournalPosts(
   limit = 3,
 ): JournalPostEntry[] {
   return posts
-    .filter((post) => post.slug !== currentPost.slug)
+    .filter((post) => post.id !== currentPost.id)
     .map((post) => {
       const sameCategory = post.data.categorySlug === currentPost.data.categorySlug ? 6 : 0;
       const sharedTags = post.data.tags.filter((tag) => currentPost.data.tags.includes(tag)).length;
@@ -300,7 +300,7 @@ export function getPriorityCommercialPages(): CommercialPageDescriptor[] {
 export function getPrimaryCommercialPageForPost(
   postOrSlug: JournalPostEntry | string,
 ): CommercialPageDescriptor | undefined {
-  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.slug;
+  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.id;
   const key = PRIMARY_COMMERCIAL_PAGE_BY_POST_SLUG[slug];
   return key ? getCommercialPage(key) : undefined;
 }
@@ -308,7 +308,7 @@ export function getPrimaryCommercialPageForPost(
 export function getSecondaryCommercialPageForPost(
   postOrSlug: JournalPostEntry | string,
 ): CommercialPageDescriptor | undefined {
-  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.slug;
+  const slug = typeof postOrSlug === 'string' ? postOrSlug : postOrSlug.id;
   const key = SECONDARY_COMMERCIAL_PAGE_BY_POST_SLUG[slug];
   return key ? getCommercialPage(key) : undefined;
 }
@@ -324,7 +324,7 @@ export function getSupportingPostsForCommercialPage(
   posts: JournalPostEntry[],
   limit?: number,
 ): JournalPostEntry[] {
-  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const postsBySlug = new Map(posts.map((post) => [post.id, post]));
   const orderedPosts = SUPPORTING_POST_SLUGS_BY_COMMERCIAL_PAGE[pageKey]
     .map((slug) => postsBySlug.get(slug))
     .filter((post): post is JournalPostEntry => Boolean(post));
@@ -337,7 +337,7 @@ export function getRelatedCommercialPages(pageKey: CommercialPageKey): Commercia
 }
 
 export function getJournalPostUrl(post: JournalPostEntry): string {
-  return `${JOURNAL_BASE_PATH}${post.slug}/`;
+  return `${JOURNAL_BASE_PATH}${post.id}/`;
 }
 
 export function getJournalIndexUrl(page = 1): string {

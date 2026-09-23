@@ -10,7 +10,8 @@
 4. `DESIGN_SYSTEM.md`
 5. `SEMANTICS.md`
 6. `SEO_PASSPORT_VOEN_NAVIGATOR.md` — если задача связана с SEO, семантикой, мета-слоем, журналом или перелинковкой
-7. `briefs/PAGE_*.md`
+7. `SERVER_MIGRATION_PLAN.md` — если задача связана с server/release-контуром
+8. `briefs/PAGE_*.md`
 
 Для CI, release и production действующим Source of Truth является раздел 13
 `SITE_ARCHITECTURE.md`. Отложенный `SERVER_MIGRATION_PLAN.md` описывает только
@@ -35,5 +36,6 @@
 - `SEO_INTERNAL_LINKING_MATRIX_2026-07-03.md` — рабочая матрица SEO-перелинковки между journal и commercial pages
 - `JOURNAL_EDITORIAL_MAP.md` — главный SEO-документ по развитию журнала и правил написания статей
 - `PASSPORT_PROJECTS.md` — паспорт проекта, позиционирование, tone rules и CTA-правила
+- `SERVER_MIGRATION_PLAN.md` — отложенный план переноса server-контура; SourceCraft release остаётся canonical delivery path
 - `briefs/` — brief-документы конкретных страниц
 - `_templates/` — шаблоны архитектуры и page-brief

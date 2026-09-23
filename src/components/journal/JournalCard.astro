@@ -16,7 +16,7 @@ interface Props {
 
 const { post, compact = false } = Astro.props;
 const category = getJournalCategory(post.data.categorySlug);
-const readingTime = getReadingTime(post.body);
+const readingTime = getReadingTime(post.body ?? '');
 const nextStep = compact ? undefined : getPrimaryCommercialPageForPost(post);
 ---
 

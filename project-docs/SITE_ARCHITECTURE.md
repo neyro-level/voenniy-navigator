@@ -488,8 +488,8 @@ Production host получает готовую статику и не запу�
   `merge-standard` на exact head SHA;
 - production запускается только явной командой владельца из clean SourceCraft
   `main`; эта команда не относится к обычному merge;
-- GitHub workflow переходного периода не может быть источником production
-  deploy и будет отключён отдельной задачей EPIC-01.
+- GitHub не является источником production deploy: после SourceCraft release
+  он получает только exact-SHA зеркало.
 
 ### 13.3. Artifact, activation and rollback
 

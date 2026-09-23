@@ -34,16 +34,15 @@
   `integrator-p/voen-navigator`; абсолютный путь конкретной рабочей станции не
   является частью проектного контракта.
 - Режим работы: сопровождение, нормализация документации, развитие страниц и сценариев.
-- Production: AMS Server (Timeweb Cloud) → `voen-navigator.ru`.
-- Git и delivery: приватный SourceCraft `integrator-p/voen-navigator` — canonical
-  primary; GitHub используется только как зеркало. Production запускается
-  только по явной команде владельца из exact green SourceCraft `main`.
+- Canonical Git: приватный SourceCraft `integrator-p/voen-navigator`; GitHub — только exact-SHA зеркало.
+- Деплой: явный ручной release из clean SourceCraft `main` на AMS Server (Timeweb Cloud) → `voen-navigator.ru`.
 
 ## 4. Стек
 
-- Astro 5.
+- Astro 7.3.x.
 - Tailwind CSS v4.
-- TypeScript strict.
+- TypeScript 6 strict.
+- Node.js 24.21.0 и pnpm 11.5.1.
 - React islands только для интерактива.
 - Lucide React.
 - astro-icon.
@@ -57,6 +56,10 @@ pnpm dev
 pnpm build
 pnpm preview
 ```
+
+Обычные branch push и Pull Request не запускают CI или production. Перед merge
+для коммерческого сайта выполняется один ручной exact-head SourceCraft gate;
+production требует отдельной явной команды владельца.
 
 ## 5. Где лежит актуальная документация
 

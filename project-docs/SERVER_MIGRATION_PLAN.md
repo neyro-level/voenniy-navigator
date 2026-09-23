@@ -10,18 +10,12 @@
 **Будущий целевой контур:** отдельный клиентский Timeweb Cloud VPS, если решение вернется в работу  
 **Scope v1:** план сохранен как будущий сценарий; сейчас перенос на отдельный сервер не выполняется.
 
-> Delivery notice (2026-09-22): этот deferred-документ не является активным
-> release runbook. Все упоминания GitHub Actions ниже — исторический transport
-> старого сценария и не разрешают автоматический deploy. Если перенос сервера
-> будет возобновлён, transport должен быть перепроектирован от canonical
-> SourceCraft `main` по разделу 13 `SITE_ARCHITECTURE.md`.
-
 ## 0. Current Decision
 
 На 2026-06-26 перенос `Военного навигатора` на отдельный сервер клиента отложен. Работаем на текущем сервере АМС:
 
 - production остается на AMS Server `5.42.100.161`;
-- legacy GitHub deploy secrets не меняем и не используем;
+- SourceCraft остаётся canonical primary; GitHub используется только как зеркало и не управляет deploy;
 - DNS-записи `voen-navigator.ru` не переключаем;
 - `/api/leads` и общий `AMS Leads API` остаются в текущем рабочем контуре;
 - этот файл остается как подготовленный план на будущее, но не является активным checklist на выполнение.
@@ -31,8 +25,8 @@
 > Не активно сейчас. Раздел ниже описывает будущий сценарий, если решение о переносе будет возвращено в работу.
 
 - Клиент регистрирует отдельный VPS в Timeweb Cloud и оплачивает его сам.
-- Код остаётся в canonical SourceCraft-репозитории АМС; GitHub — только зеркало.
-- Будущий deploy должен запускаться вручную из exact green SourceCraft `main`.
+- Сайт хранится в приватном SourceCraft-репозитории АМС; GitHub может получать только exact-SHA зеркало после успешного release.
+- SourceCraft вручную собирает неизменяемый статический artifact, а активация на сервере клиента выполняется отдельным утверждённым release-процессом.
 - На новый сервер переносим только статический Astro-сайт.
 - Контур заявок пока остается через общий `AMS Leads API` АМС.
 - На сервере клиента `/api/leads` будет проксироваться в общий API, чтобы сайт не зависел от внутренней реализации форм.
@@ -41,7 +35,7 @@
 
 - **Сервер клиента:** отдельный Timeweb Cloud VPS.
 - **Стартовый профиль:** Ubuntu 24.04 LTS, 2 vCPU, 4 GB RAM, 25 GB NVMe.
-- **Deploy model:** owner-intent SourceCraft release -> immutable artifact -> SSH/rsync -> `/var/www/client-sites/voenniy-navigator/releases/[release]` -> `current`.
+- **Deploy model:** ручной SourceCraft release -> immutable artifact -> SSH/rsync -> `/var/www/client-sites/voenniy-navigator/releases/[release]` -> `current`.
 - **API model:** сайт отправляет заявки в `/api/leads`, Nginx проксирует запросы в общий `AMS Leads API`.
 - **Ownership:** сервер и оплата - клиент; код, deploy-пайплайн и API-заявки на этапе сопровождения - АМС.
 - **Exit path:** при завершении сотрудничества API можно оставить как услугу, заменить endpoint или развернуть отдельный API у клиента.
@@ -129,7 +123,7 @@ location /api/leads {
 
 Важно: реальные секреты, site keys и внутренние токены не фиксируются в репозитории.
 
-## 7. Legacy GitHub Actions Plan (deprecated transport reference)
+## 7. SourceCraft release and public configuration
 
 Текущий build уже использует same-origin endpoint:
 
@@ -137,14 +131,9 @@ location /api/leads {
 PUBLIC_LEADS_API_URL: /api/leads
 ```
 
-Этот список сохранён только как inventory старых имён. Возобновлять GitHub
-Actions deploy запрещено; актуальные secret names и release transport должны
-быть заново подтверждены через Secret Master и SourceCraft release contract.
-
-- `AMS_HOST` - новый IP сервера клиента.
-- `AMS_USER` - `voennavdeploy`.
-- `AMS_SSH_KEY` - private key deploy-пользователя в GitHub Secrets.
-- `AMS_CLIENT_SITES_ROOT` - `/var/www/client-sites`.
+После появления сервера release identity и секреты заводятся в Secret Master
+для отдельного server scope. Значения, SSH-ключи и production URLs не
+фиксируются в Git и не попадают в CI-логи.
 
 Build-переменные сайта сохранить:
 
@@ -160,7 +149,7 @@ Build-переменные сайта сохранить:
 
 - [ ] `pnpm build` проходит без ошибок.
 - [ ] `pnpm geo-check` дает `100/100`.
-- [ ] Owner-intent SourceCraft release доставляет неизменяемый artifact на новый сервер.
+- [ ] SourceCraft release собрал exact-SHA artifact, а утверждённая server-активация развернула его на новый сервер.
 - [ ] `https://staging.voen-navigator.ru/` возвращает `200`.
 - [ ] Основные страницы открываются:
   - `/`
@@ -187,7 +176,7 @@ Build-переменные сайта сохранить:
 Если после DNS cutover проявится критичная проблема:
 
 - вернуть A-записи домена на старый IP `5.42.100.161`;
-- вернуть `current` на прежний known-good release без повторной сборки;
+- вернуть `current` на previous known-good release; секреты SourceCraft/Secret Master не менять без отдельного решения;
 - оставить новый сервер для диагностики;
 - не удалять старый release до завершения стабилизации.
 
@@ -199,7 +188,7 @@ Build-переменные сайта сохранить:
 - [ ] Staging-домен направлен на новый сервер.
 - [ ] Nginx static site config настроен.
 - [ ] `/api/leads` проксируется в общий `AMS Leads API`.
-- [ ] SourceCraft release transport и Secret Master names подтверждены для нового сервера.
+- [ ] SourceCraft/Secret Master release identity подтверждён для нового сервера.
 - [ ] Staging deploy прошел.
 - [ ] Staging QA пройден.
 - [ ] Production DNS переключен.
@@ -212,5 +201,5 @@ Build-переменные сайта сохранить:
 - Клиент сам регистрирует и оплачивает Timeweb Cloud VPS.
 - На первом этапе не разворачиваем отдельный Leads API на сервере клиента.
 - Общий `AMS Leads API` остается рабочим управляемым сервисом АМС.
-- Код сайта остаётся в canonical SourceCraft-репозитории АМС; GitHub — зеркало.
+- Код сайта остаётся в приватном SourceCraft-репозитории АМС; GitHub не является каноническим источником или release-платформой.
 - Полная передача проекта клиенту позже возможна через замену API endpoint или разворачивание отдельного API.

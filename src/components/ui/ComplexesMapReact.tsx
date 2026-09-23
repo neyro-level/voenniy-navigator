@@ -379,19 +379,17 @@ export default function ComplexesMapReact({ apiKey = '', complexes }: ComplexesM
     };
   }, [apiKey, preparedComplexes]);
 
-  if (status !== 'ready') {
+  if (status === 'fallback' || status === 'missing_key') {
     const notice =
       status === 'fallback'
         ? 'Интерактивная карта временно недоступна. Все объекты и переходы к карточкам продолжают работать.'
-        : status === 'missing_key'
-          ? 'Карта работает в надежном статичном режиме, пока API-ключ Яндекс Карт не обновлен.'
-          : undefined;
+        : 'Карта работает в надежном статичном режиме, пока API-ключ Яндекс Карт не обновлен.';
 
     return <StaticComplexesMap complexes={preparedComplexes} notice={notice} />;
   }
 
   return (
-    <div className="vn-complexes-map__frame">
+    <div className="vn-complexes-map__frame" aria-busy={status === 'loading'}>
       <div ref={mapRef} className="vn-complexes-map__canvas" />
     </div>
   );

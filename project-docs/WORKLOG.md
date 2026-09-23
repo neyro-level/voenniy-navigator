@@ -2,10 +2,18 @@
 
 ## Текущий статус
 
-- **Stack:** Astro 5 + Tailwind CSS v4 + TypeScript strict + React islands.
-- **Build:** `pnpm build` passes; текущая сборка без ошибок, с 1 неблокирующим warning от Astro content loader.
-- **Browser check:** localhost and production (`voen-navigator.ru`) render correctly, 0 console errors.
+- **Stack:** Astro 7.3.x + Tailwind CSS v4 + TypeScript 6 strict + React islands; Node.js 24.21.0 and pnpm 11.5.1.
+- **Build:** `pnpm build` passes; текущая сборка без ошибок, с 1 неблокирующим hint от Astro check.
+- **QA:** route, image, browser, visual, SEO and GEO evidence is recorded for the release candidate; production is not part of this worklog entry.
 - **Documentation source of truth:** `project-docs/`.
+
+## 2026-09-22 — Astro 7 migration and SourceCraft delivery canon
+
+- **Runtime:** site migrated directly to Astro 7.3.x and TypeScript 6 without an Astro 6 intermediate state; Node.js 24.21.0 and pnpm 11.5.1 are pinned.
+- **Content and QA:** Astro Content Layer uses `glob()` and `astro/zod`; full local QA validated generated routes, local assets, image decoding, desktop/mobile templates and non-mutating browser scenarios.
+- **Findings resolved:** corrected one journal slug and restored a missing whitespace in the home H1; mobile 375px layouts have a regression guard against horizontal overflow.
+- **Delivery:** SourceCraft `integrator-p/voen-navigator` is canonical primary. EPIC-03 and EPIC-04 were merged only after manual exact-head RISKY gates. GitHub remains a mirror and production was not executed.
+- **Release candidate evidence:** `pnpm build`, `pnpm qa:crawl`, `pnpm qa:images`, `pnpm seo-check` and `pnpm geo-check` passed; `pnpm qa:release-candidate` records the exact candidate SHA and zero blockers.
 
 ## 2026-07-06 — Обновлена фотография карточки `Ипотека` на главной
 
